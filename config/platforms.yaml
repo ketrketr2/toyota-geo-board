@@ -1,0 +1,114 @@
+# ============================================================
+#  SNS / UGC プラットフォーム定義  ★アーンド引用スコアの心臓部
+#
+#  surface_share : そのプラットフォームが「どのAIサーフェスで」引用されるかの相性。
+#                  Ahrefs Brand Radar（2026年6月・日本語）の被引用実測を
+#                  サーフェス内で正規化した値。合算前に必ずサーフェス内正規化する。
+#  weight        : 全体重み（surface_share × サーフェス構成比 から算出した初期値）
+#                  月次で自前の実測に置き換える。
+# ============================================================
+
+platforms:
+  - id: youtube
+    label: "YouTube"
+    kind: video
+    domains: ["youtube.com", "youtu.be", "m.youtube.com"]
+    weight: 0.30
+    surface_share: { chatgpt: 0.15, perplexity: 0.25, aimode: 0.45, aio: 0.30, copilot: 0.05 }
+    market_citations: 276702        # 日本語AI回答での被引用実測（参考値）
+    actionable: true                # 自社で直接コンテンツを出せるか
+    note: "AIは字幕テキストを読む。台本設計が効く"
+
+  - id: chiebukuro
+    label: "Yahoo!知恵袋"
+    kind: qa
+    domains: ["chiebukuro.yahoo.co.jp", "detail.chiebukuro.yahoo.co.jp"]
+    weight: 0.24
+    surface_share: { chatgpt: 0.05, perplexity: 0.45, aimode: 0.05, aio: 0.08, copilot: 0.02 }
+    market_citations: 518977
+    actionable: false               # 直接投稿はしない。公式FAQ整備で間接的に効かせる
+    note: "プロンプト源としての価値が最大。Perplexity一点集中"
+
+  - id: reddit
+    label: "Reddit"
+    kind: forum
+    domains: ["reddit.com", "old.reddit.com"]
+    weight: 0.14
+    surface_share: { chatgpt: 0.40, perplexity: 0.10, aimode: 0.04, aio: 0.05, copilot: 0.02 }
+    market_citations: 228388
+    actionable: false
+    note: "ChatGPTでの引用1位。英語圏の言及が日本の回答にも波及"
+
+  - id: note
+    label: "note.com"
+    kind: blog
+    domains: ["note.com"]
+    weight: 0.13
+    surface_share: { chatgpt: 0.06, perplexity: 0.08, aimode: 0.15, aio: 0.10, copilot: 0.20 }
+    market_citations: 65023
+    actionable: true
+    note: "個人名義の一次体験がAIに好まれる"
+
+  - id: ameblo
+    label: "Ameblo"
+    kind: blog
+    domains: ["ameblo.jp"]
+    weight: 0.11
+    surface_share: { chatgpt: 0.22, perplexity: 0.05, aimode: 0.03, aio: 0.04, copilot: 0.01 }
+    market_citations: 131629
+    actionable: true
+    note: "ファミリー層のオーナーブログが厚い。アンバサダー施策の受け皿"
+
+  - id: kakaku
+    label: "価格.com / みんカラ"
+    kind: ugc
+    domains: ["kakaku.com", "minkara.carview.co.jp", "carview.yahoo.co.jp"]
+    weight: 0.05
+    surface_share: { chatgpt: 0.04, perplexity: 0.04, aimode: 0.03, aio: 0.03, copilot: 0.02 }
+    market_citations: 0             # TOP10圏外。個別追跡で実測する
+    actionable: false
+    note: "my-best.com と同種の比較系UGC。監視対象"
+
+  - id: x
+    label: "X（旧Twitter）"
+    kind: social
+    domains: ["x.com", "twitter.com", "t.co"]
+    weight: 0.02
+    surface_share: { chatgpt: 0.02, perplexity: 0.01, aimode: 0.01, aio: 0.01, copilot: 0.01 }
+    market_citations: 0
+    actionable: true
+    note: "AI引用元としてはほぼ機能せず。ブランドリフト目的なら継続"
+
+  - id: instagram
+    label: "Instagram"
+    kind: social
+    domains: ["instagram.com"]
+    weight: 0.005
+    surface_share: { chatgpt: 0.005, perplexity: 0.005, aimode: 0.005, aio: 0.005, copilot: 0.005 }
+    market_citations: 0
+    actionable: true
+    note: "テキスト密度が低くLLMが読める情報が少ない"
+
+  - id: tiktok
+    label: "TikTok"
+    kind: video
+    domains: ["tiktok.com"]
+    weight: 0.005
+    surface_share: { chatgpt: 0.005, perplexity: 0.005, aimode: 0.005, aio: 0.005, copilot: 0.005 }
+    market_citations: 0
+    actionable: true
+    note: "日本語AI回答での引用は未確認。Ahrefsが字幕走査開始＝今後の監視対象"
+
+# ---- SNS以外の引用元分類（スコア計算では earned に含めない）----
+classification:
+  owned:      "自社オウンド"
+  affiliated: "自社グループ・販売店"
+  media:      "一般メディア"
+  reference:  "辞書・百科（Wikipedia等）"
+  press:      "プレスリリース（PR TIMES等）"
+  competitor: "競合ドメイン"
+  noise:      "ノイズ（規約ページ・地図等）"
+
+reference_domains: ["wikipedia.org", "ja.wikipedia.org"]
+press_domains: ["prtimes.jp", "kyodonewsprwire.jp", "atpress.ne.jp"]
+noise_patterns: ["mapbox.com", "/legal", "/terms", "/privacy", "policies"]

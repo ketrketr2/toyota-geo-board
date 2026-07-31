@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Visibility KPI Board</title>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDGothic:wght@400;700&family=BIZ+UDPGothic:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0B1F35;--navy2:#12324F;--navy3:#1B4470;--ink:#16202B;--sub:#64748B;
+  --line:#E2E8F0;--line2:#CBD5E1;--bg:#F1F5F9;--card:#FFF;
+  --accent:#0B6FB4;--accent2:#00A99D;--own:#E8B004;--purple:#7C5CBF;
+  --warn:#D64545;--ok:#15926A;--amber:#C98A00;
+  --hl:#FFF176;--hl2:#A5F3E0;--sh:0 1px 2px rgba(11,31,53,.06),0 4px 12px rgba(11,31,53,.04);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:"BIZ UDGothic","BIZ UDPGothic","Hiragino Sans",Meiryo,sans-serif;font-size:14px;line-height:1.7;-webkit-font-smoothing:antialiased}
+.app{display:grid;grid-template-columns:214px 1fr;min-height:100vh;background:linear-gradient(90deg,var(--navy) 0,var(--navy) 214px,var(--bg) 214px)}
+/* sidebar */
+.side{color:#fff;padding:20px 0 40px;position:sticky;top:0;height:100vh;overflow-y:auto}
+.side .brand{padding:0 18px 18px;border-bottom:1px solid rgba(255,255,255,.1);margin-bottom:12px}
+.side .lg{display:flex;align-items:center;gap:9px}
+.side .dot{width:23px;height:23px;border-radius:6px;background:linear-gradient(135deg,var(--accent2),var(--accent));display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700}
+.side .nm{font-size:14px;font-weight:700}.side .sb{font-size:10.5px;color:#7E9CB8;letter-spacing:.08em}
+.side .grp{font-size:10px;color:#5E7C97;letter-spacing:.14em;padding:14px 18px 6px;font-weight:700}
+.side a.nav{display:flex;align-items:center;gap:9px;padding:8px 18px;color:#C3D5E4;font-size:13px;cursor:pointer;border-left:3px solid transparent}
+.side a.nav:hover{background:rgba(255,255,255,.05);color:#fff}
+.side a.nav.on{background:rgba(0,169,157,.14);border-left-color:var(--accent2);color:#fff;font-weight:700}
+.side .ic{width:16px;text-align:center;font-size:12px;opacity:.85}
+.side .foot{margin-top:20px;padding:14px 18px 0;border-top:1px solid rgba(255,255,255,.1);font-size:10.5px;color:#5E7C97;line-height:1.8}
+/* topbar */
+.top{background:#fff;border-bottom:1px solid var(--line);padding:13px 26px;position:sticky;top:0;z-index:20;display:flex;align-items:center;gap:16px;flex-wrap:wrap;box-shadow:0 1px 3px rgba(11,31,53,.04)}
+.top h1{font-size:17px;font-weight:700;color:var(--navy)}
+.top .sep{flex:1}
+.fgrp{display:flex;align-items:center;gap:6px}.fgrp .lb{font-size:11px;color:var(--sub)}
+.seg{display:inline-flex;border:1px solid var(--line2);border-radius:5px;overflow:hidden;background:#fff}
+.seg button{border:0;background:#fff;padding:5px 12px;font-size:12px;cursor:pointer;color:var(--sub);font-family:inherit;border-right:1px solid var(--line)}
+.seg button:last-child{border-right:0}
+.seg button.on{background:var(--navy2);color:#fff;font-weight:700}
+.seg button:hover:not(.on){background:#F1F5F9}
+.stamp{font-size:11px;color:var(--sub)}.stamp b{color:var(--ok)}
+.wrap{padding:22px 26px 70px}.page{display:none}.page.on{display:block}
+h2.sec{font-size:16px;color:var(--navy);margin:26px 0 12px;display:flex;align-items:center;gap:9px}
+h2.sec:first-child{margin-top:0}
+h2.sec .bar{width:4px;height:17px;background:var(--accent2);border-radius:2px}
+h2.sec .note{font-size:11.5px;color:var(--sub);font-weight:400;margin-left:auto}
+h3.sub{font-size:13.5px;color:var(--navy2);margin:16px 0 8px;font-weight:700}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:18px 20px;box-shadow:var(--sh)}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.g6{display:grid;grid-template-columns:repeat(6,1fr);gap:12px}
+.g23{display:grid;grid-template-columns:1.4fr 1fr;gap:16px}
+@media(max-width:1250px){.g6{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:1050px){.g4,.g3,.g23,.g2{grid-template-columns:1fr}.g6{grid-template-columns:repeat(2,1fr)}}
+/* hero */
+.hero{background:linear-gradient(135deg,var(--navy) 0%,var(--navy3) 100%);color:#fff;border-radius:9px;padding:20px 24px;display:grid;grid-template-columns:auto 1fr;gap:26px;align-items:center;box-shadow:var(--sh)}
+.hero .ring{position:relative}
+.hero .num{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.hero .num b{font-size:33px;line-height:1}.hero .num span{font-size:9.5px;color:#9FC4DE;letter-spacing:.09em}
+.hero .num .dv{font-size:11px;font-weight:700;margin-top:2px;max-width:96px;text-align:center;line-height:1.35}
+.hero .num .dv .nsg{display:none}
+.hero .cmt{font-size:13px;color:#DCEAF6;margin-bottom:10px;line-height:1.75}
+.hero .cmt .m{color:#FFE082;font-weight:700}
+.hero .facs{display:grid;grid-template-columns:repeat(6,1fr);gap:9px}
+.hero .fac{background:rgba(255,255,255,.07);border-radius:6px;padding:8px 10px}
+.hero .fac .fl{font-size:10px;color:#9FC4DE;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hero .fac .fv{font-size:17px;font-weight:700;font-variant-numeric:tabular-nums}
+.hero .fac .fw{font-size:9.5px;color:#7E9CB8}
+.hero .fac .fd{font-size:10.5px;font-weight:700}
+@media(max-width:1050px){.hero{grid-template-columns:1fr}.hero .facs{grid-template-columns:repeat(3,1fr)}}
+/* kpi */
+.kpi{background:#fff;border:1px solid var(--line);border-radius:8px;padding:14px 16px;box-shadow:var(--sh);position:relative;overflow:hidden}
+.kpi::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--accent)}
+.kpi.own::before{background:var(--own)}.kpi.ok::before{background:var(--ok)}.kpi.warn::before{background:var(--warn)}
+.kpi .l{font-size:11.5px;color:var(--sub)}
+.kpi .v{font-size:25px;font-weight:700;color:var(--navy);line-height:1.3;font-variant-numeric:tabular-nums}
+.kpi .v small{font-size:12px;font-weight:400;color:var(--sub)}
+.kpi .d{font-size:11.5px;font-weight:700}
+.up{color:var(--ok)}.dn{color:var(--warn)}.fl{color:var(--sub);font-weight:400}
+.nsg{color:#94A3B8;font-weight:400}
+.par{font-size:11px;font-weight:400;color:var(--sub);white-space:nowrap}
+.par.up{color:#2F8F6B}.par.dn{color:#C05555}
+.hero .fac .fv .fu{font-size:9.5px;color:#7E9CB8;font-weight:400;margin-left:2px}
+.hero .fac .fd .par{color:#9FC4DE;font-size:10px}
+.hero .fac .fd .par.up{color:#7FE0B6}.hero .fac .fd .par.dn{color:#F4A3A3}
+.hero .num .dv{color:#7E9CB8;font-weight:400;font-size:10px}
+.vsub{font-size:11px;color:var(--sub);font-weight:400}
+/* table */
+table{width:100%;border-collapse:collapse;font-size:12.5px}
+thead th{background:#F8FAFC;color:var(--navy2);font-weight:700;font-size:11.5px;text-align:left;padding:8px 10px;border-bottom:2px solid var(--line2);white-space:nowrap;position:sticky;top:0;z-index:2}
+thead th.s{cursor:pointer;user-select:none}thead th.s:hover{background:#EEF4FA}
+tbody td{padding:7px 10px;border-bottom:1px solid var(--line);vertical-align:middle}
+tbody tr:hover{background:#F8FBFE}
+td.n{text-align:right;font-variant-numeric:tabular-nums}td.c{text-align:center}
+.tw{max-height:560px;overflow:auto;border:1px solid var(--line);border-radius:7px;background:#fff}
+.pill{display:inline-block;font-size:10.5px;font-weight:700;padding:1px 7px;border-radius:10px;white-space:nowrap}
+.p-ok{background:#E6F6EF;color:var(--ok)}.p-ng{background:#FDECEC;color:var(--warn)}
+.p-am{background:#FFF6E0;color:var(--amber)}.p-nv{background:#EDF3F9;color:var(--navy2)}
+.p-pu{background:#F0EBFA;color:var(--purple)}
+.rk{display:inline-flex;width:23px;height:23px;border-radius:6px;align-items:center;justify-content:center;font-size:11px;font-weight:700;background:#EDF3F9;color:var(--navy2)}
+.rk.r1{background:var(--ok);color:#fff}.rk.r2{background:#5CBB8B;color:#fff}.rk.r3{background:#A8D8C0;color:#0B3D2A}
+.rk.rx{background:#FDECEC;color:var(--warn)}
+.mini{height:6px;background:#EDF2F7;border-radius:3px;overflow:hidden;min-width:44px}
+.mini i{display:block;height:6px;background:var(--accent)}
+.mini i.own{background:var(--own)}.mini i.g{background:var(--ok)}
+.bars .row{display:grid;grid-template-columns:130px 1fr 92px;gap:9px;align-items:center;margin:6px 0;font-size:12px}
+.bars .row .lb{color:var(--sub);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bars .row .lb.me{color:var(--own);font-weight:700}
+.bars .tr{display:block;height:18px;background:#EDF2F7;border-radius:3px;overflow:hidden}
+.bars .fi{display:block;height:18px;background:linear-gradient(90deg,#0B6FB4,#3FA0DC)}
+.bars .fi.me{background:linear-gradient(90deg,#B87F00,#E8B004)}
+.bars .fi.g{background:linear-gradient(90deg,#15926A,#4CBF8A)}
+.bars .va{text-align:right;font-weight:700;font-variant-numeric:tabular-nums}
+.legend{display:flex;gap:14px;flex-wrap:wrap;font-size:11px;color:var(--sub);margin-top:8px}
+.legend i{display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:4px;vertical-align:-1px}
+.note{border-left:4px solid var(--amber);background:#FFFBEB;padding:10px 14px;border-radius:0 5px 5px 0;font-size:12.5px;margin:12px 0}
+.note.ok{border-color:var(--ok);background:#EFFAF4}.note.ng{border-color:var(--warn);background:#FDF0F0}
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0 12px}
+.chip{display:inline-flex;align-items:center;gap:5px;border:1px solid var(--line2);background:#fff;border-radius:14px;padding:3px 11px;font-size:11.5px;color:var(--navy2);cursor:pointer}
+.chip.on{background:var(--navy2);color:#fff;border-color:var(--navy2)}
+.tag{display:inline-block;font-size:10px;padding:1px 6px;border-radius:3px;background:#EDF3F9;color:var(--navy2);margin-right:3px}
+.hm td.h{text-align:center;font-weight:700;font-variant-numeric:tabular-nums}
+.h0{background:#F5F8FA;color:#B4C2CE!important}.h1{background:#E1EFF9}.h2{background:#BEDCF0}
+.h3{background:#8FC3E4}.h4{background:#5AA5D6;color:#fff!important}.h5{background:#2A7FBF;color:#fff!important}
+.src{font-size:10.5px;color:var(--sub);margin-top:8px;line-height:1.65}
+a{color:var(--accent);text-decoration:none}
+mark{background:linear-gradient(transparent 55%,var(--hl) 55%);font-weight:700;color:#3A2E00;padding:0 1px}
+mark.r{background:linear-gradient(transparent 55%,#FFC2C2 55%);color:#7A1414}
+code{background:#F1F5F9;padding:1px 5px;border-radius:3px;font-size:11.5px;font-family:ui-monospace,Menlo,Consolas,monospace;color:var(--navy2)}
+.al{display:grid;grid-template-columns:78px 1fr;gap:12px;padding:9px 12px;border-bottom:1px solid var(--line);font-size:12.5px;align-items:center}
+.al:last-child{border-bottom:0}
+#loading{padding:60px;text-align:center;color:var(--sub)}
+tr.qrow{cursor:pointer}
+tr.qdet td{background:#F8FBFE;padding:0}
+.detwrap{padding:14px 18px 16px}
+.dettitle{font-size:11.5px;font-weight:700;color:var(--navy2);margin-bottom:7px}
+.clist{display:flex;flex-direction:column;gap:5px}
+.crow{display:grid;grid-template-columns:92px 1fr auto;gap:10px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:6px;padding:6px 10px}
+.cmain a{font-size:12px;font-weight:700;color:var(--navy2)}
+.cmain a:hover{text-decoration:underline}
+.cpath{font-size:10.5px;color:var(--sub);font-family:ui-monospace,Menlo,Consolas,monospace}
+.csf{white-space:nowrap}
+.ownp{font-size:11.5px;line-height:1.5;margin-bottom:2px}
+.ownp a{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;font-weight:700}
+.ownt{font-size:10.5px;color:var(--sub);display:block}
+.qmini{display:flex;align-items:center;gap:6px;margin:2px 0}
+</style>
+</head>
+<body>
+<div class="app">
+<aside class="side">
+  <div class="brand"><div class="lg"><span class="dot">AI</span>
+    <div><div class="nm">AI Visibility Board</div><div class="sb" id="ownerTag">GEO KPI</div></div></div></div>
+  <div class="grp">モニタリング</div>
+  <a class="nav on" data-p="overview"><span class="ic">◉</span>概要</a>
+  <a class="nav" data-p="sns"><span class="ic">◈</span>SNS別評価</a>
+  <a class="nav" data-p="queries"><span class="ic">≡</span>クエリ</a>
+  <a class="nav" data-p="pages"><span class="ic">▤</span>自社の被引用ページ</a>
+  <a class="nav" data-p="compete"><span class="ic">⇄</span>競合・判断軸</a>
+  <a class="nav" data-p="sources"><span class="ic">◇</span>引用ソース</a>
+  <a class="nav" data-p="signals"><span class="ic">⇡</span>AI流入・クローラー</a>
+  <a class="nav" data-p="alerts"><span class="ic">!</span>アラート</a>
+  <div class="foot" id="foot"></div>
+</aside>
+
+<div class="main">
+<div class="top">
+  <h1 id="title">—</h1>
+  <div class="fgrp"><span class="lb">比較</span>
+    <div class="seg" id="segPeriod">
+      <button data-v="dod" class="on">前日比</button><button data-v="wow">先週比</button><button data-v="mom">先月比</button>
+    </div>
+  </div>
+  <div class="sep"></div>
+  <div class="stamp" id="stamp"></div>
+</div>
+<div class="wrap" id="root"><div id="loading">読み込み中…</div></div>
+</div></div>
+
+<script>
+const FJ={presence:"出現率",rank_quality:"順位品質",owned_citation:"オウンド引用率",
+  earned_citation:"アーンド引用率<br><span style='font-size:9px'>SNS/UGC</span>",sentiment:"センチメント",share_of_voice:"相対シェア"};
+const FJ_PLAIN={presence:"出現率",rank_quality:"順位品質",owned_citation:"オウンド引用率",
+  earned_citation:"アーンド引用率（SNS）",sentiment:"センチメント",share_of_voice:"相対シェア"};
+const PJ={dod:"前日比",wow:"先週比",mom:"先月比"};
+let D=null, P="dod", sortK="best_rank", sortDir=1, catF="all";
+
+const esc=s=>String(s??"").replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+const num=v=>v==null?"—":(+v).toLocaleString();
+const f1=v=>v==null?"—":(+v).toFixed(1);
+
+function delta(m,p,unit){ // 差分は必ず「（前日比 +0.12pt）」形式の補助表示にする
+  unit = unit===undefined ? "pt" : unit;
+  const none = {html:'<span class="par">（比較データなし）</span>',v:null};
+  if(!m||!m.deltas||!m.deltas[p]) return none;
+  const d=m.deltas[p];
+  if(d.delta==null) return none;
+  const sg=d.significant, s0=d.delta>=0?"+":"";
+  const cls = sg===false ? "par nsg" : (d.delta>0?"par up":d.delta<0?"par dn":"par");
+  const val = unit==="pt" ? d.delta.toFixed(2) : Math.round(d.delta).toLocaleString();
+  const tail = sg===false ? "・有意差なし" : "";
+  return {html:`<span class="${cls}">（${PJ[p]} ${s0}${val}${unit}${tail}）</span>`, v:d.delta};
+}
+function headline(){
+  const m=D.diff?.metrics?.score;
+  const d=m?.deltas?.[P];
+  const base=`本日のGEOスコアは <b>${D.score.toFixed(1)}</b> / 100。`;
+  if(!d||d.delta==null) return base+`${PJ[P]}の比較対象データはまだありません。`;
+  const sg=2*(m.sigma||0), sign=d.delta>=0?"+":"";
+  if(d.significant===false)
+    return base+`（${PJ[P]} ${sign}${d.delta.toFixed(2)}pt — 日次のばらつき ±${sg.toFixed(2)}pt の範囲内で、有意な変化ではありません）`;
+  return base+`（${PJ[P]} ${sign}${d.delta.toFixed(2)}pt — 日次ばらつきを超える${d.delta>0?"上昇":"低下"}）`;
+}
+
+/* ---------- charts ---------- */
+function lineChart(hist,keys,colors,h=190){
+  if(!hist.length) return "";
+  const W=640,pad={l:38,r:12,t:14,b:22};
+  const all=keys.flatMap(k=>hist.map(d=>d[k])).filter(v=>v!=null);
+  let mn=Math.min(...all),mx=Math.max(...all);
+  const pd=(mx-mn)*.15||1; mn=Math.max(0,mn-pd); mx=mx+pd;
+  const X=i=>pad.l+i*(W-pad.l-pad.r)/Math.max(hist.length-1,1);
+  const Y=v=>pad.t+(1-(v-mn)/(mx-mn))*(h-pad.t-pad.b);
+  let g="";
+  for(let i=0;i<=4;i++){const y=pad.t+i*(h-pad.t-pad.b)/4;
+    g+=`<line x1="${pad.l}" y1="${y}" x2="${W-pad.r}" y2="${y}" stroke="#EDF2F7"/>`+
+       `<text x="6" y="${y+3}" font-size="9" fill="#94A3B8">${(mx-(mx-mn)*i/4).toFixed(0)}</text>`;}
+  keys.forEach((k,ki)=>{
+    const pts=hist.map((d,i)=>d[k]==null?null:`${X(i)},${Y(d[k])}`).filter(Boolean).join(" ");
+    if(ki===0) g+=`<polygon fill="url(#gA)" points="${pts} ${X(hist.length-1)},${h-pad.b} ${X(0)},${h-pad.b}"/>`;
+    g+=`<polyline fill="none" stroke="${colors[ki]}" stroke-width="${ki?1.6:2.4}" ${ki?'stroke-dasharray="4 3"':''} points="${pts}"/>`;
+  });
+  const last=hist[hist.length-1];
+  if(last[keys[0]]!=null) g+=`<circle cx="${X(hist.length-1)}" cy="${Y(last[keys[0]])}" r="4" fill="${colors[0]}"/>`;
+  g+=`<text x="${pad.l}" y="${h-4}" font-size="9" fill="#94A3B8">${hist[0].date.slice(5)}</text>`+
+     `<text x="${W-pad.r-28}" y="${h-4}" font-size="9" fill="#94A3B8">${last.date.slice(5)}</text>`;
+  return `<svg viewBox="0 0 ${W} ${h}" style="width:100%;height:auto">
+    <defs><linearGradient id="gA" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="${colors[0]}" stop-opacity=".24"/><stop offset="100%" stop-color="${colors[0]}" stop-opacity="0"/>
+    </linearGradient></defs>${g}</svg>`;
+}
+function donut(items,total,label){
+  let off=25,g="";
+  items.forEach(it=>{const pct=total?it.v/total*100:0;
+    g+=`<circle cx="21" cy="21" r="15.9" fill="none" stroke="${it.c}" stroke-width="7.5"
+        stroke-dasharray="${pct.toFixed(2)} ${(100-pct).toFixed(2)}" stroke-dashoffset="${off}"/>`;
+    off-=pct;});
+  return `<svg width="140" height="140" viewBox="0 0 42 42">${g}
+    <text x="21" y="20.5" text-anchor="middle" font-size="4" font-weight="700" fill="#0B1F35">${num(total)}</text>
+    <text x="21" y="24.6" text-anchor="middle" font-size="2.2" fill="#64748B">${label}</text></svg>`;
+}
+const PAL=["#2A7FBF","#00A99D","#7C5CBF","#E8B004","#5CBB8B","#94A3B8","#D64545","#C98A00"];
+
+/* ---------- pages ---------- */
+function pageOverview(){
+  const c=D.comment||{}, lines=(c.periods||{})[P]||[];
+  const sc=D.diff?.metrics?.score, dv=delta(sc,P);
+  const ring=308*(1-D.score/100);
+  const facs=Object.keys(D.weights).map(k=>{
+    const d=delta(D.diff?.metrics?.[k],P);
+    return `<div class="fac"><div class="fl">${FJ[k]}</div>
+      <div class="fv">${f1(D.factors[k])}<span class="fu">/100</span></div>
+      <div class="fd">${d.html}</div>
+      <div class="fw">重み ${D.weights[k]}点</div></div>`;}).join("");
+  const dec=(D.diff?.decomposition||{})[P]||{};
+  const contrib=Object.entries(dec.contributions||{}).sort((a,b)=>Math.abs(b[1])-Math.abs(a[1]));
+  const hist=D.history||[];
+
+  return `<div class="hero">
+    <div class="ring"><svg width="122" height="122" viewBox="0 0 118 118">
+      <circle cx="59" cy="59" r="49" fill="none" stroke="rgba(255,255,255,.13)" stroke-width="11"/>
+      <circle cx="59" cy="59" r="49" fill="none" stroke="#00A99D" stroke-width="11" stroke-linecap="round"
+        stroke-dasharray="308" stroke-dashoffset="${ring.toFixed(0)}" transform="rotate(-90 59 59)"/></svg>
+      <div class="num"><b>${f1(D.score)}</b><span>GEO SCORE</span><div class="dv">/ 100</div></div></div>
+    <div>
+      <div class="cmt">${headline()}</div>
+      ${(()=>{const b=lines.filter(x=>!/^(前日比|先週比|先月比) /.test(x));
+        return b.length?`<div class="cmt" style="color:#9FC4DE;font-size:11.5px;margin-bottom:12px">${b.map(esc).join(" 　/　 ")}</div>`:"";})()}
+      <div class="facs">${facs}</div>
+    </div></div>
+
+  <h2 class="sec"><span class="bar"></span>スコア推移と変動要因<span class="note">${PJ[P]}の内訳（補助分析）</span></h2>
+  <div class="g23">
+    <div class="card"><h3 class="sub" style="margin-top:0">GEOスコア推移（${hist.length}日）</h3>
+      ${lineChart(hist,["score"],["#00A99D"])}
+      <div class="legend"><span><i style="background:#00A99D"></i>GEOスコア</span>
+        <span style="color:#94A3B8">判定は7日移動中央値と±2σで行っています</span></div></div>
+    <div class="card"><h3 class="sub" style="margin-top:0">変動の内訳
+      <span class="vsub">${PJ[P]} 計 ${dec.total!=null?(dec.total>=0?"+":"")+dec.total.toFixed(2):"—"}pt</span></h3>
+      <div class="bars">${contrib.map(([k,v])=>{
+        const mag=Math.max(...contrib.map(x=>Math.abs(x[1])),0.01);
+        return `<div class="row"><span class="lb">${FJ_PLAIN[k]}<span class="vsub"> ${f1(D.factors[k])}</span></span>
+          <span class="tr"><span class="fi ${v>=0?'g':''}" style="width:${Math.abs(v)/mag*100}%;${v<0?'background:linear-gradient(90deg,#D64545,#EA7A7A)':''}"></span></span>
+          <span class="va ${v>=0?'up':'dn'}" style="font-size:11px">${v>=0?"+":""}${v.toFixed(2)}pt</span></div>`;}).join("")||'<div class="fl">比較データなし</div>'}</div>
+      <div class="note ${contrib.length&&contrib[0][1]<0?'ng':'ok'}" style="margin-bottom:0;font-size:12px">
+        ${contrib.length?`いま最も効いている因数は <b>${FJ_PLAIN[contrib[0][0]]}</b>（現在値 ${f1(D.factors[contrib[0][0]])}、${PJ[P]} ${contrib[0][1]>=0?"+":""}${contrib[0][1].toFixed(2)}pt）。`:"前日以前のスナップショットが揃うと表示されます。"}
+      </div></div>
+  </div>
+
+  <h2 class="sec"><span class="bar"></span>実測サマリ<span class="note">${D.counts.prompts}プロンプト × ${Object.keys(D.surfaces).length}サーフェス ／ 回答 ${num(D.counts.responses)}件</span></h2>
+  <div class="g4">
+    ${kpiCard("自社が言及された回答","own_mentioned",D.counts.own_mentioned+" / "+D.counts.cells,"presence","own")}
+    ${kpiCard("オウンド引用率","owned_citation",f1(D.factors.owned_citation)+"%","owned_citation","")}
+    ${kpiCard("アーンド引用率（SNS）","earned_citation",f1(D.factors.earned_citation)+"%","earned_citation","ok")}
+    ${kpiCard("AI経由セッション","ai_sessions",num(Object.values(D.signals.ga4_ai_sessions).reduce((a,b)=>a+b,0)),"ai_sessions","","件")}
+  </div>
+
+  <h2 class="sec"><span class="bar"></span>サーフェス別の出現<span class="note">自社が言及された回答数</span></h2>
+  <div class="g23">
+    <div class="card"><div class="bars">${(D.surfaces||[]).sort((a,b)=>b.count-a.count).map((s,i)=>{
+      const mx=Math.max(...D.surfaces.map(x=>x.count),1);
+      return `<div class="row"><span class="lb">${esc(s.label)}</span>
+        <span class="tr"><span class="fi" style="width:${s.count/mx*100}%;background:${PAL[i%PAL.length]}"></span></span>
+        <span class="va">${s.count}</span></div>`;}).join("")}</div></div>
+    <div class="card"><h3 class="sub" style="margin-top:0">引用元の種別構成</h3>
+      <div style="display:flex;align-items:center;gap:16px">
+        ${(()=>{const b=D.citation_buckets||{},L={owned:"オウンド",affiliated:"グループ・販売店",earned:"SNS・UGC",media:"一般メディア",reference:"辞書・百科",press:"プレス",competitor:"競合",noise:"ノイズ"};
+          const it=Object.entries(b).map(([k,v],i)=>({k,v,c:PAL[i%PAL.length],l:L[k]||k}));
+          const tot=it.reduce((a,x)=>a+x.v,0);
+          return donut(it,tot,"引用")+`<div class="legend" style="flex-direction:column;gap:5px">${it.map(x=>`<span><i style="background:${x.c}"></i>${x.l} ${x.v}（${tot?(x.v/tot*100).toFixed(0):0}%）</span>`).join("")}</div>`;})()}
+      </div></div>
+  </div>`;
+}
+function kpiCard(label,metricKey,value,dKey,cls,unit){
+  const d=delta(D.diff?.metrics?.[dKey],P,unit);
+  return `<div class="kpi ${cls}"><div class="l">${label}</div><div class="v">${value}</div><div class="d">${d.html}</div></div>`;
+}
+
+function pageSns(){
+  const rows=(D.platforms||[]).slice().sort((a,b)=>b.weight-a.weight);
+  const dec=(D.diff?.platform_decomposition||{})[P]||[];
+  const dmap={};dec.forEach(r=>dmap[r.id]=r);
+  const mag=Math.max(...dec.map(r=>Math.abs(r.contribution)),0.01);
+  const totalEarned=D.factors.earned_citation;
+  const ed=delta(D.diff?.metrics?.earned_citation,P);
+  return `<h2 class="sec"><span class="bar"></span>SNS・UGC別 AI引用評価<span class="note">アーンド引用率はGEOスコアの20点分を占めます</span></h2>
+  <div class="g4" style="margin-bottom:14px">
+    <div class="kpi ok"><div class="l">アーンド引用率（総合）</div><div class="v">${f1(totalEarned)}<small>%</small></div><div class="d">${ed.html}</div></div>
+    <div class="kpi"><div class="l">スコアへの寄与</div><div class="v">${(totalEarned*0.20).toFixed(1)}<small> / 20pt</small></div><div class="d"><span class="par">（アーンド引用率 ${f1(totalEarned)}% × 重み20）</span></div></div>
+    <div class="kpi"><div class="l">SNS引用が発生した回答</div><div class="v">${rows.reduce((a,r)=>a+r.market_citations,0)}</div><div class="d fl">うち自社言及あり ${rows.reduce((a,r)=>a+r.own_citations,0)}</div></div>
+    <div class="kpi own"><div class="l">自社が出せる面</div><div class="v">${rows.filter(r=>r.actionable).length}<small> / ${rows.length}</small></div><div class="d fl">actionable なプラットフォーム</div></div>
+  </div>
+
+  <div class="note">日本語AI回答の被引用元は上位10件中6件がSNS・UGCです。<mark>「市場全体でそのプラットフォームが何回引かれたか」を分母、「うち自社が言及されていたか」を分子</mark>にしてシェアを出し、プラットフォーム重みを掛けて合成したものがアーンド引用率です。</div>
+
+  <div class="tw" style="max-height:none"><table>
+    <thead><tr><th style="width:132px">プラットフォーム</th><th class="c" style="width:56px">分類</th>
+      <th class="n" style="width:64px">重み</th><th class="n" style="width:86px">市場被引用</th>
+      <th class="n" style="width:80px">自社関連</th><th style="width:130px">自社シェア</th>
+      <th class="c" style="width:112px">スコア寄与</th><th class="c" style="width:70px">出稿可否</th><th>メモ</th></tr></thead>
+    <tbody>${rows.map(r=>{
+      const d=dmap[r.id];
+      const KIND={video:"動画",qa:"Q&A",forum:"掲示板",blog:"ブログ",ugc:"UGC",social:"SNS"};
+      return `<tr>
+      <td><b>${esc(r.label)}</b></td>
+      <td class="c"><span class="pill p-pu">${KIND[r.kind]||r.kind}</span></td>
+      <td class="n">${(r.weight*100).toFixed(1)}%</td>
+      <td class="n">${num(r.market_citations)}</td>
+      <td class="n">${num(r.own_citations)}</td>
+      <td><div style="display:flex;align-items:center;gap:7px">
+        <span class="mini" style="flex:1"><i class="own" style="width:${Math.min(r.share,100)}%"></i></span>
+        <b style="font-size:11.5px">${r.share.toFixed(1)}%</b></div></td>
+      <td class="c"><b style="font-size:13px">${(r.weight*r.share).toFixed(2)}</b><span class="vsub">pt</span>
+        ${d?`<div class="${d.contribution>=0?'par up':'par dn'}">（${PJ[P]} ${d.contribution>=0?"+":""}${d.contribution.toFixed(2)}）</div>`:''}</td>
+      <td class="c">${r.actionable?'<span class="pill p-ok">可</span>':'<span class="pill p-nv">間接</span>'}</td>
+      <td style="font-size:11.5px;color:#475569">${esc(r.note)}</td></tr>`;}).join("")}
+    </tbody></table></div>
+
+  <h2 class="sec"><span class="bar"></span>アーンド引用率の推移</h2>
+  <div class="card">${lineChart(D.history,["earned_citation","owned_citation"],["#00A99D","#E8B004"])}
+    <div class="legend"><span><i style="background:#00A99D"></i>アーンド引用率（SNS/UGC）</span><span><i style="background:#E8B004"></i>オウンド引用率</span></div>
+    <div class="note ok" style="margin-bottom:0">2本が乖離しているときは打ち手が分かれます。<b>オウンドだけ下がる</b>＝自社ページがAIに読まれていない（構造化・robots・FAQ整備）。<b>アーンドだけ下がる</b>＝UGC側で語られなくなった（YouTube・note・アンバサダー施策）。</div></div>`;
+}
+
+const BK={owned:["自社オウンド","p-ok"],affiliated:["グループ・販売店","p-am"],earned:["SNS・UGC","p-pu"],
+  media:["一般メディア","p-nv"],reference:["辞書・百科","p-nv"],press:["プレス","p-nv"],
+  competitor:["競合","p-ng"],noise:["ノイズ","p-ng"]};
+const CATJ={purchase:"購入検討",model:"車種",safety:"安全・支援",cost:"価格・維持費",eco:"燃費・電動化",service:"整備",brand:"ブランド指名"};
+let openQ=new Set();
+
+function citeList(cites,only){
+  const list=only?cites.filter(c=>only.includes(c.bucket)):cites;
+  if(!list.length) return '<div class="fl" style="font-size:12px">引用なし</div>';
+  return `<div class="clist">${list.map(c=>{
+    const[bl,bc]=BK[c.bucket]||["その他","p-nv"];
+    const label = c.bucket==="earned"
+      ? ((D.platforms.find(x=>x.id===c.platform)||{}).label||c.host) : c.host;
+    return `<div class="crow">
+      <span class="pill ${bc}" style="min-width:82px;text-align:center">${bl}</span>
+      <div class="cmain">
+        <a href="${esc(c.url)}" target="_blank" rel="noopener">${esc(c.title||c.path||c.url)}</a>
+        <div class="cpath">${esc(label)}<span style="color:#CBD5E1"> · </span>${esc(c.path||"")}</div>
+      </div>
+      <div class="csf">${(c.surface_labels||[]).map(s=>`<span class="tag">${esc(s)}</span>`).join("")}</div>
+    </div>`;}).join("")}</div>`;
+}
+
+function pageQueries(){
+  let rows=(D.queries||[]).filter(r=>catF==="all"||r.category===catF);
+  rows.sort((a,b)=>{let x=a[sortK],y=b[sortK];
+    if(x==null)x=sortK==="best_rank"?999:-1; if(y==null)y=sortK==="best_rank"?999:-1;
+    if(typeof x==="string")return sortDir*x.localeCompare(y,"ja"); return sortDir*(x-y);});
+  const cats=["all",...new Set((D.queries||[]).map(r=>r.category))];
+  const sfs=(D.surfaces||[]).map(s=>s.id);
+  const rk=v=>v==null?'<span class="rk rx">—</span>':`<span class="rk ${v===1?'r1':v===2?'r2':v===3?'r3':''}">${v}</span>`;
+  const nCited=rows.filter(r=>r.own_pages.length).length;
+
+  return `<h2 class="sec"><span class="bar"></span>クエリ別の実測<span class="note">行をクリックすると、そのクエリで引用された全URLが開きます</span></h2>
+  <div class="g4" style="margin-bottom:12px">
+    <div class="kpi"><div class="l">追跡クエリ</div><div class="v">${rows.length}</div><div class="d fl">カテゴリ絞り込み中</div></div>
+    <div class="kpi own"><div class="l">自社ページが引用されたクエリ</div><div class="v">${nCited}<small> / ${rows.length}</small></div><div class="d fl">${rows.length?(nCited/rows.length*100).toFixed(0):0}%</div></div>
+    <div class="kpi"><div class="l">引用された自社ページ（実数）</div><div class="v">${(D.owned_pages||[]).length}</div><div class="d fl">「自社の被引用ページ」タブで逆引き</div></div>
+    <div class="kpi warn"><div class="l">自社ページが1つも引かれないクエリ</div><div class="v">${rows.length-nCited}</div><div class="d dn">最優先の改善対象</div></div>
+  </div>
+  <div class="chips">${cats.map(c=>`<span class="chip ${c===catF?'on':''}" data-c="${c}">${c==="all"?"すべて":CATJ[c]||c}</span>`).join("")}</div>
+  <div class="tw"><table id="qt">
+    <thead><tr><th style="width:22px"></th><th class="s" data-k="text">クエリ</th><th style="width:74px">カテゴリ</th>
+      ${sfs.map(s=>`<th class="c" style="width:52px">${esc((D.surfaces.find(x=>x.id===s)||{}).label||s)}</th>`).join("")}
+      <th class="s c" data-k="best_rank" style="width:52px">最良</th>
+      <th style="width:270px">引用された自社ページ</th>
+      <th style="width:132px">引用SNS</th></tr></thead>
+    <tbody>${rows.map(r=>{
+      const op=r.own_pages||[], ap=r.affiliated_pages||[], open=openQ.has(r.id);
+      const opCell = op.length
+        ? `<div>${op.slice(0,2).map(c=>`<div class="ownp"><a href="${esc(c.url)}" target="_blank" rel="noopener">${esc(c.path)}</a>
+             <span class="ownt">${esc(c.title||"")}</span></div>`).join("")}
+           ${op.length>2?`<span class="tag">＋${op.length-2}ページ</span>`:""}</div>`
+        : (ap.length
+            ? `<span class="pill p-am">グループのみ</span> <span class="ownt">${esc(ap[0].host)}</span>`
+            : '<span class="pill p-ng">なし</span>');
+      return `<tr class="qrow" data-q="${esc(r.id)}">
+        <td class="c" style="color:#94A3B8">${open?"▾":"▸"}</td>
+        <td style="max-width:360px">${esc(r.text).slice(0,80)}${r.text.length>80?"…":""}
+          ${r.brand_query?'<span class="tag">指名</span>':''}</td>
+        <td><span class="pill p-nv">${CATJ[r.category]||r.category}</span></td>
+        ${sfs.map(s=>`<td class="c">${rk(r.surfaces[s]?.rank)}</td>`).join("")}
+        <td class="c"><b>${r.best_rank??"—"}</b></td>
+        <td>${opCell}</td>
+        <td style="font-size:11px">${(r.platforms||[]).map(p=>`<span class="tag">${esc((D.platforms.find(x=>x.id===p)||{}).label||p)}</span>`).join("")||'<span class="fl">—</span>'}</td>
+      </tr>` + (open?`<tr class="qdet"><td colspan="${5+sfs.length+1}">
+        <div class="detwrap">
+          <div class="dettitle">このクエリの回答で引用された全URL（${r.n_citations}件）</div>
+          ${citeList(r.citations)}
+          ${r.negatives.length?`<div class="dettitle" style="margin-top:12px">検出されたネガ要因</div>
+            <div>${r.negatives.map(n=>`<span class="pill p-ng" style="margin-right:5px">${esc(n)}</span>`).join("")}</div>`:""}
+        </div></td></tr>`:"");
+    }).join("")}</tbody></table></div>
+  <div class="src">順位は同一プロンプトを複数回実行した中央値。URLは実際に回答へ添えられた引用（annotations）そのもので、どのサーフェスで引かれたかをタグで示しています。</div>`;
+}
+
+function pagePages(){
+  const ps=D.owned_pages||[];
+  const mx=Math.max(...ps.map(p=>p.n),1);
+  const uncited=(D.queries||[]).filter(q=>!q.own_pages.length);
+  return `<h2 class="sec"><span class="bar"></span>自社ページの被引用（逆引き）<span class="note">どのページが、どのクエリで引かれているか</span></h2>
+  <div class="g4" style="margin-bottom:12px">
+    <div class="kpi own"><div class="l">引用された自社ページ</div><div class="v">${ps.length}</div><div class="d fl">ユニークURL</div></div>
+    <div class="kpi"><div class="l">被引用の延べ回数</div><div class="v">${ps.reduce((a,p)=>a+p.n,0)}</div><div class="d fl">サーフェス×クエリの合計</div></div>
+    <div class="kpi ok"><div class="l">最多被引用ページ</div><div class="v" style="font-size:15px">${esc(ps[0]?.path||"—")}</div><div class="d fl">${ps[0]?.n||0}回 / ${ps[0]?.n_queries||0}クエリ</div></div>
+    <div class="kpi warn"><div class="l">自社ページ未引用のクエリ</div><div class="v">${uncited.length}</div><div class="d dn">コンテンツ不足の候補</div></div>
+  </div>
+  ${ps.length?`<div class="tw" style="max-height:none"><table>
+    <thead><tr><th style="width:250px">ページ</th><th class="n" style="width:74px">被引用</th>
+      <th style="width:110px"></th><th class="n" style="width:66px">クエリ数</th>
+      <th style="width:150px">引かれたサーフェス</th><th>引かれているクエリ</th></tr></thead>
+    <tbody>${ps.map(p=>`<tr>
+      <td><a href="${esc(p.url)}" target="_blank" rel="noopener"><b>${esc(p.path)}</b></a>
+        <div class="ownt">${esc(p.title||"")}</div></td>
+      <td class="n"><b>${p.n}</b></td>
+      <td><span class="mini"><i class="own" style="width:${p.n/mx*100}%"></i></span></td>
+      <td class="n">${p.n_queries}</td>
+      <td style="font-size:11px">${p.surfaces.map(s=>`<span class="tag">${esc(s)}</span>`).join("")}</td>
+      <td style="font-size:11.5px">${p.queries.slice(0,3).map(q=>`<div class="qmini">
+          ${q.rank?`<span class="rk ${q.rank===1?'r1':q.rank<=3?'r3':''}" style="width:18px;height:18px;font-size:10px">${q.rank}</span>`:'<span class="rk rx" style="width:18px;height:18px;font-size:10px">—</span>'}
+          <span>${esc(q.text).slice(0,52)}${q.text.length>52?"…":""}</span></div>`).join("")}
+        ${p.queries.length>3?`<span class="tag">＋${p.queries.length-3}クエリ</span>`:""}</td>
+    </tr>`).join("")}</tbody></table></div>`:'<div class="card">本日は自社ページの引用が検出されませんでした。</div>'}
+
+  <h2 class="sec"><span class="bar"></span>自社ページが1つも引かれていないクエリ<span class="note">${uncited.length}件 — コンテンツ制作の優先リスト</span></h2>
+  <div class="tw" style="max-height:420px"><table>
+    <thead><tr><th>クエリ</th><th style="width:76px">カテゴリ</th><th style="width:100px">判断軸</th>
+      <th class="c" style="width:52px">最良</th><th style="width:230px">代わりに引かれているソース</th></tr></thead>
+    <tbody>${uncited.map(q=>`<tr>
+      <td style="max-width:360px">${esc(q.text).slice(0,74)}${q.text.length>74?"…":""}</td>
+      <td><span class="pill p-nv">${CATJ[q.category]||q.category}</span></td>
+      <td style="font-size:11.5px;color:#475569">${esc(q.driver_label||"")}</td>
+      <td class="c">${q.best_rank??"—"}</td>
+      <td style="font-size:11px">${(q.citations||[]).slice(0,3).map(c=>`<div class="qmini"><span class="pill ${(BK[c.bucket]||["","p-nv"])[1]}" style="font-size:9.5px">${(BK[c.bucket]||["その他"])[0]}</span><span>${esc(c.host)}</span></div>`).join("")||'<span class="fl">—</span>'}</td>
+    </tr>`).join("")}</tbody></table></div>
+  <div class="src">「代わりに引かれているソース」は、そのクエリでAIが根拠にしている他人のページです。ここに競合ドメインが並んでいる場合は、同じ論点の一次情報を自社に用意するのが最短の打ち手になります。</div>`;
+}
+
+function pageCompete(){
+  const bs=(D.brands||[]).slice().sort((a,b)=>b.sov-a.sov);
+  const mx=Math.max(...bs.map(b=>b.sov),1);
+  const dr=D.drivers||[];
+  const names=bs.map(b=>b.label);
+  const cell=v=>{const t=Math.max(...dr.flatMap(d=>Object.values(d.counts)),1);
+    const q=v==null?0:Math.ceil(v/t*5); return `h h${v?Math.min(q,5):0}`;};
+  return `<h2 class="sec"><span class="bar"></span>ブランド別 相対シェア</h2>
+  <div class="card"><div class="bars">${bs.map(b=>`<div class="row">
+    <span class="lb ${b.id===D.site.own_id||b.label==="Toyota"?"me":""}">${esc(b.label)}</span>
+    <span class="tr"><span class="fi ${b.label==="Toyota"?"me":""}" style="width:${b.sov/mx*100}%"></span></span>
+    <span class="va">${b.sov.toFixed(1)}%（${b.mentions}）</span></div>`).join("")}</div></div>
+
+  <h2 class="sec"><span class="bar"></span>判断軸別の言及ギャップ<span class="note">priority: high は実測で負けている軸</span></h2>
+  <div class="card"><table class="hm">
+    <thead><tr><th style="width:170px">判断軸</th><th class="c" style="width:56px">優先</th>
+      ${names.map(n=>`<th class="c">${esc(n)}</th>`).join("")}
+      <th class="c" style="width:70px">首位差</th></tr></thead>
+    <tbody>${dr.map(d=>`<tr${d.priority==="high"?' style="background:#FFF6F6"':''}>
+      <td><b>${esc(d.label)}</b></td>
+      <td class="c"><span class="pill ${d.priority==="high"?"p-ng":d.priority==="mid"?"p-am":"p-nv"}">${d.priority}</span></td>
+      ${names.map(n=>`<td class="${cell(d.counts[n])}">${d.counts[n]??"—"}</td>`).join("")}
+      <td class="c">${d.gap>0?`<span class="dn" style="font-weight:700">-${d.gap}</span>`:'<span class="up" style="font-weight:700">首位</span>'}</td>
+    </tr>`).join("")}</tbody></table>
+    <div class="note ng" style="margin-bottom:0">優先度 high の軸は、コアプロンプトに必ず含めてコンテンツ施策の効果を直接測る設計にしてあります（<code>config/brands.yaml</code> の drivers で変更可）。</div></div>
+
+  <h2 class="sec"><span class="bar"></span>ネガティブ要因の出現</h2>
+  <div class="card"><div class="bars">${(()=>{const e=Object.entries(D.negative_drivers||{}).sort((a,b)=>b[1]-a[1]);
+    if(!e.length) return '<div class="fl">本日は検出なし</div>';
+    const m=Math.max(...e.map(x=>x[1]),1);
+    const L={price:"割高感",generic:"没個性・大衆的",ev:"EV戦略が不明瞭",connected:"コネクテッドが難解",leadtime:"長納期",driving:"走りの楽しさ不足",design:"デザインが地味"};
+    return e.map(([k,v])=>`<div class="row"><span class="lb">${L[k]||k}</span>
+      <span class="tr"><span class="fi" style="width:${v/m*100}%;background:linear-gradient(90deg,#D64545,#EA7A7A)"></span></span>
+      <span class="va">${v}件</span></div>`).join("");})()}</div></div>`;
+}
+
+function pageSources(){
+  const td=D.top_domains||[];const mx=Math.max(...td.map(d=>d.n),1);
+  return `<h2 class="sec"><span class="bar"></span>引用ドメイン上位</h2>
+  <div class="card"><div class="bars">${td.map(d=>{
+    const own=/toyota\.jp$/.test(d.host);
+    return `<div class="row"><span class="lb ${own?"me":""}" title="${esc(d.host)}">${esc(d.host)}</span>
+      <span class="tr"><span class="fi ${own?"me":""}" style="width:${d.n/mx*100}%"></span></span>
+      <span class="va">${d.n}</span></div>`;}).join("")}</div>
+    <div class="note" style="margin-bottom:0">自社オウンドが上位に来ていない場合、AIは「自社について語る他人のページ」を根拠にしています。構造化データ・FAQ整備・robots.txt の見直しが直接効きます。</div></div>`;
+}
+
+function pageSignals(){
+  const s=D.signals||{};
+  const ga=s.ga4_ai_sessions||{},cw=s.crawler_hits||{},yt=s.youtube||{};
+  const gaT=Object.values(ga).reduce((a,b)=>a+b,0),cwT=Object.values(cw).reduce((a,b)=>a+b,0);
+  const ROLE={GPTBot:"学習","OAI-SearchBot":"インデックス","ChatGPT-User":"ユーザー起点",ClaudeBot:"学習","Claude-SearchBot":"インデックス","Claude-User":"ユーザー起点",PerplexityBot:"インデックス","Perplexity-User":"ユーザー起点","Google-Extended":"学習",Amazonbot:"学習","meta-externalagent":"学習",Bytespider:"学習"};
+  const mxc=Math.max(...Object.values(cw),1),mxg=Math.max(...Object.values(ga),1);
+  return `<h2 class="sec"><span class="bar"></span>AI経由の流入<span class="note">GA4「AI Assistant」チャネル ＋ Claude / Perplexity のカスタム判定</span></h2>
+  <div class="g4" style="margin-bottom:14px">
+    ${kpiCard("AI経由セッション（合計）","ai_sessions",num(gaT),"ai_sessions","ok","件")}
+    ${kpiCard("AIボット到達（合計）","crawler_hits",num(cwT),"crawler_hits","","件")}
+    <div class="kpi"><div class="l">YouTube 総再生数</div><div class="v">${num(yt.views_total)}</div><div class="d fl">動画 ${num(yt.videos)}本</div></div>
+    <div class="kpi own"><div class="l">字幕あり比率</div><div class="v">${yt.captioned_ratio!=null?(yt.captioned_ratio*100).toFixed(0)+"%":"—"}</div><div class="d fl">AIは字幕テキストを読む</div></div>
+  </div>
+  <div class="note">GA4の「AI Assistant」チャネル公式対象は ChatGPT / Gemini / Deepseek / Copilot / Grok の5つのみで、<mark class="r">Claude と Perplexity は含まれません</mark>。本ボードは参照元ドメインで自前判定しています。AI Overviews・AIモード経由は引き続きオーガニック検索に分類される点にも注意。</div>
+  <div class="g2">
+    <div class="card"><h3 class="sub" style="margin-top:0">サービス別セッション</h3>
+      <div class="bars">${Object.entries(ga).sort((a,b)=>b[1]-a[1]).map(([k,v],i)=>
+        `<div class="row"><span class="lb">${k}</span><span class="tr"><span class="fi" style="width:${v/mxg*100}%;background:${PAL[i%PAL.length]}"></span></span><span class="va">${num(v)}</span></div>`).join("")}</div>
+      ${lineChart(D.history,["ai_sessions"],["#00A99D"],150)}</div>
+    <div class="card"><h3 class="sub" style="margin-top:0">AIボット別ヒット数</h3>
+      <div class="tw" style="max-height:300px"><table>
+      <thead><tr><th>ボット</th><th class="c" style="width:96px">役割</th><th class="n" style="width:76px">ヒット</th><th style="width:90px"></th></tr></thead>
+      <tbody>${Object.entries(cw).sort((a,b)=>b[1]-a[1]).map(([k,v])=>`<tr>
+        <td><code>${esc(k)}</code></td><td class="c"><span class="pill ${ROLE[k]==="ユーザー起点"?"p-ok":ROLE[k]==="インデックス"?"p-am":"p-nv"}">${ROLE[k]||"—"}</span></td>
+        <td class="n">${num(v)}</td><td><span class="mini"><i style="width:${v/mxc*100}%"></i></span></td></tr>`).join("")}</tbody></table></div>
+      <div class="src">「ユーザー起点」（ChatGPT-User / Claude-User / Perplexity-User）は、実際に誰かが質問した瞬間に取りに来ている証拠なので、最も価値の高いシグナルです。</div></div>
+  </div>`;
+}
+
+function pageAlerts(){
+  const al=(D.comment||{}).alerts||[];
+  const SEV={high:["要対応","p-ng"],mid:["注意","p-am"],low:["情報","p-nv"]};
+  const TY={rank_drop:"順位低下",dropped_out:"圏外脱落",citation_lost:"引用消失",new_negative:"新規ネガ"};
+  const qmap={};(D.queries||[]).forEach(q=>qmap[q.id]=q.text);
+  return `<h2 class="sec"><span class="bar"></span>アラート<span class="note">${esc((D.comment||{}).alert_summary||"")}</span></h2>
+  <div class="card" style="padding:0">${al.length?al.map(a=>{
+    const[s,c]=SEV[a.severity]||SEV.low;
+    return `<div class="al"><div><span class="pill ${c}">${s}</span></div>
+      <div><b>${TY[a.type]||a.type}</b> — ${esc(a.text)}
+      ${a.prompt_id?`<div style="color:#64748B;font-size:11.5px">${esc((qmap[a.prompt_id]||a.prompt_id)).slice(0,80)}… <span class="tag">${esc(a.surface||"")}</span></div>`:""}</div></div>`;
+  }).join(""):'<div style="padding:24px;color:#64748B">本日のアラートはありません。</div>'}</div>`;
+}
+
+const PAGES={overview:pageOverview,sns:pageSns,queries:pageQueries,pages:pagePages,compete:pageCompete,sources:pageSources,signals:pageSignals,alerts:pageAlerts};
+let cur="overview";
+function render(){
+  document.getElementById("root").innerHTML=`<div class="page on">${PAGES[cur]()}</div>`;
+  document.querySelectorAll("#qt th.s").forEach(th=>th.onclick=()=>{
+    if(sortK===th.dataset.k)sortDir*=-1;else{sortK=th.dataset.k;sortDir=1;}render();});
+  document.querySelectorAll(".chip[data-c]").forEach(ch=>ch.onclick=()=>{catF=ch.dataset.c;render();});
+  document.querySelectorAll("tr.qrow").forEach(tr=>tr.onclick=e=>{
+    if(e.target.closest("a"))return;
+    const id=tr.dataset.q; openQ.has(id)?openQ.delete(id):openQ.add(id); render();});
+}
+document.querySelectorAll(".side .nav").forEach(a=>a.onclick=()=>{
+  document.querySelectorAll(".side .nav").forEach(n=>n.classList.remove("on"));
+  a.classList.add("on");cur=a.dataset.p;render();window.scrollTo({top:0,behavior:"smooth"});});
+document.querySelectorAll("#segPeriod button").forEach(b=>b.onclick=()=>{
+  document.querySelectorAll("#segPeriod button").forEach(x=>x.classList.remove("on"));
+  b.classList.add("on");P=b.dataset.v;render();});
+
+fetch("data/latest.json?"+Date.now()).then(r=>r.json()).then(d=>{
+  D=d;
+  document.getElementById("title").innerHTML=`${esc(d.site.target_domain)} <span style="font-weight:400;color:#64748B;font-size:13px">／ ${esc(d.site.market)}</span>`;
+  document.getElementById("ownerTag").textContent=`GEO KPI · ${d.site.owner}`;
+  document.getElementById("stamp").innerHTML=`データ日 <b>${d.generated_at}</b> ／ 蓄積 ${d.available_days}日`;
+  document.getElementById("foot").innerHTML=`更新 ${d.generated_at}<br>プロンプト ${d.counts.prompts} / 回答 ${num(d.counts.responses)}<br>自動生成（GitHub Actions）`;
+  render();
+}).catch(e=>{document.getElementById("root").innerHTML=
+  `<div class="card"><b>data/latest.json を読み込めませんでした。</b><br>
+   <code>python src/run_daily.py --backfill 45</code> を実行してから、<code>python -m http.server</code> 等で配信してください。<br>
+   <span style="color:#64748B;font-size:12px">${esc(e)}</span></div>`;});
+</script>
+</body>
+</html>

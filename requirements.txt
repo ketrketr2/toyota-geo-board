@@ -1,0 +1,4 @@
+PyYAML>=6.0
+requests>=2.31
+# --- 本番運用時のみ必要（デモモードでは不要）---
+google-analytics-data>=0.18 ; extra == "live"

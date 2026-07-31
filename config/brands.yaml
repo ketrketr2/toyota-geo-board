@@ -1,0 +1,77 @@
+# ============================================================
+#  ブランド定義
+#  aliases は AI回答テキスト中の表記ゆれをすべて拾うために使う。
+#  domains は「引用が自社のものか」の判定に使う。
+# ============================================================
+
+own:
+  id: toyota
+  label: "Toyota"
+  aliases:
+    - "トヨタ"
+    - "TOYOTA"
+    - "Toyota"
+    - "トヨタ自動車"
+  owned_domains:          # オウンド引用としてカウント
+    - "toyota.jp"
+  affiliated_domains:     # 自社関連だがオウンドではない（別集計）
+    - "global.toyota"
+    - "toyota.co.jp"
+    - "lexus.jp"
+    - "kinto-jp.com"
+    - "gazoo.com"
+    - "toyota-mobi-*.jp"   # 販売店（ワイルドカード可）
+    - "*toyopet*.co.jp"
+    - "*.toyota-dealer.jp"
+
+competitors:
+  - id: honda
+    label: "Honda"
+    aliases: ["ホンダ", "HONDA", "Honda", "本田技研"]
+    domains: ["honda.co.jp", "global.honda"]
+  - id: nissan
+    label: "Nissan"
+    aliases: ["日産", "ニッサン", "NISSAN", "Nissan"]
+    domains: ["nissan.co.jp", "nissan-global.com"]
+  - id: subaru
+    label: "Subaru"
+    aliases: ["スバル", "SUBARU", "Subaru"]
+    domains: ["subaru.jp"]
+  - id: suzuki
+    label: "Suzuki"
+    aliases: ["スズキ", "SUZUKI", "Suzuki"]
+    domains: ["suzuki.co.jp"]
+  - id: mazda
+    label: "Mazda"
+    aliases: ["マツダ", "MAZDA", "Mazda"]
+    domains: ["mazda.co.jp"]
+
+# ---- 判断軸（ビジネスドライバー）----
+# AI回答がどの軸で語っているかを分類し、軸別の勝ち負けを追う。
+# 実測で負けている3軸を priority: high にしてある。
+drivers:
+  - { id: cost,        label: "総保有コスト",       priority: mid  }
+  - { id: hybrid,      label: "HV燃費・電動化",     priority: mid  }
+  - { id: minivan,     label: "ファミリー適性",     priority: mid  }
+  - { id: reliability, label: "信頼性・耐久性",     priority: mid  }
+  - { id: dealer,      label: "販売網",             priority: low  }
+  - { id: resale,      label: "リセールバリュー",   priority: mid  }
+  - { id: safety,      label: "安全技術",           priority: high }
+  - { id: esg,         label: "ESG・社会貢献",      priority: low  }
+  - { id: urban,       label: "都市の取り回し",     priority: high }
+  - { id: warranty,    label: "保証・整備",         priority: low  }
+  - { id: cargo,       label: "積載・アウトドア",   priority: low  }
+  - { id: adas,        label: "運転支援の快適性",   priority: high }
+  - { id: subscription,label: "サブスク・所有形態", priority: low  }
+  - { id: connected,   label: "コネクテッド",       priority: low  }
+
+# ---- ネガティブ要因タグ ----
+# 実測で検出済みの7タグ。出現頻度を日次で追う。
+negative_drivers:
+  - { id: price,     label: "割高感",            keywords: ["割高", "高い", "コスパが悪い", "値段が高"] }
+  - { id: generic,   label: "没個性・大衆的",    keywords: ["没個性", "つまらない", "無難すぎ", "人と同じ"] }
+  - { id: ev,        label: "EV戦略が不明瞭",    keywords: ["EV戦略", "EVシフトが遅", "マルチパス", "分かりにくい"] }
+  - { id: connected, label: "コネクテッドが難解",keywords: ["T-Connect", "月額課金", "分かりづらい"] }
+  - { id: leadtime,  label: "長納期・受注停止",  keywords: ["長納期", "受注停止", "納車待ち", "待たされ"] }
+  - { id: driving,   label: "走りの楽しさ不足",  keywords: ["走りが", "退屈", "面白み", "スポーティさ"] }
+  - { id: design,    label: "デザインが地味",    keywords: ["デザインが", "地味", "保守的", "内装の質感"] }

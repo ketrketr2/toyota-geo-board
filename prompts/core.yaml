@@ -1,0 +1,255 @@
+# ============================================================
+#  コアプロンプト（日次実行枠）
+#
+#  設計原則:
+#   1. 生活者の言葉であること（名詞の羅列は禁止）
+#   2. brand: false（一般クエリ）を7割以上にすること
+#   3. 購買判断に効くこと（IR・採用系は除外）
+#   4. driver に high 優先度（safety / urban / adas）を必ず含めること
+#
+#  出典: Yahoo!知恵袋の実質問文を整形 + Google PAA/サジェスト + GSC実クエリ
+# ============================================================
+
+version: 1
+tier: core
+
+prompts:
+  # ---- 購買検討（ライフステージ起点）----
+  - id: p001
+    text: "ミニバンのおすすめを教えてください。2歳の子供がいて、もう1人産まれる予定です。今はプリウスですが、チャイルドシートの乗せ下ろしがきつく、2人乗せると狭く感じます。予算は400万円までです。"
+    category: purchase
+    driver: minivan
+    brand: false
+    source: chiebukuro
+  - id: p002
+    text: "家族4人で高速道路中心に旅行する場合、静かで燃費も良い国産車ブランドを教えてください。"
+    category: purchase
+    driver: hybrid
+    brand: false
+    source: semrush_import
+  - id: p003
+    text: "高齢の親用に買い替えを検討しています。乗り降りしやすくて視界が良く、安全装備が充実している国産車ブランドを教えてください。"
+    category: safety
+    driver: safety
+    brand: false
+    source: semrush_import
+  - id: p004
+    text: "子育てが落ち着いてセカンドライフ用の車に乗り換えるシニアが、日本でよく選ぶブランドはどこでしょう？"
+    category: purchase
+    driver: minivan
+    brand: false
+    source: semrush_import
+  - id: p005
+    text: "初めてマイカーを買う社会人3年目です。維持費も含めて失敗しない国産ブランドはどこですか？"
+    category: cost
+    driver: cost
+    brand: false
+    source: chiebukuro
+
+  # ---- 安全技術（★負けている軸）----
+  - id: p010
+    text: "日本で先進運転支援や自動運転技術の開発に力を入れているメーカーはどこですか？"
+    category: safety
+    driver: safety
+    brand: false
+    source: semrush_import
+  - id: p011
+    text: "衝突被害軽減ブレーキや踏み間違い防止の性能が高い国産車を、メーカーごとに比較して教えてください。"
+    category: safety
+    driver: safety
+    brand: false
+    source: paa
+  - id: p012
+    text: "夜間の歩行者検知や自動ブレーキの実力を、第三者評価のデータをもとに国産メーカーで比較してください。"
+    category: safety
+    driver: safety
+    brand: false
+    source: llm_fanout
+  - id: p013
+    text: "高速道路の渋滞時に一番ラクな運転支援システムを積んでいる国産車はどれですか？"
+    category: safety
+    driver: adas
+    brand: false
+    source: chiebukuro
+
+  # ---- 都市の取り回し（★負けている軸）----
+  - id: p020
+    text: "首都圏のマンション住まいで立体駐車場を使う場合、サイズ制限に収まりやすい車を多く出しているメーカーはどこですか？"
+    category: model
+    driver: urban
+    brand: false
+    source: semrush_import
+  - id: p021
+    text: "東京の狭い道でも運転しやすくて、駐車が苦手でも扱いやすい国産車を教えてください。"
+    category: model
+    driver: urban
+    brand: false
+    source: chiebukuro
+  - id: p022
+    text: "最小回転半径が小さくて取り回しの良いコンパクトカーを、メーカー横断で比較してください。"
+    category: model
+    driver: urban
+    brand: false
+    source: paa
+
+  # ---- 運転支援の快適性（★負けている軸）----
+  - id: p030
+    text: "長距離通勤で疲れにくい運転支援を積んだ国産車はどのメーカーが強いですか？"
+    category: safety
+    driver: adas
+    brand: false
+    source: llm_fanout
+  - id: p031
+    text: "自動駐車機能が実用的な国産車を教えてください。実際に使えるレベルなのはどれですか？"
+    category: safety
+    driver: adas
+    brand: false
+    source: chiebukuro
+
+  # ---- 価格・維持費 ----
+  - id: p040
+    text: "日本で残価が落ちにくい車種を多く持っている自動車ブランドはどこですか？"
+    category: cost
+    driver: resale
+    brand: false
+    source: semrush_import
+  - id: p041
+    text: "車を手放すときに下取り価格が期待できる日本ブランドを教えてください。"
+    category: cost
+    driver: resale
+    brand: false
+    source: semrush_import
+  - id: p042
+    text: "日本でエコカー減税や補助金の対象車種が多いメーカーはどこでしょう？"
+    category: cost
+    driver: cost
+    brand: false
+    source: semrush_import
+  - id: p043
+    text: "5年間乗った場合の総額（車両価格＋燃料＋税金＋整備＋売却）が安く済む国産コンパクトカーを比較してください。"
+    category: cost
+    driver: cost
+    brand: false
+    source: llm_fanout
+  - id: p044
+    text: "残価設定ローンとカーサブスクはどちらが得ですか？国産メーカーのプランで比較してください。"
+    category: cost
+    driver: subscription
+    brand: false
+    source: paa
+
+  # ---- 燃費・電動化 ----
+  - id: p050
+    text: "日本で環境配慮型の車（ハイブリッド・電気・燃料電池など）に強いメーカーはどこですか？"
+    category: eco
+    driver: hybrid
+    brand: false
+    source: semrush_import
+  - id: p051
+    text: "日本で電動車の販売比率が高い自動車ブランドを知りたいです。"
+    category: eco
+    driver: hybrid
+    brand: false
+    source: semrush_import
+  - id: p052
+    text: "マンション住まいでEVは現実的ですか？それともハイブリッドの方がいいですか？国産メーカーの選択肢で教えてください。"
+    category: eco
+    driver: hybrid
+    brand: false
+    source: chiebukuro
+  - id: p053
+    text: "日本で災害時に給電車両として役立つ車を多数ラインナップしているメーカーを教えてください。"
+    category: eco
+    driver: esg
+    brand: false
+    source: semrush_import
+
+  # ---- 車種・スペック ----
+  - id: p060
+    text: "車中泊仕様やキャンパー仕様にカスタムしやすいミニバン・ワゴン車を出しているメーカーはどこですか？"
+    category: model
+    driver: cargo
+    brand: false
+    source: semrush_import
+  - id: p061
+    text: "都市型SUVと本格派SUVを両方そろえているメーカーはどこですか？"
+    category: model
+    driver: cargo
+    brand: false
+    source: semrush_import
+  - id: p062
+    text: "乗り心地の柔らかさ・快適性で選ぶなら、日本で評価が高いブランドはどこでしょう？"
+    category: model
+    driver: reliability
+    brand: false
+    source: semrush_import
+  - id: p063
+    text: "3列目にも大人がしっかり座れるミニバンを、メーカー横断で比較して教えてください。"
+    category: model
+    driver: minivan
+    brand: false
+    source: paa
+  - id: p064
+    text: "小さな子どもがいても汚れにくい内装を採用したファミリーカーを出している国産メーカーはどこですか？"
+    category: model
+    driver: minivan
+    brand: false
+    source: semrush_import
+
+  # ---- 整備・アフター ----
+  - id: p070
+    text: "車を長く乗るなら、点検パックやメンテナンスプランが充実している国産メーカーはどこですか？"
+    category: service
+    driver: warranty
+    brand: false
+    source: llm_fanout
+  - id: p071
+    text: "地方在住でもディーラーが近くにあって整備で困らない国産ブランドはどこですか？"
+    category: service
+    driver: dealer
+    brand: false
+    source: chiebukuro
+  - id: p072
+    text: "車いす利用者や介護向けの福祉車両が充実しているブランドはどこですか？"
+    category: service
+    driver: esg
+    brand: false
+    source: semrush_import
+
+  # ---- ブランド指名（3割以内に抑える）----
+  - id: p080
+    text: "日本国内で購入できるトヨタの車種とそれぞれの特徴を知りたいです。おすすめはどれですか？"
+    category: brand
+    driver: minivan
+    brand: true
+    source: semrush_import
+  - id: p081
+    text: "トヨタの安全技術は他の国産メーカーと比べてどうですか？弱いと言われることはありますか？"
+    category: brand
+    driver: safety
+    brand: true
+    source: llm_fanout
+  - id: p082
+    text: "トヨタ車は割高だと言われますが、実際のところコストパフォーマンスはどうですか？"
+    category: brand
+    driver: cost
+    brand: true
+    source: llm_fanout
+  - id: p083
+    text: "トヨタのEV戦略はわかりにくいと言われますが、生活者目線でどう理解すればいいですか？"
+    category: brand
+    driver: hybrid
+    brand: true
+    source: llm_fanout
+  - id: p084
+    text: "KINTOと他社のカーサブスクを比較して、どちらがおすすめか教えてください。"
+    category: brand
+    driver: subscription
+    brand: true
+    source: llm_fanout
+  - id: p085
+    text: "トヨタのデザインは地味だという意見をよく見ますが、最近のモデルはどう変わりましたか？"
+    category: brand
+    driver: reliability
+    brand: true
+    source: llm_fanout
