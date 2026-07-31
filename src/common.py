@@ -171,5 +171,20 @@ def env(key: str, default: str | None = None) -> str | None:
 
 
 def demo_mode() -> bool:
-    """必要な認証情報が無ければデモモードで動かす。"""
-    return env("GEO_BOARD_MODE", "demo") == "demo" or not env("DATAFORSEO_LOGIN")
+    """必要な認証情報が無ければデモモードで動かす。
+
+    ただし「liveにしたのに認証情報が無い」場合は黙って落とさない。
+    デモデータは本物そっくりに作ってあるので、黙って戻ると
+    偽物を本物として見続けることになる。ここは止めるのが正しい。
+    """
+    want_live = env("GEO_BOARD_MODE", "demo") != "demo"
+    has_key = bool(env("DATAFORSEO_LOGIN")) and bool(env("DATAFORSEO_PASSWORD"))
+    if want_live and not has_key:
+        missing = [k for k in ("DATAFORSEO_LOGIN", "DATAFORSEO_PASSWORD") if not env(k)]
+        raise SystemExit(
+            f"GEO_BOARD_MODE=live ですが {', '.join(missing)} が空です。\n"
+            "GitHub の Settings → Secrets and variables → Actions で、"
+            "名前が1文字も違わないか確認してください。\n"
+            "デモに黙って戻ると、合成データを実測だと思って見続けることになるため停止します。"
+        )
+    return not want_live

@@ -57,7 +57,7 @@ jobs:
           # 疎通確認は変数の状態に関係なく live で走らせる。
           # 「本番に切り替える前に確かめる」ためのものなので、demo のままでは意味がない。
           GEO_BOARD_MODE:      live
-          DATAFORSEO_LOGIN:    ${{ secrets.DATAFORSEO_LOGIN || vars.DATAFORSEO_LOGIN }}
+          DATAFORSEO_LOGIN:    ${{ secrets.DATAFORSEO_LOGIN || vars.DATAFORSEO_LOGIN || secrets.DATAFORCED_LOGIN }}
           DATAFORSEO_PASSWORD: ${{ secrets.DATAFORSEO_PASSWORD }}
         run: python src/run_daily.py --probe
 
@@ -68,8 +68,9 @@ jobs:
         env:
           GEO_BOARD_MODE:      ${{ vars.GEO_BOARD_MODE || 'demo' }}
           # login はメールアドレスであって機密ではないため、変数でも渡せるようにしてある。
-          # Secrets 側に同名があればそちらが優先される。
-          DATAFORSEO_LOGIN:    ${{ secrets.DATAFORSEO_LOGIN || vars.DATAFORSEO_LOGIN }}
+          # 3つ目の DATAFORCED_LOGIN は登録時の打ち間違い（DATAFORSEO の綴り違い）で、
+          # 中身は正しいので暫定的に拾っている。正しい名前で登録し直したら消してよい。
+          DATAFORSEO_LOGIN:    ${{ secrets.DATAFORSEO_LOGIN || vars.DATAFORSEO_LOGIN || secrets.DATAFORCED_LOGIN }}
           DATAFORSEO_PASSWORD: ${{ secrets.DATAFORSEO_PASSWORD }}
         run: |
           if [ "${{ inputs.harvest }}" = "true" ] || [ "$(date -u +%u)" = "7" ]; then
@@ -84,8 +85,9 @@ jobs:
           # ---- 鍵が無ければ自動で demo モードで走る ----
           GEO_BOARD_MODE:      ${{ vars.GEO_BOARD_MODE || 'demo' }}
           # login はメールアドレスであって機密ではないため、変数でも渡せるようにしてある。
-          # Secrets 側に同名があればそちらが優先される。
-          DATAFORSEO_LOGIN:    ${{ secrets.DATAFORSEO_LOGIN || vars.DATAFORSEO_LOGIN }}
+          # 3つ目の DATAFORCED_LOGIN は登録時の打ち間違い（DATAFORSEO の綴り違い）で、
+          # 中身は正しいので暫定的に拾っている。正しい名前で登録し直したら消してよい。
+          DATAFORSEO_LOGIN:    ${{ secrets.DATAFORSEO_LOGIN || vars.DATAFORSEO_LOGIN || secrets.DATAFORCED_LOGIN }}
           DATAFORSEO_PASSWORD: ${{ secrets.DATAFORSEO_PASSWORD }}
           GA4_PROPERTY_ID:     ${{ secrets.GA4_PROPERTY_ID }}
           GOOGLE_APPLICATION_CREDENTIALS_JSON: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS_JSON }}

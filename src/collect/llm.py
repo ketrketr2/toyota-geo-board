@@ -293,7 +293,7 @@ def collect(day: str, tier: str = "core") -> list[dict]:
     jobs = [{"day": day, "p": p, "s": s, "run": run}
             for p in prompts[:limit]
             for s in surfaces
-            for run in range(runs if tier == "core" else 1)]
+            for run in range(s.get("runs", runs) if tier == "core" else 1)]
 
     if demo:
         out = [{"date": day, "prompt_id": j["p"]["id"], "surface": j["s"]["id"], "run": j["run"],

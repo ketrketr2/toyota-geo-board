@@ -20,8 +20,8 @@ import comment  # noqa: E402
 import diff  # noqa: E402
 from build_site import build_site  # noqa: E402
 from collect import llm, signals  # noqa: E402
-from common import (days_ago, demo_mode, load, snapshot_path, today,  # noqa: E402
-                    write_json)
+from common import (days_ago, demo_mode, load, load_prompts,  # noqa: E402
+                    snapshot_path, today, write_json)
 
 
 def _expected_calls(tier: str = "core") -> int:
@@ -29,9 +29,9 @@ def _expected_calls(tier: str = "core") -> int:
     from common import load, load_prompts
     cfg = load("settings")
     n = min(len(load_prompts(tier)), cfg["sampling"]["tier_schedule"][tier]["max_prompts"])
-    surfaces = len([s for s in cfg["surfaces"] if s.get("enabled")])
-    runs = cfg["sampling"]["runs_per_prompt"] if tier == "core" else 1
-    return n * surfaces * runs
+    base = cfg["sampling"]["runs_per_prompt"] if tier == "core" else 1
+    return sum(n * (s.get("runs", base) if tier == "core" else 1)
+               for s in cfg["surfaces"] if s.get("enabled"))
 
 
 def run_one(day: str, quiet: bool = False) -> dict:
@@ -49,7 +49,12 @@ def run_one(day: str, quiet: bool = False) -> dict:
         for r in responses:
             if r["surface"] in got:
                 got[r["surface"]] += 1
-        dead = [s for s, n in got.items() if n < exp / len(got) * 0.5]
+        cfg = load("settings")
+        base = cfg["sampling"]["runs_per_prompt"]
+        npr = min(len(load_prompts("core")), cfg["sampling"]["tier_schedule"]["core"]["max_prompts"])
+        want = {s["id"]: npr * s.get("runs", base)
+                for s in cfg["surfaces"] if s.get("enabled")}
+        dead = [s for s, n in got.items() if n < want[s] * 0.5]
         if len(responses) < exp * 0.7 or dead:
             sys.exit(f"live実行が異常です: 期待{exp}件に対し{len(responses)}件。"
                      f"\n面ごとの取得数: {got}"

@@ -20,22 +20,26 @@ surfaces:
     provider: dataforseo          # dataforseo | openai | perplexity | serp
     model: "gpt-5"
     enabled: true
+    runs: 3                       # 会話型は同じ質問でも毎回答えが変わるので3回の中央値
     weight: 0.244                 # 日本語ブランドメンションの実測構成比
   - id: aio
     label: "AIによる概要"
     provider: serp                # Google SERP の ai_overview 要素
     enabled: true
+    runs: 1                       # SERPは同日内でほぼ動かない。3回投げても同じものに払うだけ
     weight: 0.317
   - id: aimode
     label: "AIモード"
     provider: serp
     enabled: true
+    runs: 1
     weight: 0.194
   - id: gemini
     label: "Gemini"
     provider: dataforseo
     model: "gemini-2.5-flash"   # DataForSEOが受け付ける実在の名前。gemini-3-proは無い
     enabled: true
+    runs: 3
     weight: 0.245
   - id: perplexity
     label: "Perplexity"
@@ -47,7 +51,7 @@ surfaces:
 # ---- サンプリング設計 ----
 # LLMは非決定的。1発の値は信用しない。
 sampling:
-  runs_per_prompt: 3              # コア枠は3〜5回。中央値を採用
+  runs_per_prompt: 3              # 既定値。面ごとに surfaces[].runs で上書きできる
   tier_schedule:
     core:        { frequency: daily,   max_prompts: 60,   runs: 3 }
     strategic:   { frequency: weekly,  max_prompts: 200,  runs: 2 }
