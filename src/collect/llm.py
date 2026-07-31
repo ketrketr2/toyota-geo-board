@@ -306,9 +306,20 @@ def demo_response(prompt_id: str, surface_id: str, day: str, run: int,
 
 
 # ---------------------------------------------------------------- 実行
+class BudgetExceeded(RuntimeError):
+    pass
+
+
+def _over_budget(cap: float) -> bool:
+    with _COST_LOCK:
+        return cap > 0 and _COST["total"] >= cap
+
+
 def _one(job: dict) -> dict | None:
     """1回分の実測。失敗しても None を返すだけで、全体は止めない。"""
     p, s = job["p"], job["s"]
+    if _over_budget(job.get("cap", 0)):
+        return None
     fn = fetch_serp_ai if s["provider"] == "serp" else fetch_llm_response
     for attempt in range(3):
         try:
@@ -337,7 +348,8 @@ def collect(day: str, tier: str = "core") -> list[dict]:
     surfaces = [s for s in cfg["surfaces"] if s.get("enabled")]
     demo = demo_mode()
 
-    jobs = [{"day": day, "p": p, "s": s, "run": run}
+    cap = float((cfg.get("budget") or {}).get("daily_usd_max") or 0)
+    jobs = [{"day": day, "p": p, "s": s, "run": run, "cap": cap}
             for p in prompts[:limit]
             for s in surfaces
             for run in range(s.get("runs", runs) if tier == "core" else 1)]
@@ -363,7 +375,12 @@ def collect(day: str, tier: str = "core") -> list[dict]:
             if r:
                 out.append(r)
             if done % 60 == 0:
-                print(f"  … {done}/{len(jobs)} 完了（成功 {len(out)}）", flush=True)
+                print(f"  … {done}/{len(jobs)} 完了（成功 {len(out)} / ${spent()['usd']:.2f}）",
+                      flush=True)
+    if _over_budget(cap):
+        print(f"  ! 1日の上限 ${cap:.2f} に達したため、残りの呼び出しを打ち切りました",
+              file=sys.stderr)
+        _ERRORS.insert(0, f"予算上限 ${cap:.2f} に到達。設定を見直してください。")
 
     out.sort(key=lambda r: (r["prompt_id"], r["surface"], r["run"]))
     print(f"  collected {len(out)}/{len(jobs)} responses (live)")
