@@ -91,13 +91,16 @@ def fetch_llm_response(prompt: str, surface: dict) -> dict:
     web_search を true にしないと引用（annotations）が返らない。
     """
     path = LLM_PATH.get(surface["id"], "chat_gpt")
-    body = [{
+    body = {
         "user_prompt": prompt[:500],                 # 仕様上の上限
         "model_name": surface["model"],
         "max_output_tokens": surface.get("max_tokens", 1500),
         "web_search": True,
-        "web_search_country_iso_code": "JP",
-    }]
+    }
+    # 検索地域の指定は ChatGPT 系にしか無い。Gemini に送ると 40501 で弾かれる。
+    if path == "chat_gpt":
+        body["web_search_country_iso_code"] = "JP"
+    body = [body]
     task = _post(f"ai_optimization/{path}/llm_responses/live", body)
     items = (task.get("result") or [{}])[0].get("items") or []
     text, cites = "", []
