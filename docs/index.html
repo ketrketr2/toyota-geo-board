@@ -541,6 +541,9 @@ tr.catrow td:first-child b{border-bottom:1px dashed var(--line2)}
 .mode.demo{background:color-mix(in srgb,var(--amber) 14%,transparent);color:var(--amber);
   border:1px solid color-mix(in srgb,var(--amber) 42%,transparent)}
 .mode.demo::before{background:var(--amber)}
+.mode.surf{background:color-mix(in srgb,var(--sub) 12%,transparent);color:var(--sub);
+  border:1px solid color-mix(in srgb,var(--sub) 32%,transparent)}
+.mode.surf::before{display:none}
 kbd{display:inline-block;font-family:inherit;font-size:10px;padding:1px 6px;border-radius:4px;
   border:1px solid var(--line2);background:var(--card2);color:var(--sub)}
 </style>
@@ -567,6 +570,7 @@ kbd{display:inline-block;font-family:inherit;font-size:10px;padding:1px 6px;bord
 <div class="top">
   <h1 id="title">—</h1>
   <span class="mode demo" id="modeBadge" title="">—</span>
+  <span class="mode surf" id="surfBadge" title=""></span>
   <div class="fgrp"><span class="lb">比較</span>
     <div class="seg" id="segPeriod">
       <button data-v="dod" class="on">前日比</button><button data-v="wow">先週比</button><button data-v="mom">先月比</button>
@@ -1734,6 +1738,13 @@ fetch("data/latest.json?"+Date.now()).then(r=>r.json()).then(d=>{
     b.title = md==="live"
       ? "実際にAIへプロンプトを投げ、返ってきた回答と引用URLから算出しています"
       : "AIには投げていません。合成データで動作確認をしている状態です";})();
+  (()=>{const m=d.measured, b=document.getElementById("surfBadge");
+    if(!m||!m.surfaces||!m.surfaces.length){b.style.display="none";return;}
+    b.textContent = m.surfaces.join("・");
+    b.title = "本日測定した面：" + m.surfaces.join("・")
+      + (m.weekly&&m.weekly.length ? "\n" + m.weekly.join("・") + " は単価が高いため月曜と木曜のみ測定します。" : "")
+      + "\n前日比・先週比は、毎日測っている " + (m.basis||[]).join("・")
+      + " だけで計算しています。面の数が違う日どうしを比べると、実力が動いていなくてもスコアが動くためです。";})();
   document.getElementById("brandName").textContent=(d.site.brand||"TOYOTA");
   document.getElementById("ownerTag").textContent="AI VISIBILITY BOARD";
   document.getElementById("stamp").innerHTML=`データ日 <b>${d.generated_at}</b> ／ 蓄積 ${d.available_days}日`;

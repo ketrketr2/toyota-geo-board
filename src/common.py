@@ -142,17 +142,67 @@ def prune_snapshots(keep_detail_days: int = 90) -> int:
     return n
 
 
-def prev_snapshot_day(day: str, n: int, max_back: int = 6) -> str | None:
+def prev_snapshot_day(day: str, n: int, max_back: int = 8) -> str | None:
     """n日前を起点に、スナップショットが実在する直近の日を返す。
 
-    実行が1日失敗したり、GitHubのcronが遅延して1日飛んだりしても、
+    実行が1日失敗したり、cronが遅延して1日飛んだりしても、
     「比較データなし」で無言になるのを防ぐ。見つからなければ None。
+
+    面の組み合わせの違い（4面の日/2面の日）は、比較そのものを
+    「毎日測る面だけ」に揃えることで吸収している（analyze の cohort）。
     """
     for i in range(n, n + max_back + 1):
         d = days_ago(day, i)
         if (SNAPSHOTS / f"{d}.json").exists():
             return d
     return None
+
+
+def _snapshot_surfaces(day: str) -> str:
+    """スナップショットが実際に測った面セットの署名。
+
+    surface_key を持たない古いスナップショットは cells から復元する。
+    どちらも取れない（明細を間引いた古い日）場合は空文字を返し、
+    呼び出し側では「判定不能」として弾かずに通す。判定できないことを理由に
+    比較を全部止めると、画面から差分が丸ごと消えてしまうため。
+    """
+    snap = read_json(SNAPSHOTS / f"{day}.json")
+    if not snap:
+        return ""
+    if snap.get("surface_key"):
+        return snap["surface_key"]
+    cells = snap.get("cells") or []
+    return "+".join(sorted({c["surface"] for c in cells})) if cells else ""
+
+
+def jst_weekday(day: str) -> int:
+    """JSTでの曜日。月曜=1 … 日曜=7。"""
+    return date.fromisoformat(day).isoweekday()
+
+
+def surfaces_for(day: str) -> list[dict]:
+    """その日に実測する面。weekdays 指定が無ければ毎日。
+
+    会話型は単価が高く毎日は回せないため、曜日で間引く。
+    ただし間引くと日によって母集団が変わるので、比較側で面セットを揃える必要がある。
+    """
+    out = []
+    for s in load("settings")["surfaces"]:
+        if not s.get("enabled"):
+            continue
+        wd = s.get("weekdays")
+        if wd and jst_weekday(day) not in wd:
+            continue
+        out.append(s)
+    return out
+
+
+def surface_key(day_or_ids) -> str:
+    """面セットの署名。これが同じ日どうしでなければスコアを比較してはいけない。"""
+    ids = day_or_ids
+    if isinstance(day_or_ids, str):
+        ids = [s["id"] for s in surfaces_for(day_or_ids)]
+    return "+".join(sorted(ids))
 
 
 def snapshot_path(d: str) -> Path:

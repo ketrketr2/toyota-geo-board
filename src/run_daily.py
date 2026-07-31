@@ -24,14 +24,14 @@ from common import (days_ago, demo_mode, load, load_prompts,  # noqa: E402
                     snapshot_path, today, write_json)
 
 
-def _expected_calls(tier: str = "core") -> int:
+def _expected_calls(tier: str = "core", day: str | None = None) -> int:
     """その日に返ってくるはずの回答数。live実行の健全性チェックに使う。"""
-    from common import load, load_prompts
+    from common import load, load_prompts, surfaces_for, today as _t
     cfg = load("settings")
     n = min(len(load_prompts(tier)), cfg["sampling"]["tier_schedule"][tier]["max_prompts"])
     base = cfg["sampling"]["runs_per_prompt"] if tier == "core" else 1
     return sum(n * (s.get("runs", base) if tier == "core" else 1)
-               for s in cfg["surfaces"] if s.get("enabled"))
+               for s in surfaces_for(day or _t()))
 
 
 def run_one(day: str, quiet: bool = False) -> dict:
@@ -44,16 +44,16 @@ def run_one(day: str, quiet: bool = False) -> dict:
     # スコアが下がった日が履歴に残り、移動中央値と±2σを永久に汚す。
     # 「全体の取得率」と「面ごとの取得」の両方を見る。片面だけ全滅しても止める。
     if not demo_mode():
-        exp = _expected_calls("core")
-        got = {s["id"]: 0 for s in load("settings")["surfaces"] if s.get("enabled")}
+        exp = _expected_calls("core", day)
+        from common import surfaces_for
+        got = {s["id"]: 0 for s in surfaces_for(day)}
         for r in responses:
             if r["surface"] in got:
                 got[r["surface"]] += 1
         cfg = load("settings")
         base = cfg["sampling"]["runs_per_prompt"]
         npr = min(len(load_prompts("core")), cfg["sampling"]["tier_schedule"]["core"]["max_prompts"])
-        want = {s["id"]: npr * s.get("runs", base)
-                for s in cfg["surfaces"] if s.get("enabled")}
+        want = {s["id"]: npr * s.get("runs", base) for s in surfaces_for(day)}
         dead = [s for s, n in got.items() if n < want[s] * 0.5]
         if len(responses) < exp * 0.7 or dead:
             # 無人で走るので、失敗理由をリポジトリに残す（ログは後から読めない）
@@ -120,7 +120,7 @@ def probe() -> None:
     from common import ROOT
     cfg = load("settings")
     prompt = load_prompts("core")[0]["text"]
-    surfaces = [x for x in cfg["surfaces"] if x.get("enabled")]
+    surfaces = [x for x in cfg["surfaces"] if x.get("enabled")]  # 疎通は全面
     ok, log = 0, [f"疎通確認 {today()}", f"質問: {prompt}", ""]
     for s in surfaces:
         fn = fetch_serp_ai if s["provider"] == "serp" else fetch_llm_response
@@ -140,6 +140,23 @@ def probe() -> None:
     log.append(f"疎通 {ok}/{len(surfaces)} 面 ／ 実費 ${c['usd']:.4f}（{c['calls']}回）")
     log.append(f"この単価だと本番1日({_expected_calls('core')}本)は約 "
                f"${c['usd'] / max(c['calls'], 1) * _expected_calls('core'):.2f} の見込み")
+    # ---- モデル比較：同じ質問を別モデルにも投げ、単価と中身を並べて見る ----
+    log.append("--- モデル比較（ChatGPT面）---")
+    base = next((x for x in surfaces if x["id"] == "chatgpt"), None)
+    for alt in (cfg.get("compare_models") or []):
+        if not base:
+            break
+        s2 = {**base, "model": alt}
+        before = spent()["usd"]
+        try:
+            r = fetch_llm_response(prompt, s2)
+            log.append(f"  {alt}: ${spent()['usd'] - before:.4f} / 本文{len(r['text'])}文字 "
+                       f"/ 引用{len(r['citations'])}件")
+            log.append(f"    冒頭: {r['text'][:120].replace(chr(10), ' ')}")
+            for c in r["citations"][:4]:
+                log.append(f"    - {c.get('domain') or c['url']}")
+        except Exception as e:
+            log.append(f"  {alt}: × {type(e).__name__}: {str(e)[:200]}")
     log.append("")
     log.append("--- 面別の実費と、引用オブジェクトの構造 ---")
     for sid, raw in _LAST_RAW.items():

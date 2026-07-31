@@ -20,7 +20,8 @@ surfaces:
     provider: dataforseo          # dataforseo | openai | perplexity | serp
     model: "gpt-5"
     enabled: true
-    runs: 1                       # 本来は3回の中央値。実測単価が高く暫定で1回
+    runs: 1
+    weekdays: [1, 4]              # JSTの月・木のみ。会話型は単価が高いので週2回
     system_message: "最新の情報をウェブで確認したうえで、参照した出典を必ず示して日本語で回答してください。"
     # gpt-5 は推論モデルで、推論トークンもこの枠を食う。1500だと推論だけで
     # 使い切って本文が数十文字しか返らない（実測: 本文27文字）。上限まで取る。
@@ -43,7 +44,8 @@ surfaces:
     provider: dataforseo
     model: "gemini-2.5-flash"   # DataForSEOが受け付ける実在の名前。gemini-3-proは無い
     enabled: true
-    runs: 1                       # 同上
+    runs: 1
+    weekdays: [1, 4]
     weight: 0.245
   - id: perplexity
     label: "Perplexity"
@@ -56,6 +58,11 @@ surfaces:
 # LLMは非決定的。1発の値は信用しない。
 # 1日あたりの支払上限。実測単価が想定より高かったため、暴走を止める歯止めを置く。
 # 超えた時点で新しい呼び出しをやめる（払ってしまった分は戻らないため事前に止める）。
+# 疎通確認のときだけ、ChatGPT面を別モデルでも投げて単価と中身を比べる。
+# 本番実行では使わない。
+compare_models:
+  - "gpt-5-mini"
+
 budget:
   daily_usd_max: 8.0
 

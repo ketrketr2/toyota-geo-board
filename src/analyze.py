@@ -10,8 +10,8 @@ import statistics as st
 from collections import Counter, defaultdict
 from datetime import timedelta
 
-from common import (contains_any, demo_mode, domain_of, first_index, load,
-                    match_domain, sentences)
+from common import (contains_any, demo_mode, domain_of, first_index,  # noqa
+                    load, match_domain, sentences, surface_key)
 
 POSITIVE = ["優れ", "強み", "高い評価", "おすすめ", "安心", "有利", "定評", "信頼",
             "満足", "人気", "充実", "得意", "巧み", "完成度"]
@@ -234,6 +234,14 @@ def aggregate(day: str, responses: list[dict], signals: dict) -> dict:
     for c in cells:
         c["cohort"] = (c["prompt_id"] in cohort_ids) if cohort_ids else True
 
+    # 面も揃える。会話型(ChatGPT/Gemini)は単価が高く週2回しか回さないため、
+    # 4面の日と2面の日が混在する。母集団が違う日どうしを比べると、実力が動いて
+    # いなくてもスコアが動く。比較用のコホートは「毎日測る面」だけで作る。
+    daily_ids = {s["id"] for s in cfg["surfaces"]
+                 if s.get("enabled") and not s.get("weekdays")}
+    for c in cells:
+        c["cohort"] = c["cohort"] and (c["surface"] in daily_ids if daily_ids else True)
+
     factors, platforms_out, extras = _compute(cells, br, pf, own_id, all_brands)
     cohort_cells = [c for c in cells if c["cohort"]]
     coh_factors, _, coh_extras = (_compute(cohort_cells, br, pf, own_id, all_brands)
@@ -264,6 +272,10 @@ def aggregate(day: str, responses: list[dict], signals: dict) -> dict:
     return {
         "date": day,
         "mode": "demo" if demo_mode() else "live",
+        # この日どの面を測ったか。面が違う日どうしを比べると母集団の差を
+        # 実力の変化と読み違えるため、比較側はこの署名で日を選ぶ。
+        "surface_key": surface_key(sorted({c["surface"] for c in cells})),
+        "surfaces_measured": sorted({c["surface"] for c in cells}),
         "score": round(score, 2),
         "factors": {k: round(v, 2) for k, v in factors.items()},
         "cohort": {
@@ -271,6 +283,7 @@ def aggregate(day: str, responses: list[dict], signals: dict) -> dict:
             "factors": {k: round(v, 2) for k, v in coh_factors.items()},
             "prompts": len({c["prompt_id"] for c in cohort_cells}),
             "cells": len(cohort_cells),
+            "surfaces": sorted({c["surface"] for c in cohort_cells}),
             "own_mentioned": len(coh_extras["own_cells"]),
         },
         "weights": w,

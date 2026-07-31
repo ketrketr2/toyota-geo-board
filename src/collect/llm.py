@@ -17,7 +17,8 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 import requests  # noqa: E402
 
-from common import demo_mode, domain_of, env, load, load_prompts  # noqa: E402
+from common import (demo_mode, domain_of, env, load,  # noqa: E402
+                    load_prompts, surfaces_for)
 
 DFS_BASE = "https://api.dataforseo.com/v3"
 
@@ -345,7 +346,7 @@ def collect(day: str, tier: str = "core") -> list[dict]:
     prompts = load_prompts(tier)
     runs = cfg["sampling"]["runs_per_prompt"]
     limit = cfg["sampling"]["tier_schedule"][tier]["max_prompts"]
-    surfaces = [s for s in cfg["surfaces"] if s.get("enabled")]
+    surfaces = surfaces_for(day)          # 曜日で間引く（会話型は週2回）
     demo = demo_mode()
 
     cap = float((cfg.get("budget") or {}).get("daily_usd_max") or 0)

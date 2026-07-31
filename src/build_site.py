@@ -329,6 +329,16 @@ def build_site(day: str) -> None:
         "generated_at": day,
         "site": cfg["site"],
         "mode": snap.get("mode", "demo"),
+        # その日どの面を測ったか／比較の土台がどれか。母集団が違う日を
+        # 並べて見せてしまわないよう、画面にも出す。
+        "measured": {
+            "surfaces": [surfaces.get(s, {}).get("label", s)
+                         for s in snap.get("surfaces_measured", [])],
+            "basis": [surfaces.get(s, {}).get("label", s)
+                      for s in (snap.get("cohort", {}).get("surfaces") or [])],
+            "weekly": [surfaces.get(s["id"], {}).get("label", s["id"])
+                       for s in cfg["surfaces"] if s.get("enabled") and s.get("weekdays")],
+        },
         "score": snap["score"],
         "factors": snap["factors"],
         "weights": cfg["score_weights"],
