@@ -313,7 +313,10 @@ def rebalance(reg: dict, day: str, cfg: dict) -> dict:
         return days_in_core(p) < pr["min_days_in_core"]
 
     target = pr["core_target"]
-    over = len(core) - target
+    # 急上昇で緊急投入した分は、その週は超過を許す（翌週の収穫で戻す）
+    over = len(core) - target - ((cfg.get("surge") or {}).get("overflow_allowed", 0)
+                                 if any(p.get("surged_on") for p in core) else 0)
+
     cat_count = Counter(p["category"] for p in core)
 
     # ---- 降格: 需要が下限割れ、または定員オーバーぶんの下位 ----
@@ -382,6 +385,68 @@ def rebalance(reg: dict, day: str, cfg: dict) -> dict:
             "core_size": len(remain) + len(promote), "target": target}
 
 
+# ================================================================ イベント連動
+def event_seeds(day: str) -> list[tuple[str, str]]:
+    """カレンダーに入っているイベントのうち、今日が期間内のものからシードを出す。
+
+    新型車の発表や税制改正は「起きる日」が事前に分かる。
+    その期間だけシードを増やし、関連クエリを先回りで拾う。
+    """
+    try:
+        ev = load("events")
+    except Exception:
+        return []
+    out = []
+    for e in ev.get("calendar", []):
+        if e.get("from", "9999") <= day <= e.get("to", "0000"):
+            for sd in e.get("seeds", []):
+                out.append((sd, e["label"]))
+    return out
+
+
+def watch_hit(text: str) -> str | None:
+    """炎上・不祥事型の監視テーマに該当するか。該当したらそのラベルを返す。"""
+    try:
+        ev = load("events")
+    except Exception:
+        return None
+    for w in ev.get("watch", []):
+        if _hit(text, w["keywords"]):
+            return w["label"]
+    return None
+
+
+def detect_surge(reg: dict, day: str, cfg: dict) -> list[dict]:
+    """急上昇クエリを検出し、通常ルールを飛ばしてコア枠へ入れる。
+
+    「残クレでアルファードは危ない」のような不安が広がったとき、
+    需要スコア順の週次入替を待っていると、いちばん見たい2週間を逃す。
+    """
+    sc = cfg.get("surge") or {}
+    if not sc.get("enabled"):
+        return []
+    hits = []
+    for p in reg["prompts"]:
+        if p.get("tier") in ("core", "retired"):
+            continue
+        g = min(p.get("growth") or 1.0, 3.0)
+        w = watch_hit(p["text"])
+        if w:
+            g *= sc.get("watch_bonus", 1.0)
+        if g < sc.get("growth_threshold", 1.6):
+            continue
+        if (p.get("volume") or 0) < sc.get("min_volume", 300) and not w:
+            continue
+        hits.append({"p": p, "growth": round(g, 2), "watch": w})
+    hits.sort(key=lambda x: -x["growth"])
+    hits = hits[:sc.get("max_per_run", 3)]
+    for h in hits:
+        R.set_tier(h["p"], "core", day)
+        h["p"]["surged_on"] = day
+        h["p"]["surge_reason"] = h["watch"] or "検索需要の急上昇"
+    return hits
+
+
 # ================================================================ 既存クエリの需要更新
 def refresh_existing(reg: dict, day: str) -> int:
     """すでに登録済みのクエリについても、毎回 需要シグナルを取り直す。
@@ -396,9 +461,11 @@ def refresh_existing(reg: dict, day: str) -> int:
             # IDで固定した基準値に、日付由来のドリフトを掛ける（再現性のある擬似実測）
             base = random.Random(p["id"]).choice([0, 110, 190, 320, 540, 880, 1400, 2600, 5200])
             drift = 1.0 + 0.35 * math.sin((int(day.replace("-", "")) + hash(p["id"]) % 97) / 31.0)
-            prev = p.get("volume") or base
+            prev = p.get("volume")
             p["volume"] = max(int(base * max(drift, 0.2)), 0)
-            p["growth"] = round((p["volume"] + 1) / (prev + 1), 2)
+            # 初回は比較対象が無いので「不明＝1.0」。伸び率は3倍で頭打ちにする
+            p["growth"] = 1.0 if not prev else round(min((p["volume"] + 1) / (prev + 1), 3.0), 2)
+
             if rnd.random() < 0.30:
                 p["ugc_hits"] = (p.get("ugc_hits") or 0) + rnd.choice([0, 1, 1, 2])
         return len(live)
@@ -415,7 +482,7 @@ def refresh_existing(reg: dict, day: str) -> int:
             continue
         prev = p.get("volume") or 0
         p["volume"] = int(v)
-        p["growth"] = round((p["volume"] + 1) / (prev + 1), 2) if prev else 1.0
+        p["growth"] = round(min((p["volume"] + 1) / (prev + 1), 3.0), 2) if prev else 1.0
     return len(live)
 
 
@@ -451,9 +518,51 @@ def harvest(day: str | None = None) -> dict:
     cands: list[dict] = []
     if demo_mode():
         cands += demo_candidates(day, cfg)
+        rnd2 = random.Random(int(day.replace("-", "")) + 7)
+        for sd, label in event_seeds(day):                # 期間中のイベント語も候補に混ぜる
+            m = classify(sd)
+            cands.append({"text": to_question(sd, m["category"], cfg, rnd2),
+                          "raw": sd, "keyword": sd, "source": "event",
+                          "event": label,
+                          "volume": rnd2.choice([420, 780, 1500, 2900, 5600]),
+                          "growth": round(rnd2.uniform(1.4, 2.6), 2),
+                          "ugc_hits": rnd2.choice([1, 2, 4]), **m})
     else:
         S = cfg["sources"]
-        for seed in cfg["seeds"]:
+        evs = event_seeds(day)
+        if evs:
+            print(f"  イベント連動シード {len(evs)}件: " +
+                  ", ".join(sorted({l for _, l in evs})))
+        for seed in cfg["seeds"] + [s for s, _ in evs]:
+            if S["suggest"]["enabled"]:
+                try:
+                    for kw in fetch_suggest(seed, S["suggest"]["per_seed"]):
+                        m = classify(kw)
+                        cands.append({"text": to_question(kw, m["category"], cfg, rnd),
+                                      "source": "suggest", "raw": kw, "keyword": kw, **m})
+                except Exception as e:
+                    print(f"  ! suggest {seed}: {e}", file=sys.stderr)
+            if S["paa"]["enabled"]:
+                try:
+                    for q in fetch_paa(seed, S["paa"]["per_seed"]):
+                        cands.append({"text": q, "source": "paa", **classify(q)})
+                except Exception as e:
+                    print(f"  ! paa {seed}: {e}", file=sys.stderr)
+            if S["chiebukuro"]["enabled"]:
+                try:
+                    for q in fetch_chiebukuro(seed, S["chiebukuro"]["per_seed"]):
+                        cands.append({"text": q, "source": "chiebukuro",
+                                      "ugc_hits": 1, **classify(q)})
+                except Exception as e:
+                    print(f"  ! chiebukuro {seed}: {e}", file=sys.stderr)
+    else:
+        S = cfg["sources"]
+        evs = event_seeds(day)
+        if evs:
+            print(f"  イベント連動シード {len(evs)}件: " +
+                  ", ".join(sorted({l for _, l in evs})))
+        for seed in cfg["seeds"] + [s for s, _ in evs]:
+
             if S["suggest"]["enabled"]:
                 try:
                     for kw in fetch_suggest(seed, S["suggest"]["per_seed"]):
@@ -497,8 +606,9 @@ def harvest(day: str | None = None) -> dict:
     n_ref = refresh_existing(reg, day)
     apply_fanout_hits(reg, day, cfg)
 
-    # ---- 6) 需要スコア再計算 → コア枠の組み替え ----
+    # ---- 6) 需要スコア再計算 → 急上昇の緊急投入 → コア枠の組み替え ----
     rescore(reg, day, cfg["demand_weights"])
+    surged = detect_surge(reg, day, cfg)
     moved = rebalance(reg, day, cfg)
     R.save_registry(reg)
 
@@ -512,6 +622,11 @@ def harvest(day: str | None = None) -> dict:
                    "demand": p["demand"], "volume": p["volume"]} for p in added],
         "promoted": [{"id": i, "text": idx[i]["text"], "demand": idx[i]["demand"],
                       "source": idx[i]["source"]} for i in moved["promoted"]],
+        "surged": [{"id": h["p"]["id"], "text": h["p"]["text"], "growth": h["growth"],
+                    "reason": h["p"].get("surge_reason"), "source": h["p"]["source"],
+                    "demand": h["p"].get("demand"), "volume": h["p"].get("volume") or 0}
+                   for h in surged],
+
         "demoted": [{"id": i, "text": idx[i]["text"], "demand": idx[i]["demand"]}
                     for i in moved["demoted"]],
         "tiers": dict(after),
@@ -523,7 +638,10 @@ def harvest(day: str | None = None) -> dict:
 
     print(f"[{day}] harvest: 候補{len(cands)}件 / 新規{len(added)}本 / "
           f"昇格{len(moved['promoted'])} 降格{len(moved['demoted'])} / "
-          f"コア{after['core']}本（前{before['core']}）")
+          f"急上昇{len(surged)} / コア{after['core']}本（前{before['core']}）")
+    for h in surged:
+        print(f"    ⚡ 急上昇: {h['p']['text'][:44]}… ({h['p'].get('surge_reason')} ×{h['growth']})")
+
     return entry
 
 
