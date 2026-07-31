@@ -10,27 +10,38 @@ from __future__ import annotations
 
 import statistics as st
 
-from common import days_ago, load, prev_snapshot_day, read_json, snapshot_path
+from common import (days_ago, load, prev_snapshot_day, read_json,
+                    snapshot_mode, snapshot_path)
 
 
-def _series(dates: list[str], picker) -> list[float]:
+def _series(dates: list[str], picker, mode: str | None = None) -> list[float]:
+    """移動中央値と標準偏差のもとになる系列。
+
+    mode を指定すると、その種別（live / demo）の日だけを拾う。
+    実測が始まった直後にデモの値が混ざると、実測でない数字が
+    実測の前日比として出てしまうため、必ず分ける。
+    """
     out = []
     for d in dates:
         snap = read_json(snapshot_path(d))
         if snap:
+            if mode and snap.get("mode", "demo") != mode:
+                continue
             v = picker(snap)
             if v is not None:
                 out.append(v)
     return out
 
 
-def rolling_median(day: str, picker, window: int) -> float | None:
-    vals = _series([days_ago(day, i) for i in range(window)], picker)
+def rolling_median(day: str, picker, window: int, mode: str | None = None) -> float | None:
+    vals = _series([days_ago(day, i) for i in range(window)], picker,
+                   mode if mode is not None else snapshot_mode(day))
     return st.median(vals) if vals else None
 
 
 def sigma(day: str, picker, baseline_days: int) -> float | None:
-    vals = _series([days_ago(day, i) for i in range(1, baseline_days + 1)], picker)
+    vals = _series([days_ago(day, i) for i in range(1, baseline_days + 1)], picker,
+                   snapshot_mode(day))
     return st.pstdev(vals) if len(vals) >= 5 else None
 
 
@@ -46,9 +57,12 @@ def compare(day: str, picker, label: str = "") -> dict:
 
     out = {"label": label, "value": cur_raw, "smoothed": cur, "sigma": sd, "deltas": {}}
     for key, n in cfg["compare"].items():
-        # 欠測日があっても比較先を見つける（実行失敗・cron遅延への保険）
-        pd = prev_snapshot_day(day, n) or days_ago(day, n)
-        prev = rolling_median(pd, picker, win)
+        # 欠測日があっても比較先を見つける（実行失敗・cron遅延への保険）。
+        # ただし種別（実測/デモ）が違う日しか無いときは、無理に比べない。
+        # 実測が始まった直後は比較先が無いのが正しく、そこに合成データを
+        # 当てると「もっともらしい嘘の前日比」になる。
+        pd = prev_snapshot_day(day, n)
+        prev = rolling_median(pd, picker, win) if pd else None
         if cur is None or prev is None:
             out["deltas"][key] = {"delta": None, "prev": prev, "significant": None}
             continue

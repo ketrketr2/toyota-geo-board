@@ -331,6 +331,8 @@ def build_site(day: str) -> None:
         "mode": snap.get("mode", "demo"),
         # その日どの面を測ったか／比較の土台がどれか。母集団が違う日を
         # 並べて見せてしまわないよう、画面にも出す。
+        "live_days": sum(1 for d in list_snapshots()
+                         if (read_json(snapshot_path(d)) or {}).get("mode") == "live"),
         "measured": {
             "surfaces": [surfaces.get(s, {}).get("label", s)
                          for s in snap.get("surfaces_measured", [])],

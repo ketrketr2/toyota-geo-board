@@ -151,11 +151,23 @@ def prev_snapshot_day(day: str, n: int, max_back: int = 8) -> str | None:
     面の組み合わせの違い（4面の日/2面の日）は、比較そのものを
     「毎日測る面だけ」に揃えることで吸収している（analyze の cohort）。
     """
+    want = snapshot_mode(day)
     for i in range(n, n + max_back + 1):
         d = days_ago(day, i)
-        if (SNAPSHOTS / f"{d}.json").exists():
-            return d
+        if not (SNAPSHOTS / f"{d}.json").exists():
+            continue
+        # 実測とデモを比べない。デモは実測に寄せて作ってあるぶん、
+        # 混ぜると「もっともらしい嘘の前日比」になってしまう。
+        if want and snapshot_mode(d) != want:
+            continue
+        return d
     return None
+
+
+def snapshot_mode(day: str) -> str:
+    """その日が実測かデモか。混ぜて平均すると、合成データが実測の数字を汚す。"""
+    snap = read_json(SNAPSHOTS / f"{day}.json")
+    return (snap or {}).get("mode", "demo") if snap else ""
 
 
 def _snapshot_surfaces(day: str) -> str:

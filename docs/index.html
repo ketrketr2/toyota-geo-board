@@ -1740,9 +1740,11 @@ fetch("data/latest.json?"+Date.now()).then(r=>r.json()).then(d=>{
       : "AIには投げていません。合成データで動作確認をしている状態です";})();
   (()=>{const m=d.measured, b=document.getElementById("surfBadge");
     if(!m||!m.surfaces||!m.surfaces.length){b.style.display="none";return;}
-    b.textContent = m.surfaces.join("・");
+    b.textContent = m.surfaces.join("・")
+      + (d.mode==="live" && d.live_days<7 ? " ／ 実測"+d.live_days+"日目" : "");
     b.title = "本日測定した面：" + m.surfaces.join("・")
       + (m.weekly&&m.weekly.length ? "\n" + m.weekly.join("・") + " は単価が高いため月曜と木曜のみ測定します。" : "")
+      + (d.mode==="live" && d.live_days<7 ? "\n実測の蓄積は "+d.live_days+"日目です。7日移動中央値が揃うまで前日比は出ません（デモの数字とは比較しません）。" : "")
       + "\n前日比・先週比は、毎日測っている " + (m.basis||[]).join("・")
       + " だけで計算しています。面の数が違う日どうしを比べると、実力が動いていなくてもスコアが動くためです。";})();
   document.getElementById("brandName").textContent=(d.site.brand||"TOYOTA");
