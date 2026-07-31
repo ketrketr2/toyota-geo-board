@@ -21,6 +21,7 @@ surfaces:
     model: "gpt-5"
     enabled: true
     runs: 3                       # 会話型は同じ質問でも毎回答えが変わるので3回の中央値
+    system_message: "最新の情報をウェブで確認したうえで、参照した出典を必ず示して日本語で回答してください。"
     weight: 0.244                 # 日本語ブランドメンションの実測構成比
   - id: aio
     label: "AIによる概要"

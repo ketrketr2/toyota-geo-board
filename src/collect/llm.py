@@ -17,7 +17,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 import requests  # noqa: E402
 
-from common import demo_mode, env, load, load_prompts  # noqa: E402
+from common import demo_mode, domain_of, env, load, load_prompts  # noqa: E402
 
 DFS_BASE = "https://api.dataforseo.com/v3"
 
@@ -69,11 +69,28 @@ def _post(path: str, body: list) -> dict:
     return task
 
 
+_REDIRECTORS = ("vertexaisearch.cloud.google.com", "grounding-api-redirect")
+
+
 def _walk_refs(node, out: list) -> None:
-    """references / annotations は階層がまちまちなので、URLを持つ辞書を再帰で拾う。"""
+    """references / annotations は階層がまちまちなので、URLを持つ辞書を再帰で拾う。
+
+    Gemini の引用は vertexaisearch の中継URLで返り、URLからは引用元が分からない。
+    ただし title に実ドメイン（例: e-nenpi.com）が入っているので、そちらを採用する。
+    ここを取り違えると、自社ドメイン判定もSNS判定も全部ゼロになる。
+    """
     if isinstance(node, dict):
         if node.get("url"):
-            out.append({"url": node["url"], "title": node.get("title") or node.get("source") or ""})
+            url = node["url"]
+            title = node.get("title") or node.get("source") or ""
+            dom = node.get("domain") or ""
+            if any(x in url for x in _REDIRECTORS):
+                # title が裸のドメインならそれを引用元として扱う
+                if title and "/" not in title and "." in title and " " not in title:
+                    dom = title.lower()
+            out.append({"url": url, "title": title,
+                        "domain": dom or domain_of(url)})
+            return
         for v in node.values():
             _walk_refs(v, out)
     elif isinstance(node, list):
@@ -84,8 +101,12 @@ def _walk_refs(node, out: list) -> None:
 def _dedup(cites: list[dict]) -> list[dict]:
     seen, out = set(), []
     for c in cites:
-        if c["url"] not in seen:
-            seen.add(c["url"])
+        key = c.get("url")
+        # 中継URLは同じページでも毎回違う文字列になるため、URLでは重複を潰せない
+        if any(x in (c.get("url") or "") for x in _REDIRECTORS):
+            key = ("dom", c.get("domain"), c.get("title"))
+        if key not in seen:
+            seen.add(key)
             out.append(c)
     return out
 
@@ -105,6 +126,10 @@ def fetch_llm_response(prompt: str, surface: dict) -> dict:
     # 検索地域の指定は ChatGPT 系にしか無い。Gemini に送ると 40501 で弾かれる。
     if path == "chat_gpt":
         body["web_search_country_iso_code"] = "JP"
+    # web_search を有効にしても、モデルが「知識で答えられる」と判断すると検索せず、
+    # 引用が0件で返る。実際のChatGPT利用時は検索が走るため、そちらに揃える。
+    if surface.get("system_message"):
+        body["system_message"] = surface["system_message"]
     body = [body]
     task = _post(f"ai_optimization/{path}/llm_responses/live", body)
     items = (task.get("result") or [{}])[0].get("items") or []

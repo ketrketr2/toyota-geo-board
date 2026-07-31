@@ -183,7 +183,9 @@ def aggregate(day: str, responses: list[dict], signals: dict) -> dict:
     per_run = []
     for r in responses:
         j = judge_response(r["text"])
-        cites = [dict(classify_url(c["url"]), url=c["url"], title=c.get("title", ""))
+        # Gemini は中継URLで返るので、収集側が解決した domain を優先する
+        cites = [dict(classify_url(c.get("domain") or c["url"]),
+                      url=c["url"], title=c.get("title", ""))
                  for c in r.get("citations", [])]
         per_run.append({**{k: r[k] for k in ("prompt_id", "surface", "run")},
                         "judge": j, "citations": cites, "text": r["text"],
