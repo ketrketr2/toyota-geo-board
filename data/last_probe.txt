@@ -1,46 +1,46 @@
 疎通確認 2026-08-01
 質問: ハイブリッド車の実燃費はカタログ値と比べてどのくらい落ちますか。メーカー別に知りたいです。
 
-○ ChatGPT (gpt-5): 本文1158文字 / 引用0件 / fan-out0件
-    冒頭: 前提 - 日本のカタログ燃費は現在WLTCモード（以前はJC08）。WLTCのほうが実走行に近いですが、それでも実燃費は多くの条件（気温、渋滞、坂、4WD/タイヤサイズ、積載、走り方）で悪化します。 - 目安としては「WLTC比で5～30%程度ダウン」。郊外〜流れの良い道が多い人は差が小さく、短距離・渋滞・冬場は差が大
+○ ChatGPT (gpt-5): 本文27文字 / 引用0件 / fan-out0件
+    冒頭: 要点 - 現行のWLTCモード（日本では2018年10
 
-○ AIによる概要 (serp): 本文748文字 / 引用5件 / fan-out0件
-    冒頭: ハイブリッド車の実燃費は、現在の基準（WLTCモード）でもカタログ値から およそ2割〜3割ほど落ちる （達成率は7割〜8割程度）のが一般的 です。メーカー別の傾向として、トヨタ、ホンダ、日産の特徴があげられます。 トヨタ落ち幅： 約20％〜25％減 （達成率75％〜80％） 特徴：ストロングハイブリッド（THSⅡ）の効
-    - https://detail.chiebukuro.yahoo.co.jp/qa/question_detail/q10296940365
-    - https://www.jama.or.jp/operation/maintenance/pdf/jitsunenpi.pdf
-    - https://www.kurumaerabi.com/qa/questions/2329/
+○ AIによる概要 (serp): 本文375文字 / 引用5件 / fan-out0件
+    冒頭: ハイブリッド車の実燃費は、現在のWLTCモードのカタログ値と比べて およそ 2割から3割程度落ちる（達成率7〜8割） のが一般的です 。主なメーカー別のカタログ燃費に対する実燃費の目安と傾向は以下の通りです。 トヨタ ：達成率およそ 75%〜85% （ヤリスやアクアなどの主力HVは実燃費も非常に優れていますが、カタログ
     - https://carmo-kun.jp/column/buycar/fuel-efficient-kei/
-    - https://www.sellca-sellcar.com/deals/harrierhybridfuelefficiency/
+    - https://www.iid.co.jp/news/press/2024/071002html
+    - https://e-nenpi.com/enenpi/wltcachieve?defact=carname_hybrid_best
+    - https://www.carseven.co.jp/magazine/news/3472/
+    - https://autoc-one.jp/nenpi/5000838/
 
-○ AIモード (serp): 本文2376文字 / 引用18件 / fan-out0件
-    冒頭: ハイブリッド車（HV）の実燃費は、現在の主流である「WLTCモード」のカタログ値と比較して、 一般的に 約 15% ~ 30%（達成率でいうと約 70% ~ 85% 程度）落ちる といわれています。 昔の「JC08モード」や「10・15モード」の頃はカタログ値と実燃費の乖離が 3 ~ 4 割に達することもありましたが、
+○ AIモード (serp): 本文1366文字 / 引用15件 / fan-out0件
+    冒頭: ハイブリッド車（HV）の実燃費は、現在の主流である「WLTCモード」カタログ値に対して、 おおむね 15%〜25%程度落ちる（達成率でいうと75%〜85%程度） のが一般的な目安 です。昔のJC08モードに比べるとWLTCモードは実値に近くなりましたが、エアコン使用、渋滞、冬場の暖房など、実際の使用環境によってどうして
+    - https://www.e-nenpi.com/enenpi/wltcachieve?defact=carname_hybrid_best
     - https://www.jama.or.jp/operation/maintenance/pdf/jitsunenpi.pdf
-    - https://www.nikkei.com/article/DGXMZO05093070R20C16A7000000/
     - https://cartune.co.jp/magazine/articles/3108
     - https://www.haisya110.com/blog/2025/05/30/4683
     - https://autoc-one.jp/toyota/prius/special-3031759/
-    - https://carview.yahoo.co.jp/news/detail/83b0304eea59ea958e810f9c397a795ee88ada60/
+    - https://e-nenpi.com/enenpi/?defact=hybrid_best
 
-○ Gemini (gemini-2.5-flash): 本文2256文字 / 引用23件 / fan-out0件
-    冒頭: ハイブリッド車の実燃費は、カタログ燃費（WLTCモードなど）と比べて、一般的に数km/Lから10km/L程度の差が出ることが多いようです。この差は、走行状況（市街地、郊外、高速道路）、運転方法、エアコンの使用状況など、様々な要因によって変動します。また、メーカーや車種によっても傾向が異なります。  以下に、メーカー別の
-    - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQE2w0xP2jV3aSO1_WZz6BEDY_Ma00mNzDdF1KRRsuOfRs22D-_U8pQcuny0hhM77CmXCWwrgiUEkF9POoBlU7BSDckpzTvFxBYva4i1zZqYYiXZxnpfzD_GEQXFVcDjYd0qPtIfdT9dI94Z2WY4b_sQAdsnK_ypYCtT3kMb
-    - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFtggnJ292uhpIHISsIryrGfUYVPnrQX45bG8WYgJ7SZytcV4Y9GTGre0wTWkGB1GJmrUa6vhHlkxAW3H715hdWkDdCuYTbKGgAkJTBSC6yJeIMZO0qv38fM_nHm0H28vzRoZ7ElQbJPTyqm_JsJ6O-zQ==
-    - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHuHodof5LkGH2AN-qKtvf2sjLEAzWxIKlMfP8A3g_ep02awRcf5Sj9Fiw-V7PAj1WjE4XanT_saax4uB3qZ7BtdQfX0oo6FNBSHFXuEAvH9pF5tDtqlgomPzinAfzut15SfRVzseBR77ww1R9GQJzGOrOphOumomRbuGsL_bYnmA==
-    - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGc_Z1JKQAGov6wbkb6pICLb1EqBvrTIMfnmvT9G2YKsvdFJ1AqCJiK13qvnF4dApjhG52BuwNlCH3Zh-9FHmqdfdeXafLfYro-pt74ApAvmOIuHniX-WsGO_ZBB1YONEOgFYM=
-    - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHsXBhC76G0RGv3BWwTEEcuY8BQFsy_ND8HCX2rBjkvL7Ask7f18dRLSTzfZywM4IEMF67SMQhNpH3NkozJWDdFWPZbUfWXQHObgbRDZXkz52cmMHtfHAKdszWSOXmAEJYQaj2y3v1oppWVmw==
-    - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQH4KqWL9DMlcfjxhp3Vy80K8huxrmuVvpL6FJvMSGfEuhTF537y9ToyGtKGmqI70ic2G6ncnraSezbHEBmQxKmno_QWBO71CLied79O2TPsfJHG2LIYyiO7TH5f1SkCFk61QnAqhRUujgL_tsYabK8SJ-7T-P-zCKR6JS_zwJ6oCQ==
+○ Gemini (gemini-2.5-flash): 本文1930文字 / 引用11件 / fan-out0件
+    冒頭: ハイブリッド車の実燃費は、カタログ燃費（WLTCモード）と比較して一般的に60%程度になることが多いとされています。実燃費とカタログ燃費の乖離は、ハイブリッドシステムが走行モードに最適化されやすい一方で、実際の走行ではバッテリー残量の変動など予測できない要素が多いためです。  以下に主要メーカーのハイブリッド車の実燃費
+    - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEB87TNOZAmKbTzpS4iUXD6WdaAJ8NR2ZYUH0dM1qe70L0TrtuzR5Ro1nDsp2HLuopBSrCqkReYk08cKrZScQDjhCCav-ned628aC3aG7ZUaDparOMJNISId5bui_MTWM06oyxVW7i-DLuRnaPo2G4owFDeoi5715YkY-N0IqN9dCZaXxDFO2H1JDEE-A==
+    - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGoMZM8jCtOxnsXOVBs7KlYSLejMYbxmWHW6C1-9HZYnw8FoFScUK2puxGSQ8OsUv22xrHF4PctNQwhO2knzupy1ObKNVk1cy4Z2nXqoG4z7EX9-ey5NMl9JqRKq0OxiFMcsyk=
+    - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEP6iYm376eJf__v-7ccsIsd0VbL5t9rUz55vtjXWEpJFN1t_Cz2-rh1I_GvrqxvR5aVKTHk5klTt8w3h8bx2ZRPOoyu32DUR0Mj84nXgb_yJC-UUGjmido7MAd5wHr1qP_ddN_rZ5CaG21N3U=
+    - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHeRMQ82RL7zcjT689n67f8n4Mj5fmsIPTFC7TA8ZLhV66qdOU-uKDNQNVE4nbpgLwQiGRdB8epTVXYa9qvj7sW3AbuTHzHz5ghLOrefec3IfHwlXxhaoQ689UdQpN1EV2x7mzowqSV1mYqJhfb
+    - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEVj1ZiJGEVGV8Xj_tXi2PLwq0j7b5I-ar7EXF6pUmF2Lu5EzonokEszlI-e7lYU0I1g3z3SCd2Rd7KsWCAmKRrGEYNGXvjycsqah2RgKzM7mtJxtgN8EO6M9_pxOY2mSR85mLqEmnUzZ2w6kVD13YGtuXjQ-7jZ9yvtSM2H_nwoQ==
+    - https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQG46MYgVeJe9TVCSCgWgMdFuRoSbzU_0yZfbFc9WU8ZB5GdJhOujegDs3QUZM6LYR66OYRnAD_EZlpzvG0nGgKDBfGGzmxUW0ClMRKzb6i4LbLG3e40CJHRVzceJPVU-gwOQsTaeyiUol_qpbyIe9GhO3SoJ5JApJ_akw5LLK4t
 
-疎通 4/4 面 ／ 実費 $0.0684（4回）
-この単価だと本番1日(480本)は約 $8.21 の見込み
+疎通 4/4 面 ／ 実費 $0.0916（4回）
+この単価だと本番1日(480本)は約 $10.99 の見込み
 
 --- 面別の実費と、引用オブジェクトの構造 ---
-[chatgpt] cost=$0.0212 items=2 types=['reasoning', 'message']
+[chatgpt] cost=$0.0447 items=4 types=['reasoning', 'reasoning', 'reasoning', 'message']
 [aio] cost=$0.0040 items=12 types=['ai_overview', 'organic', 'people_also_ask', 'organic', 'organic', 'organic']
-    {"type": "ai_overview_reference", "position": "left", "source": "一般社団法人日本自動車工業会", "domain": "www.jama.or.jp", "url": "https://www.jama.or.jp/operation/maintenance/pdf/jitsunenpi.pdf", "title": "気になる乗用車の燃費 - 日本自動車工業会（JAMA）", "text": "実走行燃費（実際の燃費）はカタログ燃費 （JC08モード）より、およそ2〜3割低く なっていることが多いのよ。 使用環境..."}
-    {"type": "ai_overview_reference", "position": "left", "source": "車選びドットコム", "domain": "www.kurumaerabi.com", "url": "https://www.kurumaerabi.com/qa/questions/2329/", "title": "メーカーが発表している燃費と実際の燃費が違いすぎる理由は ...", "text": "その計測も道路を走っている訳ではなく機械の上に車を固定して走らせて測ってますので、実際に走ると空気抵抗などで燃費は2～3..."}
+    {"type": "ai_overview_reference", "position": "left", "source": "カーリースカルモくん", "domain": "carmo-kun.jp", "url": "https://carmo-kun.jp/column/buycar/fuel-efficient-kei/", "title": "【2026年最新】燃費のいい車ランキング！軽自動車・SUV別 ...", "text": "スクロールできます. ※カタログ燃費（WLTCモード）で計算した目安。実燃費はカタログ値の7～8割程度になるのが一般的な..."}
+    {"type": "ai_overview_reference", "position": "left", "source": "株式会社イード", "domain": "www.iid.co.jp", "url": "https://www.iid.co.jp/news/press/2024/071002html", "title": "『e燃費アワード2023-2024』を発表実燃費ランキング", "text": "総合部門 1位 トヨタ『ヤリス（ハイブリッド）』. e燃費アワードの総合部門1位に輝いたのは『ヤリス（ハイブリッド）』（..."}
 [aimode] cost=$0.0040 items=1 types=['ai_overview']
     {"type": "ai_overview_reference", "position": "left", "source": "一般社団法人日本自動車工業会", "domain": "www.jama.or.jp", "url": "https://www.jama.or.jp/operation/maintenance/pdf/jitsunenpi.pdf", "title": "気になる乗用車の燃費 - 日本自動車工業会", "text": "カタログ燃費と実際の燃費は どれくらい違うの ? 実走行燃費（実際の燃費）はカタログ燃費 （JC08モード）より、およそ..."}
-    {"type": "ai_overview_reference", "position": "left", "source": "cartune.co.jp", "domain": "cartune.co.jp", "url": "https://cartune.co.jp/magazine/articles/3108", "title": "ハイブリッド車の燃費はどれくらい？代表車種でまとめてみ ...", "text": "クルマの燃費で悩まされるのが、カタログ燃費と実燃費の差です。カタログよりも燃費が悪いというのが通例で、多くのクルマはカタ..."}
-[gemini] cost=$0.0392 items=1 types=['message']
-    {"title": "e-nenpi.com", "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQE2w0xP2jV3aSO1_WZz6BEDY_Ma00mNzDdF1KRRsuOfRs22D-_U8pQcuny0hhM77CmXCWwrgiUEkF9POoBlU7BSDckpzTvFxBYva4i1zZqYYiXZxnpfzD_GEQXFVcDjYd0qPtIfdT9dI94Z2WY4b_sQAdsnK_ypYCtT3kMb", "start_index": 680, "end_index": 835, "text": "*   **ヤリス (ハイブリッド)**：WLTCモードカタログ燃費36.0km/Lに対し、実燃費は30.53km/L程度というデータがあります。"}
-    {"title": "e-nenpi.com", "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFtggnJ292uhpIHISsIryrGfUYVPnrQX45bG8WYgJ7SZytcV4Y9GTGre0wTWkGB1GJmrUa6vhHlkxAW3H715hdWkDdCuYTbKGgAkJTBSC6yJeIMZO0qv38fM_nHm0H28vzRoZ7ElQbJPTyqm_JsJ6O-zQ==", "start_index": 680, "end_index": 835, "text": "*   **ヤリス (ハイブリッド)**：WLTCモードカタログ燃費36.0km/Lに対し、実燃費は30.53km/L程度というデータがあります。"}
+    {"type": "ai_overview_reference", "position": "left", "source": "MOTA", "domain": "autoc-one.jp", "url": "https://autoc-one.jp/toyota/prius/special-3031759/", "title": "日本は国際規格に合わない？新燃費基準WLTPで今より実燃費 ...", "text": "記事によればJC08モード燃費より実燃費に近いと言われているけれど、そんなことありません。WLTPだと不利になるハイブリ..."}
+[gemini] cost=$0.0389 items=1 types=['message']
+    {"title": "yahoo.co.jp", "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEB87TNOZAmKbTzpS4iUXD6WdaAJ8NR2ZYUH0dM1qe70L0TrtuzR5Ro1nDsp2HLuopBSrCqkReYk08cKrZScQDjhCCav-ned628aC3aG7ZUaDparOMJNISId5bui_MTWM06oyxVW7i-DLuRnaPo2G4owFDeoi5715YkY-N0IqN9dCZaXxDFO2H1JDEE-A==", "start_index": 160, "end_index": 397, "text": "実燃費とカタログ燃費の乖離は、ハイブリッドシステムが走行モードに最適化されやすい一方で、実際の走行ではバッテリー残量の変動など予測できない要素が多いためです。"}
+    {"title": "webcartop.jp", "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGoMZM8jCtOxnsXOVBs7KlYSLejMYbxmWHW6C1-9HZYnw8FoFScUK2puxGSQ8OsUv22xrHF4PctNQwhO2knzupy1ObKNVk1cy4Z2nXqoG4z7EX9-ey5NMl9JqRKq0OxiFMcsyk=", "start_index": 160, "end_index": 397, "text": "実燃費とカタログ燃費の乖離は、ハイブリッドシステムが走行モードに最適化されやすい一方で、実際の走行ではバッテリー残量の変動など予測できない要素が多いためです。"}
