@@ -116,22 +116,33 @@ def probe() -> None:
     from collect.llm import fetch_llm_response, fetch_serp_ai, spent
     if demo_mode():
         sys.exit("probe は live 専用です。GEO_BOARD_MODE=live と DATAFORSEO_LOGIN を確認してください。")
+    from common import ROOT
     cfg = load("settings")
     prompt = load_prompts("core")[0]["text"]
-    ok = 0
-    for s in [x for x in cfg["surfaces"] if x.get("enabled")]:
+    surfaces = [x for x in cfg["surfaces"] if x.get("enabled")]
+    ok, log = 0, [f"疎通確認 {today()}", f"質問: {prompt}", ""]
+    for s in surfaces:
         fn = fetch_serp_ai if s["provider"] == "serp" else fetch_llm_response
         try:
             r = fn(prompt, s)
             ok += 1
-            print(f"  ○ {s['label']}: 本文{len(r['text'])}文字 / 引用{len(r['citations'])}件")
-            for c in r["citations"][:3]:
-                print(f"      - {c['url']}")
+            log.append(f"○ {s['label']} ({s.get('model', s['provider'])}): "
+                       f"本文{len(r['text'])}文字 / 引用{len(r['citations'])}件 / "
+                       f"fan-out{len(r['fanout'])}件")
+            log.append(f"    冒頭: {r['text'][:160].replace(chr(10), ' ')}")
+            for c in r["citations"][:6]:
+                log.append(f"    - {c['url']}")
         except Exception as e:
-            print(f"  × {s['label']}: {e}")
+            log.append(f"× {s['label']}: {type(e).__name__}: {str(e)[:400]}")
+        log.append("")
     c = spent()
-    print(f"\n疎通 {ok}/{len([x for x in cfg['surfaces'] if x.get('enabled')])} 面 "
-          f"／ 実費 ${c['usd']:.4f}（{c['calls']}回）")
+    log.append(f"疎通 {ok}/{len(surfaces)} 面 ／ 実費 ${c['usd']:.4f}（{c['calls']}回）")
+    log.append(f"この単価だと本番1日({_expected_calls('core')}本)は約 "
+               f"${c['usd'] / max(c['calls'], 1) * _expected_calls('core'):.2f} の見込み")
+    out = "\n".join(log)
+    print(out)
+    (ROOT / "data").mkdir(exist_ok=True)
+    (ROOT / "data" / "last_probe.txt").write_text(out, encoding="utf-8")
     if ok == 0:
         sys.exit("1面も取得できませんでした。本番実行はまだ行わないでください。")
 

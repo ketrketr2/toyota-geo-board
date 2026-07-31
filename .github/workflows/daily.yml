@@ -35,6 +35,11 @@ concurrency:
   group: geo-board
   cancel-in-progress: false
 
+env:
+  # コミットメッセージに [probe] が入っていたら、その回は疎通確認だけで終わる。
+  # 手動実行のチェックボックスが押せない状況でも、安全に確認できるようにするため。
+  PROBE_ONLY: ${{ inputs.probe || contains(github.event.head_commit.message, '[probe]') }}
+
 jobs:
   collect:
     runs-on: ubuntu-latest
@@ -52,7 +57,7 @@ jobs:
 
       # 本番を回す前の疎通確認。認証・エンドポイント・モデル名を数円で検証する。
       - name: Probe (live smoke test)
-        if: ${{ inputs.probe }}
+        if: ${{ env.PROBE_ONLY == 'true' }}
         env:
           # 疎通確認は変数の状態に関係なく live で走らせる。
           # 「本番に切り替える前に確かめる」ためのものなので、demo のままでは意味がない。
@@ -64,7 +69,7 @@ jobs:
       # クエリ一覧そのものを市場に合わせて更新する。
       # 毎日やるとコア枠が落ち着かないので、JST月曜（UTC日曜22:17）だけ回す。
       - name: Harvest queries (weekly)
-        if: ${{ !inputs.probe }}
+        if: ${{ env.PROBE_ONLY != 'true' }}
         env:
           GEO_BOARD_MODE:      ${{ vars.GEO_BOARD_MODE || 'demo' }}
           # login はメールアドレスであって機密ではないため、変数でも渡せるようにしてある。
@@ -80,7 +85,7 @@ jobs:
           fi
 
       - name: Collect & build
-        if: ${{ !inputs.probe }}
+        if: ${{ env.PROBE_ONLY != 'true' }}
         env:
           # ---- 鍵が無ければ自動で demo モードで走る ----
           GEO_BOARD_MODE:      ${{ vars.GEO_BOARD_MODE || 'demo' }}
@@ -108,18 +113,18 @@ jobs:
         run: python src/notify.py
 
       # 失敗しても理由だけは必ず残す。無人実行ではログを後から読めないため。
-      - name: Commit error log
-        if: ${{ failure() }}
+      - name: Commit logs
+        if: ${{ always() }}
         run: |
           git config user.name  "geo-board-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add -f data/last_error.txt || true
-          git diff --staged --quiet || git commit -m "chore: 実行失敗のログ $(date -u +%Y-%m-%dT%H:%M)"
+          git add -f data/last_error.txt data/last_probe.txt || true
+          git diff --staged --quiet || git commit -m "chore: 実行ログ $(date -u +%Y-%m-%dT%H:%M)"
           git pull --rebase -q || true
           git push || true
 
       - name: Commit snapshot
-        if: ${{ !inputs.probe }}
+        if: ${{ env.PROBE_ONLY != 'true' }}
         run: |
           git config user.name  "geo-board-bot"
           git config user.email "actions@users.noreply.github.com"
