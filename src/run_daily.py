@@ -138,8 +138,24 @@ def probe() -> None:
         log.append("")
     c = spent()
     log.append(f"疎通 {ok}/{len(surfaces)} 面 ／ 実費 ${c['usd']:.4f}（{c['calls']}回）")
-    log.append(f"この単価だと本番1日({_expected_calls('core')}本)は約 "
-               f"${c['usd'] / max(c['calls'], 1) * _expected_calls('core'):.2f} の見込み")
+    # 面ごとに単価が10倍以上違うので、平均単価×本数では見積もれない。
+    from common import load_prompts as _lp, surfaces_for as _sf, today as _td
+    from collect.llm import _LAST_RAW as _R
+    npr = min(len(_lp("core")), cfg["sampling"]["tier_schedule"]["core"]["max_prompts"])
+    base = cfg["sampling"]["runs_per_prompt"]
+    week = 0.0
+    log.append("")
+    log.append("--- 本数と費用の見込み ---")
+    for wd in range(1, 8):
+        d = f"2026-01-{5 + wd:02d}"          # 月〜日を1週間ぶん（曜日だけ使う）
+        tot = 0.0
+        for s in _sf(d):
+            unit = _R.get(s["id"], {}).get("cost", 0)
+            tot += npr * s.get("runs", base) * unit
+        week += tot
+        log.append(f"  {'月火水木金土日'[wd - 1]}: {sum(npr * s.get('runs', base) for s in _sf(d))}本 "
+                   f"/ ${tot:.2f}")
+    log.append(f"  1週 ${week:.2f} ／ 1か月 約${week * 4.35:.0f}")
     # ---- モデル比較：同じ質問を別モデルにも投げ、単価と中身を並べて見る ----
     log.append("--- モデル比較（ChatGPT面）---")
     base = next((x for x in surfaces if x["id"] == "chatgpt"), None)
