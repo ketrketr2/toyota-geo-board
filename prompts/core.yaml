@@ -253,3 +253,133 @@ prompts:
     driver: reliability
     brand: true
     source: llm_fanout
+
+  # ================= 追加分（コア枠の拡張）=================
+  # tier=core は config/settings.yaml の max_prompts まで日次実行される。
+  # 網羅性を上げたい場合はここに足すだけでよい。IDは絶対に振り直さない（時系列が切れる）。
+
+  # ---- 購買検討（ライフステージ・シーン）----
+  - id: p006
+    text: "妻が主に運転します。運転が得意ではない人でも扱いやすくて安全な国産車を教えてください。"
+    category: purchase
+    driver: urban
+    brand: false
+    source: chiebukuro
+  - id: p007
+    text: "犬を2頭乗せてよく遠出します。荷室が広くて汚れにくい国産車のおすすめを教えてください。"
+    category: purchase
+    driver: cargo
+    brand: false
+    source: chiebukuro
+  - id: p008
+    text: "雪国に住んでいます。冬道でも安心して乗れる四駆の国産車をメーカー横断で比較してください。"
+    category: purchase
+    driver: safety
+    brand: false
+    source: chiebukuro
+  - id: p009
+    text: "法人で営業車を10台入れ替えます。維持費と耐久性で有利な国産メーカーはどこですか？"
+    category: cost
+    driver: reliability
+    brand: false
+    source: llm_fanout
+
+  # ---- 安全・運転支援 ----
+  - id: p014
+    text: "サポカー補助金の対象になる安全装備を積んだ国産車を、メーカーごとに教えてください。"
+    category: safety
+    driver: safety
+    brand: false
+    source: paa
+  - id: p015
+    text: "親が高齢で運転が心配です。踏み間違い防止装置が後付けできる国産メーカーはどこですか？"
+    category: safety
+    driver: safety
+    brand: false
+    source: chiebukuro
+
+  # ---- 都市の取り回し ----
+  - id: p023
+    text: "機械式立体駐車場に入る全高1550mm以下のSUVを、国産メーカー横断で教えてください。"
+    category: model
+    driver: urban
+    brand: false
+    source: paa
+
+  # ---- 運転支援の快適性 ----
+  - id: p032
+    text: "ハンズオフ走行ができる国産車はどのメーカーが出していますか？実用性も含めて教えてください。"
+    category: safety
+    driver: adas
+    brand: false
+    source: llm_fanout
+
+  # ---- 価格・維持費 ----
+  - id: p045
+    text: "自動車保険料が安く済む国産車の傾向を、車種やメーカーの観点から教えてください。"
+    category: cost
+    driver: cost
+    brand: false
+    source: paa
+  - id: p046
+    text: "税金が安く済む国産車をボディタイプ別に教えてください。維持費全体で比較したいです。"
+    category: cost
+    driver: cost
+    brand: false
+    source: paa
+
+  # ---- 燃費・電動化 ----
+  - id: p054
+    text: "ハイブリッドのバッテリーは何年もちますか？国産メーカーごとの実績と保証を比較してください。"
+    category: eco
+    driver: hybrid
+    brand: false
+    source: chiebukuro
+  - id: p055
+    text: "PHEVとHEVはどちらが得ですか？日本の使い方で国産メーカーの選択肢を教えてください。"
+    category: eco
+    driver: hybrid
+    brand: false
+    source: paa
+
+  # ---- 車種・スペック ----
+  - id: p065
+    text: "スライドドアで小回りが利くコンパクトカーを、国産メーカー横断で比較してください。"
+    category: model
+    driver: urban
+    brand: false
+    source: paa
+  - id: p066
+    text: "静粛性が高い国産車はどのメーカーですか？高速走行での比較を教えてください。"
+    category: model
+    driver: reliability
+    brand: false
+    source: llm_fanout
+
+  # ---- 整備・アフター ----
+  - id: p073
+    text: "10年10万km以上乗る前提だと、部品供給と整備で安心できる国産メーカーはどこですか？"
+    category: service
+    driver: reliability
+    brand: false
+    source: llm_fanout
+  - id: p074
+    text: "納車待ちが短い国産車を知りたいです。メーカーごとの納期傾向を教えてください。"
+    category: service
+    driver: dealer
+    brand: false
+    source: chiebukuro
+
+  # ---- ブランド指名 ----
+  - id: p086
+    text: "トヨタの運転支援は他社と比べて使いやすいですか？実際の評判を教えてください。"
+    category: brand
+    driver: adas
+    brand: true
+    source: llm_fanout
+  - id: p087
+    text: "トヨタの中古車を買うときに注意すべき点と、認定中古車のメリットを教えてください。"
+    category: brand
+    driver: resale
+    brand: true
+    source: llm_fanout

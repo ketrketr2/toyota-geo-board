@@ -1,51 +1,101 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="ja" data-theme="dark">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AI Visibility KPI Board</title>
 <link href="https://fonts.googleapis.com/css2?family=BIZ+UDGothic:wght@400;700&family=BIZ+UDPGothic:wght@400;700&display=swap" rel="stylesheet">
 <style>
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@keyframes shimmer{0%{background-position:-460px 0}100%{background-position:460px 0}}
+@keyframes ringIn{from{stroke-dashoffset:308}}
+@keyframes glow{0%,100%{opacity:.5}50%{opacity:.9}}
+/* ===== ダーク基調（既定）。Linearの黒キャンバス＋OP.GGのゲーム系密度を参照 ===== */
 :root{
-  --navy:#0B1F35;--navy2:#12324F;--navy3:#1B4470;--ink:#16202B;--sub:#64748B;
-  --line:#E2E8F0;--line2:#CBD5E1;--bg:#F1F5F9;--card:#FFF;
-  --accent:#0B6FB4;--accent2:#00A99D;--own:#E8B004;--purple:#7C5CBF;
+  --sidebg:#070C13;
+  --bg:#080D15; --card:#0E1620; --card2:#121C28;
+  --tx:#E9F1FA; --tx2:#BCD2E6; --sub:#7C93AC;
+  --line:rgba(255,255,255,.075); --line2:rgba(255,255,255,.14);
+  --navy:#0B1F35;--navy2:#12324F;--navy3:#1B4470;--ink:#E9F1FA;
+  --accent:#38BDF8;--accent2:#00E5C7;--own:#FFB020;--purple:#A78BFA;
+  --warn:#FF6B6B;--ok:#34D399;--amber:#FBBF24;
+  --hl:rgba(255,209,0,.28);--hl2:rgba(0,229,199,.22);
+  --sh:0 1px 0 rgba(255,255,255,.04) inset,0 8px 26px -14px rgba(0,0,0,.9);
+  --sh2:0 1px 0 rgba(255,255,255,.06) inset,0 20px 46px -18px rgba(0,0,0,.95);
+  --glow:0 0 0 1px rgba(56,189,248,.18),0 0 26px -6px rgba(0,229,199,.35);
+  --ease:cubic-bezier(.22,1,.36,1);
+  --spring:cubic-bezier(.34,1.56,.64,1);
+  --grid:rgba(255,255,255,.045);
+  --hmtx:#04121E;
+}
+[data-theme="light"]{
+  --sidebg:#0B1F35;
+  --bg:#F1F5F9; --card:#FFFFFF; --card2:#F8FAFC;
+  --tx:#16202B; --tx2:#12324F; --sub:#64748B; --ink:#16202B;
+  --navy:#0B1F35;--navy2:#12324F;--navy3:#1B4470;
+  --line:#E2E8F0; --line2:#CBD5E1;
+  --accent:#0B6FB4;--accent2:#00A99D;--own:#C98A00;--purple:#7C5CBF;
   --warn:#D64545;--ok:#15926A;--amber:#C98A00;
-  --hl:#FFF176;--hl2:#A5F3E0;--sh:0 1px 2px rgba(11,31,53,.06),0 4px 12px rgba(11,31,53,.04);
+  --hl:#FFF176;--hl2:#A5F3E0;
+  --sh:0 1px 1px rgba(11,31,53,.04),0 2px 6px rgba(11,31,53,.05),0 12px 28px -12px rgba(11,31,53,.10);
+  --sh2:0 2px 4px rgba(11,31,53,.06),0 18px 40px -14px rgba(11,31,53,.22);
+  --glow:0 0 0 1px rgba(11,111,180,.14),0 0 18px -6px rgba(0,169,157,.3);
+  --grid:rgba(11,31,53,.05);
+  --hmtx:#FFFFFF;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-body{background:var(--bg);color:var(--ink);font-family:"BIZ UDGothic","BIZ UDPGothic","Hiragino Sans",Meiryo,sans-serif;font-size:14px;line-height:1.7;-webkit-font-smoothing:antialiased}
+body{background:
+    radial-gradient(900px 520px at 82% -12%,rgba(0,229,199,.10),transparent 60%),
+    radial-gradient(760px 420px at 12% 8%,rgba(56,189,248,.08),transparent 60%),
+    linear-gradient(var(--grid) 1px,transparent 1px) 0 0/44px 44px,
+    linear-gradient(90deg,var(--grid) 1px,transparent 1px) 0 0/44px 44px,
+    var(--bg);color:var(--ink);font-family:"BIZ UDGothic","BIZ UDPGothic","Hiragino Sans",Meiryo,sans-serif;font-size:14px;line-height:1.7;-webkit-font-smoothing:antialiased}
 .app{display:grid;grid-template-columns:214px 1fr;min-height:100vh;background:linear-gradient(90deg,var(--navy) 0,var(--navy) 214px,var(--bg) 214px)}
 /* sidebar */
-.side{color:#fff;padding:20px 0 40px;position:sticky;top:0;height:100vh;overflow-y:auto}
+.side{color:#fff;padding:20px 0 40px;position:sticky;top:0;height:100vh;overflow-y:auto;
+  background:linear-gradient(180deg,#0B1F35 0%,#0D2843 60%,#0B2136 100%);
+  box-shadow:inset -1px 0 0 rgba(255,255,255,.06)}
+.side::-webkit-scrollbar{width:0}
 .side .brand{padding:0 18px 18px;border-bottom:1px solid rgba(255,255,255,.1);margin-bottom:12px}
 .side .lg{display:flex;align-items:center;gap:9px}
 .side .dot{width:23px;height:23px;border-radius:6px;background:linear-gradient(135deg,var(--accent2),var(--accent));display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700}
 .side .nm{font-size:14px;font-weight:700}.side .sb{font-size:10.5px;color:#7E9CB8;letter-spacing:.08em}
 .side .grp{font-size:10px;color:#5E7C97;letter-spacing:.14em;padding:14px 18px 6px;font-weight:700}
-.side a.nav{display:flex;align-items:center;gap:9px;padding:8px 18px;color:#C3D5E4;font-size:13px;cursor:pointer;border-left:3px solid transparent}
-.side a.nav:hover{background:rgba(255,255,255,.05);color:#fff}
-.side a.nav.on{background:rgba(0,169,157,.14);border-left-color:var(--accent2);color:#fff;font-weight:700}
+.side a.nav{display:flex;align-items:center;gap:9px;padding:9px 18px;color:#B9CFE1;font-size:13px;cursor:pointer;
+  border-left:3px solid transparent;position:relative;transition:background .22s var(--ease),color .22s,padding-left .22s var(--ease)}
+.side a.nav:hover{background:rgba(255,255,255,.06);color:#fff;padding-left:22px}
+.side a.nav.on{background:linear-gradient(90deg,rgba(0,169,157,.22),rgba(0,169,157,.05));
+  border-left-color:var(--accent2);color:#fff;font-weight:700;
+  box-shadow:inset 0 0 24px -8px rgba(0,169,157,.6)}
 .side .ic{width:16px;text-align:center;font-size:12px;opacity:.85}
 .side .foot{margin-top:20px;padding:14px 18px 0;border-top:1px solid rgba(255,255,255,.1);font-size:10.5px;color:#5E7C97;line-height:1.8}
 /* topbar */
-.top{background:#fff;border-bottom:1px solid var(--line);padding:13px 26px;position:sticky;top:0;z-index:20;display:flex;align-items:center;gap:16px;flex-wrap:wrap;box-shadow:0 1px 3px rgba(11,31,53,.04)}
-.top h1{font-size:17px;font-weight:700;color:var(--navy)}
+.top{background:color-mix(in srgb,var(--bg) 78%,transparent);backdrop-filter:saturate(1.6) blur(12px);-webkit-backdrop-filter:saturate(1.6) blur(12px);border-bottom:1px solid var(--line);padding:13px 26px;position:sticky;top:0;z-index:20;display:flex;align-items:center;gap:16px;flex-wrap:wrap;box-shadow:0 1px 3px rgba(11,31,53,.04)}
+.top h1{font-size:17px;font-weight:700;color:var(--tx)}
 .top .sep{flex:1}
 .fgrp{display:flex;align-items:center;gap:6px}.fgrp .lb{font-size:11px;color:var(--sub)}
-.seg{display:inline-flex;border:1px solid var(--line2);border-radius:5px;overflow:hidden;background:#fff}
-.seg button{border:0;background:#fff;padding:5px 12px;font-size:12px;cursor:pointer;color:var(--sub);font-family:inherit;border-right:1px solid var(--line)}
+.seg{display:inline-flex;border:1px solid var(--line2);border-radius:8px;overflow:hidden;background:var(--card)}
+.seg{box-shadow:0 1px 2px rgba(11,31,53,.05)}
+.seg button{border:0;background:transparent;padding:5px 13px;font-size:12px;cursor:pointer;color:var(--sub);
+  font-family:inherit;border-right:1px solid var(--line);transition:background .2s,color .2s,transform .12s}
+.seg button:active{transform:scale(.96)}
 .seg button:last-child{border-right:0}
-.seg button.on{background:var(--navy2);color:#fff;font-weight:700}
+.seg button.on{background:linear-gradient(180deg,#1B4470,#12324F);color:#fff;font-weight:700;box-shadow:inset 0 1px 0 rgba(255,255,255,.14)}
 .seg button:hover:not(.on){background:#F1F5F9}
 .stamp{font-size:11px;color:var(--sub)}.stamp b{color:var(--ok)}
 .wrap{padding:22px 26px 70px}.page{display:none}.page.on{display:block}
-h2.sec{font-size:16px;color:var(--navy);margin:26px 0 12px;display:flex;align-items:center;gap:9px}
+h2.sec{font-size:16px;color:var(--tx);margin:26px 0 12px;display:flex;align-items:center;gap:9px}
 h2.sec:first-child{margin-top:0}
 h2.sec .bar{width:4px;height:17px;background:var(--accent2);border-radius:2px}
 h2.sec .note{font-size:11.5px;color:var(--sub);font-weight:400;margin-left:auto}
-h3.sub{font-size:13.5px;color:var(--navy2);margin:16px 0 8px;font-weight:700}
-.card{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:18px 20px;box-shadow:var(--sh)}
+h3.sub{font-size:13.5px;color:var(--tx2);margin:16px 0 8px;font-weight:700}
+.card{position:relative;background:linear-gradient(180deg,var(--card),var(--card2));
+  border:1px solid var(--line);border-radius:14px;padding:18px 20px;box-shadow:var(--sh);
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  transition:box-shadow .35s var(--ease),transform .35s var(--ease),border-color .35s}
+.card::after{content:"";position:absolute;inset:0;border-radius:14px;pointer-events:none;
+  background:linear-gradient(180deg,rgba(255,255,255,.06),transparent 38%);opacity:.7}
+.card:hover{box-shadow:var(--sh2);border-color:var(--line2);transform:translateY(-2px)}
 .g2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 .g3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 .g4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
@@ -54,8 +104,17 @@ h3.sub{font-size:13.5px;color:var(--navy2);margin:16px 0 8px;font-weight:700}
 @media(max-width:1250px){.g6{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:1050px){.g4,.g3,.g23,.g2{grid-template-columns:1fr}.g6{grid-template-columns:repeat(2,1fr)}}
 /* hero */
-.hero{background:linear-gradient(135deg,var(--navy) 0%,var(--navy3) 100%);color:#fff;border-radius:9px;padding:20px 24px;display:grid;grid-template-columns:auto 1fr;gap:26px;align-items:center;box-shadow:var(--sh)}
+.hero{position:relative;overflow:hidden;color:#fff;border-radius:13px;padding:22px 26px;
+  background:linear-gradient(135deg,#0A1D31 0%,#12324F 48%,#1B4470 100%);display:grid;grid-template-columns:auto 1fr;gap:26px;align-items:center;box-shadow:var(--sh)}
+.hero::before{content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(520px 240px at 88% -20%,rgba(0,169,157,.30),transparent 60%),
+             radial-gradient(420px 200px at 8% 120%,rgba(11,111,180,.28),transparent 60%)}
+.hero>*{position:relative;z-index:1}
 .hero .ring{position:relative}
+.hero .ring svg circle:last-of-type{filter:drop-shadow(0 0 8px rgba(0,169,157,.55));
+  transition:stroke-dashoffset 1.1s var(--ease)}
+.hero .fac{transition:background .25s,transform .25s var(--ease)}
+.hero .fac:hover{background:rgba(255,255,255,.13);transform:translateY(-2px)}
 .hero .num{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
 .hero .num b{font-size:33px;line-height:1}.hero .num span{font-size:9.5px;color:#9FC4DE;letter-spacing:.09em}
 .hero .num .dv{font-size:11px;font-weight:700;margin-top:2px;max-width:96px;text-align:center;line-height:1.35}
@@ -70,11 +129,16 @@ h3.sub{font-size:13.5px;color:var(--navy2);margin:16px 0 8px;font-weight:700}
 .hero .fac .fd{font-size:10.5px;font-weight:700}
 @media(max-width:1050px){.hero{grid-template-columns:1fr}.hero .facs{grid-template-columns:repeat(3,1fr)}}
 /* kpi */
-.kpi{background:#fff;border:1px solid var(--line);border-radius:8px;padding:14px 16px;box-shadow:var(--sh);position:relative;overflow:hidden}
-.kpi::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--accent)}
+.kpi{background:linear-gradient(180deg,var(--card),var(--card2));border:1px solid var(--line);border-radius:11px;padding:15px 17px;
+  box-shadow:var(--sh);position:relative;overflow:hidden;transition:transform .3s var(--ease),box-shadow .3s var(--ease)}
+.kpi:hover{transform:translateY(-3px);box-shadow:var(--sh2)}
+.kpi::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--accent);
+  box-shadow:0 0 18px 1px rgba(11,111,180,.35)}
+.kpi::after{content:"";position:absolute;right:-40px;top:-40px;width:110px;height:110px;border-radius:50%;
+  background:radial-gradient(circle,rgba(11,111,180,.07),transparent 70%);pointer-events:none}
 .kpi.own::before{background:var(--own)}.kpi.ok::before{background:var(--ok)}.kpi.warn::before{background:var(--warn)}
 .kpi .l{font-size:11.5px;color:var(--sub)}
-.kpi .v{font-size:25px;font-weight:700;color:var(--navy);line-height:1.3;font-variant-numeric:tabular-nums}
+.kpi .v{font-size:25px;font-weight:700;color:var(--tx);line-height:1.3;font-variant-numeric:tabular-nums}
 .kpi .v small{font-size:12px;font-weight:400;color:var(--sub)}
 .kpi .d{font-size:11.5px;font-weight:700}
 .up{color:var(--ok)}.dn{color:var(--warn)}.fl{color:var(--sub);font-weight:400}
@@ -86,58 +150,235 @@ h3.sub{font-size:13.5px;color:var(--navy2);margin:16px 0 8px;font-weight:700}
 .hero .fac .fd .par.up{color:#7FE0B6}.hero .fac .fd .par.dn{color:#F4A3A3}
 .hero .num .dv{color:#7E9CB8;font-weight:400;font-size:10px}
 .vsub{font-size:11px;color:var(--sub);font-weight:400}
+thead th.c{text-align:center}
+.builtby{display:inline-flex;align-items:center;gap:6px;background:#EEF6F5;border:1px solid #B9E0DB;color:#0B6157;
+  font-size:10.5px;font-weight:700;padding:3px 9px;border-radius:12px;white-space:nowrap}
+.why{background:color-mix(in srgb,var(--accent) 8%,var(--card));border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:0 10px 10px 0;
+  padding:12px 16px;font-size:12px;color:var(--tx2);line-height:1.85;margin:10px 0}
+.why b{color:var(--tx)}
+.defs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}
+@media(max-width:1050px){.defs{grid-template-columns:1fr}}
+.def{background:var(--card2);border:1px solid var(--line);border-radius:6px;padding:9px 12px}
+.def .dt{font-size:11.5px;font-weight:700;color:var(--tx2)}
+.def .dd{font-size:11px;color:var(--sub);line-height:1.65}
+.def .dw{font-size:10px;color:var(--accent);font-weight:700}
+.faq{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:10px 0}
+@media(max-width:1050px){.faq{grid-template-columns:1fr}}
+.faq .q{background:var(--card2);border:1px solid var(--line);border-radius:7px;padding:11px 14px}
+.faq .q .qq{font-size:12px;font-weight:700;color:var(--tx);margin-bottom:3px}
+.faq .q .qa{font-size:11.5px;color:var(--tx2);line-height:1.75;opacity:.92}
+.qtext{font-size:12.5px;color:var(--tx);line-height:1.65;white-space:normal;word-break:break-word}
+.trd{font-size:10.5px;font-weight:700;white-space:nowrap}
+.hdlg{display:flex;gap:12px;flex-wrap:wrap;font-size:11px;color:var(--sub);margin:6px 0 10px}
+.hdlg span b{color:var(--tx2)}
 /* table */
 table{width:100%;border-collapse:collapse;font-size:12.5px}
-thead th{background:#F8FAFC;color:var(--navy2);font-weight:700;font-size:11.5px;text-align:left;padding:8px 10px;border-bottom:2px solid var(--line2);white-space:nowrap;position:sticky;top:0;z-index:2}
-thead th.s{cursor:pointer;user-select:none}thead th.s:hover{background:#EEF4FA}
+thead th{background:var(--card2);color:var(--tx2);font-weight:700;font-size:11.5px;text-align:left;padding:8px 10px;border-bottom:2px solid var(--line2);white-space:nowrap;position:sticky;top:0;z-index:2}
+thead th{backdrop-filter:blur(6px)}
+thead th.s{cursor:pointer;user-select:none;transition:background .18s,color .18s}
+thead th.s:hover{background:#E7F1FA;color:var(--accent)}
 tbody td{padding:7px 10px;border-bottom:1px solid var(--line);vertical-align:middle}
-tbody tr:hover{background:#F8FBFE}
+tbody tr{transition:background .16s}
+tbody tr:hover{background:linear-gradient(90deg,rgba(56,189,248,.10),transparent)}
+tr.qrow td:first-child{transition:transform .25s var(--ease)}
+tr.qrow:hover td:first-child{transform:translateX(2px)}
 td.n{text-align:right;font-variant-numeric:tabular-nums}td.c{text-align:center}
-.tw{max-height:560px;overflow:auto;border:1px solid var(--line);border-radius:7px;background:#fff}
+.tw{max-height:560px;overflow:auto;border:1px solid var(--line);border-radius:14px;background:var(--card);box-shadow:var(--sh)}
+.tw::-webkit-scrollbar{width:9px;height:9px}
+.tw::-webkit-scrollbar-thumb{background:var(--line2);border-radius:5px;border:2px solid transparent;background-clip:padding-box}
+.tw::-webkit-scrollbar-thumb:hover{background:#94A3B8}
 .pill{display:inline-block;font-size:10.5px;font-weight:700;padding:1px 7px;border-radius:10px;white-space:nowrap}
-.p-ok{background:#E6F6EF;color:var(--ok)}.p-ng{background:#FDECEC;color:var(--warn)}
-.p-am{background:#FFF6E0;color:var(--amber)}.p-nv{background:#EDF3F9;color:var(--navy2)}
-.p-pu{background:#F0EBFA;color:var(--purple)}
-.rk{display:inline-flex;width:23px;height:23px;border-radius:6px;align-items:center;justify-content:center;font-size:11px;font-weight:700;background:#EDF3F9;color:var(--navy2)}
+.p-ok{background:color-mix(in srgb,var(--ok) 16%,transparent);color:var(--ok)}
+.p-ng{background:color-mix(in srgb,var(--warn) 16%,transparent);color:var(--warn)}
+.p-am{background:color-mix(in srgb,var(--amber) 16%,transparent);color:var(--amber)}
+.p-nv{background:color-mix(in srgb,var(--accent) 13%,transparent);color:var(--tx2)}
+.p-pu{background:color-mix(in srgb,var(--purple) 18%,transparent);color:var(--purple)}
+.rk{display:inline-flex;width:24px;height:24px;border-radius:7px;align-items:center;justify-content:center;font-size:11px;font-weight:700;background:color-mix(in srgb,var(--accent) 12%,transparent);color:var(--tx2);border:1px solid var(--line)}
 .rk.r1{background:var(--ok);color:#fff}.rk.r2{background:#5CBB8B;color:#fff}.rk.r3{background:#A8D8C0;color:#0B3D2A}
 .rk.rx{background:#FDECEC;color:var(--warn)}
-.mini{height:6px;background:#EDF2F7;border-radius:3px;overflow:hidden;min-width:44px}
-.mini i{display:block;height:6px;background:var(--accent)}
+.mini{height:6px;background:color-mix(in srgb,var(--tx) 10%,transparent);border-radius:3px;overflow:hidden;min-width:44px}
+.mini i{display:block;height:6px;background:var(--accent);border-radius:3px;transition:width .85s var(--ease)}
 .mini i.own{background:var(--own)}.mini i.g{background:var(--ok)}
 .bars .row{display:grid;grid-template-columns:130px 1fr 92px;gap:9px;align-items:center;margin:6px 0;font-size:12px}
 .bars .row .lb{color:var(--sub);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .bars .row .lb.me{color:var(--own);font-weight:700}
-.bars .tr{display:block;height:18px;background:#EDF2F7;border-radius:3px;overflow:hidden}
-.bars .fi{display:block;height:18px;background:linear-gradient(90deg,#0B6FB4,#3FA0DC)}
+.bars .tr{display:block;height:18px;background:color-mix(in srgb,var(--tx) 8%,transparent);border-radius:3px;overflow:hidden}
+.bars .fi{display:block;height:18px;background:linear-gradient(90deg,#0B6FB4,#3FA0DC);border-radius:3px;
+  box-shadow:0 1px 6px -1px rgba(11,111,180,.5);transition:width .85s var(--ease)}
+.bars .row:hover .fi{filter:brightness(1.08)}
 .bars .fi.me{background:linear-gradient(90deg,#B87F00,#E8B004)}
 .bars .fi.g{background:linear-gradient(90deg,#15926A,#4CBF8A)}
 .bars .va{text-align:right;font-weight:700;font-variant-numeric:tabular-nums}
 .legend{display:flex;gap:14px;flex-wrap:wrap;font-size:11px;color:var(--sub);margin-top:8px}
 .legend i{display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:4px;vertical-align:-1px}
-.note{border-left:4px solid var(--amber);background:#FFFBEB;padding:10px 14px;border-radius:0 5px 5px 0;font-size:12.5px;margin:12px 0}
-.note.ok{border-color:var(--ok);background:#EFFAF4}.note.ng{border-color:var(--warn);background:#FDF0F0}
+.note{border-left:3px solid var(--amber);background:color-mix(in srgb,var(--amber) 10%,var(--card));padding:10px 14px;border-radius:0 5px 5px 0;font-size:12.5px;margin:12px 0}
+.note.ok{border-color:var(--ok);background:color-mix(in srgb,var(--ok) 10%,var(--card))}
+.note.ng{border-color:var(--warn);background:color-mix(in srgb,var(--warn) 10%,var(--card))}
 .chips{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0 12px}
-.chip{display:inline-flex;align-items:center;gap:5px;border:1px solid var(--line2);background:#fff;border-radius:14px;padding:3px 11px;font-size:11.5px;color:var(--navy2);cursor:pointer}
-.chip.on{background:var(--navy2);color:#fff;border-color:var(--navy2)}
-.tag{display:inline-block;font-size:10px;padding:1px 6px;border-radius:3px;background:#EDF3F9;color:var(--navy2);margin-right:3px}
+.chip{display:inline-flex;align-items:center;gap:5px;border:1px solid var(--line2);background:var(--card);border-radius:16px;
+  padding:4px 13px;font-size:11.5px;color:var(--tx2);cursor:pointer;
+  transition:all .2s var(--ease);box-shadow:0 1px 2px rgba(11,31,53,.04)}
+.chip:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-1px)}
+.chip:active{transform:scale(.96)}
+.chip.on{background:linear-gradient(180deg,#1B4470,#12324F);color:#fff;border-color:#12324F;box-shadow:0 3px 10px -3px rgba(18,50,79,.6)}
+.tag{display:inline-block;font-size:10px;padding:1.5px 7px;border-radius:5px;background:color-mix(in srgb,var(--accent) 11%,transparent);color:var(--tx2);margin-right:3px;border:1px solid var(--line)}
 .hm td.h{text-align:center;font-weight:700;font-variant-numeric:tabular-nums}
-.h0{background:#F5F8FA;color:#B4C2CE!important}.h1{background:#E1EFF9}.h2{background:#BEDCF0}
-.h3{background:#8FC3E4}.h4{background:#5AA5D6;color:#fff!important}.h5{background:#2A7FBF;color:#fff!important}
+.hm td.h{border-radius:5px;transition:box-shadow .18s var(--ease),transform .18s var(--ease)}
+.hm tbody tr:hover td.h{box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--tx) 22%,transparent)}
+.h0{background:transparent;color:var(--sub)!important;opacity:.35}
+.h1{background:color-mix(in srgb,var(--accent) 13%,transparent);color:var(--tx2)!important}
+.h2{background:color-mix(in srgb,var(--accent) 26%,transparent);color:var(--tx)!important}
+.h3{background:color-mix(in srgb,var(--accent) 44%,transparent);color:var(--tx)!important}
+.h4{background:color-mix(in srgb,var(--accent) 64%,transparent);color:var(--hmtx)!important}
+.h5{background:color-mix(in srgb,var(--accent) 86%,transparent);color:var(--hmtx)!important}
 .src{font-size:10.5px;color:var(--sub);margin-top:8px;line-height:1.65}
 a{color:var(--accent);text-decoration:none}
-mark{background:linear-gradient(transparent 55%,var(--hl) 55%);font-weight:700;color:#3A2E00;padding:0 1px}
-mark.r{background:linear-gradient(transparent 55%,#FFC2C2 55%);color:#7A1414}
-code{background:#F1F5F9;padding:1px 5px;border-radius:3px;font-size:11.5px;font-family:ui-monospace,Menlo,Consolas,monospace;color:var(--navy2)}
+mark{background:linear-gradient(transparent 52%,var(--hl) 52%);font-weight:700;padding:0 2px;border-radius:2px}
+mark.r{background:linear-gradient(transparent 52%,color-mix(in srgb,var(--warn) 34%,transparent) 52%)}
+code{background:color-mix(in srgb,var(--accent) 12%,transparent);padding:1px 5px;border-radius:3px;font-size:11.5px;font-family:ui-monospace,Menlo,Consolas,monospace;color:var(--tx2)}
 .al{display:grid;grid-template-columns:78px 1fr;gap:12px;padding:9px 12px;border-bottom:1px solid var(--line);font-size:12.5px;align-items:center}
 .al:last-child{border-bottom:0}
 #loading{padding:60px;text-align:center;color:var(--sub)}
+.page.on{animation:fadeUp .38s var(--ease) both}
+.rv{opacity:0;transform:translateY(16px);transition:opacity .5s var(--ease),transform .5s var(--ease)}
+.rv.in{opacity:1;transform:none}
+#tip{position:fixed;z-index:999;pointer-events:none;opacity:0;transition:opacity .15s;
+  background:rgba(11,31,53,.95);color:#fff;font-size:11.5px;line-height:1.6;padding:7px 11px;border-radius:7px;
+  box-shadow:0 8px 24px -6px rgba(0,0,0,.45);white-space:nowrap;backdrop-filter:blur(6px)}
+#tip b{color:#7FE7DC}
+svg.lchart{cursor:crosshair}
+svg.lchart .cursor{opacity:0;transition:opacity .12s}
+svg.lchart .hoverdot{opacity:0;transition:opacity .12s}
+.skel{background:linear-gradient(90deg,#EEF2F7 25%,#F7FAFC 50%,#EEF2F7 75%);background-size:900px 100%;
+  animation:shimmer 1.3s infinite linear;border-radius:8px}
+tr.qrow td:first-child{font-size:13px}
+.pill{transition:transform .15s var(--ease)}
+tr:hover .pill{transform:scale(1.04)}
+.crow{transition:border-color .2s,box-shadow .2s,transform .2s var(--ease)}
+.crow:hover{border-color:var(--accent);box-shadow:0 4px 14px -6px rgba(11,111,180,.45);transform:translateX(2px)}
+.builtby{box-shadow:0 1px 3px rgba(11,97,87,.15)}
+h2.sec .bar{box-shadow:0 0 12px var(--accent2);background:linear-gradient(180deg,var(--accent2),var(--accent))}
+/* ---- ティアバッジ（ゲームのランク表示） ---- */
+.tier{position:relative;display:inline-flex;flex-direction:column;align-items:center;justify-content:center;
+  width:66px;height:74px;border-radius:12px;font-weight:800;letter-spacing:.02em;
+  clip-path:polygon(50% 0,100% 16%,100% 84%,50% 100%,0 84%,0 16%);
+  background:linear-gradient(160deg,var(--tc1),var(--tc2));box-shadow:0 0 30px -6px var(--tc1)}
+.tier .tg{font-size:29px;line-height:1;color:#08131C;text-shadow:0 1px 0 rgba(255,255,255,.35)}
+.tier .tl{font-size:8.5px;letter-spacing:.14em;color:rgba(8,19,28,.72);margin-top:2px}
+.tier.s{--tc1:#FFD75E;--tc2:#FF9E2C}.tier.a{--tc1:#7DF5C8;--tc2:#22C58A}
+.tier.b{--tc1:#7FD0FF;--tc2:#2E8FE0}.tier.c{--tc1:#C3B5FF;--tc2:#7C5CBF}
+.tier.d{--tc1:#FFB3B3;--tc2:#E05252}
+/* ---- セグメント式ゲージ ---- */
+.gauge{display:flex;gap:2px;height:9px;margin-top:7px}
+.gauge i{flex:1;border-radius:2px;background:color-mix(in srgb,var(--tx) 11%,transparent);transition:background .5s var(--ease),box-shadow .5s}
+.gauge i.f{background:linear-gradient(180deg,var(--accent2),var(--accent));box-shadow:0 0 9px -2px var(--accent2)}
+/* ---- レーダー ---- */
+.radar-wrap{display:grid;grid-template-columns:320px 1fr;gap:26px;align-items:center}
+@media(max-width:1100px){.radar-wrap{grid-template-columns:1fr}}
+.fbar{margin-bottom:13px}
+.fbar .fh{display:flex;align-items:baseline;gap:8px;font-size:12.5px}
+.fbar .fh .fn{font-weight:700;color:var(--tx)}
+.fbar .fh .fq{margin-left:auto;font-size:17px;font-weight:800;color:var(--tx);font-variant-numeric:tabular-nums}
+.fbar .fh .fs{font-size:10px;color:var(--sub)}
+.fbar .fm{font-size:10.5px;color:var(--sub);margin-top:5px;display:flex;gap:10px;align-items:center}
+.radar{filter:drop-shadow(0 0 16px rgba(0,229,199,.28))}
+.radar .rgrid{stroke:var(--line2);fill:none}
+.radar .rax{stroke:var(--line);}
+.radar .rpoly{fill:color-mix(in srgb,var(--accent2) 26%,transparent);stroke:var(--accent2);stroke-width:2;
+  stroke-linejoin:round;transition:all .9s var(--ease)}
+.radar .rdot{fill:var(--accent2);stroke:var(--bg);stroke-width:1.5}
+.radar text{fill:var(--sub);font-size:8.6px}
+.radar .rv{fill:var(--tx);font-size:9.4px;font-weight:700}
+/* ---- VSパネル（ゲームのスタッツ対比） ---- */
+.vsg{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+@media(max-width:1100px){.vsg{grid-template-columns:1fr}}
+.vs{background:linear-gradient(180deg,var(--card),var(--card2));border:1px solid var(--line);
+  border-radius:13px;padding:14px 16px;box-shadow:var(--sh);transition:border-color .3s,transform .3s var(--ease)}
+.vs:hover{border-color:var(--line2);transform:translateY(-2px)}
+.vs .vh{display:flex;align-items:center;gap:10px;margin-bottom:11px}
+.vs .vh .n1{font-size:13px;font-weight:800;color:var(--accent2)}
+.vs .vh .n2{font-size:13px;font-weight:800;color:var(--tx2);margin-left:auto}
+.vs .vh .vd{font-size:10px;font-weight:800;letter-spacing:.1em;color:var(--sub);
+  border:1px solid var(--line2);border-radius:20px;padding:2px 9px}
+.vs .mt{margin:9px 0}
+.vs .ml{display:flex;font-size:11.5px;margin-bottom:4px;align-items:baseline}
+.vs .ml .lv{font-weight:800;font-size:13.5px;font-variant-numeric:tabular-nums}
+.vs .ml .lc{margin:0 auto;color:var(--sub);font-size:10.5px}
+.vs .bar2{display:flex;height:7px;border-radius:4px;overflow:hidden;background:color-mix(in srgb,var(--tx) 9%,transparent)}
+.vs .bar2 i{transition:width .8s var(--ease)}
+.vs .win{color:var(--accent2)}.vs .lose{color:var(--warn)}
+/* ---- モーダル ---- */
+#modal{position:fixed;inset:0;z-index:420;display:none;background:rgba(3,7,12,.66);backdrop-filter:blur(7px)}
+#modal.on{display:block;animation:fadeUp .2s var(--ease)}
+#modalbox{max-width:900px;margin:8vh auto 0;background:linear-gradient(180deg,var(--card),var(--card2));
+  border:1px solid var(--line2);border-radius:18px;box-shadow:0 50px 110px -34px rgba(0,0,0,.92);
+  max-height:82vh;overflow:auto;animation:fadeUp .3s var(--spring) both}
+#modalhd{position:sticky;top:0;background:inherit;display:flex;align-items:center;gap:12px;
+  padding:18px 24px;border-bottom:1px solid var(--line);z-index:2}
+#modalhd h3{font-size:16px;color:var(--tx);font-weight:800}
+#modalhd .x{margin-left:auto;cursor:pointer;color:var(--sub);font-size:20px;line-height:1;
+  width:30px;height:30px;display:flex;align-items:center;justify-content:center;border-radius:8px;transition:all .2s}
+#modalhd .x:hover{background:color-mix(in srgb,var(--warn) 18%,transparent);color:var(--warn)}
+#modalbd{padding:20px 24px 26px}
+.hbtn{display:inline-flex;align-items:center;gap:5px;border:1px solid var(--line2);background:var(--card);
+  border-radius:20px;padding:3px 11px;font-size:11px;color:var(--sub);cursor:pointer;transition:all .2s var(--ease)}
+.hbtn:hover{color:var(--accent2);border-color:var(--accent2);transform:translateY(-1px)}
+.hbtn .qm{display:inline-flex;width:14px;height:14px;border-radius:50%;background:var(--accent2);color:#06131A;
+  font-size:10px;font-weight:800;align-items:center;justify-content:center}
+/* ---- 説明ブロック：折りたたみ ---- */
+.why{cursor:pointer;position:relative;padding:8px 14px}
+.why>.wt{display:flex;align-items:center;gap:8px;font-weight:700;color:var(--tx);font-size:12.5px}
+.why>.wt .ar{margin-left:auto;color:var(--sub);font-size:9px;transition:transform .3s var(--ease)}
+.why>.wt{font-size:11.5px;color:var(--sub);font-weight:600}
+.why:hover>.wt{color:var(--accent2)}
+.why.op>.wt .ar{transform:rotate(180deg)}
+.why>.wb{max-height:0;overflow:hidden;opacity:0;transition:max-height .4s var(--ease),opacity .3s,margin-top .3s}
+.why.op>.wb{max-height:420px;opacity:1;margin-top:8px}
+/* ---- コマンドパレット ---- */
+#pal{position:fixed;inset:0;z-index:400;display:none;background:rgba(3,7,12,.62);backdrop-filter:blur(6px)}
+#pal.on{display:block;animation:fadeUp .18s var(--ease)}
+#palbox{max-width:620px;margin:12vh auto 0;background:var(--card);border:1px solid var(--line2);border-radius:16px;
+  box-shadow:0 40px 90px -30px rgba(0,0,0,.9);overflow:hidden}
+#palin{width:100%;border:0;outline:0;background:transparent;color:var(--tx);font-size:15px;padding:16px 18px;
+  font-family:inherit;border-bottom:1px solid var(--line)}
+#pallist{max-height:52vh;overflow:auto;padding:6px}
+.pitem{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:9px;cursor:pointer;font-size:13px;color:var(--tx2)}
+.pitem .pk{font-size:10px;color:var(--sub);border:1px solid var(--line2);border-radius:4px;padding:1px 6px;margin-left:auto}
+.pitem.sel,.pitem:hover{background:color-mix(in srgb,var(--accent) 16%,transparent);color:var(--tx)}
+.kbd{display:inline-flex;align-items:center;gap:3px;border:1px solid var(--line2);border-radius:5px;padding:2px 6px;
+  font-size:10px;color:var(--sub);background:var(--card2);cursor:pointer;transition:all .2s}
+.kbd:hover{color:var(--accent2);border-color:var(--accent2)}
+/* ---- トースト ---- */
+#toast{position:fixed;right:22px;bottom:22px;z-index:500;display:flex;flex-direction:column;gap:8px}
+.tst{background:var(--card);border:1px solid var(--line2);border-left:3px solid var(--accent2);border-radius:11px;
+  padding:11px 16px;font-size:12.5px;color:var(--tx);box-shadow:0 18px 40px -16px rgba(0,0,0,.85);
+  animation:fadeUp .35s var(--spring) both;min-width:230px}
+.tst b{color:var(--accent2)}
+/* ---- テーマ切替 ---- */
+.tgl{display:inline-flex;align-items:center;gap:5px;border:1px solid var(--line2);background:var(--card);
+  border-radius:8px;padding:4px 10px;font-size:11.5px;color:var(--sub);cursor:pointer;transition:all .2s}
+.tgl:hover{color:var(--accent2);border-color:var(--accent2)}
+/* ---- 線グラフのドロー ---- */
+@keyframes draw{from{stroke-dashoffset:var(--len)}to{stroke-dashoffset:0}}
+svg.lchart polyline.main{stroke-dasharray:var(--len);animation:draw 1.5s var(--ease) both}
+svg.lchart polygon{animation:fadeUp .9s .35s var(--ease) both}
+/* ---- 見出し・ヘッダー ---- */
+.hero{border:1px solid rgba(255,255,255,.09)}
+.side .brand .dot{box-shadow:0 0 18px -3px var(--accent2)}
+mark{color:inherit}
+[data-theme="light"] mark{color:#3A2E00}
+.builtby{background:color-mix(in srgb,var(--accent2) 12%,transparent);border-color:color-mix(in srgb,var(--accent2) 40%,transparent);color:var(--accent2)}
+.hdlg{padding:9px 12px;background:var(--card2);border:1px solid var(--line);border-radius:10px}
+h2.sec .note{background:color-mix(in srgb,var(--amber) 12%,transparent);padding:3px 10px;border-radius:20px;
+  border:1px solid color-mix(in srgb,var(--amber) 26%,transparent);color:var(--amber)}
+.src{color:var(--sub)}
 tr.qrow{cursor:pointer}
-tr.qdet td{background:#F8FBFE;padding:0}
+tr.qdet td{background:color-mix(in srgb,var(--accent) 5%,var(--card));padding:0}
 .detwrap{padding:14px 18px 16px}
-.dettitle{font-size:11.5px;font-weight:700;color:var(--navy2);margin-bottom:7px}
+.dettitle{font-size:11.5px;font-weight:700;color:var(--tx2);margin-bottom:7px}
 .clist{display:flex;flex-direction:column;gap:5px}
-.crow{display:grid;grid-template-columns:92px 1fr auto;gap:10px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:6px;padding:6px 10px}
-.cmain a{font-size:12px;font-weight:700;color:var(--navy2)}
+.crow{display:grid;grid-template-columns:92px 1fr auto;gap:10px;align-items:center;background:var(--card2);border:1px solid var(--line);border-radius:6px;padding:6px 10px}
+.cmain a{font-size:12px;font-weight:700;color:var(--tx2)}
 .cmain a:hover{text-decoration:underline}
 .cpath{font-size:10.5px;color:var(--sub);font-family:ui-monospace,Menlo,Consolas,monospace}
 .csf{white-space:nowrap}
@@ -145,6 +386,42 @@ tr.qdet td{background:#F8FBFE;padding:0}
 .ownp a{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;font-weight:700}
 .ownt{font-size:10.5px;color:var(--sub);display:block}
 .qmini{display:flex;align-items:center;gap:6px;margin:2px 0}
+/* ---- 回答例ビューア ---- */
+.ansbar{display:flex;gap:6px;flex-wrap:wrap;margin:6px 0 8px}
+.atab{display:inline-flex;align-items:center;gap:6px;font-size:11px;padding:4px 11px;border-radius:16px;cursor:pointer;
+  border:1px solid var(--line2);background:var(--card2);color:var(--sub);transition:all .18s var(--ease)}
+.atab:hover{border-color:var(--accent);color:var(--accent)}
+.atab.on{background:linear-gradient(180deg,var(--navy3),var(--navy2));color:#fff;border-color:var(--navy2)}
+.atab b.an{font-size:10px;color:var(--accent2)}
+.atab b.an.nx{color:var(--sub)}
+.atab.on b.an{color:#7FE7DC}
+.ansbox{background:var(--card2);border:1px solid var(--line);border-left:3px solid var(--accent);
+  border-radius:0 7px 7px 0;padding:11px 14px;font-size:12px;line-height:1.95;color:var(--tx2);
+  max-height:260px;overflow:auto;white-space:pre-wrap}
+mark.c{background:linear-gradient(transparent 52%,color-mix(in srgb,var(--warn) 30%,transparent) 52%);font-weight:400}
+/* ---- クエリ絞り込み ---- */
+.qsearch{display:flex;align-items:center;gap:9px;background:var(--card);border:1px solid var(--line2);
+  border-radius:9px;padding:8px 13px;margin-bottom:10px;transition:border-color .2s var(--ease),box-shadow .2s var(--ease)}
+.qsearch:focus-within{border-color:var(--accent);box-shadow:var(--glow)}
+.qsearch input{flex:1;background:transparent;border:0;outline:0;color:var(--tx);font-size:13px;
+  font-family:inherit}
+.qsearch .qi{color:var(--sub);font-size:13px}
+.qsearch .qn{font-size:11px;color:var(--sub);white-space:nowrap}
+.qsearch .qn b{color:var(--accent2)}
+/* ---- コピーボタン ---- */
+.cp{cursor:pointer;color:var(--sub);font-size:12px;padding:2px 7px;border-radius:5px;border:1px solid transparent;
+  transition:all .18s var(--ease);user-select:none}
+.cp:hover{color:var(--accent);border-color:var(--line2);background:var(--card)}
+.cp:active{transform:scale(.9)}
+.crow{grid-template-columns:92px 1fr auto auto}
+tr.catrow{cursor:pointer;transition:background .18s var(--ease)}
+tr.catrow:hover{background:color-mix(in srgb,var(--accent) 8%,transparent)}
+tr.catrow td:first-child b{border-bottom:1px dashed var(--line2)}
+.hm .meco{box-shadow:inset 1px 0 0 var(--own),inset -1px 0 0 var(--own)}
+.hm th.meco{color:var(--own)!important;box-shadow:inset 1px 0 0 var(--own),inset -1px 0 0 var(--own),inset 0 1px 0 var(--own)}
+.hm tbody tr:last-child .meco{box-shadow:inset 1px 0 0 var(--own),inset -1px 0 0 var(--own),inset 0 -1px 0 var(--own)}
+kbd{display:inline-block;font-family:inherit;font-size:10px;padding:1px 6px;border-radius:4px;
+  border:1px solid var(--line2);background:var(--card2);color:var(--sub)}
 </style>
 </head>
 <body>
@@ -154,9 +431,9 @@ tr.qdet td{background:#F8FBFE;padding:0}
     <div><div class="nm">AI Visibility Board</div><div class="sb" id="ownerTag">GEO KPI</div></div></div></div>
   <div class="grp">モニタリング</div>
   <a class="nav on" data-p="overview"><span class="ic">◉</span>概要</a>
-  <a class="nav" data-p="sns"><span class="ic">◈</span>SNS別評価</a>
-  <a class="nav" data-p="queries"><span class="ic">≡</span>クエリ</a>
+  <a class="nav" data-p="queries"><span class="ic">★</span>クエリ</a>
   <a class="nav" data-p="pages"><span class="ic">▤</span>自社の被引用ページ</a>
+  <a class="nav" data-p="sns"><span class="ic">◈</span>SNS別評価</a>
   <a class="nav" data-p="compete"><span class="ic">⇄</span>競合・判断軸</a>
   <a class="nav" data-p="sources"><span class="ic">◇</span>引用ソース</a>
   <a class="nav" data-p="signals"><span class="ic">⇡</span>AI流入・クローラー</a>
@@ -172,10 +449,23 @@ tr.qdet td{background:#F8FBFE;padding:0}
       <button data-v="dod" class="on">前日比</button><button data-v="wow">先週比</button><button data-v="mom">先月比</button>
     </div>
   </div>
+  <span class="builtby">◆ オウンドチーム内製 ／ 外部GEOツール不使用</span>
+  <span class="kbd" id="palBtn">⌘K　検索</span>
+  <span class="tgl" id="themeBtn">◐ テーマ</span>
   <div class="sep"></div>
   <div class="stamp" id="stamp"></div>
 </div>
 <div class="wrap" id="root"><div id="loading">読み込み中…</div></div>
+<div id="tip"></div>
+<div id="toast"></div>
+<div id="modal"><div id="modalbox">
+  <div id="modalhd"><h3 id="modalttl"></h3><span class="x" id="modalx">×</span></div>
+  <div id="modalbd"></div>
+</div></div>
+<div id="pal"><div id="palbox">
+  <input id="palin" placeholder="ページ・クエリを検索…（Escで閉じる）" autocomplete="off">
+  <div id="pallist"></div>
+</div></div>
 </div></div>
 
 <script>
@@ -184,6 +474,14 @@ const FJ={presence:"出現率",rank_quality:"順位品質",owned_citation:"オ�
 const FJ_PLAIN={presence:"出現率",rank_quality:"順位品質",owned_citation:"オウンド引用率",
   earned_citation:"アーンド引用率（SNS）",sentiment:"センチメント",share_of_voice:"相対シェア"};
 const PJ={dod:"前日比",wow:"先週比",mom:"先月比"};
+const FDESC={
+ presence:["AIの回答に自社の名前が出た割合","55本のプロンプトを4つのAIに投げ、回答文の中に「トヨタ」が登場した割合。低い＝そもそも候補に挙げてもらえていない。"],
+ rank_quality:["出たときに何番目に置かれたか","回答が複数ブランドを並べるとき、自社が何番目に書かれたか。1番目なら100点に近づく。低い＝挙がるが後回しにされている。"],
+ owned_citation:["回答の根拠に toyota.jp が引かれた割合","AIが回答の根拠として示したURLに自社サイトが含まれた割合。低い＝自社サイトではなく他人のページを根拠にされている。"],
+ earned_citation:["SNS・UGCが引かれ、そこに自社が載っていた割合","YouTube・知恵袋・note等が根拠として引かれたとき、その回答で自社が言及されていた割合。プラットフォーム重みを掛けて合成。"],
+ sentiment:["自社に触れた文が好意的だった割合","自社名を含む文の語調を判定。低い＝出てはいるが否定的な文脈で語られている。"],
+ share_of_voice:["競合5社の言及総数に占める自社の割合","5社均等なら20%。それを基準に100点換算。総合的な露出量の指標。"]};
+const SRCJ={chiebukuro:"Yahoo!知恵袋",paa:"Google関連する質問",llm_fanout:"LLM fan-out",semrush_import:"SEOトピック輸入",gsc:"GSC実クエリ"};
 let D=null, P="dod", sortK="best_rank", sortDir=1, catF="all";
 
 const esc=s=>String(s??"").replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
@@ -199,8 +497,9 @@ function delta(m,p,unit){ // 差分は必ず「（前日比 +0.12pt）」形式�
   const sg=d.significant, s0=d.delta>=0?"+":"";
   const cls = sg===false ? "par nsg" : (d.delta>0?"par up":d.delta<0?"par dn":"par");
   const val = unit==="pt" ? d.delta.toFixed(2) : Math.round(d.delta).toLocaleString();
-  const tail = sg===false ? "・有意差なし" : "";
-  return {html:`<span class="${cls}">（${PJ[p]} ${s0}${val}${unit}${tail}）</span>`, v:d.delta};
+  const tail = sg===false ? "・誤差の範囲" : "";
+  const ti = sg===false ? "日々のばらつき（±2σ）の内側です。実質は横ばいと読んでください" : "日々のばらつき（±2σ）を超える変化です";
+  return {html:`<span class="${cls}" title="${ti}">（${PJ[p]} ${s0}${val}${unit}${tail}）</span>`, v:d.delta};
 }
 function headline(){
   const m=D.diff?.metrics?.score;
@@ -209,13 +508,14 @@ function headline(){
   if(!d||d.delta==null) return base+`${PJ[P]}の比較対象データはまだありません。`;
   const sg=2*(m.sigma||0), sign=d.delta>=0?"+":"";
   if(d.significant===false)
-    return base+`（${PJ[P]} ${sign}${d.delta.toFixed(2)}pt — 日次のばらつき ±${sg.toFixed(2)}pt の範囲内で、有意な変化ではありません）`;
-  return base+`（${PJ[P]} ${sign}${d.delta.toFixed(2)}pt — 日次ばらつきを超える${d.delta>0?"上昇":"低下"}）`;
+    return base+`${PJ[P]} <b>${sign}${d.delta.toFixed(2)}pt</b>。ただしこれは日々のばらつき ±${sg.toFixed(2)}pt の内側なので、<b>実質は横ばい</b>です（数字が動いて見えるだけ）。`;
+  return base+`${PJ[P]} <b>${sign}${d.delta.toFixed(2)}pt</b>。日々のばらつき ±${sg.toFixed(2)}pt を超えているので、<b>本物の${d.delta>0?"上昇":"低下"}</b>と判断できます。`;
 }
 
 /* ---------- charts ---------- */
-function lineChart(hist,keys,colors,h=190){
-  if(!hist.length) return "";
+function lineChart(hist,keys,colors,h=190,labels){
+  if(!hist||!hist.length) return "";
+  labels=labels||keys;
   const W=640,pad={l:38,r:12,t:14,b:22};
   const all=keys.flatMap(k=>hist.map(d=>d[k])).filter(v=>v!=null);
   let mn=Math.min(...all),mx=Math.max(...all);
@@ -224,20 +524,31 @@ function lineChart(hist,keys,colors,h=190){
   const Y=v=>pad.t+(1-(v-mn)/(mx-mn))*(h-pad.t-pad.b);
   let g="";
   for(let i=0;i<=4;i++){const y=pad.t+i*(h-pad.t-pad.b)/4;
-    g+=`<line x1="${pad.l}" y1="${y}" x2="${W-pad.r}" y2="${y}" stroke="#EDF2F7"/>`+
-       `<text x="6" y="${y+3}" font-size="9" fill="#94A3B8">${(mx-(mx-mn)*i/4).toFixed(0)}</text>`;}
+    g+=`<line x1="${pad.l}" y1="${y}" x2="${W-pad.r}" y2="${y}" stroke="var(--line)"/>`+
+       `<text x="6" y="${y+3}" font-size="9" fill="var(--sub)">${(mx-(mx-mn)*i/4).toFixed(0)}</text>`;}
+  const gid="g"+Math.abs(keys.join().split("").reduce((a,c)=>a+c.charCodeAt(0),0));
   keys.forEach((k,ki)=>{
     const pts=hist.map((d,i)=>d[k]==null?null:`${X(i)},${Y(d[k])}`).filter(Boolean).join(" ");
-    if(ki===0) g+=`<polygon fill="url(#gA)" points="${pts} ${X(hist.length-1)},${h-pad.b} ${X(0)},${h-pad.b}"/>`;
-    g+=`<polyline fill="none" stroke="${colors[ki]}" stroke-width="${ki?1.6:2.4}" ${ki?'stroke-dasharray="4 3"':''} points="${pts}"/>`;
+    if(ki===0) g+=`<polygon fill="url(#${gid})" points="${pts} ${X(hist.length-1)},${h-pad.b} ${X(0)},${h-pad.b}"/>`;
+    const len=Math.round(hist.length*22);
+    g+=`<polyline class="${ki?'':'main'}" style="--len:${len}" fill="none" stroke="${colors[ki]}" stroke-width="${ki?1.6:2.6}" stroke-linejoin="round" stroke-linecap="round" ${ki?'stroke-dasharray="4 3"':''} points="${pts}"/>`;
   });
   const last=hist[hist.length-1];
-  if(last[keys[0]]!=null) g+=`<circle cx="${X(hist.length-1)}" cy="${Y(last[keys[0]])}" r="4" fill="${colors[0]}"/>`;
-  g+=`<text x="${pad.l}" y="${h-4}" font-size="9" fill="#94A3B8">${hist[0].date.slice(5)}</text>`+
-     `<text x="${W-pad.r-28}" y="${h-4}" font-size="9" fill="#94A3B8">${last.date.slice(5)}</text>`;
-  return `<svg viewBox="0 0 ${W} ${h}" style="width:100%;height:auto">
-    <defs><linearGradient id="gA" x1="0" y1="0" x2="0" y2="1">
-    <stop offset="0%" stop-color="${colors[0]}" stop-opacity=".24"/><stop offset="100%" stop-color="${colors[0]}" stop-opacity="0"/>
+  if(last[keys[0]]!=null)
+    g+=`<circle cx="${X(hist.length-1)}" cy="${Y(last[keys[0]])}" r="4.5" fill="${colors[0]}" stroke="#fff" stroke-width="1.6"/>`;
+  g+=`<line class="cursor" x1="0" y1="${pad.t}" x2="0" y2="${h-pad.b}" stroke="var(--sub)" stroke-width="1" stroke-dasharray="3 3"/>`;
+  g+=`<circle class="hoverdot" r="5" fill="${colors[0]}" stroke="#fff" stroke-width="2"/>`;
+  g+=`<text x="${pad.l}" y="${h-4}" font-size="9" fill="var(--sub)">${hist[0].date.slice(5)}</text>`+
+     `<text x="${W-pad.r-28}" y="${h-4}" font-size="9" fill="var(--sub)">${last.date.slice(5)}</text>`;
+  g+=`<rect x="0" y="0" width="${W}" height="${h}" fill="transparent"/>`;
+  const meta=hist.map((d,i)=>({x:+X(i).toFixed(1),y:+(d[keys[0]]!=null?Y(d[keys[0]]):0).toFixed(1),
+                               d:d.date,vals:keys.map(k=>d[k])}));
+  return `<svg class="lchart" viewBox="0 0 ${W} ${h}" style="width:100%;height:auto"
+    data-pts='${JSON.stringify(meta).replace(/'/g,"&apos;")}'
+    data-labels='${JSON.stringify(labels).replace(/'/g,"&apos;")}'
+    data-colors='${JSON.stringify(colors).replace(/'/g,"&apos;")}'>
+    <defs><linearGradient id="${gid}" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="${colors[0]}" stop-opacity=".28"/><stop offset="100%" stop-color="${colors[0]}" stop-opacity="0"/>
     </linearGradient></defs>${g}</svg>`;
 }
 function donut(items,total,label){
@@ -247,58 +558,190 @@ function donut(items,total,label){
         stroke-dasharray="${pct.toFixed(2)} ${(100-pct).toFixed(2)}" stroke-dashoffset="${off}"/>`;
     off-=pct;});
   return `<svg width="140" height="140" viewBox="0 0 42 42">${g}
-    <text x="21" y="20.5" text-anchor="middle" font-size="4" font-weight="700" fill="#0B1F35">${num(total)}</text>
-    <text x="21" y="24.6" text-anchor="middle" font-size="2.2" fill="#64748B">${label}</text></svg>`;
+    <text x="21" y="20.5" text-anchor="middle" font-size="4" font-weight="700" fill="var(--tx)">${num(total)}</text>
+    <text x="21" y="24.6" text-anchor="middle" font-size="2.2" fill="var(--sub)">${label}</text></svg>`;
 }
-const PAL=["#2A7FBF","#00A99D","#7C5CBF","#E8B004","#5CBB8B","#94A3B8","#D64545","#C98A00"];
+const PAL=["#38BDF8","#00E5C7","#A78BFA","#FFB020","#34D399","#7C93AC","#FF6B6B","#FBBF24"];
+
+/* ---- ティア判定（ゲームのランク表示） ---- */
+function tierOf(v){
+  if(v>=85)return{k:"s",g:"S",l:"ELITE"};
+  if(v>=70)return{k:"a",g:"A",l:"STRONG"};
+  if(v>=55)return{k:"b",g:"B",l:"STABLE"};
+  if(v>=40)return{k:"c",g:"C",l:"WEAK"};
+  return{k:"d",g:"D",l:"CRITICAL"};
+}
+function tierBadge(v){const t=tierOf(v);
+  return `<div class="tier ${t.k}"><div class="tg">${t.g}</div><div class="tl">${t.l}</div></div>`;}
+
+/* ---- セグメントゲージ ---- */
+function gauge(v,n){n=n||10;const f=Math.round(v/100*n);
+  return `<div class="gauge">${Array.from({length:n},(_,i)=>`<i class="${i<f?'f':''}" style="transition-delay:${i*45}ms"></i>`).join("")}</div>`;}
+
+/* ---- レーダー（6因数） ---- */
+function radar(vals,labels,size){
+  size=size||300; const c=size/2, R=size*0.29, n=vals.length;
+  const pt=(i,r)=>{const a=-Math.PI/2+i*2*Math.PI/n;
+    return [c+Math.cos(a)*r, c+Math.sin(a)*r];};
+  let g="";
+  [1,.75,.5,.25].forEach(k=>{
+    const p=Array.from({length:n},(_,i)=>pt(i,R*k).map(x=>x.toFixed(1)).join(",")).join(" ");
+    g+=`<polygon class="rgrid" points="${p}"/>`;});
+  for(let i=0;i<n;i++){const [x,y]=pt(i,R); g+=`<line class="rax" x1="${c}" y1="${c}" x2="${x.toFixed(1)}" y2="${y.toFixed(1)}"/>`;}
+  const pp=vals.map((v,i)=>pt(i,R*Math.max(v,3)/100).map(x=>x.toFixed(1)).join(",")).join(" ");
+  g+=`<polygon class="rpoly" points="${pp}"/>`;
+  vals.forEach((v,i)=>{const [x,y]=pt(i,R*Math.max(v,3)/100);
+    g+=`<circle class="rdot" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="3.4"/>`;});
+  labels.forEach((L,i)=>{const [x,y]=pt(i,R+30);
+    const anc=Math.abs(x-c)<8?"middle":(x>c?"start":"end");
+    g+=`<text x="${x.toFixed(1)}" y="${(y+3).toFixed(1)}" text-anchor="${anc}">${esc(L)}</text>`;
+    const [vx,vy]=pt(i,R+16);
+    g+=`<text class="rv" x="${vx.toFixed(1)}" y="${(vy+3).toFixed(1)}" text-anchor="${anc}">${vals[i].toFixed(0)}</text>`;});
+  return `<svg class="radar" width="${size}" height="${size}" viewBox="0 0 ${size} ${size}">${g}</svg>`;
+}
+
+/* ---- VSパネル ---- */
+function vsPanel(a,b,metrics){
+  const wins=metrics.filter(m=>m.a>=m.b).length;
+  return `<div class="vs">
+    <div class="vh"><span class="n1">${esc(a.label)}</span>
+      <span class="vd">${wins}勝 ${metrics.length-wins}敗</span>
+      <span class="n2">${esc(b.label)}</span></div>
+    ${metrics.map(m=>{const t=(m.a+m.b)||1, w=m.a>=m.b;
+      return `<div class="mt">
+        <div class="ml"><span class="lv ${w?'win':'lose'}">${m.fmt?m.fmt(m.a):m.a}</span>
+          <span class="lc">${esc(m.label)}</span>
+          <span class="lv ${w?'lose':'win'}">${m.fmt?m.fmt(m.b):m.b}</span></div>
+        <div class="bar2">
+          <i style="width:${(m.a/t*100).toFixed(1)}%;background:linear-gradient(90deg,var(--accent2),color-mix(in srgb,var(--accent2) 55%,transparent))"></i>
+          <i style="width:${(m.b/t*100).toFixed(1)}%;background:linear-gradient(90deg,color-mix(in srgb,var(--warn) 55%,transparent),var(--warn))"></i>
+        </div></div>`;}).join("")}
+  </div>`;
+}
+
+/* ---- トースト ---- */
+function toast(html,ms){const w=document.getElementById("toast");
+  const d=document.createElement("div"); d.className="tst"; d.innerHTML=html; w.appendChild(d);
+  setTimeout(()=>{d.style.transition="opacity .4s,transform .4s";d.style.opacity="0";
+    d.style.transform="translateY(8px)";setTimeout(()=>d.remove(),420);}, ms||4200);}
 
 /* ---------- pages ---------- */
 function pageOverview(){
   const c=D.comment||{}, lines=(c.periods||{})[P]||[];
-  const sc=D.diff?.metrics?.score, dv=delta(sc,P);
   const ring=308*(1-D.score/100);
   const facs=Object.keys(D.weights).map(k=>{
     const d=delta(D.diff?.metrics?.[k],P);
-    return `<div class="fac"><div class="fl">${FJ[k]}</div>
-      <div class="fv">${f1(D.factors[k])}<span class="fu">/100</span></div>
+    return `<div class="fac" title="${esc(FDESC[k]?FDESC[k][1]:'')}"><div class="fl">${FJ[k]}</div>
+      <div class="fv"><span data-count="${f1(D.factors[k])}">0.0</span><span class="fu">/100</span></div>
       <div class="fd">${d.html}</div>
       <div class="fw">重み ${D.weights[k]}点</div></div>`;}).join("");
   const dec=(D.diff?.decomposition||{})[P]||{};
   const contrib=Object.entries(dec.contributions||{}).sort((a,b)=>Math.abs(b[1])-Math.abs(a[1]));
   const hist=D.history||[];
+  const ct=(D.category_trend||[]);
+  const up=ct.filter(x=>x.delta!=null).sort((a,b)=>b.delta-a.delta);
+  const uncited=(D.queries||[]).filter(q=>!q.own_pages.length).length;
 
+  // 全体コメント（クエリ傾向を含む）
+  const best=up[0], worst=up[up.length-1];
+  const overall = `${D.counts.prompts}本のクエリを ${(D.surfaces||[]).length}つのAIに投げ、${num(D.counts.responses)}件の回答を判定しました。`
+    + `自社が回答に登場したのは ${D.counts.own_mentioned}/${D.counts.cells} 通り（出現率 ${f1(D.factors.presence)}%）。`
+    + (best&&worst&&best.id!==worst.id
+        ? `今週いちばん伸びた領域は <b>${esc(best.label)}</b>（出現率 ${best.presence}%、先週比 ${best.delta>=0?"+":""}${best.delta}pt）、`
+          +`落ちた領域は <b>${esc(worst.label)}</b>（${worst.presence}%、${worst.delta>=0?"+":""}${worst.delta}pt）です。`
+        : "")
+    + `自社ページが1本も引かれなかったクエリが <b>${uncited}本</b>あり、ここがコンテンツ制作の優先リストになります。`;
+
+  const FK=Object.keys(D.weights);
   return `<div class="hero">
-    <div class="ring"><svg width="122" height="122" viewBox="0 0 118 118">
-      <circle cx="59" cy="59" r="49" fill="none" stroke="rgba(255,255,255,.13)" stroke-width="11"/>
-      <circle cx="59" cy="59" r="49" fill="none" stroke="#00A99D" stroke-width="11" stroke-linecap="round"
-        stroke-dasharray="308" stroke-dashoffset="${ring.toFixed(0)}" transform="rotate(-90 59 59)"/></svg>
-      <div class="num"><b>${f1(D.score)}</b><span>GEO SCORE</span><div class="dv">/ 100</div></div></div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:12px">
+      <div class="ring"><svg width="128" height="128" viewBox="0 0 118 118">
+        <circle cx="59" cy="59" r="49" fill="none" stroke="rgba(255,255,255,.11)" stroke-width="10"/>
+        <circle cx="59" cy="59" r="49" fill="none" stroke="url(#ringg)" stroke-width="10" stroke-linecap="round"
+          stroke-dasharray="308" stroke-dashoffset="${ring.toFixed(0)}" transform="rotate(-90 59 59)"/>
+        <defs><linearGradient id="ringg" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#00E5C7"/><stop offset="100%" stop-color="#38BDF8"/></linearGradient></defs>
+        ${Array.from({length:40},(_,i)=>{const a=-Math.PI/2+i*2*Math.PI/40,r1=41,r2=44;
+          return `<line x1="${(59+Math.cos(a)*r1).toFixed(1)}" y1="${(59+Math.sin(a)*r1).toFixed(1)}"
+            x2="${(59+Math.cos(a)*r2).toFixed(1)}" y2="${(59+Math.sin(a)*r2).toFixed(1)}"
+            stroke="rgba(255,255,255,${i<Math.round(D.score/100*40)?.55:.13})" stroke-width="1.2"/>`;}).join("")}
+      </svg>
+        <div class="num"><b data-count="${f1(D.score)}">0.0</b><span>GEO SCORE</span><div class="dv">/ 100</div></div></div>
+      ${tierBadge(D.score)}
+    </div>
     <div>
       <div class="cmt">${headline()}</div>
-      ${(()=>{const b=lines.filter(x=>!/^(前日比|先週比|先月比) /.test(x));
-        return b.length?`<div class="cmt" style="color:#9FC4DE;font-size:11.5px;margin-bottom:12px">${b.map(esc).join(" 　/　 ")}</div>`:"";})()}
+      <div class="cmt" style="font-size:12px;color:#9FC0DA;margin-bottom:14px">${overall}</div>
       <div class="facs">${facs}</div>
     </div></div>
 
-  <h2 class="sec"><span class="bar"></span>スコア推移と変動要因<span class="note">${PJ[P]}の内訳（補助分析）</span></h2>
+  <h2 class="sec"><span class="bar"></span>スコア構成
+    <span class="hbtn" onclick="openScoreHelp()"><span class="qm">?</span>スコアの読み方</span>
+    <span class="note">6因数のバランス</span></h2>
+  <div class="card">
+    <div class="radar-wrap">
+      <div style="display:flex;justify-content:center">${radar(FK.map(k=>D.factors[k]),FK.map(k=>FJ_PLAIN[k].replace("（SNS）","")),320)}</div>
+      <div>
+        ${FK.map(k=>{const d=delta(D.diff?.metrics?.[k],P);const t=tierOf(D.factors[k]);
+          return `<div class="fbar">
+            <div class="fh"><span class="fn">${FJ_PLAIN[k]}</span>
+              <span class="pill ${t.k==='s'||t.k==='a'?'p-ok':t.k==='b'?'p-nv':t.k==='c'?'p-am':'p-ng'}">${t.g}</span>
+              <span class="fq">${f1(D.factors[k])}</span><span class="fs">/100 · 重み${D.weights[k]}</span></div>
+            ${gauge(D.factors[k],14)}
+            <div class="fm">${d.html}<span>${esc((FDESC[k]||["",""])[0])}</span></div>
+          </div>`;}).join("")}
+      </div>
+    </div>
+  </div>
+
+  <h2 class="sec"><span class="bar"></span>いま何が聞かれているか<span class="note">カテゴリ別の出現率と先週比</span></h2>
+  <div class="why"><b>見方：</b>追跡している${D.counts.prompts}本のクエリをテーマ別にまとめ、「そのテーマの質問でAIが自社を挙げた割合」を出しています。
+  <b>出現率が下がったテーマ＝その話題で候補から外れ始めている</b>ということです。先週比は同じクエリ同士の比較なので、母数の変化に影響されません。</div>
+  <div class="tw" style="max-height:none"><table>
+    <thead><tr><th style="width:150px">テーマ</th><th class="c" style="width:70px">クエリ数</th>
+      <th class="c" style="width:96px">出現率</th><th style="width:130px"></th>
+      <th class="c" style="width:88px">先週比</th><th class="c" style="width:96px">平均順位</th>
+      <th class="c" style="width:118px">自社ページ被引用率</th><th>読み取り</th></tr></thead>
+    <tbody>${ct.map(x=>{
+      const d=x.delta;
+      return `<tr class="catrow" data-c="${attr(x.id)}" title="クリックでこのテーマのクエリ一覧へ">
+      <td><b>${esc(x.label)}</b></td>
+      <td class="c">${x.queries}</td>
+      <td class="c"><b>${x.presence}%</b></td>
+      <td><span class="mini"><i class="${x.presence>=70?'g':''}" style="width:${x.presence}%"></i></span></td>
+      <td class="c">${d==null?'<span class="fl">—</span>':`<span class="${d>0?'up':d<0?'dn':'fl'}" style="font-weight:700">${d>0?"+":""}${d}pt</span>`}</td>
+      <td class="c">${x.avg_rank??"—"}</td>
+      <td class="c">${x.cite_rate}%<span class="vsub"> (${x.cited}/${x.cells})</span></td>
+      <td style="font-size:11.5px;color:var(--sub)">${
+        d==null?"比較データなし":
+        d<=-5?"この話題で候補から外れ始めています。優先的に手を打つ領域です":
+        d>=5?"この話題での露出が伸びています。勝ち筋として伸ばす価値があります":
+        x.cite_rate<10?"出てはいますが自社ページがほぼ根拠にされていません":
+        "横ばい。大きな変化はありません"}</td>
+    </tr>`;}).join("")}</tbody></table></div>
+
+  <h2 class="sec"><span class="bar"></span>スコア推移と変動の内訳</h2>
+  <div class="why"><b>変動の内訳とは：</b>GEOスコアは6因数の加重和なので、スコアが動いた分は必ず「どの因数が動いたか」に分解できます。
+  表示している <b>寄与pt ＝ その因数の変化量 × 重み ÷ 100</b> で、6つの寄与ptを足すとスコアの差分と一致します。
+  つまり<b>「今日スコアが下がったのは、6つのうちどれのせいか」</b>を数字で示したものです。</div>
   <div class="g23">
     <div class="card"><h3 class="sub" style="margin-top:0">GEOスコア推移（${hist.length}日）</h3>
-      ${lineChart(hist,["score"],["#00A99D"])}
+      ${lineChart(hist,["score"],["#00A99D"],190,["GEOスコア"])}
       <div class="legend"><span><i style="background:#00A99D"></i>GEOスコア</span>
-        <span style="color:#94A3B8">判定は7日移動中央値と±2σで行っています</span></div></div>
+        <span style="color:var(--sub)">判定は7日移動中央値と±2σで行っています</span></div></div>
     <div class="card"><h3 class="sub" style="margin-top:0">変動の内訳
       <span class="vsub">${PJ[P]} 計 ${dec.total!=null?(dec.total>=0?"+":"")+dec.total.toFixed(2):"—"}pt</span></h3>
       <div class="bars">${contrib.map(([k,v])=>{
         const mag=Math.max(...contrib.map(x=>Math.abs(x[1])),0.01);
-        return `<div class="row"><span class="lb">${FJ_PLAIN[k]}<span class="vsub"> ${f1(D.factors[k])}</span></span>
+        return `<div class="row"><span class="lb" title="${esc(FDESC[k]?FDESC[k][1]:'')}">${FJ_PLAIN[k]}<span class="vsub"> ${f1(D.factors[k])}</span></span>
           <span class="tr"><span class="fi ${v>=0?'g':''}" style="width:${Math.abs(v)/mag*100}%;${v<0?'background:linear-gradient(90deg,#D64545,#EA7A7A)':''}"></span></span>
           <span class="va ${v>=0?'up':'dn'}" style="font-size:11px">${v>=0?"+":""}${v.toFixed(2)}pt</span></div>`;}).join("")||'<div class="fl">比較データなし</div>'}</div>
       <div class="note ${contrib.length&&contrib[0][1]<0?'ng':'ok'}" style="margin-bottom:0;font-size:12px">
-        ${contrib.length?`いま最も効いている因数は <b>${FJ_PLAIN[contrib[0][0]]}</b>（現在値 ${f1(D.factors[contrib[0][0]])}、${PJ[P]} ${contrib[0][1]>=0?"+":""}${contrib[0][1].toFixed(2)}pt）。`:"前日以前のスナップショットが揃うと表示されます。"}
+        ${contrib.length?`いま最も効いている因数は <b>${FJ_PLAIN[contrib[0][0]]}</b>（現在値 ${f1(D.factors[contrib[0][0]])}、${PJ[P]} ${contrib[0][1]>=0?"+":""}${contrib[0][1].toFixed(2)}pt）。${esc((FDESC[contrib[0][0]]||["",""])[1])}`:"前日以前のスナップショットが揃うと表示されます。"}
       </div></div>
   </div>
 
-  <h2 class="sec"><span class="bar"></span>実測サマリ<span class="note">${D.counts.prompts}プロンプト × ${Object.keys(D.surfaces).length}サーフェス ／ 回答 ${num(D.counts.responses)}件</span></h2>
+  <h2 class="sec"><span class="bar"></span>実測サマリ<span class="note">${D.counts.prompts}プロンプト × ${(D.surfaces||[]).length}サーフェス ／ 回答 ${num(D.counts.responses)}件</span></h2>
   <div class="g4">
     ${kpiCard("自社が言及された回答","own_mentioned",D.counts.own_mentioned+" / "+D.counts.cells,"presence","own")}
     ${kpiCard("オウンド引用率","owned_citation",f1(D.factors.owned_citation)+"%","owned_citation","")}
@@ -306,20 +749,24 @@ function pageOverview(){
     ${kpiCard("AI経由セッション","ai_sessions",num(Object.values(D.signals.ga4_ai_sessions).reduce((a,b)=>a+b,0)),"ai_sessions","","件")}
   </div>
 
-  <h2 class="sec"><span class="bar"></span>サーフェス別の出現<span class="note">自社が言及された回答数</span></h2>
+  <h2 class="sec"><span class="bar"></span>AIサーフェス別の出現<span class="note">同じ質問を4つのAIに投げた結果の差</span></h2>
+  <div class="why"><b>サーフェスとは：</b>回答を作っているAIの種類です。同じ質問文を <b>ChatGPT</b>／<b>Google AIによる概要</b>（検索結果上部の要約）／<b>Google AIモード</b>（対話型の検索）／<b>Gemini</b> の4つに投げています。
+  下の数字は<b>「そのAIの回答に自社が登場した本数」</b>です。AIごとに引用元の好みが違う（例：AIモードはYouTubeを好み、ChatGPTはRedditを好む）ため、<b>どのAIで負けているかが分かると打ち手が変わります</b>。</div>
   <div class="g23">
-    <div class="card"><div class="bars">${(D.surfaces||[]).sort((a,b)=>b.count-a.count).map((s,i)=>{
+    <div class="card"><div class="bars">${(D.surfaces||[]).slice().sort((a,b)=>b.count-a.count).map((sf,i)=>{
       const mx=Math.max(...D.surfaces.map(x=>x.count),1);
-      return `<div class="row"><span class="lb">${esc(s.label)}</span>
-        <span class="tr"><span class="fi" style="width:${s.count/mx*100}%;background:${PAL[i%PAL.length]}"></span></span>
-        <span class="va">${s.count}</span></div>`;}).join("")}</div></div>
+      return `<div class="row"><span class="lb">${esc(sf.label)}</span>
+        <span class="tr"><span class="fi" style="width:${sf.count/mx*100}%;background:${PAL[i%PAL.length]}"></span></span>
+        <span class="va">${sf.count}本</span></div>`;}).join("")}</div>
+      <div class="src">分母は各サーフェスあたり ${D.counts.prompts} 本。数字が小さいサーフェスは、そのAIの引用元（YouTube・Reddit・知恵袋など）に自社の情報が届いていないことを意味します。</div></div>
     <div class="card"><h3 class="sub" style="margin-top:0">引用元の種別構成</h3>
       <div style="display:flex;align-items:center;gap:16px">
-        ${(()=>{const b=D.citation_buckets||{},L={owned:"オウンド",affiliated:"グループ・販売店",earned:"SNS・UGC",media:"一般メディア",reference:"辞書・百科",press:"プレス",competitor:"競合",noise:"ノイズ"};
+        ${(()=>{const b=D.citation_buckets||{},L={owned:"自社オウンド",affiliated:"グループ・販売店",earned:"SNS・UGC",media:"一般メディア",reference:"辞書・百科",press:"プレス",competitor:"競合",noise:"ノイズ"};
           const it=Object.entries(b).map(([k,v],i)=>({k,v,c:PAL[i%PAL.length],l:L[k]||k}));
           const tot=it.reduce((a,x)=>a+x.v,0);
           return donut(it,tot,"引用")+`<div class="legend" style="flex-direction:column;gap:5px">${it.map(x=>`<span><i style="background:${x.c}"></i>${x.l} ${x.v}（${tot?(x.v/tot*100).toFixed(0):0}%）</span>`).join("")}</div>`;})()}
-      </div></div>
+      </div>
+      <div class="src">AIが回答の根拠に使ったURLを分類したもの。<b>自社オウンドの比率が低いほど、自社の言い分ではなく他人の記述でブランドが語られている</b>ことになります。</div></div>
   </div>`;
 }
 function kpiCard(label,metricKey,value,dKey,cls,unit){
@@ -342,12 +789,18 @@ function pageSns(){
     <div class="kpi own"><div class="l">自社が出せる面</div><div class="v">${rows.filter(r=>r.actionable).length}<small> / ${rows.length}</small></div><div class="d fl">actionable なプラットフォーム</div></div>
   </div>
 
-  <div class="note">日本語AI回答の被引用元は上位10件中6件がSNS・UGCです。<mark>「市場全体でそのプラットフォームが何回引かれたか」を分母、「うち自社が言及されていたか」を分子</mark>にしてシェアを出し、プラットフォーム重みを掛けて合成したものがアーンド引用率です。</div>
+  <div class="why"><b>「自社シェア」の意味：</b>そのプラットフォーム（例：YouTube）が<b>AIの回答の根拠として引かれた回数</b>を分母に、
+  <b>そのうち回答の中で自社が言及されていた回数</b>を分子にした割合です。<br>
+  例：YouTubeが100回引かれ、そのうち64回の回答に「トヨタ」が出ていれば <b>自社シェア64%</b>。
+  <mark>「そのプラットフォームがAIに使われる場面で、自社がどれだけ話題に入れているか」</mark>を表します。<br>
+  <b>低い＝そのSNS上に自社の情報が足りていない</b>ということなので、打ち手はそのまま「そこにコンテンツを置く」になります。
+  各プラットフォームの<b>重み</b>は日本語AI回答での被引用量にもとづく係数で、<code>config/platforms.yaml</code> で変更できます。
+  重み × 自社シェア を全プラットフォームで合計したものが<b>アーンド引用率</b>（スコア20点分）です。</div>
 
   <div class="tw" style="max-height:none"><table>
     <thead><tr><th style="width:132px">プラットフォーム</th><th class="c" style="width:56px">分類</th>
       <th class="n" style="width:64px">重み</th><th class="n" style="width:86px">市場被引用</th>
-      <th class="n" style="width:80px">自社関連</th><th style="width:130px">自社シェア</th>
+      <th class="n" style="width:80px">自社関連</th><th style="width:130px">自社シェア<span style="font-weight:400">（引かれた回のうち自社が出た率）</span></th>
       <th class="c" style="width:112px">スコア寄与</th><th class="c" style="width:70px">出稿可否</th><th>メモ</th></tr></thead>
     <tbody>${rows.map(r=>{
       const d=dmap[r.id];
@@ -364,11 +817,11 @@ function pageSns(){
       <td class="c"><b style="font-size:13px">${(r.weight*r.share).toFixed(2)}</b><span class="vsub">pt</span>
         ${d?`<div class="${d.contribution>=0?'par up':'par dn'}">（${PJ[P]} ${d.contribution>=0?"+":""}${d.contribution.toFixed(2)}）</div>`:''}</td>
       <td class="c">${r.actionable?'<span class="pill p-ok">可</span>':'<span class="pill p-nv">間接</span>'}</td>
-      <td style="font-size:11.5px;color:#475569">${esc(r.note)}</td></tr>`;}).join("")}
+      <td style="font-size:11.5px;color:var(--sub)">${esc(r.note)}</td></tr>`;}).join("")}
     </tbody></table></div>
 
   <h2 class="sec"><span class="bar"></span>アーンド引用率の推移</h2>
-  <div class="card">${lineChart(D.history,["earned_citation","owned_citation"],["#00A99D","#E8B004"])}
+  <div class="card">${lineChart(D.history,["earned_citation","owned_citation"],["#00A99D","#E8B004"],190,["アーンド引用率","オウンド引用率"])}
     <div class="legend"><span><i style="background:#00A99D"></i>アーンド引用率（SNS/UGC）</span><span><i style="background:#E8B004"></i>オウンド引用率</span></div>
     <div class="note ok" style="margin-bottom:0">2本が乖離しているときは打ち手が分かれます。<b>オウンドだけ下がる</b>＝自社ページがAIに読まれていない（構造化・robots・FAQ整備）。<b>アーンドだけ下がる</b>＝UGC側で語られなくなった（YouTube・note・アンバサダー施策）。</div></div>`;
 }
@@ -377,7 +830,18 @@ const BK={owned:["自社オウンド","p-ok"],affiliated:["グループ・販売
   media:["一般メディア","p-nv"],reference:["辞書・百科","p-nv"],press:["プレス","p-nv"],
   competitor:["競合","p-ng"],noise:["ノイズ","p-ng"]};
 const CATJ={purchase:"購入検討",model:"車種",safety:"安全・支援",cost:"価格・維持費",eco:"燃費・電動化",service:"整備",brand:"ブランド指名"};
-let openQ=new Set();
+let openQ=new Set(), ansSf={}, qFilter="";
+
+/* 回答本文の自社/競合ブランド名をハイライトする */
+const BOWN=["トヨタ","TOYOTA","Toyota","レクサス","LEXUS"];
+const BCMP=["ホンダ","HONDA","Honda","日産","ニッサン","NISSAN","スバル","SUBARU","スズキ","SUZUKI","マツダ","MAZDA"];
+function hlBrands(t){
+  let h=esc(t||"");
+  h=h.replace(new RegExp(BOWN.join("|"),"g"),m=>`<mark>${m}</mark>`);
+  h=h.replace(new RegExp(BCMP.join("|"),"g"),m=>`<mark class="c">${m}</mark>`);
+  return h;
+}
+const attr=v=>esc(v).replace(/"/g,"&quot;");
 
 function citeList(cites,only){
   const list=only?cites.filter(c=>only.includes(c.bucket)):cites;
@@ -390,9 +854,10 @@ function citeList(cites,only){
       <span class="pill ${bc}" style="min-width:82px;text-align:center">${bl}</span>
       <div class="cmain">
         <a href="${esc(c.url)}" target="_blank" rel="noopener">${esc(c.title||c.path||c.url)}</a>
-        <div class="cpath">${esc(label)}<span style="color:#CBD5E1"> · </span>${esc(c.path||"")}</div>
+        <div class="cpath">${esc(label)}<span style="color:var(--sub)"> · </span>${esc(c.path||"")}</div>
       </div>
       <div class="csf">${(c.surface_labels||[]).map(s=>`<span class="tag">${esc(s)}</span>`).join("")}</div>
+      <span class="cp" data-u="${attr(c.url)}" title="URLをコピー">⧉</span>
     </div>`;}).join("")}</div>`;
 }
 
@@ -402,51 +867,124 @@ function pageQueries(){
     if(x==null)x=sortK==="best_rank"?999:-1; if(y==null)y=sortK==="best_rank"?999:-1;
     if(typeof x==="string")return sortDir*x.localeCompare(y,"ja"); return sortDir*(x-y);});
   const cats=["all",...new Set((D.queries||[]).map(r=>r.category))];
-  const sfs=(D.surfaces||[]).map(s=>s.id);
+  const sfs=(D.surfaces||[]).map(x=>x.id);
   const rk=v=>v==null?'<span class="rk rx">—</span>':`<span class="rk ${v===1?'r1':v===2?'r2':v===3?'r3':''}">${v}</span>`;
   const nCited=rows.filter(r=>r.own_pages.length).length;
+  const tiers=D.prompt_tiers||{};
+  const srcs=D.query_sources||[];
 
-  return `<h2 class="sec"><span class="bar"></span>クエリ別の実測<span class="note">行をクリックすると、そのクエリで引用された全URLが開きます</span></h2>
-  <div class="g4" style="margin-bottom:12px">
-    <div class="kpi"><div class="l">追跡クエリ</div><div class="v">${rows.length}</div><div class="d fl">カテゴリ絞り込み中</div></div>
-    <div class="kpi own"><div class="l">自社ページが引用されたクエリ</div><div class="v">${nCited}<small> / ${rows.length}</small></div><div class="d fl">${rows.length?(nCited/rows.length*100).toFixed(0):0}%</div></div>
-    <div class="kpi"><div class="l">引用された自社ページ（実数）</div><div class="v">${(D.owned_pages||[]).length}</div><div class="d fl">「自社の被引用ページ」タブで逆引き</div></div>
-    <div class="kpi warn"><div class="l">自社ページが1つも引かれないクエリ</div><div class="v">${rows.length-nCited}</div><div class="d dn">最優先の改善対象</div></div>
+  const SFL={}; (D.surfaces||[]).forEach(x=>SFL[x.id]=x.label);
+  const ansBlock=r=>{
+    const av=sfs.filter(x=>r.surfaces[x]&&r.surfaces[x].answer);
+    if(!av.length) return "";
+    const sel=(ansSf[r.id]&&av.includes(ansSf[r.id]))?ansSf[r.id]:av[0];
+    const sv=r.surfaces[sel];
+    const st={positive:["好意的","p-ok"],neutral:["中立","p-nv"],negative:["否定的","p-ng"]}[sv.sentiment]||["判定なし","p-nv"];
+    return `<div class="dettitle" style="margin-top:2px">AIが実際に返した回答（自社=黄マーカー／競合=赤マーカー）</div>
+      <div class="ansbar">${av.map(x=>{const v=r.surfaces[x];
+        return `<span class="atab ${x===sel?'on':''}" data-aq="${attr(r.id)}" data-as="${attr(x)}">${esc(SFL[x]||x)}${
+          v.rank?`<b class="an">${v.rank}位</b>`:'<b class="an nx">圏外</b>'}</span>`;}).join("")}
+        <span class="pill ${st[1]}" style="margin-left:4px">語られ方：${st[0]}</span>
+        <span class="pill p-nv">出現率 ${Math.round((sv.mention_rate||0)*100)}%</span></div>
+      <div class="ansbox">${hlBrands(sv.answer)}</div>`;
+  };
+  const trendCell=r=>{
+    const t=(r.trend||{})[P==="mom"?"wow":P];
+    if(!t) return '<span class="fl">—</span>';
+    const parts=[];
+    if(t.rank_delta!=null&&t.rank_delta!==0)
+      parts.push(`<span class="trd ${t.rank_delta>0?'up':'dn'}">${t.rank_delta>0?"▲":"▼"}${Math.abs(t.rank_delta)}位</span>`);
+    else if(t.prev_best!=null) parts.push('<span class="trd fl">±0</span>');
+    if(t.cite_change==="gained") parts.push('<span class="pill p-ok">引用獲得</span>');
+    if(t.cite_change==="lost")   parts.push('<span class="pill p-ng">引用消失</span>');
+    return parts.join(" ")||'<span class="fl">—</span>';
+  };
+
+  window.__qfaq=`${[
+    ["このクエリはどうやって更新される？",`毎朝7:17に<b>全クエリを4つのAIへ自動実行</b>します。クエリ文そのものは固定です（変えると時系列が切れて前日比が出せなくなるため）。追加・入替は <code>prompts/core.yaml</code> を編集してpushすれば翌日から反映されます。<b>IDは絶対に振り直しません。</b>`],
+    ["なぜ${D.counts.prompts}本しかない？",`3階層で設計しているためです。<b>コア枠（日次・現在${D.counts.prompts}本）</b>は「毎日の変動を検知する」のが目的なので、少数を固定して回します。網羅性は<b>戦略枠（週次・${tiers.strategic?tiers.strategic.max_prompts:200}本）</b>と<b>ロングテール枠（月次・${tiers.longtail?tiers.longtail.max_prompts:3000}本）</b>が担当します。`],
+    ["もっと多い方がよくない？",`網羅性は上がりますが、コストとノイズが線形に増えます。LLMは非決定的なので<b>1本を${tiers.core?tiers.core.runs:3}回実行して中央値を取っており</b>、現在すでに ${D.counts.prompts}本 × ${(D.surfaces||[]).length}面 × ${tiers.core?tiers.core.runs:3}回 = <b>${num(D.counts.responses)}回/日</b>のAI実行をしています。日次で意味のある変動検知ができる上限は<b>コア100本前後</b>です。`],
+    ["トレンドや新しい話題は拾える？",`2経路で拾います。①<b>fan-out還流</b>：AIが回答を作るとき内部で投げた派生クエリを回収し、次サイクルの母集団に戻す。②<b>月次のロングテール枠</b>：知恵袋・Google関連する質問・サジェストを再収穫し、伸びているものをコア枠へ昇格。季節性（雪道・車中泊・帰省など）はこの経路で自動的に入ってきます。`],
+    ["なぜクエリが中核なのか",`GEOスコアも、SNS別評価も、被引用ページも、すべて<b>「このクエリ一覧をAIに投げた結果」から計算されています</b>。クエリが実態とズレていれば、他のすべての数字がズレます。逆にここさえ正しければ、残りは自動で正しくなります。`],
+  ].map(([q,a])=>`<div style="margin-bottom:16px"><div style="font-size:13px;font-weight:800;color:var(--tx);margin-bottom:5px">${q}</div><div style="font-size:12.5px;color:var(--tx2);line-height:1.85">${a}</div></div>`).join("")}`;
+  return `<h2 class="sec"><span class="bar"></span>クエリ
+    <span class="hbtn" onclick="openModal('<span class=\'qm\' style=\'width:18px;height:18px;font-size:12px\'>?</span> クエリ設計のFAQ',window.__qfaq)"><span class="qm">?</span>クエリ設計のFAQ</span>
+    <span class="note">全スコアの入力になる中核データ</span></h2>
+
+  <h3 class="sub">クエリはどこから持ってきているか</h3>
+  <div class="card" style="padding:14px 18px;margin-bottom:14px">
+    <div class="bars">${srcs.map((x,i)=>{
+      const mx=Math.max(...srcs.map(y=>y.n),1);
+      return `<div class="row"><span class="lb">${esc(x.label)}</span>
+        <span class="tr"><span class="fi" style="width:${x.n/mx*100}%;background:${PAL[i%PAL.length]}"></span></span>
+        <span class="va">${x.n}本</span></div>`;}).join("")}</div>
+    <div class="src"><b>Yahoo!知恵袋</b>＝実際に人が書いた質問文をそのまま整形したもの（最も実態に近い）。
+    <b>Google関連する質問</b>＝検索結果に出る疑問文。<b>LLM fan-out</b>＝AIに聞き方の派生を作らせたもの（穴埋め用）。
+    <b>SEOトピック輸入</b>＝既存のSEOキーワードから起こしたもの。</div>
   </div>
-  <div class="chips">${cats.map(c=>`<span class="chip ${c===catF?'on':''}" data-c="${c}">${c==="all"?"すべて":CATJ[c]||c}</span>`).join("")}</div>
+
+  <div class="g4" style="margin-bottom:12px">
+    <div class="kpi"><div class="l">追跡クエリ（コア枠）</div><div class="v">${rows.length}</div><div class="d fl">毎日 ${num(D.counts.responses)}回のAI実行</div></div>
+    <div class="kpi own"><div class="l">自社ページが引用されたクエリ</div><div class="v">${nCited}<small> / ${rows.length}</small></div><div class="d fl">${rows.length?(nCited/rows.length*100).toFixed(0):0}%</div></div>
+    <div class="kpi ok"><div class="l">1位で出現</div><div class="v">${rows.filter(r=>r.best_rank===1).length}</div><div class="d fl">最初に名前が挙がった本数</div></div>
+    <div class="kpi warn"><div class="l">自社ページが1つも引かれない</div><div class="v">${rows.length-nCited}</div><div class="d dn">コンテンツ制作の優先リスト</div></div>
+  </div>
+
+  <div class="chips">${cats.map(cc=>`<span class="chip ${cc===catF?'on':''}" data-c="${cc}">${cc==="all"?"すべて":CATJ[cc]||cc}</span>`).join("")}</div>
+
+  <div class="hdlg">
+    <span><b>ChatGPT / AIによる概要 / AIモード / Gemini</b>＝そのAIの回答で自社が何番目に出たか（1が最良、—は登場せず）</span>
+    <span><b>最良</b>＝4つのうち一番良かった順位</span>
+    <span><b>${PJ[P]}</b>＝順位の変化と、自社ページ引用の獲得／消失</span>
+    <span><b>引用された自社ページ</b>＝AIが根拠として示した toyota.jp のURL</span>
+  </div>
+
+  <div class="qsearch">
+    <span class="qi">🔍</span>
+    <input id="qq" placeholder="クエリを絞り込む（例：ミニバン／燃費／知恵袋）" autocomplete="off">
+    <span class="qn"><b id="qcount">${rows.length}</b> / ${rows.length}本</span>
+    <span class="qn"><kbd>/</kbd> で入力へ　<kbd>行クリック</kbd>で回答例</span>
+  </div>
   <div class="tw"><table id="qt">
-    <thead><tr><th style="width:22px"></th><th class="s" data-k="text">クエリ</th><th style="width:74px">カテゴリ</th>
-      ${sfs.map(s=>`<th class="c" style="width:52px">${esc((D.surfaces.find(x=>x.id===s)||{}).label||s)}</th>`).join("")}
-      <th class="s c" data-k="best_rank" style="width:52px">最良</th>
-      <th style="width:270px">引用された自社ページ</th>
-      <th style="width:132px">引用SNS</th></tr></thead>
+    <thead><tr><th style="width:22px"></th><th class="s" data-k="text">クエリ（AIに投げている実際の文）</th>
+      <th style="width:72px">テーマ</th><th style="width:88px">出所</th>
+      ${sfs.map(x=>`<th class="c" style="width:52px">${esc((D.surfaces.find(y=>y.id===x)||{}).label||x)}</th>`).join("")}
+      <th class="s c" data-k="best_rank" style="width:48px">最良</th>
+      <th class="c" style="width:104px">${PJ[P]}</th>
+      <th style="width:250px">引用された自社ページ</th>
+      <th style="width:120px">引用SNS</th></tr></thead>
     <tbody>${rows.map(r=>{
       const op=r.own_pages||[], ap=r.affiliated_pages||[], open=openQ.has(r.id);
       const opCell = op.length
-        ? `<div>${op.slice(0,2).map(c=>`<div class="ownp"><a href="${esc(c.url)}" target="_blank" rel="noopener">${esc(c.path)}</a>
-             <span class="ownt">${esc(c.title||"")}</span></div>`).join("")}
+        ? `<div>${op.slice(0,2).map(cc=>`<div class="ownp"><a href="${esc(cc.url)}" target="_blank" rel="noopener">${esc(cc.path)}</a>
+             <span class="ownt">${esc(cc.title||"")}</span></div>`).join("")}
            ${op.length>2?`<span class="tag">＋${op.length-2}ページ</span>`:""}</div>`
         : (ap.length
             ? `<span class="pill p-am">グループのみ</span> <span class="ownt">${esc(ap[0].host)}</span>`
             : '<span class="pill p-ng">なし</span>');
-      return `<tr class="qrow" data-q="${esc(r.id)}">
-        <td class="c" style="color:#94A3B8">${open?"▾":"▸"}</td>
-        <td style="max-width:360px">${esc(r.text).slice(0,80)}${r.text.length>80?"…":""}
-          ${r.brand_query?'<span class="tag">指名</span>':''}</td>
+      const hay=(r.text+" "+(r.driver_label||"")+" "+(CATJ[r.category]||"")+" "+(SRCJ[r.source]||"")).toLowerCase();
+      return `<tr class="qrow" data-q="${attr(r.id)}" data-t="${attr(hay)}">
+        <td class="c" style="color:var(--sub)">${open?"▾":"▸"}</td>
+        <td><div class="qtext">${esc(r.text)}</div>
+          ${r.brand_query?'<span class="tag">ブランド指名</span>':'<span class="tag">一般クエリ</span>'}
+          <span class="tag">${esc(r.driver_label||"")}</span></td>
         <td><span class="pill p-nv">${CATJ[r.category]||r.category}</span></td>
-        ${sfs.map(s=>`<td class="c">${rk(r.surfaces[s]?.rank)}</td>`).join("")}
+        <td style="font-size:10.5px;color:var(--sub)">${esc(SRCJ[r.source]||r.source)}</td>
+        ${sfs.map(x=>`<td class="c">${rk(r.surfaces[x]?.rank)}</td>`).join("")}
         <td class="c"><b>${r.best_rank??"—"}</b></td>
+        <td class="c">${trendCell(r)}</td>
         <td>${opCell}</td>
-        <td style="font-size:11px">${(r.platforms||[]).map(p=>`<span class="tag">${esc((D.platforms.find(x=>x.id===p)||{}).label||p)}</span>`).join("")||'<span class="fl">—</span>'}</td>
-      </tr>` + (open?`<tr class="qdet"><td colspan="${5+sfs.length+1}">
+        <td style="font-size:11px">${(r.platforms||[]).map(x=>`<span class="tag">${esc((D.platforms.find(y=>y.id===x)||{}).label||x)}</span>`).join("")||'<span class="fl">—</span>'}</td>
+      </tr>` + (open?`<tr class="qdet"><td colspan="${7+sfs.length+1}">
         <div class="detwrap">
-          <div class="dettitle">このクエリの回答で引用された全URL（${r.n_citations}件）</div>
+          ${ansBlock(r)}
+          <div class="dettitle" style="margin-top:13px">このクエリの回答で引用された全URL（${r.n_citations}件）</div>
           ${citeList(r.citations)}
           ${r.negatives.length?`<div class="dettitle" style="margin-top:12px">検出されたネガ要因</div>
             <div>${r.negatives.map(n=>`<span class="pill p-ng" style="margin-right:5px">${esc(n)}</span>`).join("")}</div>`:""}
         </div></td></tr>`:"");
     }).join("")}</tbody></table></div>
-  <div class="src">順位は同一プロンプトを複数回実行した中央値。URLは実際に回答へ添えられた引用（annotations）そのもので、どのサーフェスで引かれたかをタグで示しています。</div>`;
+  <div class="src">順位は同一プロンプトを${tiers.core?tiers.core.runs:3}回実行した中央値です。URLは実際に回答へ添えられた引用（annotations）そのもので、どのAIで引かれたかをタグで示しています。</div>`;
 }
 
 function pagePages(){
@@ -484,7 +1022,7 @@ function pagePages(){
     <tbody>${uncited.map(q=>`<tr>
       <td style="max-width:360px">${esc(q.text).slice(0,74)}${q.text.length>74?"…":""}</td>
       <td><span class="pill p-nv">${CATJ[q.category]||q.category}</span></td>
-      <td style="font-size:11.5px;color:#475569">${esc(q.driver_label||"")}</td>
+      <td style="font-size:11.5px;color:var(--sub)">${esc(q.driver_label||"")}</td>
       <td class="c">${q.best_rank??"—"}</td>
       <td style="font-size:11px">${(q.citations||[]).slice(0,3).map(c=>`<div class="qmini"><span class="pill ${(BK[c.bucket]||["","p-nv"])[1]}" style="font-size:9.5px">${(BK[c.bucket]||["その他"])[0]}</span><span>${esc(c.host)}</span></div>`).join("")||'<span class="fl">—</span>'}</td>
     </tr>`).join("")}</tbody></table></div>
@@ -498,26 +1036,52 @@ function pageCompete(){
   const names=bs.map(b=>b.label);
   const cell=v=>{const t=Math.max(...dr.flatMap(d=>Object.values(d.counts)),1);
     const q=v==null?0:Math.ceil(v/t*5); return `h h${v?Math.min(q,5):0}`;};
-  return `<h2 class="sec"><span class="bar"></span>ブランド別 相対シェア</h2>
+  const cause=d=>{
+    if(d.gap<=0) return "自社が首位。この軸は防衛に回す";
+    const lead=d.leader, g=d.gap;
+    if(g>=15) return `${lead}が${d.leader_n}回に対し自社${d.own}回。<b>この軸ではAIが自社をほぼ想起していません</b>。一次情報・第三者評価・具体事例のいずれも足りていないのが原因`;
+    if(g>=8)  return `${lead}に${g}回差。自社の主張はあるが<b>AIが引用できる形（数値・比較表・第三者データ）になっていない</b>可能性が高い`;
+    if(g>=4)  return `${lead}に${g}回差。<b>言及はされるが主役になれていない</b>。この軸を主題にしたページが不足`;
+    return `${lead}と${g}回差。ほぼ拮抗。あと一押しで首位を取れる領域`;
+  };
+  return `<h2 class="sec"><span class="bar"></span>ブランド別 相対シェア<span class="note">回答に登場した回数のシェア</span></h2>
+  <div class="why"><b>相対シェアとは：</b>同じ${D.counts.prompts}本のクエリに対する回答の中で、各ブランドが何回登場したかの構成比です。
+  5社均等なら20%。<b>この数字が高い＝AIの「候補リスト」に常連として入っている</b>ことを意味します。</div>
   <div class="card"><div class="bars">${bs.map(b=>`<div class="row">
-    <span class="lb ${b.id===D.site.own_id||b.label==="Toyota"?"me":""}">${esc(b.label)}</span>
+    <span class="lb ${b.label==="Toyota"?"me":""}">${esc(b.label)}</span>
     <span class="tr"><span class="fi ${b.label==="Toyota"?"me":""}" style="width:${b.sov/mx*100}%"></span></span>
-    <span class="va">${b.sov.toFixed(1)}%（${b.mentions}）</span></div>`).join("")}</div></div>
+    <span class="va">${b.sov.toFixed(1)}%（${b.mentions}回）</span></div>`).join("")}</div></div>
 
-  <h2 class="sec"><span class="bar"></span>判断軸別の言及ギャップ<span class="note">priority: high は実測で負けている軸</span></h2>
-  <div class="card"><table class="hm">
-    <thead><tr><th style="width:170px">判断軸</th><th class="c" style="width:56px">優先</th>
-      ${names.map(n=>`<th class="c">${esc(n)}</th>`).join("")}
-      <th class="c" style="width:70px">首位差</th></tr></thead>
-    <tbody>${dr.map(d=>`<tr${d.priority==="high"?' style="background:#FFF6F6"':''}>
+  <h2 class="sec"><span class="bar"></span>直接対決<span class="note">自社 vs 各社</span></h2>
+  <div class="vsg">${(()=>{const me=bs.find(x=>x.label==="Toyota")||bs[0];
+    const dmap={}; (D.drivers||[]).forEach(x=>dmap[x.label]=x.counts);
+    const sum=(n,keys)=>keys.reduce((t,k)=>t+((dmap[k]||{})[n]||0),0);
+    const hi=["安全技術","都市の取り回し","運転支援の快適性"];
+    return bs.filter(x=>x!==me).map(o=>vsPanel(me,o,[
+      {label:"相対シェア",a:+me.sov.toFixed(1),b:+o.sov.toFixed(1),fmt:v=>v+"%"},
+      {label:"言及回数",a:me.mentions,b:o.mentions},
+      {label:"重点3軸の言及",a:sum(me.label,hi),b:sum(o.label,hi)},
+    ])).join("");})()}</div>
+
+  <h2 class="sec"><span class="bar"></span>判断軸別の言及ギャップ<span class="note">数字＝AI回答内でその軸に触れられた回数</span></h2>
+  <div class="why"><b>判断軸とは：</b>AIが車を薦めるときに使う「理由」の種類です（安全技術、燃費、リセール…）。
+  各ブランドがどの理由で語られているかを数え、<b>自社が語られていない理由＝コンテンツの空白</b>として可視化しています。
+  <b>優先度 high</b> は、実測で自社が明確に負けている軸です。</div>
+  <div class="card"><div class="tw" style="max-height:none;border:0"><table class="hm">
+    <thead><tr><th style="width:160px">判断軸</th><th class="c" style="width:52px">優先度</th>
+      ${names.map(n=>`<th class="c${n==="Toyota"?" meco":""}" style="width:64px">${esc(n)}</th>`).join("")}
+      <th class="c" style="width:64px">首位差</th><th>首位差の原因と打ち手</th></tr></thead>
+    <tbody>${dr.map(d=>`<tr${d.priority==="high"?' style="background:color-mix(in srgb,var(--warn) 9%,transparent)"':''}>
       <td><b>${esc(d.label)}</b></td>
       <td class="c"><span class="pill ${d.priority==="high"?"p-ng":d.priority==="mid"?"p-am":"p-nv"}">${d.priority}</span></td>
-      ${names.map(n=>`<td class="${cell(d.counts[n])}">${d.counts[n]??"—"}</td>`).join("")}
+      ${names.map(n=>`<td class="${cell(d.counts[n])}${n==="Toyota"?" meco":""}">${d.counts[n]??"—"}</td>`).join("")}
       <td class="c">${d.gap>0?`<span class="dn" style="font-weight:700">-${d.gap}</span>`:'<span class="up" style="font-weight:700">首位</span>'}</td>
-    </tr>`).join("")}</tbody></table>
-    <div class="note ng" style="margin-bottom:0">優先度 high の軸は、コアプロンプトに必ず含めてコンテンツ施策の効果を直接測る設計にしてあります（<code>config/brands.yaml</code> の drivers で変更可）。</div></div>
+      <td style="font-size:11.5px;color:var(--sub);line-height:1.6">${cause(d)}</td>
+    </tr>`).join("")}</tbody></table></div>
+    <div class="note ng" style="margin-bottom:0">優先度 high の軸は必ずコアクエリに含める設計にしてあります（<code>config/brands.yaml</code> の drivers で変更可）。施策を打った翌週に、この表の数字が動いたかで効果を判定します。</div></div>
 
-  <h2 class="sec"><span class="bar"></span>ネガティブ要因の出現</h2>
+  <h2 class="sec"><span class="bar"></span>ネガティブ要因の出現<span class="note">自社に触れた文の中で否定的に語られた論点</span></h2>
+  <div class="why">AIが自社を説明するときに繰り返す「ただし〜」の中身です。<b>件数が増えている論点＝そのネガが定着しつつある</b>サインなので、反証となる一次情報を出す優先度が上がります。</div>
   <div class="card"><div class="bars">${(()=>{const e=Object.entries(D.negative_drivers||{}).sort((a,b)=>b[1]-a[1]);
     if(!e.length) return '<div class="fl">本日は検出なし</div>';
     const m=Math.max(...e.map(x=>x[1]),1);
@@ -556,7 +1120,7 @@ function pageSignals(){
     <div class="card"><h3 class="sub" style="margin-top:0">サービス別セッション</h3>
       <div class="bars">${Object.entries(ga).sort((a,b)=>b[1]-a[1]).map(([k,v],i)=>
         `<div class="row"><span class="lb">${k}</span><span class="tr"><span class="fi" style="width:${v/mxg*100}%;background:${PAL[i%PAL.length]}"></span></span><span class="va">${num(v)}</span></div>`).join("")}</div>
-      ${lineChart(D.history,["ai_sessions"],["#00A99D"],150)}</div>
+      ${lineChart(D.history,["ai_sessions"],["#00A99D"],150,["AI経由セッション"])}</div>
     <div class="card"><h3 class="sub" style="margin-top:0">AIボット別ヒット数</h3>
       <div class="tw" style="max-height:300px"><table>
       <thead><tr><th>ボット</th><th class="c" style="width:96px">役割</th><th class="n" style="width:76px">ヒット</th><th style="width:90px"></th></tr></thead>
@@ -583,14 +1147,102 @@ function pageAlerts(){
 
 const PAGES={overview:pageOverview,sns:pageSns,queries:pageQueries,pages:pagePages,compete:pageCompete,sources:pageSources,signals:pageSignals,alerts:pageAlerts};
 let cur="overview";
+function animateBars(root){
+  root.querySelectorAll(".bars .fi,.mini i").forEach(el=>{
+    const w=el.style.width; if(!w) return;
+    el.style.transition="none"; el.style.width="0%";
+    requestAnimationFrame(()=>requestAnimationFrame(()=>{
+      el.style.transition="width .85s var(--ease)"; el.style.width=w;}));});
+}
+function countUp(root){
+  root.querySelectorAll("[data-count]").forEach(el=>{
+    const raw=el.dataset.count, to=parseFloat(raw);
+    if(isNaN(to)) return;
+    const dec=(raw.split(".")[1]||"").length; let t0=null;
+    function step(ts){ if(!t0)t0=ts; const k=Math.min((ts-t0)/850,1);
+      const e=1-Math.pow(1-k,3); el.textContent=(to*e).toFixed(dec);
+      if(k<1)requestAnimationFrame(step); }
+    requestAnimationFrame(step);});
+}
+function reveal(root){
+  const io=new IntersectionObserver(es=>es.forEach(e=>{
+    if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target);}}),
+    {threshold:.05,rootMargin:"0px 0px -40px 0px"});
+  const els=[...root.querySelectorAll(".card,.tw,.why,.faq,.defs,h2.sec")];
+  els.forEach((el,i)=>{el.classList.add("rv"); el.style.transitionDelay=Math.min(i,6)*35+"ms"; io.observe(el);});
+  // 保険：1.2秒後に未表示のものは強制的に出す（印刷・スクショ・短いページ対策）
+  setTimeout(()=>els.forEach(el=>el.classList.add("in")),1200);
+}
+function bindCharts(root){
+  const tip=document.getElementById("tip");
+  root.querySelectorAll("svg.lchart").forEach(svg=>{
+    let pts,labels,colors;
+    try{pts=JSON.parse(svg.dataset.pts);labels=JSON.parse(svg.dataset.labels);colors=JSON.parse(svg.dataset.colors);}
+    catch(e){return;}
+    if(!pts||!pts.length) return;
+    const cur=svg.querySelector(".cursor"), dot=svg.querySelector(".hoverdot");
+    svg.addEventListener("mousemove",ev=>{
+      const r=svg.getBoundingClientRect(), x=(ev.clientX-r.left)/r.width*640;
+      let best=pts[0],bd=1e9;
+      pts.forEach(pp=>{const dd=Math.abs(pp.x-x); if(dd<bd){bd=dd;best=pp;}});
+      cur.setAttribute("x1",best.x); cur.setAttribute("x2",best.x); cur.style.opacity=".9";
+      dot.setAttribute("cx",best.x); dot.setAttribute("cy",best.y); dot.style.opacity="1";
+      const idx=pts.indexOf(best), prev=pts[idx-1];
+      let html=`<b>${best.d}</b>`;
+      best.vals.forEach((v,i)=>{ if(v==null) return;
+        html+=`<br><span style="color:${colors[i]}">■</span> ${labels[i]||""} <b>${(+v).toFixed(1)}</b>`;
+        if(i===0&&prev&&prev.vals[0]!=null){const dd=v-prev.vals[0];
+          html+=` <span style="color:${dd>=0?'#7FE0B6':'#F4A3A3'}">(${dd>=0?"+":""}${dd.toFixed(2)})</span>`;}});
+      tip.innerHTML=html; tip.style.opacity="1";
+      const tw=tip.offsetWidth||180;
+      tip.style.left=Math.min(ev.clientX+14,window.innerWidth-tw-12)+"px";
+      tip.style.top=(ev.clientY-12)+"px";
+    });
+    svg.addEventListener("mouseleave",()=>{
+      tip.style.opacity="0"; cur.style.opacity="0"; dot.style.opacity="0";});
+  });
+}
 function render(){
-  document.getElementById("root").innerHTML=`<div class="page on">${PAGES[cur]()}</div>`;
+  const root=document.getElementById("root");
+  root.innerHTML=`<div class="page on">${PAGES[cur]()}</div>`;
   document.querySelectorAll("#qt th.s").forEach(th=>th.onclick=()=>{
     if(sortK===th.dataset.k)sortDir*=-1;else{sortK=th.dataset.k;sortDir=1;}render();});
   document.querySelectorAll(".chip[data-c]").forEach(ch=>ch.onclick=()=>{catF=ch.dataset.c;render();});
   document.querySelectorAll("tr.qrow").forEach(tr=>tr.onclick=e=>{
-    if(e.target.closest("a"))return;
+    if(e.target.closest("a")||e.target.closest(".cp"))return;
     const id=tr.dataset.q; openQ.has(id)?openQ.delete(id):openQ.add(id); render();});
+  // 回答例のサーフェス切替（表を再描画せず本文だけ差し替える）
+  root.querySelectorAll(".atab").forEach(el=>el.onclick=e=>{
+    e.stopPropagation(); ansSf[el.dataset.aq]=el.dataset.as; render();});
+  // 引用URLのコピー
+  root.querySelectorAll(".cp").forEach(el=>el.onclick=e=>{
+    e.stopPropagation();
+    navigator.clipboard.writeText(el.dataset.u)
+      .then(()=>toast(`<b>URLをコピーしました</b><br><span style="color:var(--sub)">${esc(el.dataset.u).slice(0,70)}</span>`,2600))
+      .catch(()=>toast("コピーできませんでした",2200));});
+  // 概要のテーマ行 → そのテーマで絞ったクエリ一覧へ
+  root.querySelectorAll("tr.catrow").forEach(tr=>tr.onclick=()=>{
+    catF=tr.dataset.c; qFilter="";
+    document.querySelector('.side .nav[data-p="queries"]').click();
+    toast(`<b>${esc(tr.querySelector("b").textContent)}</b> で絞り込みました`,2600);});
+  // クエリの絞り込み（再描画せずDOMで出し分け → 入力フォーカスが飛ばない）
+  const qq=document.getElementById("qq");
+  if(qq){ qq.value=qFilter;
+    qq.oninput=()=>{qFilter=qq.value; applyQFilter();};
+    applyQFilter(); }
+  animateBars(root); countUp(root); reveal(root); bindCharts(root); foldWhy(root);
+}
+function applyQFilter(){
+  const v=(qFilter||"").trim().toLowerCase();
+  let n=0;
+  document.querySelectorAll("#qt tbody tr.qrow").forEach(tr=>{
+    const ok=!v||(tr.dataset.t||"").includes(v);
+    tr.style.display=ok?"":"none";
+    const nx=tr.nextElementSibling;
+    if(nx&&nx.classList.contains("qdet")) nx.style.display=ok?"":"none";
+    if(ok)n++;
+  });
+  const c=document.getElementById("qcount"); if(c)c.textContent=n;
 }
 document.querySelectorAll(".side .nav").forEach(a=>a.onclick=()=>{
   document.querySelectorAll(".side .nav").forEach(n=>n.classList.remove("on"));
@@ -599,13 +1251,148 @@ document.querySelectorAll("#segPeriod button").forEach(b=>b.onclick=()=>{
   document.querySelectorAll("#segPeriod button").forEach(x=>x.classList.remove("on"));
   b.classList.add("on");P=b.dataset.v;render();});
 
+/* ===== テーマ切替（メモリ保持） ===== */
+let theme="dark";
+document.getElementById("themeBtn").onclick=()=>{
+  theme=theme==="dark"?"light":"dark";
+  document.documentElement.setAttribute("data-theme",theme);
+  render();
+};
+
+/* ===== モーダル ===== */
+function openModal(title,html){
+  document.getElementById("modalttl").innerHTML=title;
+  document.getElementById("modalbd").innerHTML=html;
+  document.getElementById("modal").classList.add("on");
+}
+function closeModal(){document.getElementById("modal").classList.remove("on");}
+document.getElementById("modalx").onclick=closeModal;
+document.getElementById("modal").onclick=e=>{if(e.target.id==="modal")closeModal();};
+
+function openScoreHelp(){
+  const FK=Object.keys(D.weights);
+  const body=`
+  <div class="why op" style="cursor:default"><div class="wt">GEOスコアとは<span class="ar"></span></div>
+    <div class="wb" style="max-height:none;opacity:1">生成AIの回答の中で、自社ブランドがどれだけ「使われているか」を100点満点で表した指標です。
+    毎日 <b>${D.counts.prompts}本のクエリ × ${(D.surfaces||[]).length}つのAI × ${(D.prompt_tiers&&D.prompt_tiers.core?D.prompt_tiers.core.runs:3)}回</b> を実行し、
+    その全回答を機械判定した結果から算出しています。<b>単一の数字に丸めず6つの因数に分解</b>してあるため、
+    落ちたときに「何をすればいいか」が一意に決まります。</div></div>
+
+  <div style="background:#060A10;border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:14px 0;
+    font-family:ui-monospace,Menlo,monospace;font-size:12px;color:#D6E6F5;line-height:1.9">
+    GEO_SCORE =
+    ${FK.map(k=>`<br>&nbsp;&nbsp;+ <span style="color:#7FD3E8">${FJ_PLAIN[k].replace("（SNS）","")}</span> × ${D.weights[k]} / 100`).join("")}
+    <br><span style="color:#7FA6C6">// 合計 100点満点</span>
+  </div>
+
+  <table style="margin-top:6px"><thead><tr>
+    <th style="width:132px">因数</th><th class="c" style="width:56px">重み</th><th class="c" style="width:62px">現在値</th>
+    <th style="width:230px">何を測っているか</th><th>落ちたときの打ち手</th></tr></thead>
+  <tbody>${FK.map(k=>`<tr>
+    <td><b style="color:var(--tx)">${FJ_PLAIN[k]}</b></td>
+    <td class="c">${D.weights[k]}点</td>
+    <td class="c"><b>${f1(D.factors[k])}</b></td>
+    <td style="font-size:11.5px;color:var(--sub)">${esc((FDESC[k]||["",""])[0])}</td>
+    <td style="font-size:11.5px;color:var(--tx2)">${esc((FDESC[k]||["",""])[1])}</td></tr>`).join("")}
+  </tbody></table>
+
+  <h3 class="sub" style="margin-top:22px">ティア判定</h3>
+  <div style="display:flex;gap:14px;flex-wrap:wrap;align-items:center">
+    ${[["s","85〜100"],["a","70〜84"],["b","55〜69"],["c","40〜54"],["d","0〜39"]].map(([k,r])=>{
+      const t={s:"ELITE",a:"STRONG",b:"STABLE",c:"WEAK",d:"CRITICAL"}[k];
+      return `<div style="display:flex;flex-direction:column;align-items:center;gap:6px">
+        <div class="tier ${k}"><div class="tg">${k.toUpperCase()}</div><div class="tl">${t}</div></div>
+        <span style="font-size:10.5px;color:var(--sub)">${r}</span></div>`;}).join("")}
+  </div>
+
+  <h3 class="sub" style="margin-top:22px">差分（前日比 / 先週比 / 先月比）の扱い</h3>
+  <div class="why op" style="cursor:default"><div class="wt">なぜ生の前日比を使わないのか<span class="ar"></span></div>
+    <div class="wb" style="max-height:none;opacity:1">
+    LLMは非決定的で、<b>同じ質問を同じAIに投げても答えが変わります</b>（モデル間の不一致率は5割超）。
+    そのため生の前日比はノイズが支配的になります。本ボードは3段構えで処理しています。<br><br>
+    ① 1クエリを複数回実行して<b>中央値</b>をその日の値にする<br>
+    ② 表示する差分は<b>7日移動中央値どうしの差</b><br>
+    ③ 過去30日の日次標準偏差から<b>±2σ以内は「誤差の範囲」</b>としてグレー表示（色を付けない）<br><br>
+    <b>グレーの数字は「動いたように見えるだけ ＝ 実質横ばい」</b>という意味です。色が付いたときだけ反応してください。</div></div>
+
+  <div class="note" style="margin-bottom:0">重みは <code>config/settings.yaml</code> の <code>score_weights</code> で変更できます。
+  事業として何を重視するかが変われば、この配点を変えるのが正しい対応です。</div>`;
+  openModal('<span class="qm" style="width:18px;height:18px;font-size:12px">?</span> スコアの読み方',body);
+}
+
+/* ===== 説明ブロックの折りたたみ ===== */
+function foldWhy(root){
+  root.querySelectorAll(".why").forEach(el=>{
+    if(el.dataset.done)return; el.dataset.done="1";
+    if(el.style.cursor==="default")return;
+    const html=el.innerHTML;
+    const m=html.match(/^\s*<b>([^<]{2,40})<\/b>/);
+    const title=m?m[1].replace(/[:：]$/,""):"この画面の見方";
+    el.innerHTML=`<div class="wt"><span class="qm" style="width:15px;height:15px;font-size:10px">?</span>${esc(title)}<span class="ar">▼</span></div><div class="wb">${html}</div>`;
+    el.onclick=()=>el.classList.toggle("op");
+  });
+}
+
+/* ===== コマンドパレット（⌘K / Ctrl+K） ===== */
+const pal=document.getElementById("pal"),palin=document.getElementById("palin"),pallist=document.getElementById("pallist");
+let palItems=[],palSel=0;
+function buildPalItems(){
+  const navs=[...document.querySelectorAll(".side .nav")].map(a=>({
+    t:a.textContent.replace("核","").trim(), k:"ページ", go:()=>a.click()}));
+  const qs=(D?.queries||[]).slice(0,400).map(q=>({
+    t:q.text, k:"クエリ", go:()=>{
+      document.querySelector('.side .nav[data-p="queries"]').click();
+      openQ.add(q.id); render();
+      setTimeout(()=>{const el=document.querySelector(`tr.qrow[data-q="${q.id}"]`);
+        if(el)el.scrollIntoView({block:"center",behavior:"smooth"});},120);}}));
+  const ps=(D?.owned_pages||[]).map(o=>({t:o.path+"  "+(o.title||""),k:"自社ページ",
+    go:()=>document.querySelector('.side .nav[data-p="pages"]').click()}));
+  return [...navs,...qs,...ps];
+}
+function renderPal(q){
+  const all=palItems.filter(i=>!q||i.t.toLowerCase().includes(q.toLowerCase())).slice(0,40);
+  palSel=Math.min(palSel,Math.max(all.length-1,0));
+  pallist.innerHTML=all.map((i,n)=>`<div class="pitem ${n===palSel?'sel':''}" data-n="${n}">
+    <span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${esc(i.t).slice(0,110)}</span>
+    <span class="pk">${i.k}</span></div>`).join("")||'<div class="pitem">該当なし</div>';
+  pallist.querySelectorAll(".pitem[data-n]").forEach(el=>el.onclick=()=>{closePal();all[+el.dataset.n].go();});
+  pal._cur=all;
+}
+function openPal(){palItems=buildPalItems();pal.classList.add("on");palin.value="";palSel=0;renderPal("");palin.focus();}
+function closePal(){pal.classList.remove("on");}
+document.getElementById("palBtn").onclick=openPal;
+pal.onclick=e=>{if(e.target===pal)closePal();};
+palin.oninput=()=>{palSel=0;renderPal(palin.value);};
+document.addEventListener("keydown",e=>{
+  const inField = /^(INPUT|TEXTAREA)$/.test((e.target||{}).tagName||"");
+  if(e.key==="Escape"){closeModal(); if(inField)e.target.blur();}
+  if(!inField && !pal.classList.contains("on") && !e.metaKey && !e.ctrlKey){
+    if(e.key==="/"){const q=document.getElementById("qq"); if(q){e.preventDefault();q.focus();q.select();return;}}
+    if(/^[1-8]$/.test(e.key)){
+      const navs=[...document.querySelectorAll(".side .nav")];
+      const t=navs[+e.key-1]; if(t){e.preventDefault();t.click();return;}
+    }
+  }
+  if((e.metaKey||e.ctrlKey)&&e.key.toLowerCase()==="k"){e.preventDefault();pal.classList.contains("on")?closePal():openPal();return;}
+  if(!pal.classList.contains("on"))return;
+  if(e.key==="Escape")closePal();
+  if(e.key==="ArrowDown"){e.preventDefault();palSel++;renderPal(palin.value);}
+  if(e.key==="ArrowUp"){e.preventDefault();palSel=Math.max(0,palSel-1);renderPal(palin.value);}
+  if(e.key==="Enter"){const c=pal._cur||[];if(c[palSel]){closePal();c[palSel].go();}}
+});
+
 fetch("data/latest.json?"+Date.now()).then(r=>r.json()).then(d=>{
   D=d;
   document.getElementById("title").innerHTML=`${esc(d.site.target_domain)} <span style="font-weight:400;color:#64748B;font-size:13px">／ ${esc(d.site.market)}</span>`;
   document.getElementById("ownerTag").textContent=`GEO KPI · ${d.site.owner}`;
   document.getElementById("stamp").innerHTML=`データ日 <b>${d.generated_at}</b> ／ 蓄積 ${d.available_days}日`;
-  document.getElementById("foot").innerHTML=`更新 ${d.generated_at}<br>プロンプト ${d.counts.prompts} / 回答 ${num(d.counts.responses)}<br>自動生成（GitHub Actions）`;
+  document.getElementById("foot").innerHTML=`更新 ${d.generated_at}<br>プロンプト ${d.counts.prompts} / 回答 ${num(d.counts.responses)}<br>オウンドチーム内製<br>GitHub Actions で自動生成`;
   render();
+  const t=tierOf(d.score);
+  toast(`<b>データ更新</b> ${d.generated_at}<br><span style="color:var(--sub)">GEOスコア ${d.score.toFixed(1)}（${t.g}ティア）／ 蓄積 ${d.available_days}日</span>`);
+  const al=(d.comment&&d.comment.alerts||[]).filter(a=>a.severity==="high").length;
+  if(al) setTimeout(()=>toast(`<b style="color:var(--warn)">要対応 ${al}件</b><br><span style="color:var(--sub)">アラートタブを確認してください</span>`,6000),700);
+  setTimeout(()=>toast(`<b>⌘K</b> で全クエリを横断検索できます`,5000),1400);
 }).catch(e=>{document.getElementById("root").innerHTML=
   `<div class="card"><b>data/latest.json を読み込めませんでした。</b><br>
    <code>python src/run_daily.py --backfill 45</code> を実行してから、<code>python -m http.server</code> 等で配信してください。<br>

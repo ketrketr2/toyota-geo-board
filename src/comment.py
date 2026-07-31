@@ -27,11 +27,11 @@ def headline(day: str, diffs: dict) -> str:
         return f"GEOスコア {cur:.1f}。比較対象日のデータが無いため差分は算出していません。"
     if d["significant"] is False:
         return (f"GEOスコア {cur:.1f}（前日比 {_fmt(d['delta'])}pt）。"
-                f"日次のばらつき（±{2*(m['sigma'] or 0):.2f}pt）の範囲内で、"
-                f"有意な変化ではありません。")
+                f"日々のばらつき（±{2*(m['sigma'] or 0):.2f}pt）の内側なので、"
+                f"実質は横ばいです。")
     direction = "上昇" if d["delta"] > 0 else "低下"
     return (f"GEOスコア {cur:.1f}（前日比 {_fmt(d['delta'])}pt）。"
-            f"日次ばらつきを超える{direction}です。")
+            f"日々のばらつき（±{2*(m['sigma'] or 0):.2f}pt）を超える{direction}です。")
 
 
 def factor_lines(diffs: dict, period: str = "dod") -> list[str]:

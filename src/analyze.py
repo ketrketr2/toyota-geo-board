@@ -107,7 +107,7 @@ def aggregate(day: str, responses: list[dict], signals: dict) -> dict:
         cites = [dict(classify_url(c["url"]), url=c["url"], title=c.get("title", ""))
                  for c in r.get("citations", [])]
         per_run.append({**{k: r[k] for k in ("prompt_id", "surface", "run")},
-                        "judge": j, "citations": cites,
+                        "judge": j, "citations": cites, "text": r["text"],
                         "negatives": detect_negative_drivers(r["text"])})
 
     # ---- 2) プロンプト×サーフェス単位で中央値に畳む（サンプリングノイズ対策）----
@@ -140,6 +140,8 @@ def aggregate(day: str, responses: list[dict], signals: dict) -> dict:
                     cell["citations"].append(c)
             cell["negatives"] += x["negatives"]
         cell["negatives"] = sorted(set(cell["negatives"]))
+        # 回答例（run 0 の本文）。UIでクリック表示するため1本だけ保持する。
+        cell["answer"] = (runs[0].get("text") or "")[:900]
         cell["own_cited"] = any(c["bucket"] == "owned" for c in cell["citations"])
         cells.append(cell)
 

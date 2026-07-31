@@ -85,26 +85,28 @@ def fetch_serp_ai(prompt: str, surface: dict) -> dict:
 _OWNED_PAGES = {
     "safety": [("https://toyota.jp/safety/", "予防安全 | トヨタ自動車WEBサイト"),
                ("https://toyota.jp/safety/update/", "Toyota Safety Sense アップデート情報"),
-               ("https://toyota.jp/safety/scene/", "運転シーン別の安全機能")],
+               ("https://toyota.jp/harrier/", "ハリアー | トヨタ自動車WEBサイト")],
     "cost": [("https://toyota.jp/ucar/", "トヨタ認定中古車"),
-             ("https://toyota.jp/ucar/catalog/", "中古車カタログ｜車種から探す"),
-             ("https://toyota.jp/service/zankure/", "残価設定型プラン")],
-    "eco": [("https://toyota.jp/hybrid/", "ハイブリッドのしくみ"),
+             ("https://toyota.jp/aqua/", "アクア | トヨタ自動車WEBサイト"),
+             ("https://toyota.jp/raize/", "ライズ | トヨタ自動車WEBサイト")],
+    "eco": [("https://toyota.jp/prius/", "プリウス | トヨタ自動車WEBサイト"),
             ("https://toyota.jp/mirai/", "MIRAI | トヨタ自動車WEBサイト"),
-            ("https://toyota.jp/technology/electrification/", "電動化技術")],
-    "model": [("https://toyota.jp/carlineup/", "車種一覧｜トヨタ自動車WEBサイト"),
-              ("https://toyota.jp/noahvoxy/", "ノア／ヴォクシー"),
-              ("https://toyota.jp/sienta/", "シエンタ"),
-              ("https://toyota.jp/information/minivan/", "ミニバンナビ")],
-    "service": [("https://toyota.jp/after_service/", "アフターサービス"),
-                ("https://toyota.jp/service/maintenance/", "メンテナンスパスポート"),
-                ("https://toyota.jp/welcab/", "ウェルキャブ（福祉車両）")],
-    "purchase": [("https://toyota.jp/carlineup/", "車種一覧｜トヨタ自動車WEBサイト"),
-                 ("https://toyota.jp/request/", "カタログ請求・見積り"),
-                 ("https://toyota.jp/dealer/", "販売店を探す")],
-    "brand": [("https://toyota.jp/index.html", "トヨタ自動車WEBサイト"),
-              ("https://toyota.jp/carlineup/", "車種一覧｜トヨタ自動車WEBサイト"),
-              ("https://toyota.jp/kinto/", "KINTO（サブスク）")],
+            ("https://toyota.jp/aqua/", "アクア | トヨタ自動車WEBサイト")],
+    "model": [("https://toyota.jp/carlineup/", "車種一覧 | トヨタ自動車WEBサイト"),
+              ("https://toyota.jp/noah/", "ノア | トヨタ自動車WEBサイト"),
+              ("https://toyota.jp/voxy/", "ヴォクシー | トヨタ自動車WEBサイト"),
+              ("https://toyota.jp/sienta/", "シエンタ | トヨタ自動車WEBサイト"),
+              ("https://toyota.jp/information/minivan/", "ミニバンナビ | トヨタ自動車WEBサイト")],
+    "service": [("https://toyota.jp/after_service/", "アフターサービス | トヨタ自動車WEBサイト"),
+                ("https://toyota.jp/welcab/", "ウェルキャブ（福祉車両）"),
+                ("https://toyota.jp/ucar/", "トヨタ認定中古車")],
+    "purchase": [("https://toyota.jp/carlineup/", "車種一覧 | トヨタ自動車WEBサイト"),
+                 ("https://toyota.jp/alphard/", "アルファード | トヨタ自動車WEBサイト"),
+                 ("https://toyota.jp/corollacross/", "カローラ クロス | トヨタ自動車WEBサイト"),
+                 ("https://toyota.jp/yariscross/", "ヤリス クロス | トヨタ自動車WEBサイト")],
+    "brand": [("https://toyota.jp/", "トヨタ自動車WEBサイト"),
+              ("https://toyota.jp/carlineup/", "車種一覧 | トヨタ自動車WEBサイト"),
+              ("https://toyota.jp/crown/", "クラウン | トヨタ自動車WEBサイト")],
 }
 _DEMO_CITES = [
     ("https://www.youtube.com/watch?v={h}", "【徹底比較】おすすめミニバン3選"),
@@ -131,6 +133,7 @@ _BRAND_SENT = {
     "nissan": ["日産はe-POWERによる滑らかな走りと運転支援の快適性が強みです"],
     "subaru": ["スバルはアイサイトに代表される安全技術で高い評価を得ています"],
     "suzuki": ["スズキは価格と燃費のバランスに優れ、維持費を抑えたい層に向きます"],
+    "mazda": ["マツダは走行フィールと内装の質感で高い評価を受けています"],
 }
 
 
@@ -149,12 +152,12 @@ def demo_response(prompt_id: str, surface_id: str, day: str, run: int,
 
     # 実測SoV（honda .20 / nissan .17 / toyota .16 / subaru .10 / suzuki .09）に寄せた出現確率
     appear = {"toyota": 0.62 * drift, "honda": 0.74, "nissan": 0.66,
-              "subaru": 0.40, "suzuki": 0.36}
+              "subaru": 0.40, "suzuki": 0.36, "mazda": 0.31}
     picked = [b for b, p in appear.items() if rng.random() < p]
     rng.shuffle(picked)
     picked.sort(key=lambda b: -rng.random() * {"toyota": 1.55, "honda": 1.35,
                                                "nissan": 1.25, "subaru": 1.0,
-                                               "suzuki": 1.0}[b])
+                                               "suzuki": 1.0, "mazda": 0.95}[b])
 
     if not picked:
         text = "ご希望の条件だけでは絞り込みが難しいため、用途と予算を教えてください。"

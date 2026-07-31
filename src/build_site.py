@@ -4,6 +4,8 @@
 """
 from __future__ import annotations
 
+from collections import Counter, defaultdict
+
 from common import (DOCS, days_ago, list_snapshots, load, read_json,
                     snapshot_path, write_json)
 
@@ -52,10 +54,12 @@ def build_site(day: str) -> None:
             "category": c["category"], "driver": c["driver"],
             "driver_label": drivers.get(c["driver"], {}).get("label", c["driver"]),
             "brand_query": c["brand_query"], "surfaces": {},
+            "source": prompts.get(c["prompt_id"], {}).get("source", "-"),
             "own_cited": False, "platforms": set(), "negatives": set(),
             "_cites": {},          # url -> {…, surfaces:set}
         })
         r["surfaces"][c["surface"]] = {
+            "answer": c.get("answer", ""),
             "rank": c["brands"][own]["rank"],
             "mention_rate": c["brands"][own]["mention_rate"],
             "sentiment": c["brands"][own]["sentiment"],
@@ -109,6 +113,84 @@ def build_site(day: str) -> None:
                            "coverage": round(len(rks) / max(len(r["surfaces"]), 1) * 100)})
     query_rows.sort(key=lambda x: (x["best_rank"] is None, x["best_rank"] or 99))
 
+    # ---- クエリ単位の前日比 / 先週比（順位と自社引用の変化）----
+    from common import days_ago as _da
+    prev_maps = {}
+    for key, n in (("dod", 1), ("wow", 7)):
+        ps = read_json(snapshot_path(_da(day, n)))
+        if not ps:
+            continue
+        m = {}
+        for c in ps["cells"]:
+            e = m.setdefault(c["prompt_id"], {"ranks": [], "own_cited": False})
+            if c["brands"][own]["rank"]:
+                e["ranks"].append(c["brands"][own]["rank"])
+            e["own_cited"] = e["own_cited"] or c["own_cited"]
+        prev_maps[key] = m
+    for r in query_rows:
+        r["trend"] = {}
+        for key, m in prev_maps.items():
+            q = m.get(r["id"])
+            if not q:
+                r["trend"][key] = None
+                continue
+            pb = min(q["ranks"]) if q["ranks"] else None
+            r["trend"][key] = {
+                "prev_best": pb,
+                "rank_delta": (pb - r["best_rank"]) if (pb and r["best_rank"]) else None,
+                "was_cited": q["own_cited"],
+                "cite_change": ("gained" if r["own_cited"] and not q["own_cited"]
+                                else "lost" if q["own_cited"] and not r["own_cited"] else "same"),
+            }
+
+    # ---- カテゴリ別の傾向（概要用）----
+    # 出現率は「プロンプト×サーフェス」のセル単位で数える。
+    # プロンプト単位だと4サーフェスのどれかに出れば100%になり、飽和して意味を失うため。
+    def _cat_stats(cells):
+        agg = defaultdict(lambda: {"cells": 0, "mentioned": 0, "ranks": [], "cited": 0})
+        for c in cells:
+            a = agg[c["category"]]
+            a["cells"] += 1
+            if c["brands"][own]["mentioned"]:
+                a["mentioned"] += 1
+                if c["brands"][own]["rank"]:
+                    a["ranks"].append(c["brands"][own]["rank"])
+            if c["own_cited"]:
+                a["cited"] += 1
+        return agg
+
+    now_agg = _cat_stats(snap["cells"])
+    ps7 = read_json(snapshot_path(_da(day, 7)))
+    prev_agg = _cat_stats(ps7["cells"]) if ps7 else {}
+    qcount = Counter(r["category"] for r in query_rows)
+
+    CATJ = {"purchase": "購入検討", "model": "車種・スペック", "safety": "安全・運転支援",
+            "cost": "価格・維持費", "eco": "燃費・電動化", "service": "整備・アフター",
+            "brand": "ブランド指名"}
+    category_trend = []
+    for cid, a in now_agg.items():
+        rate = a["mentioned"] / a["cells"] * 100 if a["cells"] else 0
+        pv = prev_agg.get(cid)
+        prate = (pv["mentioned"] / pv["cells"] * 100) if pv and pv["cells"] else None
+        category_trend.append({
+            "id": cid, "label": CATJ.get(cid, cid), "queries": qcount.get(cid, 0),
+            "presence": round(rate, 1),
+            "presence_prev": round(prate, 1) if prate is not None else None,
+            "delta": round(rate - prate, 1) if prate is not None else None,
+            "cited": a["cited"], "cells": a["cells"],
+            "cite_rate": round(a["cited"] / a["cells"] * 100, 1) if a["cells"] else 0,
+            "avg_rank": round(sum(a["ranks"]) / len(a["ranks"]), 2) if a["ranks"] else None,
+        })
+    category_trend.sort(key=lambda x: -x["presence"])
+
+    # ---- クエリの出所内訳 ----
+    SRCJ = {"chiebukuro": "Yahoo!知恵袋の実質問", "paa": "Google「関連する質問」",
+            "llm_fanout": "LLMによるfan-out生成", "semrush_import": "SEOトピック輸入",
+            "gsc": "GSC実クエリ", "-": "未設定"}
+    src_counter = Counter(r["source"] for r in query_rows)
+    query_sources = [{"id": k, "label": SRCJ.get(k, k), "n": v}
+                     for k, v in src_counter.most_common()]
+
     owned_pages = sorted(
         ({**v, "surfaces": sorted(v["surfaces"]), "n_queries": len(v["queries"])}
          for v in owned_index.values()),
@@ -145,6 +227,9 @@ def build_site(day: str) -> None:
         "drivers": driver_rows,
         "queries": query_rows,
         "owned_pages": owned_pages,
+        "category_trend": category_trend,
+        "query_sources": query_sources,
+        "prompt_tiers": cfg["sampling"]["tier_schedule"],
         "signals": snap["signals"],
         "history": hist,
         "available_days": len(list_snapshots()),
