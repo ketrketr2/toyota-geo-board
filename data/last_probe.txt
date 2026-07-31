@@ -1,0 +1,20 @@
+疎通確認 2026-08-01
+質問: ハイブリッド車の実燃費はカタログ値と比べてどのくらい落ちますか。メーカー別に知りたいです。
+
+× ChatGPT: RuntimeError: HTTP 403 {"version":"0.1.20260731","status_code":40104,"status_message":"Please verify your account before using the API. You can complete verification in the user panel: https:\/\/app.dataforseo.com\/ .","time":"0 sec.","cost":0,"tasks_count":0,"tasks_error":0,"tasks":null}
+
+○ AIによる概要 (serp): 本文875文字 / 引用9件 / fan-out0件
+    冒頭: ハイブリッド車の実燃費は、現在の基準であるWLTCモードのカタログ値と比べて、 約2割から3割程度落ちる（カタログ値の7〜8割になる） のが一般的です 。メーカー別の大きな差はなく、どのメーカーも走り方や季節によってこの範囲で数値が下がります。 トヨタ落ち幅：約2割〜3割減（達成率70%〜80%） 特徴：ヤリスやアクア
+    - https://carmo-kun.jp/column/buycar/fuel-efficient-kei/
+    - https://www.kurumaerabi.com/qa/questions/2329/
+    - https://www.jama.or.jp/operation/maintenance/pdf/jitsunenpi.pdf
+    - https://e-nenpi.com/enenpi/
+    - https://kinto-jp.com/magazine/k20250405-1/
+    - https://car-mo.jp/mag/category/tips/usedcar/fuelefficiency/
+
+× AIモード: RuntimeError: HTTP 403 {"version":"0.1.20260731","status_code":40104,"status_message":"Please verify your account before using the API. You can complete verification in the user panel: https:\/\/app.dataforseo.com\/ .","time":"0 sec.","cost":0,"tasks_count":0,"tasks_error":0,"tasks":null}
+
+× Gemini: RuntimeError: 40501 Invalid Field: 'web_search_country_iso_code'.
+
+疎通 1/4 面 ／ 実費 $0.0040（1回）
+この単価だと本番1日(480本)は約 $1.92 の見込み
