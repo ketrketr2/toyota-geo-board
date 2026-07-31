@@ -10,7 +10,7 @@ from __future__ import annotations
 
 import statistics as st
 
-from common import days_ago, load, read_json, snapshot_path
+from common import days_ago, load, prev_snapshot_day, read_json, snapshot_path
 
 
 def _series(dates: list[str], picker) -> list[float]:
@@ -46,7 +46,9 @@ def compare(day: str, picker, label: str = "") -> dict:
 
     out = {"label": label, "value": cur_raw, "smoothed": cur, "sigma": sd, "deltas": {}}
     for key, n in cfg["compare"].items():
-        prev = rolling_median(days_ago(day, n), picker, win)
+        # 欠測日があっても比較先を見つける（実行失敗・cron遅延への保険）
+        pd = prev_snapshot_day(day, n) or days_ago(day, n)
+        prev = rolling_median(pd, picker, win)
         if cur is None or prev is None:
             out["deltas"][key] = {"delta": None, "prev": prev, "significant": None}
             continue
@@ -67,8 +69,8 @@ def score_decomposition(day: str, period: str = "dod") -> dict:
     cfg = load("settings")
     n = cfg["diff"]["compare"][period]
     win = cfg["diff"]["smoothing_window"]
-    prev_day = days_ago(day, n)
-    if not read_json(snapshot_path(prev_day)):
+    prev_day = prev_snapshot_day(day, n)
+    if not prev_day:
         return {}
     w = cfg["score_weights"]
     contrib, total = {}, 0.0
@@ -102,8 +104,9 @@ def platform_decomposition(day: str, period: str = "dod") -> list[dict]:
     cfg = load("settings")
     n, win = cfg["diff"]["compare"][period], cfg["diff"]["smoothing_window"]
     ew = cfg["score_weights"]["earned_citation"]
-    prev_day = days_ago(day, n)
-    cur, prev = read_json(snapshot_path(day)), read_json(snapshot_path(prev_day))
+    prev_day = prev_snapshot_day(day, n)
+    cur = read_json(snapshot_path(day))
+    prev = read_json(snapshot_path(prev_day)) if prev_day else None
     if not cur or not prev:
         return []
     pv = {p["id"]: p for p in prev["platforms"]}

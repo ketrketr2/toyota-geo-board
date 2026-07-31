@@ -142,6 +142,19 @@ def prune_snapshots(keep_detail_days: int = 90) -> int:
     return n
 
 
+def prev_snapshot_day(day: str, n: int, max_back: int = 6) -> str | None:
+    """n日前を起点に、スナップショットが実在する直近の日を返す。
+
+    実行が1日失敗したり、GitHubのcronが遅延して1日飛んだりしても、
+    「比較データなし」で無言になるのを防ぐ。見つからなければ None。
+    """
+    for i in range(n, n + max_back + 1):
+        d = days_ago(day, i)
+        if (SNAPSHOTS / f"{d}.json").exists():
+            return d
+    return None
+
+
 def snapshot_path(d: str) -> Path:
     return SNAPSHOTS / f"{d}.json"
 

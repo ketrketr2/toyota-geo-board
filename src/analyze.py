@@ -10,7 +10,8 @@ import statistics as st
 from collections import Counter, defaultdict
 from datetime import timedelta
 
-from common import contains_any, domain_of, first_index, load, match_domain, sentences
+from common import (contains_any, demo_mode, domain_of, first_index, load,
+                    match_domain, sentences)
 
 POSITIVE = ["優れ", "強み", "高い評価", "おすすめ", "安心", "有利", "定評", "信頼",
             "満足", "人気", "充実", "得意", "巧み", "完成度"]
@@ -260,6 +261,7 @@ def aggregate(day: str, responses: list[dict], signals: dict) -> dict:
 
     return {
         "date": day,
+        "mode": "demo" if demo_mode() else "live",
         "score": round(score, 2),
         "factors": {k: round(v, 2) for k, v in factors.items()},
         "cohort": {

@@ -450,9 +450,6 @@ tr.pfrow td:first-child b{border-bottom:1px dashed var(--line2)}
 .gapbar i.neg{background:linear-gradient(90deg,color-mix(in srgb,var(--warn) 55%,transparent),var(--warn));right:50%}
 .cohortbar{display:flex;gap:3px;height:26px;border-radius:6px;overflow:hidden;margin:8px 0 4px}
 .cohortbar span{display:flex;align-items:center;justify-content:center;font-size:10.5px;font-weight:700;color:#fff}
-.cohortbar{display:flex;gap:3px;height:26px;border-radius:6px;overflow:hidden;margin:8px 0 4px}
-
-.cohortbar span{display:flex;align-items:center;justify-content:center;font-size:10.5px;font-weight:700;color:#fff}
 tr.catrow{cursor:pointer;transition:background .18s var(--ease)}
 tr.catrow:hover{background:color-mix(in srgb,var(--accent) 8%,transparent)}
 tr.catrow td:first-child b{border-bottom:1px dashed var(--line2)}
@@ -534,6 +531,16 @@ tr.catrow td:first-child b{border-bottom:1px dashed var(--line2)}
   .hero .facs{grid-template-columns:1fr}
   .g6{grid-template-columns:1fr}
 }
+/* ---- デモ／実測バッジ ---- */
+.mode{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;
+  padding:4px 11px;border-radius:16px;white-space:nowrap;letter-spacing:.02em}
+.mode::before{content:"";width:7px;height:7px;border-radius:50%;display:inline-block}
+.mode.live{background:color-mix(in srgb,var(--ok) 15%,transparent);color:var(--ok);
+  border:1px solid color-mix(in srgb,var(--ok) 42%,transparent)}
+.mode.live::before{background:var(--ok);box-shadow:0 0 8px var(--ok);animation:glow 2s infinite}
+.mode.demo{background:color-mix(in srgb,var(--amber) 14%,transparent);color:var(--amber);
+  border:1px solid color-mix(in srgb,var(--amber) 42%,transparent)}
+.mode.demo::before{background:var(--amber)}
 kbd{display:inline-block;font-family:inherit;font-size:10px;padding:1px 6px;border-radius:4px;
   border:1px solid var(--line2);background:var(--card2);color:var(--sub)}
 </style>
@@ -559,6 +566,7 @@ kbd{display:inline-block;font-family:inherit;font-size:10px;padding:1px 6px;bord
 <div class="main">
 <div class="top">
   <h1 id="title">—</h1>
+  <span class="mode demo" id="modeBadge" title="">—</span>
   <div class="fgrp"><span class="lb">比較</span>
     <div class="seg" id="segPeriod">
       <button data-v="dod" class="on">前日比</button><button data-v="wow">先週比</button><button data-v="mom">先月比</button>
@@ -952,7 +960,7 @@ function pageSns(){
     <thead><tr><th style="width:132px">プラットフォーム</th><th class="c" style="width:56px">分類</th>
       <th class="n" style="width:64px">重み</th><th class="n" style="width:86px">市場被引用</th>
       <th class="n" style="width:80px">自社関連</th><th style="width:130px">自社シェア<span style="font-weight:400">（引かれた回のうち自社が出た率）</span></th>
-      <th class="c" style="width:112px">スコア寄与</th><th class="c" style="width:70px">出�可否</th><th>メモ<span style="font-weight:400;color:var(--sub)"> ／ 行クリックで実例</span></th></tr></thead>
+      <th class="c" style="width:112px">スコア寄与</th><th class="c" style="width:70px">出稿可否</th><th>メモ<span style="font-weight:400;color:var(--sub)"> ／ 行クリックで実例</span></th></tr></thead>
     <tbody>${rows.map(r=>{
       const d=dmap[r.id];
       const KIND={video:"動画",qa:"Q&A",forum:"掲示板",blog:"ブログ",ugc:"UGC",social:"SNS"};
@@ -1720,6 +1728,12 @@ document.addEventListener("keydown",e=>{
 fetch("data/latest.json?"+Date.now()).then(r=>r.json()).then(d=>{
   D=d;
   document.getElementById("title").innerHTML=`${esc(d.site.target_domain)} <span style="font-weight:400;color:#64748B;font-size:13px">／ ${esc(d.site.market)}</span>`;
+  (()=>{const md=(d.mode||"demo"), b=document.getElementById("modeBadge");
+    b.className="mode "+md;
+    b.textContent = md==="live" ? "実測データ" : "デモデータ";
+    b.title = md==="live"
+      ? "実際にAIへプロンプトを投げ、返ってきた回答と引用URLから算出しています"
+      : "AIには投げていません。合成データで動作確認をしている状態です";})();
   document.getElementById("brandName").textContent=(d.site.brand||"TOYOTA");
   document.getElementById("ownerTag").textContent="AI VISIBILITY BOARD";
   document.getElementById("stamp").innerHTML=`データ日 <b>${d.generated_at}</b> ／ 蓄積 ${d.available_days}日`;

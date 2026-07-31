@@ -23,10 +23,30 @@ from collect import llm, signals  # noqa: E402
 from common import days_ago, demo_mode, snapshot_path, today, write_json  # noqa: E402
 
 
+def _expected_calls(tier: str = "core") -> int:
+    """その日に返ってくるはずの回答数。live実行の健全性チェックに使う。"""
+    from common import load, load_prompts
+    cfg = load("settings")
+    n = min(len(load_prompts(tier)), cfg["sampling"]["tier_schedule"][tier]["max_prompts"])
+    surfaces = len([s for s in cfg["surfaces"] if s.get("enabled")])
+    runs = cfg["sampling"]["runs_per_prompt"] if tier == "core" else 1
+    return n * surfaces * runs
+
+
 def run_one(day: str, quiet: bool = False) -> dict:
     if not quiet:
         print(f"[{day}] collecting…")
     responses = llm.collect(day, tier="core")
+
+    # ---- live実行の安全弁 ----
+    # 認証ミスやモデル名の誤りで全滅すると、スコア0の日が履歴に残って
+    # 移動中央値と±2σを永久に汚す。半分も取れなければ何も書かずに落とす。
+    if not demo_mode():
+        exp = _expected_calls("core")
+        if len(responses) < exp * 0.5:
+            sys.exit(f"live実行が異常です: 期待{exp}件に対し{len(responses)}件しか取得できませんでした。"
+                     f"\n認証情報・モデル名・残高を確認してください。"
+                     f"\nスナップショットは書いていないので、履歴は汚れていません。")
     import harvest
     nf = harvest.save_fanout(day, responses)      # AIが内部で投げた派生クエリを回収
     if nf and not quiet:

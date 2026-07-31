@@ -228,9 +228,11 @@ def build_site(day: str) -> None:
 
     # ---- クエリ単位の前日比 / 先週比（順位と自社引用の変化）----
     from common import days_ago as _da
+    from common import prev_snapshot_day as _pd
     prev_maps = {}
     for key, n in (("dod", 1), ("wow", 7)):
-        ps = read_json(snapshot_path(_da(day, n)))
+        _p = _pd(day, n)
+        ps = read_json(snapshot_path(_p)) if _p else None
         if not ps:
             continue
         m = {}
@@ -258,7 +260,7 @@ def build_site(day: str) -> None:
 
     # ---- カテゴリ別の傾向（概要用）----
     # 出現率は「プロンプト×サーフェス」のセル単位で数える。
-    # プロンプト単位だと4サーフェスのどれかに出れば100%になり、飽和して意味を失うため：
+    # プロンプト単位だと4サーフェスのどれかに出れば100%になり、飽和して意味を失うため。
     def _cat_stats(cells):
         agg = defaultdict(lambda: {"cells": 0, "mentioned": 0, "ranks": [], "cited": 0})
         for c in cells:
@@ -273,7 +275,8 @@ def build_site(day: str) -> None:
         return agg
 
     now_agg = _cat_stats(snap["cells"])
-    ps7 = read_json(snapshot_path(_da(day, 7)))
+    _p7 = _pd(day, 7)
+    ps7 = read_json(snapshot_path(_p7)) if _p7 else None
     prev_agg = _cat_stats(ps7["cells"]) if ps7 else {}
     qcount = Counter(r["category"] for r in query_rows)
 
@@ -325,6 +328,7 @@ def build_site(day: str) -> None:
     out = {
         "generated_at": day,
         "site": cfg["site"],
+        "mode": snap.get("mode", "demo"),
         "score": snap["score"],
         "factors": snap["factors"],
         "weights": cfg["score_weights"],

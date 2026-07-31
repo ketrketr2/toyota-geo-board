@@ -316,7 +316,6 @@ def rebalance(reg: dict, day: str, cfg: dict) -> dict:
     # 急上昇で緊急投入した分は、その週は超過を許す（翌週の収穫で戻す）
     over = len(core) - target - ((cfg.get("surge") or {}).get("overflow_allowed", 0)
                                  if any(p.get("surged_on") for p in core) else 0)
-
     cat_count = Counter(p["category"] for p in core)
 
     # ---- 降格: 需要が下限割れ、または定員オーバーぶんの下位 ----
@@ -465,7 +464,6 @@ def refresh_existing(reg: dict, day: str) -> int:
             p["volume"] = max(int(base * max(drift, 0.2)), 0)
             # 初回は比較対象が無いので「不明＝1.0」。伸び率は3倍で頭打ちにする
             p["growth"] = 1.0 if not prev else round(min((p["volume"] + 1) / (prev + 1), 3.0), 2)
-
             if rnd.random() < 0.30:
                 p["ugc_hits"] = (p.get("ugc_hits") or 0) + rnd.choice([0, 1, 1, 2])
         return len(live)
@@ -597,7 +595,6 @@ def harvest(day: str | None = None) -> dict:
                     "reason": h["p"].get("surge_reason"), "source": h["p"]["source"],
                     "demand": h["p"].get("demand"), "volume": h["p"].get("volume") or 0}
                    for h in surged],
-
         "demoted": [{"id": i, "text": idx[i]["text"], "demand": idx[i]["demand"]}
                     for i in moved["demoted"]],
         "tiers": dict(after),
@@ -612,7 +609,6 @@ def harvest(day: str | None = None) -> dict:
           f"急上昇{len(surged)} / コア{after['core']}本（前{before['core']}）")
     for h in surged:
         print(f"    ⚡ 急上昇: {h['p']['text'][:44]}… ({h['p'].get('surge_reason')} ×{h['growth']})")
-
     return entry
 
 
