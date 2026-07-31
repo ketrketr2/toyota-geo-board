@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI Visibility KPI Board</title>
+<title>TOYOTA AI Visibility Board</title>
 <link href="https://fonts.googleapis.com/css2?family=BIZ+UDGothic:wght@400;700&family=BIZ+UDPGothic:wght@400;700&display=swap" rel="stylesheet">
 <style>
 @keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
@@ -58,7 +58,9 @@ body{background:
 .side::-webkit-scrollbar{width:0}
 .side .brand{padding:0 18px 18px;border-bottom:1px solid rgba(255,255,255,.1);margin-bottom:12px}
 .side .lg{display:flex;align-items:center;gap:9px}
-.side .dot{width:23px;height:23px;border-radius:6px;background:linear-gradient(135deg,var(--accent2),var(--accent));display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700}
+.side .dot{width:26px;height:26px;border-radius:50%;background:linear-gradient(135deg,#D8232F,#A4161F);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;box-shadow:0 0 16px -4px rgba(216,35,47,.7)}
+.side .nm{letter-spacing:.16em}
+.side .sb{letter-spacing:.1em;font-size:9.5px}
 .side .nm{font-size:14px;font-weight:700}.side .sb{font-size:10.5px;color:#7E9CB8;letter-spacing:.08em}
 .side .grp{font-size:10px;color:#5E7C97;letter-spacing:.14em;padding:14px 18px 6px;font-weight:700}
 .side a.nav{display:flex;align-items:center;gap:9px;padding:9px 18px;color:#B9CFE1;font-size:13px;cursor:pointer;
@@ -431,7 +433,25 @@ mark.c{background:linear-gradient(transparent 52%,color-mix(in srgb,var(--warn) 
 .dbar i{display:block;height:6px;border-radius:3px;background:linear-gradient(90deg,var(--accent2),var(--accent))}
 .newq{font-size:9.5px;padding:1px 6px;border-radius:4px;background:color-mix(in srgb,var(--accent2) 18%,transparent);
   color:var(--accent2);border:1px solid color-mix(in srgb,var(--accent2) 40%,transparent);white-space:nowrap}
+tr.pfrow{cursor:pointer;transition:background .18s var(--ease)}
+tr.pfrow:hover{background:color-mix(in srgb,var(--accent) 9%,transparent)}
+tr.pfrow td:first-child b{border-bottom:1px dashed var(--line2)}
+.dq{border:1px solid var(--line);background:var(--card2);border-radius:8px;padding:10px 13px;margin-bottom:9px}
+.dq .qt{font-size:12.5px;font-weight:700;color:var(--tx);line-height:1.55;margin-bottom:5px}
+.dq .qm2{font-size:10.5px;color:var(--sub);margin-bottom:6px}
+.dq .cu{font-size:11px;font-family:ui-monospace,Menlo,Consolas,monospace;color:var(--accent);
+  display:block;margin:2px 0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.dq .ex{font-size:11.5px;line-height:1.8;color:var(--tx2);background:var(--card);
+  border-left:2px solid var(--accent2);border-radius:0 5px 5px 0;padding:7px 10px;margin-top:6px}
+.gapbar{position:relative;height:16px;background:color-mix(in srgb,var(--tx) 7%,transparent);border-radius:3px}
+.gapbar .z{position:absolute;left:50%;top:-2px;bottom:-2px;width:1px;background:var(--line2)}
+.gapbar i{position:absolute;top:2px;height:12px;border-radius:2px}
+.gapbar i.pos{background:linear-gradient(90deg,var(--ok),color-mix(in srgb,var(--ok) 55%,transparent));left:50%}
+.gapbar i.neg{background:linear-gradient(90deg,color-mix(in srgb,var(--warn) 55%,transparent),var(--warn));right:50%}
 .cohortbar{display:flex;gap:3px;height:26px;border-radius:6px;overflow:hidden;margin:8px 0 4px}
+.cohortbar span{display:flex;align-items:center;justify-content:center;font-size:10.5px;font-weight:700;color:#fff}
+.cohortbar{display:flex;gap:3px;height:26px;border-radius:6px;overflow:hidden;margin:8px 0 4px}
+
 .cohortbar span{display:flex;align-items:center;justify-content:center;font-size:10.5px;font-weight:700;color:#fff}
 tr.catrow{cursor:pointer;transition:background .18s var(--ease)}
 tr.catrow:hover{background:color-mix(in srgb,var(--accent) 8%,transparent)}
@@ -446,8 +466,8 @@ kbd{display:inline-block;font-family:inherit;font-size:10px;padding:1px 6px;bord
 <body>
 <div class="app">
 <aside class="side">
-  <div class="brand"><div class="lg"><span class="dot">AI</span>
-    <div><div class="nm">AI Visibility Board</div><div class="sb" id="ownerTag">GEO KPI</div></div></div></div>
+  <div class="brand"><div class="lg"><span class="dot">T</span>
+    <div><div class="nm" id="brandName">TOYOTA</div><div class="sb" id="ownerTag">AI VISIBILITY BOARD</div></div></div></div>
   <div class="grp">モニタリング</div>
   <a class="nav on" data-p="overview"><span class="ic">◉</span>概要</a>
   <a class="nav" data-p="queries"><span class="ic">★</span>クエリ</a>
@@ -469,7 +489,6 @@ kbd{display:inline-block;font-family:inherit;font-size:10px;padding:1px 6px;bord
       <button data-v="dod" class="on">前日比</button><button data-v="wow">先週比</button><button data-v="mom">先月比</button>
     </div>
   </div>
-  <span class="builtby">◆ オウンドチーム内製 ／ 外部GEOツール不使用</span>
   <span class="kbd" id="palBtn">⌘K　検索</span>
   <span class="tgl" id="themeBtn">◐ テーマ</span>
   <div class="sep"></div>
@@ -800,6 +819,37 @@ function kpiCard(label,metricKey,value,dKey,cls,unit){
   return `<div class="kpi ${cls}"><div class="l">${label}</div><div class="v">${value}</div><div class="d">${d.html}</div></div>`;
 }
 
+/* プラットフォームをクリックしたとき、そのSNSが実際にどのクエリで
+   引用されたか・そのときAIが何と答えたかを出す。 */
+function openPlatform(pid){
+  const pf=(D.platforms||[]).find(x=>x.id===pid)||{};
+  const hits=[];
+  (D.queries||[]).forEach(q=>{
+    const cs=(q.citations||[]).filter(c=>c.platform===pid);
+    if(!cs.length) return;
+    const sf=cs[0].surfaces&&cs[0].surfaces[0];
+    const sv=sf?q.surfaces[sf]:null;
+    hits.push({q,cs,sf,sv});
+  });
+  hits.sort((a,b)=>(a.q.best_rank??99)-(b.q.best_rank??99));
+  // 「引用されたその回答で」自社が出ていたか。クエリ全体の最良順位ではない点に注意。
+  const own=hits.filter(h=>h.sv&&h.sv.rank!=null).length;
+  const body=`
+    <div class="g4" style="margin-bottom:14px">
+      <div class="kpi"><div class="l">このSNSが引用されたクエリ</div><div class="v">${hits.length}</div><div class="d fl">本日のコア枠のうち</div></div>
+      <div class="kpi own"><div class="l">うち自社が回答に出た</div><div class="v">${own}<small> / ${hits.length}</small></div><div class="d fl">自社シェア ${pf.share!=null?pf.share.toFixed(1):"—"}%</div></div>
+      <div class="kpi"><div class="l">重み</div><div class="v">${((pf.weight||0)*100).toFixed(1)}<small>%</small></div><div class="d fl">アーンド引用率への寄与 ${((pf.weight||0)*(pf.share||0)).toFixed(2)}pt</div></div>
+      <div class="kpi ${pf.actionable?'ok':'warn'}"><div class="l">自社で出稿できるか</div><div class="v" style="font-size:17px">${pf.actionable?"可能":"間接のみ"}</div><div class="d fl">${esc(pf.note||"")}</div></div>
+    </div>
+    ${hits.length?hits.map(h=>`<div class="dq">
+      <div class="qt">${h.q.best_rank!=null?`<span class="rk ${h.q.best_rank===1?'r1':h.q.best_rank<=3?'r3':''}" style="width:19px;height:19px;font-size:10px;margin-right:6px">${h.q.best_rank}</span>`:'<span class="rk rx" style="width:19px;height:19px;font-size:10px;margin-right:6px">—</span>'}${esc(h.q.text)}</div>
+      <div class="qm2">${CATJ[h.q.category]||h.q.category} ・ ${esc(h.q.driver_label||"")} ・ 引用されたAI ${(h.cs[0].surface_labels||[]).join(" / ")||"—"}</div>
+      ${h.cs.map(c=>`<a class="cu" href="${esc(c.url)}" target="_blank" rel="noopener">${esc(c.title||c.url)}<br><span style="color:var(--sub)">${esc(c.url)}</span></a>`).join("")}
+      ${h.sv&&h.sv.answer?`<div class="ex">${hlBrands(h.sv.answer.slice(0,320))}…</div>`:""}
+    </div>`).join(""):'<div class="fl">本日このプラットフォームは引用されていません。</div>'}`;
+  openModal(`${esc(pf.label||pid)} が引用されたクエリと回答`, body);
+}
+
 function pageSns(){
   const rows=(D.platforms||[]).slice().sort((a,b)=>b.weight-a.weight);
   const dec=(D.diff?.platform_decomposition||{})[P]||[];
@@ -827,11 +877,11 @@ function pageSns(){
     <thead><tr><th style="width:132px">プラットフォーム</th><th class="c" style="width:56px">分類</th>
       <th class="n" style="width:64px">重み</th><th class="n" style="width:86px">市場被引用</th>
       <th class="n" style="width:80px">自社関連</th><th style="width:130px">自社シェア<span style="font-weight:400">（引かれた回のうち自社が出た率）</span></th>
-      <th class="c" style="width:112px">スコア寄与</th><th class="c" style="width:70px">出稿可否</th><th>メモ</th></tr></thead>
+      <th class="c" style="width:112px">スコア寄与</th><th class="c" style="width:70px">出�可否</th><th>メモ<span style="font-weight:400;color:var(--sub)"> ／ 行クリックで実例</span></th></tr></thead>
     <tbody>${rows.map(r=>{
       const d=dmap[r.id];
       const KIND={video:"動画",qa:"Q&A",forum:"掲示板",blog:"ブログ",ugc:"UGC",social:"SNS"};
-      return `<tr>
+      return `<tr class="pfrow" data-pf="${attr(r.id)}" title="クリックで、このSNSが引用されたクエリと回答を表示">
       <td><b>${esc(r.label)}</b></td>
       <td class="c"><span class="pill p-pu">${KIND[r.kind]||r.kind}</span></td>
       <td class="n">${(r.weight*100).toFixed(1)}%</td>
@@ -845,6 +895,37 @@ function pageSns(){
       <td class="c">${r.actionable?'<span class="pill p-ok">可</span>':'<span class="pill p-nv">間接</span>'}</td>
       <td style="font-size:11.5px;color:var(--sub)">${esc(r.note)}</td></tr>`;}).join("")}
     </tbody></table></div>
+
+  <h2 class="sec"><span class="bar"></span>重みは実測と合っているか
+    <span class="note">設定値 vs 直近30日の実測構成比</span></h2>
+  <div class="why"><b>なぜこの表があるか：</b>重みの初期値は外部調査（日本語AI回答の被引用実測）から置いたものです。
+  自前の計測が溜まったら、そちらに寄せるのが正しい。ここでは<b>設定した重み</b>と<b>実際に自分たちの計測で観測された構成比</b>を並べています。
+  <b>自動では変えません</b>。重みを変えるとスコアの時系列が切れるので、変更は四半期に1回、意図して行ってください。</div>
+  <div class="card"><div class="tw" style="max-height:none;border:0"><table>
+    <thead><tr><th style="width:140px">プラットフォーム</th>
+      <th class="n" style="width:84px">設定重み</th><th class="n" style="width:92px">実測構成比</th>
+      <th class="n" style="width:78px">乖離</th><th style="width:150px">← 過大 ／ 過小 →</th>
+      <th class="n" style="width:96px">観測回数</th><th>読み取り</th></tr></thead>
+    <tbody>${(D.platform_audit||[]).map(a=>{
+      const mx=Math.max(...(D.platform_audit||[]).map(x=>Math.abs(x.gap)),1);
+      const w=Math.abs(a.gap)/mx*50;
+      return `<tr>
+      <td><b>${esc(a.label)}</b></td>
+      <td class="n">${a.set_share.toFixed(1)}%</td>
+      <td class="n"><b>${a.actual_share.toFixed(1)}%</b></td>
+      <td class="n ${a.gap>0?'up':a.gap<0?'dn':'fl'}"><b>${a.gap>0?"+":""}${a.gap.toFixed(1)}</b></td>
+      <td><div class="gapbar"><span class="z"></span>
+        <i class="${a.gap>=0?'pos':'neg'}" style="width:${w}%"></i></div></td>
+      <td class="n">${num(a.observed)}</td>
+      <td style="font-size:11.5px;color:var(--sub)">${
+        a.observed===0?"この30日で1回も引用されていません。重みを持たせる根拠が現時点でありません":
+        a.gap<=-5?`実測より<b>重みを高く置きすぎ</b>ています。実測ベースなら ${a.suggested_weight}`:
+        a.gap>=5?`実測より<b>重みが低すぎ</b>ます。実測ベースなら ${a.suggested_weight}`:
+        "設定と実測はおおむね一致しています"}</td>
+    </tr>`;}).join("")}</tbody></table></div>
+    <div class="note" style="margin-bottom:0"><b>X・Instagram・TikTokの重みが低い理由：</b>人の目に触れる量ではなく<mark>AIが回答の根拠として引ける量</mark>で重みを付けているためです。
+    Instagramはログイン壁でクローラが本文を取れず、Xも大半のAIクローラをブロックしています。TikTokは字幕の走査が始まったばかりです。
+    <b>「人には届くがAIには読まれない」面は、GEOスコアでは低く出るのが正しい</b>という設計です。ただしこの前提は変わりうるので、上の実測構成比で毎月点検してください。</div></div>
 
   <h2 class="sec"><span class="bar"></span>アーンド引用率の推移</h2>
   <div class="card">${lineChart(D.history,["earned_citation","owned_citation"],["#00A99D","#E8B004"],190,["アーンド引用率","オウンド引用率"])}
@@ -1054,7 +1135,7 @@ function pageChurn(){
     <div class="kpi"><div class="l">今回の収穫候補</div><div class="v">${num(c.candidates)}</div><div class="d fl">重複除去まえ</div></div>
     <div class="kpi ok"><div class="l">新規登録</div><div class="v">${c.added.length}</div><div class="d fl">既存と重複しなかったもの</div></div>
     <div class="kpi own"><div class="l">コア枠に昇格</div><div class="v">${c.promoted.length}</div><div class="d fl">明日から日次で計測</div></div>
-    <div class="kpi warn"><div class="l">コア枠から降格</div><div class="v">${c.demoted.length}</div><div class="d dn">週次の戦略枠へ移動</div></div>
+    <div class="kpi warn"><div class="l">急上昇で緊急投入</div><div class="v">${(c.surged||[]).length}</div><div class="d dn">通常ルールを飛ばした本数</div></div>
   </div>
 
   <h3 class="sub">スコアの分母が変わった影響をどう消しているか</h3>
@@ -1086,6 +1167,36 @@ function pageChurn(){
       <div class="src" style="margin-top:8px">外れても削除はしません。週次の戦略枠に移すだけなので、需要が戻れば同じIDのまま復帰します。</div></div>
   </div>
 
+  <h2 class="sec"><span class="bar"></span>急上昇による緊急投入
+    <span class="note">通常の入替ルールを飛ばして即日コア枠へ</span></h2>
+  <div class="why"><b>なぜ別枠が必要か：</b>「残クレでアルファードを買うのは危ないらしい」のような不安がSNSで広がると、
+  その週から急にAIへの質問が増えます。新型車の発表や税制改正も同じです。
+  こうしたものを<b>需要スコア順の週次入替で待っていると、いちばん見たい最初の2週間を逃します</b>。
+  伸び率が閾値を超えたものは、定員を一時的にオーバーしてでもその場でコア枠に入れます。</div>
+  <div class="card" style="padding:0;margin-bottom:14px">${(c.surged||[]).length?c.surged.map(x=>`<div class="mv">
+      <div class="ar" style="color:var(--amber)">⚡</div>
+      <div><div class="tx">${esc(x.text)}</div>
+        <div class="mt"><span class="pill p-am">${esc(x.reason||"急上昇")}</span>
+          伸び率 ×${x.growth}${x.volume?` ・ 月間検索 ${num(x.volume)}`:""} ・ ${esc(x.source_label||"-")}</div></div>
+      <div class="dm">${x.demand==null?"—":f1(x.demand)}<small>需要スコア</small></div>
+    </div>`).join(""):'<div style="padding:14px 16px" class="fl">今回は急上昇の検出はありませんでした</div>'}</div>
+
+  <h2 class="sec"><span class="bar"></span>いま追いかけているイベント
+    <span class="note">日付が読めるものは先回りしてクエリを仕込む</span></h2>
+  <div class="card" style="padding:0;margin-bottom:6px">${(c.events||[]).length?c.events.map(e=>`
+    <div style="padding:12px 15px;border-bottom:1px solid var(--line)">
+      <div style="display:flex;align-items:center;gap:9px;flex-wrap:wrap">
+        <span class="pill ${e.kind==="制度・税制"?"p-ng":e.kind==="新型車"?"p-ok":"p-nv"}">${esc(e.kind)}</span>
+        <b style="font-size:13px;color:var(--tx)">${esc(e.label)}</b>
+        <span class="vsub">${esc(e.from)} 〜 ${esc(e.to)}</span></div>
+      <div style="margin-top:6px">${(e.seeds||[]).map(sd=>`<span class="tag">${esc(sd)}</span>`).join("")}</div>
+      ${e.note?`<div class="src" style="margin-top:5px">${esc(e.note)}</div>`:""}
+    </div>`).join(""):'<div style="padding:14px 16px" class="fl">現在、期間に入っているイベントはありません</div>'}</div>
+  <div class="src" style="margin-bottom:14px">イベントは <code>config/events.yaml</code> で管理します。
+  日付が読めるもの（発表会・税制施行・季節）は <b>calendar</b> に、
+  日付は読めないが起きたら必ず質問が増えるもの（残クレ不安・リコール・受注停止・値上げ）は <b>watch</b> に書いておくと、
+  該当語を含むクエリの急上昇を優先的に拾います。</div>
+
   <h2 class="sec"><span class="bar"></span>新しく見つかったクエリ<span class="note">${c.added.length}本 — まだ月次枠で様子見</span></h2>
   <div class="card" style="padding:0">${c.added.length?c.added.map(x=>`<div class="mv">
       <div class="ar" style="color:var(--accent2)">＋</div>
@@ -1098,12 +1209,14 @@ function pageChurn(){
   <div class="card"><div class="tw" style="max-height:none;border:0"><table>
     <thead><tr><th style="width:110px">収穫日</th><th class="n" style="width:80px">新規</th>
       <th class="n" style="width:80px">昇格</th><th class="n" style="width:80px">降格</th>
+      <th class="n" style="width:88px">急上昇</th>
       <th class="n" style="width:96px">コア枠</th><th>入替の大きさ</th></tr></thead>
     <tbody>${hist.slice().reverse().map(h=>`<tr>
       <td><b>${esc(h.date)}</b></td>
       <td class="n" style="color:var(--accent2)">${h.added?"+"+h.added:"—"}</td>
       <td class="n up">${h.promoted||"—"}</td>
       <td class="n dn">${h.demoted||"—"}</td>
+      <td class="n" style="color:var(--amber)">${h.surged?"⚡"+h.surged:"—"}</td>
       <td class="n"><b>${h.core}</b></td>
       <td><span class="mini"><i class="${h.promoted>=4?'':'g'}" style="width:${(h.promoted+h.demoted)/(mxh*2)*100}%"></i></span></td>
     </tr>`).join("")}</tbody></table></div></div>
@@ -1366,6 +1479,8 @@ function render(){
     navigator.clipboard.writeText(el.dataset.u)
       .then(()=>toast(`<b>URLをコピーしました</b><br><span style="color:var(--sub)">${esc(el.dataset.u).slice(0,70)}</span>`,2600))
       .catch(()=>toast("コピーできませんでした",2200));});
+  // SNS行 → そのプラットフォームが引用されたクエリと回答
+  root.querySelectorAll("tr.pfrow").forEach(tr=>tr.onclick=()=>openPlatform(tr.dataset.pf));
   // 概要のテーマ行 → そのテーマで絞ったクエリ一覧へ
   root.querySelectorAll("tr.catrow").forEach(tr=>tr.onclick=()=>{
     catF=tr.dataset.c; qFilter="";
@@ -1530,9 +1645,10 @@ document.addEventListener("keydown",e=>{
 fetch("data/latest.json?"+Date.now()).then(r=>r.json()).then(d=>{
   D=d;
   document.getElementById("title").innerHTML=`${esc(d.site.target_domain)} <span style="font-weight:400;color:#64748B;font-size:13px">／ ${esc(d.site.market)}</span>`;
-  document.getElementById("ownerTag").textContent=`GEO KPI · ${d.site.owner}`;
+  document.getElementById("brandName").textContent=(d.site.brand||"TOYOTA");
+  document.getElementById("ownerTag").textContent="AI VISIBILITY BOARD";
   document.getElementById("stamp").innerHTML=`データ日 <b>${d.generated_at}</b> ／ 蓄積 ${d.available_days}日`;
-  document.getElementById("foot").innerHTML=`更新 ${d.generated_at}<br>プロンプト ${d.counts.prompts} / 回答 ${num(d.counts.responses)}<br>オウンドチーム内製<br>GitHub Actions で自動生成`;
+  document.getElementById("foot").innerHTML=`更新 ${d.generated_at}<br>クエリ ${d.counts.prompts} / 回答 ${num(d.counts.responses)}<br>${esc(d.site.target_domain)}<br>GitHub Actions で自動生成`;
   render();
   const t=tierOf(d.score);
   toast(`<b>データ更新</b> ${d.generated_at}<br><span style="color:var(--sub)">GEOスコア ${d.score.toFixed(1)}（${t.g}ティア）／ 蓄積 ${d.available_days}日</span>`);
