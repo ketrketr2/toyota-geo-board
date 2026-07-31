@@ -56,6 +56,14 @@ def run_one(day: str, quiet: bool = False) -> dict:
                 for s in cfg["surfaces"] if s.get("enabled")}
         dead = [s for s, n in got.items() if n < want[s] * 0.5]
         if len(responses) < exp * 0.7 or dead:
+            # 無人で走るので、失敗理由をリポジトリに残す（ログは後から読めない）
+            from common import ROOT
+            (ROOT / "data").mkdir(exist_ok=True)
+            (ROOT / "data" / "last_error.txt").write_text(
+                f"{day} live実行が失敗しました\n"
+                f"期待{exp}件 / 取得{len(responses)}件 / 面別 {got}\n"
+                f"実費 {llm.spent()}\n\n"
+                + "\n".join(llm.errors()), encoding="utf-8")
             sys.exit(f"live実行が異常です: 期待{exp}件に対し{len(responses)}件。"
                      f"\n面ごとの取得数: {got}"
                      + (f"\n取得できていない面: {', '.join(dead)}" if dead else "")

@@ -28,6 +28,12 @@ LLM_PATH = {"chatgpt": "chat_gpt", "gemini": "gemini",
 
 _COST_LOCK = threading.Lock()
 _COST = {"total": 0.0, "calls": 0}
+_ERRORS: list[str] = []      # 無人実行なので、失敗理由は必ず残して後から読めるようにする
+
+
+def errors() -> list[str]:
+    with _COST_LOCK:
+        return list(_ERRORS)
 
 
 def spent() -> dict:
@@ -48,7 +54,9 @@ def _dfs_auth():
 
 def _post(path: str, body: list) -> dict:
     r = requests.post(f"{DFS_BASE}/{path}", auth=_dfs_auth(), json=body, timeout=180)
-    r.raise_for_status()
+    if r.status_code >= 400:
+        # 本文に「なぜ弾かれたか」が書いてある。捨てると原因が永久に分からない。
+        raise RuntimeError(f"HTTP {r.status_code} {r.text[:300]}")
     task = r.json()["tasks"][0]
     if task.get("status_code") != 20000:
         raise RuntimeError(f"{task.get('status_code')} {task.get('status_message')}")
@@ -276,7 +284,11 @@ def _one(job: dict) -> dict | None:
             # 一時的な混雑（429/5xx）は時間をおけば通ることが多い。
             # 恒久的な失敗（認証ミス等）でも3回で諦めるので待ち時間は上限つき。
             if attempt == 2:
-                print(f"  ! {p['id']}/{s['id']} run{job['run']}: {e}", file=sys.stderr)
+                msg = f"{p['id']}/{s['id']} run{job['run']}: {type(e).__name__}: {e}"
+                print(f"  ! {msg}", file=sys.stderr)
+                with _COST_LOCK:
+                    if len(_ERRORS) < 40:
+                        _ERRORS.append(msg)
                 return None
             time.sleep(2 ** attempt * 1.5)
     return None

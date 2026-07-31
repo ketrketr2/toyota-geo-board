@@ -107,6 +107,17 @@ jobs:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
         run: python src/notify.py
 
+      # 失敗しても理由だけは必ず残す。無人実行ではログを後から読めないため。
+      - name: Commit error log
+        if: ${{ failure() }}
+        run: |
+          git config user.name  "geo-board-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add -f data/last_error.txt || true
+          git diff --staged --quiet || git commit -m "chore: 実行失敗のログ $(date -u +%Y-%m-%dT%H:%M)"
+          git pull --rebase -q || true
+          git push || true
+
       - name: Commit snapshot
         if: ${{ !inputs.probe }}
         run: |
