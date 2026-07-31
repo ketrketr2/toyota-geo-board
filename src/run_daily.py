@@ -113,7 +113,8 @@ def probe() -> None:
     それを720本投げてから知るのは遅い。数円で先に分かるようにしておく。
     """
     from common import load, load_prompts
-    from collect.llm import fetch_llm_response, fetch_serp_ai, spent
+    import json as _json
+    from collect.llm import _LAST_RAW, fetch_llm_response, fetch_serp_ai, spent
     if demo_mode():
         sys.exit("probe は live 専用です。GEO_BOARD_MODE=live と DATAFORSEO_LOGIN を確認してください。")
     from common import ROOT
@@ -139,6 +140,27 @@ def probe() -> None:
     log.append(f"疎通 {ok}/{len(surfaces)} 面 ／ 実費 ${c['usd']:.4f}（{c['calls']}回）")
     log.append(f"この単価だと本番1日({_expected_calls('core')}本)は約 "
                f"${c['usd'] / max(c['calls'], 1) * _expected_calls('core'):.2f} の見込み")
+    log.append("")
+    log.append("--- 面別の実費と、引用オブジェクトの構造 ---")
+    for sid, raw in _LAST_RAW.items():
+        log.append(f"[{sid}] cost=${raw['cost']:.4f} items={len(raw['items'])} "
+                   f"types={[i.get('type') for i in raw['items']][:6]}")
+        found = []
+        def _scan(n, depth=0):
+            if len(found) >= 2 or depth > 6:
+                return
+            if isinstance(n, dict):
+                if n.get("url"):
+                    found.append(n)
+                    return
+                for v in n.values():
+                    _scan(v, depth + 1)
+            elif isinstance(n, list):
+                for v in n:
+                    _scan(v, depth + 1)
+        _scan(raw["items"])
+        for f in found:
+            log.append("    " + _json.dumps(f, ensure_ascii=False)[:600])
     out = "\n".join(log)
     print(out)
     (ROOT / "data").mkdir(exist_ok=True)

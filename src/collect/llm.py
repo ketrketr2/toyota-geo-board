@@ -29,6 +29,7 @@ LLM_PATH = {"chatgpt": "chat_gpt", "gemini": "gemini",
 _COST_LOCK = threading.Lock()
 _COST = {"total": 0.0, "calls": 0}
 _ERRORS: list[str] = []      # 無人実行なので、失敗理由は必ず残して後から読めるようにする
+_LAST_RAW: dict = {}         # 疎通確認で構造を確認するための直近レスポンス
 
 
 def errors() -> list[str]:
@@ -46,6 +47,10 @@ def _charge(task: dict) -> None:
     with _COST_LOCK:
         _COST["total"] += float(task.get("cost") or 0)
         _COST["calls"] += 1
+
+
+def last_cost(task: dict) -> float:
+    return float(task.get("cost") or 0)
 
 
 def _dfs_auth():
@@ -103,6 +108,7 @@ def fetch_llm_response(prompt: str, surface: dict) -> dict:
     body = [body]
     task = _post(f"ai_optimization/{path}/llm_responses/live", body)
     items = (task.get("result") or [{}])[0].get("items") or []
+    _LAST_RAW[surface["id"]] = {"cost": last_cost(task), "items": items}
     text, cites = "", []
     for it in items:
         if it.get("type") == "reasoning":            # 思考過程は本文に混ぜない
@@ -127,6 +133,7 @@ def fetch_serp_ai(prompt: str, surface: dict) -> dict:
                  "load_async_ai_overview": True}]
     task = _post(path, body)
     items = (task.get("result") or [{}])[0].get("items") or []
+    _LAST_RAW[surface["id"]] = {"cost": last_cost(task), "items": items}
     text, cites = "", []
     for it in items:
         if not str(it.get("type", "")).startswith("ai_"):
