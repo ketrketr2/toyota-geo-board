@@ -6,7 +6,7 @@ from __future__ import annotations
 
 from collections import Counter, defaultdict
 
-from common import (DOCS, days_ago, list_snapshots, load, read_json,
+from common import (DATA, DOCS, days_ago, list_snapshots, load, read_json,
                     snapshot_path, write_json)
 
 HISTORY_DAYS = 60
@@ -18,6 +18,43 @@ def _short_path(url: str) -> str:
     u = urlparse(url)
     p = (u.path or "/") + (("?" + u.query) if u.query else "")
     return p if len(p) <= 46 else p[:43] + "…"
+
+
+def _churn_block(day: str, rmeta: dict) -> dict:
+    """クエリの新陳代謝（収穫ログ）をダッシュボード用にまとめる。"""
+    log = read_json(DATA / "harvest_log.json", []) or []
+    if not log:
+        return {}
+    last = log[-1]
+    hc = load("harvest")
+    src_label = {k: v["label"] for k, v in hc["sources"].items()}
+    src_label.update({"harvest": "収穫", "-": "初期設定", "chiebukuro": "Yahoo!知恵袋の実質問",
+                      "paa": "Google「関連する質問」", "suggest": "Googleサジェスト",
+                      "llm_fanout": "LLMによるfan-out生成", "fanout": "LLM fan-out還流",
+                      "semrush_import": "SEOトピック輸入", "gsc": "GSC実クエリ"})
+    def deco(items):
+        out = []
+        for x in items:
+            m = rmeta.get(x["id"], {})
+            out.append({**x, "category": m.get("category"), "driver": m.get("driver"),
+                        "source_label": src_label.get(m.get("source") or x.get("source", "-"),
+                                                      m.get("source") or "-"),
+                        "volume": m.get("volume") or x.get("volume") or 0})
+        return out
+    return {
+        "last_run": last["date"],
+        "candidates": last["candidates"],
+        "added": deco(last["added"]),
+        "promoted": deco(last["promoted"]),
+        "demoted": deco(last["demoted"]),
+        "tiers": last["tiers"],
+        "history": [{"date": e["date"], "added": len(e["added"]),
+                     "promoted": len(e["promoted"]), "demoted": len(e["demoted"]),
+                     "core": e["tiers"].get("core", 0)} for e in log[-12:]],
+        "weights": hc["demand_weights"],
+        "rules": hc["promotion"],
+        "sources": [{"id": k, "label": v["label"]} for k, v in hc["sources"].items()],
+    }
 
 
 def build_site(day: str) -> None:
@@ -111,6 +148,31 @@ def build_site(day: str) -> None:
                            "best_rank": min(rks) if rks else None,
                            "avg_rank": round(sum(rks) / len(rks), 1) if rks else None,
                            "coverage": round(len(rks) / max(len(r["surfaces"]), 1) * 100)})
+    # ---- レジストリの情報（需要スコア・在籍期間・新規判定）を各行に載せる ----
+    try:
+        import registry as _R
+        reg = _R.load_registry()
+        rmeta = {p["id"]: p for p in reg["prompts"]}
+    except Exception:
+        rmeta = {}
+    obs = load("harvest")["promotion"]["observation_days"]
+    cohort_ids = set()
+    for r in query_rows:
+        m = rmeta.get(r["id"], {})
+        r["demand"] = m.get("demand")
+        r["volume"] = m.get("volume") or 0
+        r["fanout_hits"] = m.get("fanout_hits") or 0
+        r["added_on"] = m.get("added_on")
+        r["tier_since"] = m.get("tier_since")
+        r["demand_history"] = m.get("demand_history") or []
+        days = None
+        if m.get("tier_since"):
+            from datetime import date as _d
+            days = (_d.fromisoformat(day) - _d.fromisoformat(m["tier_since"])).days
+        r["days_in_core"] = days
+        r["is_new"] = (days is not None and days < obs)
+        if not r["is_new"]:
+            cohort_ids.add(r["id"])
     query_rows.sort(key=lambda x: (x["best_rank"] is None, x["best_rank"] or 99))
 
     # ---- クエリ単位の前日比 / 先週比（順位と自社引用の変化）----
@@ -185,8 +247,9 @@ def build_site(day: str) -> None:
 
     # ---- クエリの出所内訳 ----
     SRCJ = {"chiebukuro": "Yahoo!知恵袋の実質問", "paa": "Google「関連する質問」",
-            "llm_fanout": "LLMによるfan-out生成", "semrush_import": "SEOトピック輸入",
-            "gsc": "GSC実クエリ", "-": "未設定"}
+            "llm_fanout": "LLMによるfan-out生成", "fanout": "AIのfan-out還流",
+            "suggest": "Googleサジェスト", "semrush_import": "SEOトピック輸入",
+            "harvest": "収穫（経路不明）", "gsc": "GSC実クエリ", "-": "初期設定"}
     src_counter = Counter(r["source"] for r in query_rows)
     query_sources = [{"id": k, "label": SRCJ.get(k, k), "n": v}
                      for k, v in src_counter.most_common()]
@@ -230,9 +293,11 @@ def build_site(day: str) -> None:
         "category_trend": category_trend,
         "query_sources": query_sources,
         "prompt_tiers": cfg["sampling"]["tier_schedule"],
+        "cohort": snap.get("cohort", {}),
+        "churn": _churn_block(day, rmeta),
         "signals": snap["signals"],
         "history": hist,
         "available_days": len(list_snapshots()),
     }
-    write_json(DOCS / "data" / "latest.json", out)
+    write_json(DOCS / "data" / "latest.json", out, compact=True)
     print(f"  wrote docs/data/latest.json ({len(hist)} days of history)")

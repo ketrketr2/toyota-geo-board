@@ -3,3 +3,6 @@ __pycache__/
 .venv/
 .env
 /tmp/
+
+# 毎日まるごと書き換わる派生物。スナップショットから再生成できるので履歴に積まない。
+docs/data/latest.json

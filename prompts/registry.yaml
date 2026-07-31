@@ -1,0 +1,2810 @@
+# 自動生成 + 手編集可。IDは絶対に振り直さないこと。
+# tier: core=日次 / strategic=週次 / longtail=月次 / retired=停止
+version: 2
+updated_at: '2026-07-31'
+next_seq: 141
+prompts:
+- id: p001
+  text: ミニバンのおすすめを教えてください。2歳の子供がいて、もう1人産まれる予定です。今はプリウスですが、チャイルドシートの乗せ下ろしがきつく、2人乗せると狭く感じます。予算は400万円までです。
+  category: purchase
+  driver: minivan
+  brand: false
+  source: chiebukuro
+  tier: core
+  added_on: '2026-06-15'
+  tier_since: '2026-06-15'
+  demand: 43.2
+  volume: 948
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 0.65
+  demand_history:
+  - - '2026-06-19'
+    - 46.1
+  - - '2026-06-26'
+    - 48.2
+  - - '2026-07-03'
+    - 75.5
+  - - '2026-07-10'
+    - 47.2
+  - - '2026-07-17'
+    - 71.4
+  - - '2026-07-24'
+    - 48.0
+  - - '2026-07-31'
+    - 43.2
+- id: p002
+  text: 家族4人で高速道路中心に旅行する場合、静かで燃費も良い国産車ブランドを教えてください。
+  category: purchase
+  driver: hybrid
+  brand: false
+  source: semrush_import
+  tier: core
+  added_on: '2026-06-15'
+  tier_since: '2026-06-15'
+  demand: 43.6
+  volume: 1011
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 0.54
+  demand_history:
+  - - '2026-06-19'
+    - 45.4
+  - - '2026-06-26'
+    - 65.2
+  - - '2026-07-03'
+    - 53.9
+  - - '2026-07-10'
+    - 60.2
+  - - '2026-07-17'
+    - 47.5
+  - - '2026-07-24'
+    - 66.3
+  - - '2026-07-31'
+    - 43.6
+- id: p003
+  text: 高齢の親用に買い替えを検討しています。乗り降りしやすくて視界が良く、安全装備が充実している国産車ブランドを教えてください。
+  category: safety
+  driver: safety
+  brand: false
+  source: semrush_import
+  tier: core
+  added_on: '2026-06-15'
+  tier_since: '2026-06-15'
+  demand: 66.1
+  volume: 2705
+  fanout_hits: 0
+  ugc_hits: 4
+  growth: 1.16
+  demand_history:
+  - - '2026-06-19'
+    - 56.4
+  - - '2026-06-26'
+    - 59.1
+  - - '2026-07-03'
+    - 71.0
+  - - '2026-07-10'
+    - 62.3
+  - - '2026-07-17'
+    - 51.8
+  - - '2026-07-24'
+    - 62.6
+  - - '2026-07-31'
+    - 66.1
+- id: p004
+  text: 子育てが落ち着いてセカンドライフ用の車に乗り換えるシニアが、日本でよく選ぶブランドはどこでしょう？
+  category: purchase
+  driver: minivan
+  brand: false
+  source: semrush_import
+  tier: core
+  added_on: '2026-06-15'
+  tier_since: '2026-06-15'
+  demand: 55.8
+  volume: 4770
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 0.7
+  demand_history:
+  - - '2026-06-19'
+    - 65.7
+  - - '2026-06-26'
+    - 54.7
+  - - '2026-07-03'
+    - 73.3
+  - - '2026-07-10'
+    - 77.1
+  - - '2026-07-17'
+    - 59.6
+  - - '2026-07-24'
+    - 69.2
+  - - '2026-07-31'
+    - 55.8
+- id: p005
+  text: 初めてマイカーを買う社会人3年目です。維持費も含めて失敗しない国産ブランドはどこですか？
+  category: cost
+  driver: cost
+  brand: false
+  source: chiebukuro
+  tier: strategic
+  added_on: '2026-06-15'
+  tier_since: '2026-07-17'
+  demand: 19.8
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 2
+  growth: 1.0
+  demand_history:
+  - - '2026-06-19'
+    - 19.8
+  - - '2026-06-26'
+    - 19.8
+  - - '2026-07-03'
+    - 19.8
+  - - '2026-07-10'
+    - 19.8
+  - - '2026-07-17'
+    - 19.8
+  - - '2026-07-24'
+    - 19.8
+  - - '2026-07-31'
+    - 19.8
+  tier_prev: core
+- id: p006
+  text: 妻が主に運転します。運転が得意ではない人でも扱いやすくて安全な国産車を教えてください。
+  category: purchase
+  driver: urban
+  brand: false
+  source: chiebukuro
+  tier: core
+  added_on: '2026-06-15'
+  tier_since: '2026-06-15'
+  demand: 54.6
+  volume: 1472
+  fanout_hits: 0
+  ugc_hits: 5
+  growth: 0.83
+  demand_history:
+  - - '2026-06-19'
+    - 50.7
+  - - '2026-06-26'
+    - 45.7
+  - - '2026-07-03'
+    - 75.6
+  - - '2026-07-10'
+    - 58.1
+  - - '2026-07-17'
+    - 49.9
+  - - '2026-07-24'
+    - 62.2
+  - - '2026-07-31'
+    - 54.6
+- id: p007
+  text: 犬を2頭乗せてよく遠出します。荷室が広くて汚れにくい国産車のおすすめを教えてください。
+  category: purchase
+  driver: cargo
+  brand: false
+  source: chiebukuro
+  tier: core
+  added_on: '2026-06-15'
+  tier_since: '2026-06-15'
+  demand: 49.0
+  volume: 2471
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 0.79
+  demand_history:
+  - - '2026-06-19'
+    - 50.2
+  - - '2026-06-26'
+    - 52.3
+  - - '2026-07-03'
+    - 79.4
+  - - '2026-07-10'
+    - 60.7
+  - - '2026-07-17'
+    - 61.2
+  - - '2026-07-24'
+    - 53.0
+  - - '2026-07-31'
+    - 49.0
+- id: p008
+  text: 雪国に住んでいます。冬道でも安心して乗れる四駆の国産車をメーカー横断で比較してください。
+  category: purchase
+  driver: safety
+  brand: false
+  source: chiebukuro
+  tier: core
+  added_on: '2026-06-15'
+  tier_since: '2026-06-15'
+  demand: 53.0
+  volume: 1137
+  fanout_hits: 0
+  ugc_hits: 3
+  growth: 0.96
+  demand_history:
+  - - '2026-06-19'
+    - 42.3
+  - - '2026-06-26'
+    - 56.1
+  - - '2026-07-03'
+    - 60.3
+  - - '2026-07-10'
+    - 45.1
+  - - '2026-07-17'
+    - 53.0
+  - - '2026-07-24'
+    - 61.6
+  - - '2026-07-31'
+    - 53.0
+- id: p009
+  text: 法人で営業車を10台入れ替えます。維持費と耐久性で有利な国産メーカーはどこですか？
+  category: cost
+  driver: reliability
+  brand: false
+  source: llm_fanout
+  tier: strategic
+  added_on: '2026-06-15'
+  tier_since: '2026-07-24'
+  demand: 35.8
+  volume: 82
+  fanout_hits: 0
+  ugc_hits: 2
+  growth: 0.98
+  demand_history:
+  - - '2026-06-19'
+    - 28.7
+  - - '2026-06-26'
+    - 57.7
+  - - '2026-07-03'
+    - 35.6
+  - - '2026-07-10'
+    - 30.7
+  - - '2026-07-17'
+    - 54.0
+  - - '2026-07-24'
+    - 28.7
+  - - '2026-07-31'
+    - 35.8
+  tier_prev: core
+- id: p010
+  text: 日本で先進運転支援や自動運転技術の開発に力を入れているメーカーはどこですか？
+  category: safety
+  driver: safety
+  brand: false
+  source: semrush_import
+  tier: core
+  added_on: '2026-06-15'
+  tier_since: '2026-06-15'
+  demand: 53.3
+  volume: 307
+  fanout_hits: 0
+  ugc_hits: 4
+  growth: 1.17
+  demand_history:
+  - - '2026-06-19'
+    - 35.8
+  - - '2026-06-26'
+    - 39.8
+  - - '2026-07-03'
+    - 60.3
+  - - '2026-07-10'
+    - 54.1
+  - - '2026-07-17'
+    - 46.4
+  - - '2026-07-24'
+    - 41.4
+  - - '2026-07-31'
+    - 53.3
+- id: p011
+  text: 衝突被害軽減ブレーキや踏み間違い防止の性能が高い国産車を、メーカーごとに比較して教えてください。
+  category: safety
+  driver: safety
+  brand: false
+  source: paa
+  tier: core
+  added_on: '2026-06-15'
+  tier_since: '2026-06-15'
+  demand: 50.1
+  volume: 415
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.2
+  demand_history:
+  - - '2026-06-19'
+    - 34.8
+  - - '2026-06-26'
+    - 39.5
+  - - '2026-07-03'
+    - 60.9
+  - - '2026-07-10'
+    - 50.9
+  - - '2026-07-17'
+    - 42.6
+  - - '2026-07-24'
+    - 38.7
+  - - '2026-07-31'
+    - 50.1
+- id: p012
+  text: 夜間の歩行者検知や自動ブレーキの実力を、第三者評価のデータをもとに国産メーカーで比較してください。
+  category: safety
+  driver: safety
+  brand: false
+  source: llm_fanout
+  tier: core
+  added_on: '2026-06-15'
+  tier_since: '2026-06-15'
+  demand: 40.9
+  volume: 221
+  fanout_hits: 0
+  ugc_hits: 2
+  growth: 0.95
+  demand_history:
+  - - '2026-06-19'
+    - 35.8
+  - - '2026-06-26'
+    - 55.2
+  - - '2026-07-03'
+    - 55.7
+  - - '2026-07-10'
+    - 48.8
+  - - '2026-07-17'
+    - 46.5
+  - - '2026-07-24'
+    - 36.8
+  - - '2026-07-31'
+    - 40.9
+- id: p013
+  text: 高速道路の渋滞時に一番ラクな運転支援システムを積んでいる国産車はどれですか？
+  category: safety
+  driver: adas
+  brand: false
+  source: chiebukuro
+  tier: core
+  added_on: '2026-06-15'
+  tier_since: '2026-06-15'
+  demand: 50.1
+  volume: 2166
+  fanout_hits: 0
+  ugc_hits: 2
+  growth: 0.62
+  demand_history:
+  - - '2026-06-19'
+    - 49.4
+  - - '2026-06-26'
+    - 57.6
+  - - '2026-07-03'
+    - 73.8
+  - - '2026-07-10'
+    - 50.8
+  - - '2026-07-17'
+    - 53.6
+  - - '2026-07-24'
+    - 76.7
+  - - '2026-07-31'
+    - 50.1
+- id: p014
+  text: サポカー補助金の対象になる安全装備を積んだ国産車を、メーカーごとに教えてください。
+  category: safety
+  driver: safety
+  brand: false
+  source: paa
+  tier: core
+  added_on: '2026-06-15'
+  tier_since: '2026-06-15'
+  demand: 19.8
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 2
+  growth: 1.0
+  demand_history:
+  - - '2026-06-19'
+    - 9.9
+  - - '2026-06-26'
+    - 9.9
+  - - '2026-07-03'
+    - 9.9
+  - - '2026-07-10'
+    - 9.9
+  - - '2026-07-17'
+    - 19.8
+  - - '2026-07-24'
+    - 19.8
+  - - '2026-07-31'
+    - 19.8
+- id: p015
+  text: 親が高齢で運転が心配です。踏み間違い防止装置が後付けできる国産メーカーはどこですか？
+  category: safety
+  driver: safety
+  brand: false
+  source: chiebukuro
+  tier: core
+  added_on: '2026-06-15'
+  tier_since: '2026-06-15'
+  demand: 39.6
+  volume: 376
+  fanout_hits: 0
+  ugc_hits: 2
+  growth: 0.54
+  demand_history:
+  - - '2026-06-19'
+    - 39.3
+  - - '2026-06-26'
+    - 61.0
+  - - '2026-07-03'
+    - 62.5
+  - - '2026-07-10'
+    - 41.3
+  - - '2026-07-17'
+    - 51.9
+  - - '2026-07-24'
+    - 49.5
+  - - '2026-07-31'
+    - 39.6
+- id: p020
+  text: 首都圏のマンション住まいで立体駐車場を使う場合、サイズ制限に収まりやすい車を多く出しているメーカーはどこですか？
+  category: model
+  driver: urban
+  brand: false
+  source: semrush_import
+  tier: core
+  added_on: '2026-06-15'
+  tier_since: '2026-06-15'
+  demand: 71.9
+  volume: 3505
+  fanout_hits: 0
+  ugc_hits: 3
+  growth: 1.37
+  demand_history:
+  - - '2026-06-19'
+    - 50.5
+  - - '2026-06-26'
+    - 58.1
+  - - '2026-07-03'
+    - 54.4
+  - - '2026-07-10'
+    - 68.3
+  - - '2026-07-17'
+    - 60.1
+  - - '2026-07-24'
+    - 51.2
+  - - '2026-07-31'
+    - 71.9
+- id: p021
+  text: 東京の狭い道でも運転しやすくて、駐車が苦手でも扱いやすい国産車を教えてください。
+  category: model
+  driver: urban
+  brand: false
+  source: chiebukuro
+  tier: core
+  added_on: '2026-06-15'
+  tier_since: '2026-06-15'
+  demand: 59.7
+  volume: 3756
+  fanout_hits: 0
+  ugc_hits: 2
+  growth: 1.01
+  demand_history:
+  - - '2026-06-19'
+    - 54.4
+  - - '2026-06-26'
+    - 57.6
+  - - '2026-07-03'
+    - 80.3
+  - - '2026-07-10'
+    - 65.7
+  - - '2026-07-17'
+    - 62.0
+  - - '2026-07-24'
+    - 53.4
+  - - '2026-07-31'
+    - 59.7
+- id: p022
+  text: 最小回転半径が小さくて取り回しの良いコンパクトカーを、メーカー横断で比較してください。
+  category: model
+  driver: urban
+  brand: false
+  source: paa
+  tier: core
+  added_on: '2026-06-15'
+  tier_since: '2026-06-15'
+  demand: 39.7
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 4
+  growth: 1.0
+  demand_history:
+  - - '2026-06-26'
+    - 9.9
+  - - '2026-07-03'
+    - 29.8
+  - - '2026-07-10'
+    - 29.8
+  - - '2026-07-17'
+    - 29.8
+  - - '2026-07-24'
+    - 29.8
+  - - '2026-07-31'
+    - 39.7
+- id: p023
+  text: 機械式立体駐車場に入る全高1550mm以下のSUVを、国産メーカー横断で教えてください。
+  category: model
+  driver: urban
+  brand: false
+  source: paa
+  tier: core
+  added_on: '2026-06-15'
+  tier_since: '2026-06-15'
+  demand: 42.1
+  volume: 419
+  fanout_hits: 0
+  ugc_hits: 2
+  growth: 0.86
+  demand_history:
+  - - '2026-06-19'
+    - 39.2
+  - - '2026-06-26'
+    - 58.2
+  - - '2026-07-03'
+    - 52.4
+  - - '2026-07-10'
+    - 45.6
+  - - '2026-07-17'
+    - 48.9
+  - - '2026-07-24'
+    - 39.2
+  - - '2026-07-31'
+    - 42.1
+- id: p030
+  text: 長距離通勤で疲れにくい運転支援を積んだ国産車はどのメーカーが強いですか？
+  category: safety
+  driver: adas
+  brand: false
+  source: llm_fanout
+  tier: core
+  added_on: '2026-06-15'
+  tier_since: '2026-06-15'
+  demand: 43.7
+  volume: 402
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 0.93
+  demand_history:
+  - - '2026-06-19'
+    - 35.8
+  - - '2026-06-26'
+    - 65.3
+  - - '2026-07-03'
+    - 37.4
+  - - '2026-07-10'
+    - 61.6
+  - - '2026-07-17'
+    - 37.0
+  - - '2026-07-24'
+    - 64.6
+  - - '2026-07-31'
+    - 43.7
+- id: p031
+  text: 自動駐車機能が実用的な国産車を教えてください。実際に使えるレベルなのはどれですか？
+  category: safety
+  driver: adas
+  brand: false
+  source: chiebukuro
+  tier: core
+  added_on: '2026-06-15'
+  tier_since: '2026-06-15'
+  demand: 39.4
+  volume: 347
+  fanout_hits: 0
+  ugc_hits: 2
+  growth: 0.81
+  demand_history:
+  - - '2026-06-19'
+    - 45.6
+  - - '2026-06-26'
+    - 36.0
+  - - '2026-07-03'
+    - 65.7
+  - - '2026-07-10'
+    - 47.3
+  - - '2026-07-17'
+    - 39.9
+  - - '2026-07-24'
+    - 52.6
+  - - '2026-07-31'
+    - 39.4
+- id: p032
+  text: ハンズオフ走行ができる国産車はどのメーカーが出していますか？実用性も含めて教えてください。
+  category: safety
+  driver: adas
+  brand: false
+  source: llm_fanout
+  tier: core
+  added_on: '2026-06-15'
+  tier_since: '2026-06-15'
+  demand: 72.5
+  volume: 1177
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.88
+  demand_history:
+  - - '2026-06-19'
+    - 42.8
+  - - '2026-06-26'
+    - 56.5
+  - - '2026-07-03'
+    - 72.2
+  - - '2026-07-10'
+    - 43.9
+  - - '2026-07-17'
+    - 53.1
+  - - '2026-07-24'
+    - 42.4
+  - - '2026-07-31'
+    - 72.5
+- id: p040
+  text: 日本で残価が落ちにくい車種を多く持っている自動車ブランドはどこですか？
+  category: cost
+  driver: resale
+  brand: false
+  source: semrush_import
+  tier: core
+  added_on: '2026-06-15'
+  tier_since: '2026-06-15'
+  demand: 43.6
+  volume: 147
+  fanout_hits: 0
+  ugc_hits: 4
+  growth: 0.99
+  demand_history:
+  - - '2026-06-19'
+    - 30.8
+  - - '2026-06-26'
+    - 31.9
+  - - '2026-07-03'
+    - 51.5
+  - - '2026-07-10'
+    - 48.3
+  - - '2026-07-17'
+    - 35.8
+  - - '2026-07-24'
+    - 56.6
+  - - '2026-07-31'
+    - 43.6
+- id: p041
+  text: 車を手放すときに下取り価格が期待できる日本ブランドを教えてください。
+  category: cost
+  driver: resale
+  brand: false
+  source: semrush_import
+  tier: core
+  added_on: '2026-06-15'
+  tier_since: '2026-06-15'
+  demand: 61.7
+  volume: 1873
+  fanout_hits: 0
+  ugc_hits: 2
+  growth: 1.22
+  demand_history:
+  - - '2026-06-19'
+    - 49.9
+  - - '2026-06-26'
+    - 50.1
+  - - '2026-07-03'
+    - 75.5
+  - - '2026-07-10'
+    - 55.0
+  - - '2026-07-17'
+    - 55.7
+  - - '2026-07-24'
+    - 49.0
+  - - '2026-07-31'
+    - 61.7
+- id: p042
+  text: 日本でエコカー減税や補助金の対象車種が多いメーカーはどこでしょう？
+  category: cost
+  driver: cost
+  brand: false
+  source: semrush_import
+  tier: core
+  added_on: '2026-06-15'
+  tier_since: '2026-06-15'
+  demand: 45.3
+  volume: 961
+  fanout_hits: 0
+  ugc_hits: 2
+  growth: 0.56
+  demand_history:
+  - - '2026-06-19'
+    - 59.3
+  - - '2026-06-26'
+    - 45.4
+  - - '2026-07-03'
+    - 67.5
+  - - '2026-07-10'
+    - 60.2
+  - - '2026-07-17'
+    - 52.8
+  - - '2026-07-24'
+    - 58.2
+  - - '2026-07-31'
+    - 45.3
+- id: p043
+  text: 5年間乗った場合の総額（車両価格＋燃料＋税金＋整備＋売却）が安く済む国産コンパクトカーを比較してください。
+  category: cost
+  driver: cost
+  brand: false
+  source: llm_fanout
+  tier: core
+  added_on: '2026-06-15'
+  tier_since: '2026-06-15'
+  demand: 57.1
+  volume: 3114
+  fanout_hits: 0
+  ugc_hits: 2
+  growth: 0.96
+  demand_history:
+  - - '2026-06-19'
+    - 52.5
+  - - '2026-06-26'
+    - 74.6
+  - - '2026-07-03'
+    - 61.2
+  - - '2026-07-10'
+    - 61.9
+  - - '2026-07-17'
+    - 56.4
+  - - '2026-07-24'
+    - 64.4
+  - - '2026-07-31'
+    - 57.1
+- id: p044
+  text: 残価設定ローンとカーサブスクはどちらが得ですか？国産メーカーのプランで比較してください。
+  category: cost
+  driver: subscription
+  brand: false
+  source: paa
+  tier: core
+  added_on: '2026-06-15'
+  tier_since: '2026-06-15'
+  demand: 55.8
+  volume: 172
+  fanout_hits: 0
+  ugc_hits: 6
+  growth: 1.24
+  demand_history:
+  - - '2026-06-19'
+    - 43.5
+  - - '2026-06-26'
+    - 46.2
+  - - '2026-07-03'
+    - 44.8
+  - - '2026-07-10'
+    - 48.2
+  - - '2026-07-17'
+    - 43.2
+  - - '2026-07-24'
+    - 41.5
+  - - '2026-07-31'
+    - 55.8
+- id: p045
+  text: 自動車保険料が安く済む国産車の傾向を、車種やメーカーの観点から教えてください。
+  category: cost
+  driver: cost
+  brand: false
+  source: paa
+  tier: core
+  added_on: '2026-06-15'
+  tier_since: '2026-06-15'
+  demand: 46.2
+  volume: 961
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 0.83
+  demand_history:
+  - - '2026-06-19'
+    - 58.5
+  - - '2026-06-26'
+    - 45.4
+  - - '2026-07-03'
+    - 75.2
+  - - '2026-07-10'
+    - 58.2
+  - - '2026-07-17'
+    - 64.1
+  - - '2026-07-24'
+    - 46.5
+  - - '2026-07-31'
+    - 46.2
+- id: p046
+  text: 税金が安く済む国産車をボディタイプ別に教えてください。維持費全体で比較したいです。
+  category: cost
+  driver: cost
+  brand: false
+  source: paa
+  tier: strategic
+  added_on: '2026-06-15'
+  tier_since: '2026-07-24'
+  demand: 44.5
+  volume: 132
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.18
+  demand_history:
+  - - '2026-06-19'
+    - 33.9
+  - - '2026-06-26'
+    - 31.1
+  - - '2026-07-03'
+    - 56.5
+  - - '2026-07-10'
+    - 43.3
+  - - '2026-07-17'
+    - 35.1
+  - - '2026-07-24'
+    - 33.1
+  - - '2026-07-31'
+    - 44.5
+  tier_prev: core
+- id: p050
+  text: 日本で環境配慮型の車（ハイブリッド・電気・燃料電池など）に強いメーカーはどこですか？
+  category: eco
+  driver: hybrid
+  brand: false
+  source: semrush_import
+  tier: core
+  added_on: '2026-06-15'
+  tier_since: '2026-06-15'
+  demand: 63.1
+  volume: 5118
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.13
+  demand_history:
+  - - '2026-06-19'
+    - 51.8
+  - - '2026-06-26'
+    - 55.8
+  - - '2026-07-03'
+    - 78.5
+  - - '2026-07-10'
+    - 61.8
+  - - '2026-07-17'
+    - 53.5
+  - - '2026-07-24'
+    - 54.4
+  - - '2026-07-31'
+    - 63.1
+- id: p051
+  text: 日本で電動車の販売比率が高い自動車ブランドを知りたいです。
+  category: eco
+  driver: hybrid
+  brand: false
+  source: semrush_import
+  tier: core
+  added_on: '2026-06-15'
+  tier_since: '2026-06-15'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  demand_history: []
+- id: p052
+  text: マンション住まいでEVは現実的ですか？それともハイブリッドの方がいいですか？国産メーカーの選択肢で教えてください。
+  category: eco
+  driver: hybrid
+  brand: false
+  source: chiebukuro
+  tier: strategic
+  added_on: '2026-06-15'
+  tier_since: '2026-07-31'
+  demand: 40.8
+  volume: 238
+  fanout_hits: 0
+  ugc_hits: 4
+  growth: 0.66
+  demand_history:
+  - - '2026-06-19'
+    - 46.4
+  - - '2026-06-26'
+    - 34.4
+  - - '2026-07-03'
+    - 66.1
+  - - '2026-07-10'
+    - 44.0
+  - - '2026-07-17'
+    - 42.2
+  - - '2026-07-24'
+    - 55.4
+  - - '2026-07-31'
+    - 40.8
+  tier_prev: core
+- id: p053
+  text: 日本で災害時に給電車両として役立つ車を多数ラインナップしているメーカーを教えてください。
+  category: eco
+  driver: esg
+  brand: false
+  source: semrush_import
+  tier: strategic
+  added_on: '2026-06-15'
+  tier_since: '2026-07-31'
+  demand: 41.5
+  volume: 254
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.01
+  demand_history:
+  - - '2026-06-19'
+    - 32.1
+  - - '2026-06-26'
+    - 40.8
+  - - '2026-07-03'
+    - 61.8
+  - - '2026-07-10'
+    - 46.3
+  - - '2026-07-17'
+    - 40.9
+  - - '2026-07-24'
+    - 40.9
+  - - '2026-07-31'
+    - 41.5
+  tier_prev: core
+- id: p054
+  text: ハイブリッドのバッテリーは何年もちますか？国産メーカーごとの実績と保証を比較してください。
+  category: eco
+  driver: hybrid
+  brand: false
+  source: chiebukuro
+  tier: strategic
+  added_on: '2026-06-15'
+  tier_since: '2026-07-31'
+  demand: 28.5
+  volume: 81
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 0.55
+  demand_history:
+  - - '2026-06-19'
+    - 28.4
+  - - '2026-06-26'
+    - 55.2
+  - - '2026-07-03'
+    - 38.6
+  - - '2026-07-10'
+    - 32.6
+  - - '2026-07-17'
+    - 55.3
+  - - '2026-07-24'
+    - 38.3
+  - - '2026-07-31'
+    - 28.5
+  tier_prev: core
+- id: p055
+  text: PHEVとHEVはどちらが得ですか？日本の使い方で国産メーカーの選択肢を教えてください。
+  category: eco
+  driver: hybrid
+  brand: false
+  source: paa
+  tier: strategic
+  added_on: '2026-06-15'
+  tier_since: '2026-07-31'
+  demand: 40.2
+  volume: 574
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 0.79
+  demand_history:
+  - - '2026-06-19'
+    - 55.2
+  - - '2026-06-26'
+    - 40.0
+  - - '2026-07-03'
+    - 69.2
+  - - '2026-07-10'
+    - 41.2
+  - - '2026-07-17'
+    - 56.8
+  - - '2026-07-24'
+    - 54.4
+  - - '2026-07-31'
+    - 40.2
+  tier_prev: core
+- id: p060
+  text: 車中泊仕様やキャンパー仕様にカスタムしやすいミニバン・ワゴン車を出しているメーカーはどこですか？
+  category: model
+  driver: cargo
+  brand: false
+  source: semrush_import
+  tier: core
+  added_on: '2026-06-15'
+  tier_since: '2026-06-15'
+  demand: 57.0
+  volume: 1187
+  fanout_hits: 0
+  ugc_hits: 2
+  growth: 1.0
+  demand_history:
+  - - '2026-06-19'
+    - 42.3
+  - - '2026-06-26'
+    - 70.2
+  - - '2026-07-03'
+    - 44.1
+  - - '2026-07-10'
+    - 62.8
+  - - '2026-07-17'
+    - 54.7
+  - - '2026-07-24'
+    - 53.0
+  - - '2026-07-31'
+    - 57.0
+- id: p061
+  text: 都市型SUVと本格派SUVを両方そろえているメーカーはどこですか？
+  category: model
+  driver: cargo
+  brand: false
+  source: semrush_import
+  tier: core
+  added_on: '2026-06-15'
+  tier_since: '2026-06-15'
+  demand: 75.6
+  volume: 1887
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.71
+  demand_history:
+  - - '2026-06-19'
+    - 58.5
+  - - '2026-06-26'
+    - 47.1
+  - - '2026-07-03'
+    - 60.1
+  - - '2026-07-10'
+    - 63.1
+  - - '2026-07-17'
+    - 47.4
+  - - '2026-07-24'
+    - 47.1
+  - - '2026-07-31'
+    - 75.6
+- id: p062
+  text: 乗り心地の柔らかさ・快適性で選ぶなら、日本で評価が高いブランドはどこでしょう？
+  category: model
+  driver: reliability
+  brand: false
+  source: semrush_import
+  tier: core
+  added_on: '2026-06-15'
+  tier_since: '2026-06-15'
+  demand: 67.3
+  volume: 1224
+  fanout_hits: 0
+  ugc_hits: 6
+  growth: 1.23
+  demand_history:
+  - - '2026-06-19'
+    - 43.3
+  - - '2026-06-26'
+    - 56.2
+  - - '2026-07-03'
+    - 56.3
+  - - '2026-07-10'
+    - 52.2
+  - - '2026-07-17'
+    - 74.3
+  - - '2026-07-24'
+    - 49.4
+  - - '2026-07-31'
+    - 67.3
+- id: p063
+  text: 3列目にも大人がしっかり座れるミニバンを、メーカー横断で比較して教えてください。
+  category: model
+  driver: minivan
+  brand: false
+  source: paa
+  tier: core
+  added_on: '2026-06-15'
+  tier_since: '2026-06-15'
+  demand: 53.0
+  volume: 1186
+  fanout_hits: 0
+  ugc_hits: 2
+  growth: 1.02
+  demand_history:
+  - - '2026-06-19'
+    - 42.4
+  - - '2026-06-26'
+    - 47.7
+  - - '2026-07-03'
+    - 67.2
+  - - '2026-07-10'
+    - 51.6
+  - - '2026-07-17'
+    - 54.6
+  - - '2026-07-24'
+    - 52.9
+  - - '2026-07-31'
+    - 53.0
+- id: p064
+  text: 小さな子どもがいても汚れにくい内装を採用したファミリーカーを出している国産メーカーはどこですか？
+  category: model
+  driver: minivan
+  brand: false
+  source: semrush_import
+  tier: core
+  added_on: '2026-06-15'
+  tier_since: '2026-06-15'
+  demand: 42.9
+  volume: 206
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.1
+  demand_history:
+  - - '2026-06-19'
+    - 38.4
+  - - '2026-06-26'
+    - 51.3
+  - - '2026-07-03'
+    - 43.0
+  - - '2026-07-10'
+    - 38.9
+  - - '2026-07-17'
+    - 33.1
+  - - '2026-07-24'
+    - 41.2
+  - - '2026-07-31'
+    - 42.9
+- id: p065
+  text: スライドドアで小回りが利くコンパクトカーを、国産メーカー横断で比較してください。
+  category: model
+  driver: urban
+  brand: false
+  source: paa
+  tier: core
+  added_on: '2026-06-15'
+  tier_since: '2026-06-15'
+  demand: 57.6
+  volume: 714
+  fanout_hits: 0
+  ugc_hits: 3
+  growth: 1.21
+  demand_history:
+  - - '2026-06-19'
+    - 39.6
+  - - '2026-06-26'
+    - 66.4
+  - - '2026-07-03'
+    - 56.9
+  - - '2026-07-10'
+    - 45.6
+  - - '2026-07-17'
+    - 45.6
+  - - '2026-07-24'
+    - 54.4
+  - - '2026-07-31'
+    - 57.6
+- id: p066
+  text: 静粛性が高い国産車はどのメーカーですか？高速走行での比較を教えてください。
+  category: model
+  driver: reliability
+  brand: false
+  source: llm_fanout
+  tier: core
+  added_on: '2026-06-15'
+  tier_since: '2026-06-15'
+  demand: 53.2
+  volume: 256
+  fanout_hits: 0
+  ugc_hits: 3
+  growth: 1.27
+  demand_history:
+  - - '2026-06-19'
+    - 36.3
+  - - '2026-06-26'
+    - 32.0
+  - - '2026-07-03'
+    - 61.7
+  - - '2026-07-10'
+    - 45.1
+  - - '2026-07-17'
+    - 37.5
+  - - '2026-07-24'
+    - 45.2
+  - - '2026-07-31'
+    - 53.2
+- id: p070
+  text: 車を長く乗るなら、点検パックやメンテナンスプランが充実している国産メーカーはどこですか？
+  category: service
+  driver: warranty
+  brand: false
+  source: llm_fanout
+  tier: core
+  added_on: '2026-06-15'
+  tier_since: '2026-06-15'
+  demand: 47.0
+  volume: 925
+  fanout_hits: 0
+  ugc_hits: 3
+  growth: 0.78
+  demand_history:
+  - - '2026-06-19'
+    - 58.1
+  - - '2026-06-26'
+    - 44.0
+  - - '2026-07-03'
+    - 71.9
+  - - '2026-07-10'
+    - 60.2
+  - - '2026-07-17'
+    - 43.2
+  - - '2026-07-24'
+    - 57.5
+  - - '2026-07-31'
+    - 47.0
+- id: p071
+  text: 地方在住でもディーラーが近くにあって整備で困らない国産ブランドはどこですか？
+  category: service
+  driver: dealer
+  brand: false
+  source: chiebukuro
+  tier: strategic
+  added_on: '2026-06-15'
+  tier_since: '2026-07-24'
+  demand: 63.3
+  volume: 641
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.56
+  demand_history:
+  - - '2026-06-19'
+    - 43.6
+  - - '2026-06-26'
+    - 61.1
+  - - '2026-07-03'
+    - 52.2
+  - - '2026-07-10'
+    - 45.5
+  - - '2026-07-17'
+    - 50.8
+  - - '2026-07-24'
+    - 38.2
+  - - '2026-07-31'
+    - 63.3
+  tier_prev: core
+- id: p072
+  text: 車いす利用者や介護向けの福祉車両が充実しているブランドはどこですか？
+  category: service
+  driver: esg
+  brand: false
+  source: semrush_import
+  tier: core
+  added_on: '2026-06-15'
+  tier_since: '2026-06-15'
+  demand: 54.5
+  volume: 2933
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 0.86
+  demand_history:
+  - - '2026-06-19'
+    - 49.5
+  - - '2026-06-26'
+    - 55.2
+  - - '2026-07-03'
+    - 78.4
+  - - '2026-07-10'
+    - 55.1
+  - - '2026-07-17'
+    - 50.2
+  - - '2026-07-24'
+    - 79.5
+  - - '2026-07-31'
+    - 54.5
+- id: p073
+  text: 10年10万km以上乗る前提だと、部品供給と整備で安心できる国産メーカーはどこですか？
+  category: service
+  driver: reliability
+  brand: false
+  source: llm_fanout
+  tier: core
+  added_on: '2026-06-15'
+  tier_since: '2026-06-15'
+  demand: 51.5
+  volume: 1663
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 0.88
+  demand_history:
+  - - '2026-06-19'
+    - 52.3
+  - - '2026-06-26'
+    - 58.4
+  - - '2026-07-03'
+    - 59.5
+  - - '2026-07-10'
+    - 47.1
+  - - '2026-07-17'
+    - 70.9
+  - - '2026-07-24'
+    - 56.8
+  - - '2026-07-31'
+    - 51.5
+- id: p074
+  text: 納車待ちが短い国産車を知りたいです。メーカーごとの納期傾向を教えてください。
+  category: service
+  driver: dealer
+  brand: false
+  source: chiebukuro
+  tier: core
+  added_on: '2026-06-15'
+  tier_since: '2026-06-15'
+  demand: 73.8
+  volume: 3013
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.6
+  demand_history:
+  - - '2026-06-19'
+    - 53.6
+  - - '2026-06-26'
+    - 49.4
+  - - '2026-07-03'
+    - 79.5
+  - - '2026-07-10'
+    - 60.9
+  - - '2026-07-17'
+    - 55.9
+  - - '2026-07-24'
+    - 47.3
+  - - '2026-07-31'
+    - 73.8
+- id: p080
+  text: 日本国内で購入できるトヨタの車種とそれぞれの特徴を知りたいです。おすすめはどれですか？
+  category: brand
+  driver: minivan
+  brand: true
+  source: semrush_import
+  tier: core
+  added_on: '2026-06-15'
+  tier_since: '2026-06-15'
+  demand: 53.0
+  volume: 1813
+  fanout_hits: 0
+  ugc_hits: 4
+  growth: 0.55
+  demand_history:
+  - - '2026-06-19'
+    - 63.8
+  - - '2026-06-26'
+    - 51.3
+  - - '2026-07-03'
+    - 62.8
+  - - '2026-07-10'
+    - 68.3
+  - - '2026-07-17'
+    - 59.8
+  - - '2026-07-24'
+    - 58.8
+  - - '2026-07-31'
+    - 53.0
+- id: p081
+  text: トヨタの安全技術は他の国産メーカーと比べてどうですか？弱いと言われることはありますか？
+  category: brand
+  driver: safety
+  brand: true
+  source: llm_fanout
+  tier: core
+  added_on: '2026-06-15'
+  tier_since: '2026-06-15'
+  demand: 57.0
+  volume: 1183
+  fanout_hits: 0
+  ugc_hits: 2
+  growth: 1.0
+  demand_history:
+  - - '2026-06-19'
+    - 42.2
+  - - '2026-06-26'
+    - 57.8
+  - - '2026-07-03'
+    - 52.2
+  - - '2026-07-10'
+    - 60.3
+  - - '2026-07-17'
+    - 44.0
+  - - '2026-07-24'
+    - 67.8
+  - - '2026-07-31'
+    - 57.0
+- id: p082
+  text: トヨタ車は割高だと言われますが、実際のところコストパフォーマンスはどうですか？
+  category: brand
+  driver: cost
+  brand: true
+  source: llm_fanout
+  tier: core
+  added_on: '2026-06-15'
+  tier_since: '2026-06-15'
+  demand: 59.4
+  volume: 6368
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 0.96
+  demand_history:
+  - - '2026-06-19'
+    - 61.8
+  - - '2026-06-26'
+    - 54.2
+  - - '2026-07-03'
+    - 75.6
+  - - '2026-07-10'
+    - 66.3
+  - - '2026-07-17'
+    - 63.5
+  - - '2026-07-24'
+    - 59.4
+  - - '2026-07-31'
+    - 59.4
+- id: p083
+  text: トヨタのEV戦略はわかりにくいと言われますが、生活者目線でどう理解すればいいですか？
+  category: brand
+  driver: hybrid
+  brand: true
+  source: llm_fanout
+  tier: core
+  added_on: '2026-06-15'
+  tier_since: '2026-06-15'
+  demand: 49.5
+  volume: 1062
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 0.91
+  demand_history:
+  - - '2026-06-19'
+    - 54.3
+  - - '2026-06-26'
+    - 46.1
+  - - '2026-07-03'
+    - 68.3
+  - - '2026-07-10'
+    - 43.6
+  - - '2026-07-17'
+    - 69.6
+  - - '2026-07-24'
+    - 54.3
+  - - '2026-07-31'
+    - 49.5
+- id: p084
+  text: KINTOと他社のカーサブスクを比較して、どちらがおすすめか教えてください。
+  category: brand
+  driver: subscription
+  brand: true
+  source: llm_fanout
+  tier: strategic
+  added_on: '2026-06-15'
+  tier_since: '2026-07-24'
+  demand: 50.2
+  volume: 380
+  fanout_hits: 0
+  ugc_hits: 3
+  growth: 1.09
+  demand_history:
+  - - '2026-06-19'
+    - 46.8
+  - - '2026-06-26'
+    - 37.1
+  - - '2026-07-03'
+    - 47.2
+  - - '2026-07-10'
+    - 51.2
+  - - '2026-07-17'
+    - 47.6
+  - - '2026-07-24'
+    - 37.5
+  - - '2026-07-31'
+    - 50.2
+  tier_prev: core
+- id: p085
+  text: トヨタのデザインは地味だという意見をよく見ますが、最近のモデルはどう変わりましたか？
+  category: brand
+  driver: reliability
+  brand: true
+  source: llm_fanout
+  tier: core
+  added_on: '2026-06-15'
+  tier_since: '2026-06-15'
+  demand: 55.6
+  volume: 3870
+  fanout_hits: 0
+  ugc_hits: 3
+  growth: 0.67
+  demand_history:
+  - - '2026-06-19'
+    - 52.5
+  - - '2026-06-26'
+    - 78.9
+  - - '2026-07-03'
+    - 65.7
+  - - '2026-07-10'
+    - 65.9
+  - - '2026-07-17'
+    - 57.7
+  - - '2026-07-24'
+    - 65.4
+  - - '2026-07-31'
+    - 55.6
+- id: p086
+  text: トヨタの運転支援は他社と比べて使いやすいですか？実際の評判を教えてください。
+  category: brand
+  driver: adas
+  brand: true
+  source: llm_fanout
+  tier: core
+  added_on: '2026-06-15'
+  tier_since: '2026-06-15'
+  demand: 19.8
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 2
+  growth: 1.0
+  demand_history:
+  - - '2026-07-17'
+    - 19.8
+  - - '2026-07-24'
+    - 19.8
+  - - '2026-07-31'
+    - 19.8
+- id: p087
+  text: トヨタの中古車を買うときに注意すべき点と、認定中古車のメリットを教えてください。
+  category: brand
+  driver: resale
+  brand: true
+  source: llm_fanout
+  tier: core
+  added_on: '2026-06-15'
+  tier_since: '2026-06-15'
+  demand: 62.3
+  volume: 4385
+  fanout_hits: 0
+  ugc_hits: 6
+  growth: 0.63
+  demand_history:
+  - - '2026-06-19'
+    - 53.9
+  - - '2026-06-26'
+    - 72.3
+  - - '2026-07-03'
+    - 76.7
+  - - '2026-07-10'
+    - 62.1
+  - - '2026-07-17'
+    - 86.6
+  - - '2026-07-24'
+    - 73.1
+  - - '2026-07-31'
+    - 62.3
+- id: p088
+  text: コネクテッド機能はどのメーカーが使いやすいですか。スマホ連携を重視しています。
+  category: purchase
+  driver: connected
+  brand: false
+  source: suggest
+  tier: longtail
+  added_on: '2026-06-19'
+  tier_since: '2026-06-19'
+  demand: 37.8
+  volume: 74
+  fanout_hits: 0
+  ugc_hits: 14
+  growth: 0.1
+  keyword: null
+  demand_history:
+  - - '2026-06-19'
+    - 29.1
+  - - '2026-06-26'
+    - 33.0
+  - - '2026-07-03'
+    - 43.3
+  - - '2026-07-10'
+    - 63.7
+  - - '2026-07-17'
+    - 50.8
+  - - '2026-07-24'
+    - 57.0
+  - - '2026-07-31'
+    - 37.8
+- id: p089
+  text: 中古車を買うなら何年落ちが一番お得ですか。国産のおすすめ車種も知りたいです。
+  category: purchase
+  driver: null
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-06-19'
+  tier_since: '2026-06-19'
+  demand: 59.5
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 16
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-06-19'
+    - 20.8
+  - - '2026-06-26'
+    - 27.8
+  - - '2026-07-03'
+    - 46.2
+  - - '2026-07-10'
+    - 46.2
+  - - '2026-07-17'
+    - 64.4
+  - - '2026-07-24'
+    - 46.2
+  - - '2026-07-31'
+    - 59.5
+- id: p090
+  text: 車検を安く済ませたいのですが、ディーラーと民間工場で何が違いますか。
+  category: cost
+  driver: warranty
+  brand: false
+  source: chiebukuro
+  tier: core
+  added_on: '2026-06-19'
+  tier_since: '2026-06-19'
+  demand: 62.6
+  volume: 4601
+  fanout_hits: 0
+  ugc_hits: 9
+  growth: 0.7
+  keyword: null
+  demand_history:
+  - - '2026-06-19'
+    - 77.7
+  - - '2026-06-26'
+    - 57.3
+  - - '2026-07-03'
+    - 78.2
+  - - '2026-07-10'
+    - 75.0
+  - - '2026-07-17'
+    - 68.7
+  - - '2026-07-24'
+    - 85.1
+  - - '2026-07-31'
+    - 62.6
+  tier_prev: longtail
+- id: p091
+  text: 新車の納期が長いと聞きました。いま国産で比較的早く納車される車種はどれですか。
+  category: service
+  driver: dealer
+  brand: false
+  source: suggest
+  tier: longtail
+  added_on: '2026-06-19'
+  tier_since: '2026-06-19'
+  demand: 65.9
+  volume: 561
+  fanout_hits: 0
+  ugc_hits: 15
+  growth: 1.34
+  keyword: null
+  demand_history:
+  - - '2026-06-19'
+    - 72.6
+  - - '2026-06-26'
+    - 65.7
+  - - '2026-07-03'
+    - 78.1
+  - - '2026-07-10'
+    - 83.9
+  - - '2026-07-17'
+    - 70.7
+  - - '2026-07-24'
+    - 65.7
+  - - '2026-07-31'
+    - 65.9
+- id: p092
+  text: 自動ブレーキの性能を国産メーカー別に比べると、どこが一番進んでいますか。
+  category: safety
+  driver: safety
+  brand: false
+  source: paa
+  tier: core
+  added_on: '2026-06-19'
+  tier_since: '2026-06-19'
+  demand: 53.0
+  volume: 942
+  fanout_hits: 0
+  ugc_hits: 20
+  growth: 0.2
+  keyword: null
+  demand_history:
+  - - '2026-06-19'
+    - 80.7
+  - - '2026-06-26'
+    - 69.9
+  - - '2026-07-03'
+    - 92.6
+  - - '2026-07-10'
+    - 80.0
+  - - '2026-07-17'
+    - 75.0
+  - - '2026-07-24'
+    - 82.0
+  - - '2026-07-31'
+    - 53.0
+  tier_prev: longtail
+- id: p093
+  text: 電気自動車を買って後悔した人はどんな理由が多いですか。国産ならどこが無難ですか。
+  category: eco
+  driver: null
+  brand: false
+  source: paa
+  tier: longtail
+  added_on: '2026-06-19'
+  tier_since: '2026-06-19'
+  demand: 59.5
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 9
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-06-19'
+    - 38.7
+  - - '2026-06-26'
+    - 53.9
+  - - '2026-07-03'
+    - 43.5
+  - - '2026-07-10'
+    - 43.5
+  - - '2026-07-17'
+    - 50.8
+  - - '2026-07-24'
+    - 70.8
+  - - '2026-07-31'
+    - 59.5
+- id: p094
+  text: トヨタのハイブリッドは他社と比べて何が優れていますか。弱点も教えてください。
+  category: eco
+  driver: hybrid
+  brand: true
+  source: fanout
+  tier: longtail
+  added_on: '2026-06-19'
+  tier_since: '2026-06-19'
+  demand: 46.2
+  volume: 286
+  fanout_hits: 0
+  ugc_hits: 15
+  growth: 0.81
+  keyword: null
+  demand_history:
+  - - '2026-06-19'
+    - 45.2
+  - - '2026-06-26'
+    - 63.0
+  - - '2026-07-03'
+    - 57.3
+  - - '2026-07-10'
+    - 61.0
+  - - '2026-07-17'
+    - 62.5
+  - - '2026-07-24'
+    - 63.0
+  - - '2026-07-31'
+    - 46.2
+- id: p095
+  text: 軽自動車とコンパクトカー、街乗り中心ならどちらが良いですか。
+  category: purchase
+  driver: urban
+  brand: false
+  source: paa
+  tier: core
+  added_on: '2026-06-19'
+  tier_since: '2026-06-19'
+  demand: 59.2
+  volume: 429
+  fanout_hits: 0
+  ugc_hits: 25
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-06-19'
+    - 75.0
+  - - '2026-06-26'
+    - 62.8
+  - - '2026-07-03'
+    - 85.8
+  - - '2026-07-10'
+    - 67.8
+  - - '2026-07-17'
+    - 64.2
+  - - '2026-07-24'
+    - 80.4
+  - - '2026-07-31'
+    - 59.2
+  tier_prev: longtail
+- id: p096
+  text: スライドドアの車で、開閉の使い勝手が一番良いのはどのメーカーですか。
+  category: purchase
+  driver: minivan
+  brand: false
+  source: fanout
+  tier: core
+  added_on: '2026-06-19'
+  tier_since: '2026-07-24'
+  demand: 69.6
+  volume: 1770
+  fanout_hits: 0
+  ugc_hits: 12
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-06-19'
+    - 56.4
+  - - '2026-06-26'
+    - 57.0
+  - - '2026-07-03'
+    - 83.7
+  - - '2026-07-10'
+    - 70.0
+  - - '2026-07-17'
+    - 73.4
+  - - '2026-07-24'
+    - 83.1
+  - - '2026-07-31'
+    - 69.6
+  tier_prev: longtail
+- id: p097
+  text: 10年20万キロ乗るつもりです。故障が少ない国産ブランドはどこですか。
+  category: purchase
+  driver: reliability
+  brand: false
+  source: chiebukuro
+  tier: core
+  added_on: '2026-06-19'
+  tier_since: '2026-06-19'
+  demand: 66.1
+  volume: 5353
+  fanout_hits: 0
+  ugc_hits: 9
+  growth: 0.89
+  keyword: null
+  demand_history:
+  - - '2026-06-19'
+    - 77.1
+  - - '2026-06-26'
+    - 84.5
+  - - '2026-07-03'
+    - 77.3
+  - - '2026-07-10'
+    - 83.6
+  - - '2026-07-17'
+    - 78.8
+  - - '2026-07-24'
+    - 80.7
+  - - '2026-07-31'
+    - 66.1
+  tier_prev: longtail
+- id: p098
+  text: SUVで荷室が広く、後席も快適な国産車を教えてください。
+  category: purchase
+  driver: cargo
+  brand: false
+  source: paa
+  tier: longtail
+  added_on: '2026-06-19'
+  tier_since: '2026-06-19'
+  demand: 51.2
+  volume: 315
+  fanout_hits: 0
+  ugc_hits: 8
+  growth: 0.96
+  keyword: null
+  demand_history:
+  - - '2026-06-19'
+    - 59.2
+  - - '2026-06-26'
+    - 64.9
+  - - '2026-07-03'
+    - 82.5
+  - - '2026-07-10'
+    - 76.1
+  - - '2026-07-17'
+    - 72.2
+  - - '2026-07-24'
+    - 64.5
+  - - '2026-07-31'
+    - 51.2
+- id: p099
+  text: ディーラーの対応が良いメーカーはどこですか。長く付き合うことを考えています。
+  category: service
+  driver: dealer
+  brand: false
+  source: suggest
+  tier: core
+  added_on: '2026-06-19'
+  tier_since: '2026-06-19'
+  demand: 75.7
+  volume: 6577
+  fanout_hits: 0
+  ugc_hits: 21
+  growth: 1.17
+  keyword: null
+  demand_history:
+  - - '2026-06-19'
+    - 89.4
+  - - '2026-06-26'
+    - 76.0
+  - - '2026-07-03'
+    - 96.5
+  - - '2026-07-10'
+    - 78.8
+  - - '2026-07-17'
+    - 90.6
+  - - '2026-07-24'
+    - 79.7
+  - - '2026-07-31'
+    - 75.7
+  tier_prev: longtail
+- id: p100
+  text: ハイブリッド車の実燃費はカタログ値と比べてどのくらい落ちますか。メーカー別に知りたいです。
+  category: eco
+  driver: hybrid
+  brand: false
+  source: fanout
+  tier: core
+  added_on: '2026-06-19'
+  tier_since: '2026-07-17'
+  demand: 84.6
+  volume: 3507
+  fanout_hits: 0
+  ugc_hits: 13
+  growth: 1.72
+  keyword: null
+  demand_history:
+  - - '2026-06-19'
+    - 73.4
+  - - '2026-06-26'
+    - 76.8
+  - - '2026-07-03'
+    - 96.3
+  - - '2026-07-10'
+    - 81.9
+  - - '2026-07-17'
+    - 82.0
+  - - '2026-07-24'
+    - 73.8
+  - - '2026-07-31'
+    - 84.6
+  tier_prev: longtail
+- id: p101
+  text: 3列シートで一番運転しやすいミニバンはどれですか。狭い住宅街を毎日通ります。
+  category: purchase
+  driver: minivan
+  brand: false
+  source: paa
+  tier: longtail
+  added_on: '2026-06-26'
+  tier_since: '2026-06-26'
+  demand: 59.5
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 14
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-06-26'
+    - 27.5
+  - - '2026-07-03'
+    - 37.2
+  - - '2026-07-10'
+    - 51.8
+  - - '2026-07-17'
+    - 50.8
+  - - '2026-07-24'
+    - 50.8
+  - - '2026-07-31'
+    - 59.5
+- id: p102
+  text: 水素自動車は今買う価値がありますか。実際の使い勝手を教えてください。
+  category: eco
+  driver: hybrid
+  brand: false
+  source: paa
+  tier: longtail
+  added_on: '2026-06-26'
+  tier_since: '2026-06-26'
+  demand: 59.5
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 14
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-06-26'
+    - 19.0
+  - - '2026-07-03'
+    - 22.8
+  - - '2026-07-10'
+    - 59.5
+  - - '2026-07-17'
+    - 59.5
+  - - '2026-07-24'
+    - 28.1
+  - - '2026-07-31'
+    - 59.5
+- id: p103
+  text: 高速道路で長距離を走ると腰が痛くなります。運転支援が優秀な国産ブランドはどこですか。
+  category: safety
+  driver: adas
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-06-26'
+  tier_since: '2026-06-26'
+  demand: 44.4
+  volume: 129
+  fanout_hits: 0
+  ugc_hits: 10
+  growth: 0.91
+  keyword: null
+  demand_history:
+  - - '2026-06-26'
+    - 58.1
+  - - '2026-07-03'
+    - 83.2
+  - - '2026-07-10'
+    - 64.3
+  - - '2026-07-17'
+    - 63.8
+  - - '2026-07-24'
+    - 60.2
+  - - '2026-07-31'
+    - 44.4
+- id: p104
+  text: 同じ価格帯でトヨタとホンダのSUVを比べると、どちらが買いですか。
+  category: cost
+  driver: null
+  brand: true
+  source: suggest
+  tier: longtail
+  added_on: '2026-06-26'
+  tier_since: '2026-06-26'
+  demand: 61.7
+  volume: 148
+  fanout_hits: 0
+  ugc_hits: 4
+  growth: 1.75
+  keyword: null
+  demand_history:
+  - - '2026-06-26'
+    - 30.0
+  - - '2026-07-03'
+    - 52.9
+  - - '2026-07-10'
+    - 40.1
+  - - '2026-07-17'
+    - 41.8
+  - - '2026-07-24'
+    - 37.0
+  - - '2026-07-31'
+    - 61.7
+- id: p105
+  text: 雪道に強い国産SUVを教えてください。年に数回スキーに行きます。
+  category: purchase
+  driver: null
+  brand: false
+  source: fanout
+  tier: core
+  added_on: '2026-06-26'
+  tier_since: '2026-07-24'
+  demand: 74.3
+  volume: 6995
+  fanout_hits: 0
+  ugc_hits: 18
+  growth: 1.11
+  keyword: null
+  demand_history:
+  - - '2026-06-26'
+    - 82.5
+  - - '2026-07-03'
+    - 80.0
+  - - '2026-07-10'
+    - 67.2
+  - - '2026-07-17'
+    - 70.9
+  - - '2026-07-24'
+    - 81.7
+  - - '2026-07-31'
+    - 74.3
+  tier_prev: longtail
+- id: p106
+  text: 燃費だけでなく静粛性も重視したいです。おすすめの国産セダンはありますか。
+  category: eco
+  driver: hybrid
+  brand: false
+  source: suggest
+  tier: longtail
+  added_on: '2026-06-26'
+  tier_since: '2026-06-26'
+  demand: 58.2
+  volume: 133
+  fanout_hits: 0
+  ugc_hits: 11
+  growth: 1.37
+  keyword: null
+  demand_history:
+  - - '2026-06-26'
+    - 29.2
+  - - '2026-07-03'
+    - 33.4
+  - - '2026-07-10'
+    - 47.9
+  - - '2026-07-17'
+    - 51.9
+  - - '2026-07-24'
+    - 45.8
+  - - '2026-07-31'
+    - 58.2
+- id: p107
+  text: 車中泊ができてキャンプにも使える国産車を教えてください。
+  category: purchase
+  driver: cargo
+  brand: false
+  source: suggest
+  tier: longtail
+  added_on: '2026-07-03'
+  tier_since: '2026-07-03'
+  demand: 58.9
+  volume: 631
+  fanout_hits: 0
+  ugc_hits: 9
+  growth: 1.08
+  keyword: null
+  demand_history:
+  - - '2026-07-03'
+    - 66.6
+  - - '2026-07-10'
+    - 45.4
+  - - '2026-07-17'
+    - 58.3
+  - - '2026-07-24'
+    - 54.9
+  - - '2026-07-31'
+    - 58.9
+- id: p108
+  text: チャイルドシートを2台つけても窮屈にならない国産車を教えてください。
+  category: purchase
+  driver: minivan
+  brand: false
+  source: chiebukuro
+  tier: core
+  added_on: '2026-07-03'
+  tier_since: '2026-07-24'
+  demand: 56.9
+  volume: 2986
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 0.93
+  keyword: null
+  demand_history:
+  - - '2026-07-03'
+    - 91.1
+  - - '2026-07-10'
+    - 75.9
+  - - '2026-07-17'
+    - 78.2
+  - - '2026-07-24'
+    - 73.3
+  - - '2026-07-31'
+    - 56.9
+  tier_prev: longtail
+- id: p109
+  text: 寒冷地でハイブリッドとガソリン車、どちらが維持費で有利ですか。
+  category: eco
+  driver: hybrid
+  brand: false
+  source: fanout
+  tier: core
+  added_on: '2026-07-03'
+  tier_since: '2026-07-24'
+  demand: 60.1
+  volume: 1330
+  fanout_hits: 0
+  ugc_hits: 6
+  growth: 0.97
+  keyword: null
+  demand_history:
+  - - '2026-07-03'
+    - 68.5
+  - - '2026-07-10'
+    - 50.4
+  - - '2026-07-17'
+    - 46.7
+  - - '2026-07-24'
+    - 75.3
+  - - '2026-07-31'
+    - 60.1
+  tier_prev: longtail
+- id: p110
+  text: 駐車が苦手でも安心して乗れる、駐車支援が優秀な車を教えてください。
+  category: purchase
+  driver: urban
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-07-10'
+  tier_since: '2026-07-10'
+  demand: 40.8
+  volume: 455
+  fanout_hits: 0
+  ugc_hits: 2
+  growth: 0.63
+  keyword: null
+  demand_history:
+  - - '2026-07-10'
+    - 60.1
+  - - '2026-07-17'
+    - 68.4
+  - - '2026-07-24'
+    - 64.2
+  - - '2026-07-31'
+    - 40.8
+- id: p111
+  text: 車の維持費を年間20万円以内に抑えたいです。どの車種が現実的ですか。
+  category: cost
+  driver: cost
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-07-10'
+  tier_since: '2026-07-10'
+  demand: 49.2
+  volume: 691
+  fanout_hits: 0
+  ugc_hits: 5
+  growth: 0.59
+  keyword: null
+  demand_history:
+  - - '2026-07-10'
+    - 63.3
+  - - '2026-07-17'
+    - 51.5
+  - - '2026-07-24'
+    - 65.1
+  - - '2026-07-31'
+    - 49.2
+- id: p112
+  text: 初めて車を買う新社会人です。予算200万円で後悔しない選び方を教えてください。
+  category: cost
+  driver: cost
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-07-10'
+  tier_since: '2026-07-10'
+  demand: 52.9
+  volume: 430
+  fanout_hits: 0
+  ugc_hits: 5
+  growth: 1.02
+  keyword: null
+  demand_history:
+  - - '2026-07-10'
+    - 38.2
+  - - '2026-07-17'
+    - 42.2
+  - - '2026-07-24'
+    - 52.7
+  - - '2026-07-31'
+    - 52.9
+- id: p113
+  text: 残価設定ローンとカーリース、結局どちらが損しませんか。
+  category: cost
+  driver: resale
+  brand: false
+  source: suggest
+  tier: longtail
+  added_on: '2026-07-31'
+  tier_since: '2026-07-31'
+  demand: 30.2
+  volume: 108
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 0.08
+  keyword: null
+  demand_history:
+  - - '2026-07-31'
+    - 30.2
+- id: p114
+  text: 親が高齢なので、乗り降りしやすく運転支援も充実した車を探しています。
+  category: safety
+  driver: adas
+  brand: false
+  source: suggest
+  tier: longtail
+  added_on: '2026-07-31'
+  tier_since: '2026-07-31'
+  demand: 68.3
+  volume: 866
+  fanout_hits: 0
+  ugc_hits: 2
+  growth: 1.8
+  keyword: null
+  demand_history:
+  - - '2026-07-31'
+    - 68.3
+- id: p115
+  text: 「スライドドア 使いやすい メーカー」で検討しています。どのブランドがおすすめですか。理由も教えてください。
+  category: purchase
+  driver: minivan
+  brand: false
+  source: fanout
+  tier: longtail
+  added_on: '2026-07-31'
+  tier_since: '2026-07-31'
+  demand: 35.1
+  volume: 103
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 0.94
+  keyword: スライドドア 使いやすい メーカー
+  demand_history:
+  - - '2026-07-31'
+    - 35.1
+- id: p116
+  text: 「SUV 荷室 広い 国産」について、失敗しない選び方を教えてください。
+  category: purchase
+  driver: cargo
+  brand: false
+  source: fanout
+  tier: longtail
+  added_on: '2026-07-31'
+  tier_since: '2026-07-31'
+  demand: 64.1
+  volume: 1180
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.34
+  keyword: SUV 荷室 広い 国産
+  demand_history:
+  - - '2026-07-31'
+    - 64.1
+- id: p117
+  text: 「ファミリーカー 3列シート 比較」を検討しています。同じクラスの他社と比べてどうですか。
+  category: model
+  driver: minivan
+  brand: false
+  source: fanout
+  tier: longtail
+  added_on: '2026-07-31'
+  tier_since: '2026-07-31'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: ファミリーカー 3列シート 比較
+  demand_history: []
+- id: p118
+  text: 「国産ミニバン 人気ランキング 最新」で検討しています。どのブランドがおすすめですか。理由も教えてください。
+  category: purchase
+  driver: minivan
+  brand: false
+  source: fanout
+  tier: longtail
+  added_on: '2026-07-31'
+  tier_since: '2026-07-31'
+  demand: 29.0
+  volume: 81
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 0.74
+  keyword: 国産ミニバン 人気ランキング 最新
+  demand_history:
+  - - '2026-07-31'
+    - 29.0
+- id: p119
+  text: 「車中泊 できる車 おすすめ」で検討しています。どのブランドがおすすめですか。理由も教えてください。
+  category: purchase
+  driver: cargo
+  brand: false
+  source: fanout
+  tier: longtail
+  added_on: '2026-07-31'
+  tier_since: '2026-07-31'
+  demand: 70.1
+  volume: 3417
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.31
+  keyword: 車中泊 できる車 おすすめ
+  demand_history:
+  - - '2026-07-31'
+    - 70.1
+- id: p120
+  text: 「国産メーカー 信頼性 ランキング」について、失敗しない選び方を教えてください。
+  category: purchase
+  driver: null
+  brand: false
+  source: fanout
+  tier: longtail
+  added_on: '2026-07-31'
+  tier_since: '2026-07-31'
+  demand: 65.7
+  volume: 237
+  fanout_hits: 99
+  ugc_hits: 1
+  growth: 1.25
+  keyword: 国産メーカー 信頼性 ランキング
+  demand_history:
+  - - '2026-07-31'
+    - 65.7
+- id: p121
+  text: 「予算400万 ミニバン おすすめ」を重視した場合、実際いくらくらいかかりますか。おすすめの車種も教えてください。
+  category: cost
+  driver: minivan
+  brand: false
+  source: fanout
+  tier: longtail
+  added_on: '2026-07-31'
+  tier_since: '2026-07-31'
+  demand: 53.8
+  volume: 2500
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 0.96
+  keyword: 予算400万 ミニバン おすすめ
+  demand_history:
+  - - '2026-07-31'
+    - 53.8
+- id: p122
+  text: 「雪道 強い車 4WD」について、失敗しない選び方を教えてください。
+  category: purchase
+  driver: null
+  brand: false
+  source: fanout
+  tier: longtail
+  added_on: '2026-07-31'
+  tier_since: '2026-07-31'
+  demand: 59.8
+  volume: 2705
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.04
+  keyword: 雪道 強い車 4WD
+  demand_history:
+  - - '2026-07-31'
+    - 59.8
+- id: p123
+  text: 「チャイルドシート 2台 乗る車」で検討しています。どのブランドがおすすめですか。理由も教えてください。
+  category: purchase
+  driver: minivan
+  brand: false
+  source: fanout
+  tier: core
+  added_on: '2026-07-31'
+  tier_since: '2026-07-31'
+  demand: 75.4
+  volume: 6924
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.33
+  keyword: チャイルドシート 2台 乗る車
+  demand_history:
+  - - '2026-07-31'
+    - 75.4
+  tier_prev: longtail
+- id: p124
+  text: 「自動ブレーキ 性能 メーカー比較」はメーカーによってどれくらい差がありますか。
+  category: safety
+  driver: safety
+  brand: false
+  source: fanout
+  tier: longtail
+  added_on: '2026-07-31'
+  tier_since: '2026-07-31'
+  demand: 53.9
+  volume: 0
+  fanout_hits: 100
+  ugc_hits: 1
+  growth: 1.0
+  keyword: 自動ブレーキ 性能 メーカー比較
+  demand_history:
+  - - '2026-07-31'
+    - 53.9
+- id: p125
+  text: 「運転支援 高速道路 疲れにくい」という観点で、いちばん安心して乗れる国産ブランドはどこですか。
+  category: safety
+  driver: adas
+  brand: false
+  source: fanout
+  tier: longtail
+  added_on: '2026-07-31'
+  tier_since: '2026-07-31'
+  demand: 70.8
+  volume: 6905
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.33
+  keyword: 運転支援 高速道路 疲れにくい
+  demand_history:
+  - - '2026-07-31'
+    - 70.8
+- id: p126
+  text: 「踏み間違い防止装置 後付け」という観点で、いちばん安心して乗れる国産ブランドはどこですか。
+  category: safety
+  driver: safety
+  brand: false
+  source: fanout
+  tier: longtail
+  added_on: '2026-07-31'
+  tier_since: '2026-07-31'
+  demand: 64.1
+  volume: 1760
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.26
+  keyword: 踏み間違い防止装置 後付け
+  demand_history:
+  - - '2026-07-31'
+    - 64.1
+- id: p127
+  text: 「サポカー 補助金 対象車種」という観点で、いちばん安心して乗れる国産ブランドはどこですか。
+  category: safety
+  driver: safety
+  brand: false
+  source: fanout
+  tier: longtail
+  added_on: '2026-07-31'
+  tier_since: '2026-07-31'
+  demand: 71.2
+  volume: 6958
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.34
+  keyword: サポカー 補助金 対象車種
+  demand_history:
+  - - '2026-07-31'
+    - 71.2
+- id: p128
+  text: 「ハイブリッド 実燃費 ランキング」は国産メーカーだとどこが有利ですか。
+  category: eco
+  driver: hybrid
+  brand: false
+  source: fanout
+  tier: longtail
+  added_on: '2026-07-31'
+  tier_since: '2026-07-31'
+  demand: 67.0
+  volume: 1813
+  fanout_hits: 80
+  ugc_hits: 0
+  growth: 0.7
+  keyword: ハイブリッド 実燃費 ランキング
+  demand_history:
+  - - '2026-07-31'
+    - 67.0
+- id: p129
+  text: 「トヨタ ホンダ 比較 SUV」の観点で、国産メーカーを比較して教えてください。
+  category: model
+  driver: null
+  brand: true
+  source: fanout
+  tier: longtail
+  added_on: '2026-07-31'
+  tier_since: '2026-07-31'
+  demand: 67.2
+  volume: 1883
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.34
+  keyword: トヨタ ホンダ 比較 SUV
+  demand_history:
+  - - '2026-07-31'
+    - 67.2
+- id: p130
+  text: 「トヨタ ハイブリッド 強み」は国産メーカーだとどこが有利ですか。
+  category: eco
+  driver: hybrid
+  brand: true
+  source: fanout
+  tier: core
+  added_on: '2026-07-31'
+  tier_since: '2026-07-31'
+  demand: 81.8
+  volume: 1888
+  fanout_hits: 86
+  ugc_hits: 0
+  growth: 1.35
+  keyword: トヨタ ハイブリッド 強み
+  demand_history:
+  - - '2026-07-31'
+    - 81.8
+  tier_prev: longtail
+- id: p131
+  text: 「車 維持費 年間 平均」を重視した場合、実際いくらくらいかかりますか。おすすめの車種も教えてください。
+  category: cost
+  driver: cost
+  brand: false
+  source: fanout
+  tier: longtail
+  added_on: '2026-07-31'
+  tier_since: '2026-07-31'
+  demand: 60.5
+  volume: 1760
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.26
+  keyword: 車 維持費 年間 平均
+  demand_history:
+  - - '2026-07-31'
+    - 60.5
+- id: p132
+  text: 「軽自動車 維持費 比較」を重視した場合、実際いくらくらいかかりますか。おすすめの車種も教えてください。
+  category: cost
+  driver: cost
+  brand: false
+  source: fanout
+  tier: longtail
+  added_on: '2026-07-31'
+  tier_since: '2026-07-31'
+  demand: 49.3
+  volume: 1772
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 0.68
+  keyword: 軽自動車 維持費 比較
+  demand_history:
+  - - '2026-07-31'
+    - 49.3
+- id: p133
+  text: 「残価設定ローン デメリット」で損をしない方法を教えてください。国産車で具体的にお願いします。
+  category: cost
+  driver: resale
+  brand: false
+  source: fanout
+  tier: longtail
+  added_on: '2026-07-31'
+  tier_since: '2026-07-31'
+  demand: 60.4
+  volume: 1092
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.24
+  keyword: 残価設定ローン デメリット
+  demand_history:
+  - - '2026-07-31'
+    - 60.4
+- id: p134
+  text: 「PHEV ハイブリッド 違い」は国産メーカーだとどこが有利ですか。
+  category: eco
+  driver: hybrid
+  brand: false
+  source: fanout
+  tier: longtail
+  added_on: '2026-07-31'
+  tier_since: '2026-07-31'
+  demand: 70.0
+  volume: 3656
+  fanout_hits: 77
+  ugc_hits: 2
+  growth: 0.7
+  keyword: PHEV ハイブリッド 違い
+  demand_history:
+  - - '2026-07-31'
+    - 70.0
+- id: p135
+  text: 「新車 納期 最新 国産」で困っています。どうするのが一般的ですか。
+  category: service
+  driver: dealer
+  brand: false
+  source: fanout
+  tier: longtail
+  added_on: '2026-07-31'
+  tier_since: '2026-07-31'
+  demand: 39.4
+  volume: 393
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 0.73
+  keyword: 新車 納期 最新 国産
+  demand_history:
+  - - '2026-07-31'
+    - 39.4
+- id: p136
+  text: 「車検 費用 ディーラー 民間」で損をしない方法を教えてください。国産車で具体的にお願いします。
+  category: cost
+  driver: warranty
+  brand: false
+  source: fanout
+  tier: core
+  added_on: '2026-07-31'
+  tier_since: '2026-07-31'
+  demand: 71.7
+  volume: 6413
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.23
+  keyword: 車検 費用 ディーラー 民間
+  demand_history:
+  - - '2026-07-31'
+    - 71.7
+  tier_prev: longtail
+- id: p137
+  text: 「リセールバリュー 高い車 ランキング」で検討しています。どのブランドがおすすめですか。理由も教えてください。
+  category: purchase
+  driver: resale
+  brand: false
+  source: fanout
+  tier: longtail
+  added_on: '2026-07-31'
+  tier_since: '2026-07-31'
+  demand: 50.5
+  volume: 374
+  fanout_hits: 0
+  ugc_hits: 2
+  growth: 1.17
+  keyword: リセールバリュー 高い車 ランキング
+  demand_history:
+  - - '2026-07-31'
+    - 50.5
+- id: p138
+  text: 「メーカー保証 延長 比較」はメーカーによって違いがありますか。
+  category: service
+  driver: warranty
+  brand: false
+  source: fanout
+  tier: longtail
+  added_on: '2026-07-31'
+  tier_since: '2026-07-31'
+  demand: 53.3
+  volume: 251
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.32
+  keyword: メーカー保証 延長 比較
+  demand_history:
+  - - '2026-07-31'
+    - 53.3
+- id: p139
+  text: 「充電インフラ 日本 現状」について、カタログ値ではなく実際のところを教えてください。
+  category: eco
+  driver: hybrid
+  brand: false
+  source: fanout
+  tier: longtail
+  added_on: '2026-07-31'
+  tier_since: '2026-07-31'
+  demand: 50.0
+  volume: 148
+  fanout_hits: 0
+  ugc_hits: 2
+  growth: 1.34
+  keyword: 充電インフラ 日本 現状
+  demand_history:
+  - - '2026-07-31'
+    - 50.0
+- id: p140
+  text: 「EV 後悔 理由」について、カタログ値ではなく実際のところを教えてください。
+  category: eco
+  driver: hybrid
+  brand: false
+  source: fanout
+  tier: core
+  added_on: '2026-07-31'
+  tier_since: '2026-07-31'
+  demand: 75.8
+  volume: 6960
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.34
+  keyword: EV 後悔 理由
+  demand_history:
+  - - '2026-07-31'
+    - 75.8
+  tier_prev: longtail

@@ -73,8 +73,8 @@ def score_decomposition(day: str, period: str = "dod") -> dict:
     w = cfg["score_weights"]
     contrib, total = {}, 0.0
     for k, weight in w.items():
-        cur = rolling_median(day, lambda s, kk=k: s["factors"].get(kk), win)
-        prv = rolling_median(prev_day, lambda s, kk=k: s["factors"].get(kk), win)
+        cur = rolling_median(day, lambda s, kk=k: _coh(s)["factors"].get(kk), win)
+        prv = rolling_median(prev_day, lambda s, kk=k: _coh(s)["factors"].get(kk), win)
         if cur is None or prv is None:
             contrib[k] = 0.0
             continue
@@ -127,16 +127,26 @@ def platform_decomposition(day: str, period: str = "dod") -> list[dict]:
     return sorted(rows, key=lambda r: r["contribution"])
 
 
+def _coh(s: dict) -> dict:
+    """比較には基準コホートの値を使う。
+
+    クエリを入れ替えると全体スコアは母集団の変化でも動いてしまう。
+    「ずっと測り続けているクエリ」だけを見れば、動いた＝実力が動いた、になる。
+    古いスナップショット（コホート導入前）は全体値にフォールバックする。
+    """
+    return s.get("cohort") or {"score": s["score"], "factors": s["factors"]}
+
+
 def build(day: str) -> dict:
     """ダッシュボードが必要とする差分情報を一括で作る。"""
     metrics = {
-        "score": lambda s: s["score"],
-        "presence": lambda s: s["factors"]["presence"],
-        "rank_quality": lambda s: s["factors"]["rank_quality"],
-        "owned_citation": lambda s: s["factors"]["owned_citation"],
-        "earned_citation": lambda s: s["factors"]["earned_citation"],
-        "sentiment": lambda s: s["factors"]["sentiment"],
-        "share_of_voice": lambda s: s["factors"]["share_of_voice"],
+        "score": lambda s: _coh(s)["score"],
+        "presence": lambda s: _coh(s)["factors"]["presence"],
+        "rank_quality": lambda s: _coh(s)["factors"]["rank_quality"],
+        "owned_citation": lambda s: _coh(s)["factors"]["owned_citation"],
+        "earned_citation": lambda s: _coh(s)["factors"]["earned_citation"],
+        "sentiment": lambda s: _coh(s)["factors"]["sentiment"],
+        "share_of_voice": lambda s: _coh(s)["factors"]["share_of_voice"],
         "ai_sessions": lambda s: sum(s["signals"]["ga4_ai_sessions"].values()),
         "crawler_hits": lambda s: sum(s["signals"]["crawler_hits"].values()),
     }

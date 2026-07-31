@@ -126,8 +126,11 @@ h3.sub{font-size:13.5px;color:var(--tx2);margin:16px 0 8px;font-weight:700}
 .hero .fac .fl{font-size:10px;color:#9FC4DE;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .hero .fac .fv{font-size:17px;font-weight:700;font-variant-numeric:tabular-nums}
 .hero .fac .fw{font-size:9.5px;color:#7E9CB8}
-.hero .fac .fd{font-size:10.5px;font-weight:700}
-@media(max-width:1050px){.hero{grid-template-columns:1fr}.hero .facs{grid-template-columns:repeat(3,1fr)}}
+.hero .fac .fd{font-size:10.5px;font-weight:700;white-space:normal;word-break:break-word;line-height:1.45}
+/* グリッド子要素の min-width:auto による横あふれを止める */
+.main,.wrap,.page,.hero>div,.hero .facs,.hero .fac,.top{min-width:0}
+@media(max-width:1460px){.hero .facs{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:1050px){.hero{grid-template-columns:1fr}.hero .facs{grid-template-columns:repeat(2,1fr)}}
 /* kpi */
 .kpi{background:linear-gradient(180deg,var(--card),var(--card2));border:1px solid var(--line);border-radius:11px;padding:15px 17px;
   box-shadow:var(--sh);position:relative;overflow:hidden;transition:transform .3s var(--ease),box-shadow .3s var(--ease)}
@@ -414,6 +417,22 @@ mark.c{background:linear-gradient(transparent 52%,color-mix(in srgb,var(--warn) 
 .cp:hover{color:var(--accent);border-color:var(--line2);background:var(--card)}
 .cp:active{transform:scale(.9)}
 .crow{grid-template-columns:92px 1fr auto auto}
+/* ---- 新陳代謝 ---- */
+.mv{display:grid;grid-template-columns:34px 1fr auto;gap:11px;align-items:center;
+  padding:9px 12px;border-bottom:1px solid var(--line)}
+.mv:last-child{border-bottom:0}
+.mv .ar{font-size:15px;font-weight:700;text-align:center}
+.mv .up{color:var(--ok)}.mv .dn{color:var(--warn)}
+.mv .tx{font-size:12.5px;color:var(--tx2);line-height:1.55}
+.mv .mt{font-size:10.5px;color:var(--sub);margin-top:2px}
+.mv .dm{font-size:15px;font-weight:700;font-variant-numeric:tabular-nums;text-align:right;white-space:nowrap}
+.mv .dm small{font-size:9.5px;color:var(--sub);font-weight:400;display:block}
+.dbar{display:inline-block;width:56px;height:6px;border-radius:3px;background:color-mix(in srgb,var(--tx) 10%,transparent);overflow:hidden;vertical-align:1px}
+.dbar i{display:block;height:6px;border-radius:3px;background:linear-gradient(90deg,var(--accent2),var(--accent))}
+.newq{font-size:9.5px;padding:1px 6px;border-radius:4px;background:color-mix(in srgb,var(--accent2) 18%,transparent);
+  color:var(--accent2);border:1px solid color-mix(in srgb,var(--accent2) 40%,transparent);white-space:nowrap}
+.cohortbar{display:flex;gap:3px;height:26px;border-radius:6px;overflow:hidden;margin:8px 0 4px}
+.cohortbar span{display:flex;align-items:center;justify-content:center;font-size:10.5px;font-weight:700;color:#fff}
 tr.catrow{cursor:pointer;transition:background .18s var(--ease)}
 tr.catrow:hover{background:color-mix(in srgb,var(--accent) 8%,transparent)}
 tr.catrow td:first-child b{border-bottom:1px dashed var(--line2)}
@@ -432,6 +451,7 @@ kbd{display:inline-block;font-family:inherit;font-size:10px;padding:1px 6px;bord
   <div class="grp">モニタリング</div>
   <a class="nav on" data-p="overview"><span class="ic">◉</span>概要</a>
   <a class="nav" data-p="queries"><span class="ic">★</span>クエリ</a>
+  <a class="nav" data-p="churn"><span class="ic">↻</span>クエリ新陳代謝</a>
   <a class="nav" data-p="pages"><span class="ic">▤</span>自社の被引用ページ</a>
   <a class="nav" data-p="sns"><span class="ic">◈</span>SNS別評価</a>
   <a class="nav" data-p="compete"><span class="ic">⇄</span>競合・判断軸</a>
@@ -481,7 +501,7 @@ const FDESC={
  earned_citation:["SNS・UGCが引かれ、そこに自社が載っていた割合","YouTube・知恵袋・note等が根拠として引かれたとき、その回答で自社が言及されていた割合。プラットフォーム重みを掛けて合成。"],
  sentiment:["自社に触れた文が好意的だった割合","自社名を含む文の語調を判定。低い＝出てはいるが否定的な文脈で語られている。"],
  share_of_voice:["競合5社の言及総数に占める自社の割合","5社均等なら20%。それを基準に100点換算。総合的な露出量の指標。"]};
-const SRCJ={chiebukuro:"Yahoo!知恵袋",paa:"Google関連する質問",llm_fanout:"LLM fan-out",semrush_import:"SEOトピック輸入",gsc:"GSC実クエリ"};
+const SRCJ={chiebukuro:"Yahoo!知恵袋",paa:"Google関連する質問",llm_fanout:"LLM fan-out",fanout:"AIのfan-out還流",suggest:"Googleサジェスト",semrush_import:"SEOトピック輸入",harvest:"収穫",gsc:"GSC実クエリ","-":"初期設定"};
 let D=null, P="dod", sortK="best_rank", sortDir=1, catF="all";
 
 const esc=s=>String(s??"").replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
@@ -650,7 +670,13 @@ function pageOverview(){
         ? `今週いちばん伸びた領域は <b>${esc(best.label)}</b>（出現率 ${best.presence}%、先週比 ${best.delta>=0?"+":""}${best.delta}pt）、`
           +`落ちた領域は <b>${esc(worst.label)}</b>（${worst.presence}%、${worst.delta>=0?"+":""}${worst.delta}pt）です。`
         : "")
-    + `自社ページが1本も引かれなかったクエリが <b>${uncited}本</b>あり、ここがコンテンツ制作の優先リストになります。`;
+    + `自社ページが1本も引かれなかったクエリが <b>${uncited}本</b>あり、ここがコンテンツ制作の優先リストになります。`
+    + (()=>{const ch=D.churn||{},co=D.cohort||{};
+        if(!ch.last_run) return "";
+        const nn=(D.queries||[]).filter(q=>q.is_new).length;
+        return `<br>クエリ一覧は ${esc(ch.last_run)} に更新され、<b>${(ch.promoted||[]).length}本が新たにコア枠へ、${(ch.demoted||[]).length}本が週次枠へ</b>移りました。`
+          + `前日比は母集団の変化を除くため、<b>30日以上計測している${co.prompts||0}本（基準コホート）</b>だけで算出しています`
+          + (nn?`（観察期間中の新規 ${nn}本は含みません）`:"")+`。`;})();
 
   const FK=Object.keys(D.weights);
   return `<div class="hero">
@@ -901,10 +927,11 @@ function pageQueries(){
   };
 
   window.__qfaq=`${[
-    ["このクエリはどうやって更新される？",`毎朝7:17に<b>全クエリを4つのAIへ自動実行</b>します。クエリ文そのものは固定です（変えると時系列が切れて前日比が出せなくなるため）。追加・入替は <code>prompts/core.yaml</code> を編集してpushすれば翌日から反映されます。<b>IDは絶対に振り直しません。</b>`],
-    ["なぜ${D.counts.prompts}本しかない？",`3階層で設計しているためです。<b>コア枠（日次・現在${D.counts.prompts}本）</b>は「毎日の変動を検知する」のが目的なので、少数を固定して回します。網羅性は<b>戦略枠（週次・${tiers.strategic?tiers.strategic.max_prompts:200}本）</b>と<b>ロングテール枠（月次・${tiers.longtail?tiers.longtail.max_prompts:3000}本）</b>が担当します。`],
-    ["もっと多い方がよくない？",`網羅性は上がりますが、コストとノイズが線形に増えます。LLMは非決定的なので<b>1本を${tiers.core?tiers.core.runs:3}回実行して中央値を取っており</b>、現在すでに ${D.counts.prompts}本 × ${(D.surfaces||[]).length}面 × ${tiers.core?tiers.core.runs:3}回 = <b>${num(D.counts.responses)}回/日</b>のAI実行をしています。日次で意味のある変動検知ができる上限は<b>コア100本前後</b>です。`],
-    ["トレンドや新しい話題は拾える？",`2経路で拾います。①<b>fan-out還流</b>：AIが回答を作るとき内部で投げた派生クエリを回収し、次サイクルの母集団に戻す。②<b>月次のロングテール枠</b>：知恵袋・Google関連する質問・サジェストを再収穫し、伸びているものをコア枠へ昇格。季節性（雪道・車中泊・帰省など）はこの経路で自動的に入ってきます。`],
+    ["このクエリはどうやって更新される？",`毎朝7:17に<b>全クエリを4つのAIへ自動実行</b>し、毎週<b>クエリ一覧そのものを市場に合わせて入れ替え</b>ています。Googleサジェスト／関連する質問／Yahoo!知恵袋／AIのfan-outの4経路から候補を収穫し、需要スコア順にコア枠を組み替えます。<b>IDは絶対に振り直さない</b>ので、入れ替えても過去の時系列は切れません。詳細は「クエリ新陳代謝」タブに出しています。`],
+    ["クエリが変わると前日比が壊れない？",`壊れないように分母を分けています。<b>30日以上コア枠に居るクエリ＝基準コホート</b>だけで前日比・先週比を計算し、新しく入れたクエリは30日間は観察期間として比較に入れません。ダッシュボードには<b>基準コホートのスコア（比較用）</b>と<b>全体スコア（実態）</b>の両方を出しています。`],
+    ["なぜ${D.counts.prompts}本なのか",`日次で意味のある変動検知ができる上限がこのあたりだからです。<b>コア枠（日次・${D.counts.prompts}本）</b>は変動検知が目的なので定員を切り、需要の高いものだけを常に入れ替えて回します。網羅性は<b>戦略枠（週次）</b>と<b>ロングテール枠（月次）</b>が担当します。`],
+    ["もっと多い方がよくない？",`網羅性は上がりますが、コストとノイズが線形に増えます。LLMは非決定的なので<b>1本を${tiers.core?tiers.core.runs:3}回実行して中央値を取っており</b>、現在すでに ${D.counts.prompts}本 × ${(D.surfaces||[]).length}面 × ${tiers.core?tiers.core.runs:3}回 = <b>${num(D.counts.responses)}回/日</b>のAI実行をしています。`],
+    ["トレンドや新しい話題は拾える？",`拾えます。①<b>fan-out還流</b>：AIが回答を作るとき内部で投げた派生クエリを回収し、次サイクルの候補に戻す。②<b>週次の収穫</b>：サジェスト・関連する質問・知恵袋を掘り直し、伸びているものをコア枠へ昇格。季節性（雪道・車中泊・帰省など）はこの経路で自動的に入ってきます。`],
     ["なぜクエリが中核なのか",`GEOスコアも、SNS別評価も、被引用ページも、すべて<b>「このクエリ一覧をAIに投げた結果」から計算されています</b>。クエリが実態とズレていれば、他のすべての数字がズレます。逆にここさえ正しければ、残りは自動で正しくなります。`],
   ].map(([q,a])=>`<div style="margin-bottom:16px"><div style="font-size:13px;font-weight:800;color:var(--tx);margin-bottom:5px">${q}</div><div style="font-size:12.5px;color:var(--tx2);line-height:1.85">${a}</div></div>`).join("")}`;
   return `<h2 class="sec"><span class="bar"></span>クエリ
@@ -925,8 +952,8 @@ function pageQueries(){
 
   <div class="g4" style="margin-bottom:12px">
     <div class="kpi"><div class="l">追跡クエリ（コア枠）</div><div class="v">${rows.length}</div><div class="d fl">毎日 ${num(D.counts.responses)}回のAI実行</div></div>
+    <div class="kpi ok"><div class="l">今週の入替</div><div class="v">${(D.churn&&D.churn.promoted||[]).length}<small> 入 / </small>${(D.churn&&D.churn.demoted||[]).length}<small> 出</small></div><div class="d fl">需要に応じて自動更新</div></div>
     <div class="kpi own"><div class="l">自社ページが引用されたクエリ</div><div class="v">${nCited}<small> / ${rows.length}</small></div><div class="d fl">${rows.length?(nCited/rows.length*100).toFixed(0):0}%</div></div>
-    <div class="kpi ok"><div class="l">1位で出現</div><div class="v">${rows.filter(r=>r.best_rank===1).length}</div><div class="d fl">最初に名前が挙がった本数</div></div>
     <div class="kpi warn"><div class="l">自社ページが1つも引かれない</div><div class="v">${rows.length-nCited}</div><div class="d dn">コンテンツ制作の優先リスト</div></div>
   </div>
 
@@ -949,10 +976,11 @@ function pageQueries(){
     <thead><tr><th style="width:22px"></th><th class="s" data-k="text">クエリ（AIに投げている実際の文）</th>
       <th style="width:72px">テーマ</th><th style="width:88px">出所</th>
       ${sfs.map(x=>`<th class="c" style="width:52px">${esc((D.surfaces.find(y=>y.id===x)||{}).label||x)}</th>`).join("")}
+      <th class="s c" data-k="demand" style="width:74px">需要</th>
       <th class="s c" data-k="best_rank" style="width:48px">最良</th>
       <th class="c" style="width:104px">${PJ[P]}</th>
-      <th style="width:250px">引用された自社ページ</th>
-      <th style="width:120px">引用SNS</th></tr></thead>
+      <th style="width:236px">引用された自社ページ</th>
+      <th style="width:112px">引用SNS</th></tr></thead>
     <tbody>${rows.map(r=>{
       const op=r.own_pages||[], ap=r.affiliated_pages||[], open=openQ.has(r.id);
       const opCell = op.length
@@ -966,17 +994,28 @@ function pageQueries(){
       return `<tr class="qrow" data-q="${attr(r.id)}" data-t="${attr(hay)}">
         <td class="c" style="color:var(--sub)">${open?"▾":"▸"}</td>
         <td><div class="qtext">${esc(r.text)}</div>
-          ${r.brand_query?'<span class="tag">ブランド指名</span>':'<span class="tag">一般クエリ</span>'}
-          <span class="tag">${esc(r.driver_label||"")}</span></td>
+          ${r.is_new?'<span class="newq">NEW 観察期間</span> ':""}${r.brand_query?'<span class="tag">ブランド指名</span>':'<span class="tag">一般クエリ</span>'}
+          <span class="tag">${esc(r.driver_label||"")}</span>${
+          r.volume?`<span class="tag">月間検索 ${num(r.volume)}</span>`:""}</td>
         <td><span class="pill p-nv">${CATJ[r.category]||r.category}</span></td>
         <td style="font-size:10.5px;color:var(--sub)">${esc(SRCJ[r.source]||r.source)}</td>
         ${sfs.map(x=>`<td class="c">${rk(r.surfaces[x]?.rank)}</td>`).join("")}
+        <td class="c">${r.demand==null?'<span class="fl">—</span>':
+          `<b>${f1(r.demand)}</b><br><span class="dbar"><i style="width:${Math.min(r.demand,100)}%"></i></span>`}</td>
         <td class="c"><b>${r.best_rank??"—"}</b></td>
         <td class="c">${trendCell(r)}</td>
         <td>${opCell}</td>
         <td style="font-size:11px">${(r.platforms||[]).map(x=>`<span class="tag">${esc((D.platforms.find(y=>y.id===x)||{}).label||x)}</span>`).join("")||'<span class="fl">—</span>'}</td>
-      </tr>` + (open?`<tr class="qdet"><td colspan="${7+sfs.length+1}">
+      </tr>` + (open?`<tr class="qdet"><td colspan="${9+sfs.length}">
         <div class="detwrap">
+          <div class="dettitle">このクエリの素性</div>
+          <div class="src" style="margin:0 0 10px">出所 <b>${esc(SRCJ[r.source]||r.source)}</b>
+            ／ 登録 <b>${esc(r.added_on||"—")}</b>
+            ／ コア枠在籍 <b>${r.days_in_core==null?"—":r.days_in_core+"日"}</b>
+            ／ 需要スコア <b>${r.demand==null?"未計測":f1(r.demand)}</b>
+            ${r.volume?`／ 月間検索 <b>${num(r.volume)}</b>`:""}
+            ${r.fanout_hits?`／ AIのfan-out出現 <b>${r.fanout_hits}回</b>`:""}
+            ${r.is_new?'<br><span style="color:var(--accent2)">観察期間中のため、前日比の分母には入っていません</span>':""}</div>
           ${ansBlock(r)}
           <div class="dettitle" style="margin-top:13px">このクエリの回答で引用された全URL（${r.n_citations}件）</div>
           ${citeList(r.citations)}
@@ -985,6 +1024,113 @@ function pageQueries(){
         </div></td></tr>`:"");
     }).join("")}</tbody></table></div>
   <div class="src">順位は同一プロンプトを${tiers.core?tiers.core.runs:3}回実行した中央値です。URLは実際に回答へ添えられた引用（annotations）そのもので、どのAIで引かれたかをタグで示しています。</div>`;
+}
+
+function pageChurn(){
+  const c=D.churn||{};
+  if(!c.last_run) return `<h2 class="sec"><span class="bar"></span>クエリ新陳代謝</h2>
+    <div class="card">まだ収穫を実行していません。<code>python src/harvest.py</code> で初回を回してください。</div>`;
+  const R=c.rules||{}, W=c.weights||{}, hist=c.history||[];
+  const qmap={};(D.queries||[]).forEach(q=>qmap[q.id]=q);
+  const dbar=v=>`<span class="dbar"><i style="width:${Math.min(v||0,100)}%"></i></span>`;
+  const row=(x,dir)=>`<div class="mv">
+      <div class="ar ${dir>0?'up':'dn'}">${dir>0?'▲':'▼'}</div>
+      <div><div class="tx">${esc(x.text)}</div>
+        <div class="mt">${esc(x.source_label||'-')}${x.volume?` ・ 月間検索 ${num(x.volume)}`:""}${
+          x.category?` ・ ${CATJ[x.category]||x.category}`:""}</div></div>
+      <div class="dm">${x.demand==null?"—":f1(x.demand)}<small>需要スコア</small></div>
+    </div>`;
+  const co=D.cohort||{}, tot=D.counts.prompts||1, nnew=(D.queries||[]).filter(q=>q.is_new).length;
+  const stable=tot-nnew;
+  const mxh=Math.max(...hist.map(h=>Math.max(h.promoted,h.demoted,h.added)),1);
+
+  return `<h2 class="sec"><span class="bar"></span>クエリ新陳代謝
+    <span class="note">最終収穫 ${esc(c.last_run)}</span></h2>
+  <div class="why"><b>これは何か：</b>クエリ一覧は固定ではありません。毎週、市場で実際に聞かれている質問を
+  <b>Googleサジェスト／関連する質問／Yahoo!知恵袋／AIのfan-out</b>の4経路から収穫し、需要スコアの高い順に
+  日次のコア枠を入れ替えています。<b>IDは絶対に振り直さない</b>ので、過去の時系列は切れません。</div>
+
+  <div class="g4" style="margin-bottom:14px">
+    <div class="kpi"><div class="l">今回の収穫候補</div><div class="v">${num(c.candidates)}</div><div class="d fl">重複除去まえ</div></div>
+    <div class="kpi ok"><div class="l">新規登録</div><div class="v">${c.added.length}</div><div class="d fl">既存と重複しなかったもの</div></div>
+    <div class="kpi own"><div class="l">コア枠に昇格</div><div class="v">${c.promoted.length}</div><div class="d fl">明日から日次で計測</div></div>
+    <div class="kpi warn"><div class="l">コア枠から降格</div><div class="v">${c.demoted.length}</div><div class="d dn">週次の戦略枠へ移動</div></div>
+  </div>
+
+  <h3 class="sub">スコアの分母が変わった影響をどう消しているか</h3>
+  <div class="card" style="padding:15px 18px;margin-bottom:14px">
+    <div class="cohortbar">
+      <span style="flex:${stable};background:linear-gradient(90deg,#1B4470,#12324F)">基準コホート ${stable}本（${(stable/tot*100).toFixed(0)}%）</span>
+      <span style="flex:${Math.max(nnew,0.001)};background:linear-gradient(90deg,#0E7C6B,#00A99D)">観察期間 ${nnew}本</span>
+    </div>
+    <div class="src" style="margin-top:9px">クエリを入れ替えると、施策と関係なく出現率が動いてしまいます。
+    そこで<b>${R.observation_days||30}日以上コア枠に居るクエリ＝基準コホート</b>だけで前日比・先週比を計算しています。
+    新しく入れたクエリは${R.observation_days||30}日間は<b>観察期間</b>として比較の分母に入れません。</div>
+    <div class="g2" style="margin-top:12px">
+      <div class="kpi own"><div class="l">基準コホートのGEOスコア（比較に使う値）</div>
+        <div class="v">${co.score!=null?f1(co.score):"—"}</div>
+        <div class="d fl">${co.prompts||0}本 / ${co.cells||0}通りで算出</div></div>
+      <div class="kpi"><div class="l">全体のGEOスコア（実態）</div>
+        <div class="v">${f1(D.score)}</div>
+        <div class="d fl">新規クエリを含む${tot}本すべて</div></div>
+    </div>
+  </div>
+
+  <div class="g2">
+    <div class="card"><h3 class="sub" style="margin-top:0">今回コア枠に入ったクエリ
+      <span class="vsub">${c.promoted.length}本</span></h3>
+      ${c.promoted.length?c.promoted.map(x=>row(x,1)).join(""):'<div class="fl">今回の入替はありません</div>'}</div>
+    <div class="card"><h3 class="sub" style="margin-top:0">コア枠から外れたクエリ
+      <span class="vsub">${c.demoted.length}本</span></h3>
+      ${c.demoted.length?c.demoted.map(x=>row(x,-1)).join(""):'<div class="fl">今回の入替はありません</div>'}
+      <div class="src" style="margin-top:8px">外れても削除はしません。週次の戦略枠に移すだけなので、需要が戻れば同じIDのまま復帰します。</div></div>
+  </div>
+
+  <h2 class="sec"><span class="bar"></span>新しく見つかったクエリ<span class="note">${c.added.length}本 — まだ月次枠で様子見</span></h2>
+  <div class="card" style="padding:0">${c.added.length?c.added.map(x=>`<div class="mv">
+      <div class="ar" style="color:var(--accent2)">＋</div>
+      <div><div class="tx">${esc(x.text)}</div>
+        <div class="mt">${esc(x.source_label||"-")}${x.volume?` ・ 月間検索 ${num(x.volume)}`:""}</div></div>
+      <div class="dm">${x.demand==null?"—":f1(x.demand)}<small>需要スコア</small></div>
+    </div>`).join(""):'<div style="padding:14px 16px" class="fl">今回は既存クエリと重複しない新規はありませんでした</div>'}</div>
+
+  <h2 class="sec"><span class="bar"></span>入替の推移<span class="note">直近${hist.length}回の収穫</span></h2>
+  <div class="card"><div class="tw" style="max-height:none;border:0"><table>
+    <thead><tr><th style="width:110px">収穫日</th><th class="n" style="width:80px">新規</th>
+      <th class="n" style="width:80px">昇格</th><th class="n" style="width:80px">降格</th>
+      <th class="n" style="width:96px">コア枠</th><th>入替の大きさ</th></tr></thead>
+    <tbody>${hist.slice().reverse().map(h=>`<tr>
+      <td><b>${esc(h.date)}</b></td>
+      <td class="n" style="color:var(--accent2)">${h.added?"+"+h.added:"—"}</td>
+      <td class="n up">${h.promoted||"—"}</td>
+      <td class="n dn">${h.demoted||"—"}</td>
+      <td class="n"><b>${h.core}</b></td>
+      <td><span class="mini"><i class="${h.promoted>=4?'':'g'}" style="width:${(h.promoted+h.demoted)/(mxh*2)*100}%"></i></span></td>
+    </tr>`).join("")}</tbody></table></div></div>
+
+  <h2 class="sec"><span class="bar"></span>需要スコアの決め方<span class="note">0〜100</span></h2>
+  <div class="card"><div class="tw" style="max-height:none;border:0"><table>
+    <thead><tr><th style="width:190px">シグナル</th><th class="c" style="width:70px">配点</th><th>意味</th></tr></thead>
+    <tbody>
+      <tr><td><b>月間検索ボリューム</b></td><td class="c">${W.volume}点</td><td style="font-size:11.5px;color:var(--sub)">Google広告の実データ。対数で効かせるので、桁違いの語に全体が引っ張られません</td></tr>
+      <tr><td><b>fan-out出現</b></td><td class="c">${W.fanout}点</td><td style="font-size:11.5px;color:var(--sub)">AIが回答を作る途中で自分から派生させて聞き直した回数。<b>AIにとっての話題の中心性</b>を表します</td></tr>
+      <tr><td><b>伸び率</b></td><td class="c">${W.growth}点</td><td style="font-size:11.5px;color:var(--sub)">前回計測比。季節性や新しい話題はここで拾います</td></tr>
+      <tr><td><b>UGC出現</b></td><td class="c">${W.ugc}点</td><td style="font-size:11.5px;color:var(--sub)">知恵袋など、生活者が自分の言葉で書いた質問の量</td></tr>
+    </tbody></table></div>
+    <div class="note" style="margin-bottom:0">取れなかったシグナルは<b>ゼロではなく「未計測」</b>として扱い、取れた配点だけで正規化しています。
+    そのうえで<b>証拠が少ないほどスコアを割り引く</b>ので、たまたま1経路で目立っただけのクエリが上位に来ることはありません。</div></div>
+
+  <h2 class="sec"><span class="bar"></span>入替のブレーキ<span class="note">時系列を壊さないための制約</span></h2>
+  <div class="card"><div class="tw" style="max-height:none;border:0"><table>
+    <thead><tr><th style="width:230px">ルール</th><th class="c" style="width:80px">設定値</th><th>理由</th></tr></thead>
+    <tbody>
+      <tr><td><b>コア枠の定員</b></td><td class="c">${R.core_target}本</td><td style="font-size:11.5px;color:var(--sub)">日次で意味のある変動検知ができる上限。増やすとコストとノイズが線形に増えます</td></tr>
+      <tr><td><b>1回の入替上限</b></td><td class="c">${R.max_swap_per_run}本</td><td style="font-size:11.5px;color:var(--sub)">一度に大量に替えると、スコアが動いた理由が施策か母集団かを切り分けられなくなります</td></tr>
+      <tr><td><b>入替に必要な需要差</b></td><td class="c">${R.swap_margin}pt</td><td style="font-size:11.5px;color:var(--sub)">僅差では動かしません。毎週入れ替わると時系列が落ち着かないためです</td></tr>
+      <tr><td><b>昇格後の最低在籍</b></td><td class="c">${R.min_days_in_core}日</td><td style="font-size:11.5px;color:var(--sub)">入れた直後に落とすと、そのクエリの実力を判定できません</td></tr>
+      <tr><td><b>降格しない判断軸</b></td><td class="c">${(R.protect_drivers||[]).length}軸</td><td style="font-size:11.5px;color:var(--sub)">安全・都市の取り回し・運転支援は<b>事業として捨てられない論点</b>なので、市場人気が落ちても計測を続けます</td></tr>
+      <tr><td><b>各テーマの最低本数</b></td><td class="c">${R.min_per_category}本</td><td style="font-size:11.5px;color:var(--sub)">人気テーマに偏ると、他テーマの異変に気づけなくなります</td></tr>
+    </tbody></table></div></div>`;
 }
 
 function pagePages(){
@@ -1145,7 +1291,7 @@ function pageAlerts(){
   }).join(""):'<div style="padding:24px;color:#64748B">本日のアラートはありません。</div>'}</div>`;
 }
 
-const PAGES={overview:pageOverview,sns:pageSns,queries:pageQueries,pages:pagePages,compete:pageCompete,sources:pageSources,signals:pageSignals,alerts:pageAlerts};
+const PAGES={overview:pageOverview,sns:pageSns,queries:pageQueries,churn:pageChurn,pages:pagePages,compete:pageCompete,sources:pageSources,signals:pageSignals,alerts:pageAlerts};
 let cur="overview";
 function animateBars(root){
   root.querySelectorAll(".bars .fi,.mini i").forEach(el=>{

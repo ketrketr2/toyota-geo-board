@@ -27,9 +27,13 @@ def run_one(day: str, quiet: bool = False) -> dict:
     if not quiet:
         print(f"[{day}] collecting…")
     responses = llm.collect(day, tier="core")
+    import harvest
+    nf = harvest.save_fanout(day, responses)      # AIが内部で投げた派生クエリを回収
+    if nf and not quiet:
+        print(f"  fan-out {nf}種を保存")
     sig = signals.collect(day)
     snap = analyze.aggregate(day, responses, sig)
-    write_json(snapshot_path(day), snap)
+    write_json(snapshot_path(day), snap, compact=True)
     if not quiet:
         print(f"[{day}] score={snap['score']} "
               f"presence={snap['factors']['presence']:.1f} "
@@ -42,8 +46,12 @@ def finalize(day: str) -> None:
     diffs = diff.build(day)
     cmt = comment.build(day, diffs)
     snap = __import__("common").read_json(snapshot_path(day))
-    write_json(snapshot_path(day), {**snap, "diff": diffs, "comment": cmt})
+    write_json(snapshot_path(day), {**snap, "diff": diffs, "comment": cmt}, compact=True)
     build_site(day)
+    from common import prune_snapshots
+    n = prune_snapshots()
+    if n:
+        print(f"  古いスナップショット {n}件から明細を削除しました")
     print("\n— 本日のコメント —")
     print(cmt["headline"])
     for p, lines in cmt["periods"].items():

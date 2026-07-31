@@ -124,6 +124,25 @@ _DEMO_CITES = [
     ("https://www.mapbox.com/legal/end-user-terms", ""),
 ]
 
+# AIが回答生成中に内部で投げる派生クエリ（fan-out）のデモ用プール。
+# 本番では DataForSEO の fan_out_queries がそのまま入る。
+_FANOUT_POOL = {
+    "purchase": ["ファミリーカー 3列シート 比較", "予算400万 ミニバン おすすめ",
+                 "チャイルドシート 2台 乗る車", "国産ミニバン 人気ランキング 最新"],
+    "safety": ["自動ブレーキ 性能 メーカー比較", "運転支援 高速道路 疲れにくい",
+               "サポカー 補助金 対象車種", "踏み間違い防止装置 後付け"],
+    "eco": ["ハイブリッド 実燃費 ランキング", "EV 後悔 理由", "充電インフラ 日本 現状",
+            "PHEV ハイブリッド 違い"],
+    "cost": ["車 維持費 年間 平均", "残価設定ローン デメリット",
+             "リセールバリュー 高い車 ランキング", "軽自動車 維持費 比較"],
+    "model": ["SUV 荷室 広い 国産", "スライドドア 使いやすい メーカー",
+              "雪道 強い車 4WD", "車中泊 できる車 おすすめ"],
+    "service": ["車検 費用 ディーラー 民間", "新車 納期 最新 国産",
+                "メーカー保証 延長 比較"],
+    "brand": ["トヨタ ホンダ 比較 SUV", "トヨタ ハイブリッド 強み",
+              "国産メーカー 信頼性 ランキング"],
+}
+
 _BRAND_SENT = {
     "toyota": ["トヨタは信頼性と燃費のバランスに優れ、長期保有でも安心できる選択肢です",
                "トヨタのハイブリッドは実燃費が安定しており、リセールバリューも高い水準です",
@@ -177,7 +196,11 @@ def demo_response(prompt_id: str, surface_id: str, day: str, run: int,
     for tmpl, title in rng.sample(_DEMO_CITES, min(max(k - len(cites), 0), len(_DEMO_CITES))):
         hh = format(rng.getrandbits(32), "08x")
         cites.append({"url": tmpl.format(h=hh), "title": title})
-    return {"text": text, "citations": cites, "fanout": []}
+
+    # fan-out（AIが内部で投げた派生クエリ）。次サイクルのクエリ候補として還流する。
+    pool = _FANOUT_POOL.get(category) or _FANOUT_POOL["purchase"]
+    fan = rng.sample(pool, min(rng.choice([0, 1, 2, 2, 3]), len(pool)))
+    return {"text": text, "citations": cites, "fanout": fan}
 
 
 # ---------------------------------------------------------------- 実行

@@ -32,6 +32,18 @@ def load(name: str) -> dict:
 
 
 def load_prompts(tier: str = "core") -> list[dict]:
+    """プロンプトはレジストリ（prompts/registry.yaml）が唯一の正。
+
+    収穫で中身が入れ替わるので、旧 prompts/<tier>.yaml は
+    レジストリが無い場合のフォールバックとしてのみ残してある。
+    """
+    reg = ROOT / "prompts" / "registry.yaml"
+    if reg.exists():
+        with open(reg, encoding="utf-8") as f:
+            rows = yaml.safe_load(f)["prompts"]
+        rows = [p for p in rows if p.get("tier") == tier]
+        rows.sort(key=lambda p: -(p.get("demand") or 0))
+        return rows
     with open(ROOT / "prompts" / f"{tier}.yaml", encoding="utf-8") as f:
         return yaml.safe_load(f)["prompts"]
 
@@ -93,10 +105,41 @@ def read_json(path: Path, default=None):
         return json.load(f)
 
 
-def write_json(path: Path, obj) -> None:
+def write_json(path: Path, obj, compact: bool = False) -> None:
+    """compact=True は整形なしで書く。
+
+    日次で積むファイル（スナップショット・latest.json）はインデントの空白だけで
+    全体の3割を占めるため、機械しか読まないものは詰めて書く。
+    """
     path.parent.mkdir(parents=True, exist_ok=True)
     with open(path, "w", encoding="utf-8") as f:
-        json.dump(obj, f, ensure_ascii=False, indent=2, sort_keys=False)
+        if compact:
+            json.dump(obj, f, ensure_ascii=False, separators=(",", ":"))
+        else:
+            json.dump(obj, f, ensure_ascii=False, indent=2, sort_keys=False)
+
+
+def prune_snapshots(keep_detail_days: int = 90) -> int:
+    """古いスナップショットから明細(cells)を落とす。
+
+    前日比・先週比・先月比が使うのは直近30日、履歴グラフも60日なので、
+    それより古い明細は保持しても誰も読まない。スコアと因数だけ残す。
+    """
+    from datetime import date, timedelta
+    cut = (date.today() - timedelta(days=keep_detail_days)).isoformat()
+    n = 0
+    for d in list_snapshots():
+        if d >= cut:
+            continue
+        p = snapshot_path(d)
+        s = read_json(p)
+        if not s or "cells" not in s:
+            continue
+        s.pop("cells", None)
+        s["pruned"] = True
+        write_json(p, s, compact=True)
+        n += 1
+    return n
 
 
 def snapshot_path(d: str) -> Path:

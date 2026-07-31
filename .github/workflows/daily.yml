@@ -7,6 +7,20 @@ on:
   schedule:
     - cron: "17 22 * * *"
   workflow_dispatch:          # 手動実行も可能にしておく
+    inputs:
+      harvest:
+        description: "クエリ収穫（コア枠の入れ替え）も実行する"
+        type: boolean
+        default: false
+  push:                       # ソースを更新したら即座に再ビルド＆再デプロイ
+    branches: [main]
+    paths:                    # bot が書き戻すファイルは除外（無限ループ防止）
+      - "docs/index.html"
+      - "src/**"
+      - "config/**"
+      - "prompts/**"
+      - "!prompts/registry.yaml"   # ← 収穫botが毎週書き換えるので対象外
+      - ".github/workflows/**"
 
 permissions:
   contents: write             # スナップショットのコミットに必要
@@ -31,6 +45,20 @@ jobs:
 
       - name: Install
         run: pip install -r requirements.txt
+
+      # クエリ一覧そのものを市場に合わせて更新する。
+      # 毎日やるとコア枠が落ち着かないので、JST月曜（UTC日曜22:17）だけ回す。
+      - name: Harvest queries (weekly)
+        env:
+          GEO_BOARD_MODE:      ${{ vars.GEO_BOARD_MODE || 'demo' }}
+          DATAFORSEO_LOGIN:    ${{ secrets.DATAFORSEO_LOGIN }}
+          DATAFORSEO_PASSWORD: ${{ secrets.DATAFORSEO_PASSWORD }}
+        run: |
+          if [ "${{ inputs.harvest }}" = "true" ] || [ "$(date -u +%u)" = "7" ]; then
+            python src/harvest.py
+          else
+            echo "本日は収穫日ではありません（JST月曜のみ実行）"
+          fi
 
       - name: Collect & build
         env:
@@ -60,7 +88,7 @@ jobs:
         run: |
           git config user.name  "geo-board-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add data/snapshots docs/data
+          git add data/snapshots data/fanout data/harvest_log.json prompts/registry.yaml
           git diff --staged --quiet || git commit -m "chore: snapshot $(date -u +%Y-%m-%d)"
           git push
 

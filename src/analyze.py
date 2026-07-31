@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import statistics as st
 from collections import Counter, defaultdict
+from datetime import timedelta
 
 from common import contains_any, domain_of, first_index, load, match_domain, sentences
 
@@ -93,6 +94,83 @@ def _median_bool(vals: list[bool]) -> float:
     return sum(vals) / len(vals) if vals else 0.0
 
 
+def _cohort_ids(day: str) -> set[str]:
+    """基準コホート = 一定期間以上コア枠に在籍しているクエリ。
+
+    新しく入れたクエリをいきなり分母に入れると、施策と関係なく出現率が動く。
+    観察期間を置いてから合流させることで、前日比の意味を守る。
+    """
+    try:
+        import registry as R
+        from datetime import date
+        obs = load("harvest")["promotion"]["observation_days"]
+        cut = date.fromisoformat(day) - timedelta(days=obs)
+        return {p["id"] for p in R.load_registry()["prompts"]
+                if p.get("tier") == "core"
+                and date.fromisoformat(p.get("tier_since", "2000-01-01")) <= cut}
+    except Exception:
+        return set()
+
+
+def _compute(cells: list[dict], br: dict, pf: dict, own_id: str,
+             all_brands: list[str]) -> tuple[dict, list[dict], dict]:
+    """セル集合から6因数・プラットフォーム内訳・補助集計を出す。
+
+    全体（コア枠すべて）と基準コホートの2通りで呼ぶため関数に切ってある。
+    """
+    own_cells = [c for c in cells if c["brands"][own_id]["mentioned"]]
+    total = len(cells) or 1
+
+    presence = len(own_cells) / total * 100
+    ranks = [c["brands"][own_id]["rank"] for c in own_cells if c["brands"][own_id]["rank"]]
+    rank_quality = (sum(1 / r for r in ranks) / len(ranks) * 100) if ranks else 0.0
+    owned_citation = (sum(c["own_cited"] for c in own_cells) / len(own_cells) * 100) if own_cells else 0.0
+    pos = sum(1 for c in own_cells if c["brands"][own_id]["sentiment"] == "positive")
+    sentiment = (pos / len(own_cells) * 100) if own_cells else 0.0
+
+    mention_counts = {b: sum(c["brands"][b]["mentioned"] for c in cells) for b in all_brands}
+    tot_mentions = sum(mention_counts.values()) or 1
+    sov = mention_counts[own_id] / tot_mentions * 100
+
+    # ---- アーンド（SNS/UGC）引用 ----
+    plat_cfg = {p["id"]: p for p in pf["platforms"]}
+    market_cites, own_cites = Counter(), Counter()
+    for c in cells:
+        own_here = c["brands"][own_id]["mentioned"]
+        for cit in c["citations"]:
+            if cit["bucket"] != "earned":
+                continue
+            market_cites[cit["platform"]] += 1
+            if own_here:
+                own_cites[cit["platform"]] += 1
+
+    platforms_out, earned = [], 0.0
+    for pid, p in plat_cfg.items():
+        m, o = market_cites.get(pid, 0), own_cites.get(pid, 0)
+        share = (o / m) if m else 0.0
+        earned += p["weight"] * share
+        platforms_out.append({
+            "id": pid, "label": p["label"], "kind": p["kind"],
+            "weight": p["weight"], "actionable": p["actionable"], "note": p["note"],
+            "market_citations": m, "own_citations": o,
+            "share": round(share * 100, 2),
+            "market_reference": p.get("market_citations", 0),
+        })
+    platforms_out.sort(key=lambda x: -x["weight"])
+
+    factors = {
+        "presence": presence,
+        "rank_quality": rank_quality,
+        "owned_citation": owned_citation,
+        "earned_citation": earned * 100,
+        "sentiment": sentiment,
+        "share_of_voice": min(sov / 0.35, 100),   # 5社均等=20%を基準に正規化
+    }
+    return factors, platforms_out, {"own_cells": own_cells,
+                                    "mention_counts": mention_counts,
+                                    "tot_mentions": tot_mentions}
+
+
 def aggregate(day: str, responses: list[dict], signals: dict) -> dict:
     """全回答を畳んで、その日のスナップショットを作る。"""
     cfg, br, pf = load("settings"), load("brands"), load("platforms")
@@ -145,60 +223,26 @@ def aggregate(day: str, responses: list[dict], signals: dict) -> dict:
         cell["own_cited"] = any(c["bucket"] == "owned" for c in cell["citations"])
         cells.append(cell)
 
-    # ---- 3) 因数を計算 ----
-    own_cells = [c for c in cells if c["brands"][own_id]["mentioned"]]
-    total = len(cells) or 1
-
-    presence = len(own_cells) / total * 100
-    ranks = [c["brands"][own_id]["rank"] for c in own_cells if c["brands"][own_id]["rank"]]
-    rank_quality = (sum(1 / r for r in ranks) / len(ranks) * 100) if ranks else 0.0
-    owned_citation = (sum(c["own_cited"] for c in own_cells) / len(own_cells) * 100) if own_cells else 0.0
-    pos = sum(1 for c in own_cells if c["brands"][own_id]["sentiment"] == "positive")
-    sentiment = (pos / len(own_cells) * 100) if own_cells else 0.0
-
-    mention_counts = {b: sum(c["brands"][b]["mentioned"] for c in cells) for b in all_brands}
-    tot_mentions = sum(mention_counts.values()) or 1
-    sov = mention_counts[own_id] / tot_mentions * 100
-
-    # ---- 4) アーンド（SNS/UGC）引用 ★ ----
-    plat_cfg = {p["id"]: p for p in pf["platforms"]}
-    market_cites = Counter()      # そのプラットフォームが引用された回数（市場全体）
-    own_cites = Counter()         # うち自社が言及されていた回答での引用
+    # ---- 2.5) コホート判定 ----
+    # クエリを入れ替えると出現率の母数が変わり、前日比が意味を失う。
+    # そこで「30日以上コア枠に居るクエリ」だけの基準コホートを別に持ち、
+    # 時系列比較はそちらで行う。全体スコアは実態把握用。
+    cohort_ids = _cohort_ids(day)
     for c in cells:
-        own_here = c["brands"][own_id]["mentioned"]
-        for cit in c["citations"]:
-            if cit["bucket"] != "earned":
-                continue
-            market_cites[cit["platform"]] += 1
-            if own_here:
-                own_cites[cit["platform"]] += 1
+        c["cohort"] = (c["prompt_id"] in cohort_ids) if cohort_ids else True
 
-    platforms_out, earned = [], 0.0
-    for pid, p in plat_cfg.items():
-        m, o = market_cites.get(pid, 0), own_cites.get(pid, 0)
-        share = (o / m) if m else 0.0
-        earned += p["weight"] * share
-        platforms_out.append({
-            "id": pid, "label": p["label"], "kind": p["kind"],
-            "weight": p["weight"], "actionable": p["actionable"], "note": p["note"],
-            "market_citations": m, "own_citations": o,
-            "share": round(share * 100, 2),
-            "market_reference": p.get("market_citations", 0),
-        })
-    earned_citation = earned * 100
-    platforms_out.sort(key=lambda x: -x["weight"])
+    factors, platforms_out, extras = _compute(cells, br, pf, own_id, all_brands)
+    cohort_cells = [c for c in cells if c["cohort"]]
+    coh_factors, _, coh_extras = (_compute(cohort_cells, br, pf, own_id, all_brands)
+                                  if cohort_cells else (factors, platforms_out, extras))
 
-    # ---- 5) 総合スコア ----
+    presence = factors["presence"]
     w = cfg["score_weights"]
-    factors = {
-        "presence": presence,
-        "rank_quality": rank_quality,
-        "owned_citation": owned_citation,
-        "earned_citation": earned_citation,
-        "sentiment": sentiment,
-        "share_of_voice": min(sov / 0.35, 100),   # 5社均等=20%を基準に正規化
-    }
     score = sum(factors[k] * w[k] / 100 for k in w)
+    coh_score = sum(coh_factors[k] * w[k] / 100 for k in w)
+    mention_counts = extras["mention_counts"]
+    tot_mentions = extras["tot_mentions"]
+    own_cells = extras["own_cells"]
 
     # ---- 6) 補助集計 ----
     driver_matrix = defaultdict(lambda: Counter())
@@ -218,6 +262,13 @@ def aggregate(day: str, responses: list[dict], signals: dict) -> dict:
         "date": day,
         "score": round(score, 2),
         "factors": {k: round(v, 2) for k, v in factors.items()},
+        "cohort": {
+            "score": round(coh_score, 2),
+            "factors": {k: round(v, 2) for k, v in coh_factors.items()},
+            "prompts": len({c["prompt_id"] for c in cohort_cells}),
+            "cells": len(cohort_cells),
+            "own_mentioned": len(coh_extras["own_cells"]),
+        },
         "weights": w,
         "counts": {"prompts": len({c['prompt_id'] for c in cells}),
                    "cells": len(cells), "responses": len(responses),
