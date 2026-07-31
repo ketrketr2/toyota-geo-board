@@ -147,7 +147,7 @@ def probe() -> None:
     log.append("")
     log.append("--- 本数と費用の見込み ---")
     for wd in range(1, 8):
-        d = f"2026-01-{5 + wd:02d}"          # 月〜日を1週間ぶん（曜日だけ使う）
+        d = f"2026-01-{4 + wd:02d}"          # 2026-01-05が月曜。曜日だけ使う
         tot = 0.0
         for s in _sf(d):
             unit = _R.get(s["id"], {}).get("cost", 0)
