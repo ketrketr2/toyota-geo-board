@@ -1,0 +1,164 @@
+2026-08-01 live実行が失敗しました
+期待480件 / 取得0件 / 面別 {'chatgpt': 0, 'aio': 0, 'aimode': 0, 'gemini': 0}
+実費 {'usd': 0.0, 'calls': 0}
+
+p100/gemini run2: RuntimeError: HTTP 403 {"version":"0.1.20260731","status_code":40104,"status_message":"Please verify your account before using the API. You can complete verification in the user panel: https:\/\/app.dataforseo.com\/ .","time":"0 sec.","cost":0,"tasks_count":0,"tasks_error":0,"tasks":null}
+p100/gemini run1: RuntimeError: HTTP 403 {
+    "version": "0.1.20260731",
+    "status_code": 40104,
+    "status_message": "Please verify your account before using the API. You can complete verification in the user panel: https:\/\/app.dataforseo.com\/ .",
+    "time": "0 sec.",
+    "cost": 0,
+    "tasks_count": 0,
+    "tasks_error": 0,
+    
+p130/chatgpt run1: RuntimeError: HTTP 403 {
+    "version": "0.1.20260731",
+    "status_code": 40104,
+    "status_message": "Please verify your account before using the API. You can complete verification in the user panel: https:\/\/app.dataforseo.com\/ .",
+    "time": "0 sec.",
+    "cost": 0,
+    "tasks_count": 0,
+    "tasks_error": 0,
+    
+p100/chatgpt run2: RuntimeError: HTTP 403 {"version":"0.1.20260731","status_code":40104,"status_message":"Please verify your account before using the API. You can complete verification in the user panel: https:\/\/app.dataforseo.com\/ .","time":"0 sec.","cost":0,"tasks_count":0,"tasks_error":0,"tasks":null}
+p100/chatgpt run0: RuntimeError: HTTP 403 {
+    "version": "0.1.20260731",
+    "status_code": 40104,
+    "status_message": "Please verify your account before using the API. You can complete verification in the user panel: https:\/\/app.dataforseo.com\/ .",
+    "time": "0 sec.",
+    "cost": 0,
+    "tasks_count": 0,
+    "tasks_error": 0,
+    
+p130/chatgpt run0: RuntimeError: HTTP 403 {"version":"0.1.20260731","status_code":40104,"status_message":"Please verify your account before using the API. You can complete verification in the user panel: https:\/\/app.dataforseo.com\/ .","time":"0 sec.","cost":0,"tasks_count":0,"tasks_error":0,"tasks":null}
+p100/gemini run0: RuntimeError: HTTP 403 {"version":"0.1.20260731","status_code":40104,"status_message":"Please verify your account before using the API. You can complete verification in the user panel: https:\/\/app.dataforseo.com\/ .","time":"0 sec.","cost":0,"tasks_count":0,"tasks_error":0,"tasks":null}
+p100/chatgpt run1: RuntimeError: HTTP 403 {
+    "version": "0.1.20260731",
+    "status_code": 40104,
+    "status_message": "Please verify your account before using the API. You can complete verification in the user panel: https:\/\/app.dataforseo.com\/ .",
+    "time": "0 sec.",
+    "cost": 0,
+    "tasks_count": 0,
+    "tasks_error": 0,
+    
+p100/aimode run0: RuntimeError: HTTP 403 {
+    "version": "0.1.20260731",
+    "status_code": 40104,
+    "status_message": "Please verify your account before using the API. You can complete verification in the user panel: https:\/\/app.dataforseo.com\/ .",
+    "time": "0 sec.",
+    "cost": 0,
+    "tasks_count": 0,
+    "tasks_error": 0,
+    
+p100/aio run0: RuntimeError: HTTP 403 {"version":"0.1.20260731","status_code":40104,"status_message":"Please verify your account before using the API. You can complete verification in the user panel: https:\/\/app.dataforseo.com\/ .","time":"0 sec.","cost":0,"tasks_count":0,"tasks_error":0,"tasks":null}
+p130/chatgpt run2: RuntimeError: HTTP 403 {"version":"0.1.20260731","status_code":40104,"status_message":"Please verify your account before using the API. You can complete verification in the user panel: https:\/\/app.dataforseo.com\/ .","time":"0 sec.","cost":0,"tasks_count":0,"tasks_error":0,"tasks":null}
+p130/gemini run0: RuntimeError: HTTP 403 {"version":"0.1.20260731","status_code":40104,"status_message":"Please verify your account before using the API. You can complete verification in the user panel: https:\/\/app.dataforseo.com\/ .","time":"0 sec.","cost":0,"tasks_count":0,"tasks_error":0,"tasks":null}
+p130/gemini run1: RuntimeError: HTTP 403 {"version":"0.1.20260731","status_code":40104,"status_message":"Please verify your account before using the API. You can complete verification in the user panel: https:\/\/app.dataforseo.com\/ .","time":"0 sec.","cost":0,"tasks_count":0,"tasks_error":0,"tasks":null}
+p130/gemini run2: RuntimeError: HTTP 403 {"version":"0.1.20260731","status_code":40104,"status_message":"Please verify your account before using the API. You can complete verification in the user panel: https:\/\/app.dataforseo.com\/ .","time":"0 sec.","cost":0,"tasks_count":0,"tasks_error":0,"tasks":null}
+p140/chatgpt run0: RuntimeError: HTTP 403 {"version":"0.1.20260731","status_code":40104,"status_message":"Please verify your account before using the API. You can complete verification in the user panel: https:\/\/app.dataforseo.com\/ .","time":"0 sec.","cost":0,"tasks_count":0,"tasks_error":0,"tasks":null}
+p130/aimode run0: RuntimeError: HTTP 403 {"version":"0.1.20260731","status_code":40104,"status_message":"Please verify your account before using the API. You can complete verification in the user panel: https:\/\/app.dataforseo.com\/ .","time":"0 sec.","cost":0,"tasks_count":0,"tasks_error":0,"tasks":null}
+p140/chatgpt run1: RuntimeError: HTTP 403 {"version":"0.1.20260731","status_code":40104,"status_message":"Please verify your account before using the API. You can complete verification in the user panel: https:\/\/app.dataforseo.com\/ .","time":"0 sec.","cost":0,"tasks_count":0,"tasks_error":0,"tasks":null}
+p140/chatgpt run2: RuntimeError: HTTP 403 {"version":"0.1.20260731","status_code":40104,"status_message":"Please verify your account before using the API. You can complete verification in the user panel: https:\/\/app.dataforseo.com\/ .","time":"0 sec.","cost":0,"tasks_count":0,"tasks_error":0,"tasks":null}
+p130/aio run0: RuntimeError: HTTP 403 {"version":"0.1.20260731","status_code":40104,"status_message":"Please verify your account before using the API. You can complete verification in the user panel: https:\/\/app.dataforseo.com\/ .","time":"0 sec.","cost":0,"tasks_count":0,"tasks_error":0,"tasks":null}
+p140/aio run0: RuntimeError: HTTP 403 {"version":"0.1.20260731","status_code":40104,"status_message":"Please verify your account before using the API. You can complete verification in the user panel: https:\/\/app.dataforseo.com\/ .","time":"0 sec.","cost":0,"tasks_count":0,"tasks_error":0,"tasks":null}
+p140/aimode run0: RuntimeError: HTTP 403 {
+    "version": "0.1.20260731",
+    "status_code": 40104,
+    "status_message": "Please verify your account before using the API. You can complete verification in the user panel: https:\/\/app.dataforseo.com\/ .",
+    "time": "0 sec.",
+    "cost": 0,
+    "tasks_count": 0,
+    "tasks_error": 0,
+    
+p140/gemini run0: RuntimeError: HTTP 403 {
+    "version": "0.1.20260731",
+    "status_code": 40104,
+    "status_message": "Please verify your account before using the API. You can complete verification in the user panel: https:\/\/app.dataforseo.com\/ .",
+    "time": "0 sec.",
+    "cost": 0,
+    "tasks_count": 0,
+    "tasks_error": 0,
+    
+p140/gemini run2: RuntimeError: HTTP 403 {"version":"0.1.20260731","status_code":40104,"status_message":"Please verify your account before using the API. You can complete verification in the user panel: https:\/\/app.dataforseo.com\/ .","time":"0 sec.","cost":0,"tasks_count":0,"tasks_error":0,"tasks":null}
+p140/gemini run1: RuntimeError: HTTP 403 {
+    "version": "0.1.20260731",
+    "status_code": 40104,
+    "status_message": "Please verify your account before using the API. You can complete verification in the user panel: https:\/\/app.dataforseo.com\/ .",
+    "time": "0 sec.",
+    "cost": 0,
+    "tasks_count": 0,
+    "tasks_error": 0,
+    
+p099/chatgpt run1: RuntimeError: HTTP 403 {
+    "version": "0.1.20260731",
+    "status_code": 40104,
+    "status_message": "Please verify your account before using the API. You can complete verification in the user panel: https:\/\/app.dataforseo.com\/ .",
+    "time": "0 sec.",
+    "cost": 0,
+    "tasks_count": 0,
+    "tasks_error": 0,
+    
+p099/aio run0: RuntimeError: HTTP 403 {"version":"0.1.20260731","status_code":40104,"status_message":"Please verify your account before using the API. You can complete verification in the user panel: https:\/\/app.dataforseo.com\/ .","time":"0 sec.","cost":0,"tasks_count":0,"tasks_error":0,"tasks":null}
+p099/chatgpt run2: RuntimeError: HTTP 403 {
+    "version": "0.1.20260731",
+    "status_code": 40104,
+    "status_message": "Please verify your account before using the API. You can complete verification in the user panel: https:\/\/app.dataforseo.com\/ .",
+    "time": "0 sec.",
+    "cost": 0,
+    "tasks_count": 0,
+    "tasks_error": 0,
+    
+p099/aimode run0: RuntimeError: HTTP 403 {"version":"0.1.20260731","status_code":40104,"status_message":"Please verify your account before using the API. You can complete verification in the user panel: https:\/\/app.dataforseo.com\/ .","time":"0 sec.","cost":0,"tasks_count":0,"tasks_error":0,"tasks":null}
+p099/gemini run0: RuntimeError: HTTP 403 {"version":"0.1.20260731","status_code":40104,"status_message":"Please verify your account before using the API. You can complete verification in the user panel: https:\/\/app.dataforseo.com\/ .","time":"0 sec.","cost":0,"tasks_count":0,"tasks_error":0,"tasks":null}
+p099/chatgpt run0: RuntimeError: HTTP 403 {"version":"0.1.20260731","status_code":40104,"status_message":"Please verify your account before using the API. You can complete verification in the user panel: https:\/\/app.dataforseo.com\/ .","time":"0 sec.","cost":0,"tasks_count":0,"tasks_error":0,"tasks":null}
+p099/gemini run2: RuntimeError: HTTP 403 {"version":"0.1.20260731","status_code":40104,"status_message":"Please verify your account before using the API. You can complete verification in the user panel: https:\/\/app.dataforseo.com\/ .","time":"0 sec.","cost":0,"tasks_count":0,"tasks_error":0,"tasks":null}
+p061/chatgpt run0: RuntimeError: HTTP 403 {
+    "version": "0.1.20260731",
+    "status_code": 40104,
+    "status_message": "Please verify your account before using the API. You can complete verification in the user panel: https:\/\/app.dataforseo.com\/ .",
+    "time": "0 sec.",
+    "cost": 0,
+    "tasks_count": 0,
+    "tasks_error": 0,
+    
+p061/chatgpt run1: RuntimeError: HTTP 403 {
+    "version": "0.1.20260731",
+    "status_code": 40104,
+    "status_message": "Please verify your account before using the API. You can complete verification in the user panel: https:\/\/app.dataforseo.com\/ .",
+    "time": "0 sec.",
+    "cost": 0,
+    "tasks_count": 0,
+    "tasks_error": 0,
+    
+p099/gemini run1: RuntimeError: HTTP 403 {"version":"0.1.20260731","status_code":40104,"status_message":"Please verify your account before using the API. You can complete verification in the user panel: https:\/\/app.dataforseo.com\/ .","time":"0 sec.","cost":0,"tasks_count":0,"tasks_error":0,"tasks":null}
+p061/aio run0: RuntimeError: HTTP 403 {"version":"0.1.20260731","status_code":40104,"status_message":"Please verify your account before using the API. You can complete verification in the user panel: https:\/\/app.dataforseo.com\/ .","time":"0 sec.","cost":0,"tasks_count":0,"tasks_error":0,"tasks":null}
+p061/chatgpt run2: RuntimeError: HTTP 403 {
+    "version": "0.1.20260731",
+    "status_code": 40104,
+    "status_message": "Please verify your account before using the API. You can complete verification in the user panel: https:\/\/app.dataforseo.com\/ .",
+    "time": "0 sec.",
+    "cost": 0,
+    "tasks_count": 0,
+    "tasks_error": 0,
+    
+p061/gemini run0: RuntimeError: HTTP 403 {
+    "version": "0.1.20260731",
+    "status_code": 40104,
+    "status_message": "Please verify your account before using the API. You can complete verification in the user panel: https:\/\/app.dataforseo.com\/ .",
+    "time": "0 sec.",
+    "cost": 0,
+    "tasks_count": 0,
+    "tasks_error": 0,
+    
+p061/aimode run0: RuntimeError: HTTP 403 {
+    "version": "0.1.20260731",
+    "status_code": 40104,
+    "status_message": "Please verify your account before using the API. You can complete verification in the user panel: https:\/\/app.dataforseo.com\/ .",
+    "time": "0 sec.",
+    "cost": 0,
+    "tasks_count": 0,
+    "tasks_error": 0,
+    
+p061/gemini run1: RuntimeError: HTTP 403 {"version":"0.1.20260731","status_code":40104,"status_message":"Please verify your account before using the API. You can complete verification in the user panel: https:\/\/app.dataforseo.com\/ .","time":"0 sec.","cost":0,"tasks_count":0,"tasks_error":0,"tasks":null}
+p061/gemini run2: RuntimeError: HTTP 403 {"version":"0.1.20260731","status_code":40104,"status_message":"Please verify your account before using the API. You can complete verification in the user panel: https:\/\/app.dataforseo.com\/ .","time":"0 sec.","cost":0,"tasks_count":0,"tasks_error":0,"tasks":null}
