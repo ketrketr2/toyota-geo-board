@@ -20,7 +20,8 @@ import comment  # noqa: E402
 import diff  # noqa: E402
 from build_site import build_site  # noqa: E402
 from collect import llm, signals  # noqa: E402
-from common import days_ago, demo_mode, snapshot_path, today, write_json  # noqa: E402
+from common import (days_ago, demo_mode, load, snapshot_path, today,  # noqa: E402
+                    write_json)
 
 
 def _expected_calls(tier: str = "core") -> int:
@@ -39,21 +40,33 @@ def run_one(day: str, quiet: bool = False) -> dict:
     responses = llm.collect(day, tier="core")
 
     # ---- live実行の安全弁 ----
-    # 認証ミスやモデル名の誤りで全滅すると、スコア0の日が履歴に残って
-    # 移動中央値と±2σを永久に汚す。半分も取れなければ何も書かずに落とす。
+    # 認証ミスやモデル名の誤りで取りこぼすと、実力が落ちたわけでもないのに
+    # スコアが下がった日が履歴に残り、移動中央値と±2σを永久に汚す。
+    # 「全体の取得率」と「面ごとの取得」の両方を見る。片面だけ全滅しても止める。
     if not demo_mode():
         exp = _expected_calls("core")
-        if len(responses) < exp * 0.5:
-            sys.exit(f"live実行が異常です: 期待{exp}件に対し{len(responses)}件しか取得できませんでした。"
-                     f"\n認証情報・モデル名・残高を確認してください。"
-                     f"\nスナップショットは書いていないので、履歴は汚れていません。")
+        got = {s["id"]: 0 for s in load("settings")["surfaces"] if s.get("enabled")}
+        for r in responses:
+            if r["surface"] in got:
+                got[r["surface"]] += 1
+        dead = [s for s, n in got.items() if n < exp / len(got) * 0.5]
+        if len(responses) < exp * 0.7 or dead:
+            sys.exit(f"live実行が異常です: 期待{exp}件に対し{len(responses)}件。"
+                     f"\n面ごとの取得数: {got}"
+                     + (f"\n取得できていない面: {', '.join(dead)}" if dead else "")
+                     + "\n認証情報・モデル名・残高を確認してください。"
+                     "\nスナップショットは書いていないので、履歴は汚れていません。")
     import harvest
     nf = harvest.save_fanout(day, responses)      # AIが内部で投げた派生クエリを回収
     if nf and not quiet:
         print(f"  fan-out {nf}種を保存")
     sig = signals.collect(day)
     snap = analyze.aggregate(day, responses, sig)
+    # その日いくら使ったかを必ず残す。予算切れは静かに起きて、静かに全部止まるため。
+    snap["api_cost"] = llm.spent()
     write_json(snapshot_path(day), snap, compact=True)
+    if not quiet and snap["api_cost"]["calls"]:
+        print(f"  DataForSEO 実費 ${snap['api_cost']['usd']:.4f} / {snap['api_cost']['calls']}回")
     if not quiet:
         print(f"[{day}] score={snap['score']} "
               f"presence={snap['factors']['presence']:.1f} "
@@ -80,11 +93,47 @@ def finalize(day: str) -> None:
     print(f"  {cmt['alert_summary']}")
 
 
+def probe() -> None:
+    """本番の1日分を回す前に、最小限の実測を2〜4本だけ投げて疎通を確かめる。
+
+    認証・エンドポイント・モデル名のどれかが違うと全滅するが、
+    それを720本投げてから知るのは遅い。数円で先に分かるようにしておく。
+    """
+    from common import load, load_prompts
+    from collect.llm import fetch_llm_response, fetch_serp_ai, spent
+    if demo_mode():
+        sys.exit("probe は live 専用です。GEO_BOARD_MODE=live と DATAFORSEO_LOGIN を確認してください。")
+    cfg = load("settings")
+    prompt = load_prompts("core")[0]["text"]
+    ok = 0
+    for s in [x for x in cfg["surfaces"] if x.get("enabled")]:
+        fn = fetch_serp_ai if s["provider"] == "serp" else fetch_llm_response
+        try:
+            r = fn(prompt, s)
+            ok += 1
+            print(f"  ○ {s['label']}: 本文{len(r['text'])}文字 / 引用{len(r['citations'])}件")
+            for c in r["citations"][:3]:
+                print(f"      - {c['url']}")
+        except Exception as e:
+            print(f"  × {s['label']}: {e}")
+    c = spent()
+    print(f"\n疎通 {ok}/{len([x for x in cfg['surfaces'] if x.get('enabled')])} 面 "
+          f"／ 実費 ${c['usd']:.4f}（{c['calls']}回）")
+    if ok == 0:
+        sys.exit("1面も取得できませんでした。本番実行はまだ行わないでください。")
+
+
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--date", default=today())
     ap.add_argument("--backfill", type=int, default=0)
+    ap.add_argument("--probe", action="store_true",
+                    help="実測の疎通確認だけを行う（スナップショットは書かない）")
     a = ap.parse_args()
+
+    if a.probe:
+        probe()
+        return
 
     if a.backfill:
         if not demo_mode():

@@ -34,7 +34,7 @@ surfaces:
   - id: gemini
     label: "Gemini"
     provider: dataforseo
-    model: "gemini-3-pro"
+    model: "gemini-2.5-flash"   # DataForSEOが受け付ける実在の名前。gemini-3-proは無い
     enabled: true
     weight: 0.245
   - id: perplexity

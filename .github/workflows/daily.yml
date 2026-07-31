@@ -12,6 +12,10 @@ on:
         description: "クエリ収穫（コア枠の入れ替え）も実行する"
         type: boolean
         default: false
+      probe:
+        description: "疎通確認だけ行う（数円。本番実行はしない）"
+        type: boolean
+        default: false
   push:                       # ソースを更新したら即座に再ビルド＆再デプロイ
     branches: [main]
     paths:                    # bot が書き戻すファイルは除外（無限ループ防止）
@@ -34,7 +38,7 @@ concurrency:
 jobs:
   collect:
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: 120
     steps:
       - uses: actions/checkout@v4
 
@@ -46,12 +50,26 @@ jobs:
       - name: Install
         run: pip install -r requirements.txt
 
+      # 本番を回す前の疎通確認。認証・エンドポイント・モデル名を数円で検証する。
+      - name: Probe (live smoke test)
+        if: ${{ inputs.probe }}
+        env:
+          # 疎通確認は変数の状態に関係なく live で走らせる。
+          # 「本番に切り替える前に確かめる」ためのものなので、demo のままでは意味がない。
+          GEO_BOARD_MODE:      live
+          DATAFORSEO_LOGIN:    ${{ secrets.DATAFORSEO_LOGIN || vars.DATAFORSEO_LOGIN }}
+          DATAFORSEO_PASSWORD: ${{ secrets.DATAFORSEO_PASSWORD }}
+        run: python src/run_daily.py --probe
+
       # クエリ一覧そのものを市場に合わせて更新する。
       # 毎日やるとコア枠が落ち着かないので、JST月曜（UTC日曜22:17）だけ回す。
       - name: Harvest queries (weekly)
+        if: ${{ !inputs.probe }}
         env:
           GEO_BOARD_MODE:      ${{ vars.GEO_BOARD_MODE || 'demo' }}
-          DATAFORSEO_LOGIN:    ${{ secrets.DATAFORSEO_LOGIN }}
+          # login はメールアドレスであって機密ではないため、変数でも渡せるようにしてある。
+          # Secrets 側に同名があればそちらが優先される。
+          DATAFORSEO_LOGIN:    ${{ secrets.DATAFORSEO_LOGIN || vars.DATAFORSEO_LOGIN }}
           DATAFORSEO_PASSWORD: ${{ secrets.DATAFORSEO_PASSWORD }}
         run: |
           if [ "${{ inputs.harvest }}" = "true" ] || [ "$(date -u +%u)" = "7" ]; then
@@ -61,10 +79,13 @@ jobs:
           fi
 
       - name: Collect & build
+        if: ${{ !inputs.probe }}
         env:
           # ---- 鍵が無ければ自動で demo モードで走る ----
           GEO_BOARD_MODE:      ${{ vars.GEO_BOARD_MODE || 'demo' }}
-          DATAFORSEO_LOGIN:    ${{ secrets.DATAFORSEO_LOGIN }}
+          # login はメールアドレスであって機密ではないため、変数でも渡せるようにしてある。
+          # Secrets 側に同名があればそちらが優先される。
+          DATAFORSEO_LOGIN:    ${{ secrets.DATAFORSEO_LOGIN || vars.DATAFORSEO_LOGIN }}
           DATAFORSEO_PASSWORD: ${{ secrets.DATAFORSEO_PASSWORD }}
           GA4_PROPERTY_ID:     ${{ secrets.GA4_PROPERTY_ID }}
           GOOGLE_APPLICATION_CREDENTIALS_JSON: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS_JSON }}
@@ -85,6 +106,7 @@ jobs:
         run: python src/notify.py
 
       - name: Commit snapshot
+        if: ${{ !inputs.probe }}
         run: |
           git config user.name  "geo-board-bot"
           git config user.email "actions@users.noreply.github.com"

@@ -8,7 +8,9 @@ from __future__ import annotations
 import hashlib
 import random
 import sys
+import threading
 import time
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
@@ -18,65 +20,111 @@ import requests  # noqa: E402
 from common import demo_mode, env, load, load_prompts  # noqa: E402
 
 DFS_BASE = "https://api.dataforseo.com/v3"
-LLM_MAP = {"chatgpt": "chat_gpt", "gemini": "gemini", "perplexity": "perplexity", "claude": "claude"}
+
+# DataForSEO は LLM ごとにエンドポイントが分かれている。
+# 旧実装は /ai_optimization/llm_responses/models/live を叩いていたが、これは存在しない。
+LLM_PATH = {"chatgpt": "chat_gpt", "gemini": "gemini",
+            "perplexity": "perplexity", "claude": "claude"}
+
+_COST_LOCK = threading.Lock()
+_COST = {"total": 0.0, "calls": 0}
 
 
-# ---------------------------------------------------------------- 本番
+def spent() -> dict:
+    """この実行で DataForSEO に支払った実額。予算管理のために毎日記録する。"""
+    with _COST_LOCK:
+        return {"usd": round(_COST["total"], 4), "calls": _COST["calls"]}
+
+
+def _charge(task: dict) -> None:
+    with _COST_LOCK:
+        _COST["total"] += float(task.get("cost") or 0)
+        _COST["calls"] += 1
+
+
 def _dfs_auth():
     return (env("DATAFORSEO_LOGIN"), env("DATAFORSEO_PASSWORD"))
 
 
-def fetch_llm_response(prompt: str, surface: dict) -> dict:
-    """DataForSEO LLM Responses を1回叩く。回答本文と annotations(引用) を返す。"""
-    body = [{
-        "user_prompt": prompt,
-        "llm_name": LLM_MAP.get(surface["id"], "chat_gpt"),
-        "model_name": surface.get("model"),
-        "web_search": True,                      # これが無いと引用が返らない
-        "web_search_country_iso_code": "JP",
-    }]
-    r = requests.post(
-        f"{DFS_BASE}/ai_optimization/llm_responses/models/live",
-        auth=_dfs_auth(), json=body, timeout=120,
-    )
+def _post(path: str, body: list) -> dict:
+    r = requests.post(f"{DFS_BASE}/{path}", auth=_dfs_auth(), json=body, timeout=180)
     r.raise_for_status()
     task = r.json()["tasks"][0]
     if task.get("status_code") != 20000:
-        raise RuntimeError(f"DataForSEO error: {task.get('status_message')}")
-    item = task["result"][0]["items"][0]
-    sections = item.get("sections", [])
-    text = "\n".join(s.get("text", "") for s in sections)
-    citations = []
-    for s in sections:
-        for a in s.get("annotations", []) or []:
-            if a.get("url"):
-                citations.append({"url": a["url"], "title": a.get("title", "")})
-    return {"text": text, "citations": citations,
-            "fanout": item.get("fan_out_queries", []) or []}
+        raise RuntimeError(f"{task.get('status_code')} {task.get('status_message')}")
+    _charge(task)
+    return task
+
+
+def _walk_refs(node, out: list) -> None:
+    """references / annotations は階層がまちまちなので、URLを持つ辞書を再帰で拾う。"""
+    if isinstance(node, dict):
+        if node.get("url"):
+            out.append({"url": node["url"], "title": node.get("title") or node.get("source") or ""})
+        for v in node.values():
+            _walk_refs(v, out)
+    elif isinstance(node, list):
+        for v in node:
+            _walk_refs(v, out)
+
+
+def _dedup(cites: list[dict]) -> list[dict]:
+    seen, out = set(), []
+    for c in cites:
+        if c["url"] not in seen:
+            seen.add(c["url"])
+            out.append(c)
+    return out
+
+
+def fetch_llm_response(prompt: str, surface: dict) -> dict:
+    """ChatGPT / Gemini などに実際に投げ、回答本文と引用URLを取る。
+
+    web_search を true にしないと引用（annotations）が返らない。
+    """
+    path = LLM_PATH.get(surface["id"], "chat_gpt")
+    body = [{
+        "user_prompt": prompt[:500],                 # 仕様上の上限
+        "model_name": surface["model"],
+        "max_output_tokens": surface.get("max_tokens", 1500),
+        "web_search": True,
+        "web_search_country_iso_code": "JP",
+    }]
+    task = _post(f"ai_optimization/{path}/llm_responses/live", body)
+    items = (task.get("result") or [{}])[0].get("items") or []
+    text, cites = "", []
+    for it in items:
+        if it.get("type") == "reasoning":            # 思考過程は本文に混ぜない
+            continue
+        for sec in it.get("sections") or []:
+            text += (sec.get("text") or "") + "\n"
+            _walk_refs(sec.get("annotations"), cites)
+    return {"text": text.strip(), "citations": _dedup(cites),
+            "fanout": (items[0].get("fan_out_queries") if items else None) or []}
 
 
 def fetch_serp_ai(prompt: str, surface: dict) -> dict:
-    """Google SERP の ai_overview / ai_mode 要素を取る。"""
-    body = [{
-        "keyword": prompt,
-        "language_code": "ja",
-        "location_code": 2392,                   # Japan
-        "device": "desktop",
-        "load_async_ai_overview": True,
-    }]
-    ep = "google/ai_mode/live/advanced" if surface["id"] == "aimode" else "google/organic/live/advanced"
-    r = requests.post(f"{DFS_BASE}/serp/{ep}", auth=_dfs_auth(), json=body, timeout=120)
-    r.raise_for_status()
-    items = r.json()["tasks"][0]["result"][0].get("items", []) or []
-    text, citations = "", []
+    """Google の「AIによる概要」/「AIモード」を取る。"""
+    if surface["id"] == "aimode":
+        path = "serp/google/ai_mode/live/advanced"
+        body = [{"keyword": prompt[:700], "language_code": "ja",
+                 "location_code": 2392, "device": "desktop"}]
+    else:
+        path = "serp/google/organic/live/advanced"
+        body = [{"keyword": prompt[:700], "language_code": "ja",
+                 "location_code": 2392, "device": "desktop",
+                 "load_async_ai_overview": True}]
+    task = _post(path, body)
+    items = (task.get("result") or [{}])[0].get("items") or []
+    text, cites = "", []
     for it in items:
-        if it.get("type") in ("ai_overview", "ai_mode_response", "ai_overview_element"):
-            for el in it.get("items", []) or [it]:
-                text += (el.get("text") or "") + "\n"
-                for ref in (el.get("references") or []):
-                    if ref.get("url"):
-                        citations.append({"url": ref["url"], "title": ref.get("title", "")})
-    return {"text": text, "citations": citations, "fanout": []}
+        if not str(it.get("type", "")).startswith("ai_"):
+            continue
+        for el in (it.get("items") or [it]):
+            text += (el.get("text") or "") + "\n"
+        _walk_refs(it.get("references"), cites)
+        _walk_refs(it.get("items"), cites)
+    return {"text": text.strip(), "citations": _dedup(cites), "fanout": []}
 
 
 # ---------------------------------------------------------------- demo
@@ -215,6 +263,25 @@ def demo_response(prompt_id: str, surface_id: str, day: str, run: int,
 
 
 # ---------------------------------------------------------------- 実行
+def _one(job: dict) -> dict | None:
+    """1回分の実測。失敗しても None を返すだけで、全体は止めない。"""
+    p, s = job["p"], job["s"]
+    fn = fetch_serp_ai if s["provider"] == "serp" else fetch_llm_response
+    for attempt in range(3):
+        try:
+            res = fn(p["text"], s)
+            return {"date": job["day"], "prompt_id": p["id"], "surface": s["id"],
+                    "run": job["run"], **res}
+        except Exception as e:
+            # 一時的な混雑（429/5xx）は時間をおけば通ることが多い。
+            # 恒久的な失敗（認証ミス等）でも3回で諦めるので待ち時間は上限つき。
+            if attempt == 2:
+                print(f"  ! {p['id']}/{s['id']} run{job['run']}: {e}", file=sys.stderr)
+                return None
+            time.sleep(2 ** attempt * 1.5)
+    return None
+
+
 def collect(day: str, tier: str = "core") -> list[dict]:
     cfg = load("settings")
     prompts = load_prompts(tier)
@@ -223,22 +290,34 @@ def collect(day: str, tier: str = "core") -> list[dict]:
     surfaces = [s for s in cfg["surfaces"] if s.get("enabled")]
     demo = demo_mode()
 
-    out = []
-    for p in prompts[:limit]:
-        for s in surfaces:
-            for run in range(runs if tier == "core" else 1):
-                if demo:
-                    res = demo_response(p["id"], s["id"], day, run,
-                                        p.get("category", "purchase"))
-                else:
-                    fn = fetch_serp_ai if s["provider"] == "serp" else fetch_llm_response
-                    try:
-                        res = fn(p["text"], s)
-                    except Exception as e:                      # 1件の失敗で全体を止めない
-                        print(f"  ! {p['id']}/{s['id']}: {e}", file=sys.stderr)
-                        continue
-                    time.sleep(0.2)
-                out.append({"date": day, "prompt_id": p["id"], "surface": s["id"],
-                            "run": run, **res})
-    print(f"  collected {len(out)} responses ({'demo' if demo else 'live'})")
+    jobs = [{"day": day, "p": p, "s": s, "run": run}
+            for p in prompts[:limit]
+            for s in surfaces
+            for run in range(runs if tier == "core" else 1)]
+
+    if demo:
+        out = [{"date": day, "prompt_id": j["p"]["id"], "surface": j["s"]["id"], "run": j["run"],
+                **demo_response(j["p"]["id"], j["s"]["id"], day, j["run"],
+                                j["p"].get("category", "purchase"))}
+               for j in jobs]
+        print(f"  collected {len(out)} responses (demo)")
+        return out
+
+    # ---- 実測は並列で投げる ----
+    # DataForSEO の live 系は1本あたり10〜60秒かかる。順番に投げると
+    # 720本で数時間になり、GitHub Actions の実行上限に確実にぶつかる。
+    # 公式の同時接続上限（30）に対して十分に余裕をとった本数で回す。
+    workers = int(env("GEO_BOARD_WORKERS", "10") or 10)
+    out, done = [], 0
+    with ThreadPoolExecutor(max_workers=workers) as ex:
+        for fut in as_completed([ex.submit(_one, j) for j in jobs]):
+            r = fut.result()
+            done += 1
+            if r:
+                out.append(r)
+            if done % 60 == 0:
+                print(f"  … {done}/{len(jobs)} 完了（成功 {len(out)}）", flush=True)
+
+    out.sort(key=lambda r: (r["prompt_id"], r["surface"], r["run"]))
+    print(f"  collected {len(out)}/{len(jobs)} responses (live)")
     return out
