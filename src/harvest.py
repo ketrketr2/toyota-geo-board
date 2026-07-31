@@ -555,35 +555,6 @@ def harvest(day: str | None = None) -> dict:
                                       "ugc_hits": 1, **classify(q)})
                 except Exception as e:
                     print(f"  ! chiebukuro {seed}: {e}", file=sys.stderr)
-    else:
-        S = cfg["sources"]
-        evs = event_seeds(day)
-        if evs:
-            print(f"  イベント連動シード {len(evs)}件: " +
-                  ", ".join(sorted({l for _, l in evs})))
-        for seed in cfg["seeds"] + [s for s, _ in evs]:
-
-            if S["suggest"]["enabled"]:
-                try:
-                    for kw in fetch_suggest(seed, S["suggest"]["per_seed"]):
-                        m = classify(kw)
-                        cands.append({"text": to_question(kw, m["category"], cfg, rnd),
-                                      "source": "suggest", "raw": kw, "keyword": kw, **m})
-                except Exception as e:
-                    print(f"  ! suggest {seed}: {e}", file=sys.stderr)
-            if S["paa"]["enabled"]:
-                try:
-                    for q in fetch_paa(seed, S["paa"]["per_seed"]):
-                        cands.append({"text": q, "source": "paa", **classify(q)})
-                except Exception as e:
-                    print(f"  ! paa {seed}: {e}", file=sys.stderr)
-            if S["chiebukuro"]["enabled"]:
-                try:
-                    for q in fetch_chiebukuro(seed, S["chiebukuro"]["per_seed"]):
-                        cands.append({"text": q, "source": "chiebukuro",
-                                      "ugc_hits": 1, **classify(q)})
-                except Exception as e:
-                    print(f"  ! chiebukuro {seed}: {e}", file=sys.stderr)
     cands += collect_fanout(day, cfg)
 
     # ---- 2) ノイズ除去 ----
