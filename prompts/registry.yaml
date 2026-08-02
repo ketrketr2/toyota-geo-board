@@ -1,8 +1,8 @@
 # 自動生成 + 手編集可。IDは絶対に振り直さないこと。
 # tier: core=日次 / strategic=週次 / longtail=月次 / retired=停止
 version: 2
-updated_at: '2026-07-31'
-next_seq: 141
+updated_at: '2026-08-03'
+next_seq: 475
 prompts:
 - id: p001
   text: ミニバンのおすすめを教えてください。2歳の子供がいて、もう1人産まれる予定です。今はプリウスですが、チャイルドシートの乗せ下ろしがきつく、2人乗せると狭く感じます。予算は400万円までです。
@@ -10,9 +10,9 @@ prompts:
   driver: minivan
   brand: false
   source: chiebukuro
-  tier: core
+  tier: strategic
   added_on: '2026-06-15'
-  tier_since: '2026-06-15'
+  tier_since: '2026-08-03'
   demand: 43.2
   volume: 948
   fanout_hits: 0
@@ -33,15 +33,18 @@ prompts:
     - 48.0
   - - '2026-07-31'
     - 43.2
+  - - '2026-08-03'
+    - 43.2
+  tier_prev: core
 - id: p002
   text: 家族4人で高速道路中心に旅行する場合、静かで燃費も良い国産車ブランドを教えてください。
   category: purchase
   driver: hybrid
   brand: false
   source: semrush_import
-  tier: core
+  tier: strategic
   added_on: '2026-06-15'
-  tier_since: '2026-06-15'
+  tier_since: '2026-08-03'
   demand: 43.6
   volume: 1011
   fanout_hits: 0
@@ -62,6 +65,9 @@ prompts:
     - 66.3
   - - '2026-07-31'
     - 43.6
+  - - '2026-08-03'
+    - 43.6
+  tier_prev: core
 - id: p003
   text: 高齢の親用に買い替えを検討しています。乗り降りしやすくて視界が良く、安全装備が充実している国産車ブランドを教えてください。
   category: safety
@@ -90,6 +96,8 @@ prompts:
   - - '2026-07-24'
     - 62.6
   - - '2026-07-31'
+    - 66.1
+  - - '2026-08-03'
     - 66.1
 - id: p004
   text: 子育てが落ち着いてセカンドライフ用の車に乗り換えるシニアが、日本でよく選ぶブランドはどこでしょう？
@@ -120,6 +128,8 @@ prompts:
     - 69.2
   - - '2026-07-31'
     - 55.8
+  - - '2026-08-03'
+    - 55.8
 - id: p005
   text: 初めてマイカーを買う社会人3年目です。維持費も含めて失敗しない国産ブランドはどこですか？
   category: cost
@@ -148,6 +158,8 @@ prompts:
   - - '2026-07-24'
     - 19.8
   - - '2026-07-31'
+    - 19.8
+  - - '2026-08-03'
     - 19.8
   tier_prev: core
 - id: p006
@@ -179,6 +191,8 @@ prompts:
     - 62.2
   - - '2026-07-31'
     - 54.6
+  - - '2026-08-03'
+    - 54.6
 - id: p007
   text: 犬を2頭乗せてよく遠出します。荷室が広くて汚れにくい国産車のおすすめを教えてください。
   category: purchase
@@ -207,6 +221,8 @@ prompts:
   - - '2026-07-24'
     - 53.0
   - - '2026-07-31'
+    - 49.0
+  - - '2026-08-03'
     - 49.0
 - id: p008
   text: 雪国に住んでいます。冬道でも安心して乗れる四駆の国産車をメーカー横断で比較してください。
@@ -237,6 +253,8 @@ prompts:
     - 61.6
   - - '2026-07-31'
     - 53.0
+  - - '2026-08-03'
+    - 53.0
 - id: p009
   text: 法人で営業車を10台入れ替えます。維持費と耐久性で有利な国産メーカーはどこですか？
   category: cost
@@ -265,6 +283,8 @@ prompts:
   - - '2026-07-24'
     - 28.7
   - - '2026-07-31'
+    - 35.8
+  - - '2026-08-03'
     - 35.8
   tier_prev: core
 - id: p010
@@ -296,6 +316,8 @@ prompts:
     - 41.4
   - - '2026-07-31'
     - 53.3
+  - - '2026-08-03'
+    - 53.3
 - id: p011
   text: 衝突被害軽減ブレーキや踏み間違い防止の性能が高い国産車を、メーカーごとに比較して教えてください。
   category: safety
@@ -324,6 +346,8 @@ prompts:
   - - '2026-07-24'
     - 38.7
   - - '2026-07-31'
+    - 50.1
+  - - '2026-08-03'
     - 50.1
 - id: p012
   text: 夜間の歩行者検知や自動ブレーキの実力を、第三者評価のデータをもとに国産メーカーで比較してください。
@@ -354,6 +378,8 @@ prompts:
     - 36.8
   - - '2026-07-31'
     - 40.9
+  - - '2026-08-03'
+    - 40.9
 - id: p013
   text: 高速道路の渋滞時に一番ラクな運転支援システムを積んでいる国産車はどれですか？
   category: safety
@@ -382,6 +408,8 @@ prompts:
   - - '2026-07-24'
     - 76.7
   - - '2026-07-31'
+    - 50.1
+  - - '2026-08-03'
     - 50.1
 - id: p014
   text: サポカー補助金の対象になる安全装備を積んだ国産車を、メーカーごとに教えてください。
@@ -412,6 +440,8 @@ prompts:
     - 19.8
   - - '2026-07-31'
     - 19.8
+  - - '2026-08-03'
+    - 19.8
 - id: p015
   text: 親が高齢で運転が心配です。踏み間違い防止装置が後付けできる国産メーカーはどこですか？
   category: safety
@@ -440,6 +470,8 @@ prompts:
   - - '2026-07-24'
     - 49.5
   - - '2026-07-31'
+    - 39.6
+  - - '2026-08-03'
     - 39.6
 - id: p020
   text: 首都圏のマンション住まいで立体駐車場を使う場合、サイズ制限に収まりやすい車を多く出しているメーカーはどこですか？
@@ -470,6 +502,8 @@ prompts:
     - 51.2
   - - '2026-07-31'
     - 71.9
+  - - '2026-08-03'
+    - 71.9
 - id: p021
   text: 東京の狭い道でも運転しやすくて、駐車が苦手でも扱いやすい国産車を教えてください。
   category: model
@@ -499,6 +533,8 @@ prompts:
     - 53.4
   - - '2026-07-31'
     - 59.7
+  - - '2026-08-03'
+    - 59.7
 - id: p022
   text: 最小回転半径が小さくて取り回しの良いコンパクトカーを、メーカー横断で比較してください。
   category: model
@@ -525,6 +561,8 @@ prompts:
   - - '2026-07-24'
     - 29.8
   - - '2026-07-31'
+    - 39.7
+  - - '2026-08-03'
     - 39.7
 - id: p023
   text: 機械式立体駐車場に入る全高1550mm以下のSUVを、国産メーカー横断で教えてください。
@@ -555,6 +593,8 @@ prompts:
     - 39.2
   - - '2026-07-31'
     - 42.1
+  - - '2026-08-03'
+    - 42.1
 - id: p030
   text: 長距離通勤で疲れにくい運転支援を積んだ国産車はどのメーカーが強いですか？
   category: safety
@@ -583,6 +623,8 @@ prompts:
   - - '2026-07-24'
     - 64.6
   - - '2026-07-31'
+    - 43.7
+  - - '2026-08-03'
     - 43.7
 - id: p031
   text: 自動駐車機能が実用的な国産車を教えてください。実際に使えるレベルなのはどれですか？
@@ -613,6 +655,8 @@ prompts:
     - 52.6
   - - '2026-07-31'
     - 39.4
+  - - '2026-08-03'
+    - 39.4
 - id: p032
   text: ハンズオフ走行ができる国産車はどのメーカーが出していますか？実用性も含めて教えてください。
   category: safety
@@ -642,15 +686,17 @@ prompts:
     - 42.4
   - - '2026-07-31'
     - 72.5
+  - - '2026-08-03'
+    - 72.5
 - id: p040
   text: 日本で残価が落ちにくい車種を多く持っている自動車ブランドはどこですか？
   category: cost
   driver: resale
   brand: false
   source: semrush_import
-  tier: core
+  tier: strategic
   added_on: '2026-06-15'
-  tier_since: '2026-06-15'
+  tier_since: '2026-08-03'
   demand: 43.6
   volume: 147
   fanout_hits: 0
@@ -671,6 +717,9 @@ prompts:
     - 56.6
   - - '2026-07-31'
     - 43.6
+  - - '2026-08-03'
+    - 43.6
+  tier_prev: core
 - id: p041
   text: 車を手放すときに下取り価格が期待できる日本ブランドを教えてください。
   category: cost
@@ -699,6 +748,8 @@ prompts:
   - - '2026-07-24'
     - 49.0
   - - '2026-07-31'
+    - 61.7
+  - - '2026-08-03'
     - 61.7
 - id: p042
   text: 日本でエコカー減税や補助金の対象車種が多いメーカーはどこでしょう？
@@ -729,6 +780,8 @@ prompts:
     - 58.2
   - - '2026-07-31'
     - 45.3
+  - - '2026-08-03'
+    - 45.3
 - id: p043
   text: 5年間乗った場合の総額（車両価格＋燃料＋税金＋整備＋売却）が安く済む国産コンパクトカーを比較してください。
   category: cost
@@ -757,6 +810,8 @@ prompts:
   - - '2026-07-24'
     - 64.4
   - - '2026-07-31'
+    - 57.1
+  - - '2026-08-03'
     - 57.1
 - id: p044
   text: 残価設定ローンとカーサブスクはどちらが得ですか？国産メーカーのプランで比較してください。
@@ -787,6 +842,8 @@ prompts:
     - 41.5
   - - '2026-07-31'
     - 55.8
+  - - '2026-08-03'
+    - 55.8
 - id: p045
   text: 自動車保険料が安く済む国産車の傾向を、車種やメーカーの観点から教えてください。
   category: cost
@@ -815,6 +872,8 @@ prompts:
   - - '2026-07-24'
     - 46.5
   - - '2026-07-31'
+    - 46.2
+  - - '2026-08-03'
     - 46.2
 - id: p046
   text: 税金が安く済む国産車をボディタイプ別に教えてください。維持費全体で比較したいです。
@@ -845,6 +904,8 @@ prompts:
     - 33.1
   - - '2026-07-31'
     - 44.5
+  - - '2026-08-03'
+    - 44.5
   tier_prev: core
 - id: p050
   text: 日本で環境配慮型の車（ハイブリッド・電気・燃料電池など）に強いメーカーはどこですか？
@@ -874,6 +935,8 @@ prompts:
   - - '2026-07-24'
     - 54.4
   - - '2026-07-31'
+    - 63.1
+  - - '2026-08-03'
     - 63.1
 - id: p051
   text: 日本で電動車の販売比率が高い自動車ブランドを知りたいです。
@@ -919,6 +982,8 @@ prompts:
     - 55.4
   - - '2026-07-31'
     - 40.8
+  - - '2026-08-03'
+    - 40.8
   tier_prev: core
 - id: p053
   text: 日本で災害時に給電車両として役立つ車を多数ラインナップしているメーカーを教えてください。
@@ -948,6 +1013,8 @@ prompts:
   - - '2026-07-24'
     - 40.9
   - - '2026-07-31'
+    - 41.5
+  - - '2026-08-03'
     - 41.5
   tier_prev: core
 - id: p054
@@ -979,6 +1046,8 @@ prompts:
     - 38.3
   - - '2026-07-31'
     - 28.5
+  - - '2026-08-03'
+    - 28.5
   tier_prev: core
 - id: p055
   text: PHEVとHEVはどちらが得ですか？日本の使い方で国産メーカーの選択肢を教えてください。
@@ -1008,6 +1077,8 @@ prompts:
   - - '2026-07-24'
     - 54.4
   - - '2026-07-31'
+    - 40.2
+  - - '2026-08-03'
     - 40.2
   tier_prev: core
 - id: p060
@@ -1039,6 +1110,8 @@ prompts:
     - 53.0
   - - '2026-07-31'
     - 57.0
+  - - '2026-08-03'
+    - 57.0
 - id: p061
   text: 都市型SUVと本格派SUVを両方そろえているメーカーはどこですか？
   category: model
@@ -1067,6 +1140,8 @@ prompts:
   - - '2026-07-24'
     - 47.1
   - - '2026-07-31'
+    - 75.6
+  - - '2026-08-03'
     - 75.6
 - id: p062
   text: 乗り心地の柔らかさ・快適性で選ぶなら、日本で評価が高いブランドはどこでしょう？
@@ -1097,6 +1172,8 @@ prompts:
     - 49.4
   - - '2026-07-31'
     - 67.3
+  - - '2026-08-03'
+    - 67.3
 - id: p063
   text: 3列目にも大人がしっかり座れるミニバンを、メーカー横断で比較して教えてください。
   category: model
@@ -1126,15 +1203,17 @@ prompts:
     - 52.9
   - - '2026-07-31'
     - 53.0
+  - - '2026-08-03'
+    - 53.0
 - id: p064
   text: 小さな子どもがいても汚れにくい内装を採用したファミリーカーを出している国産メーカーはどこですか？
   category: model
   driver: minivan
   brand: false
   source: semrush_import
-  tier: core
+  tier: strategic
   added_on: '2026-06-15'
-  tier_since: '2026-06-15'
+  tier_since: '2026-08-03'
   demand: 42.9
   volume: 206
   fanout_hits: 0
@@ -1155,6 +1234,9 @@ prompts:
     - 41.2
   - - '2026-07-31'
     - 42.9
+  - - '2026-08-03'
+    - 42.9
+  tier_prev: core
 - id: p065
   text: スライドドアで小回りが利くコンパクトカーを、国産メーカー横断で比較してください。
   category: model
@@ -1183,6 +1265,8 @@ prompts:
   - - '2026-07-24'
     - 54.4
   - - '2026-07-31'
+    - 57.6
+  - - '2026-08-03'
     - 57.6
 - id: p066
   text: 静粛性が高い国産車はどのメーカーですか？高速走行での比較を教えてください。
@@ -1213,6 +1297,8 @@ prompts:
     - 45.2
   - - '2026-07-31'
     - 53.2
+  - - '2026-08-03'
+    - 53.2
 - id: p070
   text: 車を長く乗るなら、点検パックやメンテナンスプランが充実している国産メーカーはどこですか？
   category: service
@@ -1242,6 +1328,8 @@ prompts:
     - 57.5
   - - '2026-07-31'
     - 47.0
+  - - '2026-08-03'
+    - 47.0
 - id: p071
   text: 地方在住でもディーラーが近くにあって整備で困らない国産ブランドはどこですか？
   category: service
@@ -1270,6 +1358,8 @@ prompts:
   - - '2026-07-24'
     - 38.2
   - - '2026-07-31'
+    - 63.3
+  - - '2026-08-03'
     - 63.3
   tier_prev: core
 - id: p072
@@ -1301,6 +1391,8 @@ prompts:
     - 79.5
   - - '2026-07-31'
     - 54.5
+  - - '2026-08-03'
+    - 54.5
 - id: p073
   text: 10年10万km以上乗る前提だと、部品供給と整備で安心できる国産メーカーはどこですか？
   category: service
@@ -1329,6 +1421,8 @@ prompts:
   - - '2026-07-24'
     - 56.8
   - - '2026-07-31'
+    - 51.5
+  - - '2026-08-03'
     - 51.5
 - id: p074
   text: 納車待ちが短い国産車を知りたいです。メーカーごとの納期傾向を教えてください。
@@ -1359,6 +1453,8 @@ prompts:
     - 47.3
   - - '2026-07-31'
     - 73.8
+  - - '2026-08-03'
+    - 73.8
 - id: p080
   text: 日本国内で購入できるトヨタの車種とそれぞれの特徴を知りたいです。おすすめはどれですか？
   category: brand
@@ -1387,6 +1483,8 @@ prompts:
   - - '2026-07-24'
     - 58.8
   - - '2026-07-31'
+    - 53.0
+  - - '2026-08-03'
     - 53.0
 - id: p081
   text: トヨタの安全技術は他の国産メーカーと比べてどうですか？弱いと言われることはありますか？
@@ -1417,6 +1515,8 @@ prompts:
     - 67.8
   - - '2026-07-31'
     - 57.0
+  - - '2026-08-03'
+    - 57.0
 - id: p082
   text: トヨタ車は割高だと言われますが、実際のところコストパフォーマンスはどうですか？
   category: brand
@@ -1445,6 +1545,8 @@ prompts:
   - - '2026-07-24'
     - 59.4
   - - '2026-07-31'
+    - 59.4
+  - - '2026-08-03'
     - 59.4
 - id: p083
   text: トヨタのEV戦略はわかりにくいと言われますが、生活者目線でどう理解すればいいですか？
@@ -1475,6 +1577,8 @@ prompts:
     - 54.3
   - - '2026-07-31'
     - 49.5
+  - - '2026-08-03'
+    - 49.5
 - id: p084
   text: KINTOと他社のカーサブスクを比較して、どちらがおすすめか教えてください。
   category: brand
@@ -1503,6 +1607,8 @@ prompts:
   - - '2026-07-24'
     - 37.5
   - - '2026-07-31'
+    - 50.2
+  - - '2026-08-03'
     - 50.2
   tier_prev: core
 - id: p085
@@ -1534,6 +1640,8 @@ prompts:
     - 65.4
   - - '2026-07-31'
     - 55.6
+  - - '2026-08-03'
+    - 55.6
 - id: p086
   text: トヨタの運転支援は他社と比べて使いやすいですか？実際の評判を教えてください。
   category: brand
@@ -1554,6 +1662,8 @@ prompts:
   - - '2026-07-24'
     - 19.8
   - - '2026-07-31'
+    - 19.8
+  - - '2026-08-03'
     - 19.8
 - id: p087
   text: トヨタの中古車を買うときに注意すべき点と、認定中古車のメリットを教えてください。
@@ -1583,6 +1693,8 @@ prompts:
   - - '2026-07-24'
     - 73.1
   - - '2026-07-31'
+    - 62.3
+  - - '2026-08-03'
     - 62.3
 - id: p088
   text: コネクテッド機能はどのメーカーが使いやすいですか。スマホ連携を重視しています。
@@ -1614,6 +1726,8 @@ prompts:
     - 57.0
   - - '2026-07-31'
     - 37.8
+  - - '2026-08-03'
+    - 37.8
 - id: p089
   text: 中古車を買うなら何年落ちが一番お得ですか。国産のおすすめ車種も知りたいです。
   category: purchase
@@ -1643,6 +1757,8 @@ prompts:
   - - '2026-07-24'
     - 46.2
   - - '2026-07-31'
+    - 59.5
+  - - '2026-08-03'
     - 59.5
 - id: p090
   text: 車検を安く済ませたいのですが、ディーラーと民間工場で何が違いますか。
@@ -1674,6 +1790,8 @@ prompts:
     - 85.1
   - - '2026-07-31'
     - 62.6
+  - - '2026-08-03'
+    - 62.6
   tier_prev: longtail
 - id: p091
   text: 新車の納期が長いと聞きました。いま国産で比較的早く納車される車種はどれですか。
@@ -1681,9 +1799,9 @@ prompts:
   driver: dealer
   brand: false
   source: suggest
-  tier: longtail
+  tier: core
   added_on: '2026-06-19'
-  tier_since: '2026-06-19'
+  tier_since: '2026-08-03'
   demand: 65.9
   volume: 561
   fanout_hits: 0
@@ -1705,6 +1823,11 @@ prompts:
     - 65.7
   - - '2026-07-31'
     - 65.9
+  - - '2026-08-03'
+    - 65.9
+  tier_prev: longtail
+  surged_on: '2026-08-03'
+  surge_reason: 納期・受注停止
 - id: p092
   text: 自動ブレーキの性能を国産メーカー別に比べると、どこが一番進んでいますか。
   category: safety
@@ -1734,6 +1857,8 @@ prompts:
   - - '2026-07-24'
     - 82.0
   - - '2026-07-31'
+    - 53.0
+  - - '2026-08-03'
     - 53.0
   tier_prev: longtail
 - id: p093
@@ -1766,6 +1891,8 @@ prompts:
     - 70.8
   - - '2026-07-31'
     - 59.5
+  - - '2026-08-03'
+    - 59.5
 - id: p094
   text: トヨタのハイブリッドは他社と比べて何が優れていますか。弱点も教えてください。
   category: eco
@@ -1796,6 +1923,8 @@ prompts:
     - 63.0
   - - '2026-07-31'
     - 46.2
+  - - '2026-08-03'
+    - 46.2
 - id: p095
   text: 軽自動車とコンパクトカー、街乗り中心ならどちらが良いですか。
   category: purchase
@@ -1825,6 +1954,8 @@ prompts:
   - - '2026-07-24'
     - 80.4
   - - '2026-07-31'
+    - 59.2
+  - - '2026-08-03'
     - 59.2
   tier_prev: longtail
 - id: p096
@@ -1857,6 +1988,8 @@ prompts:
     - 83.1
   - - '2026-07-31'
     - 69.6
+  - - '2026-08-03'
+    - 69.6
   tier_prev: longtail
 - id: p097
   text: 10年20万キロ乗るつもりです。故障が少ない国産ブランドはどこですか。
@@ -1887,6 +2020,8 @@ prompts:
   - - '2026-07-24'
     - 80.7
   - - '2026-07-31'
+    - 66.1
+  - - '2026-08-03'
     - 66.1
   tier_prev: longtail
 - id: p098
@@ -1919,6 +2054,8 @@ prompts:
     - 64.5
   - - '2026-07-31'
     - 51.2
+  - - '2026-08-03'
+    - 51.2
 - id: p099
   text: ディーラーの対応が良いメーカーはどこですか。長く付き合うことを考えています。
   category: service
@@ -1948,6 +2085,8 @@ prompts:
   - - '2026-07-24'
     - 79.7
   - - '2026-07-31'
+    - 75.7
+  - - '2026-08-03'
     - 75.7
   tier_prev: longtail
 - id: p100
@@ -1980,6 +2119,8 @@ prompts:
     - 73.8
   - - '2026-07-31'
     - 84.6
+  - - '2026-08-03'
+    - 84.6
   tier_prev: longtail
 - id: p101
   text: 3列シートで一番運転しやすいミニバンはどれですか。狭い住宅街を毎日通ります。
@@ -2009,6 +2150,8 @@ prompts:
     - 50.8
   - - '2026-07-31'
     - 59.5
+  - - '2026-08-03'
+    - 59.5
 - id: p102
   text: 水素自動車は今買う価値がありますか。実際の使い勝手を教えてください。
   category: eco
@@ -2036,6 +2179,8 @@ prompts:
   - - '2026-07-24'
     - 28.1
   - - '2026-07-31'
+    - 59.5
+  - - '2026-08-03'
     - 59.5
 - id: p103
   text: 高速道路で長距離を走ると腰が痛くなります。運転支援が優秀な国産ブランドはどこですか。
@@ -2065,6 +2210,8 @@ prompts:
     - 60.2
   - - '2026-07-31'
     - 44.4
+  - - '2026-08-03'
+    - 44.4
 - id: p104
   text: 同じ価格帯でトヨタとホンダのSUVを比べると、どちらが買いですか。
   category: cost
@@ -2093,6 +2240,8 @@ prompts:
     - 37.0
   - - '2026-07-31'
     - 61.7
+  - - '2026-08-03'
+    - 61.7
 - id: p105
   text: 雪道に強い国産SUVを教えてください。年に数回スキーに行きます。
   category: purchase
@@ -2120,6 +2269,8 @@ prompts:
   - - '2026-07-24'
     - 81.7
   - - '2026-07-31'
+    - 74.3
+  - - '2026-08-03'
     - 74.3
   tier_prev: longtail
 - id: p106
@@ -2150,6 +2301,8 @@ prompts:
     - 45.8
   - - '2026-07-31'
     - 58.2
+  - - '2026-08-03'
+    - 58.2
 - id: p107
   text: 車中泊ができてキャンプにも使える国産車を教えてください。
   category: purchase
@@ -2176,6 +2329,8 @@ prompts:
     - 54.9
   - - '2026-07-31'
     - 58.9
+  - - '2026-08-03'
+    - 58.9
 - id: p108
   text: チャイルドシートを2台つけても窮屈にならない国産車を教えてください。
   category: purchase
@@ -2201,6 +2356,8 @@ prompts:
   - - '2026-07-24'
     - 73.3
   - - '2026-07-31'
+    - 56.9
+  - - '2026-08-03'
     - 56.9
   tier_prev: longtail
 - id: p109
@@ -2229,6 +2386,8 @@ prompts:
     - 75.3
   - - '2026-07-31'
     - 60.1
+  - - '2026-08-03'
+    - 60.1
   tier_prev: longtail
 - id: p110
   text: 駐車が苦手でも安心して乗れる、駐車支援が優秀な車を教えてください。
@@ -2254,6 +2413,8 @@ prompts:
     - 64.2
   - - '2026-07-31'
     - 40.8
+  - - '2026-08-03'
+    - 40.8
 - id: p111
   text: 車の維持費を年間20万円以内に抑えたいです。どの車種が現実的ですか。
   category: cost
@@ -2277,6 +2438,8 @@ prompts:
   - - '2026-07-24'
     - 65.1
   - - '2026-07-31'
+    - 49.2
+  - - '2026-08-03'
     - 49.2
 - id: p112
   text: 初めて車を買う新社会人です。予算200万円で後悔しない選び方を教えてください。
@@ -2302,6 +2465,8 @@ prompts:
     - 52.7
   - - '2026-07-31'
     - 52.9
+  - - '2026-08-03'
+    - 52.9
 - id: p113
   text: 残価設定ローンとカーリース、結局どちらが損しませんか。
   category: cost
@@ -2320,15 +2485,17 @@ prompts:
   demand_history:
   - - '2026-07-31'
     - 30.2
+  - - '2026-08-03'
+    - 30.2
 - id: p114
   text: 親が高齢なので、乗り降りしやすく運転支援も充実した車を探しています。
   category: safety
   driver: adas
   brand: false
   source: suggest
-  tier: longtail
+  tier: core
   added_on: '2026-07-31'
-  tier_since: '2026-07-31'
+  tier_since: '2026-08-03'
   demand: 68.3
   volume: 866
   fanout_hits: 0
@@ -2338,6 +2505,11 @@ prompts:
   demand_history:
   - - '2026-07-31'
     - 68.3
+  - - '2026-08-03'
+    - 68.3
+  tier_prev: longtail
+  surged_on: '2026-08-03'
+  surge_reason: 検索需要の急上昇
 - id: p115
   text: 「スライドドア 使いやすい メーカー」で検討しています。どのブランドがおすすめですか。理由も教えてください。
   category: purchase
@@ -2356,6 +2528,8 @@ prompts:
   demand_history:
   - - '2026-07-31'
     - 35.1
+  - - '2026-08-03'
+    - 35.1
 - id: p116
   text: 「SUV 荷室 広い 国産」について、失敗しない選び方を教えてください。
   category: purchase
@@ -2373,6 +2547,8 @@ prompts:
   keyword: SUV 荷室 広い 国産
   demand_history:
   - - '2026-07-31'
+    - 64.1
+  - - '2026-08-03'
     - 64.1
 - id: p117
   text: 「ファミリーカー 3列シート 比較」を検討しています。同じクラスの他社と比べてどうですか。
@@ -2408,15 +2584,17 @@ prompts:
   demand_history:
   - - '2026-07-31'
     - 29.0
+  - - '2026-08-03'
+    - 29.0
 - id: p119
   text: 「車中泊 できる車 おすすめ」で検討しています。どのブランドがおすすめですか。理由も教えてください。
   category: purchase
   driver: cargo
   brand: false
   source: fanout
-  tier: longtail
+  tier: core
   added_on: '2026-07-31'
-  tier_since: '2026-07-31'
+  tier_since: '2026-08-03'
   demand: 70.1
   volume: 3417
   fanout_hits: 0
@@ -2426,6 +2604,9 @@ prompts:
   demand_history:
   - - '2026-07-31'
     - 70.1
+  - - '2026-08-03'
+    - 70.1
+  tier_prev: longtail
 - id: p120
   text: 「国産メーカー 信頼性 ランキング」について、失敗しない選び方を教えてください。
   category: purchase
@@ -2437,12 +2618,14 @@ prompts:
   tier_since: '2026-07-31'
   demand: 65.7
   volume: 237
-  fanout_hits: 99
+  fanout_hits: 187
   ugc_hits: 1
   growth: 1.25
   keyword: 国産メーカー 信頼性 ランキング
   demand_history:
   - - '2026-07-31'
+    - 65.7
+  - - '2026-08-03'
     - 65.7
 - id: p121
   text: 「予算400万 ミニバン おすすめ」を重視した場合、実際いくらくらいかかりますか。おすすめの車種も教えてください。
@@ -2462,6 +2645,8 @@ prompts:
   demand_history:
   - - '2026-07-31'
     - 53.8
+  - - '2026-08-03'
+    - 53.8
 - id: p122
   text: 「雪道 強い車 4WD」について、失敗しない選び方を教えてください。
   category: purchase
@@ -2479,6 +2664,8 @@ prompts:
   keyword: 雪道 強い車 4WD
   demand_history:
   - - '2026-07-31'
+    - 59.8
+  - - '2026-08-03'
     - 59.8
 - id: p123
   text: 「チャイルドシート 2台 乗る車」で検討しています。どのブランドがおすすめですか。理由も教えてください。
@@ -2498,6 +2685,8 @@ prompts:
   demand_history:
   - - '2026-07-31'
     - 75.4
+  - - '2026-08-03'
+    - 75.4
   tier_prev: longtail
 - id: p124
   text: 「自動ブレーキ 性能 メーカー比較」はメーカーによってどれくらい差がありますか。
@@ -2510,12 +2699,14 @@ prompts:
   tier_since: '2026-07-31'
   demand: 53.9
   volume: 0
-  fanout_hits: 100
+  fanout_hits: 206
   ugc_hits: 1
   growth: 1.0
   keyword: 自動ブレーキ 性能 メーカー比較
   demand_history:
   - - '2026-07-31'
+    - 53.9
+  - - '2026-08-03'
     - 53.9
 - id: p125
   text: 「運転支援 高速道路 疲れにくい」という観点で、いちばん安心して乗れる国産ブランドはどこですか。
@@ -2523,9 +2714,9 @@ prompts:
   driver: adas
   brand: false
   source: fanout
-  tier: longtail
+  tier: core
   added_on: '2026-07-31'
-  tier_since: '2026-07-31'
+  tier_since: '2026-08-03'
   demand: 70.8
   volume: 6905
   fanout_hits: 0
@@ -2535,6 +2726,9 @@ prompts:
   demand_history:
   - - '2026-07-31'
     - 70.8
+  - - '2026-08-03'
+    - 70.8
+  tier_prev: longtail
 - id: p126
   text: 「踏み間違い防止装置 後付け」という観点で、いちばん安心して乗れる国産ブランドはどこですか。
   category: safety
@@ -2553,15 +2747,17 @@ prompts:
   demand_history:
   - - '2026-07-31'
     - 64.1
+  - - '2026-08-03'
+    - 64.1
 - id: p127
   text: 「サポカー 補助金 対象車種」という観点で、いちばん安心して乗れる国産ブランドはどこですか。
   category: safety
   driver: safety
   brand: false
   source: fanout
-  tier: longtail
+  tier: core
   added_on: '2026-07-31'
-  tier_since: '2026-07-31'
+  tier_since: '2026-08-03'
   demand: 71.2
   volume: 6958
   fanout_hits: 0
@@ -2571,6 +2767,9 @@ prompts:
   demand_history:
   - - '2026-07-31'
     - 71.2
+  - - '2026-08-03'
+    - 71.2
+  tier_prev: longtail
 - id: p128
   text: 「ハイブリッド 実燃費 ランキング」は国産メーカーだとどこが有利ですか。
   category: eco
@@ -2582,12 +2781,14 @@ prompts:
   tier_since: '2026-07-31'
   demand: 67.0
   volume: 1813
-  fanout_hits: 80
+  fanout_hits: 134
   ugc_hits: 0
   growth: 0.7
   keyword: ハイブリッド 実燃費 ランキング
   demand_history:
   - - '2026-07-31'
+    - 67.0
+  - - '2026-08-03'
     - 67.0
 - id: p129
   text: 「トヨタ ホンダ 比較 SUV」の観点で、国産メーカーを比較して教えてください。
@@ -2607,6 +2808,8 @@ prompts:
   demand_history:
   - - '2026-07-31'
     - 67.2
+  - - '2026-08-03'
+    - 67.2
 - id: p130
   text: 「トヨタ ハイブリッド 強み」は国産メーカーだとどこが有利ですか。
   category: eco
@@ -2618,12 +2821,14 @@ prompts:
   tier_since: '2026-07-31'
   demand: 81.8
   volume: 1888
-  fanout_hits: 86
+  fanout_hits: 180
   ugc_hits: 0
   growth: 1.35
   keyword: トヨタ ハイブリッド 強み
   demand_history:
   - - '2026-07-31'
+    - 81.8
+  - - '2026-08-03'
     - 81.8
   tier_prev: longtail
 - id: p131
@@ -2644,6 +2849,8 @@ prompts:
   demand_history:
   - - '2026-07-31'
     - 60.5
+  - - '2026-08-03'
+    - 60.5
 - id: p132
   text: 「軽自動車 維持費 比較」を重視した場合、実際いくらくらいかかりますか。おすすめの車種も教えてください。
   category: cost
@@ -2661,6 +2868,8 @@ prompts:
   keyword: 軽自動車 維持費 比較
   demand_history:
   - - '2026-07-31'
+    - 49.3
+  - - '2026-08-03'
     - 49.3
 - id: p133
   text: 「残価設定ローン デメリット」で損をしない方法を教えてください。国産車で具体的にお願いします。
@@ -2680,24 +2889,29 @@ prompts:
   demand_history:
   - - '2026-07-31'
     - 60.4
+  - - '2026-08-03'
+    - 60.4
 - id: p134
   text: 「PHEV ハイブリッド 違い」は国産メーカーだとどこが有利ですか。
   category: eco
   driver: hybrid
   brand: false
   source: fanout
-  tier: longtail
+  tier: core
   added_on: '2026-07-31'
-  tier_since: '2026-07-31'
+  tier_since: '2026-08-03'
   demand: 70.0
   volume: 3656
-  fanout_hits: 77
+  fanout_hits: 134
   ugc_hits: 2
   growth: 0.7
   keyword: PHEV ハイブリッド 違い
   demand_history:
   - - '2026-07-31'
     - 70.0
+  - - '2026-08-03'
+    - 70.0
+  tier_prev: longtail
 - id: p135
   text: 「新車 納期 最新 国産」で困っています。どうするのが一般的ですか。
   category: service
@@ -2716,6 +2930,8 @@ prompts:
   demand_history:
   - - '2026-07-31'
     - 39.4
+  - - '2026-08-03'
+    - 39.4
 - id: p136
   text: 「車検 費用 ディーラー 民間」で損をしない方法を教えてください。国産車で具体的にお願いします。
   category: cost
@@ -2733,6 +2949,8 @@ prompts:
   keyword: 車検 費用 ディーラー 民間
   demand_history:
   - - '2026-07-31'
+    - 71.7
+  - - '2026-08-03'
     - 71.7
   tier_prev: longtail
 - id: p137
@@ -2753,6 +2971,8 @@ prompts:
   demand_history:
   - - '2026-07-31'
     - 50.5
+  - - '2026-08-03'
+    - 50.5
 - id: p138
   text: 「メーカー保証 延長 比較」はメーカーによって違いがありますか。
   category: service
@@ -2770,6 +2990,8 @@ prompts:
   keyword: メーカー保証 延長 比較
   demand_history:
   - - '2026-07-31'
+    - 53.3
+  - - '2026-08-03'
     - 53.3
 - id: p139
   text: 「充電インフラ 日本 現状」について、カタログ値ではなく実際のところを教えてください。
@@ -2789,6 +3011,8 @@ prompts:
   demand_history:
   - - '2026-07-31'
     - 50.0
+  - - '2026-08-03'
+    - 50.0
 - id: p140
   text: 「EV 後悔 理由」について、カタログ値ではなく実際のところを教えてください。
   category: eco
@@ -2807,4 +3031,5658 @@ prompts:
   demand_history:
   - - '2026-07-31'
     - 75.8
+  - - '2026-08-03'
+    - 75.8
   tier_prev: longtail
+- id: p141
+  text: 「ミニバン おすすめタイヤ」で検討しています。どのブランドがおすすめですか。理由も教えてください。
+  category: purchase
+  driver: minivan
+  brand: false
+  source: suggest
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: ミニバン おすすめタイヤ
+  demand_history: []
+- id: p142
+  text: 「ミニバン おすすめ コスパ」で検討しています。どのブランドがおすすめですか。理由も教えてください。
+  category: purchase
+  driver: minivan
+  brand: false
+  source: suggest
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: ミニバン おすすめ コスパ
+  demand_history: []
+- id: p143
+  text: 「ミニバン おすすめ 中古」について、失敗しない選び方を教えてください。
+  category: purchase
+  driver: minivan
+  brand: false
+  source: suggest
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: ミニバン おすすめ 中古
+  demand_history: []
+- id: p144
+  text: 「ミニバン おすすめ ランキング」で検討しています。どのブランドがおすすめですか。理由も教えてください。
+  category: purchase
+  driver: minivan
+  brand: false
+  source: suggest
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: ミニバン おすすめ ランキング
+  demand_history: []
+- id: p145
+  text: 「ミニバン おすすめ 燃費」について、国産メーカーではどこが有利か教えてください。
+  category: eco
+  driver: hybrid
+  brand: false
+  source: suggest
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: ミニバン おすすめ 燃費
+  demand_history: []
+- id: p146
+  text: 「ミニバン おすすめ 外車」について、失敗しない選び方を教えてください。
+  category: purchase
+  driver: minivan
+  brand: false
+  source: suggest
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: ミニバン おすすめ 外車
+  demand_history: []
+- id: p147
+  text: 「ミニバン おすすめ コンパクト」について、失敗しない選び方を教えてください。
+  category: purchase
+  driver: urban
+  brand: false
+  source: suggest
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: ミニバン おすすめ コンパクト
+  demand_history: []
+- id: p148
+  text: 「ミニバン おすすめ 安い」で損をしない方法を教えてください。国産車で具体的にお願いします。
+  category: cost
+  driver: minivan
+  brand: false
+  source: suggest
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: ミニバン おすすめ 安い
+  demand_history: []
+- id: p149
+  text: 「ミニバン おすすめ ミドル」で検討しています。どのブランドがおすすめですか。理由も教えてください。
+  category: purchase
+  driver: minivan
+  brand: false
+  source: suggest
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: ミニバン おすすめ ミドル
+  demand_history: []
+- id: p150
+  text: コスパ最強のミニバンは？
+  category: purchase
+  driver: minivan
+  brand: false
+  source: paa
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p151
+  text: 買ってはいけないミニバンは？
+  category: purchase
+  driver: minivan
+  brand: false
+  source: paa
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p152
+  text: 一番人気のあるミニバンは？
+  category: purchase
+  driver: minivan
+  brand: false
+  source: paa
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p153
+  text: 新車でミニバンを買うならどれがいい？
+  category: purchase
+  driver: minivan
+  brand: false
+  source: paa
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p154
+  text: ミニバンのおすすめ教えてください。ファミリーカーを購入 ...
+  category: purchase
+  driver: minivan
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p155
+  text: おすすめのミニバンはなんですか？？もし良かったら理由も ...
+  category: purchase
+  driver: minivan
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p156
+  text: 中古のミニバンの購入を検討しています。
+  category: purchase
+  driver: minivan
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p157
+  text: みなさんのおすすめのミニバンはありますか。家族構成は夫婦 ...
+  category: purchase
+  driver: minivan
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p158
+  text: オススメのミニバンを教えてください。子ども3人います ...
+  category: purchase
+  driver: minivan
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p159
+  text: 四人家族の最適な車について本投稿をご覧いただきありがとう ...
+  category: purchase
+  driver: null
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p160
+  text: 「suv おすすめ 国産」で検討しています。どのブランドがおすすめですか。理由も教えてください。
+  category: purchase
+  driver: null
+  brand: false
+  source: suggest
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: suv おすすめ 国産
+  demand_history: []
+- id: p161
+  text: 「国産 suv 中古 おすすめ」について、失敗しない選び方を教えてください。
+  category: purchase
+  driver: null
+  brand: false
+  source: suggest
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 国産 suv 中古 おすすめ
+  demand_history: []
+- id: p162
+  text: 「国産 suv おすすめ ランキング」で検討しています。どのブランドがおすすめですか。理由も教えてください。
+  category: purchase
+  driver: null
+  brand: false
+  source: suggest
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 国産 suv おすすめ ランキング
+  demand_history: []
+- id: p163
+  text: 買ってよかったSUVランキングは？
+  category: purchase
+  driver: null
+  brand: false
+  source: paa
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p164
+  text: 日本で1番売れているSUVは何ですか？
+  category: purchase
+  driver: null
+  brand: false
+  source: paa
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p165
+  text: 今買うならどのSUVがいいですか？
+  category: purchase
+  driver: null
+  brand: false
+  source: paa
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p166
+  text: 買ってはいけないSUVとは？
+  category: purchase
+  driver: null
+  brand: false
+  source: paa
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p167
+  text: 国産車でオススメのSUVはどれですか？家族構成夫婦＋こども ...
+  category: purchase
+  driver: null
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p168
+  text: 国産ミドルクラスのsuvで総合力No.1は何の車でしょうか ...
+  category: purchase
+  driver: null
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p169
+  text: 国産車のSUVでおすすめの車種は？フォレスター
+  category: purchase
+  driver: null
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p170
+  text: 国産車のミドルサイズSUVでオススメはありますか？居住性と ...
+  category: model
+  driver: null
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p171
+  text: 約600万円で購入できるおすすめのSUVを教えてください。
+  category: purchase
+  driver: null
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p172
+  text: おすすめのでかい国産suv
+  category: purchase
+  driver: null
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p173
+  text: 今ファミリーカーを買うなら何がいい？
+  category: purchase
+  driver: minivan
+  brand: false
+  source: paa
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p174
+  text: ファミリーカーで一番人気なのは？
+  category: purchase
+  driver: minivan
+  brand: false
+  source: paa
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p175
+  text: 買わない方がいい車メーカーは？
+  category: purchase
+  driver: null
+  brand: false
+  source: paa
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p176
+  text: 五人家族におすすめの車を教えてください。2025年8月に第3 ...
+  category: purchase
+  driver: null
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p177
+  text: ファミリーカー、ミニバンで中古車探しをしていて、気になる ...
+  category: purchase
+  driver: minivan
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p178
+  text: みなさんなら4人家族（両親、子×2）の場合、なんの車を選び ...
+  category: purchase
+  driver: null
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p179
+  text: ファミリーカーの選び方今スポーツカーを乗っていますが子供を ...
+  category: purchase
+  driver: minivan
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p180
+  text: ファミリーカーの選び方についてもうすぐ子供が産まれるのでこれ ...
+  category: purchase
+  driver: minivan
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p181
+  text: ファミリーカーについて質問です。今、私と妻と0歳の娘の3人 ...
+  category: purchase
+  driver: minivan
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p182
+  text: 「ヴォクシー ハイブリッド 燃費 実燃費」について、国産メーカーではどこが有利か教えてください。
+  category: eco
+  driver: hybrid
+  brand: true
+  source: suggest
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: ヴォクシー ハイブリッド 燃費 実燃費
+  demand_history: []
+- id: p183
+  text: 「アルファード ハイブリッド 燃費 実燃費」について、カタログ値ではなく実際のところを教えてください。
+  category: eco
+  driver: hybrid
+  brand: true
+  source: suggest
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: アルファード ハイブリッド 燃費 実燃費
+  demand_history: []
+- id: p184
+  text: 「シエンタ 燃費 ハイブリッド 実燃費」について、カタログ値ではなく実際のところを教えてください。
+  category: eco
+  driver: hybrid
+  brand: true
+  source: suggest
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: シエンタ 燃費 ハイブリッド 実燃費
+  demand_history: []
+- id: p185
+  text: 「ヤリスクロス 燃費 ハイブリッド 実燃費」について、カタログ値ではなく実際のところを教えてください。
+  category: eco
+  driver: hybrid
+  brand: true
+  source: suggest
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: ヤリスクロス 燃費 ハイブリッド 実燃費
+  demand_history: []
+- id: p186
+  text: ハイブリッド車の実際の燃費は？
+  category: eco
+  driver: hybrid
+  brand: false
+  source: paa
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p187
+  text: 30プリウスと50プリウスの実燃費は？
+  category: eco
+  driver: hybrid
+  brand: true
+  source: paa
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p188
+  text: ハイブリッド車で1番燃費がいいのはどれですか？
+  category: eco
+  driver: hybrid
+  brand: false
+  source: paa
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p189
+  text: 実燃費が一番いい車は？
+  category: eco
+  driver: hybrid
+  brand: false
+  source: paa
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p190
+  text: ハイブリッド車の実燃費って実際どんくらいですか？
+  category: eco
+  driver: hybrid
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p191
+  text: ハイブリッド車の実燃費についてわたしは、平成27年式の ...
+  category: eco
+  driver: hybrid
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p192
+  text: 燃費のいいハイブリッド車の実燃費はどれくらいですか30km ...
+  category: eco
+  driver: hybrid
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p193
+  text: ハイブリッド車の実燃費はカタログ燃費の何割ぐらいが目安？
+  category: eco
+  driver: hybrid
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p194
+  text: 初代カローラクロスハイブリッドの実燃費について質問です ...
+  category: eco
+  driver: hybrid
+  brand: true
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p195
+  text: 新型のプリウス(ハイブリッドモデル)の実燃費ですが低くない ...
+  category: eco
+  driver: hybrid
+  brand: true
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p196
+  text: 電気自動車はやめたほうがいいですか？
+  category: eco
+  driver: null
+  brand: false
+  source: paa
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p197
+  text: なぜEV車やばいのでしょうか？
+  category: eco
+  driver: hybrid
+  brand: false
+  source: paa
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p198
+  text: 電気自動車がダメな理由は何ですか？
+  category: eco
+  driver: null
+  brand: false
+  source: paa
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p199
+  text: 電気自動車が人気がない理由は何ですか？
+  category: eco
+  driver: null
+  brand: false
+  source: paa
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p200
+  text: 電気自動車を買って、後悔したことはありますか？
+  category: eco
+  driver: null
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p201
+  text: 結局日本にはEVの時代は来なくてEV買った人たちは後悔する ...
+  category: eco
+  driver: hybrid
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p202
+  text: EV車について。EV車を購入しようか悩んでいます。理由は ...
+  category: eco
+  driver: hybrid
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p203
+  text: EVを買って後悔する人が出てるみたいですね？EVオーナー ...
+  category: eco
+  driver: hybrid
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p204
+  text: 電気自動車のメリット、デメリットなど実体験を教えて下さい ...
+  category: eco
+  driver: null
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p205
+  text: EV車を買わないほうが良いという意見の方、理由を教えて ...
+  category: eco
+  driver: hybrid
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p206
+  text: 「軽自動車 おすすめ 女性」について、失敗しない選び方を教えてください。
+  category: purchase
+  driver: null
+  brand: false
+  source: suggest
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 軽自動車 おすすめ 女性
+  demand_history: []
+- id: p207
+  text: 「軽自動車 おすすめ 中古」について、失敗しない選び方を教えてください。
+  category: purchase
+  driver: null
+  brand: false
+  source: suggest
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 軽自動車 おすすめ 中古
+  demand_history: []
+- id: p208
+  text: 「軽自動車 おすすめ 2026」について、失敗しない選び方を教えてください。
+  category: purchase
+  driver: null
+  brand: false
+  source: suggest
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 軽自動車 おすすめ 2026
+  demand_history: []
+- id: p209
+  text: 「軽自動車 おすすめタイヤ」で検討しています。どのブランドがおすすめですか。理由も教えてください。
+  category: purchase
+  driver: null
+  brand: false
+  source: suggest
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 軽自動車 おすすめタイヤ
+  demand_history: []
+- id: p210
+  text: 「軽自動車 おすすめ 燃費」について、カタログ値ではなく実際のところを教えてください。
+  category: eco
+  driver: hybrid
+  brand: false
+  source: suggest
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 軽自動車 おすすめ 燃費
+  demand_history: []
+- id: p211
+  text: 「軽自動車 おすすめ スライドドア」で検討しています。どのブランドがおすすめですか。理由も教えてください。
+  category: purchase
+  driver: minivan
+  brand: false
+  source: suggest
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 軽自動車 おすすめ スライドドア
+  demand_history: []
+- id: p212
+  text: 「軽自動車 おすすめ コスパ」について、失敗しない選び方を教えてください。
+  category: purchase
+  driver: null
+  brand: false
+  source: suggest
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 軽自動車 おすすめ コスパ
+  demand_history: []
+- id: p213
+  text: 「軽自動車 おすすめ 安い」を重視した場合、実際いくらくらいかかりますか。おすすめの車種も教えてください。
+  category: cost
+  driver: cost
+  brand: false
+  source: suggest
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 軽自動車 おすすめ 安い
+  demand_history: []
+- id: p214
+  text: 軽自動車を買うならどれがおすすめ？
+  category: purchase
+  driver: null
+  brand: false
+  source: paa
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p215
+  text: 軽自動車で一番人気なのは何ですか？
+  category: purchase
+  driver: null
+  brand: false
+  source: paa
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p216
+  text: 買って後悔しない軽自動車は？
+  category: purchase
+  driver: null
+  brand: false
+  source: paa
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p217
+  text: 軽自動車を買うならどこのメーカーがいいですか？
+  category: purchase
+  driver: null
+  brand: false
+  source: paa
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p218
+  text: 車について初心者におすすめの軽自動車を教えてください。4 ...
+  category: purchase
+  driver: null
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p219
+  text: 至急結局おすすめって軽自動車はなんですか？車種とか教えて ...
+  category: purchase
+  driver: null
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p220
+  text: 燃費がよく坂道に強い軽自動車、コンパクトカーのおすすめを ...
+  category: eco
+  driver: urban
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p221
+  text: 車が欲しいんですが軽自動車でおすすめの車を教えて欲しい ...
+  category: purchase
+  driver: null
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p222
+  text: 【軽自動車のオススメを教えてください】現在乗り換えを検討 ...
+  category: purchase
+  driver: null
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p223
+  text: 新車で軽自動車を買おうと思っていますあまり車に詳しくない ...
+  category: purchase
+  driver: null
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p224
+  text: 「コンパクトカー 街乗り おすすめ」で検討しています。どのブランドがおすすめですか。理由も教えてください。
+  category: purchase
+  driver: urban
+  brand: false
+  source: suggest
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: コンパクトカー 街乗り おすすめ
+  demand_history: []
+- id: p225
+  text: 「コンパクトカー 街乗り 燃費」について、カタログ値ではなく実際のところを教えてください。
+  category: eco
+  driver: urban
+  brand: false
+  source: suggest
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: コンパクトカー 街乗り 燃費
+  demand_history: []
+- id: p226
+  text: 「街乗り 車 コンパクトカー」について、失敗しない選び方を教えてください。
+  category: purchase
+  driver: urban
+  brand: false
+  source: suggest
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 街乗り 車 コンパクトカー
+  demand_history: []
+- id: p227
+  text: コンパクトカーの欠点は何ですか？
+  category: purchase
+  driver: urban
+  brand: false
+  source: paa
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p228
+  text: コンパクトカーは人気がないのはなぜですか？
+  category: purchase
+  driver: urban
+  brand: false
+  source: paa
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p229
+  text: コンパクトカーで疲れにくい車種は？
+  category: purchase
+  driver: adas
+  brand: false
+  source: paa
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p230
+  text: 普通車のコンパクトカーのおすすめを教えて下さい。理由は軽 ...
+  category: purchase
+  driver: urban
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p231
+  text: コンパクトカーで街乗りメインが多いのですが新車で ...
+  category: purchase
+  driver: urban
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p232
+  text: 軽自動車じゃない（登録車）コンパクトカーで、街中でも視界 ...
+  category: purchase
+  driver: urban
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p233
+  text: コンパクトカーで街乗り、高速道路は一年に数回、遮音性など ...
+  category: purchase
+  driver: adas
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p234
+  text: 国産コンパクトカーでおすすめはありますか？様々な車種が ...
+  category: purchase
+  driver: urban
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p235
+  text: 街乗りSUV買う場合雪道でなくても4WDモデルを選...
+  category: purchase
+  driver: urban
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p236
+  text: 現時点で発売されている車種で、自動ブレーキの性能で比較 ...
+  category: safety
+  driver: safety
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p237
+  text: 車の安全装置はどのメーカーが1番優れているのでしょうか。
+  category: safety
+  driver: safety
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p238
+  text: 車のABSとは、自動ブレーキとはまた違いますか？次買うのは ...
+  category: safety
+  driver: safety
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p239
+  text: 最近の車は自動ブレーキなど、安全装備が付いているものが ...
+  category: safety
+  driver: safety
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p240
+  text: 自動車の自動ブレーキ機能、実際、機能してなくないですか ...
+  category: safety
+  driver: safety
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p241
+  text: （高級）輸入車vs国産車、どちらが安全性能が高いでしょうか ...
+  category: safety
+  driver: safety
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p242
+  text: 運転するのに1番疲れない車は？
+  category: purchase
+  driver: adas
+  brand: false
+  source: paa
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p243
+  text: 高速道路の運転は疲れますか？
+  category: purchase
+  driver: adas
+  brand: false
+  source: paa
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p244
+  text: 高速道路の暗黙のルールは？
+  category: purchase
+  driver: adas
+  brand: false
+  source: paa
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p245
+  text: 運転のセンスがない人の特徴は？
+  category: purchase
+  driver: null
+  brand: false
+  source: paa
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p246
+  text: 山道の高速道路ドライブ…疲れませんか？
+  category: purchase
+  driver: adas
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p247
+  text: ロングドライブで疲れない疲れにくい軽自動車の車種を教えて ...
+  category: purchase
+  driver: adas
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p248
+  text: 高速道路で自動運転を多用する人っているんですか？完全に ...
+  category: purchase
+  driver: adas
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p249
+  text: 高速道路の長距離運転を経験している人に質問です。自家用車 ...
+  category: purchase
+  driver: adas
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p250
+  text: 車を運転して疲れる人と疲れない人の違いは安全意識の差では ...
+  category: safety
+  driver: safety
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p251
+  text: 運転しやすく疲れにくい車といえば何でしょうか？ 現行の4 ...
+  category: purchase
+  driver: adas
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p252
+  text: 「リセールバリュー 高い車 外車」について、失敗しない選び方を教えてください。
+  category: purchase
+  driver: resale
+  brand: false
+  source: suggest
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: リセールバリュー 高い車 外車
+  demand_history: []
+- id: p253
+  text: 「リセールバリュー 高い車 suv」について、失敗しない選び方を教えてください。
+  category: purchase
+  driver: resale
+  brand: false
+  source: suggest
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: リセールバリュー 高い車 suv
+  demand_history: []
+- id: p254
+  text: リセールで一番高い車は？
+  category: purchase
+  driver: resale
+  brand: false
+  source: paa
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p255
+  text: リセールバリューが高いおすすめの車は？
+  category: purchase
+  driver: resale
+  brand: false
+  source: paa
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p256
+  text: リセールバリューが下がらない車は？
+  category: purchase
+  driver: resale
+  brand: false
+  source: paa
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p257
+  text: リセール最悪の車は？
+  category: purchase
+  driver: resale
+  brand: false
+  source: paa
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p258
+  text: リセールの高い車を教えてくださいSUVまたはコンパクトカー ...
+  category: purchase
+  driver: urban
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p259
+  text: リセールバリューを気にして車選びしますか？
+  category: purchase
+  driver: resale
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p260
+  text: よく車のリセールがいいっていいますよね ...
+  category: purchase
+  driver: resale
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p261
+  text: 車は3年毎にリセールが高いものを買い替えて行った方が5年毎 ...
+  category: purchase
+  driver: resale
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p262
+  text: 高級車のリセールバリュー例えば700万円の車を購入し、5年 ...
+  category: purchase
+  driver: resale
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p263
+  text: リセールが高い車ってでかい車ばっかりですね。ランクルとか ...
+  category: purchase
+  driver: resale
+  brand: true
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p264
+  text: 「維持費 安い車 ランキング」を重視した場合、実際いくらくらいかかりますか。おすすめの車種も教えてください。
+  category: cost
+  driver: cost
+  brand: false
+  source: suggest
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 維持費 安い車 ランキング
+  demand_history: []
+- id: p265
+  text: 「維持費 燃費 安い車」について、国産メーカーではどこが有利か教えてください。
+  category: eco
+  driver: hybrid
+  brand: false
+  source: suggest
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 維持費 燃費 安い車
+  demand_history: []
+- id: p266
+  text: 「維持費 税金 安い車」で損をしない方法を教えてください。国産車で具体的にお願いします。
+  category: cost
+  driver: cost
+  brand: false
+  source: suggest
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 維持費 税金 安い車
+  demand_history: []
+- id: p267
+  text: 維持費が一番安い車は？
+  category: cost
+  driver: cost
+  brand: false
+  source: paa
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p268
+  text: 維持費が安い普通車ランキングは？
+  category: cost
+  driver: cost
+  brand: false
+  source: paa
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p269
+  text: 一番コスパのいい車は？
+  category: purchase
+  driver: null
+  brand: false
+  source: paa
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p270
+  text: 維持費の安い車でオススメのものはどの辺になりますでしょ ...
+  category: cost
+  driver: cost
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p271
+  text: 燃費がよくて、維持費が安い車を探しています。5人...
+  category: eco
+  driver: hybrid
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p272
+  text: 維持費が安い車を探しています。(燃料代とか自動車税など ...
+  category: cost
+  driver: cost
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p273
+  text: 維持費が一番安い車はなんですか？ガソリン代や税金や消耗品 ...
+  category: cost
+  driver: cost
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p274
+  text: 維持費が安いsuvを教えて欲しいです！ 現在ヤリスクロスか ...
+  category: cost
+  driver: cost
+  brand: true
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p275
+  text: 維持費が安い車ランキングを教えてください！
+  category: cost
+  driver: cost
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p276
+  text: 「車 納期 長い なぜ」で困っています。どうするのが一般的ですか。
+  category: service
+  driver: dealer
+  brand: false
+  source: suggest
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 車 納期 長い なぜ
+  demand_history: []
+- id: p277
+  text: 「車 納期 長い キャンセル」で困っています。どうするのが一般的ですか。
+  category: service
+  driver: dealer
+  brand: false
+  source: suggest
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 車 納期 長い キャンセル
+  demand_history: []
+- id: p278
+  text: 「トヨタ 車 納期 長い」はメーカーによって違いがありますか。
+  category: service
+  driver: dealer
+  brand: true
+  source: suggest
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: トヨタ 車 納期 長い
+  demand_history: []
+- id: p279
+  text: 「納期 長い 車 ランキング」で困っています。どうするのが一般的ですか。
+  category: service
+  driver: dealer
+  brand: false
+  source: suggest
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 納期 長い 車 ランキング
+  demand_history: []
+- id: p280
+  text: 「納期 が 長い 車」で困っています。どうするのが一般的ですか。
+  category: service
+  driver: dealer
+  brand: false
+  source: suggest
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 納期 が 長い 車
+  demand_history: []
+- id: p281
+  text: 「納期 長い 車 ランキング 2025」で困っています。どうするのが一般的ですか。
+  category: service
+  driver: dealer
+  brand: false
+  source: suggest
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 納期 長い 車 ランキング 2025
+  demand_history: []
+- id: p282
+  text: 「納期 が 長い 車 支払い」はメーカーによって違いがありますか。
+  category: service
+  driver: dealer
+  brand: false
+  source: suggest
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 納期 が 長い 車 支払い
+  demand_history: []
+- id: p283
+  text: 「納期 長い 車 ローン」を重視した場合、実際いくらくらいかかりますか。おすすめの車種も教えてください。
+  category: cost
+  driver: subscription
+  brand: false
+  source: suggest
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 納期 長い 車 ローン
+  demand_history: []
+- id: p284
+  text: 「新車 納期 長い 車」はメーカーによって違いがありますか。
+  category: service
+  driver: dealer
+  brand: false
+  source: suggest
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 新車 納期 長い 車
+  demand_history: []
+- id: p285
+  text: 車の納車まで何ヶ月待ちですか？
+  category: purchase
+  driver: null
+  brand: false
+  source: paa
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p286
+  text: 一番納期が長い車は？
+  category: service
+  driver: dealer
+  brand: false
+  source: paa
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p287
+  text: 納期が長い車のランキングは？
+  category: service
+  driver: dealer
+  brand: false
+  source: paa
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p288
+  text: トヨタ車の納期が長い原因は何ですか？
+  category: service
+  driver: dealer
+  brand: true
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p289
+  text: 納車2ヶ月待ち長い。。
+  category: purchase
+  driver: null
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p290
+  text: 新車の納期がやたらに遅れているのは何故ですか？トヨタ ...
+  category: service
+  driver: dealer
+  brand: true
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p291
+  text: 車を買ったのですが納車まで待ちきれません納期って遅く ...
+  category: service
+  driver: dealer
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p292
+  text: あのー納期が遅すぎる車はキャンセルできるのでしょうか ...
+  category: service
+  driver: dealer
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p293
+  text: 車の納車が5ヶ月以上遅れています。その場合
+  category: purchase
+  driver: null
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p294
+  text: 「残価設定ローン 損得」で損をしない方法を教えてください。国産車で具体的にお願いします。
+  category: cost
+  driver: resale
+  brand: false
+  source: suggest
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 残価設定ローン 損得
+  demand_history: []
+- id: p295
+  text: 残価設定ローンはなぜダメなのでしょうか？
+  category: cost
+  driver: resale
+  brand: false
+  source: paa
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p296
+  text: 残価設定とローン、どちらが得ですか？
+  category: cost
+  driver: resale
+  brand: false
+  source: paa
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p297
+  text: 残価設定はやめたほうがいいですか？
+  category: cost
+  driver: resale
+  brand: false
+  source: paa
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p298
+  text: 残価設定ローンの落とし穴は？
+  category: cost
+  driver: resale
+  brand: false
+  source: paa
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p299
+  text: 残価設定ローンって消費者にとって得なの？損 ...
+  category: cost
+  driver: resale
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p300
+  text: 損をするとよく目にするのですが、残価設定ローンの金利...
+  category: cost
+  driver: resale
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p301
+  text: 残価設定で車購入してる方に質問です。実際
+  category: cost
+  driver: resale
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p302
+  text: 一括orカーローンor残価設定型クレジット、一時的に
+  category: cost
+  driver: resale
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p303
+  text: 残価設定ローンってぶっちゃけどうなんですかね？
+  category: cost
+  driver: resale
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p304
+  text: 残価設定ローンの状態で新車の乗り換え得か損か教えて ...
+  category: cost
+  driver: resale
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p305
+  text: カーリースで一番人気なのは？
+  category: cost
+  driver: subscription
+  brand: false
+  source: paa
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p306
+  text: 車のサブスクの落とし穴は？
+  category: cost
+  driver: subscription
+  brand: false
+  source: paa
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p307
+  text: カーリースの弱点は何ですか？
+  category: cost
+  driver: subscription
+  brand: false
+  source: paa
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p308
+  text: 車 サブスク と 購入 どちらが お 得？
+  category: cost
+  driver: subscription
+  brand: false
+  source: paa
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p309
+  text: 車のサブスクというものを初めて知りました。現在車は持って ...
+  category: cost
+  driver: subscription
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p310
+  text: 車サブスクと車購入ってどちらの方がいいでしょうか。自分は ...
+  category: cost
+  driver: subscription
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p311
+  text: 車のサブスクについて質問です。 どんな車に乗りたいのか ...
+  category: cost
+  driver: subscription
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p312
+  text: 車のサブスクKINTOを最近知りました。
+  category: cost
+  driver: subscription
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p313
+  text: 中古車とカーリース、サブスクどれがいいんでしょうか。10年乗っ ...
+  category: cost
+  driver: subscription
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p314
+  text: 車のサブスクのKINTOと普通に購入はどちらが良いですか ...
+  category: cost
+  driver: subscription
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p315
+  text: 「車中泊 できる車 おすすめ」について、失敗しない選び方を教えてください。
+  category: purchase
+  driver: cargo
+  brand: false
+  source: suggest
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 車中泊 できる車 おすすめ
+  demand_history: []
+- id: p316
+  text: 車中泊がダメな理由は何ですか？
+  category: purchase
+  driver: cargo
+  brand: false
+  source: paa
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p317
+  text: ほったらかしキャンプで車中泊するにはどうすればいいですか？
+  category: purchase
+  driver: cargo
+  brand: false
+  source: paa
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p318
+  text: 車中泊に最も適した軽自動車は？
+  category: purchase
+  driver: cargo
+  brand: false
+  source: paa
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p319
+  text: 車中泊するのに安い車は？
+  category: cost
+  driver: cost
+  brand: false
+  source: paa
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p320
+  text: 車中泊もできる車を探しています。候補としては、アトレー
+  category: purchase
+  driver: cargo
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p321
+  text: 3人車中泊可能な車で、取り回しが良い車はありますか？被災 ...
+  category: purchase
+  driver: urban
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p322
+  text: 教えてください。コンパクトで燃費が良くて車中泊に向いてる ...
+  category: eco
+  driver: urban
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p323
+  text: 【質問日時の新しい順】N-VANのQ&A一覧 ...
+  category: purchase
+  driver: null
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p324
+  text: 【質問日時の新しい順】トールのQ&A一覧 ...
+  category: purchase
+  driver: null
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p325
+  text: ソロで快適に車中泊出来るオススメの車を教えて下さい ...
+  category: purchase
+  driver: cargo
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p326
+  text: 「雪道 強い車 ランキング」について、失敗しない選び方を教えてください。
+  category: purchase
+  driver: null
+  brand: false
+  source: suggest
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 雪道 強い車 ランキング
+  demand_history: []
+- id: p327
+  text: 「雪道 強い車 軽自動車」で検討しています。どのブランドがおすすめですか。理由も教えてください。
+  category: purchase
+  driver: null
+  brand: false
+  source: suggest
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 雪道 強い車 軽自動車
+  demand_history: []
+- id: p328
+  text: 「スバル 雪道 強い車」について、他社と比べた強みと弱みを教えてください。
+  category: brand
+  driver: null
+  brand: false
+  source: suggest
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: スバル 雪道 強い車
+  demand_history: []
+- id: p329
+  text: 雪道に強い車のランキングは？
+  category: purchase
+  driver: null
+  brand: false
+  source: paa
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p330
+  text: 雪道に強い車はどんな車ですか？
+  category: purchase
+  driver: null
+  brand: false
+  source: paa
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p331
+  text: 小さくて雪道に強い車は？
+  category: purchase
+  driver: null
+  brand: false
+  source: paa
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p332
+  text: 雪国で最強の車は？
+  category: purchase
+  driver: null
+  brand: false
+  source: paa
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p333
+  text: 雪道に強い車、おすすめの車を教えてください。雪国に ...
+  category: purchase
+  driver: null
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p334
+  text: 雪道に強い車種について伺いたいです。
+  category: purchase
+  driver: null
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p335
+  text: 300万円クラスの現行国産車で雪道最強はジムニー
+  category: purchase
+  driver: null
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p336
+  text: 雪道に強い軽自動車、何がおすすめでしょうか？年に3回ほど
+  category: purchase
+  driver: null
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p337
+  text: コンパクトカー4WDで雪道、凍結路面に強い車種はどれです ...
+  category: purchase
+  driver: urban
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p338
+  text: ファミリーカー（7～8人乗り）、4WD、雪に強い車 ...
+  category: purchase
+  driver: minivan
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p339
+  text: 「高齢者 運転しやすい車 コンパクトカー」で検討しています。どのブランドがおすすめですか。理由も教えてください。
+  category: purchase
+  driver: urban
+  brand: false
+  source: suggest
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 高齢者 運転しやすい車 コンパクトカー
+  demand_history: []
+- id: p340
+  text: 「高齢者 運転しやすい車 軽自動車」で検討しています。どのブランドがおすすめですか。理由も教えてください。
+  category: purchase
+  driver: null
+  brand: false
+  source: suggest
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 高齢者 運転しやすい車 軽自動車
+  demand_history: []
+- id: p341
+  text: 高齢者が乗りやすい車種は？
+  category: purchase
+  driver: null
+  brand: false
+  source: paa
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p342
+  text: 60歳を過ぎたら乗る車のおすすめは？
+  category: purchase
+  driver: null
+  brand: false
+  source: paa
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p343
+  text: 高齢者が乗り降りしやすい車は？
+  category: purchase
+  driver: null
+  brand: false
+  source: paa
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p344
+  text: 70歳におすすめの車は？
+  category: purchase
+  driver: null
+  brand: false
+  source: paa
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p345
+  text: 社会人1年目で車を買うならいくらくらいが相場ですか？
+  category: purchase
+  driver: null
+  brand: false
+  source: paa
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p346
+  text: 新卒でも車って買えるの？
+  category: purchase
+  driver: null
+  brand: false
+  source: paa
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p347
+  text: 社会人で車を買うなら何年目がいいですか？
+  category: purchase
+  driver: null
+  brand: false
+  source: paa
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p348
+  text: 社会人1年目で車を買うならローンは？
+  category: cost
+  driver: subscription
+  brand: false
+  source: paa
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p349
+  text: 新卒1年目で買う車について来年度から新卒として企業に就職 ...
+  category: purchase
+  driver: null
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p350
+  text: 新社会人です。初めての車はどんなものを買うのがいいですか ...
+  category: purchase
+  driver: null
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p351
+  text: 新社会人で初めて車を買う場合何に気をつけたら良いですか？
+  category: purchase
+  driver: null
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p352
+  text: みなさん、新卒社会人で1年目は車は何を買いました？
+  category: purchase
+  driver: null
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p353
+  text: 新卒入社にあたり、通勤のため車を買わないと行けないのですが
+  category: purchase
+  driver: null
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p354
+  text: 新卒車の購入についてです。現在、大学4年生で来年から地元 ...
+  category: purchase
+  driver: null
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p355
+  text: 「中古車 買うならどこ」で検討しています。どのブランドがおすすめですか。理由も教えてください。
+  category: purchase
+  driver: null
+  brand: false
+  source: suggest
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 中古車 買うならどこ
+  demand_history: []
+- id: p356
+  text: 「中古車 買うなら どこがいい」について、失敗しない選び方を教えてください。
+  category: purchase
+  driver: null
+  brand: false
+  source: suggest
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 中古車 買うなら どこがいい
+  demand_history: []
+- id: p357
+  text: 「中古車 買うならいつ」について、失敗しない選び方を教えてください。
+  category: purchase
+  driver: null
+  brand: false
+  source: suggest
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 中古車 買うならいつ
+  demand_history: []
+- id: p358
+  text: 「中古車 買うならディーラー」はメーカーによって違いがありますか。
+  category: service
+  driver: dealer
+  brand: false
+  source: suggest
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 中古車 買うならディーラー
+  demand_history: []
+- id: p359
+  text: 「中古車 買うなら 走行距離」について、失敗しない選び方を教えてください。
+  category: purchase
+  driver: reliability
+  brand: false
+  source: suggest
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 中古車 買うなら 走行距離
+  demand_history: []
+- id: p360
+  text: 「中古車 買うなら何万キロ」について、失敗しない選び方を教えてください。
+  category: purchase
+  driver: null
+  brand: false
+  source: suggest
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 中古車 買うなら何万キロ
+  demand_history: []
+- id: p361
+  text: 中古車はどこで買うのがいいですか？
+  category: purchase
+  driver: null
+  brand: false
+  source: paa
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p362
+  text: 買ってはいけない中古車ランキングは？
+  category: purchase
+  driver: null
+  brand: false
+  source: paa
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p363
+  text: やめたほうがいい中古車は？
+  category: purchase
+  driver: null
+  brand: false
+  source: paa
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p364
+  text: 中古車を買うならどの車がいいですか？
+  category: purchase
+  driver: null
+  brand: false
+  source: paa
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p365
+  text: 中古車買うなら結局どこで買えば安心ですか？少々高くても ...
+  category: purchase
+  driver: null
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p366
+  text: 中古車情報サイトのおすすめはどこですか？ここだけ見れば ...
+  category: purchase
+  driver: null
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p367
+  text: 中古車を買うならどこがいいですか？経済的に新車や未使用車 ...
+  category: purchase
+  driver: null
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p368
+  text: ほしいディーラーの中古車が商談中らしいのですが
+  category: service
+  driver: dealer
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p369
+  text: 【質問日時の新しい順】中古車 回答受付中の ...
+  category: purchase
+  driver: null
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p370
+  text: 中古車ってどこで買うのがおすすめですか？25歳、車を初めて ...
+  category: purchase
+  driver: null
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p371
+  text: 「車検 費用 安くするには」で損をしない方法を教えてください。国産車で具体的にお願いします。
+  category: cost
+  driver: warranty
+  brand: false
+  source: suggest
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 車検 費用 安くするには
+  demand_history: []
+- id: p372
+  text: 「車検 費用 安くなる」で損をしない方法を教えてください。国産車で具体的にお願いします。
+  category: cost
+  driver: warranty
+  brand: false
+  source: suggest
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 車検 費用 安くなる
+  demand_history: []
+- id: p373
+  text: 「車検 費用 安く 抑える」を重視した場合、実際いくらくらいかかりますか。おすすめの車種も教えてください。
+  category: cost
+  driver: warranty
+  brand: false
+  source: suggest
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 車検 費用 安く 抑える
+  demand_history: []
+- id: p374
+  text: 「車検 費用 いつから 安く なる」を重視した場合、実際いくらくらいかかりますか。おすすめの車種も教えてください。
+  category: cost
+  driver: warranty
+  brand: false
+  source: suggest
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 車検 費用 いつから 安く なる
+  demand_history: []
+- id: p375
+  text: 車検を1番安く済む方法はありますか？
+  category: cost
+  driver: warranty
+  brand: false
+  source: paa
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p376
+  text: 車検で10万円は高すぎますか？
+  category: cost
+  driver: warranty
+  brand: false
+  source: paa
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p377
+  text: オートバックスで車検をしたらなぜ安いのか？
+  category: cost
+  driver: cost
+  brand: false
+  source: paa
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p378
+  text: 車検が1番安いのは？
+  category: cost
+  driver: cost
+  brand: false
+  source: paa
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p379
+  text: 車検はどこで受けた方がいいですか？安く済ませたいです
+  category: cost
+  driver: warranty
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p380
+  text: 車検をとにかく安く通したいのですが、何処が安いですか ...
+  category: cost
+  driver: cost
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p381
+  text: ここ2年ぐらい車検費用、(主に税金類)が安くなってるんで ...
+  category: cost
+  driver: cost
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p382
+  text: シンプルに聞きます。車検がいちばん安く済ませるのには ...
+  category: cost
+  driver: warranty
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p383
+  text: 知り合いに頼めば車検安くしてくれますかね？
+  category: cost
+  driver: warranty
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p384
+  text: 車検はどこでやった方が安いですか？ディーラーが高いと言う ...
+  category: cost
+  driver: cost
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p385
+  text: 「新型アルファード 納期 最新」はメーカーによって違いがありますか。
+  category: service
+  driver: dealer
+  brand: true
+  source: suggest
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 新型アルファード 納期 最新
+  demand_history: []
+- id: p386
+  text: 「新型アルファード 納期連絡」はメーカーによって違いがありますか。
+  category: service
+  driver: dealer
+  brand: true
+  source: suggest
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 新型アルファード 納期連絡
+  demand_history: []
+- id: p387
+  text: 「新型アルファード 納期 6月契約」で困っています。どうするのが一般的ですか。
+  category: service
+  driver: dealer
+  brand: true
+  source: suggest
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 新型アルファード 納期 6月契約
+  demand_history: []
+- id: p388
+  text: 「新型アルファード x 納期」で困っています。どうするのが一般的ですか。
+  category: service
+  driver: dealer
+  brand: true
+  source: suggest
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 新型アルファード x 納期
+  demand_history: []
+- id: p389
+  text: 「新型アルファード 40系 納期」はメーカーによって違いがありますか。
+  category: service
+  driver: dealer
+  brand: true
+  source: suggest
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 新型アルファード 40系 納期
+  demand_history: []
+- id: p390
+  text: 新型アルファードの納期は何ヶ月待ちですか？
+  category: service
+  driver: dealer
+  brand: true
+  source: paa
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p391
+  text: アルファード2026の納期は？
+  category: service
+  driver: dealer
+  brand: true
+  source: paa
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p392
+  text: アルファードの完成から納車までどのくらいかかりますか？
+  category: purchase
+  driver: null
+  brand: true
+  source: paa
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p393
+  text: 新型アルファード いつ届く？
+  category: purchase
+  driver: null
+  brand: true
+  source: paa
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p394
+  text: トヨタ新車納期について先日12月13日予約していた ...
+  category: service
+  driver: dealer
+  brand: true
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p395
+  text: 40アルファードを注文して、納車待ちなのですが、
+  category: purchase
+  driver: null
+  brand: true
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p396
+  text: 新型アルファードの納期はどれくらいでしょうか？なにやら ...
+  category: service
+  driver: dealer
+  brand: true
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p397
+  text: 新型アルファードの納期連絡が来ません…
+  category: service
+  driver: dealer
+  brand: true
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p398
+  text: 40アルファードZ 二駆を契約したのですが5月中旬納車くらい ...
+  category: purchase
+  driver: null
+  brand: true
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p399
+  text: ベルファイヤーのガソリン車の納期はどのくらいですか ...
+  category: service
+  driver: dealer
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p400
+  text: 「アルファード ヴェルファイア 違い 知恵袋」を検討しています。同じクラスの他社と比べてどうですか。
+  category: model
+  driver: null
+  brand: true
+  source: suggest
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: アルファード ヴェルファイア 違い 知恵袋
+  demand_history: []
+- id: p401
+  text: 「アルファード ヴェルファイア 違い 30系」を検討しています。同じクラスの他社と比べてどうですか。
+  category: model
+  driver: null
+  brand: true
+  source: suggest
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: アルファード ヴェルファイア 違い 30系
+  demand_history: []
+- id: p402
+  text: 「アルファード ヴェルファイア 違い 見た目」の観点で、国産メーカーを比較して教えてください。
+  category: model
+  driver: null
+  brand: true
+  source: suggest
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: アルファード ヴェルファイア 違い 見た目
+  demand_history: []
+- id: p403
+  text: 「アルファード ヴェルファイア 違い 価格」を重視した場合、実際いくらくらいかかりますか。おすすめの車種も教えてください。
+  category: cost
+  driver: null
+  brand: true
+  source: suggest
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: アルファード ヴェルファイア 違い 価格
+  demand_history: []
+- id: p404
+  text: 「アルファード ヴェルファイア 違い 40」の観点で、国産メーカーを比較して教えてください。
+  category: model
+  driver: null
+  brand: true
+  source: suggest
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: アルファード ヴェルファイア 違い 40
+  demand_history: []
+- id: p405
+  text: 「アルファード ヴェルファイア 違い サイズ」を検討しています。同じクラスの他社と比べてどうですか。
+  category: model
+  driver: null
+  brand: true
+  source: suggest
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: アルファード ヴェルファイア 違い サイズ
+  demand_history: []
+- id: p406
+  text: アルファードとヴェルファイアはどちらが高級ですか？
+  category: purchase
+  driver: null
+  brand: true
+  source: paa
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p407
+  text: アルファードとヴェルファイアの違いは何ですか？
+  category: model
+  driver: null
+  brand: true
+  source: paa
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p408
+  text: アルファードとヴェルファイアの違いはどこですか？
+  category: model
+  driver: null
+  brand: true
+  source: paa
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p409
+  text: アルファードとヴェルファイアはどっちが高く売れる？
+  category: model
+  driver: null
+  brand: true
+  source: paa
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p410
+  text: ヴェルファイアとアルファードって、見た目が違うだけで
+  category: purchase
+  driver: null
+  brand: true
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p411
+  text: ぶっちゃけアルファードとヴェルファイアで比較したらどっち ...
+  category: model
+  driver: null
+  brand: true
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p412
+  text: ヴェルファイアとアルファードの1番の違いは何？
+  category: model
+  driver: null
+  brand: true
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p413
+  text: 新型ヴェルファイアと新型アルファードって何が違うんですか ...
+  category: purchase
+  driver: null
+  brand: true
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p414
+  text: ヴェルファイアの方が高級なんですか?
+  category: purchase
+  driver: null
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p415
+  text: アルファードとヴェルファイアの違いは ...
+  category: model
+  driver: null
+  brand: true
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p416
+  text: アルファードの残価設定はやばいですか？
+  category: cost
+  driver: resale
+  brand: true
+  source: paa
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p417
+  text: 残クレアルファード 何がダメなの？
+  category: purchase
+  driver: subscription
+  brand: true
+  source: paa
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p418
+  text: 残価設定クレジットのアルファードが事故に遭ったらどうなる？
+  category: safety
+  driver: resale
+  brand: true
+  source: paa
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p419
+  text: 残クレでの車購入はなぜダメなのですか？残価設定クレジット ...
+  category: cost
+  driver: resale
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p420
+  text: 小馬鹿にする意見や残クレで地獄を...
+  category: purchase
+  driver: subscription
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p421
+  text: 最近「残クレアルファード」ってすごい聞くんですけど残価設定っ ...
+  category: cost
+  driver: resale
+  brand: true
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p422
+  text: 40アルファード残クレで買うとだいたいおいくら位ですか ...
+  category: purchase
+  driver: subscription
+  brand: true
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p423
+  text: ネットでよくネタにされる残クレアルファードですが、700万 ...
+  category: purchase
+  driver: subscription
+  brand: true
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p424
+  text: 残クレ2年目です夫が残クレで車を購入しました無知だった為 ...
+  category: purchase
+  driver: subscription
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p425
+  text: 「アルファード 中古 なぜ 高い」について、失敗しない選び方を教えてください。
+  category: purchase
+  driver: null
+  brand: true
+  source: suggest
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: アルファード 中古 なぜ 高い
+  demand_history: []
+- id: p426
+  text: アルファードはなぜ不評なのでしょうか？
+  category: purchase
+  driver: null
+  brand: true
+  source: paa
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p427
+  text: アルファードは中古か新車かどちらがいいですか？
+  category: purchase
+  driver: null
+  brand: true
+  source: paa
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p428
+  text: 30アルファードはなんでこんなに値崩れしたの？数年前まで ...
+  category: purchase
+  driver: null
+  brand: true
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p429
+  text: なぜ新型アルファードて値段が高いのに売れているのですか ...
+  category: purchase
+  driver: null
+  brand: true
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p430
+  text: 30系アルファードは中古車市場でも価格が高いのは単に人気が ...
+  category: cost
+  driver: null
+  brand: true
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p431
+  text: 旧型アルファードの中古車て大量にあるのに ...
+  category: purchase
+  driver: null
+  brand: true
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p432
+  text: アルファード中古車、どっちがお得か。30系前期、2.5S
+  category: model
+  driver: null
+  brand: true
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p433
+  text: アルファードの30系後期がここまで売れた理由は
+  category: purchase
+  driver: null
+  brand: true
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p434
+  text: 新型ステップワゴンの欠点は何ですか？
+  category: purchase
+  driver: null
+  brand: false
+  source: paa
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p435
+  text: ステップワゴンとアルファードではどちらが大きいですか？
+  category: purchase
+  driver: null
+  brand: true
+  source: paa
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p436
+  text: アルファードが嫌われる理由は何ですか？
+  category: purchase
+  driver: null
+  brand: true
+  source: paa
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p437
+  text: アルファードのガソリン車とステップワゴンハイブリッドの ...
+  category: eco
+  driver: hybrid
+  brand: true
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p438
+  text: ミニバンの購入を検討しています。ノア/ヴォクシー ...
+  category: purchase
+  driver: minivan
+  brand: true
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p439
+  text: ステップワゴンの1番良いグレードを見積もりしてもらったら
+  category: model
+  driver: null
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p440
+  text: 新型クラウンセダンとアルファードどちらが乗り心地は良い ...
+  category: model
+  driver: null
+  brand: true
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p441
+  text: セレナ、ステップワゴンのうち、比較的乗りやすい、かつ比...
+  category: model
+  driver: null
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p442
+  text: 車の購入に当たって質問です。40アルファードとヴェル ...
+  category: purchase
+  driver: null
+  brand: true
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p443
+  text: 「セレナ ノア どっちがいい」を検討しています。同じクラスの他社と比べてどうですか。
+  category: model
+  driver: null
+  brand: true
+  source: suggest
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: セレナ ノア どっちがいい
+  demand_history: []
+- id: p444
+  text: 「セレナ ノア どっちが安い」を重視した場合、実際いくらくらいかかりますか。おすすめの車種も教えてください。
+  category: cost
+  driver: cost
+  brand: true
+  source: suggest
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: セレナ ノア どっちが安い
+  demand_history: []
+- id: p445
+  text: 日産セレナがダメな理由は何ですか？
+  category: brand
+  driver: null
+  brand: false
+  source: paa
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p446
+  text: セレナとノア どっち がいい 知恵袋？
+  category: model
+  driver: null
+  brand: true
+  source: paa
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p447
+  text: ノアとセレナではどちらが運転しやすいですか？
+  category: purchase
+  driver: null
+  brand: true
+  source: paa
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p448
+  text: トヨタ ノアの欠点は何ですか？
+  category: brand
+  driver: null
+  brand: true
+  source: paa
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p449
+  text: 車の買い替えについてです。ノアかセレナで迷っています ...
+  category: purchase
+  driver: null
+  brand: true
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p450
+  text: 新型ノアと新型セレナ、値段が同じだとしてどちらかを新車で ...
+  category: purchase
+  driver: null
+  brand: true
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p451
+  text: 新型ノアと新型セレナ買うならどっちにしますか？みなさんの ...
+  category: model
+  driver: null
+  brand: true
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p452
+  text: 車についてです！ヴォクシーvsノアvsセレナあなたならどれを ...
+  category: purchase
+  driver: null
+  brand: true
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p453
+  text: セレナとノアでどちらの方が故障が少なく長く乗れるでしょ ...
+  category: purchase
+  driver: reliability
+  brand: true
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p454
+  text: ノアにするかセレナにするかミニバン購入を考えております ...
+  category: purchase
+  driver: minivan
+  brand: true
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-08-03'
+    - 9.9
+- id: p455
+  text: 2026年に人気のミニバンは？
+  category: purchase
+  driver: minivan
+  brand: false
+  source: paa
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p456
+  text: 2026年に発売される新型車は？
+  category: purchase
+  driver: null
+  brand: false
+  source: paa
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p457
+  text: トヨタの2026年の新車のミニバン情報は？
+  category: brand
+  driver: minivan
+  brand: true
+  source: paa
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p458
+  text: ホンダの新型ミニバンは2027年に発売されますか？
+  category: brand
+  driver: minivan
+  brand: false
+  source: paa
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p459
+  text: 「運転支援 高速道路 疲れにくい」はメーカーによってどれくらい差がありますか。
+  category: safety
+  driver: adas
+  brand: false
+  source: fanout
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 66.3
+  volume: 0
+  fanout_hits: 221
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 運転支援 高速道路 疲れにくい
+  demand_history:
+  - - '2026-08-03'
+    - 66.3
+- id: p460
+  text: 「予算400万 ミニバン おすすめ」で損をしない方法を教えてください。国産車で具体的にお願いします。
+  category: cost
+  driver: minivan
+  brand: false
+  source: fanout
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 予算400万 ミニバン おすすめ
+  demand_history: []
+- id: p461
+  text: 「ファミリーカー 3列シート 比較」の観点で、国産メーカーを比較して教えてください。
+  category: model
+  driver: minivan
+  brand: false
+  source: fanout
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: ファミリーカー 3列シート 比較
+  demand_history: []
+- id: p462
+  text: 「チャイルドシート 2台 乗る車」について、失敗しない選び方を教えてください。
+  category: purchase
+  driver: minivan
+  brand: false
+  source: fanout
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 66.3
+  volume: 0
+  fanout_hits: 201
+  ugc_hits: 0
+  growth: 1.0
+  keyword: チャイルドシート 2台 乗る車
+  demand_history:
+  - - '2026-08-03'
+    - 66.3
+- id: p463
+  text: 「国産メーカー 信頼性 ランキング」で検討しています。どのブランドがおすすめですか。理由も教えてください。
+  category: purchase
+  driver: null
+  brand: false
+  source: fanout
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 国産メーカー 信頼性 ランキング
+  demand_history: []
+- id: p464
+  text: 「自動ブレーキ 性能 メーカー比較」という観点で、いちばん安心して乗れる国産ブランドはどこですか。
+  category: safety
+  driver: safety
+  brand: false
+  source: fanout
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 自動ブレーキ 性能 メーカー比較
+  demand_history: []
+- id: p465
+  text: 「トヨタ ハイブリッド 強み」について、カタログ値ではなく実際のところを教えてください。
+  category: eco
+  driver: hybrid
+  brand: true
+  source: fanout
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: トヨタ ハイブリッド 強み
+  demand_history: []
+- id: p466
+  text: 「雪道 強い車 4WD」で検討しています。どのブランドがおすすめですか。理由も教えてください。
+  category: purchase
+  driver: null
+  brand: false
+  source: fanout
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 雪道 強い車 4WD
+  demand_history: []
+- id: p467
+  text: 「トヨタ ホンダ 比較 SUV」を検討しています。同じクラスの他社と比べてどうですか。
+  category: model
+  driver: null
+  brand: true
+  source: fanout
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: トヨタ ホンダ 比較 SUV
+  demand_history: []
+- id: p468
+  text: 「サポカー 補助金 対象車種」はメーカーによってどれくらい差がありますか。
+  category: safety
+  driver: safety
+  brand: false
+  source: fanout
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: サポカー 補助金 対象車種
+  demand_history: []
+- id: p469
+  text: 「リセールバリュー 高い車 ランキング」について、失敗しない選び方を教えてください。
+  category: purchase
+  driver: resale
+  brand: false
+  source: fanout
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 66.3
+  volume: 0
+  fanout_hits: 148
+  ugc_hits: 0
+  growth: 1.0
+  keyword: リセールバリュー 高い車 ランキング
+  demand_history:
+  - - '2026-08-03'
+    - 66.3
+- id: p470
+  text: 「車検 費用 ディーラー 民間」を重視した場合、実際いくらくらいかかりますか。おすすめの車種も教えてください。
+  category: cost
+  driver: warranty
+  brand: false
+  source: fanout
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 車検 費用 ディーラー 民間
+  demand_history: []
+- id: p471
+  text: 「メーカー保証 延長 比較」で困っています。どうするのが一般的ですか。
+  category: service
+  driver: warranty
+  brand: false
+  source: fanout
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: メーカー保証 延長 比較
+  demand_history: []
+- id: p472
+  text: 「新車 納期 最新 国産」はメーカーによって違いがありますか。
+  category: service
+  driver: dealer
+  brand: false
+  source: fanout
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 新車 納期 最新 国産
+  demand_history: []
+- id: p473
+  text: 「ハイブリッド 実燃費 ランキング」について、国産メーカーではどこが有利か教えてください。
+  category: eco
+  driver: hybrid
+  brand: false
+  source: fanout
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: 66.3
+  volume: 0
+  fanout_hits: 134
+  ugc_hits: 0
+  growth: 1.0
+  keyword: ハイブリッド 実燃費 ランキング
+  demand_history:
+  - - '2026-08-03'
+    - 66.3
+- id: p474
+  text: 「PHEV ハイブリッド 違い」について、国産メーカーではどこが有利か教えてください。
+  category: eco
+  driver: hybrid
+  brand: false
+  source: fanout
+  tier: longtail
+  added_on: '2026-08-03'
+  tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: PHEV ハイブリッド 違い
+  demand_history: []
