@@ -3165,5 +3165,317 @@
       "core": 62,
       "longtail": 495
     }
+  },
+  {
+    "date": "2026-08-10",
+    "candidates": 383,
+    "added": [
+      {
+        "id": "p621",
+        "text": "「ミニバン おすすめタイヤ」について、失敗しない選び方を教えてください。",
+        "source": "suggest",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p622",
+        "text": "買って後悔したミニバンは？",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p623",
+        "text": "価値が下がらないミニバンは？",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p624",
+        "text": "6人乗り以上のミニバンでおすすめはありますか？",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p625",
+        "text": "「国産タイヤsuv おすすめ」について、失敗しない選び方を教えてください。",
+        "source": "suggest",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p626",
+        "text": "「アルファード ハイブリッド 燃費 実燃費」について、国産メーカーではどこが有利か教えてください。",
+        "source": "suggest",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p627",
+        "text": "ハイブリッド車はやめたほうがいいですか？",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p628",
+        "text": "E Power と ハイブリッドどっちが燃費がいい？",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p629",
+        "text": "単純に比べて、軽自動車の燃費と、ハイブリッド車の燃費 ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p630",
+        "text": "電気自動車は衰退していますか？",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p631",
+        "text": "「軽自動車 おすすめメーカー」について、失敗しない選び方を教えてください。",
+        "source": "suggest",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p632",
+        "text": "「軽自動車 おすすめ 安い」で損をしない方法を教えてください。国産車で具体的にお願いします。",
+        "source": "suggest",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p633",
+        "text": "軽自動車のおすすめを教えてください。軽自動車の新車の購入 ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p634",
+        "text": "初めての車で軽自動車を買う場合何が1番最適だと思いますか ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p635",
+        "text": "「コンパクトカー 街乗り おすすめ」について、失敗しない選び方を教えてください。",
+        "source": "suggest",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p636",
+        "text": "ホンダの自動ブレーキについて。1か月前、信号待ちの状態で",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p637",
+        "text": "EVに乗るのは、運転していても疲れないから? エンジンが ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p638",
+        "text": "「車 納期 長い なぜ」はメーカーによって違いがありますか。",
+        "source": "suggest",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p639",
+        "text": "「納期 長い 車 ランキング」はメーカーによって違いがありますか。",
+        "source": "suggest",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p640",
+        "text": "「納期 長い 車 ランキング 2025」はメーカーによって違いがありますか。",
+        "source": "suggest",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p641",
+        "text": "残クレについてです。 結局残クレ購入で後悔した人いますか ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p642",
+        "text": "よくわかってないけど残クレは損だと知恵袋で言われているので",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p643",
+        "text": "カーリースはやばいですか？",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p644",
+        "text": "カーリースについて質問です。カーリースで借りた車は少しの ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p645",
+        "text": "車中泊におすすめの車は？",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p646",
+        "text": "道の駅で車中泊してもいいですか？",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p647",
+        "text": "家族4人で車中泊に適した車はどんなものがありますか ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p648",
+        "text": "雪道に強い車について今度車を買い替えようと計画しているの ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p649",
+        "text": "「中古車 買うなら何年落ち」について、失敗しない選び方を教えてください。",
+        "source": "suggest",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p650",
+        "text": "安くて壊れにくい中古車は？",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p651",
+        "text": "トヨタ 納車 何日前に連絡くる？",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p652",
+        "text": "「アルファード ヴェルファイア 違い 知恵袋」の観点で、国産メーカーを比較して教えてください。",
+        "source": "suggest",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p653",
+        "text": "アルファードの残価ローンはやばいですか？",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p654",
+        "text": "車の残価設定型ローンについて質問です。乗り出し450万円 ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p655",
+        "text": "アルファードってそこらじゅうに走ってますがなんでみんな ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p656",
+        "text": "車の購入について質問ですシエンタかノア・ステップワゴンで ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p657",
+        "text": "日産が新型コンパクトミニバンを出すという噂 ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p658",
+        "text": "アルファードもエルグランドもデリカもミニバンなのでしょう ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p659",
+        "text": "「スライドドア 使いやすい メーカー」について、失敗しない選び方を教えてください。",
+        "source": "fanout",
+        "demand": 66.3,
+        "volume": 0
+      },
+      {
+        "id": "p660",
+        "text": "「軽自動車 維持費 比較」で損をしない方法を教えてください。国産車で具体的にお願いします。",
+        "source": "fanout",
+        "demand": null,
+        "volume": 0
+      }
+    ],
+    "promoted": [
+      {
+        "id": "p120",
+        "text": "「国産メーカー 信頼性 ランキング」について、失敗しない選び方を教えてください。",
+        "demand": 65.7,
+        "source": "fanout"
+      }
+    ],
+    "surged": [],
+    "demoted": [
+      {
+        "id": "p044",
+        "text": "残価設定ローンとカーサブスクはどちらが得ですか？国産メーカーのプランで比較してください。",
+        "demand": 55.8
+      }
+    ],
+    "tiers": {
+      "strategic": 25,
+      "core": 62,
+      "longtail": 541
+    },
+    "tiers_before": {
+      "strategic": 24,
+      "core": 62,
+      "longtail": 502
+    }
   }
 ]
