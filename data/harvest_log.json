@@ -3041,5 +3041,931 @@
       "strategic": 9,
       "longtail": 39
     }
+  },
+  {
+    "date": "2026-08-09",
+    "candidates": 390,
+    "added": [
+      {
+        "id": "p475",
+        "text": "「ミニバン おすすめ コスパ」について、失敗しない選び方を教えてください。",
+        "source": "suggest",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p476",
+        "text": "「ミニバン おすすめ コンパクト」で検討しています。どのブランドがおすすめですか。理由も教えてください。",
+        "source": "suggest",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p477",
+        "text": "「ミニバン おすすめ ミドル」について、失敗しない選び方を教えてください。",
+        "source": "suggest",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p478",
+        "text": "ファミリーカーで外国ミニバンの比較①ルノーカングー② ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p479",
+        "text": "「suv おすすめ 国産」について、失敗しない選び方を教えてください。",
+        "source": "suggest",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p480",
+        "text": "「国産 suv おすすめ ランキング」について、失敗しない選び方を教えてください。",
+        "source": "suggest",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p481",
+        "text": "国産ミドルサイズSUVに関してです。2024年8月現在です。街 ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p482",
+        "text": "おすすめのファミリーカーについて。この度、車の乗り換えを ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p483",
+        "text": "おすすめの車を教えて欲しいです。4人家族(子供0歳",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p484",
+        "text": "外国のファミリーカー事情について質問です。 日本で 5人家族 ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p485",
+        "text": "ファミリーカーの用途で、軽自動車から5人乗り普通車に ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p486",
+        "text": "「シエンタ 燃費 ハイブリッド 実燃費」について、国産メーカーではどこが有利か教えてください。",
+        "source": "suggest",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p487",
+        "text": "「ヤリスクロス 燃費 ハイブリッド 実燃費」について、国産メーカーではどこが有利か教えてください。",
+        "source": "suggest",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p488",
+        "text": "ヴェルファイアハイブリッドの実燃費はどれくらいで...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p489",
+        "text": "EV車のデメリットは、なんですか？",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p490",
+        "text": "「軽自動車 おすすめ 2026」で検討しています。どのブランドがおすすめですか。理由も教えてください。",
+        "source": "suggest",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p491",
+        "text": "「軽自動車 おすすめタイヤ」について、失敗しない選び方を教えてください。",
+        "source": "suggest",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p492",
+        "text": "「軽自動車 おすすめ 燃費」について、国産メーカーではどこが有利か教えてください。",
+        "source": "suggest",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p493",
+        "text": "「軽自動車 おすすめ スライドドア」について、失敗しない選び方を教えてください。",
+        "source": "suggest",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p494",
+        "text": "買ってよかった軽自動車ランキングは？",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p495",
+        "text": "今軽自動車を買うならどれがいいですか？",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p496",
+        "text": "中古の軽自動車のおすすめ車種、年式を教えてください。主婦 ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p497",
+        "text": "中古で軽自動車を検討しています小さい子がひとりいます車が ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p498",
+        "text": "走るのが楽しいコンパクトカーは？",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p499",
+        "text": "街乗りに最適なコンパクトカーを教えて下さい。現在、日産ノート ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p500",
+        "text": "コンパクトカーで何が1番おすすめでしょうか燃費もよく走り ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p501",
+        "text": "自動ブレーキの最強は？",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p502",
+        "text": "自動ブレーキの性能が高い軽自動車は？",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p503",
+        "text": "自動ブレーキの性能はメーカーによって違いますか？",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p504",
+        "text": "自動ブレーキの評価ランキングは？",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p505",
+        "text": "国産自動車メーカーのミニバンに搭載されている運転支援 ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p506",
+        "text": "高速道路で運転支援を使ってますか？よく高速 ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p507",
+        "text": "レクサスより運転していて疲れない車ってありますか？ 同等 ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p508",
+        "text": "車の運転は軽よりSUVとかミニバンが長距離運転しても疲れ ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p509",
+        "text": "「リセールバリュー 高い車 軽自動車」で検討しています。どのブランドがおすすめですか。理由も教えてください。",
+        "source": "suggest",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p510",
+        "text": "「リセールバリュー 高い車 suv」で検討しています。どのブランドがおすすめですか。理由も教えてください。",
+        "source": "suggest",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p511",
+        "text": "リセールが良い車ランキングは？",
+        "source": "paa",
+        "demand": 66.3,
+        "volume": 0
+      },
+      {
+        "id": "p512",
+        "text": "リセールのいい車を新車で買って3年くらいで買い替える ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p513",
+        "text": "「維持費 安い車 ランキング」で損をしない方法を教えてください。国産車で具体的にお願いします。",
+        "source": "suggest",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p514",
+        "text": "「維持費 燃費 安い車」について、カタログ値ではなく実際のところを教えてください。",
+        "source": "suggest",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p515",
+        "text": "「維持費 税金 安い車」を重視した場合、実際いくらくらいかかりますか。おすすめの車種も教えてください。",
+        "source": "suggest",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p516",
+        "text": "「車 納期 長い キャンセル」はメーカーによって違いがありますか。",
+        "source": "suggest",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p517",
+        "text": "「トヨタ 車 納期 長い」で困っています。どうするのが一般的ですか。",
+        "source": "suggest",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p518",
+        "text": "車の納期は平均してどのくらいかかりますか？",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p519",
+        "text": "「残価設定ローン 損得」を重視した場合、実際いくらくらいかかりますか。おすすめの車種も教えてください。",
+        "source": "suggest",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p520",
+        "text": "残価設定ローンはやばいですか？",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p521",
+        "text": "残価設定で車購入してる方に質問です。実際、返却する時残価 ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p522",
+        "text": "残価設定ローン（残クレ）について教えてください。例えば ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p523",
+        "text": "サブスクの落とし穴は？",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p524",
+        "text": "車のリースの落とし穴は？",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p525",
+        "text": "カーリースならどこがいい？",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p526",
+        "text": "デメリットを教えてください。車を中古で買うべきなのか迷っ ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p527",
+        "text": "車中泊に向いている車種は？",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p528",
+        "text": "普通の車で車中泊はできますか？",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p529",
+        "text": "ほったらかしキャンプ場で車中泊するにはどうしたらいいですか？",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p530",
+        "text": "【ひとり車中泊に向くお勧めのコンパクトカー教えてください ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p531",
+        "text": "車中泊に適した車を探してます！ 1300~1500CCクラスで車 ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p532",
+        "text": "「雪道 強い車 ランキング」で検討しています。どのブランドがおすすめですか。理由も教えてください。",
+        "source": "suggest",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p533",
+        "text": "「雪道 強い車 外車」について、失敗しない選び方を教えてください。",
+        "source": "suggest",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p534",
+        "text": "積雪に強いおすすめの車は？",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p535",
+        "text": "雪道に強い車を教えてください。",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p536",
+        "text": "「高齢者 運転しやすい車 コンパクトカー」について、失敗しない選び方を教えてください。",
+        "source": "suggest",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p537",
+        "text": "高齢者が乗り降りしやすいSUVは？",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p538",
+        "text": "高齢者の親が乗りやすい車は何かありますか？・軽自動車以外 ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p539",
+        "text": "高齢者でも乗り降りしやすい車は？コンパクトカーです。祖母 ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p540",
+        "text": "高齢者も乗り降りしやすい全長が4500mm以下の国産車で",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p541",
+        "text": "高齢者が病院などの送り迎えで、乗り降りしやすい車って",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p542",
+        "text": "高齢者が乗降りしやすい車はなんですか。1500cc以下の車 ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p543",
+        "text": "スライドドアって本当に高齢者が乗りやすいですか ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p544",
+        "text": "新社会人におすすめの車教えてください！実家の車は運転して ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p545",
+        "text": "「中古車 買うならディーラー」で困っています。どうするのが一般的ですか。",
+        "source": "suggest",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p546",
+        "text": "中古車で買うならどの車がいいですか？",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p547",
+        "text": "中古車を見に行ってみる時に実際に車を見て注目するところは ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p548",
+        "text": "【質問日時の新しい順】新車 回答受付中の質問",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p549",
+        "text": "「車検 費用 安くするには」を重視した場合、実際いくらくらいかかりますか。おすすめの車種も教えてください。",
+        "source": "suggest",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p550",
+        "text": "車の車検は、どこが安い？",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p551",
+        "text": "前回の車検に比べて費用が安く済む事はありますか？",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p552",
+        "text": "「新型アルファード 納期 最新」で困っています。どうするのが一般的ですか。",
+        "source": "suggest",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p553",
+        "text": "「新型アルファード 納期連絡」で困っています。どうするのが一般的ですか。",
+        "source": "suggest",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p554",
+        "text": "「新型アルファード 納期 6月契約」はメーカーによって違いがありますか。",
+        "source": "suggest",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p555",
+        "text": "「新型アルファード x 納期」はメーカーによって違いがありますか。",
+        "source": "suggest",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p556",
+        "text": "「新型アルファード 新車 納期」はメーカーによって違いがありますか。",
+        "source": "suggest",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p557",
+        "text": "アルファードの新車の納期は何ヶ月くらいですか？",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p558",
+        "text": "2026年6月にアルファードは発売されますか？",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p559",
+        "text": "新型アルファード40系納期について",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p560",
+        "text": "今度新型アルファードが納車となります。映像関係の ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p561",
+        "text": "新車で購入した新型アルファード。納車時の走行距離が900km ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p562",
+        "text": "「アルファード ヴェルファイア 違い 30系」の観点で、国産メーカーを比較して教えてください。",
+        "source": "suggest",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p563",
+        "text": "「アルファード ヴェルファイア 違い 見た目」を検討しています。同じクラスの他社と比べてどうですか。",
+        "source": "suggest",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p564",
+        "text": "「アルファード ヴェルファイア 違い 価格」で損をしない方法を教えてください。国産車で具体的にお願いします。",
+        "source": "suggest",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p565",
+        "text": "「アルファード ヴェルファイア 違い サイズ」の観点で、国産メーカーを比較して教えてください。",
+        "source": "suggest",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p566",
+        "text": "アルファードとヴェルファイアはどちらが運転しやすいですか？",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p567",
+        "text": "【質問日時の新しい順】ヴェルファイアのQ&A一覧 すべての ...",
+        "source": "chiebukuro",
+        "demand": 19.8,
+        "volume": 0
+      },
+      {
+        "id": "p568",
+        "text": "【質問日時の新しい順】アルファードハイブリッドのQ&A一覧 ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p569",
+        "text": "残クレアルファード なんでダメ？",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p570",
+        "text": "アルファード購入について質問です。知人が ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p571",
+        "text": "ディーラーから残クレを進められもちろんデメリットについて ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p572",
+        "text": "新型アルファードの購入を考えています。見積でこみこみ640万",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p573",
+        "text": "「アルファード 中古 なぜ 高い」で検討しています。どのブランドがおすすめですか。理由も教えてください。",
+        "source": "suggest",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p574",
+        "text": "アルファードは買わない方がいいですか？",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p575",
+        "text": "アルファードの中古価格はなぜ下がるのですか？",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p576",
+        "text": "アルファードを買って少し後悔30アルファード後期SAを購入 ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p577",
+        "text": "ホンダのステップワゴンはなぜ人気がないのでしょうか？",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p578",
+        "text": "新型ステップワゴンの全長が長くなりましたが",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p579",
+        "text": "アルファードって高級車ですか？職場の人が ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p580",
+        "text": "30アルファードor現行ステップワゴンor現行ヴォクシーで金...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p581",
+        "text": "「セレナ ノア どっちがいい」の観点で、国産メーカーを比較して教えてください。",
+        "source": "suggest",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p582",
+        "text": "「セレナ ノア どっちが安い」で損をしない方法を教えてください。国産車で具体的にお願いします。",
+        "source": "suggest",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p583",
+        "text": "ホンダの新型車は2026年にミニバンに予定されていますか？",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p584",
+        "text": "日産はシエンタに対抗できるコンパクトミニバンを2028年に ...",
+        "source": "chiebukuro",
+        "demand": 19.8,
+        "volume": 0
+      },
+      {
+        "id": "p585",
+        "text": "車のグレードについて。ディーラーから新型ヤリスクロス ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p586",
+        "text": "日産が新型コンパクトミニバンを出すという噂がありますが ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p587",
+        "text": "トヨタのミニバンを比較したい。エスティマってどうですか ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p588",
+        "text": "7人乗りの車の購入を検討しています。ノア、ヴォクシーは見 ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p589",
+        "text": "「国産ミニバン 人気ランキング 最新」について、失敗しない選び方を教えてください。",
+        "source": "fanout",
+        "demand": 66.3,
+        "volume": 0
+      },
+      {
+        "id": "p590",
+        "text": "「踏み間違い防止装置 後付け」はメーカーによってどれくらい差がありますか。",
+        "source": "fanout",
+        "demand": 66.3,
+        "volume": 0
+      },
+      {
+        "id": "p591",
+        "text": "「トヨタ ハイブリッド 強み」について、国産メーカーではどこが有利か教えてください。",
+        "source": "fanout",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p592",
+        "text": "「残価設定ローン デメリット」を重視した場合、実際いくらくらいかかりますか。おすすめの車種も教えてください。",
+        "source": "fanout",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p593",
+        "text": "「EV 後悔 理由」について、国産メーカーではどこが有利か教えてください。",
+        "source": "fanout",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p594",
+        "text": "「車 維持費 年間 平均」で損をしない方法を教えてください。国産車で具体的にお願いします。",
+        "source": "fanout",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p595",
+        "text": "「ハイブリッド 実燃費 ランキング」について、カタログ値ではなく実際のところを教えてください。",
+        "source": "fanout",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p596",
+        "text": "「PHEV ハイブリッド 違い」について、カタログ値ではなく実際のところを教えてください。",
+        "source": "fanout",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p597",
+        "text": "「充電インフラ 日本 現状」について、国産メーカーではどこが有利か教えてください。",
+        "source": "fanout",
+        "demand": null,
+        "volume": 0
+      }
+    ],
+    "promoted": [
+      {
+        "id": "p129",
+        "text": "「トヨタ ホンダ 比較 SUV」の観点で、国産メーカーを比較して教えてください。",
+        "demand": 67.2,
+        "source": "fanout"
+      },
+      {
+        "id": "p128",
+        "text": "「ハイブリッド 実燃費 ランキング」は国産メーカーだとどこが有利ですか。",
+        "demand": 67.0,
+        "source": "fanout"
+      },
+      {
+        "id": "p459",
+        "text": "「運転支援 高速道路 疲れにくい」はメーカーによってどれくらい差がありますか。",
+        "demand": 66.3,
+        "source": "fanout"
+      },
+      {
+        "id": "p462",
+        "text": "「チャイルドシート 2台 乗る車」について、失敗しない選び方を教えてください。",
+        "demand": 66.3,
+        "source": "fanout"
+      }
+    ],
+    "surged": [],
+    "demoted": [
+      {
+        "id": "p042",
+        "text": "日本でエコカー減税や補助金の対象車種が多いメーカーはどこでしょう？",
+        "demand": 45.3
+      },
+      {
+        "id": "p045",
+        "text": "自動車保険料が安く済む国産車の傾向を、車種やメーカーの観点から教えてください。",
+        "demand": 46.2
+      },
+      {
+        "id": "p070",
+        "text": "車を長く乗るなら、点検パックやメンテナンスプランが充実している国産メーカーはどこですか？",
+        "demand": 47.0
+      },
+      {
+        "id": "p007",
+        "text": "犬を2頭乗せてよく遠出します。荷室が広くて汚れにくい国産車のおすすめを教えてください。",
+        "demand": 49.0
+      }
+    ],
+    "tiers": {
+      "strategic": 17,
+      "core": 62,
+      "longtail": 486
+    },
+    "tiers_before": {
+      "strategic": 13,
+      "core": 62,
+      "longtail": 367
+    }
   }
 ]
