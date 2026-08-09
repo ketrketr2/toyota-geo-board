@@ -1634,7 +1634,7 @@ function scatterSales(){
       <line x1="${X(0)}" y1="${Y(0)}" x2="${X(mx)}" y2="${Y(mx)}" stroke="var(--tx2)"
         stroke-width="1.3" stroke-dasharray="6 4" opacity=".62"/>
       <text x="${X(mx)-6}" y="${Y(mx)+16}" font-size="10" fill="var(--tx2)" text-anchor="end">販売シェア＝言及シェア</text>
-      <text x="${X(mx*0.30)}" y="${Y(mx*0.055)}" font-size="10" fill="var(--bad)" opacity=".85">この線より下 ＝ 規模の割にAIで語られていない</text>
+      <text x="${X(mx*0.50)}" y="${Y(mx*0.035)}" font-size="10" fill="var(--bad)" opacity=".85">この線より下 ＝ 規模の割にAIで語られていない</text>
       <text x="${X(mx*0.035)}" y="${Y(mx*0.86)}" font-size="10" fill="var(--ok)" opacity=".85">この線より上 ＝ 規模以上に語られている</text>
       ${me?(()=>{const cx=X(me.sales),y1=Y(me.aiShare),y2=Y(me.sales);
         return `<g opacity=".95">
