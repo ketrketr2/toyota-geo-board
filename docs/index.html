@@ -4,12 +4,125 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>TOYOTA AI Visibility Board</title>
-<link href="https://fonts.googleapis.com/css2?family=BIZ+UDGothic:wght@400;700&family=BIZ+UDPGothic:wght@400;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDGothic:wght@400;700&family=BIZ+UDPGothic:wght@400;700&family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 @keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
 @keyframes shimmer{0%{background-position:-460px 0}100%{background-position:460px 0}}
 @keyframes ringIn{from{stroke-dashoffset:308}}
 @keyframes glow{0%,100%{opacity:.5}50%{opacity:.9}}
+@keyframes skel{0%{background-position:-520px 0}100%{background-position:520px 0}}
+/* ばね。行き過ぎてから戻るぶん、指で押した感じに近くなる */
+.card,.fac,.vs{transition:transform .34s cubic-bezier(.34,1.56,.64,1),
+  box-shadow .28s ease,border-color .28s ease}
+.card:hover,.fac:hover{transform:translateY(-2px) scale(1.006);
+  border-color:color-mix(in srgb,var(--accent) 34%,var(--line));
+  box-shadow:0 10px 34px rgba(0,0,0,.34),0 0 0 1px color-mix(in srgb,var(--accent) 16%,transparent)}
+@media (prefers-reduced-motion:reduce){
+  .card,.fac,.vs{transition:none}
+  .card:hover,.fac:hover{transform:none}
+}
+/* 読み込み中の骨組み。白いちらつきが出ると「壊れた」と読まれる */
+.skel{border-radius:10px;background:linear-gradient(90deg,
+  color-mix(in srgb,var(--tx) 4%,transparent) 8%,
+  color-mix(in srgb,var(--tx) 9%,transparent) 18%,
+  color-mix(in srgb,var(--tx) 4%,transparent) 33%);
+  background-size:1040px 100%;animation:skel 1.25s linear infinite}
+.skelwrap{padding:22px 26px;display:grid;gap:14px}
+/* スコープ切替 */
+.scopebox{background:color-mix(in srgb,var(--card2) 74%,transparent);border:1px solid var(--line);
+  border-radius:12px;padding:12px 14px;margin-bottom:12px}
+.scopehd{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:8px}
+.scopettl{font-size:12px;font-weight:700;color:var(--tx2)}
+.scopenote{font-size:11px;color:var(--sub)}
+.seg2{display:flex;gap:6px;flex-wrap:wrap}
+.seg2 button{flex:1 1 130px;min-width:0;display:flex;flex-direction:column;align-items:flex-start;gap:2px;
+  background:transparent;border:1px solid var(--line2);color:var(--sub);border-radius:9px;
+  padding:7px 10px;font-family:inherit;font-size:11px;cursor:pointer;
+  transition:background .2s,color .2s,border-color .2s,transform .2s cubic-bezier(.34,1.56,.64,1)}
+.seg2 button b{font-size:15px;font-weight:700;color:var(--tx2);
+  font-family:"Geist Mono",ui-monospace,monospace;font-variant-numeric:tabular-nums}
+.seg2 button:hover{border-color:var(--accent);transform:translateY(-1px)}
+.seg2 button.on{background:color-mix(in srgb,var(--accent) 15%,transparent);
+  border-color:color-mix(in srgb,var(--accent) 56%,transparent);color:var(--tx)}
+.seg2 button.on b{color:var(--accent2)}
+.scopewhy{margin-top:9px;font-size:11.5px;color:var(--tx2);line-height:1.65}
+.fac.alt{border-color:color-mix(in srgb,var(--own) 46%,transparent);
+  background:color-mix(in srgb,var(--own) 7%,transparent)}
+.sctag{display:inline-block;margin-left:5px;padding:1px 6px;border-radius:5px;font-size:9.5px;
+  background:color-mix(in srgb,var(--own) 22%,transparent);color:var(--own)}
+/* 蛍光ペン。読み手に必ず拾ってほしい一文だけに使う */
+.hl{background:linear-gradient(transparent 58%,color-mix(in srgb,var(--accent2) 42%,transparent) 58%);
+  padding:0 2px;font-weight:700;color:var(--tx)}
+.scatwrap{width:100%;overflow:hidden}
+.scat{display:block;max-width:760px;margin:0 auto}
+.scat .pt circle{transition:r .2s ease,fill-opacity .2s ease}
+.scat .pt:hover circle{fill-opacity:1}
+.scatlead{margin-top:10px;font-size:12.5px;line-height:1.75;color:var(--tx2)}
+.note2{color:var(--sub);font-size:10px;margin-left:3px;cursor:help}
+.hm td.lead{outline:1.5px solid color-mix(in srgb,var(--accent2) 62%,transparent);outline-offset:-2px}
+.hm td .rk{display:block;font-size:9px;opacity:.66;line-height:1.2}
+.star{cursor:pointer;color:var(--line2);font-size:15px;line-height:1;user-select:none;
+  transition:color .18s ease,transform .24s cubic-bezier(.34,1.56,.64,1);display:inline-block}
+.star:hover{color:var(--own);transform:scale(1.25)}
+.star.on{color:var(--own);text-shadow:0 0 9px color-mix(in srgb,var(--own) 62%,transparent)}
+.chip.star b{margin-left:5px;font-family:"Geist Mono",monospace}
+.starempty{background:color-mix(in srgb,var(--card2) 66%,transparent);border:1px dashed var(--line2);
+  border-radius:10px;padding:11px 14px;margin-bottom:12px;font-size:11.5px;color:var(--tx2);line-height:1.7}
+/* ---- 読み方ガイド ---- */
+.gtoc{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:16px}
+.gt{display:inline-flex;align-items:center;gap:7px;background:var(--card);border:1px solid var(--line);
+  border-radius:9px;padding:7px 11px;font-size:11.5px;color:var(--tx2);text-decoration:none;
+  transition:border-color .2s,transform .22s cubic-bezier(.34,1.56,.64,1),color .2s}
+.gt:hover{border-color:var(--accent);color:var(--tx);transform:translateY(-1px)}
+.gt b{font-family:"Geist Mono",monospace;font-size:10.5px;color:var(--accent2);
+  background:color-mix(in srgb,var(--accent2) 14%,transparent);border-radius:5px;padding:1px 6px}
+.gsec{background:var(--card);border:1px solid var(--line);border-radius:13px;
+  padding:18px 22px;margin-bottom:14px;scroll-margin-top:18px}
+.gh{display:flex;align-items:center;gap:10px;font-size:15px;font-weight:700;color:var(--tx);margin-bottom:12px}
+.gn{display:inline-flex;align-items:center;justify-content:center;width:25px;height:25px;flex:0 0 25px;
+  border-radius:8px;background:linear-gradient(135deg,var(--accent),var(--accent2));
+  color:#04121C;font-size:12px;font-weight:800;font-family:"Geist Mono",monospace}
+.gb{font-size:12.5px;line-height:1.85;color:var(--tx2)}
+.gb p{margin-bottom:10px}
+.gb b{color:var(--tx)}
+.gul{margin:0 0 10px 2px;padding-left:16px}
+.gul li{margin-bottom:6px}
+.gul.gng li{list-style:none;position:relative;padding-left:16px}
+.gul.gng li::before{content:"";position:absolute;left:0;top:9px;width:7px;height:7px;border-radius:2px;
+  background:var(--amber);opacity:.8}
+.gwarn{background:color-mix(in srgb,var(--amber) 10%,transparent);
+  border-left:3px solid color-mix(in srgb,var(--amber) 66%,transparent);
+  border-radius:0 8px 8px 0;padding:9px 13px;font-size:11.5px}
+.gformula{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:4px 0 12px;
+  background:color-mix(in srgb,var(--card2) 74%,transparent);border:1px solid var(--line);
+  border-radius:10px;padding:11px 13px}
+.gfk{font-size:11px;color:var(--sub);white-space:nowrap}
+.gfk b{font-family:"Geist Mono",monospace;font-size:13px;color:var(--tx)}
+.gop{color:var(--sub);font-size:12px}
+.gfr{font-family:"Geist Mono",monospace;font-size:19px;font-weight:800;color:var(--accent2);margin-left:2px}
+.gjump{display:inline-flex;align-items:center;gap:4px;margin-top:4px;padding:4px 10px;border-radius:7px;
+  background:color-mix(in srgb,var(--accent) 13%,transparent);color:var(--accent);
+  font-size:11px;cursor:pointer;border:1px solid color-mix(in srgb,var(--accent) 30%,transparent);
+  transition:background .2s,transform .2s cubic-bezier(.34,1.56,.64,1)}
+.gjump:hover{background:color-mix(in srgb,var(--accent) 24%,transparent);transform:translateX(2px)}
+.gfaq{display:grid;gap:7px}
+.gq{background:color-mix(in srgb,var(--card2) 70%,transparent);border:1px solid var(--line);
+  border-radius:10px;overflow:hidden}
+.gq summary{cursor:pointer;padding:10px 14px;font-size:12.5px;font-weight:700;color:var(--tx2);
+  list-style:none;display:flex;align-items:center;gap:8px}
+.gq summary::-webkit-details-marker{display:none}
+.gq summary::before{content:"Q";font-family:"Geist Mono",monospace;font-size:10.5px;color:var(--accent2);
+  background:color-mix(in srgb,var(--accent2) 15%,transparent);border-radius:5px;padding:1px 6px;flex:0 0 auto}
+.gq[open] summary{color:var(--tx);border-bottom:1px solid var(--line)}
+.gq > div{padding:11px 14px 13px 36px;font-size:11.5px;line-height:1.85;color:var(--tx2)}
+.gfoot{text-align:center;font-size:11px;color:var(--sub);padding:14px 0 4px}
+@media(max-width:760px){
+  .gsec{padding:14px 15px}
+  .gformula{gap:4px;padding:9px}
+  .gfk{font-size:10px}
+}
 /* ===== ダーク基調（既定）。Linearの黒キャンバス＋OP.GGのゲーム系密度を参照 ===== */
 :root{
   --sidebg:#070C13;
@@ -44,12 +157,16 @@
   --hmtx:#FFFFFF;
 }
 *{box-sizing:border-box;margin:0;padding:0}
+/* 数字は等幅。桁が縦に揃わないと、表もカードも読み取りに余計な負荷がかかる。 */
+.fv,.va,.big,.kpi,.sc,td.c,td.n,th.c,.mono,[data-count],.pill,.dn,.up,.hm td,.scat text{
+  font-family:"Geist Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  font-variant-numeric:tabular-nums;font-feature-settings:"tnum" 1}
 body{background:
     radial-gradient(900px 520px at 82% -12%,rgba(0,229,199,.10),transparent 60%),
     radial-gradient(760px 420px at 12% 8%,rgba(56,189,248,.08),transparent 60%),
     linear-gradient(var(--grid) 1px,transparent 1px) 0 0/44px 44px,
     linear-gradient(90deg,var(--grid) 1px,transparent 1px) 0 0/44px 44px,
-    var(--bg);color:var(--ink);font-family:"BIZ UDGothic","BIZ UDPGothic","Hiragino Sans",Meiryo,sans-serif;font-size:14px;line-height:1.7;-webkit-font-smoothing:antialiased}
+    var(--bg);color:var(--ink);font-family:"Geist","BIZ UDGothic","BIZ UDPGothic","Hiragino Sans",Meiryo,sans-serif;font-size:14px;line-height:1.7;-webkit-font-smoothing:antialiased}
 .app{display:grid;grid-template-columns:214px 1fr;min-height:100vh;background:linear-gradient(90deg,var(--navy) 0,var(--navy) 214px,var(--bg) 214px)}
 /* sidebar */
 .side{color:#fff;padding:20px 0 40px;position:sticky;top:0;height:100vh;overflow-y:auto;
@@ -563,6 +680,7 @@ kbd{display:inline-block;font-family:inherit;font-size:10px;padding:1px 6px;bord
   <a class="nav" data-p="sources"><span class="ic">◇</span>引用ソース</a>
   <a class="nav" data-p="signals"><span class="ic">⇡</span>AI流入・クローラー</a>
   <a class="nav" data-p="alerts"><span class="ic">!</span>アラート</a>
+  <a class="nav" data-p="guide"><span class="ic">?</span>読み方ガイド</a>
   <div class="foot" id="foot"></div>
 </aside>
 
@@ -581,7 +699,15 @@ kbd{display:inline-block;font-family:inherit;font-size:10px;padding:1px 6px;bord
   <div class="sep"></div>
   <div class="stamp" id="stamp"></div>
 </div>
-<div class="wrap" id="root"><div id="loading">読み込み中…</div></div>
+<div class="wrap" id="root"><div class="skelwrap">
+  <div class="skel" style="height:150px"></div>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px">
+    <div class="skel" style="height:88px"></div><div class="skel" style="height:88px"></div>
+    <div class="skel" style="height:88px"></div><div class="skel" style="height:88px"></div>
+    <div class="skel" style="height:88px"></div><div class="skel" style="height:88px"></div></div>
+  <div class="skel" style="height:230px"></div>
+  <div class="skel" style="height:170px"></div>
+</div></div>
 <div id="tip"></div>
 <div id="toast"></div>
 <div id="modal"><div id="modalbox">
@@ -752,14 +878,51 @@ function toast(html,ms){const w=document.getElementById("toast");
     d.style.transform="translateY(8px)";setTimeout(()=>d.remove(),420);}, ms||4200);}
 
 /* ---------- pages ---------- */
+/* オウンド引用率を「どこまでを自社とみなすか」で切り替える。
+   渡邉さんの「販売店サイトはどういう扱い？」への回答。
+   GEOスコアの定義は toyota.jp のまま動かさない。動かすと過去の時系列が全部意味を失う。 */
+function bindStars(root){
+  root.querySelectorAll(".star[data-star]").forEach(el=>el.onclick=e=>{
+    e.stopPropagation();
+    toggleStar(el.dataset.star);
+    render();
+    toast(stars.has(el.dataset.star)
+      ? `<b>重点クエリに追加しました</b><br><span style="color:var(--sub)">クエリタブの「★ 重点のみ」で絞り込めます</span>`
+      : `<b>重点クエリから外しました</b>`, 2200);
+  });
+  const cs=root.querySelector("#chipStar");
+  if(cs) cs.onclick=()=>{starOnly=!starOnly; render();};
+}
+function scopeSwitch(){
+  const n=scopeCells();
+  const v={}; Object.keys(SCOPES).forEach(k=>v[k]=ownedRate(k));
+  const best=v.dealer>v.owned;
+  return `<div class="scopebox">
+    <div class="scopehd">
+      <span class="scopettl">オウンド引用率のスコープ</span>
+      <span class="scopenote">自社が登場した ${n} 通りのうち、根拠に引かれた割合</span>
+    </div>
+    <div class="seg2" id="segScope">
+      ${Object.entries(SCOPES).map(([k,s])=>`<button data-s="${k}" class="${k===scope?"on":""}" title="${esc(s.desc)}">
+        ${esc(s.label)}<b>${f1(v[k])}%</b></button>`).join("")}
+    </div>
+    <div class="scopewhy">${esc(SCOPES[scope].desc)}。
+      ${best?`<b class="hl">販売店（${f1(v.dealer)}%）のほうが toyota.jp（${f1(v.owned)}%）より多く引かれています。</b>販売会社サイトはAIにとって「地域で買える具体的な情報源」として扱われやすく、本体サイトとは別の打ち手が要ります。`
+            :`toyota.jp（${f1(v.owned)}%）が販売店（${f1(v.dealer)}%）を上回っています。`}
+      <span style="color:var(--sub)">切り替えても<b>GEOスコアは変わりません</b>。スコアの owned_citation は toyota.jp 基準に固定してあり、定義を変えると過去${(D.history||[]).length}日分の比較ができなくなるためです。</span></div>
+  </div>`;
+}
 function pageOverview(){
   const c=D.comment||{}, lines=(c.periods||{})[P]||[];
   const ring=308*(1-D.score/100);
+  const scv=ownedRate(scope), isAlt=(scope!=="owned");
   const facs=Object.keys(D.weights).map(k=>{
     const d=delta(D.diff?.metrics?.[k],P);
-    return `<div class="fac" title="${esc(FDESC[k]?FDESC[k][1]:'')}"><div class="fl">${FJ[k]}</div>
-      <div class="fv"><span data-count="${f1(D.factors[k])}">0.0</span><span class="fu">/100</span></div>
-      <div class="fd">${d.html}</div>
+    const alt=(k==="owned_citation"&&isAlt);
+    return `<div class="fac${alt?" alt":""}" title="${esc(FDESC[k]?FDESC[k][1]:'')}">
+      <div class="fl">${FJ[k]}${alt?`<span class="sctag">${esc(SCOPES[scope].label)}</span>`:""}</div>
+      <div class="fv"><span data-count="${f1(alt?scv:D.factors[k])}">0.0</span><span class="fu">/100</span></div>
+      <div class="fd">${alt?`<span style="color:var(--own)">表示のみ・スコアは ${f1(D.factors.owned_citation)}</span>`:d.html}</div>
       <div class="fw">重み ${D.weights[k]}点</div></div>`;}).join("");
   const dec=(D.diff?.decomposition||{})[P]||{};
   const contrib=Object.entries(dec.contributions||{}).sort((a,b)=>Math.abs(b[1])-Math.abs(a[1]));
@@ -804,6 +967,7 @@ function pageOverview(){
     <div>
       <div class="cmt">${headline()}</div>
       <div class="cmt" style="font-size:12px;color:#9FC0DA;margin-bottom:14px">${overall}</div>
+      ${scopeSwitch()}
       <div class="facs">${facs}</div>
     </div></div>
 
@@ -1055,6 +1219,39 @@ function citeList(cites,only){
     </div>`;}).join("")}</div>`;
 }
 
+/* 重点クエリの定点観測。
+   クエリは週次で入れ替わるので、施策を打ったクエリを追い続ける手段が要る。
+   IDは仕様上振り直されないため、★は日をまたいでも同じクエリを指す。 */
+function starSummary(rows){
+  const sel=rows.filter(r=>stars.has(r.id));
+  if(!sel.length) return `<div class="starempty">
+    <b>重点クエリ</b>：表の左端の ★ を押すと、そのクエリを追跡対象にできます。
+    コンテンツを公開したクエリに印を付けておくと、<b>出現率・順位・自社ページの被引用が施策の前後でどう動いたか</b>をここでまとめて見られます。
+    クエリ一覧は週次で入れ替わりますが、★は同じクエリを指し続けます。</div>`;
+  let cells=0,hit=0,ranks=[],cited=0,gain=0,lost=0;
+  sel.forEach(r=>{
+    Object.values(r.surfaces||{}).forEach(v=>{
+      cells++;
+      if(v.rank!=null||v.mention_rate) hit++;
+      if(v.rank!=null) ranks.push(v.rank);
+    });
+    if((r.own_pages||[]).length) cited++;
+    const tr=r.trend||{};
+    gain+=(tr.gained||0); lost+=(tr.lost||0);
+  });
+  const avg=ranks.length?ranks.reduce((a,b)=>a+b,0)/ranks.length:null;
+  return `<div class="g4" style="margin-bottom:12px">
+    <div class="kpi own"><div class="l">★ 重点クエリ</div><div class="v">${sel.length}<small> 本</small></div>
+      <div class="d fl">${cells} 通り（クエリ×AI面）で計測</div></div>
+    <div class="kpi"><div class="l">★ の出現率</div><div class="v">${cells?(hit/cells*100).toFixed(1):"—"}<small>%</small></div>
+      <div class="d fl">全体は ${f1(D.factors.presence)}%</div></div>
+    <div class="kpi ok"><div class="l">★ の平均順位</div><div class="v">${avg?avg.toFixed(2):"—"}</div>
+      <div class="d fl">登場したときの平均</div></div>
+    <div class="kpi ${gain-lost<0?"warn":"ok"}"><div class="l">★ の引用 増減</div>
+      <div class="v">${gain-lost>=0?"+":""}${gain-lost}</div>
+      <div class="d fl">獲得 ${gain} / 消失 ${lost}（${PJ[P]}）</div></div>
+  </div>`;
+}
 function pageQueries(){
   let rows=(D.queries||[]).filter(r=>catF==="all"||r.category===catF);
   rows.sort((a,b)=>{let x=a[sortK],y=b[sortK];
@@ -1125,7 +1322,8 @@ function pageQueries(){
     <div class="kpi warn"><div class="l">自社ページが1つも引かれない</div><div class="v">${rows.length-nCited}</div><div class="d dn">コンテンツ制作の優先リスト</div></div>
   </div>
 
-  <div class="chips">${cats.map(cc=>`<span class="chip ${cc===catF?'on':''}" data-c="${cc}">${cc==="all"?"すべて":CATJ[cc]||cc}</span>`).join("")}</div>
+  ${starSummary(rows)}
+  <div class="chips"><span class="chip star${starOnly?" on":""}" id="chipStar" title="★を付けたクエリだけに絞り込みます">★ 重点のみ<b>${stars.size}</b></span>${cats.map(cc=>`<span class="chip ${cc===catF?'on':''}" data-c="${cc}">${cc==="all"?"すべて":CATJ[cc]||cc}</span>`).join("")}</div>
 
   <div class="hdlg">
     <span><b>ChatGPT / AIによる概要 / AIモード / Gemini</b>＝そのAIの回答で自社が何番目に出たか（1が最良、—は登場せず）</span>
@@ -1141,7 +1339,8 @@ function pageQueries(){
     <span class="qn"><kbd>/</kbd> で入力へ　<kbd>行クリック</kbd>で回答例</span>
   </div>
   <div class="tw"><table id="qt">
-    <thead><tr><th style="width:22px"></th><th class="s" data-k="text">クエリ（AIに投げている実際の文）</th>
+    <thead><tr><th style="width:22px"></th><th style="width:26px" class="c" title="重点クエリ">★</th>
+      <th class="s" data-k="text">クエリ（AIに投げている実際の文）</th>
       <th style="width:72px">テーマ</th><th style="width:88px">出所</th>
       ${sfs.map(x=>`<th class="c" style="width:52px">${esc((D.surfaces.find(y=>y.id===x)||{}).label||x)}</th>`).join("")}
       <th class="s c" data-k="demand" style="width:74px">需要</th>
@@ -1159,8 +1358,10 @@ function pageQueries(){
             ? `<span class="pill p-am">グループのみ</span> <span class="ownt">${esc(ap[0].host)}</span>`
             : '<span class="pill p-ng">なし</span>');
       const hay=(r.text+" "+(r.driver_label||"")+" "+(CATJ[r.category]||"")+" "+(SRCJ[r.source]||"")).toLowerCase();
-      return `<tr class="qrow" data-q="${attr(r.id)}" data-t="${attr(hay)}">
+      return `<tr class="qrow" data-q="${attr(r.id)}" data-t="${attr(hay)}" data-star="${stars.has(r.id)?1:0}">
         <td class="c" style="color:var(--sub)">${open?"▾":"▸"}</td>
+        <td class="c"><span class="star${stars.has(r.id)?" on":""}" data-star="${attr(r.id)}"
+          title="重点クエリに指定する。施策を打ったクエリを追い続けるための印で、ブラウザに保存されます">★</span></td>
         <td><div class="qtext">${esc(r.text)}</div>
           ${r.is_new?'<span class="newq">NEW 観察期間</span> ':""}${r.brand_query?'<span class="tag">ブランド指名</span>':'<span class="tag">一般クエリ</span>'}
           <span class="tag">${esc(r.driver_label||"")}</span>${
@@ -1375,6 +1576,170 @@ function pagePages(){
   <div class="src">「代わりに引かれているソース」は、そのクエリでAIが根拠にしている他人のページです。ここに競合ドメインが並んでいる場合は、同じ論点の一次情報を自社に用意するのが最短の打ち手になります。</div>`;
 }
 
+/* ============================================================
+   販売シェア × AI言及シェア
+   「トヨタはAIで語られていない」という指摘に、母数を明示して答えるための図。
+   軸を揃えるのが肝で、AI言及シェアの分母に入っているブランドだけで
+   販売シェアも計算する。片方が8社・片方が6社だと比較そのものが成立しない。
+   ============================================================ */
+function salesVsAi(){
+  if(!SALES||!SALES.brands) return null;
+  const ai={}; (D.brands||[]).forEach(b=>ai[b.id]=b);
+  const measured=SALES.brands.filter(s=>ai[s.id]);
+  const missing =SALES.brands.filter(s=>!ai[s.id]);
+  if(measured.length<3) return null;
+  const aiTot=measured.reduce((t,s)=>t+(ai[s.id].mentions||0),0)||1;
+  const slTot=measured.reduce((t,s)=>t+s.total,0)||1;
+  const rows=measured.map(s=>({
+    id:s.id, label:s.label, total:s.total,
+    sales:s.total/slTot*100,
+    aiShare:(ai[s.id].mentions||0)/aiTot*100,
+    mentions:ai[s.id].mentions||0, note:s.note||""
+  })).sort((a,b)=>b.sales-a.sales);
+  rows.forEach(r=>r.diff=r.aiShare-r.sales);
+  return {rows, missing, slTot, aiTot,
+          period:SALES.period_label||SALES.period, sources:SALES.sources||[],
+          definition:SALES.definition||""};
+}
+
+function scatterSales(){
+  const S=salesVsAi();
+  if(!S) return `<div class="card"><div class="fl">販売台数データ（data/sales.json）を読み込めませんでした</div></div>`;
+  const W=680,H=380,PAD={l:52,r:22,t:18,b:44};
+  const iw=W-PAD.l-PAD.r, ih=H-PAD.t-PAD.b;
+  const mx=Math.max(50, Math.ceil(Math.max(...S.rows.map(r=>Math.max(r.sales,r.aiShare)))/10)*10+5);
+  const X=v=>PAD.l+v/mx*iw, Y=v=>PAD.t+ih-v/mx*ih;
+  const me=S.rows.find(r=>r.id==="toyota");
+  const ticks=[]; for(let v=0;v<=mx;v+=10) ticks.push(v);
+  const pts=S.rows.map(r=>{
+    const own=r.id==="toyota", cx=X(r.sales), cy=Y(r.aiShare);
+    const below=r.diff<0;
+    return `<g class="pt">
+      <line x1="${cx}" y1="${cy}" x2="${cx}" y2="${Y(r.sales)}"
+        stroke="${below?'var(--bad)':'var(--ok)'}" stroke-width="1" stroke-dasharray="2 3" opacity=".55"/>
+      <circle cx="${cx}" cy="${cy}" r="${own?9:6}"
+        fill="${own?'var(--own)':'var(--accent)'}" fill-opacity="${own?.95:.62}"
+        stroke="${own?'#fff':'var(--accent)'}" stroke-width="${own?2:1}"/>
+      <text x="${cx+(own?13:10)}" y="${cy+4}" font-size="${own?12.5:11}"
+        font-weight="${own?700:500}" fill="${own?'var(--own)':'var(--tx2)'}">${esc(r.label)}</text>
+      ${own?"":`<text x="${cx+10}" y="${cy+17}" font-size="9.5"
+        fill="${below?'var(--bad)':'var(--ok)'}">${r.diff>=0?"+":""}${r.diff.toFixed(1)}pt</text>`}
+    </g>`;}).join("");
+  return `<div class="card">
+    <div class="scatwrap"><svg class="scat" viewBox="0 0 ${W} ${H}" width="100%" preserveAspectRatio="xMidYMid meet">
+      ${ticks.map(v=>`<line x1="${X(v)}" y1="${PAD.t}" x2="${X(v)}" y2="${PAD.t+ih}" stroke="var(--line)"/>
+        <line x1="${PAD.l}" y1="${Y(v)}" x2="${PAD.l+iw}" y2="${Y(v)}" stroke="var(--line)"/>
+        <text x="${X(v)}" y="${PAD.t+ih+16}" font-size="9.5" fill="var(--sub)" text-anchor="middle">${v}%</text>
+        <text x="${PAD.l-8}" y="${Y(v)+3}" font-size="9.5" fill="var(--sub)" text-anchor="end">${v}%</text>`).join("")}
+      <line x1="${X(0)}" y1="${Y(0)}" x2="${X(mx)}" y2="${Y(mx)}" stroke="var(--tx2)"
+        stroke-width="1.3" stroke-dasharray="6 4" opacity=".62"/>
+      <text x="${X(mx)-6}" y="${Y(mx)+16}" font-size="10" fill="var(--tx2)" text-anchor="end">販売シェア＝言及シェア</text>
+      <text x="${X(mx*0.30)}" y="${Y(mx*0.055)}" font-size="10" fill="var(--bad)" opacity=".85">この線より下 ＝ 規模の割にAIで語られていない</text>
+      <text x="${X(mx*0.035)}" y="${Y(mx*0.86)}" font-size="10" fill="var(--ok)" opacity=".85">この線より上 ＝ 規模以上に語られている</text>
+      ${me?(()=>{const cx=X(me.sales),y1=Y(me.aiShare),y2=Y(me.sales);
+        return `<g opacity=".95">
+          <line x1="${cx}" y1="${y1}" x2="${cx}" y2="${y2}" stroke="var(--own)" stroke-width="2"/>
+          <path d="M${cx-4} ${y1-6} L${cx} ${y1} L${cx+4} ${y1-6}" fill="none" stroke="var(--own)" stroke-width="2"/>
+          <path d="M${cx-4} ${y2+6} L${cx} ${y2} L${cx+4} ${y2+6}" fill="none" stroke="var(--own)" stroke-width="2"/>
+          <rect x="${cx-92}" y="${(y1+y2)/2-11}" width="84" height="22" rx="6"
+            fill="var(--own)" fill-opacity=".16" stroke="var(--own)" stroke-opacity=".5"/>
+          <text x="${cx-50}" y="${(y1+y2)/2+4}" font-size="11.5" font-weight="700"
+            fill="var(--own)" text-anchor="middle">${me.diff>=0?"+":""}${me.diff.toFixed(1)}pt</text>
+        </g>`;})():""}
+      ${pts}
+      <text x="${PAD.l+iw/2}" y="${H-6}" font-size="10.5" fill="var(--sub)" text-anchor="middle">販売シェア（${esc(S.period)}・計測${S.rows.length}社中）</text>
+      <text x="14" y="${PAD.t+ih/2}" font-size="10.5" fill="var(--sub)" text-anchor="middle"
+        transform="rotate(-90 14 ${PAD.t+ih/2})">AI言及シェア（同じ${S.rows.length}社中）</text>
+    </svg></div>
+    ${me?`<div class="scatlead">${me.diff<0
+      ? `トヨタは販売シェア <b>${me.sales.toFixed(1)}%</b> に対して AI言及シェア <b>${me.aiShare.toFixed(1)}%</b>。
+         <b class="hl">規模に対して ${Math.abs(me.diff).toFixed(1)}pt 少ない</b>状態です。順位は1位のままなので、
+         「AIに出てこない」ではなく「1位ではあるが規模ほどは語られていない」が正しい読み方になります。`
+      : `トヨタは販売シェア <b>${me.sales.toFixed(1)}%</b> に対して AI言及シェア <b>${me.aiShare.toFixed(1)}%</b>。
+         <b class="hl">規模を ${me.diff.toFixed(1)}pt 上回っています。</b>`}</div>`:""}
+    <div class="tw" style="max-height:none;border:0;margin-top:12px"><table>
+      <thead><tr><th>ブランド</th><th class="c">販売台数</th><th class="c">販売シェア</th>
+        <th class="c">AI言及シェア</th><th class="c">差</th><th>読み方</th></tr></thead>
+      <tbody>${S.rows.map(r=>`<tr${r.id==="toyota"?' style="background:color-mix(in srgb,var(--own) 10%,transparent)"':''}>
+        <td><b${r.id==="toyota"?' style="color:var(--own)"':''}>${esc(r.label)}</b>${r.note?`<span class="note2" title="${esc(r.note)}">※</span>`:""}</td>
+        <td class="c">${num(r.total)}</td>
+        <td class="c">${r.sales.toFixed(1)}%</td>
+        <td class="c">${r.aiShare.toFixed(1)}%（${r.mentions}回）</td>
+        <td class="c"><b class="${r.diff<0?'dn':'up'}">${r.diff>=0?"+":""}${r.diff.toFixed(1)}pt</b></td>
+        <td style="font-size:11px;color:var(--sub)">${r.diff<-3?"規模の割に語られていない":r.diff>3?"規模以上に語られている":"規模どおり"}</td>
+      </tr>`).join("")}
+      ${S.missing.map(m=>`<tr style="opacity:.55">
+        <td><b>${esc(m.label)}</b> <span class="pill p-am">未計測</span></td>
+        <td class="c">${num(m.total)}</td><td class="c">—</td><td class="c">—</td><td class="c">—</td>
+        <td style="font-size:11px;color:var(--sub)">AI言及の計測対象に入れたところ。翌日の実行から数字が入ります</td></tr>`).join("")}
+      </tbody></table></div>
+    <div class="note ng" style="margin-bottom:0">
+      <b>分母をそろえてあります。</b>AI言及シェアの分母に入っている${S.rows.length}社だけで販売シェアも計算しています。
+      販売台数は8社ぶん取得していますが、計測していないブランドを販売側にだけ入れると、
+      トヨタの販売シェアが小さく見えて比較が成立しません。
+      <br>${esc(S.definition)}
+      <br>出典: ${S.sources.map(s=>`<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.label)}</a>`).join(" ／ ")}
+    </div></div>`;
+}
+
+/* ============================================================
+   テーマ × メーカーの出現率
+   渡邉さんの第一要望。判断軸ではなく、日常的に使うテーマの軸で並べる。
+   ============================================================ */
+function themeMatrix(){
+  const brands=(D.brands||[]).slice().sort((a,b)=>b.sov-a.sov);
+  const cats={};
+  (D.queries||[]).forEach(q=>{
+    const c=q.category||"other";
+    const e=cats[c]||(cats[c]={cells:0,hit:{},rank:{}});
+    Object.values(q.surfaces||{}).forEach(sf=>{
+      e.cells++;
+      if(sf.rank!=null||sf.mention_rate){ e.hit.toyota=(e.hit.toyota||0)+1;
+        if(sf.rank!=null)(e.rank.toyota=e.rank.toyota||[]).push(sf.rank); }
+      Object.entries(sf.competitors||{}).forEach(([b,rk])=>{
+        if(rk!=null){ e.hit[b]=(e.hit[b]||0)+1; (e.rank[b]=e.rank[b]||[]).push(rk); }});
+    });
+  });
+  const order=(D.category_trend||[]).map(c=>c.id).filter(c=>cats[c]);
+  Object.keys(cats).forEach(c=>{if(!order.includes(c))order.push(c);});
+  const measured=brands.map(b=>b.id);
+  const unmeasured=brands.filter(b=>!(D.queries||[]).some(q=>Object.values(q.surfaces||{})
+      .some(sf=>(sf.competitors||{})[b.id]!=null)) && b.id!=="toyota" && !b.mentions);
+  const pc=(h,n)=>n? h/n*100 : 0;
+  const rows=order.map(c=>{
+    const e=cats[c];
+    const vals=measured.map(b=>({id:b, rate:pc(e.hit[b]||0,e.cells),
+      avg:(e.rank[b]&&e.rank[b].length)?e.rank[b].reduce((a,x)=>a+x,0)/e.rank[b].length:null}));
+    const top=vals.slice().sort((a,b)=>b.rate-a.rate)[0];
+    const mine=vals.find(v=>v.id==="toyota")||{rate:0};
+    return {c,e,vals,top,mine,gap:mine.rate-top.rate};
+  });
+  const bl={}; brands.forEach(b=>bl[b.id]=b.label);
+  return `<div class="card"><div class="tw" style="max-height:none;border:0"><table class="hm">
+    <thead><tr><th style="width:132px">テーマ</th><th class="c" style="width:56px">セル数</th>
+      ${measured.map(b=>`<th class="c${b==="toyota"?" meco":""}" style="width:74px">${esc(bl[b]||b)}</th>`).join("")}
+      <th class="c" style="width:92px">首位</th><th class="c" style="width:78px">自社との差</th></tr></thead>
+    <tbody>${rows.map(r=>`<tr>
+      <td><b>${esc(CATJ[r.c]||r.c)}</b></td>
+      <td class="c" title="このテーマのクエリ×AI面の総数。出現率の分母です">${r.e.cells}</td>
+      ${r.vals.map(v=>{
+        const lead=(v.id===r.top.id&&r.top.rate>0), own=v.id==="toyota";
+        const q=Math.min(5,Math.ceil(v.rate/100*5));
+        return `<td class="h h${v.rate?q:0}${own?" meco":""}${lead?" lead":""}"
+          title="${esc(bl[v.id]||v.id)}：${r.e.cells}セル中 ${Math.round(v.rate/100*r.e.cells)}セルで登場">
+          ${v.rate?v.rate.toFixed(0)+"%":"—"}
+          <span class="rk">${v.avg?v.avg.toFixed(1)+"位":""}</span></td>`;}).join("")}
+      <td class="c">${r.top.rate>0?`<b>${esc(bl[r.top.id]||r.top.id)}</b><br><span style="font-size:10px;color:var(--sub)">${r.top.rate.toFixed(0)}%</span>`:"—"}</td>
+      <td class="c">${r.gap>=0?'<span class="up" style="font-weight:700">首位</span>'
+        :`<span class="dn" style="font-weight:700">${r.gap.toFixed(0)}pt</span>`}</td>
+    </tr>`).join("")}</tbody></table></div>
+    <div class="note ng" style="margin-bottom:0">
+      セルの数字は<b>そのテーマのクエリ×AI面のうち、そのブランドが回答に登場した割合</b>です。小さい数字は登場したときの平均順位。
+      分母は行ごとに違うので「セル数」列で確認してください。
+      ${unmeasured.length?`<br><b class="hl">${unmeasured.map(b=>esc(b.label)).join("・")} は本日時点で未計測です。</b>翌日の実行から数字が入ります。`
+        :`<br>計測対象は ${measured.length} 社です。`}
+    </div></div>`;
+}
 function pageCompete(){
   const bs=(D.brands||[]).slice().sort((a,b)=>b.sov-a.sov);
   const mx=Math.max(...bs.map(b=>b.sov),1);
@@ -1390,9 +1755,22 @@ function pageCompete(){
     if(g>=4)  return `${lead}に${g}回差。<b>言及はされるが主役になれていない</b>。この軸を主題にしたページが不足`;
     return `${lead}と${g}回差。ほぼ拮抗。あと一押しで首位を取れる領域`;
   };
-  return `<h2 class="sec"><span class="bar"></span>ブランド別 相対シェア<span class="note">回答に登場した回数のシェア</span></h2>
+  return `<h2 class="sec"><span class="bar"></span>販売シェア × AI言及シェア
+    <span class="note">規模に対してAIでどれだけ語られているか</span></h2>
+  <div class="why"><b>この図の使い方：</b>横軸が実際の販売シェア、縦軸がAI回答での言及シェアです。
+  破線（45度線）より下にあるブランドは、<b>売れている規模の割にAIで語られていない</b>ことを意味します。
+  「トヨタはAIでの露出が弱い」という指摘に対して、母数を明示したうえで、どれくらい弱いのかを答えるための図です。</div>
+  ${scatterSales()}
+
+  <h2 class="sec"><span class="bar"></span>テーマ別 メーカー出現率
+    <span class="note">どのテーマで誰が想起されているか</span></h2>
+  <div class="why">生活者の関心テーマごとに、<b>各メーカーがAIの回答に何%の確率で登場したか</b>を並べています。
+  自社が首位でないテーマは、そのテーマを主題にしたコンテンツが足りていない可能性が高い領域です。</div>
+  ${themeMatrix()}
+
+  <h2 class="sec"><span class="bar"></span>ブランド別 相対シェア<span class="note">回答に登場した回数のシェア</span></h2>
   <div class="why"><b>相対シェアとは：</b>同じ${D.counts.prompts}本のクエリに対する回答の中で、各ブランドが何回登場したかの構成比です。
-  5社均等なら20%。<b>この数字が高い＝AIの「候補リスト」に常連として入っている</b>ことを意味します。</div>
+  ${(D.sov_brands||[]).length||bs.length}社均等なら${(100/(((D.sov_brands||[]).length)||bs.length)).toFixed(1)}%。<b>この数字が高い＝AIの「候補リスト」に常連として入っている</b>ことを意味します。</div>
   <div class="card"><div class="bars">${bs.map(b=>`<div class="row">
     <span class="lb ${b.label==="Toyota"?"me":""}">${esc(b.label)}</span>
     <span class="tr"><span class="fi ${b.label==="Toyota"?"me":""}" style="width:${b.sov/mx*100}%"></span></span>
@@ -1477,6 +1855,261 @@ function pageSignals(){
   </div>`;
 }
 
+
+/* ============================================================
+   読み方ガイド
+   数字はすべて latest.json から引く。説明文と実データがズレると、
+   説明された側は次から画面を信用しなくなるため。
+   ============================================================ */
+function gJump(pid,label){
+  return `<span class="gjump" data-go="${pid}">▶ ${esc(label)}へ</span>`;
+}
+function gSec(n,title,body){
+  return `<section class="gsec" id="g${n}">
+    <h3 class="gh"><span class="gn">${n}</span>${esc(title)}</h3>
+    <div class="gb">${body}</div></section>`;
+}
+function pageGuide(){
+  const W=D.weights||{}, F=D.factors||{}, C=D.counts||{};
+  const surf=(D.surfaces||[]).map(s=>s.label);
+  const weekly=((D.measured||{}).weekly)||[];
+  const basis=((D.measured||{}).basis)||[];
+  const co=D.cohort||{}, ch=D.churn||{};
+  const hist=D.history||[];
+  const sc=D.citation_scopes||{};
+  const S=salesVsAi();
+  const me=S&&S.rows.find(r=>r.id==="toyota");
+  const sig=(D.diff&&D.diff.metrics&&D.diff.metrics.score)||{};
+  const sigma=sig.sigma;
+  const alerts=(D.comment&&D.comment.alerts)||[];
+  const hi=alerts.filter(a=>a.severity==="high").length;
+  const fj=k=>FJ_PLAIN[k]||k;
+
+  const FDEF={
+    presence:["AIの回答に自社の名前が出た割合",
+      "クエリ×AI面の全セットのうち、回答本文にトヨタが登場した割合。",
+      "そもそも候補に入っていない状態。テーマを主題にしたページが無いことが多い"],
+    rank_quality:["登場したとき何番目に置かれたか",
+      "登場したセルについて 1/順位 の平均。1位なら100点、2位なら50点相当。",
+      "名前は出るが一番手ではない。比較の根拠となる数値や第三者評価が弱い"],
+    owned_citation:["回答の根拠に toyota.jp が引かれた割合",
+      "自社が登場したセルのうち、引用元に toyota.jp が1件以上あった割合。",
+      "AIが自社の説明を他人のサイトから取っている状態。一次情報の書き方の問題"],
+    earned_citation:["SNS・UGCでの引かれ方",
+      "AIが引いたSNS/UGCのうち、自社に触れた回答で引かれた割合をプラットフォーム別の重み付きで合計。",
+      "第三者の言及が積み上がっていない。レビュー・体験談の量そのものが足りない"],
+    sentiment:["自社に触れた文が肯定的か",
+      "自社に言及したセルのうち、肯定的な文脈で語られた割合。",
+      "「ただし〜」で否定的に語られる論点が定着しつつある。反証の一次情報が必要"],
+    share_of_voice:["競合と比べた登場回数のシェア",
+      "計測対象ブランドの総登場回数に対する自社の構成比を正規化したもの。",
+      "AIの候補リストの常連から外れつつある"]
+  };
+
+  return `<h2 class="sec"><span class="bar"></span>読み方ガイド
+    <span class="note">この画面だけで、他の人に説明できる状態にするための資料</span></h2>
+  <div class="gtoc">${[["1","何のための画面か"],["2","GEOスコアの計算式"],["3","6つの因数"],
+    ["4","測っているAIと頻度"],["5","クエリ60本の設計"],["6","アラートの判定"],
+    ["7","タブ別の使い方"],["8","誰が何を見るか"],["9","更新のタイミング"],
+    ["10","この数字の限界"],["11","よくある質問"]]
+    .map(([n,l])=>`<a class="gt" href="#g${n}"><b>${n}</b>${esc(l)}</a>`).join("")}</div>
+
+  ${gSec(1,"何のための画面か",`
+    <p><b>生成AIが「クルマを買うならどれ？」と聞かれたときに、トヨタをどう扱っているか</b>を毎日測っています。
+    検索順位ではなく、AIが出す<b>回答そのもの</b>の中身を見ている点が従来のSEOツールと違います。</p>
+    <p>測っているのは3つです。<b>①名前が出るか</b>（出現率）、<b>②何番目に置かれるか</b>（順位品質）、
+    <b>③その根拠にどのサイトが引かれているか</b>（引用）。
+    ③がいちばん重要で、AIが自社サイトを根拠にしていなければ、
+    AIの中のトヨタ像は他人が書いた記事でできていることになります。</p>
+    <p>現在 <b>${C.prompts}本</b>のクエリを <b>${surf.length}つ</b>のAIに投げ、
+    1日 <b>${num(C.responses)}件</b>の回答を判定しています。
+    トヨタが登場したのは <b>${C.own_mentioned}/${C.cells}</b> 通り（出現率 <b>${f1(F.presence)}%</b>）。</p>
+    ${gJump("overview","概要")}`)}
+
+  ${gSec(2,"GEOスコアの計算式",`
+    <p>6つの因数を0〜100で出し、重みを掛けて合計したものが GEOスコアです。合計は必ず100点になります。</p>
+    <div class="gformula">${Object.keys(W).map(k=>
+      `<span class="gfk">${esc(fj(k))} <b>${f1(F[k])}</b> × ${W[k]}%</span>`).join('<span class="gop">＋</span>')}
+      <span class="gop">＝</span><span class="gfr">${f1(D.score)}</span></div>
+    <p>重みは「打ち手に繋がるか」で決めています。引用（オウンド20＋アーンド20＝<b>40点</b>）がいちばん重いのは、
+    出現率や順位が<b>結果</b>であるのに対し、引用は<b>直接手を入れられる原因</b>だからです。
+    ページを書けばオウンド引用は動きますが、出現率を直接動かすことはできません。</p>
+    <p class="gwarn">重みの変更は四半期に1回までにしてください。頻繁に変えるとスコアの時系列が切れて、
+    施策の効果と定義変更の区別がつかなくなります。</p>
+    ${gJump("overview","概要")}`)}
+
+  ${gSec(3,"6つの因数",`
+    <div class="tw" style="max-height:none;border:0"><table>
+      <thead><tr><th style="width:120px">因数</th><th class="c" style="width:56px">現在値</th>
+        <th class="c" style="width:46px">重み</th><th style="width:230px">何を測っているか</th>
+        <th>下がっているときに疑うこと</th></tr></thead>
+      <tbody>${Object.keys(W).map(k=>{const d=FDEF[k]||["","",""];const tt=tierOf(F[k]);
+        return `<tr><td><b>${esc(fj(k))}</b><br><span class="pill ${tt.k==='s'||tt.k==='a'?'p-ok':tt.k==='b'?'p-nv':tt.k==='c'?'p-am':'p-ng'}">${tt.g}</span></td>
+        <td class="c"><b>${f1(F[k])}</b></td><td class="c">${W[k]}</td>
+        <td style="font-size:11.5px">${esc(d[0])}<br><span style="color:var(--sub)">${esc(d[1])}</span></td>
+        <td style="font-size:11.5px;color:var(--sub)">${esc(d[2])}</td></tr>`;}).join("")}</tbody></table></div>
+    <p style="margin-top:10px"><b>オウンド引用率だけは、見る範囲を切り替えられます。</b>
+    toyota.jp のみ <b>${f1(ownedRate("owned"))}%</b>、販売店（DMS）<b>${f1(ownedRate("dealer"))}%</b>、
+    グループ会社 <b>${f1(ownedRate("group"))}%</b>、陣営合算 <b>${f1(ownedRate("all"))}%</b>。
+    <b class="hl">スコアに使うのは toyota.jp の数字だけ</b>で、切り替えても GEOスコアは動きません。</p>
+    ${gJump("overview","概要")}`)}
+
+  ${gSec(4,"測っているAIと頻度",`
+    <p>4つの面を測っています。<b>会話型</b>（ChatGPT・Gemini）と <b>Google検索の中のAI</b>（AIによる概要・AIモード）です。</p>
+    <div class="tw" style="max-height:none;border:0"><table>
+      <thead><tr><th style="width:150px">面</th><th style="width:110px">頻度</th><th>理由</th></tr></thead>
+      <tbody>
+        ${basis.map(s=>`<tr><td><b>${esc(s)}</b></td><td>毎日</td>
+          <td style="font-size:11.5px;color:var(--sub)">1回 $0.004。同じ日に何度投げてもほぼ同じ結果が返るので1日1回</td></tr>`).join("")}
+        ${weekly.map(s=>`<tr><td><b>${esc(s)}</b></td><td><b class="hl">月曜と木曜のみ</b></td>
+          <td style="font-size:11.5px;color:var(--sub)">1回 $0.04〜0.05。毎日回すと月$540になるため週2回に絞っています</td></tr>`).join("")}
+      </tbody></table></div>
+    <p class="gwarn">この結果、<b>日次の折れ線は「毎日測っている ${basis.join("・")}」だけで描いています。</b>
+    面の数が違う日どうしを並べると、実力が動いていなくてもスコアが動いてしまうためです。
+    ChatGPT・Gemini の数字は月木のスナップショットとして別に見てください。</p>
+    ${gJump("compete","競合・判断軸")}`)}
+
+  ${gSec(5,"クエリ60本の設計",`
+    <p>クエリは固定ではありません。<b>実際に世の中で聞かれている質問へ寄せ続ける</b>ように、
+    4つの経路から候補を集めて毎週入れ替えています。</p>
+    <ul class="gul">
+      <li><b>Yahoo!知恵袋の実質問</b> — 生活者が実際に書いた文章。いちばん実態に近い</li>
+      <li><b>Google「関連する質問」</b> — 検索結果に出る疑問文</li>
+      <li><b>AIのfan-out還流</b> — AIが回答生成中に内部で投げた検索クエリを回収したもの</li>
+      <li><b>Googleサジェスト／SEOトピック</b> — 網羅性の穴埋め</li>
+    </ul>
+    <p>候補は需要スコア（検索ボリューム45＋fan-out出現25＋伸び率20＋UGC出現10）で並べ、
+    上位を順に入れます。ただし<b>一度に入れ替えられるのは最大4本</b>までです。
+    一気に入れ替えるとスコアの時系列が壊れるので、意図的にブレーキをかけています。</p>
+    <p><b>基準コホート：</b>前日比・先週比は、<b>30日以上コア枠にいる ${co.prompts||0}本</b>だけで計算しています。
+    新しく入れたクエリをすぐ分母に入れると、施策と関係なく数字が動いてしまうためです。
+    ${ch.last_run?`直近の入替は <b>${esc(ch.last_run)}</b>（${(ch.promoted||[]).length}本入 / ${(ch.demoted||[]).length}本出）。`:""}</p>
+    ${gJump("churn","クエリ新陳代謝")} ${gJump("queries","クエリ")}`)}
+
+  ${gSec(6,"アラートの判定",`
+    <p>毎日ぜんぶの数字を見るのは現実的でないので、<b>手を打つべき変化だけ</b>を拾い上げています。</p>
+    <div class="tw" style="max-height:none;border:0"><table>
+      <thead><tr><th style="width:190px">条件</th><th style="width:70px">重さ</th><th>意味</th></tr></thead>
+      <tbody>
+      <tr><td>順位が3位以上落ちた</td><td><span class="pill p-ng">要対応</span></td>
+        <td style="font-size:11.5px;color:var(--sub)">そのクエリでAIの推薦順が実質的に変わった</td></tr>
+      <tr><td>自社ページの引用が2件以上消えた</td><td><span class="pill p-ng">要対応</span></td>
+        <td style="font-size:11.5px;color:var(--sub)">AIが根拠として使わなくなった。ページ側の変更を疑う</td></tr>
+      <tr><td>新しいネガティブ論点が出た</td><td><span class="pill p-am">注意</span></td>
+        <td style="font-size:11.5px;color:var(--sub)">「ただし〜」の中身が増えた。定着する前に反証を出す</td></tr>
+      <tr><td>スコアが ±2σ を超えた</td><td><span class="pill p-am">注意</span></td>
+        <td style="font-size:11.5px;color:var(--sub)">日々のばらつきの外側。${sigma!=null?`現在の1σは <b>${f1(sigma)}pt</b> なので、±<b>${f1(sigma*2)}pt</b> が判定の境目です`:"蓄積が5日に満たないため現在は判定できません"}</td></tr>
+      </tbody></table></div>
+    <p><b class="hl">±2σの内側は「変化なし」と読んでください。</b>
+    生成AIは同じ質問でも毎回違う答えを返します。1本を複数回投げて中央値を取り、
+    さらに7日移動中央値にしていますが、それでもこの程度は動きます。
+    本日は要対応 <b>${hi}件</b>／全 <b>${alerts.length}件</b>です。</p>
+    ${gJump("alerts","アラート")}`)}
+
+  ${gSec(7,"タブ別の使い方",`
+    <div class="tw" style="max-height:none;border:0"><table>
+      <thead><tr><th style="width:150px">タブ</th><th style="width:230px">見るもの</th><th>そこから何を決めるか</th></tr></thead>
+      <tbody>${[
+        ["overview","概要","GEOスコアと6因数、今日のコメント","今日、手を打つ必要があるかどうか"],
+        ["queries","クエリ","1本ごとの順位・引用・AI回答の実物","どのクエリにコンテンツを作るか。★で追跡対象にする"],
+        ["churn","クエリ新陳代謝","何が入って何が出たか、急上昇クエリ","世の中の関心がどこへ動いたか"],
+        ["pages","自社の被引用ページ","toyota.jp のどのページが引かれているか","伸ばすページと、書き足すページ"],
+        ["sns","SNS別評価","どのSNSがAIに引かれているか","第三者言及をどこで増やすか"],
+        ["compete","競合・判断軸","販売シェアとの比較、テーマ別の勝ち負け","どのテーマで負けているか。対外説明の材料"],
+        ["sources","引用ソース","AIが根拠にしているサイト全体の内訳","どのメディアに載ると効くか"],
+        ["signals","AI流入・クローラー","AI経由の実際の流入とボットの到達","露出が本当に流入に繋がっているか"],
+        ["alerts","アラート","本日の要対応・注意","今日やることの決定"]
+      ].map(([id,l,a,b])=>`<tr><td><b>${esc(l)}</b></td>
+        <td style="font-size:11.5px">${esc(a)}</td>
+        <td style="font-size:11.5px;color:var(--sub)">${esc(b)} ${gJump(id,l)}</td></tr>`).join("")}</tbody></table></div>`)}
+
+  ${gSec(8,"誰が何を見るか",`
+    <p>全部を全員が見る必要はありません。役割ごとに見る場所を分けると運用が続きます。</p>
+    <div class="tw" style="max-height:none;border:0"><table>
+      <thead><tr><th style="width:170px">立場</th><th style="width:190px">見る頻度と場所</th><th>関心</th></tr></thead>
+      <tbody>
+      <tr><td><b>日々の運用担当</b></td><td>毎朝・アラート → クエリ</td>
+        <td style="font-size:11.5px;color:var(--sub)">今日手を打つべきクエリはどれか</td></tr>
+      <tr><td><b>施策の企画担当</b></td><td>週次・競合 → 自社の被引用ページ</td>
+        <td style="font-size:11.5px;color:var(--sub)">どのテーマにコンテンツを作るか。★を付けて効果を追う</td></tr>
+      <tr><td><b>方針を決める立場</b></td><td>月次・競合タブの上2つ</td>
+        <td style="font-size:11.5px;color:var(--sub)">販売規模に対してAIでの存在感が足りているか</td></tr>
+      <tr><td><b>対外説明する立場</b></td><td>必要時・散布図とテーマ別</td>
+        <td style="font-size:11.5px;color:var(--sub)">数字の出どころを示して説明できるか</td></tr>
+      </tbody></table></div>
+    <p class="gwarn">この表は暫定です。実際に誰がどう使うかは運用が始まってから当てはめ直してください。</p>`)}
+
+  ${gSec(9,"更新のタイミング",`
+    <ul class="gul">
+      <li><b>毎朝 7:17（日本時間）</b>に GitHub Actions が自動実行します。PCを開いている必要はありません</li>
+      <li>${weekly.length?`<b>${esc(weekly.join("・"))}</b> は月曜と木曜だけ`:"すべての面を毎日"}測ります</li>
+      <li>クエリの入れ替えは<b>週1回（月曜）</b></li>
+      <li>AI経由の流入（GA4）は<b>前日実績</b>。当日ぶんは翌朝に入ります</li>
+      <li>販売台数は<b>月1回</b>の手動更新。現在は ${S?esc(S.period):"—"} 実績</li>
+      <li>API費用の上限は<b>1日 $8</b>。超えた時点で残りの実行を打ち切ります</li>
+      <li>蓄積 <b>${D.available_days}日</b>${D.mode==="live"?`（うち実測 <b>${D.live_days}日</b>）`:""}</li>
+    </ul>
+    <p>更新が止まったかどうかは、ヘッダーの「データ日」で分かります。日付が前日以前のままなら実行が失敗しています。</p>`)}
+
+  ${gSec(10,"この数字の限界",`
+    <p>対外に出すときに、先に言っておくべきことです。<b>聞かれてから答えるより、先に出したほうが数字が強くなります。</b></p>
+    <ul class="gul gng">
+      <li><b>生成AIは毎回違う答えを返します。</b>同じ質問でもモデルによって半分以上は違う内容になります。
+        だから1本を複数回投げて中央値を取り、さらに7日移動中央値にし、±2σ以内は「変化なし」として扱っています。
+        <b>1日の増減を単体で読まないでください。</b></li>
+      <li><b>計測対象は ${(D.brands||[]).length}社です。</b>
+        ${S&&S.missing.length?`${S.missing.map(m=>esc(m.label)).join("・")} は本日時点で未計測で、翌日の実行から数字が入ります。`:""}</li>
+      <li><b>外部で流通している「業界平均◯%／トヨタ◯%」という数字とは、母数の定義が違います。</b>
+        この画面の言及シェアは「${C.prompts}本のクエリに対する回答の中で、各ブランドが登場した回数の構成比」です。
+        母数が同じでない数字とは直接比較できません。</li>
+      <li><b>${weekly.length?esc(weekly.join("・")):"会話型AI"} は週2回のスナップショットです。</b>日次の折れ線には入っていません</li>
+      <li><b>オウンド引用率は toyota.jp 基準に固定しています。</b>
+        販売店を含めた数字はトグルで見られますが、スコアは変わりません</li>
+      <li><b>90日を超えた明細は自動削除されます</b>（スコアと6因数は残ります）。容量の都合です</li>
+      <li><b>AIが引用したURLと、実際にユーザーがクリックしたかは別の話です。</b>
+        流入は「AI流入・クローラー」タブのGA4実測で見てください</li>
+    </ul>`)}
+
+  ${gSec(11,"よくある質問",`
+    <div class="gfaq">${[
+      ["GEOスコア "+f1(D.score)+" は良いのか悪いのか",
+       "絶対的な合格ラインはありません。この指標は<b>自分の過去との比較</b>で使うものです。"+
+       (me?`規模との比較なら、販売シェア ${me.sales.toFixed(1)}% に対して AI言及シェア ${me.aiShare.toFixed(1)}%（${me.diff>=0?"+":""}${me.diff.toFixed(1)}pt）という読み方ができます。`:"")+
+       "ティア表示（S〜D）は6因数それぞれの水準を大まかに掴むための目安です。"],
+      ["前日比が出ているのに「実質横ばい」と書かれるのはなぜ",
+       "生成AIの回答は毎回ゆらぐので、小さい増減は実力の変化ではありません。"+
+       (sigma!=null?`過去30日の日次ばらつきから1σ＝${f1(sigma)}pt を出し、±${f1(sigma*2)}pt の内側は「変化なし」と表示しています。`:"ばらつきの計算に必要な日数がまだ足りていません。")],
+      ["60本のクエリはどうやって選んだのか",
+       "知恵袋の実質問・Googleの関連する質問・AIのfan-out・サジェストの4経路から集め、需要スコア順に上位を採用しています。"+
+       "週1回、最大4本まで入れ替えます。詳しくは第5章。"],
+      ["クエリが入れ替わると比較できなくなるのでは",
+       "そのために<b>基準コホート</b>を持っています。前日比・先週比は「30日以上コア枠にいる"+(co.prompts||0)+"本」だけで計算しているので、"+
+       "入れ替えで分母が変わっても数字は動きません。"],
+      ["販売店サイトはトヨタに含まれるのか",
+       "GEOスコアの計算では<b>含めていません</b>（toyota.jp のみ）。ただし概要タブのトグルで販売店・グループを含めた数字が見られます。"+
+       `本日は toyota.jp ${f1(ownedRate("owned"))}% に対して販売店 ${f1(ownedRate("dealer"))}%。`+
+       (ownedRate("dealer")>ownedRate("owned")?"<b class='hl'>販売店のほうが多く引かれています。</b>":"")],
+      ["「業界平均1%に対しトヨタは0.3%」という数字との整合性は",
+       "母数の定義が違うため直接は比較できません。その数字が<b>どのクエリ集合に対する何の割合か</b>を確認する必要があります。"+
+       "この画面は投げたクエリと回答をすべて保存しているので、同じ条件を指定してもらえれば同じ土俵で再計算できます。"],
+      ["ChatGPTとGeminiの順位が空欄なのはなぜ",
+       "会話型AIは1回あたりの費用が SERP の10倍以上かかるため、月曜と木曜だけ測っています。"+
+       "空欄は「登場しなかった」ではなく「その日は測っていない」です。"],
+      ["費用はいくらかかっているのか",
+       "月曜・木曜が1日 $6.1、それ以外が1日 $0.5。<b>1週 約$15、1か月 約$64</b>です。"+
+       "1日の上限を $8 に設定してあり、超えた時点で実行を打ち切ります。"],
+      ["更新が止まったらどう気づくか",
+       "ヘッダーの「データ日」が前日以前のままなら止まっています。"+
+       "実行が異常に終わった場合はスナップショットを書かない設計にしてあるので、"+
+       "失敗した日の数字が履歴に混ざることはありません。"],
+      ["誰がアクセスできるのか",
+       "現在は URL を知っていれば誰でも見られる公開状態です。"+
+       "限定公開が必要であれば、閲覧制限の方式を決める必要があります。"]
+    ].map(([q,a],i)=>`<details class="gq"${i===0?" open":""}><summary>${esc(q)}</summary><div>${a}</div></details>`).join("")}</div>`)}
+
+  <div class="gfoot">この画面の数値はすべて本日のデータ（${esc(D.generated_at)}）から自動で引いています。
+  説明文と実際の数字がズレることはありません。</div>`;
+}
 function pageAlerts(){
   const al=(D.comment||{}).alerts||[];
   const SEV={high:["要対応","p-ng"],mid:["注意","p-am"],low:["情報","p-nv"]};
@@ -1491,7 +2124,7 @@ function pageAlerts(){
   }).join(""):'<div style="padding:24px;color:#64748B">本日のアラートはありません。</div>'}</div>`;
 }
 
-const PAGES={overview:pageOverview,sns:pageSns,queries:pageQueries,churn:pageChurn,pages:pagePages,compete:pageCompete,sources:pageSources,signals:pageSignals,alerts:pageAlerts};
+const PAGES={overview:pageOverview,sns:pageSns,queries:pageQueries,churn:pageChurn,pages:pagePages,compete:pageCompete,sources:pageSources,signals:pageSignals,alerts:pageAlerts,guide:pageGuide};
 let cur="overview";
 function animateBars(root){
   root.querySelectorAll(".bars .fi,.mini i").forEach(el=>{
@@ -1578,13 +2211,18 @@ function render(){
   if(qq){ qq.value=qFilter;
     qq.oninput=()=>{qFilter=qq.value; applyQFilter();};
     applyQFilter(); }
+  root.querySelectorAll("#segScope button").forEach(b=>b.onclick=()=>{
+    scope=b.dataset.s; localStorage.setItem("geo.scope",scope); render();});
+  bindStars(root);
+  root.querySelectorAll(".gjump[data-go]").forEach(el=>el.onclick=()=>{
+    const a=document.querySelector(`.side .nav[data-p="${el.dataset.go}"]`); if(a) a.click();});
   animateBars(root); countUp(root); reveal(root); bindCharts(root); foldWhy(root);
 }
 function applyQFilter(){
   const v=(qFilter||"").trim().toLowerCase();
   let n=0;
   document.querySelectorAll("#qt tbody tr.qrow").forEach(tr=>{
-    const ok=!v||(tr.dataset.t||"").includes(v);
+    const ok=(!v||(tr.dataset.t||"").includes(v)) && (!starOnly||tr.dataset.star==="1");
     tr.style.display=ok?"":"none";
     const nx=tr.nextElementSibling;
     if(nx&&nx.classList.contains("qdet")) nx.style.display=ok?"":"none";
@@ -1728,6 +2366,86 @@ document.addEventListener("keydown",e=>{
   if(e.key==="ArrowUp"){e.preventDefault();palSel=Math.max(0,palSel-1);renderPal(palin.value);}
   if(e.key==="Enter"){const c=pal._cur||[];if(c[palSel]){closePal();c[palSel].go();}}
 });
+
+/* ============================================================
+   陣営の切り分けと、重点クエリの保存
+   ============================================================ */
+
+/* 販売会社（DMS）のドメイン判定。
+   パイプライン側でも同じ判定を入れてあるが、そちらが効くのは翌朝のバッチから。
+   その日から画面で使えるように、既存データに対しては画面側でも判定する。
+   bucket:"dealer" が付いているデータでは、こちらは使われない。 */
+const DEALER_RE=[
+  /(^|\.)toyota-mobi-[^.]+\.(jp|co\.jp)$/, /(^|\.)toyota-mobility-[^.]+\.(jp|co\.jp)$/,
+  /(^|\.)toyota-united[^.]*\.co\.jp$/,     /(^|\.)weins-toyota-[^.]+\.co\.jp$/,
+  /[a-z0-9-]+toyota\.(jp|co\.jp)$/,        /(^|\.)gtoyota\.com$/,
+  /(^|\.)corolla-[^.]+\.(jp|net|co\.jp)$/, /\.corolla\.co\.jp$/,
+  /[a-z0-9-]*corolla[a-z0-9-]*\.jp$/,      /(^|\.)t-corolla\.co\.jp$/,
+  /toyopet/,                                /\.toyota-dealer\.jp$/,
+  /(^|\.)netz[a-z0-9-]*\.(com|jp)$/,       /[a-z0-9-]*netz[a-z0-9-]*\.jp$/,
+  /(^|\.)k-toyota\.co\.jp$/
+];
+const AFFIL_RE=[/(^|\.)global\.toyota$/,/(^|\.)toyota\.co\.jp$/,/(^|\.)lexus\.jp$/,
+                /(^|\.)kinto-jp\.com$/,/(^|\.)gazoo\.com$/];
+function bucketOf(c){
+  const b=c.bucket;
+  if(b==="owned") return "owned";
+  if(b==="dealer") return "dealer";                 // パイプラインが分類済み
+  const h=(c.host||"").replace(/^www\./,"").toLowerCase();
+  if(b==="affiliated"||b==="media"){
+    if(DEALER_RE.some(r=>r.test(h))) return "dealer";
+    if(AFFIL_RE.some(r=>r.test(h)))  return "affiliated";
+  }
+  return b;
+}
+const SCOPES={
+  owned :{label:"toyota.jp のみ", set:new Set(["owned"]),
+          desc:"自社が直接運営しているページだけ。GEOスコアの計算はこの定義です"},
+  dealer:{label:"販売店（DMS）", set:new Set(["dealer"]),
+          desc:"トヨタモビリティ・カローラ店・ネッツ店などの販売会社サイト。運営が別会社なので打ち手も別になります"},
+  group :{label:"グループ会社", set:new Set(["affiliated"]),
+          desc:"KINTO・GAZOO・global.toyota・レクサスなど。自社関連だが toyota.jp ではありません"},
+  all   :{label:"トヨタ陣営 合算", set:new Set(["owned","dealer","affiliated"]),
+          desc:"トヨタ陣営として押さえられている割合"}
+};
+let scope=localStorage.getItem("geo.scope")||"owned";
+if(!SCOPES[scope]) scope="owned";
+
+/* 自社が言及されたセルのうち、指定した陣営のドメインが根拠に引かれた割合。
+   scope="owned" のとき、パイプラインが出す factors.owned_citation と一致する。 */
+function ownedRate(sc){
+  const want=SCOPES[sc].set;
+  let tot=0,hit=0;
+  (D.queries||[]).forEach(q=>{
+    Object.entries(q.surfaces||{}).forEach(([sf,v])=>{
+      if(v.rank==null && !v.mention_rate) return;      // 自社未言及のセルは分母から外す
+      tot++;
+      const cs=(q.citations||[]).filter(c=>(c.surfaces||[]).includes(sf));
+      if(cs.some(c=>want.has(bucketOf(c)))) hit++;
+    });
+  });
+  return tot? hit/tot*100 : 0;
+}
+function scopeCells(){
+  let n=0;
+  (D.queries||[]).forEach(q=>Object.values(q.surfaces||{}).forEach(v=>{
+    if(v.rank!=null||v.mention_rate) n++;}));
+  return n;
+}
+
+/* 重点クエリ。IDは仕様上振り直されないので、日をまたいでも同じクエリを指す。 */
+let stars=new Set(JSON.parse(localStorage.getItem("geo.star")||"[]"));
+let starOnly=false;
+function toggleStar(id){
+  stars.has(id)?stars.delete(id):stars.add(id);
+  localStorage.setItem("geo.star",JSON.stringify([...stars]));
+}
+
+/* 販売台数（月次の静的ファイル）。取れなくても画面は落とさない。 */
+let SALES=null;
+
+fetch("data/sales.json?"+Date.now()).then(r=>r.ok?r.json():null)
+  .then(s=>{SALES=s;}).catch(()=>{SALES=null;});
 
 fetch("data/latest.json?"+Date.now()).then(r=>r.json()).then(d=>{
   D=d;
