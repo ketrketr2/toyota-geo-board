@@ -129,7 +129,7 @@ def build_site(day: str) -> None:
             "date": d, "score": s["score"], **s["factors"],
             "ai_sessions": sum(s["signals"]["ga4_ai_sessions"].values()),
             "crawler_hits": sum(s["signals"]["crawler_hits"].values()),
-            "sov_own": s["brands"][own]["sov"],
+            "sov_own": (s["brands"].get(own) or {}).get("sov"),
         })
 
     # ---- クエリ表（プロンプト単位に畳む）----
@@ -151,7 +151,10 @@ def build_site(day: str) -> None:
             "rank": c["brands"][own]["rank"],
             "mention_rate": c["brands"][own]["mention_rate"],
             "sentiment": c["brands"][own]["sentiment"],
-            "competitors": {b: c["brands"][b]["rank"] for b in labels if b != own},
+            # ブランドを後から足すと、それ以前のスナップショットには存在しない。
+            # 欠けているブランドは None（未計測）として扱い、画面を落とさない。
+            "competitors": {b: (c["brands"].get(b) or {}).get("rank")
+                            for b in labels if b != own},
         }
         r["own_cited"] = r["own_cited"] or c["own_cited"]
         r["platforms"] |= {x["platform"] for x in c["citations"] if x["platform"]}
@@ -162,7 +165,7 @@ def build_site(day: str) -> None:
                 "bucket": cit["bucket"], "platform": cit["platform"], "surfaces": set()})
             e["surfaces"].add(c["surface"])
 
-    BUCKET_ORDER = {"owned": 0, "affiliated": 1, "earned": 2, "media": 3,
+    BUCKET_ORDER = {"owned": 0, "dealer": 1, "affiliated": 2, "earned": 3, "media": 4,
                     "reference": 4, "press": 5, "competitor": 6, "noise": 7}
     owned_index: dict[str, dict] = {}     # 自社ページ → どのクエリで引かれたか（逆引き）
 
@@ -176,7 +179,8 @@ def build_site(day: str) -> None:
             c["surface_labels"] = [surface_label.get(s, s) for s in c["surfaces"]]
             c["path"] = _short_path(c["url"])
         own_pages = [c for c in cites if c["bucket"] == "owned"]
-        aff_pages = [c for c in cites if c["bucket"] == "affiliated"]
+        aff_pages = [c for c in cites if c["bucket"] in ("affiliated", "dealer")]
+        dealer_pages = [c for c in cites if c["bucket"] == "dealer"]
 
         for c in own_pages:                                    # 逆引きインデックスを作る
             e = owned_index.setdefault(c["url"], {
@@ -195,6 +199,7 @@ def build_site(day: str) -> None:
                            "citations": cites,
                            "own_pages": own_pages,
                            "affiliated_pages": aff_pages,
+                           "dealer_pages": dealer_pages,
                            "n_citations": len(cites),
                            "best_rank": min(rks) if rks else None,
                            "avg_rank": round(sum(rks) / len(rks), 1) if rks else None,
@@ -331,6 +336,9 @@ def build_site(day: str) -> None:
         "mode": snap.get("mode", "demo"),
         # その日どの面を測ったか／比較の土台がどれか。母集団が違う日を
         # 並べて見せてしまわないよう、画面にも出す。
+        # 陣営別のオウンド引用率（表示専用。GEOスコアは toyota.jp 基準のまま）
+        "citation_scopes": snap.get("citation_scopes"),
+        "sov_brands": snap.get("sov_brands"),
         "live_days": sum(1 for d in list_snapshots()
                          if (read_json(snapshot_path(d)) or {}).get("mode") == "live"),
         "measured": {
