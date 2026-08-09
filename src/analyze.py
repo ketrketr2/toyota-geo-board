@@ -77,6 +77,10 @@ def classify_url(url: str) -> dict:
         return {"host": host, "bucket": "owned", "platform": None}
     if match_domain(host, br["own"]["affiliated_domains"]):
         return {"host": host, "bucket": "affiliated", "platform": None}
+    # 販売会社（DMS）。グループ会社とは運営も打ち手も別なので独立させる。
+    # 判定順は owned → affiliated → dealer。ワイルドカードが広いので必ず後ろに置く。
+    if match_domain(host, br["own"].get("dealer_domains") or []):
+        return {"host": host, "bucket": "dealer", "platform": None}
     for p in pf["platforms"]:
         if match_domain(host, p["domains"]):
             return {"host": host, "bucket": "earned", "platform": p["id"]}
@@ -114,7 +118,8 @@ def _cohort_ids(day: str) -> set[str]:
 
 
 def _compute(cells: list[dict], br: dict, pf: dict, own_id: str,
-             all_brands: list[str]) -> tuple[dict, list[dict], dict]:
+             all_brands: list[str],
+             sov_brands: list[str] | None = None) -> tuple[dict, list[dict], dict]:
     """セル集合から6因数・プラットフォーム内訳・補助集計を出す。
 
     全体（コア枠すべて）と基準コホートの2通りで呼ぶため関数に切ってある。
@@ -126,12 +131,26 @@ def _compute(cells: list[dict], br: dict, pf: dict, own_id: str,
     ranks = [c["brands"][own_id]["rank"] for c in own_cells if c["brands"][own_id]["rank"]]
     rank_quality = (sum(1 / r for r in ranks) / len(ranks) * 100) if ranks else 0.0
     owned_citation = (sum(c["own_cited"] for c in own_cells) / len(own_cells) * 100) if own_cells else 0.0
+    # 表示用。スコアには一切影響させない。
+    n_own = len(own_cells) or 1
+    citation_scopes = {
+        "owned": round(sum(c.get("own_cited", False) for c in own_cells) / n_own * 100, 2),
+        "dealer": round(sum(c.get("dealer_cited", False) or c.get("affiliated_cited", False)
+                            for c in own_cells) / n_own * 100, 2),
+        "all": round(sum(c.get("own_cited", False) or c.get("dealer_cited", False)
+                         or c.get("affiliated_cited", False)
+                         for c in own_cells) / n_own * 100, 2),
+        "cells": len(own_cells),
+    }
     pos = sum(1 for c in own_cells if c["brands"][own_id]["sentiment"] == "positive")
     sentiment = (pos / len(own_cells) * 100) if own_cells else 0.0
 
     mention_counts = {b: sum(c["brands"][b]["mentioned"] for c in cells) for b in all_brands}
     tot_mentions = sum(mention_counts.values()) or 1
-    sov = mention_counts[own_id] / tot_mentions * 100
+    # スコア用のシェアは、分母に入れると決めたブランドだけで計算する
+    sov_set = sov_brands or all_brands
+    sov_total = sum(mention_counts[b] for b in sov_set) or 1
+    sov = mention_counts[own_id] / sov_total * 100
 
     # ---- アーンド（SNS/UGC）引用 ----
     plat_cfg = {p["id"]: p for p in pf["platforms"]}
@@ -165,11 +184,14 @@ def _compute(cells: list[dict], br: dict, pf: dict, own_id: str,
         "owned_citation": owned_citation,
         "earned_citation": earned * 100,
         "sentiment": sentiment,
-        "share_of_voice": min(sov / 0.35, 100),   # 5社均等=20%を基準に正規化
+        # 均等配分の2.1倍を満点とする。社数が変わっても基準が動かないようにするため。
+        # 6社なら満点しきい値35.0%で、従来の 0.35 固定値と完全に一致する。
+        "share_of_voice": min(sov / (100 / len(sov_set) * 2.1) * 100, 100),
     }
     return factors, platforms_out, {"own_cells": own_cells,
                                     "mention_counts": mention_counts,
-                                    "tot_mentions": tot_mentions}
+                                    "tot_mentions": tot_mentions,
+                                    "citation_scopes": citation_scopes}
 
 
 def aggregate(day: str, responses: list[dict], signals: dict) -> dict:
@@ -177,6 +199,9 @@ def aggregate(day: str, responses: list[dict], signals: dict) -> dict:
     cfg, br, pf = load("settings"), load("brands"), load("platforms")
     own_id = br["own"]["id"]
     all_brands = [own_id] + [c["id"] for c in br["competitors"]]
+    # 相対シェアの分母。ブランドを足すと分母が変わってスコアが不連続になるため、
+    # 「測るが分母には入れない」を選べるようにしてある（in_sov: false）。
+    sov_brands = [own_id] + [c["id"] for c in br["competitors"] if c.get("in_sov", True)]
     prompt_meta = {p["id"]: p for p in __import__("common").load_prompts("core")}
 
     # ---- 1) レスポンス単位で判定 ----
@@ -223,7 +248,11 @@ def aggregate(day: str, responses: list[dict], signals: dict) -> dict:
         cell["negatives"] = sorted(set(cell["negatives"]))
         # 回答例（run 0 の本文）。UIでクリック表示するため1本だけ保持する。
         cell["answer"] = (runs[0].get("text") or "")[:900]
+        # own_cited は GEOスコアの owned_citation の分子。toyota.jp 基準のまま動かさない。
+        # 定義を変えると過去の時系列が全部意味を失うため、販売店・グループは別フラグにする。
         cell["own_cited"] = any(c["bucket"] == "owned" for c in cell["citations"])
+        cell["dealer_cited"] = any(c["bucket"] == "dealer" for c in cell["citations"])
+        cell["affiliated_cited"] = any(c["bucket"] == "affiliated" for c in cell["citations"])
         cells.append(cell)
 
     # ---- 2.5) コホート判定 ----
@@ -242,9 +271,9 @@ def aggregate(day: str, responses: list[dict], signals: dict) -> dict:
     for c in cells:
         c["cohort"] = c["cohort"] and (c["surface"] in daily_ids if daily_ids else True)
 
-    factors, platforms_out, extras = _compute(cells, br, pf, own_id, all_brands)
+    factors, platforms_out, extras = _compute(cells, br, pf, own_id, all_brands, sov_brands)
     cohort_cells = [c for c in cells if c["cohort"]]
-    coh_factors, _, coh_extras = (_compute(cohort_cells, br, pf, own_id, all_brands)
+    coh_factors, _, coh_extras = (_compute(cohort_cells, br, pf, own_id, all_brands, sov_brands)
                                   if cohort_cells else (factors, platforms_out, extras))
 
     presence = factors["presence"]
@@ -276,6 +305,9 @@ def aggregate(day: str, responses: list[dict], signals: dict) -> dict:
         # 実力の変化と読み違えるため、比較側はこの署名で日を選ぶ。
         "surface_key": surface_key(sorted({c["surface"] for c in cells})),
         "surfaces_measured": sorted({c["surface"] for c in cells}),
+        # 陣営別のオウンド引用率。表示専用で、スコアには影響しない。
+        "citation_scopes": extras["citation_scopes"],
+        "sov_brands": sov_brands,
         "score": round(score, 2),
         "factors": {k: round(v, 2) for k, v in factors.items()},
         "cohort": {
