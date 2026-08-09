@@ -14,15 +14,48 @@ own:
     - "トヨタ自動車"
   owned_domains:          # オウンド引用としてカウント
     - "toyota.jp"
-  affiliated_domains:     # 自社関連だがオウンドではない（別集計）
+  affiliated_domains:     # グループ会社。自社関連だがオウンドではない
     - "global.toyota"
     - "toyota.co.jp"
     - "lexus.jp"
     - "kinto-jp.com"
+    - "*.kinto-jp.com"
     - "gazoo.com"
-    - "toyota-mobi-*.jp"   # 販売店（ワイルドカード可）
+    - "*.gazoo.com"
+  # ---- 販売会社（DMS）----
+  # グループ会社とは運営主体も打ち手も別なので、独立したバケットにする。
+  # 従来はパターンが弱く、大半が「一般メディア」に落ちていた。
+  dealer_domains:
+    # トヨタモビリティ／各県トヨタ
+    - "toyota-mobi-*.jp"
+    - "toyota-mobi-*.co.jp"
+    - "toyota-mobility-*.jp"
+    - "toyota-mobility-*.co.jp"
+    - "toyota-united*.co.jp"
+    - "*-toyota.jp"
+    - "*-toyota.co.jp"
+    - "*toyota.jp"
+    - "*toyota.co.jp"
+    - "gtoyota.com"
+    # トヨタカローラ
+    - "corolla-*.jp"
+    - "corolla-*.net"
+    - "corolla-*.co.jp"
+    - "*.corolla.co.jp"
+    - "*corolla*.jp"
+    - "t-corolla.co.jp"
+    # トヨペット
     - "*toyopet*.co.jp"
+    - "*toyopet*.jp"
+    - "*.toyopet-dealer.jp"
+    # ネッツ
+    - "netz*.com"
+    - "netz*.jp"
+    - "*netz*.jp"
+    # その他販売会社
     - "*.toyota-dealer.jp"
+    - "weins-toyota-*.co.jp"
+    - "k-toyota.co.jp"
 
 competitors:
   - id: honda
@@ -45,9 +78,24 @@ competitors:
     label: "Mazda"
     aliases: ["マツダ", "MAZDA", "Mazda"]
     domains: ["mazda.co.jp"]
+  # 販売台数4位・7位。ここが抜けていると相対シェアの分母が実市場とズれる。
+  - id: daihatsu
+    label: "Daihatsu"
+    aliases: ["ダイハツ", "DAIHATSU", "Daihatsu", "ダイハツ工業"]
+    domains: ["daihatsu.co.jp"]
+    # 測定はするが相対シェアの分母には入れない。
+    # 分母を変えるとスコアが不連続になるため、切り替えは四半期の節目に行う。
+    in_sov: false
+  - id: mitsubishi
+    label: "Mitsubishi"
+    # 「三菱」単独は三菱商事・三菱UFJ等を拾うため入れない。
+    # 自動車を指すことが確実な表記だけに限定する。
+    aliases: ["三菱自動車", "三菱自", "ミツビシ", "MITSUBISHI MOTORS", "Mitsubishi Motors", "三菱ふそう"]
+    domains: ["mitsubishi-motors.co.jp"]
+    in_sov: false
 
 # ---- 判断軸（ビジネスドライバー）----
-# AI回答がどの軸で語っているかを分類し、軸別の勝ち負けを追う。
+# AI回答がどの軸で語っているかを分類し、軸別の勝ち負けを迴う。
 # 実測で負けている3軸を priority: high にしてある。
 drivers:
   - { id: cost,        label: "総保有コスト",       priority: mid  }
