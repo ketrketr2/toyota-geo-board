@@ -95,7 +95,7 @@ competitors:
     in_sov: false
 
 # ---- 判断軸（ビジネスドライバー）----
-# AI回答がどの軸で語っているかを分類し、軸別の勝ち負けを迴う。
+# AI回答がどの軸で語っているかを分類し、軸別の勝ち負けを追う。
 # 実測で負けている3軸を priority: high にしてある。
 drivers:
   - { id: cost,        label: "総保有コスト",       priority: mid  }
