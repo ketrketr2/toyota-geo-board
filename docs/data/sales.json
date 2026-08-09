@@ -1,0 +1,81 @@
+{
+ "updated_at": "2026-08-09",
+ "period": "2026-07",
+ "period_label": "2026年7月（単月）",
+ "definition": "自販連〈メーカー別〉新車登録台数（乗用車＋貨物＋バス）と、全軽自協〈軽四輪車〉総台数の合計。レクサスはトヨタに含む。海外生産車はメーカー別統計では輸入車扱いのため含まない。",
+ "sources": [
+  {
+   "label": "自販連 メーカー別 新車登録台数（2026年7月／2026-08-06公表）",
+   "url": "https://www.jada.or.jp/pages/338/"
+  },
+  {
+   "label": "全国軽自動車協会連合会 軽四輪車 新車販売台数 速報（2026年7月）",
+   "url": "https://www.zenkeijikyo.or.jp/statistics/4soku"
+  },
+  {
+   "label": "自販連 ブランド別 登録車 新車販売台数 速報（レクサス別掲の確認に使用）",
+   "url": "https://www.jada.or.jp/pages/364/"
+  }
+ ],
+ "market_total": 417153,
+ "market_total_note": "登録車276,679＋軽140,484。自販連・全軽自協 合同発表値。",
+ "brands": [
+  {
+   "id": "toyota",
+   "label": "トヨタ",
+   "registered": 141366,
+   "kei": 1726,
+   "total": 143092,
+   "note": "レクサス7,787台を含む（メーカー別統計はブランド別掲なし）"
+  },
+  {
+   "id": "honda",
+   "label": "ホンダ",
+   "registered": 31883,
+   "kei": 27666,
+   "total": 59549
+  },
+  {
+   "id": "suzuki",
+   "label": "スズキ",
+   "registered": 10288,
+   "kei": 46522,
+   "total": 56810
+  },
+  {
+   "id": "daihatsu",
+   "label": "ダイハツ",
+   "registered": 2904,
+   "kei": 40673,
+   "total": 43577
+  },
+  {
+   "id": "nissan",
+   "label": "日産",
+   "registered": 21880,
+   "kei": 13936,
+   "total": 35816
+  },
+  {
+   "id": "mazda",
+   "label": "マツダ",
+   "registered": 9759,
+   "kei": 2551,
+   "total": 12310
+  },
+  {
+   "id": "mitsubishi",
+   "label": "三菱",
+   "registered": 4559,
+   "kei": 6240,
+   "total": 10799
+  },
+  {
+   "id": "subaru",
+   "label": "スバル",
+   "registered": 9014,
+   "kei": 1035,
+   "total": 10049
+  }
+ ]
+}
