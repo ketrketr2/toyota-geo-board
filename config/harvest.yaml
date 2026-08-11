@@ -36,19 +36,19 @@ seeds:
 sources:
   suggest:                       # Google サジェスト（無料・公式endpoint）
     enabled: true
-    label: "Googleサジェスト"
+    label: "Googleの検索候補"
     per_seed: 10
   paa:                           # 検索結果の「他の人はこちらも質問」
     enabled: true
-    label: "Google「関連する質問」"
+    label: "Googleの「関連する質問」"
     per_seed: 8
   chiebukuro:                    # Yahoo!知恵袋の実質問（SERP経由で取得）
     enabled: true
-    label: "Yahoo!知恵袋の実質問"
+    label: "知恵袋に実際に書かれた質問"
     per_seed: 6
   fanout:                        # AIが内部で投げた派生クエリの回収
     enabled: true
-    label: "LLM fan-out還流"
+    label: "AIが自分で調べ直した語"
     lookback_days: 30
     min_hits: 2                  # 30日で2回以上現れたものだけ候補にする
 

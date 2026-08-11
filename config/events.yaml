@@ -53,6 +53,26 @@ calendar:
       - "新型 ミニバン 2026 比較"
     note: "競合の発表は自社クエリを食う。発表直後2週間の順位を必ず見る"
 
+  - id: newmodel_2026h2_toyota
+    label: "トヨタ 2026年後半の新型車（ハリアー/シエンタ/クラウン/ランクル300 HEV）"
+    from: "2026-07-20"
+    to:   "2026-12-31"
+    kind: newmodel
+    seeds:
+      - "新型ハリアー ハイブリッドのみ なぜ"
+      - "ハリアー PHEV 廃止 理由"
+      - "新型ハリアー 2026 変更点"
+      - "新型シエンタ フリード どっち"
+      - "シエンタ 一部改良 2026 何が変わった"
+      - "新型クラウン マイナーチェンジ いつ"
+      - "クラウン クロスオーバー セダン 違い"
+      - "ランドクルーザー300 ハイブリッド 燃費"
+      - "ランクル300 HEV 納期"
+      - "ヤリスクロス GRスポーツ 4WD 評価"
+      - "ハイランダー 日本 価格"
+      - "GR86 F型 改良 変更点"
+    note: "実測で、これらの車名はAI回答には出てくるのにコア枠クエリに入っていなかった。発売前後の12週間はシードで押し込む"
+
   - id: winter_season
     label: "冬季（雪道・スタッドレス・帰省）"
     from: "2026-11-01"
@@ -97,3 +117,116 @@ watch:
   - id: price_hike
     label: "値上げ・価格改定"
     keywords: ["値上げ", "価格改定", "高くなった", "値引き しない"]
+
+# ============================================================
+#  新型車ウォッチ（イベント追跡タブの表示元）
+#
+#  「新型車が出たら、その車で何が聞かれているか」を追うための一覧。
+#  出典URL付き。更新頻度は低くてよい（月1回の見直しを想定）。
+#  match の語がクエリ本文・AI回答本文に含まれるかで自動照合するので、
+#  ここに1行足すだけでタブに出る。
+#
+#  status: launched（発売済） / announced（発表済・発売前） / rumored（未確定）
+# ============================================================
+newmodels_updated_on: "2026-08-11"
+newmodels:
+  - id: crown_mc_2026
+    model: "クラウン"
+    title: "クラウン クロスオーバー／セダン マイナーチェンジ"
+    date: "2026-09-03"
+    status: announced
+    match: ["クラウン", "CROWN", "Crown"]
+    note: "発売前。発表から発売までの間にAIが何を語り始めるかを見る、最も観測価値の高いイベント。"
+    source: "https://car-repo.jp/blog-entry-toyota-2026.html"
+
+  - id: lc300_hev_2026
+    model: "ランドクルーザー300"
+    title: "ランドクルーザー300 ハイブリッド 発売"
+    date: "2026-09-16"
+    status: announced
+    match: ["ランドクルーザー", "ランクル", "LAND CRUISER", "Land Cruiser"]
+    note: "ランクル系の指名は元々強い。HEV追加で「燃費」文脈のクエリに入り込めるかが論点。"
+    source: "https://car-repo.jp/blog-entry-toyota-2026.html"
+
+  - id: harrier_mc_2026
+    model: "ハリアー"
+    title: "ハリアー マイナーチェンジ（ガソリン・PHEV廃止）"
+    date: "2026-08-03"
+    status: launched
+    match: ["ハリアー", "HARRIER", "Harrier"]
+    note: "HEVに集約。パワートレイン構成が変わったので「どれを選ぶべきか」系の質問が動く想定。"
+    source: "https://car-repo.jp/blog-entry-new-harrier-2026-minor-model-change.html"
+
+  - id: yariscross_grsport_2026
+    model: "ヤリスクロス"
+    title: "ヤリスクロス GRスポーツ 発売（4WD追加）"
+    date: "2026-08-03"
+    status: launched
+    match: ["ヤリスクロス", "ヤリス クロス", "YARIS CROSS", "Yaris Cross"]
+    note: "コンパクトSUVの比較検討に効く。4WD追加で雪国・アウトドア文脈が動く。"
+    source: "https://car-repo.jp/blog-entry-breaking-news-toyota-new-yaris-cross-gr-sport-set-for-july-2026-release.html"
+
+  - id: sienta_2026
+    model: "シエンタ"
+    title: "シエンタ 一部改良"
+    date: "2026-08-03"
+    status: launched
+    match: ["シエンタ", "SIENTA", "Sienta"]
+    note: "ミニバン比較の主戦場。ミニバン系クエリの順位を要監視。"
+    source: "https://car-repo.jp/blog-entry-2026-toyota-new-sienta-partial-upgrade.html"
+
+  - id: gr86_f_2026
+    model: "GR86"
+    title: "GR86 F型 一部改良"
+    date: "2026-08-06"
+    status: launched
+    match: ["GR86", "ハチロク"]
+    note: "「走りの楽しさ不足」というネガ要因への反証材料になり得る。"
+    source: "https://car-repo.jp/blog-entry-2026-toyota-gr86-2.html"
+
+  - id: highlander_jp_2026
+    model: "ハイランダー"
+    title: "ハイランダー 全国発売（北米生産の逆輸入）"
+    date: "2026-08-01"
+    status: launched
+    match: ["ハイランダー", "HIGHLANDER", "Highlander"]
+    note: "3列SUVの新顔。まだAIの学習に乗り切っていない可能性が高く、認知の立ち上がりを観測する対象。"
+    source: "https://www.carsensor.net/contents/newmodel/category_120/_68698.html"
+
+  - id: hilux_fmc_2026
+    model: "ハイラックス"
+    title: "ハイラックス フルモデルチェンジ（9年ぶり）"
+    date: "2026-05-28"
+    status: launched
+    match: ["ハイラックス", "HILUX", "Hilux"]
+    note: "発売から2か月経過。AIの語り口がどう固まったかの参照ケース。"
+    source: "https://www.carsensor.net/contents/newmodel/category_120/_68698.html"
+
+  - id: lcfj_2026
+    model: "ランドクルーザーFJ"
+    title: "ランドクルーザーFJ 発売"
+    date: "2026-05-14"
+    status: launched
+    match: ["ランドクルーザーFJ", "ランクルFJ"]
+    note: "新規車名。AIが車名を正しく認識できているか（別車種と混同していないか）の検査対象。"
+    source: "https://www.carsensor.net/contents/newmodel/category_120/_68698.html"
+
+  - id: raize_2026
+    model: "ライズ"
+    title: "ライズ 一部改良"
+    date: "2026-11-01"
+    date_precision: month
+    status: announced
+    match: ["ライズ", "RAIZE", "Raize"]
+    note: "エントリーSUV。価格・維持費テーマのクエリに影響。"
+    source: "https://car-repo.jp/blog-entry-toyota-2026.html"
+
+  - id: camry_fmc_2026
+    model: "カムリ"
+    title: "カムリ フルモデルチェンジ（北米生産・逆輸入）"
+    date: "2026-11-01"
+    date_precision: month
+    status: rumored
+    match: ["カムリ", "CAMRY", "Camry"]
+    note: "時期は未確定。セダン需要の受け皿として、発表タイミングでクエリが立つかを監視。"
+    source: "https://www.carsensor.net/contents/newmodel/category_120/_68698.html"
