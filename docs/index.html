@@ -30,31 +30,51 @@
   color-mix(in srgb,var(--tx) 4%,transparent) 33%);
   background-size:1040px 100%;animation:skel 1.25s linear infinite}
 .skelwrap{padding:22px 26px;display:grid;gap:14px}
-/* スコープ切替 */
-.scopebox{background:color-mix(in srgb,var(--card2) 74%,transparent);border:1px solid var(--line);
-  border-radius:12px;padding:12px 14px;margin-bottom:12px}
-.scopehd{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:8px}
-.scopettl{font-size:12px;font-weight:700;color:var(--tx2)}
-.scopenote{font-size:11px;color:var(--sub)}
-.seg2{display:flex;gap:6px;flex-wrap:wrap}
-.seg2 button{flex:1 1 130px;min-width:0;display:flex;flex-direction:column;align-items:flex-start;gap:2px;
-  background:transparent;border:1px solid var(--line2);color:var(--sub);border-radius:9px;
-  padding:7px 10px;font-family:inherit;font-size:11px;cursor:pointer;
-  transition:background .2s,color .2s,border-color .2s,transform .2s cubic-bezier(.34,1.56,.64,1)}
-.seg2 button b{font-size:15px;font-weight:700;color:var(--tx2);
-  font-family:"Geist Mono",ui-monospace,monospace;font-variant-numeric:tabular-nums}
-.seg2 button:hover{border-color:var(--accent);transform:translateY(-1px)}
-.seg2 button.on{background:color-mix(in srgb,var(--accent) 15%,transparent);
-  border-color:color-mix(in srgb,var(--accent) 56%,transparent);color:var(--tx)}
-.seg2 button.on b{color:var(--accent2)}
-.scopewhy{margin-top:9px;font-size:11.5px;color:var(--tx2);line-height:1.65}
-.fac.alt{border-color:color-mix(in srgb,var(--own) 46%,transparent);
-  background:color-mix(in srgb,var(--own) 7%,transparent)}
-.sctag{display:inline-block;margin-left:5px;padding:1px 6px;border-radius:5px;font-size:9.5px;
-  background:color-mix(in srgb,var(--own) 22%,transparent);color:var(--own)}
+/* 引用の内訳（スコープ） */
+.scopecard{padding:15px 17px}
+.scopehd{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-bottom:12px}
+.scopettl{font-size:13px;font-weight:700;color:var(--tx)}
+.scopenote{font-size:11px;color:var(--sub);margin-top:2px}
+.scopelock{display:inline-flex;align-items:center;gap:6px;font-size:10.5px;color:var(--sub);
+  background:color-mix(in srgb,var(--tx) 5%,transparent);border:1px solid var(--line);
+  border-radius:8px;padding:5px 10px;white-space:nowrap;cursor:help}
+.scopelock b{color:var(--accent2)}
+.scopelock .lk{filter:grayscale(1);opacity:.7}
+.scoperows{display:grid;gap:7px}
+.srow{display:grid;grid-template-columns:170px 1fr 72px;align-items:center;gap:11px;
+  padding:6px 8px;border-radius:8px;transition:background .2s}
+.srow:hover{background:color-mix(in srgb,var(--tx) 4%,transparent)}
+.srow.own{background:color-mix(in srgb,var(--accent2) 8%,transparent)}
+.sl{font-size:11.5px;color:var(--tx2);display:flex;align-items:center;gap:6px;min-width:0}
+.srow.own .sl{color:var(--tx);font-weight:700}
+.sbadge{font-size:9px;padding:1px 6px;border-radius:5px;white-space:nowrap;
+  background:color-mix(in srgb,var(--accent2) 20%,transparent);color:var(--accent2)}
+.strk{height:9px;border-radius:5px;background:color-mix(in srgb,var(--tx) 8%,transparent);overflow:hidden;min-width:0}
+.strk i{display:block;height:100%;border-radius:5px;background:linear-gradient(90deg,#2A6E8F,#38BDF8);
+  transition:width .7s cubic-bezier(.22,1,.36,1)}
+.srow.own .strk i{background:linear-gradient(90deg,#00A98F,#00E5C7)}
+.sv{font-family:"Geist Mono",ui-monospace,monospace;font-size:15px;font-weight:700;
+  text-align:right;color:var(--tx2);font-variant-numeric:tabular-nums}
+.srow.own .sv{color:var(--accent2)}
+.su{font-size:10px;color:var(--sub);margin-left:1px}
+.scopewhy{margin-top:11px;font-size:11.5px;color:var(--tx2);line-height:1.75;
+  padding-top:10px;border-top:1px solid var(--line)}
+@media(max-width:760px){.srow{grid-template-columns:1fr 60px}.strk{display:none}}
 /* 蛍光ペン。読み手に必ず拾ってほしい一文だけに使う */
 .hl{background:linear-gradient(transparent 58%,color-mix(in srgb,var(--accent2) 42%,transparent) 58%);
   padding:0 2px;font-weight:700;color:var(--tx)}
+/* 蛍光ペンの色違い。良い変化は緑、悪い変化は赤で拾わせる */
+.hl-g{background:linear-gradient(transparent 58%,color-mix(in srgb,var(--ok) 38%,transparent) 58%);
+  padding:0 2px;font-weight:700;color:var(--tx)}
+.hl-r{background:linear-gradient(transparent 58%,color-mix(in srgb,var(--bad) 38%,transparent) 58%);
+  padding:0 2px;font-weight:700;color:var(--tx)}
+.bignum{font-family:"Geist Mono",ui-monospace,monospace;font-size:23px;font-weight:800;
+  color:var(--accent2);letter-spacing:-.5px;vertical-align:-1px}
+.unit{font-size:11px;color:var(--sub);margin-left:1px}
+.muted{color:var(--sub)}
+.lead2{color:var(--own);font-weight:700}
+.s-lead{font-family:"Geist Mono",monospace;font-weight:700;color:var(--tx)}
+.s-sub{color:var(--sub);font-size:11px}
 .scatwrap{width:100%;overflow:hidden}
 .scat{display:block;max-width:760px;margin:0 auto}
 .scat .pt circle{transition:r .2s ease,fill-opacity .2s ease}
@@ -663,6 +683,139 @@ tr.catrow td:first-child b{border-bottom:1px dashed var(--line2)}
 .mode.surf::before{display:none}
 kbd{display:inline-block;font-family:inherit;font-size:10px;padding:1px 6px;border-radius:4px;
   border:1px solid var(--line2);background:var(--card2);color:var(--sub)}
+
+/* ================= 追加：v2 改善 ================= */
+/* 横あふれの根治：グリッド子とテーブル包みの最小幅を明示 */
+html,body{overflow-x:hidden;max-width:100%}
+.app{max-width:100vw}
+.main{min-width:0;overflow-x:clip}
+.wrap>*{min-width:0}
+.tw{max-width:100%}
+.tw table{width:100%}
+#qt{min-width:1200px;table-layout:fixed}
+#qt th.sfth{font-size:10.5px;line-height:1.3;white-space:normal;
+  border-bottom:2px solid color-mix(in srgb,var(--accent2) 45%,transparent)}
+#qt th{overflow:hidden}
+#qt td{overflow-wrap:anywhere}
+#qt td:nth-last-child(2) .ownp a{display:inline-block;max-width:186px;overflow:hidden;
+  text-overflow:ellipsis;white-space:nowrap;vertical-align:bottom}
+#qt td:nth-last-child(2) .ownt{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#qt td:last-child .tag{white-space:nowrap;max-width:92px;overflow:hidden;text-overflow:ellipsis;display:inline-block;vertical-align:bottom}
+.vsg>*,.g2>*,.g3>*,.g4>*,.g6>*,.g23>*{min-width:0;overflow-wrap:anywhere}
+.card{max-width:100%}
+.ansbox{overflow-wrap:anywhere}
+
+/* 用語ヘルプの「?」 */
+.srcbars .bars .row{grid-template-columns:210px 1fr 78px;margin:8px 0}
+.srcbars .bars .row .lb{white-space:normal;overflow:visible;color:var(--tx2);line-height:1.45}
+.qtags{display:flex;flex-wrap:wrap;gap:5px;margin-top:7px}
+.tag.src{display:inline-flex;align-items:center;gap:5px;padding-left:4px}
+.tag.src i{display:inline-flex;width:15px;height:15px;border-radius:4px;font-style:normal;
+  align-items:center;justify-content:center;font-size:9px;font-weight:700;
+  background:color-mix(in srgb,var(--accent2) 20%,transparent);color:var(--accent2)}
+tr.qrow td{padding-top:11px;padding-bottom:11px}
+.qhelp{display:inline-flex;width:12px;height:12px;margin-left:4px;border-radius:50%;
+  align-items:center;justify-content:center;font-size:8.5px;font-weight:700;cursor:help;
+  background:color-mix(in srgb,var(--accent2) 20%,transparent);color:var(--accent2);
+  border:1px solid color-mix(in srgb,var(--accent2) 35%,transparent);vertical-align:middle;
+  transition:all .18s var(--ease)}
+.qhelp:hover{background:var(--accent2);color:#06131A}
+th[title]{cursor:help}
+
+/* クリックできるKPIカード */
+.kpi.clik{cursor:pointer}
+.kpi.clik:hover{border-color:var(--accent2);box-shadow:var(--glow),var(--sh2)}
+.kpi .go{position:absolute;right:11px;bottom:9px;font-size:10px;color:var(--sub);opacity:0;
+  transition:opacity .2s var(--ease),transform .2s var(--ease);transform:translateX(-3px)}
+.kpi.clik:hover .go{opacity:1;transform:translateX(0)}
+
+/* 開いている行の位置を見失わせない */
+tr.qrow.opened td{background:color-mix(in srgb,var(--accent2) 9%,var(--card))!important;
+  box-shadow:inset 0 2px 0 var(--accent2)}
+tr.qrow.opened td:first-child{color:var(--accent2);font-weight:700}
+tr.qrow.flash td{animation:flashrow 1.5s var(--ease)}
+@keyframes flashrow{0%{background:color-mix(in srgb,var(--amber) 34%,transparent)}
+  100%{background:transparent}}
+.detwrap{position:relative}
+.detwrap::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;
+  background:linear-gradient(180deg,var(--accent2),transparent)}
+.detclose{display:inline-flex;align-items:center;gap:5px;font-size:11px;color:var(--sub);cursor:pointer;
+  border:1px solid var(--line2);border-radius:7px;padding:4px 12px;background:var(--card);
+  transition:all .18s var(--ease);margin-bottom:11px;position:sticky;left:0}
+.detclose:hover{color:var(--warn);border-color:var(--warn);background:color-mix(in srgb,var(--warn) 8%,var(--card))}
+.dblk>*{position:relative}
+
+/* 明細の余白とブロック化（文字文字を解消） */
+.detwrap{padding:18px 22px 20px;max-height:460px;overflow:auto}
+.detwrap::-webkit-scrollbar{width:8px}
+.detwrap::-webkit-scrollbar-thumb{background:var(--line2);border-radius:4px;border:2px solid transparent;background-clip:padding-box}
+.qdet .clist{max-height:none}
+.dblk{background:var(--card);border:1px solid var(--line);border-radius:10px;
+  padding:13px 16px;margin-bottom:12px}
+.dblk:last-child{margin-bottom:0}
+.dettitle{font-size:11.5px;font-weight:700;color:var(--tx2);margin-bottom:9px;
+  display:flex;align-items:center;gap:7px;letter-spacing:.02em}
+.dettitle .di{display:inline-flex;width:19px;height:19px;border-radius:6px;flex:0 0 auto;
+  align-items:center;justify-content:center;font-size:10px;
+  background:color-mix(in srgb,var(--accent2) 16%,transparent);color:var(--accent2)}
+.dettitle .dn{margin-left:auto;font-weight:400;color:var(--sub);font-size:10.5px}
+.facts{display:flex;flex-wrap:wrap;gap:8px}
+.fact{display:flex;flex-direction:column;gap:1px;background:var(--card2);border:1px solid var(--line);
+  border-radius:8px;padding:7px 12px;min-width:96px}
+.fact .fk{font-size:9.5px;color:var(--sub);letter-spacing:.04em}
+.fact .fvv{font-size:12.5px;font-weight:700;color:var(--tx)}
+
+/* イベント追跡 */
+.evg{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:14px}
+.ev{background:linear-gradient(180deg,var(--card),var(--card2));border:1px solid var(--line);
+  border-radius:13px;padding:16px 18px;box-shadow:var(--sh);position:relative;overflow:hidden;
+  transition:transform .3s var(--ease),box-shadow .3s var(--ease)}
+.ev:hover{transform:translateY(-3px);box-shadow:var(--sh2)}
+.ev::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--sub)}
+.ev.s-launched::before{background:var(--ok)}
+.ev.s-announced::before{background:var(--amber)}
+.ev.s-rumored::before{background:var(--sub)}
+.ev .evh{display:flex;align-items:flex-start;gap:9px;margin-bottom:4px}
+.ev .evm{font-size:15px;font-weight:800;color:var(--tx);line-height:1.35}
+.ev .evt{font-size:11.5px;color:var(--tx2);line-height:1.6;margin-bottom:9px}
+.ev .evd{font-size:10.5px;color:var(--sub);margin-bottom:10px;display:flex;gap:9px;flex-wrap:wrap;align-items:center}
+.ev .evn{font-size:11.5px;color:var(--tx2);line-height:1.75;background:var(--card2);
+  border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:0 8px 8px 0;
+  padding:9px 12px;margin-bottom:10px}
+.ev .evk{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:10px}
+.ev .evk>div{background:var(--card2);border:1px solid var(--line);border-radius:8px;padding:8px 10px;text-align:center}
+.ev .evk .k{font-size:9.5px;color:var(--sub);display:block;line-height:1.4}
+.ev .evk .v{font-size:17px;font-weight:800;color:var(--tx);line-height:1.25}
+.ev .evk .v.zero{color:var(--warn)}
+.ev .evq{font-size:11.5px;line-height:1.65}
+.ev .evq .q{display:flex;gap:7px;align-items:flex-start;padding:5px 0;border-top:1px solid var(--line)}
+.ev .evq .q:first-child{border-top:0}
+.ev .evq .q .qx{flex:1;color:var(--tx2);cursor:pointer}
+.ev .evq .q .qx:hover{color:var(--accent2);text-decoration:underline}
+.cd{display:inline-flex;align-items:baseline;gap:3px;font-weight:800}
+.cd b{font-size:15px}
+.evsrc{font-size:10px;color:var(--sub);margin-top:8px}
+.evsrc a{color:var(--sub);text-decoration:underline}
+.evsrc a:hover{color:var(--accent2)}
+
+/* アラート行をクリック可能に */
+.al.clik{cursor:pointer;transition:background .18s var(--ease)}
+.al.clik:hover{background:color-mix(in srgb,var(--accent2) 8%,transparent)}
+.al .algo{margin-left:auto;font-size:10.5px;color:var(--sub);white-space:nowrap}
+.al.clik:hover .algo{color:var(--accent2)}
+.al>div:nth-child(2){display:flex;flex-wrap:wrap;align-items:center;gap:6px}
+.al .altx{flex:1 1 260px;min-width:0}
+
+/* モーダル内クエリリスト */
+.mql{display:flex;flex-direction:column;gap:6px;max-height:56vh;overflow:auto;padding-right:4px}
+.mqi{display:grid;grid-template-columns:30px 1fr auto;gap:11px;align-items:center;
+  background:var(--card2);border:1px solid var(--line);border-radius:8px;padding:9px 12px;
+  cursor:pointer;transition:all .18s var(--ease)}
+.mqi:hover{border-color:var(--accent2);background:color-mix(in srgb,var(--accent2) 7%,var(--card2))}
+.mqi .no{font-size:10.5px;color:var(--sub);text-align:center;font-variant-numeric:tabular-nums}
+.mqi .tx{font-size:12.5px;color:var(--tx);line-height:1.55;overflow-wrap:anywhere}
+.mqi .tx small{display:block;color:var(--sub);font-size:10.5px;margin-top:2px}
+.mqi .mt{text-align:right;white-space:nowrap;font-size:11px;color:var(--sub)}
 </style>
 </head>
 <body>
@@ -670,8 +823,11 @@ kbd{display:inline-block;font-family:inherit;font-size:10px;padding:1px 6px;bord
 <aside class="side">
   <div class="brand"><div class="lg"><span class="dot">T</span>
     <div><div class="nm" id="brandName">TOYOTA</div><div class="sb" id="ownerTag">AI VISIBILITY BOARD</div></div></div></div>
+  <div class="grp">はじめに</div>
+  <a class="nav" data-p="guide"><span class="ic">?</span>読み方ガイド</a>
   <div class="grp">モニタリング</div>
   <a class="nav on" data-p="overview"><span class="ic">◉</span>概要</a>
+  <a class="nav" data-p="events"><span class="ic">◷</span>イベント追跡</a>
   <a class="nav" data-p="queries"><span class="ic">★</span>クエリ</a>
   <a class="nav" data-p="churn"><span class="ic">↻</span>クエリ新陳代謝</a>
   <a class="nav" data-p="pages"><span class="ic">▤</span>自社の被引用ページ</a>
@@ -680,7 +836,6 @@ kbd{display:inline-block;font-family:inherit;font-size:10px;padding:1px 6px;bord
   <a class="nav" data-p="sources"><span class="ic">◇</span>引用ソース</a>
   <a class="nav" data-p="signals"><span class="ic">⇡</span>AI流入・クローラー</a>
   <a class="nav" data-p="alerts"><span class="ic">!</span>アラート</a>
-  <a class="nav" data-p="guide"><span class="ic">?</span>読み方ガイド</a>
   <div class="foot" id="foot"></div>
 </aside>
 
@@ -731,11 +886,44 @@ const FDESC={
  rank_quality:["出たときに何番目に置かれたか","回答が複数ブランドを並べるとき、自社が何番目に書かれたか。1番目なら100点に近づく。低い＝挙がるが後回しにされている。"],
  owned_citation:["回答の根拠に toyota.jp が引かれた割合","AIが回答の根拠として示したURLに自社サイトが含まれた割合。低い＝自社サイトではなく他人のページを根拠にされている。"],
  earned_citation:["SNS・UGCが引かれ、そこに自社が載っていた割合","YouTube・知恵袋・note等が根拠として引かれたとき、その回答で自社が言及されていた割合。プラットフォーム重みを掛けて合成。"],
- sentiment:["自社に触れた文が好意的だった割合","自社名を含む文の語調を判定。低い＝出てはいるが否定的な文脈で語られている。"],
- share_of_voice:["競合5社の言及総数に占める自社の割合","5社均等なら20%。それを基準に100点換算。総合的な露出量の指標。"]};
-const SRCJ={chiebukuro:"Yahoo!知恵袋",paa:"Google関連する質問",llm_fanout:"LLM fan-out",fanout:"AIのfan-out還流",suggest:"Googleサジェスト",semrush_import:"SEOトピック輸入",harvest:"収穫",gsc:"GSC実クエリ","-":"初期設定"};
-let D=null, P="dod", sortK="best_rank", sortDir=1, catF="all";
+ sentiment:["AIが評価を述べたとき、それが好意的だった割合","自社に触れた文の語調を判定し、<b>肯定 ÷（肯定＋否定）</b>で算出。中立は「評価を述べていない」ので分母から外す。低い＝語られるときに否定的に扱われている。"],
+ share_of_voice:["競合を含めた言及総数に占める自社の割合","均等配分の2.1倍を満点として換算。総合的な露出量の指標。"]};
+/* クエリの出所。専門語のままだと初見で読めないので、日常語に寄せる。
+   正確な説明はツールチップ側に置く。 */
+const SRCJ={chiebukuro:"知恵袋の実際の質問",paa:"Googleの関連質問",
+  llm_fanout:"AIに言い換えさせた質問",fanout:"AIが自分で調べ直した質問",
+  suggest:"Googleの検索候補",semrush_import:"検索キーワードから作成",
+  harvest:"自動収集",gsc:"検索実績から",'-':"初期設定"};
+/* 表の中は短く。意味はマウスオーバーで出す。 */
+const SRCS={chiebukuro:"知恵袋",paa:"関連質問",llm_fanout:"AI言い換え",fanout:"AI再調査",
+  suggest:"検索候補",semrush_import:"KW調査",harvest:"自動収集",gsc:"検索実績",'-':"初期設定"};
+const SRCI={chiebukuro:"人",paa:"問",llm_fanout:"AI",fanout:"AI",
+  suggest:"検",semrush_import:"K",harvest:"収",gsc:"G",'-':"設"};
+const SRCDESC={
+  chiebukuro:"Yahoo!知恵袋に実際に投稿された質問文をそのまま整形したもの。いちばん生活者の言葉に近い",
+  paa:"Google検索結果の「他の人はこちらも質問」に出る疑問文",
+  llm_fanout:"同じ意図の別の聞き方をAIに作らせたもの。取りこぼしを埋めるため",
+  fanout:"AIが回答を作る途中で内部的に検索し直した語。AIにとって話題の中心にあるもの",
+  suggest:"Google検索窓に出る候補。検索量の裏づけがある",
+  semrush_import:"既存の検索キーワード調査から起こしたもの",
+  harvest:"自動収集（経路の記録なし）", gsc:"自社サイトへの実際の検索流入から",
+  '-':"運用開始時に手で設定したもの"};
+let D=null, P="dod", sortK="demand", sortDir=-1, catF="all";
 
+/* 用語の意味。初見の人が読めないままにしない。 */
+const TERM={
+  "AIによる概要":"Google検索の結果ページ上部に出るAIの要約。検索したときに最初に目に入る枠",
+  "AIモード":"Googleの検索を対話形式に置き換えたモード。検索窓ではなくAIと会話して答えを得る",
+  "ChatGPT":"OpenAIの対話型AI。日本での利用者数が最も多い",
+  "Gemini":"Googleの対話型AI",
+  "需要":"そのクエリが世の中でどれだけ聞かれているかの推定値（0〜100）。月間検索数45＋AIが自分で調べ直した回数25＋伸び率20＋知恵袋での出現10で算出",
+  "最良":"4つのAIのうち、自社がいちばん良い順位に置かれたときの順位。1が最良",
+  "月間検索":"Googleでそのキーワードが月に検索されるおおよその回数",
+  "テーマ":"クエリの内容分類。購入検討・安全・価格など7分類",
+  "出所":"そのクエリをどこから持ってきたか",
+  "順位":"AIの回答の中で、自社が何番目のブランドとして書かれていたか"
+};
+const tip=(label,extra)=>`title="${attr((TERM[label]||"")+(extra?"\n"+extra:""))}"`;
 const esc=s=>String(s??"").replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
 const num=v=>v==null?"—":(+v).toLocaleString();
 const f1=v=>v==null?"—":(+v).toFixed(1);
@@ -753,15 +941,42 @@ function delta(m,p,unit){ // 差分は必ず「（前日比 +0.12pt）」形式�
   const ti = sg===false ? "日々のばらつき（±2σ）の内側です。実質は横ばいと読んでください" : "日々のばらつき（±2σ）を超える変化です";
   return {html:`<span class="${cls}" title="${ti}">（${PJ[p]} ${s0}${val}${unit}${tail}）</span>`, v:d.delta};
 }
+/* 見出し。
+   実測では総合スコアの前日比が有意になったのは6日中2日だけで、レンジも5.6ptしかない。
+   一方でクエリ単位では1日に引用消失20本・獲得2本・順位変動9本が起きている。
+   総合スコアの増減より、そちらを先に読ませる。 */
+function queryEvents(period){
+  const ev={gained:[],lost:[],up:[],down:[]};
+  (D.queries||[]).forEach(q=>{
+    const tr=(q.trend||{})[period]; if(!tr) return;
+    if(tr.cite_change==="gained") ev.gained.push(q);
+    if(tr.cite_change==="lost")   ev.lost.push(q);
+    if(tr.rank_delta>0) ev.up.push(q);
+    if(tr.rank_delta<0) ev.down.push(q);
+  });
+  return ev;
+}
 function headline(){
-  const m=D.diff?.metrics?.score;
-  const d=m?.deltas?.[P];
-  const base=`本日のGEOスコアは <b>${D.score.toFixed(1)}</b> / 100。`;
-  if(!d||d.delta==null) return base+`${PJ[P]}の比較対象データはまだありません。`;
-  const sg=2*(m.sigma||0), sign=d.delta>=0?"+":"";
-  if(d.significant===false)
-    return base+`${PJ[P]} <b>${sign}${d.delta.toFixed(2)}pt</b>。ただしこれは日々のばらつき ±${sg.toFixed(2)}pt の内側なので、<b>実質は横ばい</b>です（数字が動いて見えるだけ）。`;
-  return base+`${PJ[P]} <b>${sign}${d.delta.toFixed(2)}pt</b>。日々のばらつき ±${sg.toFixed(2)}pt を超えているので、<b>本物の${d.delta>0?"上昇":"低下"}</b>と判断できます。`;
+  const m=D.diff?.metrics?.score, d=m?.deltas?.[P];
+  const ev=queryEvents(P);
+  const moved=ev.gained.length+ev.lost.length+ev.up.length+ev.down.length;
+  const t=tierScore(scoreNow());
+  let s=`本日のGEOスコアは <b class="bignum">${scoreNow().toFixed(1)}</b><span class="unit">/100</span>（${t.g}ティア）。`;
+  if(d&&d.delta!=null){
+    const sg=2*(m.sigma||0), sign=d.delta>=0?"+":"";
+    s += d.significant===false
+      ? `${PJ[P]} ${sign}${d.delta.toFixed(2)}pt は<span class="muted">ばらつき ±${sg.toFixed(2)}pt の内側なので横ばい</span>。`
+      : `${PJ[P]} <b class="${d.delta>0?'up':'dn'}">${sign}${d.delta.toFixed(2)}pt</b>。ばらつき ±${sg.toFixed(2)}pt を超えた<b>本物の${d.delta>0?"上昇":"低下"}</b>です。`;
+  }
+  if(moved){
+    const bits=[];
+    if(ev.lost.length)   bits.push(`<b class="hl-r">自社ページが引かれなくなったクエリ ${ev.lost.length}本</b>`);
+    if(ev.gained.length) bits.push(`<b class="hl-g">新たに引かれ始めた ${ev.gained.length}本</b>`);
+    if(ev.down.length)   bits.push(`順位が下がった ${ev.down.length}本`);
+    if(ev.up.length)     bits.push(`上がった ${ev.up.length}本`);
+    s += `<br><span class="lead2">総合スコアより先に見るべきはこちら：</span>${bits.join(" ／ ")}。`;
+  }
+  return s;
 }
 
 /* ---------- charts ---------- */
@@ -790,6 +1005,15 @@ function lineChart(hist,keys,colors,h=190,labels){
     g+=`<circle cx="${X(hist.length-1)}" cy="${Y(last[keys[0]])}" r="4.5" fill="${colors[0]}" stroke="#fff" stroke-width="1.6"/>`;
   g+=`<line class="cursor" x1="0" y1="${pad.t}" x2="0" y2="${h-pad.b}" stroke="var(--sub)" stroke-width="1" stroke-dasharray="3 3"/>`;
   g+=`<circle class="hoverdot" r="5" fill="${colors[0]}" stroke="#fff" stroke-width="2"/>`;
+  // デモ→実測の切替点。ここより左は合成データなので、同じ線として読ませない。
+  const li=hist.findIndex(d=>d.mode==="live");
+  if(li>0){
+    const bx=X(li)-(X(li)-X(li-1))/2;
+    g+=`<rect x="${pad.l}" y="${pad.t}" width="${Math.max(bx-pad.l,0)}" height="${h-pad.t-pad.b}" fill="var(--sub)" opacity=".07"/>`;
+    g+=`<line x1="${bx}" y1="${pad.t}" x2="${bx}" y2="${h-pad.b}" stroke="var(--amber)" stroke-width="1.2" stroke-dasharray="4 3" opacity=".85"/>`;
+    g+=`<text x="${bx-5}" y="${pad.t+10}" font-size="8.5" fill="var(--sub)" text-anchor="end">← デモ</text>`;
+    g+=`<text x="${bx+5}" y="${pad.t+10}" font-size="8.5" fill="var(--amber)">実測 →</text>`;
+  }
   g+=`<text x="${pad.l}" y="${h-4}" font-size="9" fill="var(--sub)">${hist[0].date.slice(5)}</text>`+
      `<text x="${W-pad.r-28}" y="${h-4}" font-size="9" fill="var(--sub)">${last.date.slice(5)}</text>`;
   g+=`<rect x="0" y="0" width="${W}" height="${h}" fill="transparent"/>`;
@@ -816,14 +1040,50 @@ function donut(items,total,label){
 const PAL=["#38BDF8","#00E5C7","#A78BFA","#FFB020","#34D399","#7C93AC","#FF6B6B","#FBBF24"];
 
 /* ---- ティア判定（ゲームのランク表示） ---- */
-function tierOf(v){
-  if(v>=85)return{k:"s",g:"S",l:"ELITE"};
-  if(v>=70)return{k:"a",g:"A",l:"STRONG"};
-  if(v>=55)return{k:"b",g:"B",l:"STABLE"};
-  if(v>=40)return{k:"c",g:"C",l:"WEAK"};
+/* ティア判定。因数ごとに現実的な上限が違うので、同じ物差しでは意味を持たない。
+   例：AIは1回答で5〜9件しか引用しないので、オウンド引用率が90%になることは無い。
+   閾値は config/settings.yaml の tiers で調整できる。 */
+const TIER_FALLBACK=[85,70,55,40];
+function tierOf(v,key){
+  const b=((D&&D.tiers)||{})[key]||((D&&D.tiers)||{})._default||TIER_FALLBACK;
+  if(v>=b[0])return{k:"s",g:"S",l:"ELITE"};
+  if(v>=b[1])return{k:"a",g:"A",l:"STRONG"};
+  if(v>=b[2])return{k:"b",g:"B",l:"STABLE"};
+  if(v>=b[3])return{k:"c",g:"C",l:"WEAK"};
   return{k:"d",g:"D",l:"CRITICAL"};
 }
-function tierBadge(v){const t=tierOf(v);
+/* 総合スコアだけは従来どおりの絶対評価（6因数の加重和なので分布が違う） */
+function tierScore(v){return tierOf(v,"_score");}
+
+/* センチメントの補正。
+   パイプライン側は修正済みだが効くのは翌朝から。既存データでも正しい数字が出るよう
+   画面側でも「意見が示されたときの肯定率」を計算する。中立は分母から外す。 */
+function sentiNow(){
+  if(D.sentiment_detail && D.sentiment_detail.opinionated)
+    return D.sentiment_detail.positive/D.sentiment_detail.opinionated*100;
+  let p=0,n=0;
+  (D.queries||[]).forEach(q=>Object.values(q.surfaces||{}).forEach(v=>{
+    if(v.sentiment==="positive")p++; else if(v.sentiment==="negative")n++;}));
+  return (p+n)? p/(p+n)*100 : 50;
+}
+function sentiParts(){
+  if(D.sentiment_detail) return D.sentiment_detail;
+  let p=0,n=0,u=0;
+  (D.queries||[]).forEach(q=>Object.values(q.surfaces||{}).forEach(v=>{
+    if(v.rank==null&&!v.mention_rate)return;
+    if(v.sentiment==="positive")p++; else if(v.sentiment==="negative")n++; else u++;}));
+  return {positive:p,negative:n,neutral:u,opinionated:p+n,cells:p+n+u};
+}
+/* 表示用の因数値。センチメントだけ補正版を使う */
+function facVal(k){ return k==="sentiment" ? sentiNow() : D.factors[k]; }
+/* 総合スコアも補正後の因数で計算し直す。
+   因数だけ直してスコアが旧定義のままだと、画面の中で数字が食い違う。
+   パイプラインは修正済みなので、翌朝以降はこの計算と一致する。 */
+function scoreNow(){
+  const w=D.weights||{};
+  return Object.keys(w).reduce((s,k)=>s+facVal(k)*w[k]/100,0);
+}
+function tierBadge(v){const t=tierScore(v);
   return `<div class="tier ${t.k}"><div class="tg">${t.g}</div><div class="tl">${t.l}</div></div>`;}
 
 /* ---- セグメントゲージ ---- */
@@ -894,35 +1154,45 @@ function bindStars(root){
   if(cs) cs.onclick=()=>{starOnly=!starOnly; render();};
 }
 function scopeSwitch(){
-  const n=scopeCells();
   const v={}; Object.keys(SCOPES).forEach(k=>v[k]=ownedRate(k));
+  const n=scopeCells();
+  const mx=Math.max(...Object.values(v),1);
   const best=v.dealer>v.owned;
-  return `<div class="scopebox">
+  const ORDER=["owned","dealer","group","all"];
+  return `<div class="card scopecard">
     <div class="scopehd">
-      <span class="scopettl">オウンド引用率のスコープ</span>
-      <span class="scopenote">自社が登場した ${n} 通りのうち、根拠に引かれた割合</span>
+      <div>
+        <div class="scopettl">回答の根拠に、どのサイトが引かれているか</div>
+        <div class="scopenote">自社が登場した ${n} 通り（クエリ×AI面）が分母です</div>
+      </div>
+      <div class="scopelock" title="GEOスコアの owned_citation は toyota.jp だけで計算しています。ここを変えると過去の時系列が比較できなくなるため固定です">
+        <span class="lk">🔒</span>スコアに使うのは <b>toyota.jp のみ</b>
+      </div>
     </div>
-    <div class="seg2" id="segScope">
-      ${Object.entries(SCOPES).map(([k,s])=>`<button data-s="${k}" class="${k===scope?"on":""}" title="${esc(s.desc)}">
-        ${esc(s.label)}<b>${f1(v[k])}%</b></button>`).join("")}
+    <div class="scoperows">
+      ${ORDER.map(k=>{const s=SCOPES[k],val=v[k],isOwn=(k==="owned");
+        return `<div class="srow${isOwn?" own":""}" title="${esc(s.desc)}">
+          <span class="sl">${esc(s.label)}${isOwn?'<span class="sbadge">スコア対象</span>':""}</span>
+          <span class="strk"><i style="width:${val/mx*100}%"></i></span>
+          <span class="sv">${f1(val)}<span class="su">%</span></span>
+        </div>`;}).join("")}
     </div>
-    <div class="scopewhy">${esc(SCOPES[scope].desc)}。
-      ${best?`<b class="hl">販売店（${f1(v.dealer)}%）のほうが toyota.jp（${f1(v.owned)}%）より多く引かれています。</b>販売会社サイトはAIにとって「地域で買える具体的な情報源」として扱われやすく、本体サイトとは別の打ち手が要ります。`
-            :`toyota.jp（${f1(v.owned)}%）が販売店（${f1(v.dealer)}%）を上回っています。`}
-      <span style="color:var(--sub)">切り替えても<b>GEOスコアは変わりません</b>。スコアの owned_citation は toyota.jp 基準に固定してあり、定義を変えると過去${(D.history||[]).length}日分の比較ができなくなるためです。</span></div>
+    <div class="scopewhy">${best
+      ? `<b class="hl">販売店（${f1(v.dealer)}%）のほうが toyota.jp（${f1(v.owned)}%）より多く引かれています。</b>
+         販売会社サイトはAIにとって「その地域で実際に買える情報源」として扱われやすく、本体サイトとは別の打ち手が要ります。`
+      : `toyota.jp（${f1(v.owned)}%）が販売店（${f1(v.dealer)}%）を上回っています。`}</div>
   </div>`;
 }
+
 function pageOverview(){
   const c=D.comment||{}, lines=(c.periods||{})[P]||[];
-  const ring=308*(1-D.score/100);
-  const scv=ownedRate(scope), isAlt=(scope!=="owned");
+  const SC=scoreNow(); const ring=308*(1-SC/100);
   const facs=Object.keys(D.weights).map(k=>{
     const d=delta(D.diff?.metrics?.[k],P);
-    const alt=(k==="owned_citation"&&isAlt);
-    return `<div class="fac${alt?" alt":""}" title="${esc(FDESC[k]?FDESC[k][1]:'')}">
-      <div class="fl">${FJ[k]}${alt?`<span class="sctag">${esc(SCOPES[scope].label)}</span>`:""}</div>
-      <div class="fv"><span data-count="${f1(alt?scv:D.factors[k])}">0.0</span><span class="fu">/100</span></div>
-      <div class="fd">${alt?`<span style="color:var(--own)">表示のみ・スコアは ${f1(D.factors.owned_citation)}</span>`:d.html}</div>
+    return `<div class="fac" title="${esc(FDESC[k]?FDESC[k][1]:'')}">
+      <div class="fl">${FJ[k]}</div>
+      <div class="fv"><span data-count="${f1(facVal(k))}">0.0</span><span class="fu">/100</span></div>
+      <div class="fd">${d.html}</div>
       <div class="fw">重み ${D.weights[k]}点</div></div>`;}).join("");
   const dec=(D.diff?.decomposition||{})[P]||{};
   const contrib=Object.entries(dec.contributions||{}).sort((a,b)=>Math.abs(b[1])-Math.abs(a[1]));
@@ -933,20 +1203,25 @@ function pageOverview(){
 
   // 全体コメント（クエリ傾向を含む）
   const best=up[0], worst=up[up.length-1];
-  const overall = `${D.counts.prompts}本のクエリを ${(D.surfaces||[]).length}つのAIに投げ、${num(D.counts.responses)}件の回答を判定しました。`
-    + `自社が回答に登場したのは ${D.counts.own_mentioned}/${D.counts.cells} 通り（出現率 ${f1(D.factors.presence)}%）。`
-    + (best&&worst&&best.id!==worst.id
-        ? `今週いちばん伸びた領域は <b>${esc(best.label)}</b>（出現率 ${best.presence}%、先週比 ${best.delta>=0?"+":""}${best.delta}pt）、`
-          +`落ちた領域は <b>${esc(worst.label)}</b>（${worst.presence}%、${worst.delta>=0?"+":""}${worst.delta}pt）です。`
+  const sp=sentiParts();
+  const ev=queryEvents(P);
+  const overall = `<span class="s-lead">${D.counts.prompts}本</span>のクエリを ${(D.surfaces||[]).length}つのAIに投げ、${num(D.counts.responses)}件の回答を判定しました。`
+    + `自社が登場したのは <b>${D.counts.own_mentioned}/${D.counts.cells}</b> 通り（出現率 <b>${f1(D.factors.presence)}%</b>）。`
+    + (sp.opinionated
+        ? `AIが評価を述べた ${sp.opinionated}件のうち <b class="hl-g">${f1(sp.positive/sp.opinionated*100)}% が好意的</b>（残る${sp.neutral}件は評価に触れていません）。`
         : "")
-    + `自社ページが1本も引かれなかったクエリが <b>${uncited}本</b>あり、ここがコンテンツ制作の優先リストになります。`
+    + `<br>`
+    + (best&&worst&&best.id!==worst.id
+        ? `伸びた領域は <b>${esc(best.label)}</b>（${best.presence}%・先週比 <b class="up">${best.delta>=0?"+":""}${best.delta}pt</b>）、`
+          +`落ちた領域は <b>${esc(worst.label)}</b>（${worst.presence}%・<b class="dn">${worst.delta>=0?"+":""}${worst.delta}pt</b>）。`
+        : "")
+    + `<b class="hl">自社ページが1本も引かれなかったクエリが ${uncited}本</b>あり、ここがコンテンツ制作の優先リストです。`
     + (()=>{const ch=D.churn||{},co=D.cohort||{};
         if(!ch.last_run) return "";
         const nn=(D.queries||[]).filter(q=>q.is_new).length;
-        return `<br>クエリ一覧は ${esc(ch.last_run)} に更新され、<b>${(ch.promoted||[]).length}本が新たにコア枠へ、${(ch.demoted||[]).length}本が週次枠へ</b>移りました。`
-          + `前日比は母集団の変化を除くため、<b>30日以上計測している${co.prompts||0}本（基準コホート）</b>だけで算出しています`
-          + (nn?`（観察期間中の新規 ${nn}本は含みません）`:"")+`。`;})();
-
+        return `<br><span class="s-sub">クエリ一覧は ${esc(ch.last_run)} に更新（${(ch.promoted||[]).length}本入 / ${(ch.demoted||[]).length}本出）。`
+          + `前日比は母集団の変化を除くため、30日以上計測している${co.prompts||0}本だけで算出`
+          + (nn?`（新規${nn}本は除外）`:"")+`。</span>`;})();
   const FK=Object.keys(D.weights);
   return `<div class="hero">
     <div style="display:flex;flex-direction:column;align-items:center;gap:12px">
@@ -959,10 +1234,10 @@ function pageOverview(){
         ${Array.from({length:40},(_,i)=>{const a=-Math.PI/2+i*2*Math.PI/40,r1=41,r2=44;
           return `<line x1="${(59+Math.cos(a)*r1).toFixed(1)}" y1="${(59+Math.sin(a)*r1).toFixed(1)}"
             x2="${(59+Math.cos(a)*r2).toFixed(1)}" y2="${(59+Math.sin(a)*r2).toFixed(1)}"
-            stroke="rgba(255,255,255,${i<Math.round(D.score/100*40)?.55:.13})" stroke-width="1.2"/>`;}).join("")}
+            stroke="rgba(255,255,255,${i<Math.round(SC/100*40)?.55:.13})" stroke-width="1.2"/>`;}).join("")}
       </svg>
-        <div class="num"><b data-count="${f1(D.score)}">0.0</b><span>GEO SCORE</span><div class="dv">/ 100</div></div></div>
-      ${tierBadge(D.score)}
+        <div class="num"><b data-count="${f1(SC)}">0.0</b><span>GEO SCORE</span><div class="dv">/ 100</div></div></div>
+      ${tierBadge(SC)}
     </div>
     <div>
       <div class="cmt">${headline()}</div>
@@ -976,14 +1251,14 @@ function pageOverview(){
     <span class="note">6因数のバランス</span></h2>
   <div class="card">
     <div class="radar-wrap">
-      <div style="display:flex;justify-content:center">${radar(FK.map(k=>D.factors[k]),FK.map(k=>FJ_PLAIN[k].replace("（SNS）","")),320)}</div>
+      <div style="display:flex;justify-content:center">${radar(FK.map(k=>facVal(k)),FK.map(k=>FJ_PLAIN[k].replace("（SNS）","")),320)}</div>
       <div>
-        ${FK.map(k=>{const d=delta(D.diff?.metrics?.[k],P);const t=tierOf(D.factors[k]);
+        ${FK.map(k=>{const d=delta(D.diff?.metrics?.[k],P);const fv=facVal(k);const t=tierOf(fv,k);
           return `<div class="fbar">
             <div class="fh"><span class="fn">${FJ_PLAIN[k]}</span>
               <span class="pill ${t.k==='s'||t.k==='a'?'p-ok':t.k==='b'?'p-nv':t.k==='c'?'p-am':'p-ng'}">${t.g}</span>
-              <span class="fq">${f1(D.factors[k])}</span><span class="fs">/100 · 重み${D.weights[k]}</span></div>
-            ${gauge(D.factors[k],14)}
+              <span class="fq">${f1(fv)}</span><span class="fs">/100 · 重み${D.weights[k]}</span></div>
+            ${gauge(fv,14)}
             <div class="fm">${d.html}<span>${esc((FDESC[k]||["",""])[0])}</span></div>
           </div>`;}).join("")}
       </div>
@@ -1271,7 +1546,7 @@ function pageQueries(){
     const sel=(ansSf[r.id]&&av.includes(ansSf[r.id]))?ansSf[r.id]:av[0];
     const sv=r.surfaces[sel];
     const st={positive:["好意的","p-ok"],neutral:["中立","p-nv"],negative:["否定的","p-ng"]}[sv.sentiment]||["判定なし","p-nv"];
-    return `<div class="dettitle" style="margin-top:2px">AIが実際に返した回答（自社=黄マーカー／競合=赤マーカー）</div>
+    return `<div class="dettitle"><span class="di">◈</span>AIが実際に返した回答<span class="dn">自社＝黄マーカー／競合＝赤マーカー</span></div>
       <div class="ansbar">${av.map(x=>{const v=r.surfaces[x];
         return `<span class="atab ${x===sel?'on':''}" data-aq="${attr(r.id)}" data-as="${attr(x)}">${esc(SFL[x]||x)}${
           v.rank?`<b class="an">${v.rank}位</b>`:'<b class="an nx">圏外</b>'}</span>`;}).join("")}
@@ -1292,34 +1567,42 @@ function pageQueries(){
   };
 
   window.__qfaq=`${[
-    ["このクエリはどうやって更新される？",`毎朝7:17に<b>全クエリを4つのAIへ自動実行</b>し、毎週<b>クエリ一覧そのものを市場に合わせて入れ替え</b>ています。Googleサジェスト／関連する質問／Yahoo!知恵袋／AIのfan-outの4経路から候補を収穫し、需要スコア順にコア枠を組み替えます。<b>IDは絶対に振り直さない</b>ので、入れ替えても過去の時系列は切れません。詳細は「クエリ新陳代謝」タブに出しています。`],
+    ["このクエリはどうやって更新される？",`毎朝7:17に<b>全クエリを4つのAIへ自動実行</b>し、毎週<b>クエリ一覧そのものを市場に合わせて入れ替え</b>ています。Googleの検索候補・関連質問・知恵袋の実際の質問・AIが自分で調べ直した語の4経路から候補を集め、需要スコア順にコア枠を組み替えます。<b>IDは絶対に振り直さない</b>ので、入れ替えても過去の時系列は切れません。詳細は「クエリ新陳代謝」タブに出しています。`],
     ["クエリが変わると前日比が壊れない？",`壊れないように分母を分けています。<b>30日以上コア枠に居るクエリ＝基準コホート</b>だけで前日比・先週比を計算し、新しく入れたクエリは30日間は観察期間として比較に入れません。ダッシュボードには<b>基準コホートのスコア（比較用）</b>と<b>全体スコア（実態）</b>の両方を出しています。`],
     ["なぜ${D.counts.prompts}本なのか",`日次で意味のある変動検知ができる上限がこのあたりだからです。<b>コア枠（日次・${D.counts.prompts}本）</b>は変動検知が目的なので定員を切り、需要の高いものだけを常に入れ替えて回します。網羅性は<b>戦略枠（週次）</b>と<b>ロングテール枠（月次）</b>が担当します。`],
     ["もっと多い方がよくない？",`網羅性は上がりますが、コストとノイズが線形に増えます。LLMは非決定的なので<b>1本を${tiers.core?tiers.core.runs:3}回実行して中央値を取っており</b>、現在すでに ${D.counts.prompts}本 × ${(D.surfaces||[]).length}面 × ${tiers.core?tiers.core.runs:3}回 = <b>${num(D.counts.responses)}回/日</b>のAI実行をしています。`],
-    ["トレンドや新しい話題は拾える？",`拾えます。①<b>fan-out還流</b>：AIが回答を作るとき内部で投げた派生クエリを回収し、次サイクルの候補に戻す。②<b>週次の収穫</b>：サジェスト・関連する質問・知恵袋を掘り直し、伸びているものをコア枠へ昇格。季節性（雪道・車中泊・帰省など）はこの経路で自動的に入ってきます。`],
+    ["トレンドや新しい話題は拾える？",`拾えます。①<b>AIが自分で調べ直した語の回収</b>：AIが回答を作る途中で内部的に検索した語を拾い、次の候補に戻します。②<b>週次の収穫</b>：サジェスト・関連する質問・知恵袋を掘り直し、伸びているものをコア枠へ昇格。季節性（雪道・車中泊・帰省など）はこの経路で自動的に入ってきます。`],
     ["なぜクエリが中核なのか",`GEOスコアも、SNS別評価も、被引用ページも、すべて<b>「このクエリ一覧をAIに投げた結果」から計算されています</b>。クエリが実態とズレていれば、他のすべての数字がズレます。逆にここさえ正しければ、残りは自動で正しくなります。`],
   ].map(([q,a])=>`<div style="margin-bottom:16px"><div style="font-size:13px;font-weight:800;color:var(--tx);margin-bottom:5px">${q}</div><div style="font-size:12.5px;color:var(--tx2);line-height:1.85">${a}</div></div>`).join("")}`;
   return `<h2 class="sec"><span class="bar"></span>クエリ
-    <span class="hbtn" onclick="openModal('<span class=\'qm\' style=\'width:18px;height:18px;font-size:12px\'>?</span> クエリ設計のFAQ',window.__qfaq)"><span class="qm">?</span>クエリ設計のFAQ</span>
+    <span class="hbtn" id="qfaqBtn"><span class="qm">?</span>クエリ設計のFAQ</span>
     <span class="note">全スコアの入力になる中核データ</span></h2>
 
   <h3 class="sub">クエリはどこから持ってきているか</h3>
-  <div class="card" style="padding:14px 18px;margin-bottom:14px">
+  <div class="card srcbars" style="padding:16px 20px;margin-bottom:14px">
     <div class="bars">${srcs.map((x,i)=>{
       const mx=Math.max(...srcs.map(y=>y.n),1);
       return `<div class="row"><span class="lb">${esc(x.label)}</span>
         <span class="tr"><span class="fi" style="width:${x.n/mx*100}%;background:${PAL[i%PAL.length]}"></span></span>
         <span class="va">${x.n}本</span></div>`;}).join("")}</div>
-    <div class="src"><b>Yahoo!知恵袋</b>＝実際に人が書いた質問文をそのまま整形したもの（最も実態に近い）。
-    <b>Google関連する質問</b>＝検索結果に出る疑問文。<b>LLM fan-out</b>＝AIに聞き方の派生を作らせたもの（穴埋め用）。
-    <b>SEOトピック輸入</b>＝既存のSEOキーワードから起こしたもの。</div>
+    <div class="src" style="margin-top:10px;line-height:1.9">
+    <b>知恵袋に実際に書かれた質問</b>＝人が自分の言葉で書いた質問文をそのまま整形したもの。いちばん実態に近い。<br>
+    <b>Googleの「関連する質問」</b>＝検索結果に出る疑問文。<b>Googleの検索候補</b>＝検索窓に出る候補で、検索量の裏づけがある。<br>
+    <b>AIが自分で調べ直した語</b>＝AIが回答を作る途中で内部的に検索した語。AIにとって話題の中心にあるもの。<br>
+    <b>AIに言い換えさせた質問</b>＝同じ意図の別の聞き方（取りこぼしを埋めるため）。<b>検索キーワード調査から</b>＝既存のキーワード調査から起こしたもの。</div>
   </div>
 
   <div class="g4" style="margin-bottom:12px">
-    <div class="kpi"><div class="l">追跡クエリ（コア枠）</div><div class="v">${rows.length}</div><div class="d fl">毎日 ${num(D.counts.responses)}回のAI実行</div></div>
-    <div class="kpi ok"><div class="l">今週の入替</div><div class="v">${(D.churn&&D.churn.promoted||[]).length}<small> 入 / </small>${(D.churn&&D.churn.demoted||[]).length}<small> 出</small></div><div class="d fl">需要に応じて自動更新</div></div>
-    <div class="kpi own"><div class="l">自社ページが引用されたクエリ</div><div class="v">${nCited}<small> / ${rows.length}</small></div><div class="d fl">${rows.length?(nCited/rows.length*100).toFixed(0):0}%</div></div>
-    <div class="kpi warn"><div class="l">自社ページが1つも引かれない</div><div class="v">${rows.length-nCited}</div><div class="d dn">コンテンツ制作の優先リスト</div></div>
+    <div class="kpi clik" data-ql="all"><div class="l">追跡クエリ（コア枠）</div><div class="v">${rows.length}</div>
+      <div class="d fl">毎日 ${num(D.counts.responses)}回のAI実行</div><span class="go">一覧を見る →</span></div>
+    <div class="kpi ok clik" data-ql="churn"><div class="l">今週の入替</div>
+      <div class="v">${(D.churn&&D.churn.promoted||[]).length}<small> 入 / </small>${(D.churn&&D.churn.demoted||[]).length}<small> 出</small></div>
+      <div class="d fl">需要に応じて自動更新</div><span class="go">中身を見る →</span></div>
+    <div class="kpi own clik" data-ql="cited"><div class="l">自社ページが引用されたクエリ</div>
+      <div class="v">${nCited}<small> / ${rows.length}</small></div>
+      <div class="d fl">${rows.length?(nCited/rows.length*100).toFixed(0):0}%</div><span class="go">一覧を見る →</span></div>
+    <div class="kpi warn clik" data-ql="uncited"><div class="l">自社ページが1つも引かれない</div><div class="v">${rows.length-nCited}</div>
+      <div class="d dn">コンテンツ制作の優先リスト</div><span class="go">一覧を見る →</span></div>
   </div>
 
   ${starSummary(rows)}
@@ -1330,6 +1613,7 @@ function pageQueries(){
     <span><b>最良</b>＝4つのうち一番良かった順位</span>
     <span><b>${PJ[P]}</b>＝順位の変化と、自社ページ引用の獲得／消失</span>
     <span><b>引用された自社ページ</b>＝AIが根拠として示した toyota.jp のURL</span>
+    <span><b>クエリ本文の下のタグ</b>＝出所・種別・判断軸。出所タグにマウスを乗せると意味が出ます</span>
   </div>
 
   <div class="qsearch">
@@ -1341,13 +1625,15 @@ function pageQueries(){
   <div class="tw"><table id="qt">
     <thead><tr><th style="width:22px"></th><th style="width:26px" class="c" title="重点クエリ">★</th>
       <th class="s" data-k="text">クエリ（AIに投げている実際の文）</th>
-      <th style="width:72px">テーマ</th><th style="width:88px">出所</th>
-      ${sfs.map(x=>`<th class="c" style="width:52px">${esc((D.surfaces.find(y=>y.id===x)||{}).label||x)}</th>`).join("")}
-      <th class="s c" data-k="demand" style="width:74px">需要</th>
-      <th class="s c" data-k="best_rank" style="width:48px">最良</th>
-      <th class="c" style="width:104px">${PJ[P]}</th>
-      <th style="width:236px">引用された自社ページ</th>
-      <th style="width:112px">引用SNS</th></tr></thead>
+      <th style="width:70px" ${tip("テーマ")}>テーマ<span class="qhelp">?</span></th>
+      ${sfs.map(x=>{const lb=(D.surfaces.find(y=>y.id===x)||{}).label||x;
+        return `<th class="c sfth" style="width:${sfs.length>=4?66:78}px" ${tip(lb,"数字＝その回答で自社が何番目に置かれたか。—は登場せず")}>${esc(lb)}</th>`;}).join("")}
+      <th class="s c" data-k="volume" style="width:74px" ${tip("月間検索")}>月間検索<span class="qhelp">?</span></th>
+      <th class="s c" data-k="demand" style="width:68px" ${tip("需要")}>需要<span class="qhelp">?</span></th>
+      <th class="s c" data-k="best_rank" style="width:56px" ${tip("最良")}>最良<span class="qhelp">?</span></th>
+      <th class="c" style="width:92px">${PJ[P]}</th>
+      <th style="width:200px">引用された自社ページ</th>
+      <th style="width:100px">引用SNS</th></tr></thead>
     <tbody>${rows.map(r=>{
       const op=r.own_pages||[], ap=r.affiliated_pages||[], open=openQ.has(r.id);
       const opCell = op.length
@@ -1358,38 +1644,54 @@ function pageQueries(){
             ? `<span class="pill p-am">グループのみ</span> <span class="ownt">${esc(ap[0].host)}</span>`
             : '<span class="pill p-ng">なし</span>');
       const hay=(r.text+" "+(r.driver_label||"")+" "+(CATJ[r.category]||"")+" "+(SRCJ[r.source]||"")).toLowerCase();
-      return `<tr class="qrow" data-q="${attr(r.id)}" data-t="${attr(hay)}" data-star="${stars.has(r.id)?1:0}">
+      return `<tr class="qrow${open?" opened":""}" data-q="${attr(r.id)}" data-t="${attr(hay)}" data-star="${stars.has(r.id)?1:0}">
         <td class="c" style="color:var(--sub)">${open?"▾":"▸"}</td>
         <td class="c"><span class="star${stars.has(r.id)?" on":""}" data-star="${attr(r.id)}"
           title="重点クエリに指定する。施策を打ったクエリを追い続けるための印で、ブラウザに保存されます">★</span></td>
         <td><div class="qtext">${esc(r.text)}</div>
-          ${r.is_new?'<span class="newq">NEW 観察期間</span> ':""}${r.brand_query?'<span class="tag">ブランド指名</span>':'<span class="tag">一般クエリ</span>'}
-          <span class="tag">${esc(r.driver_label||"")}</span>${
-          r.volume?`<span class="tag">月間検索 ${num(r.volume)}</span>`:""}</td>
+          <div class="qtags">
+            ${r.is_new?'<span class="newq">NEW 観察期間</span>':""}
+            <span class="tag src" title="出所：${attr(SRCJ[r.source]||r.source)}｜${attr(SRCDESC[r.source]||"")}"><i>${esc(SRCI[r.source]||"?")}</i>${esc(SRCS[r.source]||r.source)}</span>
+            ${r.brand_query?'<span class="tag">ブランド指名</span>':'<span class="tag">一般クエリ</span>'}
+            <span class="tag">${esc(r.driver_label||"")}</span>
+          </div></td>
         <td><span class="pill p-nv">${CATJ[r.category]||r.category}</span></td>
-        <td style="font-size:10.5px;color:var(--sub)">${esc(SRCJ[r.source]||r.source)}</td>
         ${sfs.map(x=>`<td class="c">${rk(r.surfaces[x]?.rank)}</td>`).join("")}
+        <td class="c" style="font-size:11px">${r.volume?num(r.volume):'<span class="fl">—</span>'}</td>
         <td class="c">${r.demand==null?'<span class="fl">—</span>':
           `<b>${f1(r.demand)}</b><br><span class="dbar"><i style="width:${Math.min(r.demand,100)}%"></i></span>`}</td>
         <td class="c"><b>${r.best_rank??"—"}</b></td>
         <td class="c">${trendCell(r)}</td>
         <td>${opCell}</td>
-        <td style="font-size:11px">${(r.platforms||[]).map(x=>`<span class="tag">${esc((D.platforms.find(y=>y.id===x)||{}).label||x)}</span>`).join("")||'<span class="fl">—</span>'}</td>
-      </tr>` + (open?`<tr class="qdet"><td colspan="${9+sfs.length}">
+        <td style="font-size:11px">${(()=>{const ps=r.platforms||[];
+          if(!ps.length) return '<span class="fl">—</span>';
+          const lb=x=>(D.platforms.find(y=>y.id===x)||{}).label||x;
+          return ps.slice(0,2).map(x=>`<span class="tag" title="${attr(lb(x))}">${esc(lb(x))}</span>`).join("")+
+            (ps.length>2?`<span class="tag" title="${attr(ps.slice(2).map(lb).join("、"))}">＋${ps.length-2}</span>`:"");})()}</td>
+      </tr>` + (open?`<tr class="qdet"><td colspan="${10+sfs.length}">
         <div class="detwrap">
-          <div class="dettitle">このクエリの素性</div>
-          <div class="src" style="margin:0 0 10px">出所 <b>${esc(SRCJ[r.source]||r.source)}</b>
-            ／ 登録 <b>${esc(r.added_on||"—")}</b>
-            ／ コア枠在籍 <b>${r.days_in_core==null?"—":r.days_in_core+"日"}</b>
-            ／ 需要スコア <b>${r.demand==null?"未計測":f1(r.demand)}</b>
-            ${r.volume?`／ 月間検索 <b>${num(r.volume)}</b>`:""}
-            ${r.fanout_hits?`／ AIのfan-out出現 <b>${r.fanout_hits}回</b>`:""}
-            ${r.is_new?'<br><span style="color:var(--accent2)">観察期間中のため、前日比の分母には入っていません</span>':""}</div>
-          ${ansBlock(r)}
-          <div class="dettitle" style="margin-top:13px">このクエリの回答で引用された全URL（${r.n_citations}件）</div>
-          ${citeList(r.citations)}
-          ${r.negatives.length?`<div class="dettitle" style="margin-top:12px">検出されたネガ要因</div>
-            <div>${r.negatives.map(n=>`<span class="pill p-ng" style="margin-right:5px">${esc(n)}</span>`).join("")}</div>`:""}
+          <div><span class="detclose" data-close="${attr(r.id)}">✕ この明細を閉じる</span></div>
+          <div class="dblk">
+            <div class="dettitle"><span class="di">◷</span>このクエリの素性
+              ${r.is_new?'<span class="dn" style="color:var(--accent2)">観察期間中：前日比の分母には入っていません</span>':""}</div>
+            <div class="facts">
+              <div class="fact"><span class="fk">出所</span><span class="fvv">${esc(SRCJ[r.source]||r.source)}</span></div>
+              <div class="fact"><span class="fk">登録日</span><span class="fvv">${esc(r.added_on||"—")}</span></div>
+              <div class="fact"><span class="fk">コア枠在籍</span><span class="fvv">${r.days_in_core==null?"—":r.days_in_core+"日"}</span></div>
+              <div class="fact"><span class="fk">需要スコア</span><span class="fvv">${r.demand==null?"未計測":f1(r.demand)}</span></div>
+              ${r.volume?`<div class="fact"><span class="fk">月間検索</span><span class="fvv">${num(r.volume)}</span></div>`:""}
+              ${r.fanout_hits?`<div class="fact"><span class="fk">AIが自分で調べ直した</span><span class="fvv">${r.fanout_hits}回</span></div>`:""}
+              <div class="fact"><span class="fk">テーマ</span><span class="fvv">${esc(CATJ[r.category]||r.category||"—")}</span></div>
+            </div>
+          </div>
+          <div class="dblk">${ansBlock(r)||'<div class="fl">この日は回答本文を保存していません。</div>'}</div>
+          <div class="dblk">
+            <div class="dettitle"><span class="di">▤</span>この回答で引用された全URL<span class="dn">${r.n_citations}件</span></div>
+            ${citeList(r.citations)}
+          </div>
+          ${r.negatives.length?`<div class="dblk">
+            <div class="dettitle"><span class="di">!</span>検出されたネガ要因</div>
+            <div>${r.negatives.map(n=>`<span class="pill p-ng" style="margin-right:6px">${esc(n)}</span>`).join("")}</div></div>`:""}
         </div></td></tr>`:"");
     }).join("")}</tbody></table></div>
   <div class="src">順位は同一プロンプトを${tiers.core?tiers.core.runs:3}回実行した中央値です。URLは実際に回答へ添えられた引用（annotations）そのもので、どのAIで引かれたかをタグで示しています。</div>`;
@@ -1416,7 +1718,7 @@ function pageChurn(){
   return `<h2 class="sec"><span class="bar"></span>クエリ新陳代謝
     <span class="note">最終収穫 ${esc(c.last_run)}</span></h2>
   <div class="why"><b>これは何か：</b>クエリ一覧は固定ではありません。毎週、市場で実際に聞かれている質問を
-  <b>Googleサジェスト／関連する質問／Yahoo!知恵袋／AIのfan-out</b>の4経路から収穫し、需要スコアの高い順に
+  <b>Googleの検索候補・関連質問・知恵袋の実際の質問・AIが自分で調べ直した語</b>の4経路から集め、需要スコアの高い順に
   日次のコア枠を入れ替えています。<b>IDは絶対に振り直さない</b>ので、過去の時系列は切れません。</div>
 
   <div class="g4" style="margin-bottom:14px">
@@ -1440,7 +1742,7 @@ function pageChurn(){
         <div class="v">${co.score!=null?f1(co.score):"—"}</div>
         <div class="d fl">${co.prompts||0}本 / ${co.cells||0}通りで算出</div></div>
       <div class="kpi"><div class="l">全体のGEOスコア（実態）</div>
-        <div class="v">${f1(D.score)}</div>
+        <div class="v">${f1(scoreNow())}</div>
         <div class="d fl">新規クエリを含む${tot}本すべて</div></div>
     </div>
   </div>
@@ -1514,7 +1816,7 @@ function pageChurn(){
     <thead><tr><th style="width:190px">シグナル</th><th class="c" style="width:70px">配点</th><th>意味</th></tr></thead>
     <tbody>
       <tr><td><b>月間検索ボリューム</b></td><td class="c">${W.volume}点</td><td style="font-size:11.5px;color:var(--sub)">Google広告の実データ。対数で効かせるので、桁違いの語に全体が引っ張られません</td></tr>
-      <tr><td><b>fan-out出現</b></td><td class="c">${W.fanout}点</td><td style="font-size:11.5px;color:var(--sub)">AIが回答を作る途中で自分から派生させて聞き直した回数。<b>AIにとっての話題の中心性</b>を表します</td></tr>
+      <tr><td><b>AIが自分で調べ直した回数</b></td><td class="c">${W.fanout}点</td><td style="font-size:11.5px;color:var(--sub)">AIが回答を作る途中で自分から派生させて聞き直した回数。<b>AIにとっての話題の中心性</b>を表します</td></tr>
       <tr><td><b>伸び率</b></td><td class="c">${W.growth}点</td><td style="font-size:11.5px;color:var(--sub)">前回計測比。季節性や新しい話題はここで拾います</td></tr>
       <tr><td><b>UGC出現</b></td><td class="c">${W.ugc}点</td><td style="font-size:11.5px;color:var(--sub)">知恵袋など、生活者が自分の言葉で書いた質問の量</td></tr>
     </tbody></table></div>
@@ -1605,24 +1907,34 @@ function salesVsAi(){
 function scatterSales(){
   const S=salesVsAi();
   if(!S) return `<div class="card"><div class="fl">販売台数データ（data/sales.json）を読み込めませんでした</div></div>`;
-  const W=680,H=380,PAD={l:52,r:22,t:18,b:44};
+  const W=680,H=396,PAD={l:52,r:22,t:18,b:60};
   const iw=W-PAD.l-PAD.r, ih=H-PAD.t-PAD.b;
   const mx=Math.max(50, Math.ceil(Math.max(...S.rows.map(r=>Math.max(r.sales,r.aiShare)))/10)*10+5);
   const X=v=>PAD.l+v/mx*iw, Y=v=>PAD.t+ih-v/mx*ih;
   const me=S.rows.find(r=>r.id==="toyota");
   const ticks=[]; for(let v=0;v<=mx;v+=10) ticks.push(v);
-  const pts=S.rows.map(r=>{
+  const used=[];
+  const slot=(x,y)=>{                       // ラベルが重なったら下へ逃がす
+    let ty=y;
+    for(let i=0;i<8;i++){
+      if(!used.some(u=>Math.abs(u.x-x)<86&&Math.abs(u.y-ty)<25)) break;
+      ty+=15;
+    }
+    used.push({x,y:ty}); return ty;
+  };
+  const pts=S.rows.slice().sort((a,b)=>Y(a.aiShare)-Y(b.aiShare)).map(r=>{
     const own=r.id==="toyota", cx=X(r.sales), cy=Y(r.aiShare);
     const below=r.diff<0;
+    const ly=slot(cx,cy+4);
     return `<g class="pt">
       <line x1="${cx}" y1="${cy}" x2="${cx}" y2="${Y(r.sales)}"
         stroke="${below?'var(--bad)':'var(--ok)'}" stroke-width="1" stroke-dasharray="2 3" opacity=".55"/>
       <circle cx="${cx}" cy="${cy}" r="${own?9:6}"
         fill="${own?'var(--own)':'var(--accent)'}" fill-opacity="${own?.95:.62}"
         stroke="${own?'#fff':'var(--accent)'}" stroke-width="${own?2:1}"/>
-      <text x="${cx+(own?13:10)}" y="${cy+4}" font-size="${own?12.5:11}"
+      <text x="${cx+(own?13:10)}" y="${ly}" font-size="${own?12.5:11}"
         font-weight="${own?700:500}" fill="${own?'var(--own)':'var(--tx2)'}">${esc(r.label)}</text>
-      ${own?"":`<text x="${cx+10}" y="${cy+17}" font-size="9.5"
+      ${own?"":`<text x="${cx+10}" y="${ly+12}" font-size="9.5"
         fill="${below?'var(--bad)':'var(--ok)'}">${r.diff>=0?"+":""}${r.diff.toFixed(1)}pt</text>`}
     </g>`;}).join("");
   return `<div class="card">
@@ -1641,9 +1953,10 @@ function scatterSales(){
           <line x1="${cx}" y1="${y1}" x2="${cx}" y2="${y2}" stroke="var(--own)" stroke-width="2"/>
           <path d="M${cx-4} ${y1-6} L${cx} ${y1} L${cx+4} ${y1-6}" fill="none" stroke="var(--own)" stroke-width="2"/>
           <path d="M${cx-4} ${y2+6} L${cx} ${y2} L${cx+4} ${y2+6}" fill="none" stroke="var(--own)" stroke-width="2"/>
-          <rect x="${cx-92}" y="${(y1+y2)/2-11}" width="84" height="22" rx="6"
-            fill="var(--own)" fill-opacity=".16" stroke="var(--own)" stroke-opacity=".5"/>
-          <text x="${cx-50}" y="${(y1+y2)/2+4}" font-size="11.5" font-weight="700"
+          <rect x="${cx-104}" y="${(y1+y2)/2-11}" width="88" height="22" rx="6" fill="var(--card)"/>
+          <rect x="${cx-104}" y="${(y1+y2)/2-11}" width="88" height="22" rx="6"
+            fill="var(--own)" fill-opacity=".18" stroke="var(--own)" stroke-opacity=".6"/>
+          <text x="${cx-60}" y="${(y1+y2)/2+4}" font-size="11.5" font-weight="700"
             fill="var(--own)" text-anchor="middle">${me.diff>=0?"+":""}${me.diff.toFixed(1)}pt</text>
         </g>`;})():""}
       ${pts}
@@ -1740,6 +2053,98 @@ function themeMatrix(){
         :`<br>計測対象は ${measured.length} 社です。`}
     </div></div>`;
 }
+/* ============================================================
+   競合のデイリー推移
+   スコアの上下だけ見ていても「自社が落ちたのか、競合が伸びたのか」が分からない。
+   言及回数の実数と、販売シェアとの差（＝規模に対する過不足）を日次で並べる。
+   ============================================================ */
+const BCOL=["#0B6FB4","#D8232F","#8B5CF6","#F59E0B","#10B981","#EC4899","#64748B","#14B8A6"];
+function brandSeries(metric){
+  const bs=(D.brands||[]).slice().sort((a,b)=>b.sov-a.sov);
+  const me=bs.findIndex(b=>b.id==="toyota");
+  if(me>0) bs.unshift(bs.splice(me,1)[0]);          // 自社を必ず先頭（主線）に
+  const ids=bs.map(b=>b.id);
+  const rows=(D.history||[]).filter(h=>h&&h.brands).map(h=>{
+    const o={date:h.date,mode:h.mode};
+    ids.forEach(id=>o[id]=(h.brands[id]||{})[metric]);
+    return o;});
+  return {rows, ids, labels:bs.map(b=>b.label), brands:bs};
+}
+function gapSeries(){
+  const S=salesVsAi(); if(!S) return null;
+  const ids=S.rows.map(r=>r.id);
+  const sales={}; S.rows.forEach(r=>sales[r.id]=r.sales);
+  const lab={};  S.rows.forEach(r=>lab[r.id]=r.label);
+  const rows=(D.history||[]).filter(h=>h&&h.brands).map(h=>{
+    const tot=ids.reduce((t,id)=>t+((h.brands[id]||{}).mentions||0),0);
+    const o={date:h.date,mode:h.mode};
+    ids.forEach(id=>o[id]=tot?((h.brands[id]||{}).mentions||0)/tot*100-sales[id]:null);
+    return o;});
+  const me=ids.indexOf("toyota");
+  if(me>0) ids.unshift(ids.splice(me,1)[0]);
+  return {rows, ids, labels:ids.map(id=>lab[id]), sales};
+}
+function competeTrend(){
+  const M=brandSeries("sov"), C=brandSeries("mentions");
+  if(!M.rows.length||M.rows.every(r=>r[M.ids[0]]==null))
+    return `<div class="card"><div class="fl">日次の推移は、実測データが2日以上たまってから表示されます。</div></div>`;
+  const G=gapSeries();
+  const liveOnly=M.rows.filter(r=>r.mode==="live");
+  const base=liveOnly.length>=2?liveOnly:M.rows;      // 実測が2日未満のときだけ全期間で代用
+  const n=M.rows.length, nb=base.length, first=base[0], last=base[nb-1];
+  const cLast=C.rows[C.rows.length-1]||{};
+  const dlt=id=>{const a=first[id],b=last[id];
+    return (a==null||b==null)?null:b-a;};
+  const legend=(ids,labels)=>`<div class="chips" style="margin:8px 0 0">${ids.map((id,i)=>
+    `<span class="chip" style="cursor:default;border-color:${BCOL[i%BCOL.length]}55">
+      <b style="color:${BCOL[i%BCOL.length]}">■</b> ${esc(labels[i])}</span>`).join("")}</div>`;
+
+  return `<h2 class="sec"><span class="bar"></span>競合のデイリー推移
+    <span class="note">直近${n}日（うち実測${liveOnly.length}日）／実線＝自社</span></h2>
+  <div class="why"><b>この2枚の使い分け：</b>左は<b>AI回答での相対シェア</b>、右は<b>販売シェアとの差</b>です。
+  左だけでは「自社が落ちたのか、競合が伸びたのか」までは分かっても、それが問題かどうかは判断できません。
+  右で0より下＝<b>売れている規模に対してAIで語られていない</b>、0より上＝規模以上に語られている、と読みます。
+  <b>左が横ばいでも右が下がっていれば、競合が規模以上に露出を伸ばしている</b>ということです。</div>
+
+  <div class="g2">
+    <div class="card">
+      <h3 class="sub" style="margin-top:0">AI回答での相対シェア（言及回数の構成比）</h3>
+      ${lineChart(M.rows,M.ids,M.ids.map((x,i)=>BCOL[i%BCOL.length]),210,M.labels)}
+      ${legend(M.ids,M.labels)}
+      <div class="tw" style="max-height:none;border:0;margin-top:10px"><table>
+        <thead><tr><th>ブランド</th><th class="n" style="width:76px">実測初日</th>
+          <th class="n" style="width:70px">直近</th><th class="n" style="width:96px">実測${nb}日の変化</th>
+          <th class="n" style="width:96px">直近の言及回数</th></tr></thead>
+        <tbody>${M.ids.map((id,i)=>{const d=dlt(id);
+          return `<tr><td><span style="color:${BCOL[i%BCOL.length]}">■</span> <b${id==="toyota"?' style="color:var(--own)"':''}>${esc(M.labels[i])}</b></td>
+            <td class="n">${first[id]!=null?first[id].toFixed(1)+"%":"—"}</td>
+            <td class="n"><b>${last[id]!=null?last[id].toFixed(1)+"%":"—"}</b></td>
+            <td class="n ${d==null?"fl":d>0.2?"up":d<-0.2?"dn":"fl"}">${d==null?"—":(d>0?"+":"")+d.toFixed(1)+"pt"}</td>
+            <td class="n">${cLast[id]??"—"}回</td></tr>`;}).join("")}</tbody></table></div>
+      <div class="src" style="margin-top:8px">折れ線は実数ではなく構成比にしています。
+      会話型AIは月・木のみ計測しているため実数はその曜日だけ跳ね上がり、日次の比較に使えないためです。
+      実数は右端の列に、その日の値をそのまま置いています。
+      グレーの網掛けはデモデータの期間で、変化量の計算には入れていません。</div>
+    </div>
+    <div class="card">
+      <h3 class="sub" style="margin-top:0">販売シェアとの差（AI言及シェア − 販売シェア）</h3>
+      ${G?lineChart(G.rows,G.ids,G.ids.map((x,i)=>BCOL[i%BCOL.length]),210,G.labels)
+         :'<div class="fl">販売台数データ（data/sales.json）の読み込み待ちです。</div>'}
+      ${G?legend(G.ids,G.labels):""}
+      ${G?`<div class="tw" style="max-height:none;border:0;margin-top:10px"><table>
+        <thead><tr><th>ブランド</th><th class="n" style="width:88px">販売シェア</th>
+          <th class="n" style="width:88px">直近の差</th><th style="width:110px">状態</th></tr></thead>
+        <tbody>${G.ids.map((id,i)=>{const v=G.rows[G.rows.length-1][id];
+          return `<tr><td><span style="color:${BCOL[i%BCOL.length]}">■</span> <b${id==="toyota"?' style="color:var(--own)"':''}>${esc(G.labels[i])}</b></td>
+            <td class="n">${G.sales[id]!=null?G.sales[id].toFixed(1)+"%":"—"}</td>
+            <td class="n ${v==null?"fl":v>=0?"up":"dn"}"><b>${v==null?"—":(v>0?"+":"")+v.toFixed(1)}pt</b></td>
+            <td>${v==null?'<span class="fl">—</span>':v>=0?'<span class="pill p-ok">規模以上に語られている</span>'
+              :v>=-5?'<span class="pill p-am">やや不足</span>':'<span class="pill p-ng">規模に対して不足</span>'}</td></tr>`;}).join("")}</tbody></table></div>
+        <div class="src" style="margin-top:8px">販売シェアは月次の登録台数（${esc((salesVsAi()||{}).period||"—")}）で固定。日々動いているのはAI側だけです。</div>`:""}
+    </div>
+  </div>`;
+}
+
 function pageCompete(){
   const bs=(D.brands||[]).slice().sort((a,b)=>b.sov-a.sov);
   const mx=Math.max(...bs.map(b=>b.sov),1);
@@ -1775,6 +2180,8 @@ function pageCompete(){
     <span class="lb ${b.label==="Toyota"?"me":""}">${esc(b.label)}</span>
     <span class="tr"><span class="fi ${b.label==="Toyota"?"me":""}" style="width:${b.sov/mx*100}%"></span></span>
     <span class="va">${b.sov.toFixed(1)}%（${b.mentions}回）</span></div>`).join("")}</div></div>
+
+  ${competeTrend()}
 
   <h2 class="sec"><span class="bar"></span>直接対決<span class="note">自社 vs 各社</span></h2>
   <div class="vsg">${(()=>{const me=bs.find(x=>x.label==="Toyota")||bs[0];
@@ -1929,8 +2336,8 @@ function pageGuide(){
   ${gSec(2,"GEOスコアの計算式",`
     <p>6つの因数を0〜100で出し、重みを掛けて合計したものが GEOスコアです。合計は必ず100点になります。</p>
     <div class="gformula">${Object.keys(W).map(k=>
-      `<span class="gfk">${esc(fj(k))} <b>${f1(F[k])}</b> × ${W[k]}%</span>`).join('<span class="gop">＋</span>')}
-      <span class="gop">＝</span><span class="gfr">${f1(D.score)}</span></div>
+      `<span class="gfk">${esc(fj(k))} <b>${f1(facVal(k))}</b> × ${W[k]}%</span>`).join('<span class="gop">＋</span>')}
+      <span class="gop">＝</span><span class="gfr">${f1(scoreNow())}</span></div>
     <p>重みは「打ち手に繋がるか」で決めています。引用（オウンド20＋アーンド20＝<b>40点</b>）がいちばん重いのは、
     出現率や順位が<b>結果</b>であるのに対し、引用は<b>直接手を入れられる原因</b>だからです。
     ページを書けばオウンド引用は動きますが、出現率を直接動かすことはできません。</p>
@@ -1943,9 +2350,9 @@ function pageGuide(){
       <thead><tr><th style="width:120px">因数</th><th class="c" style="width:56px">現在値</th>
         <th class="c" style="width:46px">重み</th><th style="width:230px">何を測っているか</th>
         <th>下がっているときに疑うこと</th></tr></thead>
-      <tbody>${Object.keys(W).map(k=>{const d=FDEF[k]||["","",""];const tt=tierOf(F[k]);
+      <tbody>${Object.keys(W).map(k=>{const d=FDEF[k]||["","",""];const fv=facVal(k);const tt=tierOf(fv,k);
         return `<tr><td><b>${esc(fj(k))}</b><br><span class="pill ${tt.k==='s'||tt.k==='a'?'p-ok':tt.k==='b'?'p-nv':tt.k==='c'?'p-am':'p-ng'}">${tt.g}</span></td>
-        <td class="c"><b>${f1(F[k])}</b></td><td class="c">${W[k]}</td>
+        <td class="c"><b>${f1(fv)}</b></td><td class="c">${W[k]}</td>
         <td style="font-size:11.5px">${esc(d[0])}<br><span style="color:var(--sub)">${esc(d[1])}</span></td>
         <td style="font-size:11.5px;color:var(--sub)">${esc(d[2])}</td></tr>`;}).join("")}</tbody></table></div>
     <p style="margin-top:10px"><b>オウンド引用率だけは、見る範囲を切り替えられます。</b>
@@ -1975,10 +2382,10 @@ function pageGuide(){
     <ul class="gul">
       <li><b>Yahoo!知恵袋の実質問</b> — 生活者が実際に書いた文章。いちばん実態に近い</li>
       <li><b>Google「関連する質問」</b> — 検索結果に出る疑問文</li>
-      <li><b>AIのfan-out還流</b> — AIが回答生成中に内部で投げた検索クエリを回収したもの</li>
+      <li><b>AIが自分で調べ直した語</b> — AIが回答を作る途中で内部的に検索した語を回収したもの</li>
       <li><b>Googleサジェスト／SEOトピック</b> — 網羅性の穴埋め</li>
     </ul>
-    <p>候補は需要スコア（検索ボリューム45＋fan-out出現25＋伸び率20＋UGC出現10）で並べ、
+    <p>候補は需要スコア（月間検索数45＋AIが調べ直した回数25＋伸び率20＋知恵袋での出現10）で並べ、
     上位を順に入れます。ただし<b>一度に入れ替えられるのは最大4本</b>までです。
     一気に入れ替えるとスコアの時系列が壊れるので、意図的にブレーキをかけています。</p>
     <p><b>基準コホート：</b>前日比・先週比は、<b>30日以上コア枠にいる ${co.prompts||0}本</b>だけで計算しています。
@@ -2011,6 +2418,7 @@ function pageGuide(){
       <thead><tr><th style="width:150px">タブ</th><th style="width:230px">見るもの</th><th>そこから何を決めるか</th></tr></thead>
       <tbody>${[
         ["overview","概要","GEOスコアと6因数、今日のコメント","今日、手を打つ必要があるかどうか"],
+        ["events","イベント追跡","追跡中の新型車と、その車で実際に聞かれていること","発売前後にどのクエリを押さえるか"],
         ["queries","クエリ","1本ごとの順位・引用・AI回答の実物","どのクエリにコンテンツを作るか。★で追跡対象にする"],
         ["churn","クエリ新陳代謝","何が入って何が出たか、急上昇クエリ","世の中の関心がどこへ動いたか"],
         ["pages","自社の被引用ページ","toyota.jp のどのページが引かれているか","伸ばすページと、書き足すページ"],
@@ -2072,7 +2480,7 @@ function pageGuide(){
 
   ${gSec(11,"よくある質問",`
     <div class="gfaq">${[
-      ["GEOスコア "+f1(D.score)+" は良いのか悪いのか",
+      ["GEOスコア "+f1(scoreNow())+" は良いのか悪いのか",
        "絶対的な合格ラインはありません。この指標は<b>自分の過去との比較</b>で使うものです。"+
        (me?`規模との比較なら、販売シェア ${me.sales.toFixed(1)}% に対して AI言及シェア ${me.aiShare.toFixed(1)}%（${me.diff>=0?"+":""}${me.diff.toFixed(1)}pt）という読み方ができます。`:"")+
        "ティア表示（S〜D）は6因数それぞれの水準を大まかに掴むための目安です。"],
@@ -2080,7 +2488,7 @@ function pageGuide(){
        "生成AIの回答は毎回ゆらぐので、小さい増減は実力の変化ではありません。"+
        (sigma!=null?`過去30日の日次ばらつきから1σ＝${f1(sigma)}pt を出し、±${f1(sigma*2)}pt の内側は「変化なし」と表示しています。`:"ばらつきの計算に必要な日数がまだ足りていません。")],
       ["60本のクエリはどうやって選んだのか",
-       "知恵袋の実質問・Googleの関連する質問・AIのfan-out・サジェストの4経路から集め、需要スコア順に上位を採用しています。"+
+       "知恵袋の実際の質問・Googleの関連質問・AIが自分で調べ直した語・検索候補の4経路から集め、需要スコア順に上位を採用しています。"+
        "週1回、最大4本まで入れ替えます。詳しくは第5章。"],
       ["クエリが入れ替わると比較できなくなるのでは",
        "そのために<b>基準コホート</b>を持っています。前日比・先週比は「30日以上コア枠にいる"+(co.prompts||0)+"本」だけで計算しているので、"+
@@ -2110,21 +2518,149 @@ function pageGuide(){
   <div class="gfoot">この画面の数値はすべて本日のデータ（${esc(D.generated_at)}）から自動で引いています。
   説明文と実際の数字がズレることはありません。</div>`;
 }
+/* ============================================================
+   クエリへの導線。イベント・アラート・KPIカードから同じ場所に着地させる。
+   「どこにいるか分からなくなる」を防ぐため、着地時に必ず光らせて中央に寄せる。
+   ============================================================ */
+function cssq(v){ return (window.CSS&&CSS.escape)?CSS.escape(v):String(v).replace(/["\\]/g,"\\$&"); }
+function focusRow(id,flash){
+  const tr=document.querySelector(`tr.qrow[data-q="${cssq(id)}"]`);
+  if(!tr) return false;
+  const tw=tr.closest(".tw");
+  if(tw){
+    tw.scrollTop=Math.max(0,tr.offsetTop-tw.clientHeight/3);
+    tw.scrollIntoView({block:"center",behavior:"smooth"});
+  }else tr.scrollIntoView({block:"center",behavior:"smooth"});
+  if(flash!==false){ tr.classList.remove("flash"); void tr.offsetWidth; tr.classList.add("flash"); }
+  return true;
+}
+function jumpToQuery(id){
+  closeModal();
+  const q=(D.queries||[]).find(x=>x.id===id);
+  if(!q){ toast("そのクエリは現在のコア枠にありません（入替で外れた可能性があります）",3000); return; }
+  catF="all"; qFilter=""; starOnly=false; openQ.add(id);
+  document.querySelectorAll(".side .nav").forEach(n=>n.classList.remove("on"));
+  const nv=document.querySelector('.side .nav[data-p="queries"]'); if(nv)nv.classList.add("on");
+  cur="queries"; render();
+  requestAnimationFrame(()=>setTimeout(()=>focusRow(id),90));
+}
+function qlRow(q,i){
+  const cited=(q.own_pages||[]).length;
+  return `<div class="mqi" data-jq="${attr(q.id)}">
+    <span class="no">${i+1}</span>
+    <span class="tx">${esc(q.text)}<small>${esc(CATJ[q.category]||q.category||"")}
+      ${q.volume?` ・ 月間検索 ${num(q.volume)}`:""}${q.demand!=null?` ・ 需要 ${f1(q.demand)}`:""}</small></span>
+    <span class="mt">${q.best_rank?`<span class="rk ${q.best_rank===1?'r1':q.best_rank===2?'r2':q.best_rank===3?'r3':''}">${q.best_rank}</span>`
+      :'<span class="rk rx">—</span>'}
+      ${cited?`<span class="pill p-ok" style="margin-left:5px">自社${cited}件</span>`
+             :'<span class="pill p-ng" style="margin-left:5px">引用なし</span>'}</span>
+  </div>`;
+}
+function openQList(title,rows,lead){
+  if(!rows.length){ openModal(title,'<div class="fl">該当するクエリはありません。</div>'); return; }
+  openModal(title,
+    (lead?`<div class="why" style="margin:0 0 12px">${lead}</div>`:"")+
+    `<div class="mql">${rows.map(qlRow).join("")}</div>
+     <div class="src" style="margin-top:10px">行をクリックすると、そのクエリを開いた状態でクエリ一覧へ移動します。</div>`);
+  document.querySelectorAll("#modalbd .mqi[data-jq]").forEach(el=>el.onclick=()=>jumpToQuery(el.dataset.jq));
+}
+
+/* ============================================================
+   イベント追跡（新型車）
+   新型車が出たとき、その車について「実際に何が聞かれ、AIが何と答えたか」を追う。
+   クエリ本文に車名が入っている＝聞かれている。
+   回答本文にだけ入っている＝聞かれていないのにAIが自分から挙げた（＝認知の芽）。
+   ============================================================ */
+function pageEvents(){
+  const nm=D.newmodels||{}, items=(nm.items||[]);
+  const ST={launched:["発売済","p-ok"],announced:["発表済・発売前","p-am"],rumored:["時期未確定","p-nv"]};
+  if(!items.length) return `<h2 class="sec"><span class="bar"></span>イベント追跡</h2>
+    <div class="card"><div class="fl">追跡対象が登録されていません（<code>config/events.yaml</code> の newmodels）。</div></div>`;
+
+  const covered=items.filter(e=>e.n_queries>0).length;
+  const spoken=items.reduce((t,e)=>t+(e.unprompted||0),0);
+  const soon=items.filter(e=>e.days_from_launch!=null&&e.days_from_launch<0);
+
+  const dstr=e=>{
+    if(!e.date) return "—";
+    const d=e.date_precision==="month"?e.date.slice(0,7).replace("-","年")+"月"
+           :e.date.replace(/^(\d{4})-(\d{2})-(\d{2})$/,"$1年$2月$3日");
+    const n=e.days_from_launch;
+    if(n==null) return d;
+    return `${d}　<b style="color:${n<0?'var(--amber)':'var(--sub)'}">${n<0?`発売まで${-n}日`:n===0?"本日":`発売から${n}日`}</b>`;
+  };
+
+  return `<h2 class="sec"><span class="bar"></span>イベント追跡（新型車）
+    <span class="note">更新 ${esc(nm.updated_on||"—")}／出典リンク付き</span></h2>
+  <div class="why"><b>この画面の目的：</b>新型車が出たとき、生活者はAIに聞き方を変えます。
+  ここでは追跡中の車ごとに、<b>①その車名でコア枠に入っているクエリ</b>と、
+  <b>②聞かれていないのにAIが自分から車名を出した回数</b>を並べています。
+  ②だけが立っていて①がゼロなら、<b>市場では話題になり始めているのに、こちらの計測が追いついていない</b>状態です。
+  その場合はイベント用のシード語を登録済みなので、次回の週次入替でコア枠に入ってきます。</div>
+
+  <div class="g4" style="margin-bottom:14px">
+    <div class="kpi"><div class="l">追跡中の車種</div><div class="v" data-count="${items.length}">${items.length}</div>
+      <div class="d fl">発表済み・発売済みを含む</div></div>
+    <div class="kpi ${covered?"ok":"warn"}"><div class="l">コア枠に該当クエリがある車種</div>
+      <div class="v">${covered}<small> / ${items.length}</small></div>
+      <div class="d ${covered?"fl":"dn"}">${covered?"計測できています":"シード登録済み・次回入替で反映"}</div></div>
+    <div class="kpi own"><div class="l">AIが自発的に車名を出した回数</div><div class="v" data-count="${spoken}">${spoken}</div>
+      <div class="d fl">聞いていないのに挙がった＝認知の芽</div></div>
+    <div class="kpi ${soon.length?"warn":""}"><div class="l">発売前（監視強化期間）</div><div class="v">${soon.length}</div>
+      <div class="d fl">${soon.length?esc(soon.slice(0,2).map(e=>e.model).join("・"))+(soon.length>2?` ほか${soon.length-2}件`:""):"なし"}</div></div>
+  </div>
+
+  <div class="evg">${items.map(e=>{
+    const[sl,sc]=ST[e.status]||ST.announced;
+    return `<div class="ev s-${esc(e.status)}">
+      <div class="evh"><div class="evm">${esc(e.model)}</div>
+        <span class="pill ${sc}" style="margin-left:auto;flex:0 0 auto">${sl}</span></div>
+      <div class="evt">${esc(e.title)}</div>
+      <div class="evd"><span>${dstr(e)}</span></div>
+      ${e.note?`<div class="evn">${esc(e.note)}</div>`:""}
+      <div class="evk">
+        <div><span class="k">聞かれている<br>クエリ</span><span class="v ${e.n_queries?"":"zero"}">${e.n_queries}</span></div>
+        <div><span class="k">うち自社ページ<br>が引用</span><span class="v ${e.n_cited?"":"zero"}">${e.n_cited}</span></div>
+        <div><span class="k">AIが自発的に<br>出した回数</span><span class="v">${e.unprompted}</span></div>
+      </div>
+      ${e.n_queries?`<div class="dettitle" style="margin-bottom:4px"><span class="di">Q</span>この車で実際に聞かれていること
+          ${e.best_rank?`<span class="dn">最良 ${e.best_rank}位</span>`:'<span class="dn">未登場</span>'}</div>
+        <div class="evq">${e.queries.slice(0,5).map(q=>`<div class="q">
+          <span>${q.own_cited?'<span class="pill p-ok">引用</span>':'<span class="pill p-ng">なし</span>'}</span>
+          <span class="qx" data-jq="${attr(q.id)}">${esc(q.text)}</span>
+          <span style="color:var(--sub);white-space:nowrap">${q.best_rank?q.best_rank+"位":"—"}</span></div>`).join("")}
+          ${e.n_queries>5?`<div class="q"><span class="qx" data-evq="${attr(e.id)}" style="color:var(--accent2)">残り${e.n_queries-5}本をすべて見る →</span></div>`:""}</div>`
+        : `<div class="evn" style="border-left-color:var(--amber);color:var(--amber)">
+             コア枠にこの車名のクエリがまだありません。${e.unprompted?`ただしAIは回答の中で <b>${e.unprompted}回</b> この車名を自分から出しています。`:""}
+             イベント用シードを登録済みのため、次回の週次入替で候補に上がります。</div>`}
+      ${e.source?`<div class="evsrc">出典：<a href="${esc(e.source)}" target="_blank" rel="noopener">${esc(e.source.replace(/^https?:\/\//,"").split("/")[0])}</a></div>`:""}
+    </div>`;}).join("")}</div>
+
+  <div class="src" style="margin-top:14px">追跡対象は <code>config/events.yaml</code> の <code>newmodels</code> に1行足すだけで増やせます。
+  車名の照合はクエリ本文とAI回答本文の両方に対して行っています。発売日は各出典の公表値です。</div>`;
+}
+
 function pageAlerts(){
   const al=(D.comment||{}).alerts||[];
   const SEV={high:["要対応","p-ng"],mid:["注意","p-am"],low:["情報","p-nv"]};
   const TY={rank_drop:"順位低下",dropped_out:"圏外脱落",citation_lost:"引用消失",new_negative:"新規ネガ"};
   const qmap={};(D.queries||[]).forEach(q=>qmap[q.id]=q.text);
+  const live=(D.queries||[]).reduce((m,q)=>(m[q.id]=1,m),{});
+  const sfl={}; (D.surfaces||[]).forEach(x=>sfl[x.id]=x.label);
   return `<h2 class="sec"><span class="bar"></span>アラート<span class="note">${esc((D.comment||{}).alert_summary||"")}</span></h2>
+  ${al.length?'<div class="why">各行をクリックすると、そのアラートの<b>対象クエリを開いた状態</b>でクエリ一覧へ移動します。</div>':""}
   <div class="card" style="padding:0">${al.length?al.map(a=>{
     const[s,c]=SEV[a.severity]||SEV.low;
-    return `<div class="al"><div><span class="pill ${c}">${s}</span></div>
-      <div><b>${TY[a.type]||a.type}</b> — ${esc(a.text)}
-      ${a.prompt_id?`<div style="color:#64748B;font-size:11.5px">${esc((qmap[a.prompt_id]||a.prompt_id)).slice(0,80)}… <span class="tag">${esc(a.surface||"")}</span></div>`:""}</div></div>`;
-  }).join(""):'<div style="padding:24px;color:#64748B">本日のアラートはありません。</div>'}</div>`;
+    const can=a.prompt_id&&live[a.prompt_id];
+    return `<div class="al${can?" clik":""}"${can?` data-jq="${attr(a.prompt_id)}"`:""}>
+      <div><span class="pill ${c}">${s}</span></div>
+      <div><span class="altx"><b>${TY[a.type]||a.type}</b> — ${esc(a.text)}
+      ${a.prompt_id?`<div style="color:var(--sub);font-size:11.5px">${esc((qmap[a.prompt_id]||a.prompt_id)).slice(0,80)}${(qmap[a.prompt_id]||"").length>80?"…":""} <span class="tag">${esc(sfl[a.surface]||a.surface||"")}</span></div>`:""}</span>
+      ${can?'<span class="algo">対象クエリを見る →</span>':a.prompt_id?'<span class="algo">※このクエリは現在のコア枠にありません</span>':""}</div></div>`;
+  }).join(""):'<div style="padding:24px;color:var(--sub)">本日のアラートはありません。</div>'}</div>`;
 }
 
-const PAGES={overview:pageOverview,sns:pageSns,queries:pageQueries,churn:pageChurn,pages:pagePages,compete:pageCompete,sources:pageSources,signals:pageSignals,alerts:pageAlerts,guide:pageGuide};
+const PAGES={overview:pageOverview,events:pageEvents,sns:pageSns,queries:pageQueries,churn:pageChurn,pages:pagePages,compete:pageCompete,sources:pageSources,signals:pageSignals,alerts:pageAlerts,guide:pageGuide};
 let cur="overview";
 function animateBars(root){
   root.querySelectorAll(".bars .fi,.mini i").forEach(el=>{
@@ -2187,9 +2723,84 @@ function render(){
   document.querySelectorAll("#qt th.s").forEach(th=>th.onclick=()=>{
     if(sortK===th.dataset.k)sortDir*=-1;else{sortK=th.dataset.k;sortDir=1;}render();});
   document.querySelectorAll(".chip[data-c]").forEach(ch=>ch.onclick=()=>{catF=ch.dataset.c;render();});
+  // 行の開閉：クリックした行を「同じ画面位置」に留めたまま開閉する（迷子防止）
+  const toggleRow=id=>{
+    const tr=document.querySelector(`tr.qrow[data-q="${cssq(id)}"]`);
+    const tw=tr&&tr.closest(".tw");
+    const keepIn = tw ? tr.offsetTop-tw.scrollTop : null;      // スクロール枠内での相対位置
+    const keepWin= tr ? tr.getBoundingClientRect().top : null; // 画面内での相対位置
+    const wasOpen=openQ.has(id);
+    wasOpen?openQ.delete(id):openQ.add(id);
+    render();
+    const nt=document.querySelector(`tr.qrow[data-q="${cssq(id)}"]`);
+    if(!nt) return;
+    const ntw=nt.closest(".tw");
+    if(ntw&&keepIn!=null) ntw.scrollTop=Math.max(0,nt.offsetTop-keepIn);
+    if(keepWin!=null){
+      const d=nt.getBoundingClientRect().top-keepWin;
+      if(Math.abs(d)>2) window.scrollBy({top:d});
+    }
+    // 開いた明細が枠の下に隠れているときだけ、行ごと上寄せして中身を見せる
+    if(!wasOpen&&ntw){
+      const rel=nt.offsetTop-ntw.scrollTop;
+      if(rel>ntw.clientHeight*.45)
+        ntw.scrollTo({top:Math.max(0,nt.offsetTop-ntw.clientHeight*.22),behavior:"smooth"});
+    }
+  };
   document.querySelectorAll("tr.qrow").forEach(tr=>tr.onclick=e=>{
     if(e.target.closest("a")||e.target.closest(".cp"))return;
-    const id=tr.dataset.q; openQ.has(id)?openQ.delete(id):openQ.add(id); render();});
+    toggleRow(tr.dataset.q);});
+  root.querySelectorAll(".detclose[data-close]").forEach(el=>el.onclick=e=>{
+    e.stopPropagation(); toggleRow(el.dataset.close);});
+
+  // クエリ設計のFAQ
+  const fb=document.getElementById("qfaqBtn");
+  if(fb) fb.onclick=()=>openModal(
+    '<span class="qm" style="width:18px;height:18px;font-size:12px">?</span> クエリ設計のFAQ',
+    window.__qfaq||"");
+
+  // KPIカード → 対象クエリのリスト
+  root.querySelectorAll(".kpi.clik[data-ql]").forEach(el=>el.onclick=()=>{
+    const qs=D.queries||[], k=el.dataset.ql, ch=D.churn||{};
+    if(k==="all") openQList("追跡クエリ（コア枠）",
+      qs.slice().sort((a,b)=>(b.demand||0)-(a.demand||0)),
+      "毎朝すべてのAIに投げている実際の質問文です。需要スコアの高い順。");
+    else if(k==="cited") openQList("自社ページが引用されたクエリ",
+      qs.filter(q=>(q.own_pages||[]).length).sort((a,b)=>(b.own_pages.length)-(a.own_pages.length)),
+      "AIが根拠として <b>toyota.jp</b> のURLを実際に示したクエリです。ここは守りに回す領域。");
+    else if(k==="uncited") openQList("自社ページが1つも引かれないクエリ",
+      qs.filter(q=>!(q.own_pages||[]).length).sort((a,b)=>(b.demand||0)-(a.demand||0)),
+      "需要はあるのに自社ページが根拠として使われていないクエリです。<b>コンテンツ制作の優先リスト</b>として、上から順に潰していく想定。");
+    else if(k==="churn"){
+      const pr=(ch.promoted||[]), dm=(ch.demoted||[]);
+      openModal("今週の入替",
+        `<div class="why" style="margin:0 0 12px">需要スコアに応じて、コア枠のクエリを毎週入れ替えています。IDは振り直さないので時系列は切れません。</div>
+         <div class="dettitle"><span class="di">＋</span>コア枠に入ったクエリ<span class="dn">${pr.length}本</span></div>
+         <div class="mql" style="max-height:26vh;margin-bottom:14px">${pr.length?pr.map((x,i)=>
+           `<div class="mqi" ${x.id?`data-jq="${attr(x.id)}"`:""}><span class="no">${i+1}</span>
+            <span class="tx">${esc(x.text||x)}<small>${esc(x.source_label||"")}${x.volume?` ・ 月間検索 ${num(x.volume)}`:""}</small></span>
+            <span class="mt">${x.demand==null?"—":f1(x.demand)}</span></div>`).join("")
+           :'<div class="fl">今週の昇格はありません</div>'}</div>
+         <div class="dettitle"><span class="di">−</span>コア枠から外れたクエリ<span class="dn">${dm.length}本</span></div>
+         <div class="mql" style="max-height:26vh">${dm.length?dm.map((x,i)=>
+           `<div class="mqi" style="cursor:default"><span class="no">${i+1}</span>
+            <span class="tx">${esc(x.text||x)}<small>${esc(x.source_label||"")}</small></span>
+            <span class="mt">${x.demand==null?"—":f1(x.demand)}</span></div>`).join("")
+           :'<div class="fl">今週の降格はありません</div>'}</div>`);
+      document.querySelectorAll("#modalbd .mqi[data-jq]").forEach(e2=>e2.onclick=()=>jumpToQuery(e2.dataset.jq));
+    }
+  });
+
+  // イベント追跡・アラート → 対象クエリ
+  root.querySelectorAll("[data-jq]").forEach(el=>el.onclick=e=>{
+    e.stopPropagation(); jumpToQuery(el.dataset.jq);});
+  root.querySelectorAll("[data-evq]").forEach(el=>el.onclick=e=>{
+    e.stopPropagation();
+    const ev=((D.newmodels||{}).items||[]).find(x=>x.id===el.dataset.evq); if(!ev)return;
+    const ids=new Set(ev.queries.map(q=>q.id));
+    openQList(`${ev.model} について聞かれていること`,
+      (D.queries||[]).filter(q=>ids.has(q.id)),
+      `${esc(ev.title)}（${esc(ev.date)}）に関連して、実際にAIへ投げているクエリです。`);});
   // 回答例のサーフェス切替（表を再描画せず本文だけ差し替える）
   root.querySelectorAll(".atab").forEach(el=>el.onclick=e=>{
     e.stopPropagation(); ansSf[el.dataset.aq]=el.dataset.as; render();});
@@ -2211,8 +2822,6 @@ function render(){
   if(qq){ qq.value=qFilter;
     qq.oninput=()=>{qFilter=qq.value; applyQFilter();};
     applyQFilter(); }
-  root.querySelectorAll("#segScope button").forEach(b=>b.onclick=()=>{
-    scope=b.dataset.s; localStorage.setItem("geo.scope",scope); render();});
   bindStars(root);
   root.querySelectorAll(".gjump[data-go]").forEach(el=>el.onclick=()=>{
     const a=document.querySelector(`.side .nav[data-p="${el.dataset.go}"]`); if(a) a.click();});
@@ -2327,10 +2936,7 @@ function buildPalItems(){
     t:a.textContent.replace("核","").trim(), k:"ページ", go:()=>a.click()}));
   const qs=(D?.queries||[]).slice(0,400).map(q=>({
     t:q.text, k:"クエリ", go:()=>{
-      document.querySelector('.side .nav[data-p="queries"]').click();
-      openQ.add(q.id); render();
-      setTimeout(()=>{const el=document.querySelector(`tr.qrow[data-q="${q.id}"]`);
-        if(el)el.scrollIntoView({block:"center",behavior:"smooth"});},120);}}));
+      jumpToQuery(q.id);}}));
   const ps=(D?.owned_pages||[]).map(o=>({t:o.path+"  "+(o.title||""),k:"自社ページ",
     go:()=>document.querySelector('.side .nav[data-p="pages"]').click()}));
   return [...navs,...qs,...ps];
@@ -2405,8 +3011,8 @@ const SCOPES={
           desc:"トヨタモビリティ・カローラ店・ネッツ店などの販売会社サイト。運営が別会社なので打ち手も別になります"},
   group :{label:"グループ会社", set:new Set(["affiliated"]),
           desc:"KINTO・GAZOO・global.toyota・レクサスなど。自社関連だが toyota.jp ではありません"},
-  all   :{label:"トヨタ陣営 合算", set:new Set(["owned","dealer","affiliated"]),
-          desc:"トヨタ陣営として押さえられている割合"}
+  all   :{label:"3つの合計", set:new Set(["owned","dealer","affiliated"]),
+          desc:"toyota.jp・販売店・グループ会社のいずれかが根拠に引かれた割合"}
 };
 let scope=localStorage.getItem("geo.scope")||"owned";
 if(!SCOPES[scope]) scope="owned";
@@ -2445,7 +3051,8 @@ function toggleStar(id){
 let SALES=null;
 
 fetch("data/sales.json?"+Date.now()).then(r=>r.ok?r.json():null)
-  .then(s=>{SALES=s;}).catch(()=>{SALES=null;});
+  .then(s=>{SALES=s; if(D&&document.getElementById("root").children.length) render();})
+  .catch(()=>{SALES=null;});
 
 fetch("data/latest.json?"+Date.now()).then(r=>r.json()).then(d=>{
   D=d;
@@ -2470,7 +3077,7 @@ fetch("data/latest.json?"+Date.now()).then(r=>r.json()).then(d=>{
   document.getElementById("stamp").innerHTML=`データ日 <b>${d.generated_at}</b> ／ 蓄積 ${d.available_days}日`;
   document.getElementById("foot").innerHTML=`更新 ${d.generated_at}<br>クエリ ${d.counts.prompts} / 回答 ${num(d.counts.responses)}<br>${esc(d.site.target_domain)}<br>GitHub Actions で自動生成`;
   render();
-  const t=tierOf(d.score);
+  const t=tierScore(d.score);
   toast(`<b>データ更新</b> ${d.generated_at}<br><span style="color:var(--sub)">GEOスコア ${d.score.toFixed(1)}（${t.g}ティア）／ 蓄積 ${d.available_days}日</span>`);
   const al=(d.comment&&d.comment.alerts||[]).filter(a=>a.severity==="high").length;
   if(al) setTimeout(()=>toast(`<b style="color:var(--warn)">要対応 ${al}件</b><br><span style="color:var(--sub)">アラートタブを確認してください</span>`,6000),700);
