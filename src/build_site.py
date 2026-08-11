@@ -93,6 +93,25 @@ def _newmodels(day: str, query_rows: list[dict]) -> dict:
     return {"updated_on": ev.get("newmodels_updated_on", ""), "items": out}
 
 
+def _citation_counts(snap: dict, own: str) -> dict:
+    """出現率と自社サイト引用率の「分母と分子の実数」を出す。
+
+    この2つは率だけ見ると分母が違うことに気づけない。
+      出現率        = 自社が登場した回答 ÷ 全回答
+      自社サイト引用率 = 根拠に toyota.jp が入った回答 ÷ 自社が登場した回答
+    画面でファネルとして見せるため、割合ではなく件数をそのまま渡す。
+    """
+    cells = snap.get("cells") or []
+    own_cells = [c for c in cells if (c.get("brands", {}).get(own) or {}).get("mentioned")]
+    n = len(own_cells)
+    owned = sum(1 for c in own_cells if c.get("own_cited"))
+    dealer = sum(1 for c in own_cells if c.get("dealer_cited") or c.get("affiliated_cited"))
+    both = sum(1 for c in own_cells if c.get("own_cited")
+               or c.get("dealer_cited") or c.get("affiliated_cited"))
+    return {"cited_base": n, "cited_owned": owned,
+            "cited_dealer": dealer, "cited_any": both}
+
+
 def _daydiff(a: str, b: str):
     """a - b を日数で。どちらかが空なら None。"""
     from datetime import date
@@ -428,7 +447,7 @@ def build_site(day: str) -> None:
         "score": snap["score"],
         "factors": snap["factors"],
         "weights": cfg["score_weights"],
-        "counts": snap["counts"],
+        "counts": {**snap["counts"], **_citation_counts(snap, own)},
         "diff": snap.get("diff", {}),
         "comment": snap.get("comment", {}),
         "brands": [{"id": b, "label": labels[b], **v} for b, v in snap["brands"].items()],
