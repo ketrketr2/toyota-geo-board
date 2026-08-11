@@ -57,7 +57,7 @@ jobs:
 
       # 本番を回す前の疎通確認。認証・エンドポイント・モデル名を数円で検証する。
       - name: Probe (live smoke test)
-        if: ${{ env.PROBE_ONLY == 'true' }}
+        if: ${{ env.PROBE_ONLY == 'true' && github.event_name != 'push' }}
         env:
           # 疎通確認は変数の状態に関係なく live で走らせる。
           # 「本番に切り替える前に確かめる」ためのものなので、demo のままでは意味がない。
@@ -69,7 +69,7 @@ jobs:
       # クエリ一覧そのものを市場に合わせて更新する。
       # 毎日やるとコア枠が落ち着かないので、JST月曜（UTC日曜22:17）だけ回す。
       - name: Harvest queries (weekly)
-        if: ${{ env.PROBE_ONLY != 'true' }}
+        if: ${{ env.PROBE_ONLY != 'true' && github.event_name != 'push' }}
         env:
           GEO_BOARD_MODE:      ${{ vars.GEO_BOARD_MODE || 'demo' }}
           # login はメールアドレスであって機密ではないため、変数でも渡せるようにしてある。
@@ -85,7 +85,7 @@ jobs:
           fi
 
       - name: Collect & build
-        if: ${{ env.PROBE_ONLY != 'true' }}
+        if: ${{ env.PROBE_ONLY != 'true' && github.event_name != 'push' }}
         env:
           # ---- 鍵が無ければ自動で demo モードで走る ----
           GEO_BOARD_MODE:      ${{ vars.GEO_BOARD_MODE || 'demo' }}
@@ -107,7 +107,7 @@ jobs:
           python src/run_daily.py
 
       - name: Notify Slack
-        if: ${{ success() && env.SLACK_WEBHOOK_URL != '' }}
+        if: ${{ success() && env.SLACK_WEBHOOK_URL != '' && github.event_name != 'push' }}
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
         run: python src/notify.py
@@ -124,13 +124,19 @@ jobs:
           git push || true
 
       - name: Commit snapshot
-        if: ${{ env.PROBE_ONLY != 'true' }}
+        if: ${{ env.PROBE_ONLY != 'true' && github.event_name != 'push' }}
         run: |
           git config user.name  "geo-board-bot"
           git config user.email "actions@users.noreply.github.com"
           git add data/snapshots data/fanout data/harvest_log.json prompts/registry.yaml
           git diff --staged --quiet || git commit -m "chore: snapshot $(date -u +%Y-%m-%d)"
           git push
+
+      # push（＝こちらがソースを直したとき）は AI を叩かない。
+      # 叩くと1回ぶんの API 料金が毎回かかるため、既存スナップショットから画面だけ作り直す。
+      - name: Rebuild site only (push)
+        if: ${{ github.event_name == 'push' }}
+        run: python src/build_site.py
 
       - uses: actions/upload-pages-artifact@v3
         with:
