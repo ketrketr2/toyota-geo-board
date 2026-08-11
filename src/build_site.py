@@ -34,6 +34,76 @@ def _active_events(day: str) -> list[dict]:
             if e.get("from", "9999") <= day <= e.get("to", "0000")]
 
 
+def _newmodels(day: str, query_rows: list[dict]) -> dict:
+    """追跡中の新型車ごとに「実際にAIへ何が聞かれ、どう答えられたか」を束ねる。
+
+    match の語がクエリ本文に含まれれば「その車について聞かれている」、
+    AI回答本文にだけ含まれれば「聞かれてはいないがAIが自発的に挙げた」。
+    後者は認知の立ち上がりを示すので分けて数える。
+    """
+    try:
+        ev = load("events")
+    except Exception:
+        return {}
+    models = ev.get("newmodels") or []
+    if not models:
+        return {}
+
+    out = []
+    for m in models:
+        keys = [k.lower() for k in (m.get("match") or [])]
+        asked, spoken = [], 0
+        for r in query_rows:
+            qt = (r.get("text") or "").lower()
+            hit_q = any(k in qt for k in keys)
+            ans_hits, own_cited = 0, False
+            for sid, sv in (r.get("surfaces") or {}).items():
+                a = (sv.get("answer") or "").lower()
+                if a and any(k in a for k in keys):
+                    ans_hits += 1
+            if hit_q:
+                own_cited = bool(r.get("own_pages"))
+                asked.append({
+                    "id": r["id"], "text": r["text"],
+                    "best_rank": r.get("best_rank"),
+                    "demand": r.get("demand"), "volume": r.get("volume"),
+                    "category": r.get("category"),
+                    "own_cited": own_cited,
+                    "n_own": len(r.get("own_pages") or []),
+                    "answer_hits": ans_hits,
+                    "is_new": bool(r.get("is_new")),
+                })
+            elif ans_hits:
+                spoken += ans_hits
+
+        asked.sort(key=lambda x: (x["demand"] is None, -(x["demand"] or 0)))
+        ranked = [q["best_rank"] for q in asked if q["best_rank"]]
+        out.append({
+            "id": m["id"], "model": m.get("model", ""), "title": m.get("title", ""),
+            "date": m.get("date", ""), "date_precision": m.get("date_precision", "day"),
+            "status": m.get("status", "announced"),
+            "note": m.get("note", ""), "source": m.get("source", ""),
+            "days_from_launch": _daydiff(day, m.get("date", "")),
+            "queries": asked[:12], "n_queries": len(asked),
+            "n_cited": sum(1 for q in asked if q["own_cited"]),
+            "best_rank": min(ranked) if ranked else None,
+            "unprompted": spoken,
+        })
+    out.sort(key=lambda e: (abs(e["days_from_launch"]) if e["days_from_launch"] is not None else 9999))
+    return {"updated_on": ev.get("newmodels_updated_on", ""), "items": out}
+
+
+def _daydiff(a: str, b: str):
+    """a - b を日数で。どちらかが空なら None。"""
+    from datetime import date
+    try:
+        x = date(*map(int, a.split("-")))
+        y = date(*map(int, b.split("-")))
+        return (x - y).days
+    except Exception:
+        return None
+
+
 def _platform_audit(day: str, days: int = 30) -> list[dict]:
     """設定した重みが、実測の被引用構成比とズレていないかを監査する。
 
@@ -78,7 +148,7 @@ def _churn_block(day: str, rmeta: dict) -> dict:
     src_label = {k: v["label"] for k, v in hc["sources"].items()}
     src_label.update({"harvest": "収穫", "-": "初期設定", "chiebukuro": "Yahoo!知恵袋の実質問",
                       "paa": "Google「関連する質問」", "suggest": "Googleサジェスト",
-                      "llm_fanout": "LLMによるfan-out生成", "fanout": "LLM fan-out還流",
+                      "llm_fanout": "AIに言い換えさせた質問", "fanout": "AIが自分で調べ直した語",
                       "semrush_import": "SEOトピック輸入", "gsc": "GSC実クエリ"})
     def deco(items):
         out = []
@@ -126,10 +196,13 @@ def build_site(day: str) -> None:
         if not s:
             continue
         hist.append({
-            "date": d, "score": s["score"], **s["factors"],
+            "date": d, "mode": s.get("mode", "demo"), "score": s["score"], **s["factors"],
             "ai_sessions": sum(s["signals"]["ga4_ai_sessions"].values()),
             "crawler_hits": sum(s["signals"]["crawler_hits"].values()),
             "sov_own": (s["brands"].get(own) or {}).get("sov"),
+            "brands": {bid: {"sov": (bv or {}).get("sov"),
+                             "mentions": (bv or {}).get("mentions")}
+                       for bid, bv in (s.get("brands") or {}).items()},
         })
 
     # ---- クエリ表（プロンプト単位に畳む）----
@@ -305,10 +378,11 @@ def build_site(day: str) -> None:
     category_trend.sort(key=lambda x: -x["presence"])
 
     # ---- クエリの出所内訳 ----
-    SRCJ = {"chiebukuro": "Yahoo!知恵袋の実質問", "paa": "Google「関連する質問」",
-            "llm_fanout": "LLMによるfan-out生成", "fanout": "AIのfan-out還流",
-            "suggest": "Googleサジェスト", "semrush_import": "SEOトピック輸入",
-            "harvest": "収穫（経路不明）", "gsc": "GSC実クエリ", "-": "初期設定"}
+    SRCJ = {"chiebukuro": "知恵袋に実際に書かれた質問", "paa": "Googleの「関連する質問」",
+            "llm_fanout": "AIに言い換えさせた質問", "fanout": "AIが自分で調べ直した語",
+            "suggest": "Googleの検索候補", "semrush_import": "検索キーワード調査から",
+            "harvest": "自動収集（経路の記録なし）", "gsc": "自社サイトへの検索流入から",
+            "-": "運用開始時の初期設定"}
     src_counter = Counter(r["source"] for r in query_rows)
     query_sources = [{"id": k, "label": SRCJ.get(k, k), "n": v}
                      for k, v in src_counter.most_common()]
@@ -338,6 +412,8 @@ def build_site(day: str) -> None:
         # 並べて見せてしまわないよう、画面にも出す。
         # 陣営別のオウンド引用率（表示専用。GEOスコアは toyota.jp 基準のまま）
         "citation_scopes": snap.get("citation_scopes"),
+        "sentiment_detail": snap.get("sentiment_detail"),
+        "tiers": cfg.get("tiers", {}),
         "sov_brands": snap.get("sov_brands"),
         "live_days": sum(1 for d in list_snapshots()
                          if (read_json(snapshot_path(d)) or {}).get("mode") == "live"),
@@ -373,7 +449,19 @@ def build_site(day: str) -> None:
         "platform_audit": _platform_audit(day),
         "signals": snap["signals"],
         "history": hist,
+        "newmodels": _newmodels(day, query_rows),
         "available_days": len(list_snapshots()),
     }
     write_json(DOCS / "data" / "latest.json", out, compact=True)
     print(f"  wrote docs/data/latest.json ({len(hist)} days of history)")
+
+
+if __name__ == "__main__":
+    # push 起因の再ビルド用。AIへの実行はせず、最新スナップショットから
+    # docs/data/latest.json を作り直すだけ（＝APIコストゼロ）。
+    import sys
+    day = sys.argv[1] if len(sys.argv) > 1 else (list_snapshots() or [""])[-1]
+    if not day:
+        raise SystemExit("スナップショットがありません")
+    print(f"rebuild from snapshot: {day}")
+    build_site(day)

@@ -142,8 +142,16 @@ def _compute(cells: list[dict], br: dict, pf: dict, own_id: str,
                          for c in own_cells) / n_own * 100, 2),
         "cells": len(own_cells),
     }
+    # センチメントは「意見が示されたときに、それが肯定的だった割合」で測る。
+    # 中立を分母に入れると、悪く言われていなくても点が伸びない。実測では中立が5割を
+    # 超えるため、旧定義（肯定/全言及）は実力と無関係に常時Dに張り付いていた。
     pos = sum(1 for c in own_cells if c["brands"][own_id]["sentiment"] == "positive")
-    sentiment = (pos / len(own_cells) * 100) if own_cells else 0.0
+    neg = sum(1 for c in own_cells if c["brands"][own_id]["sentiment"] == "negative")
+    neu = len(own_cells) - pos - neg
+    opinionated = pos + neg
+    sentiment = (pos / opinionated * 100) if opinionated else 50.0
+    sentiment_detail = {"positive": pos, "neutral": neu, "negative": neg,
+                        "opinionated": opinionated, "cells": len(own_cells)}
 
     mention_counts = {b: sum(c["brands"][b]["mentioned"] for c in cells) for b in all_brands}
     tot_mentions = sum(mention_counts.values()) or 1
@@ -191,7 +199,8 @@ def _compute(cells: list[dict], br: dict, pf: dict, own_id: str,
     return factors, platforms_out, {"own_cells": own_cells,
                                     "mention_counts": mention_counts,
                                     "tot_mentions": tot_mentions,
-                                    "citation_scopes": citation_scopes}
+                                    "citation_scopes": citation_scopes,
+                                    "sentiment_detail": sentiment_detail}
 
 
 def aggregate(day: str, responses: list[dict], signals: dict) -> dict:
@@ -307,6 +316,7 @@ def aggregate(day: str, responses: list[dict], signals: dict) -> dict:
         "surfaces_measured": sorted({c["surface"] for c in cells}),
         # 陣営別のオウンド引用率。表示専用で、スコアには影響しない。
         "citation_scopes": extras["citation_scopes"],
+        "sentiment_detail": extras["sentiment_detail"],
         "sov_brands": sov_brands,
         "score": round(score, 2),
         "factors": {k: round(v, 2) for k, v in factors.items()},
