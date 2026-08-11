@@ -816,6 +816,46 @@ tr.qrow.flash td{animation:flashrow 1.5s var(--ease)}
 .mqi .tx{font-size:12.5px;color:var(--tx);line-height:1.55;overflow-wrap:anywhere}
 .mqi .tx small{display:block;color:var(--sub);font-size:10.5px;margin-top:2px}
 .mqi .mt{text-align:right;white-space:nowrap;font-size:11px;color:var(--sub)}
+
+/* ---- 出現率／自社サイト引用率のファネル ---- */
+.fnl{display:flex;flex-direction:column;gap:0}
+.fnr{display:grid;grid-template-columns:118px 1fr 168px;gap:16px;align-items:center;
+  padding:14px 0}
+.fnr .fnum{text-align:right;line-height:1.05}
+.fnr .fnum b{font-size:30px;font-weight:800;color:var(--tx);letter-spacing:-.02em}
+.fnr .fnum small{font-size:12px;color:var(--sub);margin-left:3px}
+.fnr .fnum .fden{display:block;font-size:10px;color:var(--sub);margin-top:4px;letter-spacing:.02em}
+.fnr .fmid .flab{font-size:13.5px;font-weight:700;color:var(--tx);margin-bottom:3px}
+.fnr .fmid .fsub{font-size:11px;color:var(--sub);line-height:1.55;margin-bottom:7px}
+.fnr .fbr{height:26px;border-radius:6px;position:relative;overflow:hidden;
+  background:color-mix(in srgb,var(--tx) 7%,transparent)}
+.fnr .fbr i{display:block;height:100%;border-radius:6px;transition:width 1s var(--ease)}
+.fnr .fbr .fpct{position:absolute;left:11px;top:0;height:26px;display:flex;align-items:center;
+  font-size:11.5px;font-weight:700;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.35)}
+.fnr .fright{display:flex;flex-direction:column;gap:3px;padding-left:14px;
+  border-left:2px solid var(--line2)}
+.fnr .fright .frn{font-size:11.5px;font-weight:700;color:var(--accent2)}
+.fnr .fright .frv{font-size:19px;font-weight:800;color:var(--tx);line-height:1.15}
+.fnr .fright .frd{font-size:10px;color:var(--sub);line-height:1.5}
+.fnr.dim .fnum b{color:var(--tx2)}
+.fnstep{display:flex;align-items:center;gap:9px;font-size:11.5px;color:var(--sub);
+  padding:0 0 0 132px;line-height:1.6}
+.fnstep .fnar{color:var(--accent2);font-size:15px;line-height:1}
+.fnstep b{color:var(--tx2)}
+.dnum{display:inline-flex;width:16px;height:16px;border-radius:50%;align-items:center;
+  justify-content:center;font-size:10px;font-weight:800;vertical-align:middle;
+  background:var(--accent2);color:#06131A;margin-right:4px}
+.dnum.d2{background:var(--own);color:#3A2400}
+.fnalt{display:grid;grid-template-columns:118px 1fr;gap:16px;align-items:center;
+  margin-top:12px;padding:12px 0 0;border-top:1px dashed var(--line2)}
+.fnalt .fnum{text-align:right}
+.fnalt .fnum b{font-size:21px;font-weight:800;color:var(--amber)}
+@media(max-width:900px){
+  .fnr{grid-template-columns:82px 1fr;row-gap:8px}
+  .fnr .fright{grid-column:2;border-left:0;padding-left:0;flex-direction:row;gap:8px;align-items:baseline;flex-wrap:wrap}
+  .fnstep{padding-left:0}
+  .fnalt{grid-template-columns:82px 1fr}
+}
 </style>
 </head>
 <body>
@@ -876,16 +916,19 @@ tr.qrow.flash td{animation:flashrow 1.5s var(--ease)}
 </div></div>
 
 <script>
-const FJ={presence:"出現率",rank_quality:"順位品質",owned_citation:"オウンド引用率",
-  earned_citation:"アーンド引用率<br><span style='font-size:9px'>SNS/UGC</span>",sentiment:"センチメント",share_of_voice:"相対シェア"};
-const FJ_PLAIN={presence:"出現率",rank_quality:"順位品質",owned_citation:"オウンド引用率",
-  earned_citation:"アーンド引用率（SNS）",sentiment:"センチメント",share_of_voice:"相対シェア"};
+const FJ={presence:"名前が出た率<br><span style='font-size:9px'>出現率</span>",rank_quality:"順位品質",
+  owned_citation:"自社サイト引用率<br><span style='font-size:9px'>オウンド</span>",
+  earned_citation:"SNS引用率<br><span style='font-size:9px'>アーンド</span>",sentiment:"センチメント",share_of_voice:"相対シェア"};
+const FJ_PLAIN={presence:"名前が出た率（出現率）",rank_quality:"順位品質",owned_citation:"自社サイト引用率",
+  earned_citation:"SNS引用率（アーンド）",sentiment:"センチメント",share_of_voice:"相対シェア"};
+const FJ_SHORT={presence:"名前が出た率",rank_quality:"順位品質",owned_citation:"自社サイト",
+  earned_citation:"SNS引用",sentiment:"センチメント",share_of_voice:"相対シェア"};
 const PJ={dod:"前日比",wow:"先週比",mom:"先月比"};
 const FDESC={
- presence:["AIの回答に自社の名前が出た割合","55本のプロンプトを4つのAIに投げ、回答文の中に「トヨタ」が登場した割合。低い＝そもそも候補に挙げてもらえていない。"],
+ presence:["全回答のうち、名前が出た回答の割合","<b>分母＝返ってきた回答すべて</b>。その中で回答文に「トヨタ」が登場した回答の割合です。低い＝そもそも候補に挙げてもらえていない。"],
  rank_quality:["出たときに何番目に置かれたか","回答が複数ブランドを並べるとき、自社が何番目に書かれたか。1番目なら100点に近づく。低い＝挙がるが後回しにされている。"],
- owned_citation:["回答の根拠に toyota.jp が引かれた割合","AIが回答の根拠として示したURLに自社サイトが含まれた割合。低い＝自社サイトではなく他人のページを根拠にされている。"],
- earned_citation:["SNS・UGCが引かれ、そこに自社が載っていた割合","YouTube・知恵袋・note等が根拠として引かれたとき、その回答で自社が言及されていた割合。プラットフォーム重みを掛けて合成。"],
+ owned_citation:["名前が出た回答のうち、toyota.jp が根拠に引かれた割合","<b>分母＝出現率の分子（名前が出た回答）</b>。出現率とは分母が違う点に注意。AIは1回答で5〜9件しかURLを引かないため、この数字は構造的に上がりにくく、20%前後でも悪い数字ではありません。低い＝自社サイトではなく他人のページを根拠にされている。"],
+ earned_citation:["SNS・UGCが根拠に引かれ、そこに自社が載っていた割合","YouTube・知恵袋・note等が根拠として引かれたとき、その回答で自社が言及されていた割合。プラットフォーム重みを掛けて合成。"],
  sentiment:["AIが評価を述べたとき、それが好意的だった割合","自社に触れた文の語調を判定し、<b>肯定 ÷（肯定＋否定）</b>で算出。中立は「評価を述べていない」ので分母から外す。低い＝語られるときに否定的に扱われている。"],
  share_of_voice:["競合を含めた言及総数に占める自社の割合","均等配分の2.1倍を満点として換算。総合的な露出量の指標。"]};
 /* クエリの出所。専門語のままだと初見で読めないので、日常語に寄せる。
@@ -1184,6 +1227,83 @@ function scopeSwitch(){
   </div>`;
 }
 
+/* ============================================================
+   出現率と自社サイト引用率のファネル
+
+   この2つは「率」という同じ言葉なのに分母が違う。
+     出現率        ＝ 名前が出た回答 ÷ 全回答
+     自社サイト引用率 ＝ 根拠に toyota.jp が入った回答 ÷ 名前が出た回答
+   率だけ並べても、この入れ子構造は絶対に伝わらない。
+   件数を1本の流れとして描いて、どこで何が落ちているかを一目で見せる。
+   ============================================================ */
+function funnelCite(){
+  const C=D.counts||{};
+  const all=C.cells||0, ment=C.own_mentioned||0;
+  const base=C.cited_base!=null?C.cited_base:ment;
+  const own =C.cited_owned!=null?C.cited_owned:Math.round(base*(D.factors.owned_citation||0)/100);
+  const any =C.cited_any!=null?C.cited_any:null;
+  const dealer=C.cited_dealer!=null?C.cited_dealer:null;
+  if(!all) return "";
+  const pMent=all?ment/all*100:0, pOwn=base?own/base*100:0;
+  const pAny =(any!=null&&base)?any/base*100:null;
+  const nsf=(D.surfaces||[]).length;
+
+  const row=(o)=>`<div class="fnr${o.dim?" dim":""}">
+    <div class="fnum"><b data-count="${o.n}">0</b><small>件</small>
+      ${o.den?`<span class="fden">${o.den}</span>`:""}</div>
+    <div class="fmid">
+      <div class="flab">${o.label}</div>
+      <div class="fsub">${o.sub}</div>
+      <div class="fbr"><i style="width:${o.w.toFixed(1)}%;background:${o.c}"></i>
+        <span class="fpct">${o.w.toFixed(1)}%</span></div>
+    </div>
+    <div class="fright">
+      <span class="frn">${o.rn}</span>
+      <span class="frv">${o.rv}</span>
+      <span class="frd">${o.rd}</span>
+    </div></div>`;
+
+  return `<h2 class="sec"><span class="bar"></span>出現率と自社サイト引用率は、分母が違います
+    <span class="note">同じ「率」でも数えている母数が別</span></h2>
+  <div class="why"><b>ここが一番間違えやすいところです。</b>
+  出現率は<b>全回答</b>を分母にしていますが、自社サイト引用率は<b>「トヨタの名前が出た回答」</b>を分母にしています。
+  つまり2つは並列の指標ではなく、<b>上から順に絞り込んでいく段階</b>です。下の図は、その絞り込みを実数で追ったものです。</div>
+  <div class="card" style="padding:18px 22px 20px">
+    <div class="fnl">
+      ${row({n:all, label:"AIから返ってきた回答", c:"linear-gradient(90deg,#1F4E79,#2E6FA6)", w:100,
+        sub:`${D.counts.prompts}本のクエリ × ${nsf}つのAI。ここがすべての出発点です。`,
+        den:'<span class="dnum">1</span>出現率の分母',
+        rn:"母数", rv:`${all}件`, rd:"1日ぶんの全回答"})}
+      <div class="fnstep"><span class="fnar">↓</span>
+        <span>このうち、回答文に <b>「トヨタ」の名前が出た</b>のは…</span></div>
+      ${row({n:ment, label:"トヨタの名前が出た回答", c:"linear-gradient(90deg,#00A99D,#00E5C7)", w:pMent,
+        sub:`名前が出なければ、順位も引用も語りようがありません。ここが全体の入口です。`,
+        den:'<span class="dnum d2">2</span>自社サイト引用率の分母',
+        rn:"出現率", rv:`${pMent.toFixed(1)}%`,
+        rd:`<span class="dnum">1</span>${all}件 のうち ${ment}件`})}
+      <div class="fnstep"><span class="fnar">↓</span>
+        <span>その <b>${ment}件</b> のうち、AIが示した根拠URLに <b>toyota.jp が入っていた</b>のは…</span></div>
+      ${row({n:own, label:"根拠に toyota.jp が引かれた回答", c:"linear-gradient(90deg,#B8860B,#E8B004)", w:pOwn,
+        sub:`AIは1回答あたり5〜9件しかURLを引きません。そこに割り込めた回数です。`,
+        rn:"自社サイト引用率", rv:`${pOwn.toFixed(1)}%`,
+        rd:`<span class="dnum d2">2</span>${base}件 のうち ${own}件`})}
+    </div>
+    ${(pAny!=null)?`<div class="fnalt">
+      <div class="fnum"><b>${any}</b><small>件</small></div>
+      <div><div class="flab" style="font-size:13px;font-weight:700;color:var(--amber)">販売店・グループ会社のページまで含めると ${pAny.toFixed(1)}%</div>
+        <div class="fsub" style="font-size:11.5px;color:var(--sub);line-height:1.7">
+        トヨタモビリティ各社やカローラ店などのサイトも「トヨタ陣営が出した情報」ではあります。
+        そこまで数えると <b>${base}件中 ${any}件</b>。ただし<b>スコアには toyota.jp だけを使っています</b>
+        （数え方を途中で変えると過去と比較できなくなるため）。</div></div></div>`:""}
+    <div class="src" style="margin-top:14px;line-height:1.9">
+    <b>読み方の目安：</b>出現率が下がったら「候補から外れ始めた」、自社サイト引用率が下がったら「語られてはいるが、根拠が他人のページになった」。
+    打ち手が変わります。前者はテーマ自体の露出づくり、後者は自社ページの作り込み（構造化データ・FAQ・robots.txt）が効きます。<br>
+    <b>なぜ自社サイト引用率は低く見えるのか：</b>AIが1回答に添えるURLは5〜9件だけで、そこには比較サイト・メディア・SNSも入ります。
+    自社サイトが必ず入る性質のものではないため、この指標は<b>20%前後でも実務的には悪くありません</b>。
+    判定は他の因数と同じ物差しではなく、この指標専用の閾値（${(((D.tiers||{}).owned_citation)||[45,30,18,10]).join(" / ")}）で行っています。</div>
+  </div>`;
+}
+
 function pageOverview(){
   const c=D.comment||{}, lines=(c.periods||{})[P]||[];
   const SC=scoreNow(); const ring=308*(1-SC/100);
@@ -1251,7 +1371,7 @@ function pageOverview(){
     <span class="note">6因数のバランス</span></h2>
   <div class="card">
     <div class="radar-wrap">
-      <div style="display:flex;justify-content:center">${radar(FK.map(k=>facVal(k)),FK.map(k=>FJ_PLAIN[k].replace("（SNS）","")),320)}</div>
+      <div style="display:flex;justify-content:center">${radar(FK.map(k=>facVal(k)),FK.map(k=>FJ_SHORT[k]||FJ_PLAIN[k]),320)}</div>
       <div>
         ${FK.map(k=>{const d=delta(D.diff?.metrics?.[k],P);const fv=facVal(k);const t=tierOf(fv,k);
           return `<div class="fbar">
@@ -1264,6 +1384,8 @@ function pageOverview(){
       </div>
     </div>
   </div>
+
+  ${funnelCite()}
 
   <h2 class="sec"><span class="bar"></span>いま何が聞かれているか<span class="note">カテゴリ別の出現率と先週比</span></h2>
   <div class="why"><b>見方：</b>追跡している${D.counts.prompts}本のクエリをテーマ別にまとめ、「そのテーマの質問でAIが自社を挙げた割合」を出しています。
@@ -1314,9 +1436,13 @@ function pageOverview(){
 
   <h2 class="sec"><span class="bar"></span>実測サマリ<span class="note">${D.counts.prompts}プロンプト × ${(D.surfaces||[]).length}サーフェス ／ 回答 ${num(D.counts.responses)}件</span></h2>
   <div class="g4">
-    ${kpiCard("自社が言及された回答","own_mentioned",D.counts.own_mentioned+" / "+D.counts.cells,"presence","own")}
-    ${kpiCard("オウンド引用率","owned_citation",f1(D.factors.owned_citation)+"%","owned_citation","")}
-    ${kpiCard("アーンド引用率（SNS）","earned_citation",f1(D.factors.earned_citation)+"%","earned_citation","ok")}
+    ${kpiCard("名前が出た回答（出現率の分子）","own_mentioned",
+      `${D.counts.own_mentioned}<small> / ${D.counts.cells}件 ＝ ${f1(D.factors.presence)}%</small>`,"presence","own")}
+    ${kpiCard("自社サイト引用率","owned_citation",
+      D.counts.cited_owned!=null
+        ? `${f1(D.factors.owned_citation)}%<small> ＝ ${D.counts.cited_owned} / ${D.counts.cited_base}件</small>`
+        : f1(D.factors.owned_citation)+"%","owned_citation","")}
+    ${kpiCard("SNS引用率（アーンド）","earned_citation",f1(D.factors.earned_citation)+"%","earned_citation","ok")}
     ${kpiCard("AI経由セッション","ai_sessions",num(Object.values(D.signals.ga4_ai_sessions).reduce((a,b)=>a+b,0)),"ai_sessions","","件")}
   </div>
 
@@ -1454,9 +1580,11 @@ function pageSns(){
     <b>「人には届くがAIには読まれない」面は、GEOスコアでは低く出るのが正しい</b>という設計です。ただしこの前提は変わりうるので、上の実測構成比で毎月点検してください。</div></div>
 
   <h2 class="sec"><span class="bar"></span>アーンド引用率の推移</h2>
-  <div class="card">${lineChart(D.history,["earned_citation","owned_citation"],["#00A99D","#E8B004"],190,["アーンド引用率","オウンド引用率"])}
-    <div class="legend"><span><i style="background:#00A99D"></i>アーンド引用率（SNS/UGC）</span><span><i style="background:#E8B004"></i>オウンド引用率</span></div>
-    <div class="note ok" style="margin-bottom:0">2本が乖離しているときは打ち手が分かれます。<b>オウンドだけ下がる</b>＝自社ページがAIに読まれていない（構造化・robots・FAQ整備）。<b>アーンドだけ下がる</b>＝UGC側で語られなくなった（YouTube・note・アンバサダー施策）。</div></div>`;
+  <div class="card">${lineChart(D.history,["earned_citation","owned_citation"],["#00A99D","#E8B004"],190,["SNS引用率","自社サイト引用率"])}
+    <div class="legend"><span><i style="background:#00A99D"></i>SNS引用率（アーンド）</span><span><i style="background:#E8B004"></i>自社サイト引用率（オウンド）</span></div>
+    <div class="note ok" style="margin-bottom:0">どちらも分母は<b>「トヨタの名前が出た回答」</b>で共通です。2本が乖離しているときは打ち手が分かれます。
+    <b>自社サイトだけ下がる</b>＝自社ページがAIに読まれていない（構造化・robots・FAQ整備）。
+    <b>SNSだけ下がる</b>＝UGC側で語られなくなった（YouTube・note・アンバサダー施策）。</div></div>`;
 }
 
 const BK={owned:["自社オウンド","p-ok"],affiliated:["グループ・販売店","p-am"],earned:["SNS・UGC","p-pu"],
@@ -2293,14 +2421,14 @@ function pageGuide(){
   const fj=k=>FJ_PLAIN[k]||k;
 
   const FDEF={
-    presence:["AIの回答に自社の名前が出た割合",
-      "クエリ×AI面の全セットのうち、回答本文にトヨタが登場した割合。",
+    presence:["全回答のうち、名前が出た回答の割合",
+      "分母＝返ってきた回答すべて。分子＝回答本文にトヨタが登場した回答。",
       "そもそも候補に入っていない状態。テーマを主題にしたページが無いことが多い"],
     rank_quality:["登場したとき何番目に置かれたか",
       "登場したセルについて 1/順位 の平均。1位なら100点、2位なら50点相当。",
       "名前は出るが一番手ではない。比較の根拠となる数値や第三者評価が弱い"],
-    owned_citation:["回答の根拠に toyota.jp が引かれた割合",
-      "自社が登場したセルのうち、引用元に toyota.jp が1件以上あった割合。",
+    owned_citation:["名前が出た回答のうち、toyota.jp が引かれた割合",
+      "分母＝出現率の分子（名前が出た回答）。出現率と分母が違う。AIは1回答で5〜9件しかURLを引かないため構造的に上がりにくい。",
       "AIが自社の説明を他人のサイトから取っている状態。一次情報の書き方の問題"],
     earned_citation:["SNS・UGCでの引かれ方",
       "AIが引いたSNS/UGCのうち、自社に触れた回答で引かれた割合をプラットフォーム別の重み付きで合計。",
@@ -2355,7 +2483,12 @@ function pageGuide(){
         <td class="c"><b>${f1(fv)}</b></td><td class="c">${W[k]}</td>
         <td style="font-size:11.5px">${esc(d[0])}<br><span style="color:var(--sub)">${esc(d[1])}</span></td>
         <td style="font-size:11.5px;color:var(--sub)">${esc(d[2])}</td></tr>`;}).join("")}</tbody></table></div>
-    <p style="margin-top:10px"><b>オウンド引用率だけは、見る範囲を切り替えられます。</b>
+    <div class="why" style="margin:12px 0"><b>出現率と自社サイト引用率は、分母が違います。</b>
+    出現率の分母は<b>全回答（${C.cells}件）</b>、自社サイト引用率の分母は<b>名前が出た回答（${C.own_mentioned}件）</b>です。
+    2つは並列の指標ではなく、上から順に絞り込む段階になっています。
+    <b>${C.cells}件 → ${C.own_mentioned}件（出現率 ${f1(F.presence)}%）→ ${C.cited_owned!=null?C.cited_owned:"—"}件（自社サイト引用率 ${f1(F.owned_citation)}%）</b>
+    という流れです。概要タブの図で実数のまま追えます。 ${gJump("overview","概要のファネル図")}</div>
+    <p style="margin-top:10px"><b>自社サイト引用率だけは、見る範囲を切り替えられます。</b>
     toyota.jp のみ <b>${f1(ownedRate("owned"))}%</b>、販売店（DMS）<b>${f1(ownedRate("dealer"))}%</b>、
     グループ会社 <b>${f1(ownedRate("group"))}%</b>、陣営合算 <b>${f1(ownedRate("all"))}%</b>。
     <b class="hl">スコアに使うのは toyota.jp の数字だけ</b>で、切り替えても GEOスコアは動きません。</p>
@@ -2471,7 +2604,7 @@ function pageGuide(){
         この画面の言及シェアは「${C.prompts}本のクエリに対する回答の中で、各ブランドが登場した回数の構成比」です。
         母数が同じでない数字とは直接比較できません。</li>
       <li><b>${weekly.length?esc(weekly.join("・")):"会話型AI"} は週2回のスナップショットです。</b>日次の折れ線には入っていません</li>
-      <li><b>オウンド引用率は toyota.jp 基準に固定しています。</b>
+      <li><b>自社サイト引用率は toyota.jp 基準に固定しています。</b>
         販売店を含めた数字はトグルで見られますが、スコアは変わりません</li>
       <li><b>90日を超えた明細は自動削除されます</b>（スコアと6因数は残ります）。容量の都合です</li>
       <li><b>AIが引用したURLと、実際にユーザーがクリックしたかは別の話です。</b>
