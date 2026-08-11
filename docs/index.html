@@ -2673,11 +2673,20 @@ function countUp(root){
   root.querySelectorAll("[data-count]").forEach(el=>{
     const raw=el.dataset.count, to=parseFloat(raw);
     if(isNaN(to)) return;
-    const dec=(raw.split(".")[1]||"").length; let t0=null;
-    function step(ts){ if(!t0)t0=ts; const k=Math.min((ts-t0)/850,1);
-      const e=1-Math.pow(1-k,3); el.textContent=(to*e).toFixed(dec);
-      if(k<1)requestAnimationFrame(step); }
-    requestAnimationFrame(step);});
+    const dec=(raw.split(".")[1]||"").length;
+    const fin=()=>{ el.textContent=to.toFixed(dec); };
+    // 非表示タブでは requestAnimationFrame が止まり、途中の数字で固まる。
+    // その場合はアニメーションせず確定値を出す。
+    if(document.hidden){ fin(); return; }
+    const t0=performance.now();
+    function step(){
+      const k=Math.min((performance.now()-t0)/850,1);
+      el.textContent=(to*(1-Math.pow(1-k,3))).toFixed(dec);
+      if(k<1&&el.isConnected) requestAnimationFrame(step); else fin();
+    }
+    requestAnimationFrame(step);
+    setTimeout(fin,1100);   // rAF が止まる環境（背面タブ・省電力）の保険
+  });
 }
 function reveal(root){
   const io=new IntersectionObserver(es=>es.forEach(e=>{
