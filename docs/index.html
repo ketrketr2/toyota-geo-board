@@ -668,7 +668,7 @@ tr.catrow td:first-child b{border-bottom:1px dashed var(--line2)}
   .hero .facs{grid-template-columns:1fr}
   .g6{grid-template-columns:1fr}
 }
-/* ---- デモ／実測バッジ ---- */
+/* ---- データ種別バッジ ---- */
 .mode{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;
   padding:4px 11px;border-radius:16px;white-space:nowrap;letter-spacing:.02em}
 .mode::before{content:"";width:7px;height:7px;border-radius:50%;display:inline-block}
@@ -856,6 +856,70 @@ tr.qrow.flash td{animation:flashrow 1.5s var(--ease)}
   .fnstep{padding-left:0}
   .fnalt{grid-template-columns:82px 1fr}
 }
+
+/* ---- 車種別状況 ---- */
+.mdtop{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;margin-bottom:14px}
+#mdt{min-width:1080px;table-layout:fixed}
+#mdt td{padding-top:9px;padding-bottom:9px}
+tr.mdrow{cursor:pointer}
+tr.mdrow:hover td{background:color-mix(in srgb,var(--accent2) 7%,transparent)}
+.mdname{font-size:13.5px;font-weight:700;color:var(--tx);line-height:1.35}
+.mdname .mdslug{display:block;font-size:10px;color:var(--sub);font-family:ui-monospace,Menlo,monospace}
+.spark{display:block;width:100%;height:30px;overflow:visible}
+.spark .sl{fill:none;stroke:var(--accent2);stroke-width:1.6;stroke-linejoin:round;stroke-linecap:round}
+.spark .sa{fill:color-mix(in srgb,var(--accent2) 16%,transparent);stroke:none}
+.spark .sd{fill:var(--accent2)}
+.spark.zero .sl{stroke:var(--sub);opacity:.5}
+.mdbadge{display:inline-flex;align-items:center;gap:4px;font-size:10px;font-weight:700;
+  padding:2px 8px;border-radius:9px;white-space:nowrap;
+  background:color-mix(in srgb,var(--amber) 16%,transparent);color:var(--amber);
+  border:1px solid color-mix(in srgb,var(--amber) 32%,transparent)}
+.mdriv{display:flex;flex-wrap:wrap;gap:4px}
+.mdriv .mrv{display:inline-flex;align-items:baseline;font-size:10.5px;padding:2px 8px;border-radius:9px;
+  white-space:nowrap;border:1px solid color-mix(in srgb,var(--warn) 26%,transparent);
+  background:color-mix(in srgb,var(--warn) 12%,transparent);color:var(--warn)}
+.mdriv .mrv b{font-weight:800;margin-left:4px;opacity:.85}
+.mdbar{height:5px;border-radius:3px;background:color-mix(in srgb,var(--tx) 9%,transparent);overflow:hidden;margin-top:4px}
+.mdbar i{display:block;height:5px;border-radius:3px;background:var(--accent);transition:width .8s var(--ease)}
+.mdsec{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}
+.nmc{background:var(--card);border:1px solid var(--line);border-radius:11px;padding:13px 15px;
+  border-left:3px solid var(--sub);position:relative}
+.nmc.s-launched{border-left-color:var(--ok)}
+.nmc.s-announced{border-left-color:var(--amber)}
+.nmc.s-rumored{border-left-color:var(--sub)}
+.nmc .nh{display:flex;align-items:baseline;gap:8px;margin-bottom:3px}
+.nmc .nm2{font-size:14px;font-weight:800;color:var(--tx)}
+.nmc .nd{font-size:11px;color:var(--sub);margin-left:auto;white-space:nowrap}
+.nmc .nt{font-size:11.5px;color:var(--tx2);line-height:1.6;margin-bottom:6px}
+.nmc .nn{font-size:11px;color:var(--sub);line-height:1.7}
+.nmc .nsrc{font-size:10px;color:var(--sub);margin-top:6px}
+.nmc .nsrc a{color:var(--sub);text-decoration:underline}
+.mdgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:9px;margin-bottom:12px}
+.mdgrid>div{background:var(--card2);border:1px solid var(--line);border-radius:9px;padding:10px 12px}
+.mdgrid .k{font-size:10px;color:var(--sub);display:block;line-height:1.4}
+.mdgrid .v{font-size:19px;font-weight:800;color:var(--tx);line-height:1.25}
+@media(max-width:820px){ .mdtop{grid-template-columns:1fr 1fr} }
+/* ドメイン内訳のポップ */
+.dmlist{display:flex;flex-direction:column;gap:4px;max-height:52vh;overflow:auto}
+.dmrow{display:grid;grid-template-columns:1fr 54px 76px;gap:10px;align-items:center;
+  background:var(--card2);border:1px solid var(--line);border-radius:7px;padding:6px 11px;font-size:12px}
+.dmrow .dh{overflow-wrap:anywhere;font-family:ui-monospace,Menlo,monospace;font-size:11.5px;color:var(--tx2)}
+.dmrow .dn2{text-align:right;font-weight:700;color:var(--tx)}
+.dmrow .db{height:6px;border-radius:3px;background:color-mix(in srgb,var(--tx) 10%,transparent);overflow:hidden}
+.dmrow .db i{display:block;height:6px;border-radius:3px;background:var(--accent)}
+.legend span.clik{cursor:pointer;border-bottom:1px dashed var(--line2)}
+.legend span.clik:hover{color:var(--accent2)}
+
+.qev{cursor:pointer;border-bottom:1px dashed rgba(255,255,255,.35);transition:all .18s var(--ease);
+  padding-bottom:1px}
+.qev:hover{border-bottom-color:var(--accent2);background:rgba(255,255,255,.07);border-radius:3px}
+.qev::after{content:" ▸";font-size:9px;opacity:.6}
+.qhelp{cursor:pointer}
+.srow.clik{cursor:pointer}
+.srow.clik:hover{background:color-mix(in srgb,var(--accent2) 9%,transparent);border-radius:7px}
+.sdom{font-size:9.5px;color:var(--sub);margin-left:7px;white-space:nowrap;
+  border:1px solid var(--line2);border-radius:8px;padding:1px 6px}
+.srow.clik:hover .sdom{color:var(--accent2);border-color:var(--accent2)}
 </style>
 </head>
 <body>
@@ -867,7 +931,7 @@ tr.qrow.flash td{animation:flashrow 1.5s var(--ease)}
   <a class="nav" data-p="guide"><span class="ic">?</span>読み方ガイド</a>
   <div class="grp">モニタリング</div>
   <a class="nav on" data-p="overview"><span class="ic">◉</span>概要</a>
-  <a class="nav" data-p="events"><span class="ic">◷</span>イベント追跡</a>
+  <a class="nav" data-p="events"><span class="ic">⛁</span>車種別状況</a>
   <a class="nav" data-p="queries"><span class="ic">★</span>クエリ</a>
   <a class="nav" data-p="churn"><span class="ic">↻</span>クエリ新陳代謝</a>
   <a class="nav" data-p="pages"><span class="ic">▤</span>自社の被引用ページ</a>
@@ -964,9 +1028,21 @@ const TERM={
   "月間検索":"Googleでそのキーワードが月に検索されるおおよその回数",
   "テーマ":"クエリの内容分類。購入検討・安全・価格など7分類",
   "出所":"そのクエリをどこから持ってきたか",
-  "順位":"AIの回答の中で、自社が何番目のブランドとして書かれていたか"
+  "順位":"AIの回答の中で、自社が何番目のブランドとして書かれていたか",
+  "言及回答数":"本日AIから返ってきた回答のうち、その車名が本文に出てきた回答の数。回答1本につき1回として数えるので、同じ回答で車名が3回出ても1回。",
+  "7日平均の増減":"直近7日の平均言及回答数から、その前の7日の平均を引いた差。会話型AIは月・木だけ計測しているため、日単位の比較は曜日の影響を受ける。7日平均にすると曜日の偏りが消える。",
+  "併記される競合車種":"その車名が出てきた回答の中に、一緒に出てきた他社の車種。AIが実際に比較対象として並べている相手で、カタログ上の競合とは一致しないことがある。",
+  "引用消失":"前回まで自社ページが根拠に引かれていたのに、今回は引かれなくなったクエリ。",
+  "引用獲得":"前回まで引かれていなかった自社ページが、今回から根拠に引かれ始めたクエリ。",
+  "規模との差":"AI言及シェア から 販売シェア を引いた差（pt）。0なら販売規模どおりに語られている状態。マイナスは規模の割にAIで語られていない、プラスは規模以上に語られている。分母は、AI言及と販売台数の両方が取れているブランドだけで揃えてある。"
 };
-const tip=(label,extra)=>`title="${attr((TERM[label]||"")+(extra?"\n"+extra:""))}"`;
+const tip=(label,extra)=>`title="${attr((TERM[label]||"")+(extra?"\n"+extra:""))}" data-term="${attr(label)}"${extra?` data-termx="${attr(extra)}"`:""}`;
+function openTerm(label,extra){
+  const d=TERM[label]||extra||"説明が登録されていません。";
+  openModal(`<span class="qm" style="width:18px;height:18px;font-size:12px">?</span> ${esc(label)}`,
+    `<div style="font-size:13px;line-height:2;color:var(--tx2)">${esc(d)}</div>`
+    +(extra&&TERM[label]?`<div class="src" style="margin-top:10px">${esc(extra)}</div>`:""));
+}
 const esc=s=>String(s??"").replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
 const num=v=>v==null?"—":(+v).toLocaleString();
 const f1=v=>v==null?"—":(+v).toFixed(1);
@@ -1012,11 +1088,12 @@ function headline(){
       : `${PJ[P]} <b class="${d.delta>0?'up':'dn'}">${sign}${d.delta.toFixed(2)}pt</b>。ばらつき ±${sg.toFixed(2)}pt を超えた<b>本物の${d.delta>0?"上昇":"低下"}</b>です。`;
   }
   if(moved){
+    const b=(k,html,n)=>`<span class="qev" data-qev="${k}" title="クリックすると対象の${n}本を一覧表示します">${html}</span>`;
     const bits=[];
-    if(ev.lost.length)   bits.push(`<b class="hl-r">自社ページが引かれなくなったクエリ ${ev.lost.length}本</b>`);
-    if(ev.gained.length) bits.push(`<b class="hl-g">新たに引かれ始めた ${ev.gained.length}本</b>`);
-    if(ev.down.length)   bits.push(`順位が下がった ${ev.down.length}本`);
-    if(ev.up.length)     bits.push(`上がった ${ev.up.length}本`);
+    if(ev.lost.length)   bits.push(b("lost",`<b class="hl-r">自社ページが引かれなくなったクエリ ${ev.lost.length}本</b>`,ev.lost.length));
+    if(ev.gained.length) bits.push(b("gained",`<b class="hl-g">新たに引かれ始めた ${ev.gained.length}本</b>`,ev.gained.length));
+    if(ev.down.length)   bits.push(b("down",`<b>順位が下がった ${ev.down.length}本</b>`,ev.down.length));
+    if(ev.up.length)     bits.push(b("up",`<b>上がった ${ev.up.length}本</b>`,ev.up.length));
     s += `<br><span class="lead2">総合スコアより先に見るべきはこちら：</span>${bits.join(" ／ ")}。`;
   }
   return s;
@@ -1028,14 +1105,20 @@ function lineChart(hist,keys,colors,h=190,labels){
   labels=labels||keys;
   const W=640,pad={l:38,r:12,t:14,b:22};
   const all=keys.flatMap(k=>hist.map(d=>d[k])).filter(v=>v!=null);
+  if(!all.length) return "";
   let mn=Math.min(...all),mx=Math.max(...all);
-  const pd=(mx-mn)*.15||1; mn=Math.max(0,mn-pd); mx=mx+pd;
+  const pd=(mx-mn)*.15||1;
+  // 負の値を扱う系列（販売シェアとの差など）で 0 に丸めると、
+  // マイナス側の線が全部いちばん下に張り付いて読めなくなる。
+  mn = mn>=0 ? Math.max(0,mn-pd) : mn-pd;
+  mx = mx+pd;
   const X=i=>pad.l+i*(W-pad.l-pad.r)/Math.max(hist.length-1,1);
   const Y=v=>pad.t+(1-(v-mn)/(mx-mn))*(h-pad.t-pad.b);
   let g="";
   for(let i=0;i<=4;i++){const y=pad.t+i*(h-pad.t-pad.b)/4;
     g+=`<line x1="${pad.l}" y1="${y}" x2="${W-pad.r}" y2="${y}" stroke="var(--line)"/>`+
-       `<text x="6" y="${y+3}" font-size="9" fill="var(--sub)">${(mx-(mx-mn)*i/4).toFixed(0)}</text>`;}
+       `<text x="6" y="${y+3}" font-size="9" fill="var(--sub)">${(()=>{const v=mx-(mx-mn)*i/4;
+          return (mx-mn)<12?v.toFixed(1):v.toFixed(0);})()}</text>`;}
   const gid="g"+Math.abs(keys.join().split("").reduce((a,c)=>a+c.charCodeAt(0),0));
   keys.forEach((k,ki)=>{
     const pts=hist.map((d,i)=>d[k]==null?null:`${X(i)},${Y(d[k])}`).filter(Boolean).join(" ");
@@ -1048,13 +1131,18 @@ function lineChart(hist,keys,colors,h=190,labels){
     g+=`<circle cx="${X(hist.length-1)}" cy="${Y(last[keys[0]])}" r="4.5" fill="${colors[0]}" stroke="#fff" stroke-width="1.6"/>`;
   g+=`<line class="cursor" x1="0" y1="${pad.t}" x2="0" y2="${h-pad.b}" stroke="var(--sub)" stroke-width="1" stroke-dasharray="3 3"/>`;
   g+=`<circle class="hoverdot" r="5" fill="${colors[0]}" stroke="#fff" stroke-width="2"/>`;
-  // デモ→実測の切替点。ここより左は合成データなので、同じ線として読ませない。
+  if(mn<0&&mx>0){
+    const zy=Y(0);
+    g+=`<line x1="${pad.l}" y1="${zy.toFixed(1)}" x2="${W-pad.r}" y2="${zy.toFixed(1)}" stroke="var(--tx2)" stroke-width="1.2" opacity=".65"/>`;
+    g+=`<text x="${W-pad.r-2}" y="${(zy-4).toFixed(1)}" font-size="8.5" fill="var(--tx2)" text-anchor="end" opacity=".8">0（規模どおり）</text>`;
+  }
+  // 参考値→実測の切替点。ここより左は初期の仮データなので、同じ線として読ませない。
   const li=hist.findIndex(d=>d.mode==="live");
   if(li>0){
     const bx=X(li)-(X(li)-X(li-1))/2;
     g+=`<rect x="${pad.l}" y="${pad.t}" width="${Math.max(bx-pad.l,0)}" height="${h-pad.t-pad.b}" fill="var(--sub)" opacity=".07"/>`;
     g+=`<line x1="${bx}" y1="${pad.t}" x2="${bx}" y2="${h-pad.b}" stroke="var(--amber)" stroke-width="1.2" stroke-dasharray="4 3" opacity=".85"/>`;
-    g+=`<text x="${bx-5}" y="${pad.t+10}" font-size="8.5" fill="var(--sub)" text-anchor="end">← デモ</text>`;
+    g+=`<text x="${bx-5}" y="${pad.t+10}" font-size="8.5" fill="var(--sub)" text-anchor="end">← 参考値</text>`;
     g+=`<text x="${bx+5}" y="${pad.t+10}" font-size="8.5" fill="var(--amber)">実測 →</text>`;
   }
   g+=`<text x="${pad.l}" y="${h-4}" font-size="9" fill="var(--sub)">${hist[0].date.slice(5)}</text>`+
@@ -1214,8 +1302,21 @@ function scopeSwitch(){
     </div>
     <div class="scoperows">
       ${ORDER.map(k=>{const s=SCOPES[k],val=v[k],isOwn=(k==="owned");
-        return `<div class="srow${isOwn?" own":""}" title="${esc(s.desc)}">
-          <span class="sl">${esc(s.label)}${isOwn?'<span class="sbadge">スコア対象</span>':""}</span>
+        // その行が指しているドメイン群を出す。販売店は全国に散っているので、
+        // 「4本」だけ見せても、どこの販社が拾われているのか分からない。
+        const bd=D.bucket_domains||{};
+        const dm = k==="owned" ? (bd.owned||[])
+                 : k==="dealer" ? (bd.dealer||[])
+                 : k==="group"  ? (bd.affiliated||[])
+                 : [...(bd.owned||[]),...(bd.dealer||[]),...(bd.affiliated||[])]
+                     .sort((a,b)=>b.n-a.n);
+        const ti = dm.length
+          ? `${s.desc}\n\n［引かれたドメイン ${dm.length}件］\n`+dm.slice(0,14).map(d=>`・${d.host}　${d.n}本`).join("\n")
+             +(dm.length>14?`\n…ほか${dm.length-14}件（クリックで全件）`:"")
+          : s.desc;
+        return `<div class="srow${isOwn?" own":""}${dm.length?" clik":""}" title="${attr(ti)}"${dm.length?` data-sc="${attr(k)}"`:""}>
+          <span class="sl">${esc(s.label)}${isOwn?'<span class="sbadge">スコア対象</span>':""}${
+            dm.length?`<span class="sdom">${dm.length}ドメイン ▸</span>`:""}</span>
           <span class="strk"><i style="width:${val/mx*100}%"></i></span>
           <span class="sv">${f1(val)}<span class="su">%</span></span>
         </div>`;}).join("")}
@@ -1236,6 +1337,55 @@ function scopeSwitch(){
    率だけ並べても、この入れ子構造は絶対に伝わらない。
    件数を1本の流れとして描いて、どこで何が落ちているかを一目で見せる。
    ============================================================ */
+/* ============================================================
+   規模に対するAI露出（KPI）
+   販売シェアとAI言及シェアの差は、この事業でいちばん説明を求められる数字。
+   概要の一番上に置き、日次の推移まで見せる。詳細は競合タブへ。
+   ============================================================ */
+function gapKpi(){
+  const S=salesVsAi();
+  if(!S) return "";
+  const me=S.rows.find(r=>r.id==="toyota"); if(!me) return "";
+  const G=gapSeries();
+  const rows=G?G.rows.filter(r=>r.mode==="live"):[];
+  const ser=rows.map(r=>r["toyota"]).filter(v=>v!=null);
+  const first=ser.length?ser[0]:null, last=ser.length?ser[ser.length-1]:null;
+  const chg=(first!=null&&last!=null&&ser.length>=2)?last-first:null;
+  const st = me.diff>=0 ? ["規模以上に語られている","p-ok","up"]
+           : me.diff>=-5 ? ["やや不足","p-am","dn"] : ["規模に対して不足","p-ng","dn"];
+
+  return `<h2 class="sec"><span class="bar"></span>規模に対するAI露出
+    <span class="hbtn" data-go="compete"><span class="qm">→</span>競合・判断軸で詳しく見る</span>
+    <span class="note">販売シェア と AI言及シェア の差</span></h2>
+  <div class="why"><b>この事業でいちばん説明を求められる数字です。</b>
+  トヨタは販売台数では圧倒的1位ですが、AIの回答に登場する回数のシェアはそれより小さい。
+  その差（pt）を毎日追っています。<b>0より下＝売れている規模の割にAIで語られていない</b>。
+  カードをクリックすると、母数のそろえ方まで含めた詳細に移動します。</div>
+  <div class="g4" style="margin-bottom:6px">
+    <div class="kpi clik ${me.diff<-5?"warn":me.diff<0?"":"ok"}" data-go="compete">
+      <div class="l">規模との差<span class="qhelp" data-term="規模との差">?</span></div>
+      <div class="v" style="color:${me.diff>=0?'var(--ok)':'var(--warn)'}">${me.diff>=0?"+":""}${me.diff.toFixed(1)}<small>pt</small></div>
+      <div class="d"><span class="pill ${st[1]}">${st[0]}</span></div><span class="go">詳細へ →</span></div>
+    <div class="kpi clik own" data-go="compete"><div class="l">AI言及シェア</div>
+      <div class="v">${me.aiShare.toFixed(1)}<small>%</small></div>
+      <div class="d fl">${me.mentions}回 / 計測${S.rows.length}社中</div><span class="go">詳細へ →</span></div>
+    <div class="kpi clik" data-go="compete"><div class="l">販売シェア</div>
+      <div class="v">${me.sales.toFixed(1)}<small>%</small></div>
+      <div class="d fl">${esc(S.period)}・${num(me.total)}台</div><span class="go">詳細へ →</span></div>
+    <div class="kpi clik ${chg==null?"":chg>0?"ok":"warn"}" data-go="compete">
+      <div class="l">実測${ser.length}日間の変化</div>
+      <div class="v">${chg==null?"—":(chg>0?"+":"")+chg.toFixed(1)}<small>pt</small></div>
+      <div class="d fl">${first!=null?`初日 ${first.toFixed(1)} → 直近 ${last.toFixed(1)}`:"実測が2日たまると出ます"}</div>
+      <span class="go">詳細へ →</span></div>
+  </div>
+  ${G?`<div class="card" style="padding:14px 18px 12px">
+    <h3 class="sub" style="margin-top:0">差の日次推移<span style="font-weight:400;color:var(--sub);font-size:11px;margin-left:8px">実線＝トヨタ／0の線が「規模どおり」</span></h3>
+    ${lineChart(G.rows,G.ids,G.ids.map((x,i)=>BCOL[i%BCOL.length]),200,G.labels)}
+    <div class="chips" style="margin:8px 0 0">${G.ids.map((id,i)=>
+      `<span class="chip" style="cursor:default;border-color:${BCOL[i%BCOL.length]}55"><b style="color:${BCOL[i%BCOL.length]}">■</b> ${esc(G.labels[i])}</span>`).join("")}</div>
+  </div>`:""}`;
+}
+
 function funnelCite(){
   const C=D.counts||{};
   const all=C.cells||0, ment=C.own_mentioned||0;
@@ -1366,6 +1516,8 @@ function pageOverview(){
       <div class="facs">${facs}</div>
     </div></div>
 
+  ${gapKpi()}
+
   <h2 class="sec"><span class="bar"></span>スコア構成
     <span class="hbtn" onclick="openScoreHelp()"><span class="qm">?</span>スコアの読み方</span>
     <span class="note">6因数のバランス</span></h2>
@@ -1461,9 +1613,15 @@ function pageOverview(){
         ${(()=>{const b=D.citation_buckets||{},L={owned:"自社オウンド",affiliated:"グループ・販売店",earned:"SNS・UGC",media:"一般メディア",reference:"辞書・百科",press:"プレス",competitor:"競合",noise:"ノイズ"};
           const it=Object.entries(b).map(([k,v],i)=>({k,v,c:PAL[i%PAL.length],l:L[k]||k}));
           const tot=it.reduce((a,x)=>a+x.v,0);
-          return donut(it,tot,"引用")+`<div class="legend" style="flex-direction:column;gap:5px">${it.map(x=>`<span><i style="background:${x.c}"></i>${x.l} ${x.v}（${tot?(x.v/tot*100).toFixed(0):0}%）</span>`).join("")}</div>`;})()}
+          const bd=D.bucket_domains||{};
+          return donut(it,tot,"引用")+`<div class="legend" style="flex-direction:column;gap:5px">${it.map(x=>{
+            const dm=bd[x.k]||[];
+            const ti=dm.length?dm.slice(0,12).map(d=>`${d.host}　${d.n}本`).join("\n"):"";
+            return `<span class="${dm.length?"clik":""}"${dm.length?` data-bd="${attr(x.k)}" title="${attr(x.l+"（上位）\n"+ti)}"`:""}>
+              <i style="background:${x.c}"></i>${x.l} ${x.v}（${tot?(x.v/tot*100).toFixed(0):0}%）${dm.length?`<span style="color:var(--sub);font-size:10px"> ${dm.length}ドメイン ▸</span>`:""}</span>`;}).join("")}</div>`;})()}
       </div>
-      <div class="src">AIが回答の根拠に使ったURLを分類したもの。<b>自社オウンドの比率が低いほど、自社の言い分ではなく他人の記述でブランドが語られている</b>ことになります。</div></div>
+      <div class="src">AIが回答の根拠に使ったURLを分類したもの。<b>自社オウンドの比率が低いほど、自社の言い分ではなく他人の記述でブランドが語られている</b>ことになります。
+      <b>凡例にマウスを乗せるとドメイン一覧が出ます。クリックすると全件を開きます。</b></div></div>
   </div>`;
 }
 function kpiCard(label,metricKey,value,dKey,cls,unit){
@@ -1592,6 +1750,7 @@ const BK={owned:["自社オウンド","p-ok"],affiliated:["グループ・販売
   competitor:["競合","p-ng"],noise:["ノイズ","p-ng"]};
 const CATJ={purchase:"購入検討",model:"車種",safety:"安全・支援",cost:"価格・維持費",eco:"燃費・電動化",service:"整備",brand:"ブランド指名"};
 let openQ=new Set(), ansSf={}, qFilter="";
+let mdCat="all", mdSort="mentions", mdDir=-1;
 
 /* 回答本文の自社/競合ブランド名をハイライトする */
 const BOWN=["トヨタ","TOYOTA","Toyota","レクサス","LEXUS"];
@@ -2252,7 +2411,7 @@ function competeTrend(){
       <div class="src" style="margin-top:8px">折れ線は実数ではなく構成比にしています。
       会話型AIは月・木のみ計測しているため実数はその曜日だけ跳ね上がり、日次の比較に使えないためです。
       実数は右端の列に、その日の値をそのまま置いています。
-      グレーの網掛けはデモデータの期間で、変化量の計算には入れていません。</div>
+      グレーの網掛けは実測開始前の参考値の期間で、変化量の計算には入れていません。</div>
     </div>
     <div class="card">
       <h3 class="sub" style="margin-top:0">販売シェアとの差（AI言及シェア − 販売シェア）</h3>
@@ -2636,9 +2795,6 @@ function pageGuide(){
       ["ChatGPTとGeminiの順位が空欄なのはなぜ",
        "会話型AIは1回あたりの費用が SERP の10倍以上かかるため、月曜と木曜だけ測っています。"+
        "空欄は「登場しなかった」ではなく「その日は測っていない」です。"],
-      ["費用はいくらかかっているのか",
-       "月曜・木曜が1日 $6.1、それ以外が1日 $0.5。<b>1週 約$15、1か月 約$64</b>です。"+
-       "1日の上限を $8 に設定してあり、超えた時点で実行を打ち切ります。"],
       ["更新が止まったらどう気づくか",
        "ヘッダーの「データ日」が前日以前のままなら止まっています。"+
        "実行が異常に終わった場合はスナップショットを書かない設計にしてあるので、"+
@@ -2705,72 +2861,195 @@ function openQList(title,rows,lead){
    回答本文にだけ入っている＝聞かれていないのにAIが自分から挙げた（＝認知の芽）。
    ============================================================ */
 function pageEvents(){
-  const nm=D.newmodels||{}, items=(nm.items||[]);
-  const ST={launched:["発売済","p-ok"],announced:["発表済・発売前","p-am"],rumored:["時期未確定","p-nv"]};
-  if(!items.length) return `<h2 class="sec"><span class="bar"></span>イベント追跡</h2>
-    <div class="card"><div class="fl">追跡対象が登録されていません（<code>config/events.yaml</code> の newmodels）。</div></div>`;
+  const M=D.models||{}, all=(M.items||[]), cats=M.categories||{};
+  const nm=D.newmodels||{}, nmi=(nm.items||[]);
+  if(!all.length) return `<h2 class="sec"><span class="bar"></span>車種別状況</h2>
+    <div class="card"><div class="fl">車種マスタ（<code>config/models.yaml</code>）が読み込めませんでした。</div></div>`;
 
-  const covered=items.filter(e=>e.n_queries>0).length;
-  const spoken=items.reduce((t,e)=>t+(e.unprompted||0),0);
-  const soon=items.filter(e=>e.days_from_launch!=null&&e.days_from_launch<0);
+  const rows=all.filter(m=>mdCat==="all"||m.cat===mdCat).slice();
+  const key=mdSort, dir=mdDir;
+  rows.sort((a,b)=>{let x=a[key],y=b[key];
+    if(typeof x==="string")return dir*x.localeCompare(y,"ja");
+    if(x==null)x=-1; if(y==null)y=-1; return dir*(x-y);});
+
+  const spoken=all.filter(m=>m.mentions>0).length;
+  const top=all[0]||{};
+  const mx=Math.max(...all.map(m=>m.mentions),1);
+  const evOf=m=>nmi.find(e=>e.model_id===m.id)||nmi.find(e=>e.model===m.name);
+  const catOrder=Object.keys(cats);
+  const catCount={}; all.forEach(m=>{catCount[m.cat]=(catCount[m.cat]||0)+(m.mentions>0?1:0);});
+  const soon=nmi.filter(e=>e.days_from_launch!=null&&e.days_from_launch<0);
 
   const dstr=e=>{
-    if(!e.date) return "—";
+    if(!e||!e.date) return "";
     const d=e.date_precision==="month"?e.date.slice(0,7).replace("-","年")+"月"
            :e.date.replace(/^(\d{4})-(\d{2})-(\d{2})$/,"$1年$2月$3日");
     const n=e.days_from_launch;
-    if(n==null) return d;
-    return `${d}　<b style="color:${n<0?'var(--amber)':'var(--sub)'}">${n<0?`発売まで${-n}日`:n===0?"本日":`発売から${n}日`}</b>`;
+    return d+(n==null?"":(n<0?`（発売まで${-n}日）`:n===0?"（本日発売）":`（発売から${n}日）`));
   };
+  const trd=v=>v==null?'<span class="fl">—</span>'
+    :`<span class="${v>0.5?"up":v<-0.5?"dn":"fl"}">${v>0?"+":""}${v.toFixed(1)}</span>`;
 
-  return `<h2 class="sec"><span class="bar"></span>イベント追跡（新型車）
-    <span class="note">更新 ${esc(nm.updated_on||"—")}／出典リンク付き</span></h2>
-  <div class="why"><b>この画面の目的：</b>新型車が出たとき、生活者はAIに聞き方を変えます。
-  ここでは追跡中の車ごとに、<b>①その車名でコア枠に入っているクエリ</b>と、
-  <b>②聞かれていないのにAIが自分から車名を出した回数</b>を並べています。
-  ②だけが立っていて①がゼロなら、<b>市場では話題になり始めているのに、こちらの計測が追いついていない</b>状態です。
-  その場合はイベント用のシード語を登録済みなので、次回の週次入替でコア枠に入ってきます。</div>
+  return `<h2 class="sec"><span class="bar"></span>車種別状況
+    <span class="note">AIが今どの車種を、どれだけ、何と並べて語っているか</span></h2>
+  <div class="why"><b>この画面の目的：</b>ブランド全体のスコアだけでは「どの車で戦えていないか」が分かりません。
+  ここでは<b>AIの回答本文に車名が何回出たか</b>を車種ごとに数えています。
+  <b>併記される競合</b>の列は、同じ回答の中に一緒に登場した他社車種です。
+  <b>AIが実際に比較検討の対象として並べている相手</b>なので、カタログ上の競合とはズレることがあります。
+  行をクリックすると、その車種の内訳（どのAIで出たか・自社ページ・関連クエリ・新型情報）が開きます。</div>
 
-  <div class="g4" style="margin-bottom:14px">
-    <div class="kpi"><div class="l">追跡中の車種</div><div class="v" data-count="${items.length}">${items.length}</div>
-      <div class="d fl">発表済み・発売済みを含む</div></div>
-    <div class="kpi ${covered?"ok":"warn"}"><div class="l">コア枠に該当クエリがある車種</div>
-      <div class="v">${covered}<small> / ${items.length}</small></div>
-      <div class="d ${covered?"fl":"dn"}">${covered?"計測できています":"シード登録済み・次回入替で反映"}</div></div>
-    <div class="kpi own"><div class="l">AIが自発的に車名を出した回数</div><div class="v" data-count="${spoken}">${spoken}</div>
-      <div class="d fl">聞いていないのに挙がった＝認知の芽</div></div>
-    <div class="kpi ${soon.length?"warn":""}"><div class="l">発売前（監視強化期間）</div><div class="v">${soon.length}</div>
-      <div class="d fl">${soon.length?esc(soon.slice(0,2).map(e=>e.model).join("・"))+(soon.length>2?` ほか${soon.length-2}件`:""):"なし"}</div></div>
+  <div class="mdtop">
+    <div class="kpi"><div class="l">計測している車種</div><div class="v" data-count="${all.length}">${all.length}</div>
+      <div class="d fl">${catOrder.length}カテゴリ</div></div>
+    <div class="kpi ok"><div class="l">AIが実際に語っている車種</div>
+      <div class="v">${spoken}<small> / ${all.length}</small></div>
+      <div class="d fl">残る${all.length-spoken}車種は本日の回答に登場せず</div></div>
+    <div class="kpi own"><div class="l">最も語られている車種</div>
+      <div class="v" style="font-size:21px">${esc(top.name||"—")}</div>
+      <div class="d fl">${top.mentions||0}回・全回答の${top.rate||0}%</div></div>
+    <div class="kpi ${soon.length?"warn":""}"><div class="l">発売前の新型</div><div class="v">${soon.length}</div>
+      <div class="d fl">${soon.length?esc(soon.slice(0,2).map(e=>e.model).join("・"))+(soon.length>2?` ほか${soon.length-2}`:""):"なし"}</div></div>
   </div>
 
-  <div class="evg">${items.map(e=>{
-    const[sl,sc]=ST[e.status]||ST.announced;
-    return `<div class="ev s-${esc(e.status)}">
-      <div class="evh"><div class="evm">${esc(e.model)}</div>
-        <span class="pill ${sc}" style="margin-left:auto;flex:0 0 auto">${sl}</span></div>
-      <div class="evt">${esc(e.title)}</div>
-      <div class="evd"><span>${dstr(e)}</span></div>
-      ${e.note?`<div class="evn">${esc(e.note)}</div>`:""}
-      <div class="evk">
-        <div><span class="k">聞かれている<br>クエリ</span><span class="v ${e.n_queries?"":"zero"}">${e.n_queries}</span></div>
-        <div><span class="k">うち自社ページ<br>が引用</span><span class="v ${e.n_cited?"":"zero"}">${e.n_cited}</span></div>
-        <div><span class="k">AIが自発的に<br>出した回数</span><span class="v">${e.unprompted}</span></div>
-      </div>
-      ${e.n_queries?`<div class="dettitle" style="margin-bottom:4px"><span class="di">Q</span>この車で実際に聞かれていること
-          ${e.best_rank?`<span class="dn">最良 ${e.best_rank}位</span>`:'<span class="dn">未登場</span>'}</div>
-        <div class="evq">${e.queries.slice(0,5).map(q=>`<div class="q">
-          <span>${q.own_cited?'<span class="pill p-ok">引用</span>':'<span class="pill p-ng">なし</span>'}</span>
-          <span class="qx" data-jq="${attr(q.id)}">${esc(q.text)}</span>
-          <span style="color:var(--sub);white-space:nowrap">${q.best_rank?q.best_rank+"位":"—"}</span></div>`).join("")}
-          ${e.n_queries>5?`<div class="q"><span class="qx" data-evq="${attr(e.id)}" style="color:var(--accent2)">残り${e.n_queries-5}本をすべて見る →</span></div>`:""}</div>`
-        : `<div class="evn" style="border-left-color:var(--amber);color:var(--amber)">
-             コア枠にこの車名のクエリがまだありません。${e.unprompted?`ただしAIは回答の中で <b>${e.unprompted}回</b> この車名を自分から出しています。`:""}
-             イベント用シードを登録済みのため、次回の週次入替で候補に上がります。</div>`}
-      ${e.source?`<div class="evsrc">出典：<a href="${esc(e.source)}" target="_blank" rel="noopener">${esc(e.source.replace(/^https?:\/\//,"").split("/")[0])}</a></div>`:""}
-    </div>`;}).join("")}</div>
+  <div class="chips"><span class="chip mdc ${mdCat==="all"?"on":""}" data-mc="all">すべて<b>${all.length}</b></span>${
+    catOrder.map(c=>`<span class="chip mdc ${mdCat===c?"on":""}" data-mc="${esc(c)}">${esc(cats[c])}<b>${all.filter(m=>m.cat===c).length}</b></span>`).join("")}</div>
 
-  <div class="src" style="margin-top:14px">追跡対象は <code>config/events.yaml</code> の <code>newmodels</code> に1行足すだけで増やせます。
-  車名の照合はクエリ本文とAI回答本文の両方に対して行っています。発売日は各出典の公表値です。</div>`;
+  <div class="tw"><table id="mdt">
+    <thead><tr>
+      <th class="s" data-mk="name" style="width:150px">車種</th>
+      <th style="width:118px">カテゴリ</th>
+      <th class="s c" data-mk="mentions" style="width:92px" title="本日のAI回答のうち、この車名が出た回答の数">言及回答数<span class="qhelp" data-term="言及回答数">?</span></th>
+      <th style="width:120px" title="全回答に占める割合">出現率</th>
+      <th style="width:150px" title="直近30日の言及回答数">30日の推移</th>
+      <th class="s c" data-mk="trend7" style="width:96px" title="直近7日平均 − その前7日平均">7日平均の増減<span class="qhelp" data-term="7日平均の増減">?</span></th>
+      <th style="width:230px" title="同じ回答の中に一緒に出てきた他社の車種">併記される競合車種<span class="qhelp" data-term="併記される競合車種">?</span></th>
+      <th class="c" style="width:86px" title="AIが根拠に引いた toyota.jp のページ数">自社ページ</th>
+      <th style="width:150px">新型イベント</th>
+    </tr></thead>
+    <tbody>${rows.map(m=>{const e=evOf(m);
+      return `<tr class="mdrow" data-md="${attr(m.id)}">
+        <td><div class="mdname">${esc(m.name)}${m.slug?`<span class="mdslug">toyota.jp${esc(m.slug)}</span>`:""}</div></td>
+        <td><span class="pill p-nv">${esc(m.cat_label)}</span></td>
+        <td class="c"><b style="font-size:15px">${m.mentions}</b></td>
+        <td><b style="font-size:12px">${m.rate}%</b>
+          <div class="mdbar"><i style="width:${Math.min(m.mentions/mx*100,100)}%"></i></div></td>
+        <td>${spark(m.series)}</td>
+        <td class="c"><b>${m.avg7}</b><br><span style="font-size:11px">${trd(m.trend7)}</span></td>
+        <td><div class="mdriv">${(m.rivals||[]).length
+          ? m.rivals.map(r=>`<span class="mrv" title="${attr(r.brand)}に同じ回答内で併記">${esc(r.name)}<b>${r.n}</b></span>`).join("")
+          : '<span class="fl">—</span>'}</div></td>
+        <td class="c">${m.n_pages?`<span class="pill p-ok">${m.n_pages}件</span>`:'<span class="pill p-ng">0</span>'}</td>
+        <td>${e?`<span class="mdbadge">${e.status==="launched"?"発売済":e.status==="announced"?"発売前":"未確定"}</span>
+             <div style="font-size:10.5px;color:var(--sub);margin-top:3px">${esc(dstr(e))}</div>`:'<span class="fl">—</span>'}</td>
+      </tr>`;}).join("")}</tbody></table></div>
+  <div class="src">言及回答数は日によって上下します。会話型AI（ChatGPT・Gemini）は月・木のみ計測しているため、その2日は分母が2倍になります。
+  日をまたいで比べるときは<b>7日平均</b>の列を見てください。車種の追加・別名の調整は <code>config/models.yaml</code> で行えます。</div>
+
+  <h2 class="sec"><span class="bar"></span>新型車の予定と実績
+    <span class="note">更新 ${esc(nm.updated_on||"—")}／出典リンク付き</span></h2>
+  <div class="why">発売の前後で、AIがその車を語り始めるタイミングを見るための一覧です。
+  発売前から言及が立ち上がっていれば認知は先行しており、発売後も0のままなら<b>AIの学習にまだ乗っていない</b>ということです。</div>
+  <div class="mdsec">${nmi.map(e=>{
+    const m=all.find(x=>x.id===e.model_id)||all.find(x=>x.name===e.model);
+    return `<div class="nmc s-${esc(e.status)}">
+      <div class="nh"><span class="nm2">${esc(e.model)}</span>
+        <span class="nd">${esc(dstr(e))}</span></div>
+      <div class="nt">${esc(e.title)}</div>
+      <div class="nn">${esc(e.note||"")}</div>
+      <div style="display:flex;gap:8px;align-items:center;margin-top:8px;flex-wrap:wrap">
+        <span class="pill ${m&&m.mentions?"p-ok":"p-ng"}">本日の言及 ${m?m.mentions:0}回</span>
+        <span class="pill p-nv">7日平均 ${m?m.avg7:0}</span>
+        ${m?`<span class="cp" data-md2="${attr(m.id)}" title="この車種の内訳を開く">内訳を見る →</span>`:""}
+      </div>
+      ${e.source?`<div class="nsrc">出典：<a href="${esc(e.source)}" target="_blank" rel="noopener">${esc(e.source.replace(/^https?:\/\//,"").split("/")[0])}</a></div>`:""}
+    </div>`;}).join("")}</div>`;
+}
+
+/* 30日ぶんの言及回数を細い折れ線で。数字の隣に置いて形だけ伝える。 */
+function spark(ser){
+  if(!ser||ser.length<2) return '<span class="fl">—</span>';
+  const W=140,H=30,mx=Math.max(...ser,1);
+  const X=i=>i*(W-2)/(ser.length-1)+1;
+  const Y=v=>H-2-(v/mx)*(H-6);
+  const pts=ser.map((v,i)=>`${X(i).toFixed(1)},${Y(v).toFixed(1)}`).join(" ");
+  const last=ser[ser.length-1];
+  return `<svg class="spark ${mx<=0?"zero":""}" viewBox="0 0 ${W} ${H}" preserveAspectRatio="none">
+    <polygon class="sa" points="${pts} ${X(ser.length-1).toFixed(1)},${H} ${X(0).toFixed(1)},${H}"/>
+    <polyline class="sl" points="${pts}"/>
+    <circle class="sd" cx="${X(ser.length-1).toFixed(1)}" cy="${Y(last).toFixed(1)}" r="2.4"/>
+  </svg>`;
+}
+
+/* 車種1つぶんの内訳。行をクリックしたときに開く。 */
+function openModel(id){
+  const M=D.models||{}, m=(M.items||[]).find(x=>x.id===id);
+  if(!m) return;
+  const nmi=((D.newmodels||{}).items)||[];
+  const e=nmi.find(x=>x.model_id===m.id)||nmi.find(x=>x.model===m.name);
+  const SFL={}; (D.surfaces||[]).forEach(x=>SFL[x.id]=x.label);
+  const sf=Object.entries(m.surfaces||{}).sort((a,b)=>b[1]-a[1]);
+  const body=`
+    <div class="mdgrid">
+      <div><span class="k">本日の言及回答数</span><span class="v">${m.mentions}</span></div>
+      <div><span class="k">全回答に占める割合</span><span class="v">${m.rate}%</span></div>
+      <div><span class="k">7日平均</span><span class="v">${m.avg7}</span></div>
+      <div><span class="k">前の7日との差</span><span class="v ${m.trend7>0?"up":m.trend7<0?"dn":""}">${m.trend7==null?"—":(m.trend7>0?"+":"")+m.trend7}</span></div>
+    </div>
+    <div class="dblk">
+      <div class="dettitle"><span class="di">◷</span>直近30日の言及回答数<span class="dn">${(M.dates||[]).length}日ぶん</span></div>
+      ${spark(m.series)}
+      <div class="src" style="margin-top:6px">縦軸の最大は ${Math.max(...(m.series||[0]),1)}回。会話型AIを計測する月・木は分母が2倍になるため、周期的に山ができます。</div>
+    </div>
+    ${sf.length?`<div class="dblk">
+      <div class="dettitle"><span class="di">◈</span>どのAIで語られているか</div>
+      <div class="bars">${sf.map(([k,v],i)=>{const mm=Math.max(...sf.map(x=>x[1]),1);
+        return `<div class="row"><span class="lb">${esc(SFL[k]||k)}</span>
+          <span class="tr"><span class="fi" style="width:${v/mm*100}%;background:${PAL[i%PAL.length]}"></span></span>
+          <span class="va">${v}回</span></div>`;}).join("")}</div></div>`:""}
+    ${(m.rivals||[]).length?`<div class="dblk">
+      <div class="dettitle"><span class="di">⇄</span>同じ回答に一緒に出てくる他社の車種
+        <span class="dn">AIが実際に並べている比較相手</span></div>
+      <div class="bars">${m.rivals.map((r,i)=>{const mm=Math.max(...m.rivals.map(x=>x.n),1);
+        return `<div class="row"><span class="lb">${esc(r.name)}<span style="color:var(--sub)"> / ${esc(r.brand)}</span></span>
+          <span class="tr"><span class="fi" style="width:${r.n/mm*100}%;background:linear-gradient(90deg,#D64545,#EA7A7A)"></span></span>
+          <span class="va">${r.n}回</span></div>`;}).join("")}</div>
+      <div class="src" style="margin-top:7px">${m.mentions}回の言及のうち、上記の車種が同時に出てきた回数です。</div></div>`:""}
+    ${(m.pages||[]).length?`<div class="dblk">
+      <div class="dettitle"><span class="di">▤</span>AIが根拠に引いた自社ページ<span class="dn">${m.n_pages}件</span></div>
+      <div class="clist">${m.pages.map(p=>`<div class="crow">
+        <span class="pill p-ok" style="min-width:82px;text-align:center">自社</span>
+        <div class="cmain"><a href="${esc(p.url)}" target="_blank" rel="noopener">${esc(p.title||p.path||p.url)}</a>
+          <div class="cpath">${esc(p.path||"")}</div></div>
+        <span class="cp" data-u="${attr(p.url)}" title="URLをコピー">⧉</span></div>`).join("")}</div></div>`
+      : `<div class="dblk"><div class="dettitle"><span class="di">▤</span>AIが根拠に引いた自社ページ</div>
+         <div class="fl">この車種のページは、本日の回答では根拠に引かれていません。${m.mentions?"語られてはいるので、根拠が他人のページになっている状態です。":""}</div></div>`}
+    ${(m.asked||[]).length?`<div class="dblk">
+      <div class="dettitle"><span class="di">Q</span>この車名が入っているクエリ<span class="dn">${m.n_asked}本</span></div>
+      <div class="mql" style="max-height:30vh">${m.asked.map((q,i)=>`<div class="mqi" data-jq="${attr(q.id)}">
+        <span class="no">${i+1}</span>
+        <span class="tx">${esc(q.text)}<small>${q.volume?`月間検索 ${num(q.volume)}`:""}${q.demand!=null?` ・ 需要 ${f1(q.demand)}`:""}</small></span>
+        <span class="mt">${q.best_rank?q.best_rank+"位":"—"}</span></div>`).join("")}</div></div>`
+      : `<div class="dblk"><div class="dettitle"><span class="di">Q</span>この車名が入っているクエリ</div>
+         <div class="fl">コア枠のクエリに、この車名を含む質問は入っていません。
+         ${m.mentions?`ただしAIは他の質問への回答の中で <b>${m.mentions}回</b> この車名を出しています。`:""}</div></div>`}
+    ${e?`<div class="dblk">
+      <div class="dettitle"><span class="di">!</span>新型イベント</div>
+      <div style="font-size:12.5px;color:var(--tx);font-weight:700;margin-bottom:4px">${esc(e.title)}</div>
+      <div class="src" style="margin:0 0 6px">${esc(dstrOf(e))}</div>
+      <div style="font-size:11.5px;color:var(--tx2);line-height:1.8">${esc(e.note||"")}</div>
+      ${e.source?`<div class="nsrc" style="margin-top:7px">出典：<a href="${esc(e.source)}" target="_blank" rel="noopener">${esc(e.source)}</a></div>`:""}
+    </div>`:""}`;
+  openModal(`${esc(m.name)}　<span style="font-weight:400;font-size:12px;color:var(--sub)">${esc(m.cat_label)}</span>`, body);
+  document.querySelectorAll("#modalbd .mqi[data-jq]").forEach(el=>el.onclick=()=>jumpToQuery(el.dataset.jq));
+  document.querySelectorAll("#modalbd .cp[data-u]").forEach(el=>el.onclick=()=>{
+    navigator.clipboard.writeText(el.dataset.u).then(()=>toast("<b>URLをコピーしました</b>",2200));});
+}
+function dstrOf(e){
+  if(!e||!e.date) return "";
+  const d=e.date_precision==="month"?e.date.slice(0,7).replace("-","年")+"月"
+         :e.date.replace(/^(\d{4})-(\d{2})-(\d{2})$/,"$1年$2月$3日");
+  const n=e.days_from_launch;
+  return d+(n==null?"":(n<0?`／発売まで${-n}日`:n===0?"／本日発売":`／発売から${n}日`));
 }
 
 function pageAlerts(){
@@ -2933,7 +3212,68 @@ function render(){
     }
   });
 
-  // イベント追跡・アラート → 対象クエリ
+  // 用語の「?」→ 説明を開く
+  root.querySelectorAll("[data-term]").forEach(el=>el.onclick=e=>{
+    e.stopPropagation();
+    const host=el.dataset.term?el:el.closest("[data-term]");
+    openTerm(host.dataset.term,host.dataset.termx||"");});
+  root.querySelectorAll(".qhelp").forEach(el=>{
+    const h=el.closest("[data-term]");
+    if(h) el.onclick=e=>{e.stopPropagation();openTerm(h.dataset.term,h.dataset.termx||"");};});
+
+  // 見出しの変動4指標 → 対象クエリ一覧
+  root.querySelectorAll("[data-qev]").forEach(el=>el.onclick=()=>{
+    const ev=queryEvents(P), k=el.dataset.qev;
+    const T={lost:["自社ページが引かれなくなったクエリ","前回まで根拠に自社ページが引かれていたのに、今回は引かれなくなったクエリです。<b>最優先で中身を確認する対象</b>。"],
+             gained:["新たに自社ページが引かれ始めたクエリ","今回から根拠に自社ページが入ったクエリです。施策が効いた可能性のある場所。"],
+             down:["順位が下がったクエリ","AIの回答内での自社の並び順が下がったクエリです。"],
+             up:["順位が上がったクエリ","AIの回答内での自社の並び順が上がったクエリです。"]}[k];
+    openQList(`${T[0]}（${PJ[P]}）`, ev[k], T[1]);});
+
+  // 「回答の根拠に、どのサイトが引かれているか」の各行 → ドメイン一覧
+  root.querySelectorAll("[data-sc]").forEach(el=>el.onclick=()=>{
+    const k=el.dataset.sc, bd=D.bucket_domains||{};
+    const SRC={owned:[["owned","toyota.jp（自社オウンド）"]],
+               dealer:[["dealer","販売店（DMS）"]],
+               group:[["affiliated","グループ会社"]],
+               all:[["owned","toyota.jp（自社オウンド）"],["dealer","販売店（DMS）"],["affiliated","グループ会社"]]}[k]||[];
+    const secs=SRC.map(([bk,lb])=>{
+      const dm=bd[bk]||[]; if(!dm.length) return "";
+      const mx=Math.max(...dm.map(d=>d.n),1), tot=dm.reduce((t,d)=>t+d.n,0);
+      return `<div class="dblk"><div class="dettitle"><span class="di">▤</span>${esc(lb)}
+        <span class="dn">${dm.length}ドメイン / 合計${tot}本</span></div>
+        <div class="dmlist">${dm.map(d=>`<div class="dmrow">
+          <span class="dh">${esc(d.host)}</span><span class="dn2">${d.n}本</span>
+          <span class="db"><i style="width:${d.n/mx*100}%"></i></span></div>`).join("")}</div></div>`;}).join("");
+    openModal(`${esc((SCOPES[k]||{}).label||k)} に入っているドメイン`,
+      `<div class="why" style="margin:0 0 12px">${esc((SCOPES[k]||{}).desc||"")}<br>
+       本日AIが根拠に示したURLのうち、この範囲に分類されたドメインの内訳です。
+       <b>スコアに使っているのは toyota.jp だけ</b>で、販売店・グループ会社はスコアには入れていません
+       （数え方を途中で変えると過去と比較できなくなるため）。</div>${secs||'<div class="fl">該当するドメインはありません。</div>'}`);});
+
+  // 引用元の種別 → ドメイン一覧
+  root.querySelectorAll("[data-bd]").forEach(el=>el.onclick=()=>{
+    const k=el.dataset.bd, dm=(D.bucket_domains||{})[k]||[];
+    const L={owned:"自社オウンド",affiliated:"グループ会社",dealer:"販売店",earned:"SNS・UGC",
+             media:"一般メディア",reference:"辞書・百科",press:"プレス",competitor:"競合",noise:"ノイズ"};
+    const mx=Math.max(...dm.map(d=>d.n),1), tot=dm.reduce((t,d)=>t+d.n,0);
+    openModal(`${esc(L[k]||k)} に分類された引用元`,
+      `<div class="why" style="margin:0 0 12px">本日AIが根拠に示したURLのうち、この種別に入ったドメインの内訳です。合計 <b>${tot}本</b> / <b>${dm.length}ドメイン</b>。
+       ${k==="dealer"?"販売店ドメインは全国の販社サイトです。<b>スコアには入れていません</b>が、トヨタ陣営が出した情報ではあるので、どの販社が拾われているかは施策のヒントになります。":""}
+       ${k==="affiliated"?"KINTO・GAZOO・global.toyota などのグループ会社サイトです。こちらもスコアには入れていません。":""}</div>
+       <div class="dmlist">${dm.map(d=>`<div class="dmrow">
+         <span class="dh">${esc(d.host)}</span>
+         <span class="dn2">${d.n}本</span>
+         <span class="db"><i style="width:${d.n/mx*100}%"></i></span></div>`).join("")}</div>`);});
+
+  // 車種別状況
+  root.querySelectorAll(".chip.mdc[data-mc]").forEach(el=>el.onclick=()=>{mdCat=el.dataset.mc;render();});
+  root.querySelectorAll("#mdt th.s[data-mk]").forEach(th=>th.onclick=()=>{
+    if(mdSort===th.dataset.mk)mdDir*=-1;else{mdSort=th.dataset.mk;mdDir=th.dataset.mk==="name"?1:-1;}render();});
+  root.querySelectorAll("tr.mdrow").forEach(tr=>tr.onclick=()=>openModel(tr.dataset.md));
+  root.querySelectorAll("[data-md2]").forEach(el=>el.onclick=e=>{e.stopPropagation();openModel(el.dataset.md2);});
+
+  // 車種別状況・アラート → 対象クエリ
   root.querySelectorAll("[data-jq]").forEach(el=>el.onclick=e=>{
     e.stopPropagation(); jumpToQuery(el.dataset.jq);});
   root.querySelectorAll("[data-evq]").forEach(el=>el.onclick=e=>{
@@ -2965,7 +3305,7 @@ function render(){
     qq.oninput=()=>{qFilter=qq.value; applyQFilter();};
     applyQFilter(); }
   bindStars(root);
-  root.querySelectorAll(".gjump[data-go]").forEach(el=>el.onclick=()=>{
+  root.querySelectorAll("[data-go]").forEach(el=>el.onclick=()=>{
     const a=document.querySelector(`.side .nav[data-p="${el.dataset.go}"]`); if(a) a.click();});
   animateBars(root); countUp(root); reveal(root); bindCharts(root); foldWhy(root);
 }
@@ -3201,7 +3541,7 @@ fetch("data/latest.json?"+Date.now()).then(r=>r.json()).then(d=>{
   document.getElementById("title").innerHTML=`${esc(d.site.target_domain)} <span style="font-weight:400;color:#64748B;font-size:13px">／ ${esc(d.site.market)}</span>`;
   (()=>{const md=(d.mode||"demo"), b=document.getElementById("modeBadge");
     b.className="mode "+md;
-    b.textContent = md==="live" ? "実測データ" : "デモデータ";
+    b.textContent = md==="live" ? "実測データ" : "参考値（実測前）";
     b.title = md==="live"
       ? "実際にAIへプロンプトを投げ、返ってきた回答と引用URLから算出しています"
       : "AIには投げていません。合成データで動作確認をしている状態です";})();
@@ -3211,7 +3551,7 @@ fetch("data/latest.json?"+Date.now()).then(r=>r.json()).then(d=>{
       + (d.mode==="live" && d.live_days<7 ? " ／ 実測"+d.live_days+"日目" : "");
     b.title = "本日測定した面：" + m.surfaces.join("・")
       + (m.weekly&&m.weekly.length ? "\n" + m.weekly.join("・") + " は単価が高いため月曜と木曜のみ測定します。" : "")
-      + (d.mode==="live" && d.live_days<7 ? "\n実測の蓄積は "+d.live_days+"日目です。7日移動中央値が揃うまで前日比は出ません（デモの数字とは比較しません）。" : "")
+      + (d.mode==="live" && d.live_days<7 ? "\n実測の蓄積は "+d.live_days+"日目です。7日移動中央値が揃うまで前日比は出ません（実測開始前の参考値とは比較しません）。" : "")
       + "\n前日比・先週比は、毎日測っている " + (m.basis||[]).join("・")
       + " だけで計算しています。面の数が違う日どうしを比べると、実力が動いていなくてもスコアが動くためです。";})();
   document.getElementById("brandName").textContent=(d.site.brand||"TOYOTA");
