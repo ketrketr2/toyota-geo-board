@@ -79,7 +79,8 @@ def _newmodels(day: str, query_rows: list[dict]) -> dict:
         asked.sort(key=lambda x: (x["demand"] is None, -(x["demand"] or 0)))
         ranked = [q["best_rank"] for q in asked if q["best_rank"]]
         out.append({
-            "id": m["id"], "model": m.get("model", ""), "title": m.get("title", ""),
+            "id": m["id"], "model_id": m.get("model_id", ""),
+            "model": m.get("model", ""), "title": m.get("title", ""),
             "date": m.get("date", ""), "date_precision": m.get("date_precision", "day"),
             "status": m.get("status", "announced"),
             "note": m.get("note", ""), "source": m.get("source", ""),
@@ -91,6 +92,144 @@ def _newmodels(day: str, query_rows: list[dict]) -> dict:
         })
     out.sort(key=lambda e: (abs(e["days_from_launch"]) if e["days_from_launch"] is not None else 9999))
     return {"updated_on": ev.get("newmodels_updated_on", ""), "items": out}
+
+
+MODEL_HISTORY_DAYS = 30
+
+
+def _bucket_domains(snap: dict) -> dict:
+    """引用の種別ごとに、実際にどのドメインが何本引かれたかを出す。
+
+    円グラフの「グループ・販売店 4本」だけでは、どの販売店なのかが分からない。
+    販売店ドメインは全国に散っているので、名前が見えないと打ち手に繋がらない。
+    """
+    out: dict[str, Counter] = defaultdict(Counter)
+    for c in snap.get("cells") or []:
+        for cit in c.get("citations") or []:
+            host = cit.get("host") or cit.get("domain") or ""
+            if host:
+                out[cit.get("bucket", "other")][host] += 1
+    return {b: [{"host": h, "n": n} for h, n in cnt.most_common(30)]
+            for b, cnt in out.items()}
+
+
+def _model_status(day: str, query_rows: list[dict]) -> dict:
+    """車種ごとに「AIが今どう扱っているか」をまとめる。
+
+    見たいのは車種単位の状況なので、回答本文・クエリ本文・被引用URLの3経路で照合する。
+      - 言及  : AIの回答本文に車名が出た回答の数
+      - 質問  : クエリ本文自体に車名が入っているもの
+      - 引用  : toyota.jp の被引用URLのパスがその車種のもの
+      - 併記  : 同じ回答の中に一緒に出てくる競合車種
+    """
+    try:
+        mc = load("models")
+    except Exception:
+        return {}
+    own_models = mc.get("own") or []
+    rivals = mc.get("rivals") or []
+    cats = mc.get("categories") or {}
+    if not own_models:
+        return {}
+
+    # 「ヤリス」は「ヤリスクロス」「GRヤリス」にも当たってしまう。
+    # 自分より長い別車種の車名を先に伏せ字にしてから照合する（最長一致優先）。
+    all_alias = sorted({a.lower() for m in own_models + rivals
+                        for a in (m.get("aliases") or [])}, key=len, reverse=True)
+
+    def masks_for(alias: str) -> list[str]:
+        return [x for x in all_alias if x != alias and alias in x]
+
+    def hit(text: str, aliases: list[str]) -> bool:
+        for a in aliases:
+            t = text
+            for mk in masks_for(a):
+                if mk in t:
+                    t = t.replace(mk, "\u0001" * len(mk))
+            if a in t:
+                return True
+        return False
+
+    # ---- 当日のセルを1回だけ小文字化して使い回す ----
+    snap = read_json(snapshot_path(day)) or {}
+    cells = snap.get("cells") or []
+    low = [((c.get("answer") or "").lower(), c) for c in cells]
+    n_cells = len(cells) or 1
+
+    # ---- 過去N日の言及回数（スパークライン用）----
+    series: dict[str, list] = {m["id"]: [] for m in own_models}
+    dates = []
+    for d in [days_ago(day, i) for i in range(MODEL_HISTORY_DAYS - 1, -1, -1)]:
+        sn = read_json(snapshot_path(d))
+        if not sn:
+            continue
+        dates.append(d)
+        texts = [(c.get("answer") or "").lower() for c in (sn.get("cells") or [])]
+        for m in own_models:
+            al = [a.lower() for a in m.get("aliases") or []]
+            series[m["id"]].append(sum(1 for t in texts if hit(t, al)))
+
+    # ---- クエリ側（本文に車名が入っているもの）----
+    qlow = [((r.get("text") or "").lower(), r) for r in query_rows]
+
+    out = []
+    for m in own_models:
+        al = [a.lower() for a in m.get("aliases") or []]
+        mcells = [c for t, c in low if hit(t, al)]
+        surf = Counter(c.get("surface") for c in mcells)
+
+        asked = [r for t, r in qlow if hit(t, al)]
+        asked.sort(key=lambda r: (r.get("demand") is None, -(r.get("demand") or 0)))
+
+        # 被引用ページ（toyota.jp のパスで紐付け）
+        slug = (m.get("slug") or "").lower()
+        pages = []
+        if slug:
+            seen = set()
+            for r in query_rows:
+                for pg in r.get("own_pages") or []:
+                    u = (pg.get("url") or "").lower()
+                    if slug in u and u not in seen:
+                        seen.add(u)
+                        pages.append({"url": pg.get("url"), "path": pg.get("path"),
+                                      "title": pg.get("title")})
+
+        # 併記されている競合車種
+        co = Counter()
+        for c in mcells:
+            a = (c.get("answer") or "").lower()
+            for rv in rivals:
+                if hit(a, [x.lower() for x in rv.get("aliases") or []]):
+                    co[rv["name"] + "｜" + rv.get("brand", "")] += 1
+
+        ser = series.get(m["id"]) or []
+        prev = ser[:-7][-7:] if len(ser) >= 14 else []
+        last7 = ser[-7:] if len(ser) >= 7 else ser
+        avg = (sum(last7) / len(last7)) if last7 else 0
+        pavg = (sum(prev) / len(prev)) if prev else None
+
+        out.append({
+            "id": m["id"], "name": m.get("name", ""), "cat": m.get("cat", ""),
+            "cat_label": cats.get(m.get("cat"), m.get("cat", "")),
+            "slug": m.get("slug", ""),
+            "mentions": len(mcells),
+            "rate": round(len(mcells) / n_cells * 100, 1),
+            "surfaces": dict(surf),
+            "asked": [{"id": r["id"], "text": r["text"], "best_rank": r.get("best_rank"),
+                       "demand": r.get("demand"), "volume": r.get("volume"),
+                       "cited": bool(r.get("own_pages"))} for r in asked[:20]],
+            "n_asked": len(asked),
+            "pages": pages[:8], "n_pages": len(pages),
+            "rivals": [{"name": k.split("｜")[0], "brand": k.split("｜")[1], "n": v}
+                       for k, v in co.most_common(5)],
+            "series": ser,
+            "avg7": round(avg, 1),
+            "trend7": (round(avg - pavg, 1) if pavg is not None else None),
+        })
+
+    out.sort(key=lambda x: (-x["mentions"], -x["n_asked"], x["name"]))
+    return {"updated_on": mc.get("updated_on", ""), "dates": dates,
+            "categories": cats, "cells": n_cells, "items": out}
 
 
 def _citation_counts(snap: dict, own: str) -> dict:
@@ -469,6 +608,8 @@ def build_site(day: str) -> None:
         "signals": snap["signals"],
         "history": hist,
         "newmodels": _newmodels(day, query_rows),
+        "models": _model_status(day, query_rows),
+        "bucket_domains": _bucket_domains(snap),
         "available_days": len(list_snapshots()),
     }
     write_json(DOCS / "data" / "latest.json", out, compact=True)
