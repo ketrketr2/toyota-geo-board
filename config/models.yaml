@@ -1,0 +1,324 @@
+# ============================================================
+#  車種マスタ（「車種別状況」タブの元データ）
+#
+#  ここに書いた車名を、AIの回答本文とクエリ本文の両方に対して照合する。
+#  販売しているかどうかの判定はしない（AIが何を語っているかの観測が目的）。
+#
+#  aliases は誤検出しない書き方にする:
+#    - 「86」のような数字だけの語は入れない（年式や台数に当たる）
+#    - 短すぎる語・一般名詞になり得る語は入れない
+#  slug は toyota.jp の URL パス。被引用ページの車種紐付けに使う。
+# ============================================================
+
+version: 1
+updated_on: "2026-08-12"
+
+categories:
+  suv:      "SUV・クロスオーバー"
+  minivan:  "ミニバン"
+  sedan:    "セダン"
+  compact:  "コンパクト"
+  wagon:    "ワゴン"
+  sports:   "スポーツ"
+  commercial: "商用・ピックアップ"
+  luxury:   "レクサス"
+
+own:
+  # ---- SUV・クロスオーバー ----
+  - id: harrier
+    name: "ハリアー"
+    cat: suv
+    slug: "/harrier"
+    aliases: ["ハリアー", "HARRIER", "Harrier"]
+  - id: rav4
+    name: "RAV4"
+    cat: suv
+    slug: "/rav4"
+    aliases: ["RAV4", "rav4", "ラヴフォー"]
+  - id: yariscross
+    name: "ヤリスクロス"
+    cat: suv
+    slug: "/yariscross"
+    aliases: ["ヤリスクロス", "ヤリス クロス", "YARIS CROSS", "Yaris Cross"]
+  - id: corollacross
+    name: "カローラクロス"
+    cat: suv
+    slug: "/corollacross"
+    aliases: ["カローラクロス", "カローラ クロス", "COROLLA CROSS"]
+  - id: raize
+    name: "ライズ"
+    cat: suv
+    slug: "/raize"
+    aliases: ["ライズ", "RAIZE"]
+  - id: landcruiser
+    name: "ランドクルーザー"
+    cat: suv
+    slug: "/landcruiser"
+    aliases: ["ランドクルーザー", "ランクル", "LAND CRUISER", "Land Cruiser"]
+  - id: bz4x
+    name: "bZ4X"
+    cat: suv
+    slug: "/bz4x"
+    aliases: ["bZ4X", "bz4x", "BZ4X"]
+  - id: chr
+    name: "C-HR"
+    cat: suv
+    slug: "/c-hr"
+    aliases: ["C-HR", "CHR", "Ｃ-ＨＲ"]
+  - id: highlander
+    name: "ハイランダー"
+    cat: suv
+    slug: "/highlander"
+    aliases: ["ハイランダー", "HIGHLANDER", "Highlander"]
+
+  # ---- ミニバン ----
+  - id: alphard
+    name: "アルファード"
+    cat: minivan
+    slug: "/alphard"
+    aliases: ["アルファード", "ALPHARD", "Alphard"]
+  - id: vellfire
+    name: "ヴェルファイア"
+    cat: minivan
+    slug: "/vellfire"
+    aliases: ["ヴェルファイア", "ベルファイア", "VELLFIRE"]
+  - id: noah
+    name: "ノア"
+    cat: minivan
+    slug: "/noah"
+    aliases: ["ノア", "NOAH"]
+  - id: voxy
+    name: "ヴォクシー"
+    cat: minivan
+    slug: "/voxy"
+    aliases: ["ヴォクシー", "ボクシー", "VOXY"]
+  - id: sienta
+    name: "シエンタ"
+    cat: minivan
+    slug: "/sienta"
+    aliases: ["シエンタ", "SIENTA", "Sienta"]
+  - id: granace
+    name: "グランエース"
+    cat: minivan
+    slug: "/granace"
+    aliases: ["グランエース", "GRANACE"]
+
+  # ---- セダン ----
+  - id: crown
+    name: "クラウン"
+    cat: sedan
+    slug: "/crown"
+    aliases: ["クラウン", "CROWN", "Crown"]
+  - id: camry
+    name: "カムリ"
+    cat: sedan
+    slug: "/camry"
+    aliases: ["カムリ", "CAMRY", "Camry"]
+  - id: prius
+    name: "プリウス"
+    cat: sedan
+    slug: "/prius"
+    aliases: ["プリウス", "PRIUS", "Prius"]
+  - id: corolla
+    name: "カローラ"
+    cat: sedan
+    slug: "/corolla"
+    aliases: ["カローラ", "COROLLA", "Corolla"]
+  - id: mirai
+    name: "MIRAI"
+    cat: sedan
+    slug: "/mirai"
+    aliases: ["MIRAI", "ミライ"]
+  - id: century
+    name: "センチュリー"
+    cat: sedan
+    slug: "/century"
+    aliases: ["センチュリー", "CENTURY"]
+
+  # ---- コンパクト ----
+  - id: yaris
+    name: "ヤリス"
+    cat: compact
+    slug: "/yaris"
+    aliases: ["ヤリス", "YARIS", "Yaris"]
+  - id: aqua
+    name: "アクア"
+    cat: compact
+    slug: "/aqua"
+    aliases: ["アクア", "AQUA", "Aqua"]
+  - id: roomy
+    name: "ルーミー"
+    cat: compact
+    slug: "/roomy"
+    aliases: ["ルーミー", "ROOMY"]
+  - id: passo
+    name: "パッソ"
+    cat: compact
+    slug: "/passo"
+    aliases: ["パッソ", "PASSO"]
+
+  # ---- ワゴン ----
+  - id: corollatouring
+    name: "カローラ ツーリング"
+    cat: wagon
+    slug: "/corollatouring"
+    aliases: ["カローラツーリング", "カローラ ツーリング", "COROLLA TOURING"]
+  - id: corollafielder
+    name: "カローラ フィールダー"
+    cat: wagon
+    slug: "/corollafielder"
+    aliases: ["カローラフィールダー", "カローラ フィールダー", "フィールダー"]
+  - id: crownestate
+    name: "クラウン エステート"
+    cat: wagon
+    slug: "/crownestate"
+    aliases: ["クラウンエステート", "クラウン エステート", "CROWN ESTATE"]
+
+  # ---- スポーツ ----
+  - id: gr86
+    name: "GR86"
+    cat: sports
+    slug: "/gr86"
+    aliases: ["GR86", "ハチロク", "GR８６"]
+  - id: supra
+    name: "GRスープラ"
+    cat: sports
+    slug: "/supra"
+    aliases: ["スープラ", "SUPRA", "Supra"]
+  - id: gryaris
+    name: "GRヤリス"
+    cat: sports
+    slug: "/gryaris"
+    aliases: ["GRヤリス", "GR ヤリス", "GR YARIS"]
+  - id: grcorolla
+    name: "GRカローラ"
+    cat: sports
+    slug: "/grcorolla"
+    aliases: ["GRカローラ", "GR カローラ", "GR COROLLA"]
+
+  # ---- 商用・ピックアップ ----
+  - id: hiace
+    name: "ハイエース"
+    cat: commercial
+    slug: "/hiacevan"
+    aliases: ["ハイエース", "HIACE", "Hiace"]
+  - id: hilux
+    name: "ハイラックス"
+    cat: commercial
+    slug: "/hilux"
+    aliases: ["ハイラックス", "HILUX", "Hilux"]
+  - id: probox
+    name: "プロボックス"
+    cat: commercial
+    slug: "/probox"
+    aliases: ["プロボックス", "PROBOX"]
+
+  # ---- レクサス（別ブランドだが自社陣営） ----
+  - id: lexus_rx
+    name: "レクサス RX"
+    cat: luxury
+    slug: ""
+    aliases: ["レクサスRX", "LEXUS RX", "レクサス RX"]
+  - id: lexus_nx
+    name: "レクサス NX"
+    cat: luxury
+    slug: ""
+    aliases: ["レクサスNX", "LEXUS NX", "レクサス NX"]
+  - id: lexus_lm
+    name: "レクサス LM"
+    cat: luxury
+    slug: ""
+    aliases: ["レクサスLM", "LEXUS LM", "レクサス LM"]
+
+# ---- 競合車種（併記されているかを見るためだけに使う。スコアには入れない） ----
+rivals:
+  - id: r_freed
+    name: "フリード"
+    brand: "ホンダ"
+    cat: minivan
+    aliases: ["フリード", "FREED"]
+  - id: r_stepwgn
+    name: "ステップワゴン"
+    brand: "ホンダ"
+    cat: minivan
+    aliases: ["ステップワゴン", "STEPWGN"]
+  - id: r_serena
+    name: "セレナ"
+    brand: "日産"
+    cat: minivan
+    aliases: ["セレナ", "SERENA"]
+  - id: r_vezel
+    name: "ヴェゼル"
+    brand: "ホンダ"
+    cat: suv
+    aliases: ["ヴェゼル", "ベゼル", "VEZEL"]
+  - id: r_cx5
+    name: "CX-5"
+    brand: "マツダ"
+    cat: suv
+    aliases: ["CX-5", "CX5"]
+  - id: r_cx60
+    name: "CX-60"
+    brand: "マツダ"
+    cat: suv
+    aliases: ["CX-60", "CX60"]
+  - id: r_forester
+    name: "フォレスター"
+    brand: "スバル"
+    cat: suv
+    aliases: ["フォレスター", "FORESTER"]
+  - id: r_xv
+    name: "クロストレック"
+    brand: "スバル"
+    cat: suv
+    aliases: ["クロストレック", "CROSSTREK"]
+  - id: r_note
+    name: "ノート"
+    brand: "日産"
+    cat: compact
+    aliases: ["ノート e-POWER", "日産ノート", "NOTE e-POWER"]
+  - id: r_fit
+    name: "フィット"
+    brand: "ホンダ"
+    cat: compact
+    aliases: ["フィット", "FIT"]
+  - id: r_solio
+    name: "ソリオ"
+    brand: "スズキ"
+    cat: compact
+    aliases: ["ソリオ", "SOLIO"]
+  - id: r_jimny
+    name: "ジムニー"
+    brand: "スズキ"
+    cat: suv
+    aliases: ["ジムニー", "JIMNY"]
+  - id: r_civic
+    name: "シビック"
+    brand: "ホンダ"
+    cat: sedan
+    aliases: ["シビック", "CIVIC"]
+  - id: r_ariya
+    name: "アリア"
+    brand: "日産"
+    cat: suv
+    aliases: ["アリア", "ARIYA"]
+  - id: r_sakura
+    name: "サクラ"
+    brand: "日産"
+    cat: compact
+    aliases: ["サクラ", "SAKURA"]
+  - id: r_tanto
+    name: "タント"
+    brand: "ダイハツ"
+    cat: compact
+    aliases: ["タント", "TANTO"]
+  - id: r_nbox
+    name: "N-BOX"
+    brand: "ホンダ"
+    cat: compact
+    aliases: ["N-BOX", "Nボックス", "エヌボックス"]
+  - id: r_spacia
+    name: "スペーシア"
+    brand: "スズキ"
+    cat: compact
+    aliases: ["スペーシア", "SPACIA"]

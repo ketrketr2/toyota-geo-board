@@ -131,6 +131,7 @@ watch:
 newmodels_updated_on: "2026-08-11"
 newmodels:
   - id: crown_mc_2026
+    model_id: crown
     model: "クラウン"
     title: "クラウン クロスオーバー／セダン マイナーチェンジ"
     date: "2026-09-03"
@@ -140,6 +141,7 @@ newmodels:
     source: "https://car-repo.jp/blog-entry-toyota-2026.html"
 
   - id: lc300_hev_2026
+    model_id: landcruiser
     model: "ランドクルーザー300"
     title: "ランドクルーザー300 ハイブリッド 発売"
     date: "2026-09-16"
@@ -149,6 +151,7 @@ newmodels:
     source: "https://car-repo.jp/blog-entry-toyota-2026.html"
 
   - id: harrier_mc_2026
+    model_id: harrier
     model: "ハリアー"
     title: "ハリアー マイナーチェンジ（ガソリン・PHEV廃止）"
     date: "2026-08-03"
@@ -158,6 +161,7 @@ newmodels:
     source: "https://car-repo.jp/blog-entry-new-harrier-2026-minor-model-change.html"
 
   - id: yariscross_grsport_2026
+    model_id: yariscross
     model: "ヤリスクロス"
     title: "ヤリスクロス GRスポーツ 発売（4WD追加）"
     date: "2026-08-03"
@@ -167,6 +171,7 @@ newmodels:
     source: "https://car-repo.jp/blog-entry-breaking-news-toyota-new-yaris-cross-gr-sport-set-for-july-2026-release.html"
 
   - id: sienta_2026
+    model_id: sienta
     model: "シエンタ"
     title: "シエンタ 一部改良"
     date: "2026-08-03"
@@ -176,6 +181,7 @@ newmodels:
     source: "https://car-repo.jp/blog-entry-2026-toyota-new-sienta-partial-upgrade.html"
 
   - id: gr86_f_2026
+    model_id: gr86
     model: "GR86"
     title: "GR86 F型 一部改良"
     date: "2026-08-06"
@@ -185,6 +191,7 @@ newmodels:
     source: "https://car-repo.jp/blog-entry-2026-toyota-gr86-2.html"
 
   - id: highlander_jp_2026
+    model_id: highlander
     model: "ハイランダー"
     title: "ハイランダー 全国発売（北米生産の逆輸入）"
     date: "2026-08-01"
@@ -194,6 +201,7 @@ newmodels:
     source: "https://www.carsensor.net/contents/newmodel/category_120/_68698.html"
 
   - id: hilux_fmc_2026
+    model_id: hilux
     model: "ハイラックス"
     title: "ハイラックス フルモデルチェンジ（9年ぶり）"
     date: "2026-05-28"
@@ -203,6 +211,7 @@ newmodels:
     source: "https://www.carsensor.net/contents/newmodel/category_120/_68698.html"
 
   - id: lcfj_2026
+    model_id: landcruiser
     model: "ランドクルーザーFJ"
     title: "ランドクルーザーFJ 発売"
     date: "2026-05-14"
@@ -212,6 +221,7 @@ newmodels:
     source: "https://www.carsensor.net/contents/newmodel/category_120/_68698.html"
 
   - id: raize_2026
+    model_id: raize
     model: "ライズ"
     title: "ライズ 一部改良"
     date: "2026-11-01"
@@ -222,6 +232,7 @@ newmodels:
     source: "https://car-repo.jp/blog-entry-toyota-2026.html"
 
   - id: camry_fmc_2026
+    model_id: camry
     model: "カムリ"
     title: "カムリ フルモデルチェンジ（北米生産・逆輸入）"
     date: "2026-11-01"
