@@ -491,7 +491,9 @@ h2.sec .bar{box-shadow:0 0 12px var(--accent2);background:linear-gradient(180deg
   font-size:10px;color:var(--sub);background:var(--card2);cursor:pointer;transition:all .2s}
 .kbd:hover{color:var(--accent2);border-color:var(--accent2)}
 /* ---- トースト ---- */
-#toast{position:fixed;right:22px;bottom:22px;z-index:500;display:flex;flex-direction:column;gap:8px}
+#toast{position:fixed;right:22px;bottom:22px;z-index:500;display:flex;flex-direction:column;gap:8px;
+  transition:opacity .22s ease}
+body.navopen #toast{opacity:0;pointer-events:none}
 .tst{background:var(--card);border:1px solid var(--line2);border-left:3px solid var(--accent2);border-radius:11px;
   padding:11px 16px;font-size:12.5px;color:var(--tx);box-shadow:0 18px 40px -16px rgba(0,0,0,.85);
   animation:fadeUp .35s var(--spring) both;min-width:230px}
@@ -599,22 +601,6 @@ tr.catrow td:first-child b{border-bottom:1px dashed var(--line2)}
 @media(max-width:760px){
   body{font-size:13px}
   .app{display:block;background:var(--bg)}
-  .side{position:sticky;top:0;height:auto;width:100%;padding:0;overflow-x:auto;overflow-y:hidden;
-    display:flex;flex-wrap:nowrap;align-items:stretch;z-index:40;
-    box-shadow:0 3px 14px -5px rgba(0,0,0,.65)}
-  .side .brand{flex:0 0 auto;padding:9px 12px;margin:0;border-bottom:0;
-    border-right:1px solid rgba(255,255,255,.14);display:flex;align-items:center}
-  .side .brand .sb{display:none}
-  .side .nm{font-size:12px;letter-spacing:.12em}
-  .side .dot{width:22px;height:22px}
-  .side .grp,.side .foot{display:none}
-  .side a.nav{flex:0 0 auto;padding:11px 13px;border-left:0;border-bottom:2px solid transparent;
-    white-space:nowrap;font-size:12px;gap:6px}
-  .side a.nav:hover{padding-left:13px;background:transparent}
-  .side a.nav.on{background:rgba(0,169,157,.16);border-left-color:transparent;
-    border-bottom-color:var(--accent2);box-shadow:none}
-  .top{position:static;padding:9px 12px;gap:8px}
-  .top h1{font-size:15px}
   .top .sep{display:none}
   #palBtn{display:none}                            /* コマンドパレットはPC向けなので隠す */
   .stamp{font-size:10px;margin-left:auto}
@@ -660,8 +646,8 @@ tr.catrow td:first-child b{border-bottom:1px dashed var(--line2)}
   #modalbox{margin:0;max-width:none;min-height:100vh;border-radius:0}
   #modalbd{padding:14px 13px 26px}
   #palbox{margin:6vh 10px 0}
-  #toast{left:10px;right:10px;bottom:10px}
-  .tst{min-width:0}
+  #toast{left:10px;right:10px;bottom:calc(10px + env(safe-area-inset-bottom));z-index:100}
+  .tst{min-width:0;font-size:11.5px;padding:9px 13px}
   .ring svg{width:104px;height:104px}
 }
 @media(max-width:420px){
@@ -1001,6 +987,77 @@ body.locked{overflow:hidden}
   border:1px solid var(--line2);background:var(--card);color:var(--tx2);transition:all .18s var(--ease)}
 .ubtn:hover{border-color:var(--accent2);color:var(--accent2)}
 .ubtn.warn:hover{border-color:var(--warn);color:var(--warn)}
+
+/* ---- モバイル：ドロワー式メニュー ---- */
+.mbar{display:none}
+#navmask{display:none}
+@media(max-width:760px){
+  /* 上部の細いバー。ここだけが常時見えていて、あとは引き出す。 */
+  .mbar{display:flex;align-items:center;gap:10px;position:sticky;top:0;z-index:60;
+    padding:8px 12px;padding-top:max(8px,env(safe-area-inset-top));
+    background:linear-gradient(180deg,#0B1F35,#0D2843);
+    border-bottom:1px solid rgba(255,255,255,.10);
+    box-shadow:0 3px 14px -6px rgba(0,0,0,.7)}
+  .mburger{width:36px;height:32px;flex:0 0 auto;border:1px solid rgba(255,255,255,.16);
+    border-radius:8px;background:rgba(255,255,255,.07);display:flex;flex-direction:column;
+    align-items:center;justify-content:center;gap:4px;cursor:pointer;padding:0;
+    transition:background .2s,border-color .2s}
+  .mburger:active{transform:scale(.94)}
+  .mburger i{display:block;width:16px;height:2px;border-radius:2px;background:#DCEAF6;
+    transition:transform .26s cubic-bezier(.16,1,.3,1),opacity .18s}
+  body.navopen .mburger{border-color:var(--accent2);background:rgba(0,229,199,.14)}
+  body.navopen .mburger i:nth-child(1){transform:translateY(6px) rotate(45deg)}
+  body.navopen .mburger i:nth-child(2){opacity:0}
+  body.navopen .mburger i:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+  .mdot{width:24px;height:24px;flex:0 0 auto;border-radius:50%;
+    background:linear-gradient(135deg,#D8232F,#A4161F);display:flex;align-items:center;
+    justify-content:center;font-size:11px;font-weight:700;color:#fff}
+  .mttl{flex:1;min-width:0;font-size:14px;font-weight:700;color:#fff;
+    white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .mtheme{width:34px;height:32px;flex:0 0 auto;border:1px solid rgba(255,255,255,.16);
+    border-radius:8px;background:rgba(255,255,255,.07);color:#DCEAF6;font-size:14px;
+    cursor:pointer;padding:0}
+  .mtheme:active{transform:scale(.94)}
+
+  /* サイドバーは画面外に退避し、ハンバーガーで引き出す */
+  .side{position:fixed;top:0;left:0;bottom:0;z-index:120;
+    width:min(80vw,300px);height:100dvh;max-height:100dvh;
+    display:block;flex-wrap:initial;
+    padding:18px 0 calc(28px + env(safe-area-inset-bottom));
+    overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;
+    transform:translateX(-101%);visibility:hidden;
+    transition:transform .3s cubic-bezier(.16,1,.3,1),visibility .3s;
+    box-shadow:14px 0 40px -14px rgba(0,0,0,.8)}
+  body.navopen .side{transform:none;visibility:visible}
+  body.navopen{overflow:hidden}
+  .side .brand{flex:initial;display:block;padding:0 18px 16px;margin-bottom:10px;
+    border-right:0;border-bottom:1px solid rgba(255,255,255,.1)}
+  .side .brand .sb{display:block}
+  .side .nm{font-size:14px;letter-spacing:.16em}
+  .side .dot{width:26px;height:26px}
+  .side .grp{display:block}
+  .side .foot{display:block}
+  .side a.nav{flex:initial;display:flex;padding:12px 18px;font-size:14px;gap:11px;
+    border-left:3px solid transparent;border-bottom:0;white-space:nowrap}
+  .side a.nav:hover{padding-left:18px;background:transparent}
+  .side a.nav.on{background:linear-gradient(90deg,rgba(0,169,157,.24),rgba(0,169,157,.05));
+    border-left-color:var(--accent2);border-bottom-color:transparent}
+  .side a.nav.small{font-size:13px;padding:11px 18px}
+  .side a.nav:active{background:rgba(255,255,255,.1)}
+
+  #navmask{display:block;position:fixed;inset:0;z-index:110;
+    background:rgba(3,12,22,.62);backdrop-filter:blur(2px);
+    opacity:0;pointer-events:none;transition:opacity .3s}
+  body.navopen #navmask{opacity:1;pointer-events:auto}
+
+  /* 上部ツールバーはバーの下に置き、被らないようにする */
+  .top{position:static;padding:8px 12px;gap:6px;flex-wrap:wrap}
+  .top h1{font-size:13px}
+  .top .mode{font-size:10px;padding:2px 8px}
+  .top .fgrp{width:100%}
+  .stamp{font-size:10px;margin-left:auto}
+  #themeBtn{display:none}          /* テーマはモバイルバー側に出す */
+}
 </style>
 </head>
 <body class="locked">
@@ -1025,6 +1082,7 @@ body.locked{overflow:hidden}
 </div>
 
 <div class="app">
+<div id="navmask"></div>
 <aside class="side">
   <div class="brand"><div class="lg"><span class="dot">T</span>
     <div><div class="nm" id="brandName">TOYOTA</div><div class="sb" id="ownerTag">AI VISIBILITY BOARD</div></div></div></div>
@@ -1050,6 +1108,12 @@ body.locked{overflow:hidden}
 </aside>
 
 <div class="main">
+<div class="mbar" id="mbar">
+  <button class="mburger" id="navBtn" aria-label="メニューを開く" aria-expanded="false"><i></i><i></i><i></i></button>
+  <span class="mdot">T</span>
+  <span class="mttl" id="mbTitle">概要</span>
+  <button class="mtheme" id="mbTheme" aria-label="表示テーマを切り替える">◐</button>
+</div>
 <div class="top">
   <h1 id="title">—</h1>
   <span class="mode demo" id="modeBadge" title="">—</span>
@@ -1371,6 +1435,9 @@ function vsPanel(a,b,metrics){
 /* ---- トースト ---- */
 function toast(html,ms){const w=document.getElementById("toast");
   const d=document.createElement("div"); d.className="tst"; d.innerHTML=html; w.appendChild(d);
+  /* 画面が狭いときに3枚も重なると本文が読めなくなる。常に最新1枚だけ残す。 */
+  const keep = innerWidth<=760 ? 1 : 3;
+  while(w.children.length>keep) w.firstElementChild.remove();
   setTimeout(()=>{d.style.transition="opacity .4s,transform .4s";d.style.opacity="0";
     d.style.transform="translateY(8px)";setTimeout(()=>d.remove(),420);}, ms||4200);}
 
@@ -3513,6 +3580,8 @@ function bindCharts(root){
 function render(){
   const root=document.getElementById("root");
   if(cur!==UCUR) uView(cur);
+  (()=>{const t=document.getElementById("mbTitle");
+    if(t) t.textContent=UPJ[cur]||"";})();
   root.innerHTML=`<div class="page on">${PAGES[cur]()}</div>`;
   document.querySelectorAll("#qt th.s").forEach(th=>th.onclick=()=>{
     if(sortK===th.dataset.k)sortDir*=-1;else{sortK=th.dataset.k;sortDir=1;}render();});
@@ -3721,9 +3790,26 @@ function applyQFilter(){
   });
   const c=document.getElementById("qcount"); if(c)c.textContent=n;
 }
+/* ===== モバイルのドロワー ===== */
+function navSet(open){
+  document.body.classList.toggle("navopen",!!open);
+  const b=document.getElementById("navBtn");
+  if(b) b.setAttribute("aria-expanded",open?"true":"false");
+}
+(function(){
+  const b=document.getElementById("navBtn"), m=document.getElementById("navmask");
+  if(b) b.onclick=()=>navSet(!document.body.classList.contains("navopen"));
+  if(m) m.onclick=()=>navSet(false);
+  const t=document.getElementById("mbTheme");
+  if(t) t.onclick=()=>document.getElementById("themeBtn").click();
+  /* 画面が広がったら閉じ状態に戻す（横向きにしたときの取り残し防止） */
+  addEventListener("resize",()=>{ if(innerWidth>760) navSet(false); });
+})();
 document.querySelectorAll(".side .nav").forEach(a=>a.onclick=()=>{
   document.querySelectorAll(".side .nav").forEach(n=>n.classList.remove("on"));
-  a.classList.add("on");cur=a.dataset.p;render();window.scrollTo({top:0,behavior:"smooth"});});
+  a.classList.add("on");cur=a.dataset.p;
+  navSet(false);
+  render();window.scrollTo({top:0,behavior:"smooth"});});
 document.querySelectorAll("#segPeriod button").forEach(b=>b.onclick=()=>{
   document.querySelectorAll("#segPeriod button").forEach(x=>x.classList.remove("on"));
   b.classList.add("on");P=b.dataset.v;render();});
@@ -3840,7 +3926,7 @@ palin.oninput=()=>{palSel=0;renderPal(palin.value);};
 document.addEventListener("keydown",e=>{
   if(!window.__AUTHED) return;          // ゲート表示中はショートカットを無効にする
   const inField = /^(INPUT|TEXTAREA)$/.test((e.target||{}).tagName||"");
-  if(e.key==="Escape"){closeModal(); if(inField)e.target.blur();}
+  if(e.key==="Escape"){closeModal(); navSet(false); if(inField)e.target.blur();}
   if(!inField && !pal.classList.contains("on") && !e.metaKey && !e.ctrlKey){
     if(e.key==="/"){const q=document.getElementById("qq"); if(q){e.preventDefault();q.focus();q.select();return;}}
     if(/^[1-8]$/.test(e.key)){
@@ -3965,7 +4051,7 @@ fetch("data/latest.json?"+Date.now()).then(r=>r.json()).then(d=>{
   toast(`<b>データ更新</b> ${d.generated_at}<br><span style="color:var(--sub)">GEOスコア ${d.score.toFixed(1)}（${t.g}ティア）／ 蓄積 ${d.available_days}日</span>`);
   const al=(d.comment&&d.comment.alerts||[]).filter(a=>a.severity==="high").length;
   if(al) setTimeout(()=>toast(`<b style="color:var(--warn)">要対応 ${al}件</b><br><span style="color:var(--sub)">アラートタブを確認してください</span>`,6000),700);
-  setTimeout(()=>toast(`<b>⌘K</b> で全クエリを横断検索できます`,5000),1400);
+  if(innerWidth>760) setTimeout(()=>toast(`<b>⌘K</b> で全クエリを横断検索できます`,5000),1400);
 }).catch(e=>{document.getElementById("root").innerHTML=
   `<div class="card"><b>data/latest.json を読み込めませんでした。</b><br>
    <code>python src/run_daily.py --backfill 45</code> を実行してから、<code>python -m http.server</code> 等で配信してください。<br>
