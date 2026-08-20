@@ -920,9 +920,74 @@ tr.mdrow:hover td{background:color-mix(in srgb,var(--accent2) 7%,transparent)}
 .sdom{font-size:9.5px;color:var(--sub);margin-left:7px;white-space:nowrap;
   border:1px solid var(--line2);border-radius:8px;padding:1px 6px}
 .srow.clik:hover .sdom{color:var(--accent2);border-color:var(--accent2)}
+
+/* ---- 閲覧認証ゲート ---- */
+#gate{position:fixed;inset:0;z-index:999;display:none;align-items:center;justify-content:center;
+  background:
+    radial-gradient(900px 520px at 78% -10%,rgba(0,229,199,.13),transparent 60%),
+    radial-gradient(760px 420px at 15% 10%,rgba(56,189,248,.10),transparent 60%),
+    linear-gradient(180deg,#0B1F35 0%,#0D2843 55%,#0B2136 100%)}
+#gate.on{display:flex}
+#gate .gbox{width:min(400px,calc(100vw - 40px));background:rgba(10,26,44,.78);
+  border:1px solid rgba(255,255,255,.13);border-radius:18px;padding:34px 34px 28px;
+  box-shadow:0 34px 90px -28px rgba(0,0,0,.85);backdrop-filter:blur(14px);
+  animation:gatein .5s cubic-bezier(.16,1,.3,1) both}
+@keyframes gatein{from{opacity:0;transform:translateY(18px) scale(.985)}to{opacity:1;transform:none}}
+#gate .glg{display:flex;align-items:center;gap:11px;margin-bottom:6px}
+#gate .gdot{width:34px;height:34px;border-radius:50%;flex:0 0 auto;
+  background:linear-gradient(135deg,#D8232F,#A4161F);display:flex;align-items:center;
+  justify-content:center;font-size:13px;font-weight:700;color:#fff;
+  box-shadow:0 0 22px -4px rgba(216,35,47,.8)}
+#gate .gnm{font-size:16px;font-weight:700;color:#fff;letter-spacing:.16em;line-height:1.2}
+#gate .gsb{font-size:10px;color:#7E9CB8;letter-spacing:.1em;margin-top:2px}
+#gate .gttl{font-size:13px;color:#B9CFE1;margin:18px 0 16px;line-height:1.8}
+#gate label{display:block;font-size:10.5px;color:#7E9CB8;letter-spacing:.06em;margin-bottom:5px}
+#gate input{width:100%;box-sizing:border-box;background:rgba(255,255,255,.07);
+  border:1px solid rgba(255,255,255,.16);border-radius:9px;padding:11px 13px;color:#fff;
+  font-size:15px;font-family:inherit;outline:0;transition:border-color .2s,box-shadow .2s;
+  margin-bottom:13px;-webkit-text-fill-color:#fff}
+#gate input:focus{border-color:#00E5C7;box-shadow:0 0 0 3px rgba(0,229,199,.16)}
+#gate input:-webkit-autofill{-webkit-box-shadow:0 0 0 40px #12304d inset;-webkit-text-fill-color:#fff}
+#gate .gbtn{width:100%;padding:12px;border:0;border-radius:9px;cursor:pointer;
+  background:linear-gradient(135deg,#00A99D,#00E5C7);color:#06131A;font-size:14px;font-weight:800;
+  font-family:inherit;letter-spacing:.04em;transition:transform .16s,box-shadow .16s;margin-top:4px}
+#gate .gbtn:hover{transform:translateY(-1px);box-shadow:0 10px 26px -10px rgba(0,229,199,.7)}
+#gate .gbtn:active{transform:scale(.985)}
+#gate .gerr{font-size:12px;color:#FF8B8B;min-height:18px;margin-top:10px;text-align:center;
+  opacity:0;transition:opacity .2s}
+#gate .gerr.on{opacity:1}
+#gate .gerr.shake{animation:gshake .4s}
+@keyframes gshake{0%,100%{transform:none}20%{transform:translateX(-7px)}
+  40%{transform:translateX(7px)}60%{transform:translateX(-4px)}80%{transform:translateX(4px)}}
+#gate .gfoot{font-size:10.5px;color:#5E7C97;line-height:1.8;margin-top:16px;
+  padding-top:14px;border-top:1px solid rgba(255,255,255,.1)}
+#gate .grem{display:flex;align-items:center;gap:7px;font-size:11.5px;color:#9FC0DA;
+  margin:2px 0 6px;cursor:pointer;user-select:none}
+#gate .grem input{width:auto;margin:0;accent-color:#00E5C7}
+body.locked{overflow:hidden}
 </style>
 </head>
-<body>
+<body class="locked">
+<div id="gate" class="on">
+  <form class="gbox" id="gform" autocomplete="on">
+    <div class="glg">
+      <div class="gdot">T</div>
+      <div><div class="gnm">TOYOTA</div><div class="gsb">AI VISIBILITY BOARD</div></div>
+    </div>
+    <div class="gttl">この画面は関係者限定です。<br>配布されたIDとパスワードを入力してください。</div>
+    <label for="gid">ID</label>
+    <input id="gid" name="username" type="text" autocomplete="username" autocapitalize="off"
+      autocorrect="off" spellcheck="false" placeholder="ID">
+    <label for="gpw">パスワード</label>
+    <input id="gpw" name="password" type="password" autocomplete="current-password" placeholder="パスワード">
+    <label class="grem" for="grem"><input type="checkbox" id="grem" checked>このブラウザに30日間記憶する</label>
+    <button class="gbtn" type="submit">ボードを開く</button>
+    <div class="gerr" id="gerr"></div>
+    <div class="gfoot">IDとパスワードが分からない場合は、共有元にご確認ください。
+      入力内容はこのブラウザの中だけで照合しており、どこにも送信していません。</div>
+  </form>
+</div>
+
 <div class="app">
 <aside class="side">
   <div class="brand"><div class="lg"><span class="dot">T</span>
@@ -941,6 +1006,9 @@ tr.mdrow:hover td{background:color-mix(in srgb,var(--accent2) 7%,transparent)}
   <a class="nav" data-p="signals"><span class="ic">⇡</span>AI流入・クローラー</a>
   <a class="nav" data-p="alerts"><span class="ic">!</span>アラート</a>
   <div class="foot" id="foot"></div>
+  <div class="foot" style="border-top:0;padding-top:6px">
+    <a id="logout" style="cursor:pointer;color:#7E9CB8;text-decoration:underline">ログアウト（この端末の記憶を消す）</a>
+  </div>
 </aside>
 
 <div class="main">
@@ -3438,6 +3506,7 @@ document.getElementById("palBtn").onclick=openPal;
 pal.onclick=e=>{if(e.target===pal)closePal();};
 palin.oninput=()=>{palSel=0;renderPal(palin.value);};
 document.addEventListener("keydown",e=>{
+  if(!window.__AUTHED) return;          // ゲート表示中はショートカットを無効にする
   const inField = /^(INPUT|TEXTAREA)$/.test((e.target||{}).tagName||"");
   if(e.key==="Escape"){closeModal(); if(inField)e.target.blur();}
   if(!inField && !pal.classList.contains("on") && !e.metaKey && !e.ctrlKey){
@@ -3532,6 +3601,7 @@ function toggleStar(id){
 /* 販売台数（月次の静的ファイル）。取れなくても画面は落とさない。 */
 let SALES=null;
 
+function boot(){
 fetch("data/sales.json?"+Date.now()).then(r=>r.ok?r.json():null)
   .then(s=>{SALES=s; if(D&&document.getElementById("root").children.length) render();})
   .catch(()=>{SALES=null;});
@@ -3568,6 +3638,73 @@ fetch("data/latest.json?"+Date.now()).then(r=>r.json()).then(d=>{
   `<div class="card"><b>data/latest.json を読み込めませんでした。</b><br>
    <code>python src/run_daily.py --backfill 45</code> を実行してから、<code>python -m http.server</code> 等で配信してください。<br>
    <span style="color:#64748B;font-size:12px">${esc(e)}</span></div>`;});
+}
+
+/* ============================================================
+   閲覧認証ゲート
+
+   静的ホスティング（GitHub Pages）にはサーバ側の認証機構が無いため、
+   ここで行っているのは「URLを知っているだけの人に中身を見せない」ための
+   簡易ゲート。ID・パスワードは平文で置かず、
+   SHA-256(id:pw:固定ソルト) のハッシュだけをソースに持つ。
+   ============================================================ */
+const GATE_HASH="d05eb5b2625fa111476166382d34e6730d7ca2ad256ace585a5a7a7c92fffeae";
+const GATE_SALT="geo-board-tqp-2026";
+const GATE_KEY="geo.auth";
+const GATE_DAYS=30;
+
+async function gateHash(id,pw){
+  const buf=new TextEncoder().encode(`${(id||"").trim().toLowerCase()}:${pw||""}:${GATE_SALT}`);
+  const h=await crypto.subtle.digest("SHA-256",buf);
+  return [...new Uint8Array(h)].map(x=>x.toString(16).padStart(2,"0")).join("");
+}
+function gateSaved(){
+  try{
+    const raw=localStorage.getItem(GATE_KEY)||sessionStorage.getItem(GATE_KEY);
+    if(!raw) return false;
+    const o=JSON.parse(raw);
+    if(o.h!==GATE_HASH) return false;
+    if(o.exp && Date.now()>o.exp){ localStorage.removeItem(GATE_KEY); return false; }
+    return true;
+  }catch(e){ return false; }
+}
+function gateOpen(){
+  const g=document.getElementById("gate");
+  g.style.transition="opacity .35s ease"; g.style.opacity="0";
+  setTimeout(()=>{ g.classList.remove("on"); g.style.opacity=""; },350);
+  document.body.classList.remove("locked");
+  window.__AUTHED=true;
+  boot();
+}
+document.getElementById("logout").onclick=()=>{
+  try{ localStorage.removeItem(GATE_KEY); sessionStorage.removeItem(GATE_KEY); }catch(e){}
+  location.reload();
+};
+(function gateInit(){
+  const g=document.getElementById("gate"), f=document.getElementById("gform"),
+        id=document.getElementById("gid"), pw=document.getElementById("gpw"),
+        rem=document.getElementById("grem"), err=document.getElementById("gerr");
+  if(gateSaved()){ g.classList.remove("on"); document.body.classList.remove("locked");
+                   window.__AUTHED=true; boot(); return; }
+  setTimeout(()=>id.focus(),260);
+  const fail=m=>{
+    err.textContent=m; err.classList.add("on"); err.classList.remove("shake");
+    void err.offsetWidth; err.classList.add("shake");
+    pw.value=""; pw.focus();
+  };
+  f.addEventListener("submit",async ev=>{
+    ev.preventDefault();
+    if(!id.value.trim()||!pw.value){ fail("IDとパスワードを入力してください"); return; }
+    let h;
+    try{ h=await gateHash(id.value,pw.value); }
+    catch(e){ fail("このブラウザでは照合できません（httpsで開いてください）"); return; }
+    if(h!==GATE_HASH){ fail("IDまたはパスワードが違います"); return; }
+    const rec=JSON.stringify({h,exp:rem.checked?Date.now()+GATE_DAYS*864e5:0});
+    try{ (rem.checked?localStorage:sessionStorage).setItem(GATE_KEY,rec); }catch(e){}
+    err.classList.remove("on");
+    gateOpen();
+  });
+})();
 </script>
 </body>
 </html>
