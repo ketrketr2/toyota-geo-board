@@ -965,6 +965,42 @@ tr.mdrow:hover td{background:color-mix(in srgb,var(--accent2) 7%,transparent)}
   margin:2px 0 6px;cursor:pointer;user-select:none}
 #gate .grem input{width:auto;margin:0;accent-color:#00E5C7}
 body.locked{overflow:hidden}
+
+/* ---- 利用状況 ---- */
+.side .grp.mini{margin-top:14px;padding:13px 18px 7px;line-height:1.5;height:auto;
+  overflow:visible;white-space:nowrap;position:relative;z-index:2;
+  border-top:1px solid rgba(255,255,255,.08)}
+.side a.nav.small{font-size:11.5px;padding:8px 18px;color:#7E9CB8}
+.side a.nav.small .ic{font-size:10px}
+.side a.nav.small.on{color:#fff}
+.side .foot a{display:inline-block;line-height:1.6}
+.hmap{display:grid;grid-template-columns:34px repeat(24,1fr);gap:2px;align-items:center}
+.hmap .hl2{font-size:9.5px;color:var(--sub);text-align:right;padding-right:4px}
+.hmap .hc{aspect-ratio:1;border-radius:2px;background:color-mix(in srgb,var(--tx) 7%,transparent);
+  min-height:13px;transition:transform .12s var(--ease)}
+.hmap .hc:hover{transform:scale(1.45);z-index:2;position:relative;outline:1px solid var(--accent2)}
+.hmap .hh{font-size:8.5px;color:var(--sub);text-align:center;line-height:1}
+.uroll{display:flex;flex-direction:column;gap:5px;max-height:420px;overflow:auto}
+.urow{display:grid;grid-template-columns:150px 1fr 78px 74px;gap:11px;align-items:center;
+  background:var(--card2);border:1px solid var(--line);border-radius:8px;padding:8px 12px;font-size:12px}
+.urow .ub{height:7px;border-radius:4px;background:color-mix(in srgb,var(--tx) 9%,transparent);overflow:hidden}
+.urow .ub i{display:block;height:7px;border-radius:4px;background:linear-gradient(90deg,#0B6FB4,#38BDF8)}
+.urow .un{text-align:right;font-weight:700;font-variant-numeric:tabular-nums}
+.urow .ut{text-align:right;color:var(--sub);font-size:11px;font-variant-numeric:tabular-nums}
+.ulog{display:flex;flex-direction:column;gap:4px;max-height:300px;overflow:auto}
+.ulog .li2{display:grid;grid-template-columns:118px 1fr;gap:11px;font-size:11.5px;
+  padding:6px 11px;background:var(--card2);border:1px solid var(--line);border-radius:7px}
+.ulog .li2 b{font-variant-numeric:tabular-nums;color:var(--tx2)}
+.ubar2{display:flex;align-items:flex-end;gap:2px;height:80px;margin-top:6px}
+.ubar2{justify-content:flex-start}
+.ubar2 .b2{flex:1 1 0;max-width:34px;background:linear-gradient(180deg,#00E5C7,#00A99D);
+  border-radius:2px 2px 0 0;min-height:2px;transition:height .6s var(--ease)}
+.ubar2 .b2.z{background:color-mix(in srgb,var(--tx) 8%,transparent)}
+.ubtns{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.ubtn{font-size:11.5px;padding:6px 13px;border-radius:8px;cursor:pointer;
+  border:1px solid var(--line2);background:var(--card);color:var(--tx2);transition:all .18s var(--ease)}
+.ubtn:hover{border-color:var(--accent2);color:var(--accent2)}
+.ubtn.warn:hover{border-color:var(--warn);color:var(--warn)}
 </style>
 </head>
 <body class="locked">
@@ -1005,6 +1041,8 @@ body.locked{overflow:hidden}
   <a class="nav" data-p="sources"><span class="ic">◇</span>引用ソース</a>
   <a class="nav" data-p="signals"><span class="ic">⇡</span>AI流入・クローラー</a>
   <a class="nav" data-p="alerts"><span class="ic">!</span>アラート</a>
+  <div class="grp mini">この画面について</div>
+  <a class="nav small" data-p="usage"><span class="ic">◔</span>利用履歴</a>
   <div class="foot" id="foot"></div>
   <div class="foot" style="border-top:0;padding-top:6px">
     <a id="logout" style="cursor:pointer;color:#7E9CB8;text-decoration:underline">ログアウト（この端末の記憶を消す）</a>
@@ -2895,6 +2933,7 @@ function jumpToQuery(id){
   closeModal();
   const q=(D.queries||[]).find(x=>x.id===id);
   if(!q){ toast("そのクエリは現在のコア枠にありません（入替で外れた可能性があります）",3000); return; }
+  uDeep("queries",id,(q.text||"").slice(0,50));
   catF="all"; qFilter=""; starOnly=false; openQ.add(id);
   document.querySelectorAll(".side .nav").forEach(n=>n.classList.remove("on"));
   const nv=document.querySelector('.side .nav[data-p="queries"]'); if(nv)nv.classList.add("on");
@@ -3052,6 +3091,7 @@ function spark(ser){
 function openModel(id){
   const M=D.models||{}, m=(M.items||[]).find(x=>x.id===id);
   if(!m) return;
+  uDeep("models",id,m.name);
   const nmi=((D.newmodels||{}).items)||[];
   const e=nmi.find(x=>x.model_id===m.id)||nmi.find(x=>x.model===m.name);
   const SFL={}; (D.surfaces||[]).forEach(x=>SFL[x.id]=x.label);
@@ -3140,7 +3180,268 @@ function pageAlerts(){
   }).join(""):'<div style="padding:24px;color:var(--sub)">本日のアラートはありません。</div>'}</div>`;
 }
 
-const PAGES={overview:pageOverview,events:pageEvents,sns:pageSns,queries:pageQueries,churn:pageChurn,pages:pagePages,compete:pageCompete,sources:pageSources,signals:pageSignals,alerts:pageAlerts,guide:pageGuide};
+
+/* ============================================================
+   利用状況の記録
+
+   静的ホスティングなので集計サーバが無い。記録先はこのブラウザの
+   localStorage で、既定では「この端末の利用履歴」だけが見える。
+   ACCESS_LOG_ENDPOINT を設定すると、同じイベントを外部へも送るので
+   複数人ぶんを集約できる（未設定なら送信は一切しない）。
+   ============================================================ */
+const ACCESS_LOG_ENDPOINT="";          /* 例: "https://script.google.com/macros/s/xxxx/exec" */
+const UKEY="geo.usage", USEP="|@|";
+const UMAX_LOGIN=300, UMAX_DAY=120, UMAX_SESSION=200;
+
+function uLoad(){
+  let u=null;
+  try{ u=JSON.parse(localStorage.getItem(UKEY)||"null"); }catch(e){}
+  if(!u||typeof u!=="object") u={};
+  u.vid    = u.vid || (crypto.randomUUID?crypto.randomUUID():String(Math.random()).slice(2));
+  u.first  = u.first || Date.now();
+  u.logins = Array.isArray(u.logins)?u.logins:[];
+  u.views  = u.views || {};
+  u.days   = u.days  || {};
+  u.hours  = (Array.isArray(u.hours)&&u.hours.length===24)?u.hours:new Array(24).fill(0);
+  u.dow    = (Array.isArray(u.dow)&&u.dow.length===7)?u.dow:new Array(7).fill(0);
+  u.deep   = u.deep || {};
+  u.deep.queries = u.deep.queries || {};
+  u.deep.models  = u.deep.models  || {};
+  u.sessions = Array.isArray(u.sessions)?u.sessions:[];
+  return u;
+}
+function uSave(u){ try{ localStorage.setItem(UKEY,JSON.stringify(u)); }catch(e){} }
+function uSend(type,payload){
+  if(!ACCESS_LOG_ENDPOINT) return;
+  try{
+    const body=JSON.stringify(Object.assign({t:type,vid:uLoad().vid,ts:Date.now()},payload));
+    if(navigator.sendBeacon) navigator.sendBeacon(ACCESS_LOG_ENDPOINT,new Blob([body],{type:"text/plain"}));
+    else fetch(ACCESS_LOG_ENDPOINT,{method:"POST",body:body,mode:"no-cors",keepalive:true});
+  }catch(e){}
+}
+const uDay=ts=>{const d=new Date(ts);
+  return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");};
+function uTrim(u){
+  if(u.logins.length>UMAX_LOGIN) u.logins=u.logins.slice(-UMAX_LOGIN);
+  if(u.sessions.length>UMAX_SESSION) u.sessions=u.sessions.slice(-UMAX_SESSION);
+  const ks=Object.keys(u.days).sort();
+  if(ks.length>UMAX_DAY) ks.slice(0,ks.length-UMAX_DAY).forEach(k=>delete u.days[k]);
+}
+/* 接続元。静的サイトでは自分のIPを知る手段が無いので、
+   IPをそのまま返す公開APIに1回だけ問い合わせる。取れなくても画面は落とさない。 */
+async function uNet(){
+  try{
+    const r=await fetch("https://ipapi.co/json/",{cache:"no-store"});
+    if(r.ok){ const j=await r.json();
+      if(j&&j.ip&&!j.error) return {ip:j.ip,
+        city:[j.city,j.region].filter(Boolean).join(" "),
+        cc:j.country_code||"", org:j.org||j.asn||""}; }
+  }catch(e){}
+  try{
+    const r=await fetch("https://api.ipify.org?format=json",{cache:"no-store"});
+    if(r.ok){ const j=await r.json(); if(j&&j.ip) return {ip:j.ip}; }
+  }catch(e){}
+  return null;
+}
+function uDevice(){
+  const w=screen.width||0, ua=navigator.userAgent||"";
+  const mob=/iPhone|Android.+Mobile/i.test(ua), tab=/iPad|Android(?!.+Mobile)/i.test(ua);
+  return (mob?"スマートフォン":tab?"タブレット":"PC")+"（"+w+"px）";
+}
+function uLogin(){
+  const u=uLoad(), now=Date.now();
+  u.logins.push(now);
+  const se={start:now,end:now,pages:0,no:u.logins.length,dev:uDevice()};
+  u.sessions.push(se);
+  uTrim(u); uSave(u); uSend("login",{no:se.no,dev:se.dev});
+  uNet().then(net=>{
+    const v=uLoad(), last=v.sessions[v.sessions.length-1];
+    if(last){ Object.assign(last, net||{netfail:true}); uSave(v); }
+    if(net) uSend("net",net);
+    if(cur==="usage"&&window.__AUTHED) render();
+  });
+}
+/* ページ遷移。前のページの滞在時間を確定してから次を記録する。 */
+let UCUR=null, UAT=0;
+function uFlush(){
+  if(!UCUR) return;
+  const ms=Math.min(Date.now()-UAT, 30*60*1000);   /* 放置は30分で打ち切り */
+  UAT=Date.now();
+  if(ms<300) return;
+  const u=uLoad();
+  const v=u.views[UCUR]||{n:0,ms:0}; v.ms+=ms; u.views[UCUR]=v;
+  const dk=uDay(Date.now()); const d=u.days[dk]||{n:0,ms:0}; d.ms+=ms; u.days[dk]=d;
+  const se=u.sessions[u.sessions.length-1]; if(se) se.end=Date.now();
+  uTrim(u); uSave(u);
+}
+function uView(page){
+  uFlush();
+  const u=uLoad(), now=Date.now(), dt=new Date(now);
+  const v=u.views[page]||{n:0,ms:0}; v.n++; u.views[page]=v;
+  const dk=uDay(now); const d=u.days[dk]||{n:0,ms:0}; d.n++; u.days[dk]=d;
+  u.hours[dt.getHours()]++; u.dow[dt.getDay()]++;
+  const se=u.sessions[u.sessions.length-1]; if(se){ se.pages=(se.pages||0)+1; se.end=now; }
+  uTrim(u); uSave(u); uSend("view",{page:page});
+  UCUR=page; UAT=now;
+}
+function uDeep(kind,id,label){
+  const u=uLoad(); const b=u.deep[kind]||(u.deep[kind]={});
+  const k=(label||"")+USEP+id;
+  b[k]=(b[k]||0)+1; uSave(u); uSend("deep",{kind:kind,id:id,label:label||""});
+}
+addEventListener("visibilitychange",()=>{ if(document.hidden) uFlush(); else UAT=Date.now(); });
+addEventListener("pagehide",uFlush);
+addEventListener("beforeunload",uFlush);
+
+/* ---------- 表示 ---------- */
+const UPJ={overview:"概要",events:"車種別状況",queries:"クエリ",churn:"クエリ新陳代謝",
+  pages:"自社の被引用ページ",sns:"SNS別評価",compete:"競合・判断軸",sources:"引用ソース",
+  signals:"AI流入・クローラー",alerts:"アラート",guide:"読み方ガイド",usage:"利用履歴"};
+const uMs=ms=>{
+  if(!ms) return "0秒";
+  const s=Math.round(ms/1000);
+  if(s<60) return s+"秒";
+  const m=Math.floor(s/60);
+  if(m<60) return m+"分"+(s%60?String(s%60)+"秒":"");
+  return Math.floor(m/60)+"時間"+(m%60?String(m%60)+"分":"");
+};
+const uDt=ts=>{const d=new Date(ts);
+  return `${d.getMonth()+1}/${d.getDate()} ${String(d.getHours()).padStart(2,"0")}:${String(d.getMinutes()).padStart(2,"0")}`;};
+const uLbl=k=>{const i=k.indexOf(USEP); return i<0?k:(k.slice(0,i)||k.slice(i+USEP.length));};
+
+function pageUsage(){
+  uFlush();
+  const u=uLoad();
+  const views=Object.entries(u.views).map(([k,v])=>({k:k,n:v.n,ms:v.ms})).sort((a,b)=>b.n-a.n);
+  const totV=views.reduce((t,x)=>t+x.n,0), totMs=views.reduce((t,x)=>t+x.ms,0);
+  const mxV=Math.max(...views.map(x=>x.n),1);
+  const days=Object.entries(u.days).sort((a,b)=>a[0].localeCompare(b[0]));
+  const last30=days.slice(-30);
+  const mxD=Math.max(...last30.map(d=>d[1].n),1);
+  const logins=u.logins.slice().reverse();
+  const hist=u.sessions.slice().reverse();
+  const now2=hist[0]||null;
+  const sess=u.sessions.filter(s=>s.end&&s.end>s.start);
+  const avgSess=sess.length?sess.reduce((t,s)=>t+(s.end-s.start),0)/sess.length:0;
+  const DOW=["日","月","火","水","木","金","土"];
+  const mxH=Math.max(...u.hours,1), mxW=Math.max(...u.dow,1);
+  const deepQ=Object.entries(u.deep.queries||{}).sort((a,b)=>b[1]-a[1]).slice(0,10);
+  const deepM=Object.entries(u.deep.models||{}).sort((a,b)=>b[1]-a[1]).slice(0,10);
+
+  return `<h2 class="sec"><span class="bar"></span>利用履歴
+    <span class="note">この端末からのアクセス記録</span></h2>
+  <div class="why"><b>これは「いまこの画面を開いているブラウザ」からのアクセス記録です。</b>
+  静的ホスティングには集計サーバが無いため、アクセス日時・何回目か・接続元IP・
+  どの画面をどれだけ見たかを<b>お使いのブラウザの中だけ</b>に保存しています。
+  他の人がどこを見たかは、ここには出ません。
+  ${ACCESS_LOG_ENDPOINT?"外部の集計先にも同じ記録を送信しています。"
+    :"<b>複数人ぶんをまとめて見たい場合</b>は集計先を1つ用意すれば同じ記録をそちらへ送れます（<code>ACCESS_LOG_ENDPOINT</code> を設定するだけ）。現在は<b>未設定＝どこにも送信していません</b>。"}</div>
+
+  <div class="g4" style="margin-bottom:14px">
+    <div class="kpi"><div class="l">今回のアクセス</div>
+      <div class="v"><b data-count="${u.logins.length}">${u.logins.length}</b><small> 回目</small></div>
+      <div class="d fl">初回 ${u.first?uDt(u.first):"—"}</div></div>
+    <div class="kpi ok"><div class="l">画面を開いた回数</div><div class="v" data-count="${totV}">${totV}</div>
+      <div class="d fl">${views.length}画面を利用</div></div>
+    <div class="kpi own"><div class="l">合計滞在時間</div><div class="v" style="font-size:22px">${uMs(totMs)}</div>
+      <div class="d fl">1セッション平均 ${uMs(avgSess)}</div></div>
+    <div class="kpi"><div class="l">接続元</div>
+      <div class="v" style="font-size:17px;font-family:ui-monospace,Menlo,monospace">${
+        now2&&now2.ip?esc(now2.ip):"—"}</div>
+      <div class="d fl">${now2&&now2.city?esc(now2.city)
+        :(now2&&now2.netfail?"この環境では取得できませんでした":"IPを取得中…")}</div></div>
+  </div>
+
+  <h2 class="sec"><span class="bar"></span>どの画面をよく見ているか<span class="note">開いた回数と滞在時間</span></h2>
+  <div class="card">
+    ${views.length?`<div class="uroll">${views.map(v=>`<div class="urow">
+      <span><b>${esc(UPJ[v.k]||v.k)}</b></span>
+      <span class="ub"><i style="width:${v.n/mxV*100}%"></i></span>
+      <span class="un">${v.n}回</span>
+      <span class="ut">${uMs(v.ms)}</span></div>`).join("")}</div>
+      <div class="src" style="margin-top:10px">滞在時間は、そのタブを開いてから別のタブに移るまでの実測です。
+      画面を放置したままの時間は30分で打ち切っています。</div>`
+    :`<div class="fl">まだ記録がありません。</div>`}
+  </div>
+
+  <h2 class="sec"><span class="bar"></span>日別のアクセス<span class="note">直近${last30.length}日</span></h2>
+  <div class="card">
+    ${last30.length?`<div class="ubar2">${last30.map(([d,v])=>
+      `<div class="b2 ${v.n?"":"z"}" style="height:${Math.max(v.n/mxD*100,3)}%"
+        title="${esc(d)} ／ ${v.n}回 ／ ${uMs(v.ms)}"></div>`).join("")}</div>
+      <div style="display:flex;justify-content:space-between;font-size:10px;color:var(--sub);margin-top:5px">
+        <span>${esc(last30[0][0])}</span><span>${esc(last30[last30.length-1][0])}</span></div>`
+    :`<div class="fl">まだ記録がありません。</div>`}
+  </div>
+
+  <div class="g2">
+    <div class="card"><h3 class="sub" style="margin-top:0">時間帯</h3>
+      <div class="ubar2">${u.hours.map((n,i)=>
+        `<div class="b2 ${n?"":"z"}" style="height:${Math.max(n/mxH*100,3)}%" title="${i}時台 ／ ${n}回"></div>`).join("")}</div>
+      <div style="display:flex;justify-content:space-between;font-size:10px;color:var(--sub);margin-top:5px">
+        <span>0時</span><span>12時</span><span>23時</span></div></div>
+    <div class="card"><h3 class="sub" style="margin-top:0">曜日</h3>
+      <div class="bars">${u.dow.map((n,i)=>`<div class="row">
+        <span class="lb">${DOW[i]}曜</span>
+        <span class="tr"><span class="fi" style="width:${n/mxW*100}%"></span></span>
+        <span class="va">${n}回</span></div>`).join("")}</div></div>
+  </div>
+
+  ${(deepQ.length||deepM.length)?`
+  <h2 class="sec"><span class="bar"></span>深掘りした対象<span class="note">明細を開いた回数</span></h2>
+  <div class="g2">
+    <div class="card"><h3 class="sub" style="margin-top:0">クエリ</h3>
+      ${deepQ.length?`<div class="uroll">${deepQ.map(([k,n])=>
+        `<div class="urow" style="grid-template-columns:1fr 62px">
+          <span style="overflow-wrap:anywhere">${esc(uLbl(k))}</span>
+          <span class="un">${n}回</span></div>`).join("")}</div>`
+        :`<div class="fl">まだありません</div>`}</div>
+    <div class="card"><h3 class="sub" style="margin-top:0">車種</h3>
+      ${deepM.length?`<div class="uroll">${deepM.map(([k,n])=>
+        `<div class="urow" style="grid-template-columns:1fr 62px">
+          <span>${esc(uLbl(k))}</span><span class="un">${n}回</span></div>`).join("")}</div>`
+        :`<div class="fl">まだありません</div>`}</div>
+  </div>`:""}
+
+  <h2 class="sec"><span class="bar"></span>利用履歴<span class="note">1行＝1回のアクセス／直近${Math.min(hist.length,60)}件</span></h2>
+  <div class="card" style="padding:0">
+    ${hist.length?`<div class="tw" style="max-height:none;border:0"><table id="uht">
+      <thead><tr><th class="c" style="width:62px">回数目</th>
+        <th style="width:132px">アクセス日時</th>
+        <th class="c" style="width:92px">滞在時間</th>
+        <th class="c" style="width:78px">見た画面</th>
+        <th style="width:130px">接続元IP</th>
+        <th style="width:150px">地域</th>
+        <th>回線・端末</th></tr></thead>
+      <tbody>${hist.slice(0,60).map((se,i)=>`<tr${i===0?' style="background:color-mix(in srgb,var(--accent2) 8%,transparent)"':''}>
+        <td class="c"><b>${se.no||"—"}</b></td>
+        <td><b>${uDt(se.start)}</b>${i===0?' <span class="pill p-ok">今回</span>':""}</td>
+        <td class="c">${se.end&&se.end>se.start?uMs(se.end-se.start):'<span class="fl">—</span>'}</td>
+        <td class="c">${se.pages||0}</td>
+        <td style="font-family:ui-monospace,Menlo,monospace;font-size:11.5px">${
+          se.ip?esc(se.ip):(se.netfail?'<span class="fl">取得できず</span>':'<span class="fl">取得中…</span>')}</td>
+        <td style="font-size:11.5px">${se.city?esc(se.city):'<span class="fl">—</span>'}${
+          se.cc?` <span class="tag">${esc(se.cc)}</span>`:""}</td>
+        <td style="font-size:11px;color:var(--sub);overflow-wrap:anywhere">${
+          [se.org,se.dev].filter(Boolean).map(esc).join(" ／ ")||"—"}</td>
+      </tr>`).join("")}</tbody></table></div>`
+    :`<div style="padding:22px" class="fl">まだ記録がありません。</div>`}
+  </div>
+  <div class="card" style="margin-top:12px">
+    <div class="ubtns" style="margin-top:0">
+      <span class="ubtn" id="uexp">利用履歴をJSONで書き出す</span>
+      <span class="ubtn warn" id="uclr">この端末の記録を消す</span>
+    </div>
+    <div class="src" style="margin-top:11px;line-height:1.9">
+    端末ID <code>${esc((u.vid||"").slice(0,8))}</code>（このブラウザに振った匿名の識別子）。
+    記録はこのブラウザの中だけに保存しており、消すと元に戻せません。<br>
+    <b>接続元IPについて：</b>静的サイトは自分のIPを知る手段を持たないため、
+    IPをそのまま返す公開API（ipapi.co）に1回だけ問い合わせています。
+    社内ネットワークやVPN経由の場合は出口側のIPになります。取得できない環境では空欄になります。</div>
+  </div>`;
+}
+
+const PAGES={overview:pageOverview,events:pageEvents,sns:pageSns,queries:pageQueries,churn:pageChurn,pages:pagePages,compete:pageCompete,sources:pageSources,signals:pageSignals,alerts:pageAlerts,guide:pageGuide,usage:pageUsage};
 let cur="overview";
 function animateBars(root){
   root.querySelectorAll(".bars .fi,.mini i").forEach(el=>{
@@ -3208,12 +3509,15 @@ function bindCharts(root){
 }
 function render(){
   const root=document.getElementById("root");
+  if(cur!==UCUR) uView(cur);
   root.innerHTML=`<div class="page on">${PAGES[cur]()}</div>`;
   document.querySelectorAll("#qt th.s").forEach(th=>th.onclick=()=>{
     if(sortK===th.dataset.k)sortDir*=-1;else{sortK=th.dataset.k;sortDir=1;}render();});
   document.querySelectorAll(".chip[data-c]").forEach(ch=>ch.onclick=()=>{catF=ch.dataset.c;render();});
   // 行の開閉：クリックした行を「同じ画面位置」に留めたまま開閉する（迷子防止）
   const toggleRow=id=>{
+    if(!openQ.has(id)){ const q=(D.queries||[]).find(x=>x.id===id);
+      if(q) uDeep("queries",id,(q.text||"").slice(0,50)); }
     const tr=document.querySelector(`tr.qrow[data-q="${cssq(id)}"]`);
     const tw=tr&&tr.closest(".tw");
     const keepIn = tw ? tr.offsetTop-tw.scrollTop : null;      // スクロール枠内での相対位置
@@ -3279,6 +3583,31 @@ function render(){
       document.querySelectorAll("#modalbd .mqi[data-jq]").forEach(e2=>e2.onclick=()=>jumpToQuery(e2.dataset.jq));
     }
   });
+
+  // 利用状況：書き出し・消去
+  const ux=document.getElementById("uexp");
+  if(ux) ux.onclick=()=>{
+    const blob=new Blob([JSON.stringify(uLoad(),null,2)],{type:"application/json"});
+    const a=document.createElement("a");
+    a.href=URL.createObjectURL(blob);
+    a.download="geo-board-usage-"+(D?D.generated_at:"log")+".json";
+    a.click(); setTimeout(()=>URL.revokeObjectURL(a.href),1500);
+    toast("<b>利用状況を書き出しました</b>",2400);
+  };
+  const uc=document.getElementById("uclr");
+  if(uc) uc.onclick=()=>{
+    openModal("この端末の記録を消しますか",
+      `<div class="why" style="margin:0 0 14px">ログイン履歴・閲覧回数・滞在時間をすべて削除します。
+       <b>元に戻せません。</b>先に「記録をJSONで書き出す」で控えを取っておくこともできます。</div>
+       <div class="ubtns"><span class="ubtn warn" id="uclr2">削除する</span>
+       <span class="ubtn" onclick="closeModal()">やめる</span></div>`);
+    const b2=document.getElementById("uclr2");
+    if(b2) b2.onclick=()=>{
+      try{ localStorage.removeItem(UKEY); }catch(e){}
+      UCUR=null; closeModal(); render();
+      toast("<b>この端末の記録を削除しました</b>",2600);
+    };
+  };
 
   // 用語の「?」→ 説明を開く
   root.querySelectorAll("[data-term]").forEach(el=>el.onclick=e=>{
@@ -3674,6 +4003,7 @@ function gateOpen(){
   setTimeout(()=>{ g.classList.remove("on"); g.style.opacity=""; },350);
   document.body.classList.remove("locked");
   window.__AUTHED=true;
+  uLogin();
   boot();
 }
 document.getElementById("logout").onclick=()=>{
@@ -3685,7 +4015,7 @@ document.getElementById("logout").onclick=()=>{
         id=document.getElementById("gid"), pw=document.getElementById("gpw"),
         rem=document.getElementById("grem"), err=document.getElementById("gerr");
   if(gateSaved()){ g.classList.remove("on"); document.body.classList.remove("locked");
-                   window.__AUTHED=true; boot(); return; }
+                   window.__AUTHED=true; uLogin(); boot(); return; }
   setTimeout(()=>id.focus(),260);
   const fail=m=>{
     err.textContent=m; err.classList.add("on"); err.classList.remove("shake");
