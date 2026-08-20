@@ -3233,9 +3233,11 @@ async function uNet(){
   try{
     const r=await fetch("https://ipapi.co/json/",{cache:"no-store"});
     if(r.ok){ const j=await r.json();
-      if(j&&j.ip&&!j.error) return {ip:j.ip,
-        city:[j.city,j.region].filter(Boolean).join(" "),
-        cc:j.country_code||"", org:j.org||j.asn||""}; }
+      if(j&&j.ip&&!j.error){
+        const parts=[j.city,j.region].filter(Boolean)
+          .filter((v,i,a)=>a.indexOf(v)===i);
+        return {ip:j.ip, city:parts.join(" "),
+          cc:j.country_code||"", org:j.org||j.asn||""}; } }
   }catch(e){}
   try{
     const r=await fetch("https://api.ipify.org?format=json",{cache:"no-store"});
@@ -3346,7 +3348,8 @@ function pageUsage(){
     <div class="kpi own"><div class="l">合計滞在時間</div><div class="v" style="font-size:22px">${uMs(totMs)}</div>
       <div class="d fl">1セッション平均 ${uMs(avgSess)}</div></div>
     <div class="kpi"><div class="l">接続元</div>
-      <div class="v" style="font-size:17px;font-family:ui-monospace,Menlo,monospace">${
+      <div class="v" style="font-family:ui-monospace,Menlo,monospace;overflow-wrap:anywhere;line-height:1.35;font-size:${
+        now2&&now2.ip&&now2.ip.length>22?"12px":now2&&now2.ip&&now2.ip.length>15?"15px":"18px"}">${
         now2&&now2.ip?esc(now2.ip):"—"}</div>
       <div class="d fl">${now2&&now2.city?esc(now2.city)
         :(now2&&now2.netfail?"この環境では取得できませんでした":"IPを取得中…")}</div></div>
@@ -3410,7 +3413,7 @@ function pageUsage(){
         <th style="width:132px">アクセス日時</th>
         <th class="c" style="width:92px">滞在時間</th>
         <th class="c" style="width:78px">見た画面</th>
-        <th style="width:130px">接続元IP</th>
+        <th style="width:172px">接続元IP</th>
         <th style="width:150px">地域</th>
         <th>回線・端末</th></tr></thead>
       <tbody>${hist.slice(0,60).map((se,i)=>`<tr${i===0?' style="background:color-mix(in srgb,var(--accent2) 8%,transparent)"':''}>
@@ -3418,7 +3421,7 @@ function pageUsage(){
         <td><b>${uDt(se.start)}</b>${i===0?' <span class="pill p-ok">今回</span>':""}</td>
         <td class="c">${se.end&&se.end>se.start?uMs(se.end-se.start):'<span class="fl">—</span>'}</td>
         <td class="c">${se.pages||0}</td>
-        <td style="font-family:ui-monospace,Menlo,monospace;font-size:11.5px">${
+        <td style="font-family:ui-monospace,Menlo,monospace;font-size:11px;overflow-wrap:anywhere">${
           se.ip?esc(se.ip):(se.netfail?'<span class="fl">取得できず</span>':'<span class="fl">取得中…</span>')}</td>
         <td style="font-size:11.5px">${se.city?esc(se.city):'<span class="fl">—</span>'}${
           se.cc?` <span class="tag">${esc(se.cc)}</span>`:""}</td>
