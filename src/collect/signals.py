@@ -48,33 +48,100 @@ _BOT_RE = re.compile("|".join(re.escape(b[0]) for b in AI_BOTS), re.I)
 
 
 # ---------------------------------------------------------------- GA4
-def ga4_sessions(day: str) -> dict:
-    """AIアシスタント経由のセッション数をサービス別に返す。"""
-    if demo_mode() or not env("GA4_PROPERTY_ID"):
-        rng = _rng(["ga4", day])
-        base = {"chatgpt": 1180, "gemini": 640, "perplexity": 210,
-                "copilot": 95, "claude": 60, "grok": 18, "deepseek": 7}
-        return {k: max(0, int(v * rng.uniform(0.85, 1.15))) for k, v in base.items()}
+# source文字列 → サービス名の判定。ドメイン完全一致ではなくキーワードで拾う。
+# 実測では "openai" "copilot.com" のような表記が主流で、ドメイン一致だけだと大半を取りこぼす（実測の6割は "openai"）。
+_SVC_KEYS = [
+    ("chatgpt", ("chatgpt", "openai")),
+    ("gemini", ("gemini.google.com",)),        # 社内系 *.gemini.oneoffice.jp を誤検知しないためFQDNで
+    ("copilot", ("copilot",)),
+    ("grok", ("grok",)),
+    ("deepseek", ("deepseek",)),
+    ("claude", ("claude",)),
+    ("perplexity", ("perplexity",)),
+]
+# 社内ツール・検証環境の除外（toyota.jp実測で確認済みのノイズ）
+_SVC_EXCLUDE = ("toyotaconnected", "azurewebsites", "oneoffice.jp", "uhw.jp", "ngrok")
 
-    from google.analytics.data_v1beta import BetaAnalyticsDataClient
-    from google.analytics.data_v1beta.types import (DateRange, Dimension,
-                                                    Metric, RunReportRequest)
-    client = BetaAnalyticsDataClient()
-    req = RunReportRequest(
-        property=f"properties/{env('GA4_PROPERTY_ID')}",
-        dimensions=[Dimension(name="sessionSource")],
-        metrics=[Metric(name="sessions")],
-        date_ranges=[DateRange(start_date=day, end_date=day)],
-        limit=500,
-    )
-    rows = client.run_report(req).rows
+
+def _classify_sources(pairs) -> dict:
+    """[(source, sessions)] をサービス別に集計する。"""
     out = Counter()
-    for r in rows:
-        src = r.dimension_values[0].value.lower()
-        for svc, doms in AI_REFERRERS.items():
-            if any(d in src for d in doms):
-                out[svc] += int(r.metric_values[0].value)
-    return dict(out)
+    for src, n in pairs:
+        s = (src or "").lower()
+        if any(x in s for x in _SVC_EXCLUDE):
+            continue
+        for svc, keys in _SVC_KEYS:
+            if any(k in s for k in keys):
+                out[svc] += int(n)
+                break
+    return {svc: out.get(svc, 0) for svc, _ in _SVC_KEYS}
+
+
+def _ga4_target_day(day: str) -> str:
+    """集計対象日。実行日当日は集計途中なので前日実績を使う（画面の注記と一致）。"""
+    from datetime import date, timedelta
+    y, m, dd = map(int, day.split("-"))
+    return (date(y, m, dd) - timedelta(days=1)).isoformat()
+
+
+def ga4_sessions(day: str) -> dict:
+    """AIアシスタント経由のセッション数をサービス別に返す（day の前日実績）。
+
+    優先順位: ①GA4 Data API ②Windsor.ai（WINDSOR_API_KEY） ③data/ga4_daily.json ④demo値
+    """
+    t = _ga4_target_day(day)
+
+    # ---- ① GA4 Data API（サービスアカウント） ----
+    if not demo_mode() and env("GA4_PROPERTY_ID"):
+        from google.analytics.data_v1beta import BetaAnalyticsDataClient
+        from google.analytics.data_v1beta.types import (DateRange, Dimension,
+                                                        Metric, RunReportRequest)
+        client = BetaAnalyticsDataClient()
+        req = RunReportRequest(
+            property=f"properties/{env('GA4_PROPERTY_ID')}",
+            dimensions=[Dimension(name="sessionSource")],
+            metrics=[Metric(name="sessions")],
+            date_ranges=[DateRange(start_date=t, end_date=t)],
+            limit=1000,
+        )
+        rows = client.run_report(req).rows
+        return _classify_sources(
+            (r.dimension_values[0].value, r.metric_values[0].value) for r in rows)
+
+    # ---- ② Windsor.ai（GA4コネクタ・無料枠で毎日取れる） ----
+    if not demo_mode() and env("WINDSOR_API_KEY"):
+        import requests
+        r = requests.get(
+            "https://connectors.windsor.ai/googleanalytics4",
+            params={"api_key": env("WINDSOR_API_KEY"),
+                    "date_from": t, "date_to": t,
+                    "fields": "source,sessions",
+                    "select_accounts": env("GA4_PROPERTY_ID") or "324699885",
+                    "_renderer": "json"},
+            timeout=60)
+        r.raise_for_status()
+        body = r.json()
+        rows = body.get("data") or body.get("result") or []
+        return _classify_sources((x.get("source"), x.get("sessions", 0)) for x in rows)
+
+    # ---- ③ 手動更新ファイル（Claudeセッションが日次で置く実測） ----
+    from common import ROOT
+    from pathlib import Path as _P
+    import json as _json
+    f = ROOT / "data" / "ga4_daily.json"
+    if f.exists():
+        try:
+            rec = _json.loads(f.read_text(encoding="utf-8")).get(t)
+            if rec:
+                return {k: int(v) for k, v in rec.items() if not k.startswith("_")}
+        except Exception:
+            pass
+
+    # ---- ④ demo値（上のどれも無いときだけ） ----
+    rng = _rng(["ga4", day])
+    base = {"chatgpt": 1180, "gemini": 640, "perplexity": 210,
+            "copilot": 95, "claude": 60, "grok": 18, "deepseek": 7}
+    return {k: max(0, int(v * rng.uniform(0.85, 1.15))) for k, v in base.items()}
 
 
 # ---------------------------------------------------------------- AIボット
