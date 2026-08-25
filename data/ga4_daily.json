@@ -1,0 +1,655 @@
+{
+"_meta": {
+"source": "GA4 property 324699885 (toyota.jp) via Windsor.ai",
+"fetched": "2026-08-25",
+"note": "source contains: chatgpt/openai→chatgpt, gemini.google.com→gemini, copilot(社内除外)→copilot, claude→claude, perplexity→perplexity。grok/deepseekは期間内実測0。値は各日のセッション実数。"
+},
+"2026-06-14": {
+"chatgpt": 526,
+"gemini": 6,
+"perplexity": 11,
+"copilot": 24,
+"claude": 0,
+"grok": 0,
+"deepseek": 0
+},
+"2026-06-15": {
+"chatgpt": 516,
+"gemini": 11,
+"perplexity": 6,
+"copilot": 25,
+"claude": 3,
+"grok": 0,
+"deepseek": 0
+},
+"2026-06-16": {
+"chatgpt": 421,
+"gemini": 11,
+"perplexity": 8,
+"copilot": 23,
+"claude": 2,
+"grok": 0,
+"deepseek": 0
+},
+"2026-06-17": {
+"chatgpt": 489,
+"gemini": 17,
+"perplexity": 8,
+"copilot": 37,
+"claude": 0,
+"grok": 0,
+"deepseek": 0
+},
+"2026-06-18": {
+"chatgpt": 497,
+"gemini": 13,
+"perplexity": 11,
+"copilot": 27,
+"claude": 1,
+"grok": 0,
+"deepseek": 0
+},
+"2026-06-19": {
+"chatgpt": 421,
+"gemini": 15,
+"perplexity": 2,
+"copilot": 16,
+"claude": 0,
+"grok": 0,
+"deepseek": 0
+},
+"2026-06-20": {
+"chatgpt": 502,
+"gemini": 16,
+"perplexity": 4,
+"copilot": 36,
+"claude": 1,
+"grok": 0,
+"deepseek": 0
+},
+"2026-06-21": {
+"chatgpt": 556,
+"gemini": 10,
+"perplexity": 4,
+"copilot": 32,
+"claude": 2,
+"grok": 0,
+"deepseek": 0
+},
+"2026-06-22": {
+"chatgpt": 477,
+"gemini": 15,
+"perplexity": 10,
+"copilot": 33,
+"claude": 4,
+"grok": 0,
+"deepseek": 0
+},
+"2026-06-23": {
+"chatgpt": 415,
+"gemini": 25,
+"perplexity": 9,
+"copilot": 32,
+"claude": 0,
+"grok": 0,
+"deepseek": 0
+},
+"2026-06-24": {
+"chatgpt": 523,
+"gemini": 14,
+"perplexity": 4,
+"copilot": 16,
+"claude": 1,
+"grok": 0,
+"deepseek": 0
+},
+"2026-06-25": {
+"chatgpt": 548,
+"gemini": 25,
+"perplexity": 5,
+"copilot": 25,
+"claude": 3,
+"grok": 0,
+"deepseek": 0
+},
+"2026-06-26": {
+"chatgpt": 492,
+"gemini": 15,
+"perplexity": 8,
+"copilot": 24,
+"claude": 3,
+"grok": 0,
+"deepseek": 0
+},
+"2026-06-27": {
+"chatgpt": 575,
+"gemini": 14,
+"perplexity": 7,
+"copilot": 28,
+"claude": 5,
+"grok": 0,
+"deepseek": 0
+},
+"2026-06-28": {
+"chatgpt": 589,
+"gemini": 10,
+"perplexity": 8,
+"copilot": 24,
+"claude": 0,
+"grok": 0,
+"deepseek": 0
+},
+"2026-06-29": {
+"chatgpt": 547,
+"gemini": 21,
+"perplexity": 4,
+"copilot": 26,
+"claude": 5,
+"grok": 0,
+"deepseek": 0
+},
+"2026-06-30": {
+"chatgpt": 503,
+"gemini": 14,
+"perplexity": 7,
+"copilot": 30,
+"claude": 0,
+"grok": 0,
+"deepseek": 0
+},
+"2026-07-01": {
+"chatgpt": 524,
+"gemini": 18,
+"perplexity": 6,
+"copilot": 30,
+"claude": 3,
+"grok": 0,
+"deepseek": 0
+},
+"2026-07-02": {
+"chatgpt": 546,
+"gemini": 26,
+"perplexity": 10,
+"copilot": 32,
+"claude": 1,
+"grok": 0,
+"deepseek": 0
+},
+"2026-07-03": {
+"chatgpt": 496,
+"gemini": 20,
+"perplexity": 12,
+"copilot": 22,
+"claude": 0,
+"grok": 0,
+"deepseek": 0
+},
+"2026-07-04": {
+"chatgpt": 590,
+"gemini": 15,
+"perplexity": 9,
+"copilot": 20,
+"claude": 2,
+"grok": 0,
+"deepseek": 0
+},
+"2026-07-05": {
+"chatgpt": 676,
+"gemini": 19,
+"perplexity": 8,
+"copilot": 23,
+"claude": 0,
+"grok": 0,
+"deepseek": 0
+},
+"2026-07-06": {
+"chatgpt": 574,
+"gemini": 30,
+"perplexity": 4,
+"copilot": 23,
+"claude": 1,
+"grok": 0,
+"deepseek": 0
+},
+"2026-07-07": {
+"chatgpt": 553,
+"gemini": 16,
+"perplexity": 6,
+"copilot": 18,
+"claude": 0,
+"grok": 0,
+"deepseek": 0
+},
+"2026-07-08": {
+"chatgpt": 627,
+"gemini": 29,
+"perplexity": 3,
+"copilot": 19,
+"claude": 4,
+"grok": 0,
+"deepseek": 0
+},
+"2026-07-09": {
+"chatgpt": 665,
+"gemini": 17,
+"perplexity": 7,
+"copilot": 9,
+"claude": 2,
+"grok": 0,
+"deepseek": 0
+},
+"2026-07-10": {
+"chatgpt": 758,
+"gemini": 25,
+"perplexity": 4,
+"copilot": 23,
+"claude": 3,
+"grok": 0,
+"deepseek": 0
+},
+"2026-07-11": {
+"chatgpt": 836,
+"gemini": 25,
+"perplexity": 6,
+"copilot": 24,
+"claude": 1,
+"grok": 0,
+"deepseek": 0
+},
+"2026-07-12": {
+"chatgpt": 1017,
+"gemini": 15,
+"perplexity": 3,
+"copilot": 20,
+"claude": 1,
+"grok": 0,
+"deepseek": 0
+},
+"2026-07-13": {
+"chatgpt": 822,
+"gemini": 27,
+"perplexity": 2,
+"copilot": 19,
+"claude": 4,
+"grok": 0,
+"deepseek": 0
+},
+"2026-07-14": {
+"chatgpt": 654,
+"gemini": 22,
+"perplexity": 7,
+"copilot": 26,
+"claude": 1,
+"grok": 0,
+"deepseek": 0
+},
+"2026-07-15": {
+"chatgpt": 747,
+"gemini": 25,
+"perplexity": 10,
+"copilot": 20,
+"claude": 0,
+"grok": 0,
+"deepseek": 0
+},
+"2026-07-16": {
+"chatgpt": 789,
+"gemini": 28,
+"perplexity": 4,
+"copilot": 9,
+"claude": 0,
+"grok": 0,
+"deepseek": 0
+},
+"2026-07-17": {
+"chatgpt": 718,
+"gemini": 22,
+"perplexity": 1,
+"copilot": 11,
+"claude": 0,
+"grok": 0,
+"deepseek": 0
+},
+"2026-07-18": {
+"chatgpt": 874,
+"gemini": 12,
+"perplexity": 4,
+"copilot": 17,
+"claude": 0,
+"grok": 0,
+"deepseek": 0
+},
+"2026-07-19": {
+"chatgpt": 1017,
+"gemini": 16,
+"perplexity": 8,
+"copilot": 22,
+"claude": 0,
+"grok": 0,
+"deepseek": 0
+},
+"2026-07-20": {
+"chatgpt": 966,
+"gemini": 15,
+"perplexity": 6,
+"copilot": 22,
+"claude": 1,
+"grok": 0,
+"deepseek": 0
+},
+"2026-07-21": {
+"chatgpt": 841,
+"gemini": 25,
+"perplexity": 9,
+"copilot": 15,
+"claude": 4,
+"grok": 0,
+"deepseek": 0
+},
+"2026-07-22": {
+"chatgpt": 848,
+"gemini": 23,
+"perplexity": 9,
+"copilot": 18,
+"claude": 2,
+"grok": 0,
+"deepseek": 0
+},
+"2026-07-23": {
+"chatgpt": 887,
+"gemini": 23,
+"perplexity": 2,
+"copilot": 17,
+"claude": 2,
+"grok": 0,
+"deepseek": 0
+},
+"2026-07-24": {
+"chatgpt": 861,
+"gemini": 32,
+"perplexity": 7,
+"copilot": 16,
+"claude": 2,
+"grok": 0,
+"deepseek": 0
+},
+"2026-07-25": {
+"chatgpt": 1077,
+"gemini": 14,
+"perplexity": 7,
+"copilot": 14,
+"claude": 4,
+"grok": 0,
+"deepseek": 0
+},
+"2026-07-26": {
+"chatgpt": 1076,
+"gemini": 14,
+"perplexity": 1,
+"copilot": 23,
+"claude": 0,
+"grok": 0,
+"deepseek": 0
+},
+"2026-07-27": {
+"chatgpt": 965,
+"gemini": 30,
+"perplexity": 5,
+"copilot": 25,
+"claude": 6,
+"grok": 0,
+"deepseek": 0
+},
+"2026-07-28": {
+"chatgpt": 812,
+"gemini": 27,
+"perplexity": 10,
+"copilot": 13,
+"claude": 2,
+"grok": 0,
+"deepseek": 0
+},
+"2026-07-29": {
+"chatgpt": 771,
+"gemini": 28,
+"perplexity": 4,
+"copilot": 12,
+"claude": 4,
+"grok": 0,
+"deepseek": 0
+},
+"2026-07-30": {
+"chatgpt": 790,
+"gemini": 29,
+"perplexity": 1,
+"copilot": 14,
+"claude": 2,
+"grok": 0,
+"deepseek": 0
+},
+"2026-07-31": {
+"chatgpt": 715,
+"gemini": 28,
+"perplexity": 5,
+"copilot": 13,
+"claude": 0,
+"grok": 0,
+"deepseek": 0
+},
+"2026-08-01": {
+"chatgpt": 818,
+"gemini": 8,
+"perplexity": 7,
+"copilot": 18,
+"claude": 1,
+"grok": 0,
+"deepseek": 0
+},
+"2026-08-02": {
+"chatgpt": 814,
+"gemini": 12,
+"perplexity": 8,
+"copilot": 33,
+"claude": 0,
+"grok": 0,
+"deepseek": 0
+},
+"2026-08-03": {
+"chatgpt": 706,
+"gemini": 20,
+"perplexity": 2,
+"copilot": 22,
+"claude": 1,
+"grok": 0,
+"deepseek": 0
+},
+"2026-08-04": {
+"chatgpt": 613,
+"gemini": 23,
+"perplexity": 9,
+"copilot": 9,
+"claude": 0,
+"grok": 0,
+"deepseek": 0
+},
+"2026-08-05": {
+"chatgpt": 759,
+"gemini": 17,
+"perplexity": 4,
+"copilot": 18,
+"claude": 5,
+"grok": 0,
+"deepseek": 0
+},
+"2026-08-06": {
+"chatgpt": 826,
+"gemini": 25,
+"perplexity": 4,
+"copilot": 17,
+"claude": 1,
+"grok": 0,
+"deepseek": 0
+},
+"2026-08-07": {
+"chatgpt": 851,
+"gemini": 13,
+"perplexity": 5,
+"copilot": 11,
+"claude": 8,
+"grok": 0,
+"deepseek": 0
+},
+"2026-08-08": {
+"chatgpt": 1090,
+"gemini": 16,
+"perplexity": 0,
+"copilot": 15,
+"claude": 2,
+"grok": 0,
+"deepseek": 0
+},
+"2026-08-09": {
+"chatgpt": 1232,
+"gemini": 20,
+"perplexity": 5,
+"copilot": 32,
+"claude": 1,
+"grok": 0,
+"deepseek": 0
+},
+"2026-08-10": {
+"chatgpt": 982,
+"gemini": 17,
+"perplexity": 0,
+"copilot": 18,
+"claude": 2,
+"grok": 0,
+"deepseek": 0
+},
+"2026-08-11": {
+"chatgpt": 1106,
+"gemini": 16,
+"perplexity": 5,
+"copilot": 25,
+"claude": 1,
+"grok": 0,
+"deepseek": 0
+},
+"2026-08-12": {
+"chatgpt": 1151,
+"gemini": 17,
+"perplexity": 5,
+"copilot": 19,
+"claude": 1,
+"grok": 0,
+"deepseek": 0
+},
+"2026-08-13": {
+"chatgpt": 1188,
+"gemini": 21,
+"perplexity": 5,
+"copilot": 15,
+"claude": 1,
+"grok": 0,
+"deepseek": 0
+},
+"2026-08-14": {
+"chatgpt": 1208,
+"gemini": 14,
+"perplexity": 2,
+"copilot": 18,
+"claude": 0,
+"grok": 0,
+"deepseek": 0
+},
+"2026-08-15": {
+"chatgpt": 1218,
+"gemini": 9,
+"perplexity": 1,
+"copilot": 13,
+"claude": 0,
+"grok": 0,
+"deepseek": 0
+},
+"2026-08-16": {
+"chatgpt": 1382,
+"gemini": 13,
+"perplexity": 2,
+"copilot": 20,
+"claude": 2,
+"grok": 0,
+"deepseek": 0
+},
+"2026-08-17": {
+"chatgpt": 1318,
+"gemini": 23,
+"perplexity": 9,
+"copilot": 23,
+"claude": 2,
+"grok": 0,
+"deepseek": 0
+},
+"2026-08-18": {
+"chatgpt": 1348,
+"gemini": 29,
+"perplexity": 12,
+"copilot": 20,
+"claude": 3,
+"grok": 0,
+"deepseek": 0
+},
+"2026-08-19": {
+"chatgpt": 1508,
+"gemini": 17,
+"perplexity": 4,
+"copilot": 13,
+"claude": 2,
+"grok": 0,
+"deepseek": 0
+},
+"2026-08-20": {
+"chatgpt": 1384,
+"gemini": 17,
+"perplexity": 0,
+"copilot": 7,
+"claude": 3,
+"grok": 0,
+"deepseek": 0
+},
+"2026-08-21": {
+"chatgpt": 1435,
+"gemini": 24,
+"perplexity": 3,
+"copilot": 13,
+"claude": 3,
+"grok": 0,
+"deepseek": 0
+},
+"2026-08-22": {
+"chatgpt": 1574,
+"gemini": 18,
+"perplexity": 3,
+"copilot": 29,
+"claude": 0,
+"grok": 0,
+"deepseek": 0
+},
+"2026-08-23": {
+"chatgpt": 1800,
+"gemini": 16,
+"perplexity": 4,
+"copilot": 15,
+"claude": 1,
+"grok": 0,
+"deepseek": 0
+},
+"2026-08-24": {
+"chatgpt": 1591,
+"gemini": 35,
+"perplexity": 9,
+"copilot": 12,
+"claude": 3,
+"grok": 0,
+"deepseek": 0
+}
+}
