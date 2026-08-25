@@ -40,10 +40,14 @@ UI・スコア・差分・アラートまで全部そのまま確認できる。
 |---|---|---|---|
 | `DATAFORSEO_LOGIN` / `DATAFORSEO_PASSWORD` | プロンプト実行と引用URL取得（本体） | [dataforseo.com](https://dataforseo.com/) でアカウント作成 → API Access | $0.0006/task + LLM実費。最低入金$50 |
 | `GA4_PROPERTY_ID` | AI経由セッション | GA4 管理 → プロパティ設定 | 無料 |
+| `WINDSOR_API_KEY` | AI経由セッション（GA4の代替経路・サービスアカウント不要） | [windsor.ai](https://windsor.ai/) → Settings → API Key | 無料枠内 |
 | `GOOGLE_APPLICATION_CREDENTIALS_JSON` | GA4 Data API 認証 | GCP → サービスアカウント → JSONキー → GA4に閲覧者権限付与 | 無料 |
 | `YOUTUBE_API_KEY` / `YOUTUBE_CHANNEL_ID` | 自社チャンネル指標 | GCP → APIとサービス → YouTube Data API v3 | 無料（10,000ユニット/日） |
 | `ACCESS_LOG_PATH` | AIボット到達（変数で指定） | 自社サーバー/CDNのアクセスログ | 無料 |
 | `SLACK_WEBHOOK_URL` | 日次通知 | Slack App → Incoming Webhooks | 無料 |
+
+> AI経由セッション（GA4）は ①GA4 Data API → ②Windsor.ai（`WINDSOR_API_KEY`）→ ③`data/ga4_daily.json`（手動/Claude日次更新の実測）→ ④demo値 の順で解決される。
+> 2026-08-25 に 06-14〜08-24 の実測を `data/ga4_daily.json` へ投入済み（表示はスナップショット日の前日実績）。
 
 > **課金が発生するのは DataForSEO だけ**。500プロンプト × 4サーフェス × 日次で月 $50〜300 の想定。
 > 最初は `config/settings.yaml` の `tier_schedule.core.max_prompts` を小さくして様子を見ること。
