@@ -24,6 +24,7 @@ on:
       - "config/**"
       - "prompts/**"
       - "!prompts/registry.yaml"   # ← 収穫botが毎週書き換えるので対象外
+      - "data/ga4_daily.json"      # ← GA4実測の日次更新（Claude定例タスクが置く）で画面を作り直す
       - ".github/workflows/**"
 
 permissions:
