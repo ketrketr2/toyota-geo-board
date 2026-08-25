@@ -11,6 +11,44 @@ from common import (DATA, DOCS, days_ago, list_snapshots, load, read_json,
 
 HISTORY_DAYS = 60
 
+# ---------------------------------------------------------------- GA4実測レイヤー
+# data/ga4_daily.json …… GA4（Windsor.ai経由）で取った日別・サービス別のAI経由セッション実数。
+# スナップショット内の ga4_ai_sessions がデモ値だった期間を、表示時に実測へ差し替える。
+# 対応表示日: スナップショット日 D には「D-1（前日実績）」の値を使う（画面の注記と一致させる）。
+_GA4_REAL = None
+
+
+def _ga4_real(snap_day: str) -> dict | None:
+    """スナップショット日 snap_day に表示すべき実測値（前日ぶん）を返す。無ければ None。"""
+    global _GA4_REAL
+    if _GA4_REAL is None:
+        _GA4_REAL = read_json(DATA / "ga4_daily.json", default={}) or {}
+    return _GA4_REAL.get(days_ago(snap_day, 1))
+
+
+def _fixed_diff(day: str, dif: dict) -> dict:
+    """スナップショットに焼き込まれた diff のうち、ai_sessions だけ実測系列で再計算する。"""
+    if not _ga4_real(day):
+        return dif
+    try:
+        import diff as _diff
+        mt = dict(dif.get("metrics", {}))
+        mt["ai_sessions"] = _diff.compare(day, _diff.ga4_fixed_picker, "ai_sessions")
+        return {**dif, "metrics": mt}
+    except Exception:
+        return dif
+
+
+def _fixed_signals(snap_day: str, sig: dict) -> dict:
+    real = _ga4_real(snap_day)
+    if not real:
+        return sig
+    out = dict(sig)
+    out["ga4_ai_sessions"] = real
+    out["ga4_source"] = "ga4_real"
+    return out
+
+
 
 def _short_path(url: str) -> str:
     """表示用にパスだけを取り出す（長い場合は省略）。"""
@@ -353,9 +391,10 @@ def build_site(day: str) -> None:
         s = read_json(snapshot_path(d))
         if not s:
             continue
+        _sg = _fixed_signals(d, s["signals"])
         hist.append({
             "date": d, "mode": s.get("mode", "demo"), "score": s["score"], **s["factors"],
-            "ai_sessions": sum(s["signals"]["ga4_ai_sessions"].values()),
+            "ai_sessions": sum(_sg["ga4_ai_sessions"].values()),
             "crawler_hits": sum(s["signals"]["crawler_hits"].values()),
             "sov_own": (s["brands"].get(own) or {}).get("sov"),
             "brands": {bid: {"sov": (bv or {}).get("sov"),
@@ -587,7 +626,7 @@ def build_site(day: str) -> None:
         "factors": snap["factors"],
         "weights": cfg["score_weights"],
         "counts": {**snap["counts"], **_citation_counts(snap, own)},
-        "diff": snap.get("diff", {}),
+        "diff": _fixed_diff(day, snap.get("diff", {})),
         "comment": snap.get("comment", {}),
         "brands": [{"id": b, "label": labels[b], **v} for b, v in snap["brands"].items()],
         "platforms": snap["platforms"],
@@ -605,7 +644,7 @@ def build_site(day: str) -> None:
         "cohort": snap.get("cohort", {}),
         "churn": _churn_block(day, rmeta),
         "platform_audit": _platform_audit(day),
-        "signals": snap["signals"],
+        "signals": _fixed_signals(day, snap["signals"]),
         "history": hist,
         "newmodels": _newmodels(day, query_rows),
         "models": _model_status(day, query_rows),

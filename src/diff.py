@@ -154,6 +154,25 @@ def _coh(s: dict) -> dict:
     return s.get("cohort") or {"score": s["score"], "factors": s["factors"]}
 
 
+# ---- GA4実測レイヤー（build_site と同じ規約: スナップショット日Dには前日D-1の実測を使う） ----
+_GA4_REAL_CACHE = None
+
+
+def ga4_fixed_picker(s: dict) -> float:
+    """ai_sessions の picker。data/ga4_daily.json に実測があればそちらを使う。"""
+    global _GA4_REAL_CACHE
+    if _GA4_REAL_CACHE is None:
+        from common import DATA, read_json
+        _GA4_REAL_CACHE = read_json(DATA / "ga4_daily.json", default={}) or {}
+    day = s.get("date", "")
+    if day:
+        from common import days_ago
+        rec = _GA4_REAL_CACHE.get(days_ago(day, 1))
+        if rec:
+            return sum(v for k, v in rec.items() if not str(k).startswith("_"))
+    return sum(s["signals"]["ga4_ai_sessions"].values())
+
+
 def build(day: str) -> dict:
     """ダッシュボードが必要とする差分情報を一括で作る。"""
     metrics = {
@@ -164,7 +183,7 @@ def build(day: str) -> dict:
         "earned_citation": lambda s: _coh(s)["factors"]["earned_citation"],
         "sentiment": lambda s: _coh(s)["factors"]["sentiment"],
         "share_of_voice": lambda s: _coh(s)["factors"]["share_of_voice"],
-        "ai_sessions": lambda s: sum(s["signals"]["ga4_ai_sessions"].values()),
+        "ai_sessions": ga4_fixed_picker,
         "crawler_hits": lambda s: sum(s["signals"]["crawler_hits"].values()),
     }
     return {
