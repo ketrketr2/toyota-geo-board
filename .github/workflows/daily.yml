@@ -6,6 +6,7 @@ name: daily-geo-board
 on:
   schedule:
     - cron: "17 22 * * *"
+    - cron: "35 23 * * *"   # 第2便(08:35 JST)。GitHubのcron遅延・ドロップ対策。差分なしなら何もコミットされない
   workflow_dispatch:          # 手動実行も可能にしておく
     inputs:
       harvest:
