@@ -96,6 +96,7 @@ jobs:
           DATAFORSEO_LOGIN:    ${{ secrets.DATAFORSEO_LOGIN || vars.DATAFORSEO_LOGIN || secrets.DATAFORCED_LOGIN }}
           DATAFORSEO_PASSWORD: ${{ secrets.DATAFORSEO_PASSWORD }}
           GA4_PROPERTY_ID:     ${{ secrets.GA4_PROPERTY_ID }}
+          WINDSOR_API_KEY:     ${{ secrets.WINDSOR_API_KEY }}
           GOOGLE_APPLICATION_CREDENTIALS_JSON: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS_JSON }}
           YOUTUBE_API_KEY:     ${{ secrets.YOUTUBE_API_KEY }}
           YOUTUBE_CHANNEL_ID:  ${{ secrets.YOUTUBE_CHANNEL_ID }}
