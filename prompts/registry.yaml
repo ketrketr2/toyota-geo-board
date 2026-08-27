@@ -1,8 +1,8 @@
 # 自動生成 + 手編集可。IDは絶対に振り直さないこと。
 # tier: core=日次 / strategic=週次 / longtail=月次 / retired=停止
 version: 2
-updated_at: '2026-08-24'
-next_seq: 939
+updated_at: '2026-08-27'
+next_seq: 944
 prompts:
 - id: p001
   text: ミニバンのおすすめを教えてください。2歳の子供がいて、もう1人産まれる予定です。今はプリウスですが、チャイルドシートの乗せ下ろしがきつく、2人乗せると狭く感じます。予算は400万円までです。
@@ -19371,3 +19371,48 @@ prompts:
   demand_history:
   - - '2026-08-24'
     - 9.9
+- id: p939
+  text: 軽自動車から普通車に乗り換えたいのですが、維持費があまり変わらず室内が広いおすすめはありますか？子供が生まれて軽では狭くなってきました。
+  category: purchase
+  driver: cost
+  brand: false
+  source: manual_roomy_v6
+  tier: core
+  added_on: '2026-08-27'
+  tier_since: '2026-08-27'
+- id: p940
+  text: 軽のスーパーハイトワゴンから小さめの普通車に買い替えるなら、何が候補になりますか？スライドドアは必須です。
+  category: purchase
+  driver: urban
+  brand: false
+  source: manual_roomy_v6
+  tier: core
+  added_on: '2026-08-27'
+  tier_since: '2026-08-27'
+- id: p941
+  text: トヨタのルーミーとスズキのソリオはどちらが買いですか？家族4人・街乗り中心で迷っています。
+  category: brand
+  driver: urban
+  brand: true
+  source: manual_roomy_v6
+  tier: core
+  added_on: '2026-08-27'
+  tier_since: '2026-08-27'
+- id: p942
+  text: ルーミーの2026年の一部改良では何が変わりましたか？いま買うのと待つのとどちらがいいですか？
+  category: brand
+  driver: safety
+  brand: true
+  source: manual_roomy_v6
+  tier: core
+  added_on: '2026-08-27'
+  tier_since: '2026-08-27'
+- id: p943
+  text: トヨタ ルーミーは「遅い」という口コミを見ますが、家族の街乗りで実際に困りますか？オーナーの評判を教えてください。
+  category: brand
+  driver: urban
+  brand: true
+  source: manual_roomy_v6
+  tier: core
+  added_on: '2026-08-27'
+  tier_since: '2026-08-27'
