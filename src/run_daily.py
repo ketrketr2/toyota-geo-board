@@ -34,6 +34,10 @@ def _expected_calls(tier: str = "core", day: str | None = None) -> int:
                for s in surfaces_for(day or _t()))
 
 
+class SnapshotRejected(RuntimeError):
+    """健全性チェックに落ちた日。ボードは直前の正常日を出し続ける。"""
+
+
 def run_one(day: str, quiet: bool = False) -> dict:
     if not quiet:
         print(f"[{day}] collecting…")
@@ -77,6 +81,25 @@ def run_one(day: str, quiet: bool = False) -> dict:
     snap = analyze.aggregate(day, responses, sig)
     # その日いくら使ったかを必ず残す。予算切れは静かに起きて、静かに全部止まるため。
     snap["api_cost"] = llm.spent()
+
+    # ---- 中身の健全性チェック（件数ではなく分布を見る）----
+    # 回答が正常に返っていても、引用の分類が壊れることがある（2026-08-28 の
+    # google.com/goto 事故）。壊れた日を本番に置くと、ボードが「実力が落ちた」
+    # ように見える嘘の数字を出す。古いが正しい方を優先し、隔離して終わる。
+    import sentinel
+    verdict = sentinel.inspect(snap, day)
+    if not verdict["ok"]:
+        from common import ROOT
+        report = sentinel.format_report(day, verdict)
+        (ROOT / "data").mkdir(exist_ok=True)
+        (ROOT / "data" / "last_error.txt").write_text(report, encoding="utf-8")
+        # 原因を追えるように現物は残す。ただし本番の snapshots には置かない。
+        qdir = ROOT / "data" / "quarantine"
+        qdir.mkdir(parents=True, exist_ok=True)
+        write_json(qdir / f"{day}.json", {**snap, "quarantined": verdict}, compact=True)
+        print(report)
+        raise SnapshotRejected(report)
+
     write_json(snapshot_path(day), snap, compact=True)
     if not quiet and snap["api_cost"]["calls"]:
         print(f"  DataForSEO 実費 ${snap['api_cost']['usd']:.4f} / {snap['api_cost']['calls']}回")
@@ -222,7 +245,19 @@ def main() -> None:
         print(f"backfilled {a.backfill + 1} days")
 
     if not a.backfill:
-        run_one(a.date)
+        try:
+            run_one(a.date)
+        except SnapshotRejected:
+            # 今日の分は捨てるが、ボードは止めない。直前の正常な日で作り直して
+            # 「最終更新はこの日」と出し続ける。無人で回るので、黙って古いまま
+            # 放置せず run は赤にして通知を出す。
+            from common import list_snapshots
+            last = (list_snapshots() or [None])[-1]
+            if last:
+                print(f"直前の正常日 {last} でサイトを作り直します（最終更新を維持）")
+                finalize(last)
+            sys.exit("本日のデータは健全性チェックに落ちたため公開しませんでした。"
+                     "ボードは直前の正常日を表示しています。data/last_error.txt を確認してください。")
     finalize(a.date)
 
 
