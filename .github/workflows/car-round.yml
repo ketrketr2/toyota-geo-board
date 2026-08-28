@@ -1,0 +1,61 @@
+name: car-round
+
+# ①車種別AI分析（tier=car）／②ディーラーAI分析（tier=local）の計測。
+# メインの daily-geo-board とは完全に分離。手動発火のみ（定常スケジュールは
+# 予算確定後にこのファイルへ cron を足す）。
+on:
+  workflow_dispatch:
+    inputs:
+      tiers:
+        description: "回す枠（car / local / car,local）"
+        default: "car,local"
+      all_surfaces:
+        description: "曜日ルールを無視して有効な全面に投げる（テスト1周用）"
+        type: boolean
+        default: true
+      cap:
+        description: "この1回の支払上限（USD）"
+        default: "60"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: geo-board          # daily と同グループにして、同時実行での二重支払いを防ぐ
+  cancel-in-progress: false
+
+jobs:
+  round:
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install
+        run: pip install -r requirements.txt
+
+      - name: Run car round
+        env:
+          GEO_BOARD_MODE:      ${{ vars.GEO_BOARD_MODE || 'demo' }}
+          DATAFORSEO_LOGIN:    ${{ secrets.DATAFORSEO_LOGIN || vars.DATAFORSEO_LOGIN || secrets.DATAFORCED_LOGIN }}
+          DATAFORSEO_PASSWORD: ${{ secrets.DATAFORSEO_PASSWORD }}
+        run: |
+          python src/run_car.py \
+            --tiers "${{ inputs.tiers }}" \
+            ${{ inputs.all_surfaces == true && '--all-surfaces' || '' }} \
+            --cap "${{ inputs.cap }}"
+
+      - name: Commit results
+        if: ${{ always() }}
+        run: |
+          git config user.name  "geo-board-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add -f data/car || true
+          git diff --staged --quiet || git commit -m "chore: car round $(date -u +%Y-%m-%dT%H:%M)"
+          git pull --rebase -q || true
+          git push || true
