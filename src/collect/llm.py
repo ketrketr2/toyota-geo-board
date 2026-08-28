@@ -70,7 +70,47 @@ def _post(path: str, body: list) -> dict:
     return task
 
 
-_REDIRECTORS = ("vertexaisearch.cloud.google.com", "grounding-api-redirect")
+_REDIRECTORS = ("vertexaisearch.cloud.google.com", "grounding-api-redirect",
+                "google.com/goto")
+
+# ---- Google SERP の追跡リダイレクト対策（2026-08-26頃から段階的に発生）----
+# AIによる概要／AIモードの references が https://google.com/goto?url=CAES… の
+# 暗号トークン形式で返るようになり、そのままでは引用元が全部 google.com に化けて
+# オウンド判定もディーラー判定もSNS判定も全部ゼロになる（vertexaisearch の SERP 版）。
+# トークンはオフラインで復号できないため、HTTP を1回だけ投げて Location を読む。
+# 302 が実URLを返すことは実測確認済み（例: bestcarweb.jp / corolla-hakata.jp）。
+_GOTO_CACHE: dict[str, str] = {}          # 実行内キャッシュ（トークンは毎回変わるので永続化しない）
+_GOTO_UA = {"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
+                          "AppleWebKit/537.36 (KHTML, like Gecko) "
+                          "Chrome/128.0.0.0 Safari/537.36"}
+
+
+def _is_goto(url: str) -> bool:
+    u = (url or "").lower()
+    return ("google.com/goto" in u) and u.startswith(("http://", "https://"))
+
+
+def _resolve_goto(url: str) -> str:
+    """google.com/goto?url=CAES… を実URLに解決する。失敗は "" を返す。"""
+    if url in _GOTO_CACHE:
+        return _GOTO_CACHE[url]
+    u = url.replace("://google.com/", "://www.google.com/", 1)  # 301を1段節約
+    final = ""
+    for _ in range(3):                     # 万一の多段リダイレクトも追う
+        try:
+            r = requests.get(u, headers=_GOTO_UA, timeout=8,
+                             allow_redirects=False)
+        except Exception:
+            break
+        loc = r.headers.get("location") or ""
+        if r.status_code in (301, 302, 303, 307, 308) and loc:
+            if "google.com/goto" in loc or "grounding-api-redirect" in loc:
+                u = loc
+                continue
+            final = loc
+        break
+    _GOTO_CACHE[url] = final               # 失敗("")も覚えて同一実行内の連打を防ぐ
+    return final
 
 
 def _walk_refs(node, out: list) -> None:
@@ -85,6 +125,16 @@ def _walk_refs(node, out: list) -> None:
             url = node["url"]
             title = node.get("title") or node.get("source") or ""
             dom = node.get("domain") or ""
+            if _is_goto(url):
+                real = _resolve_goto(url)
+                if real:
+                    url = real             # 板のリンクも実URLに置き換わる
+                    dom = domain_of(real)  # payload の domain(google.com) は信用しない
+                else:
+                    # 未解決は goto URL を domain 欄ごと引き回し、classify_url 側で
+                    # noise_patterns（google.com/goto）に一致させて noise に落とす。
+                    # google.com を渡すと media に化けて統計を汚すため絶対にしない。
+                    dom = url
             if any(x in url for x in _REDIRECTORS):
                 # title が裸のドメインならそれを引用元として扱う
                 if title and "/" not in title and "." in title and " " not in title:
