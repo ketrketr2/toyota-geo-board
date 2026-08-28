@@ -20,7 +20,11 @@ import yaml
 from common import ROOT, today
 
 REGISTRY = ROOT / "prompts" / "registry.yaml"
-TIERS = ("core", "strategic", "longtail", "retired")
+# car/local はメインボードのローテーション（rebalance）対象外の独立枠。
+#   car   = ①車種別AI分析の現役枠 / car_bench   = その補欠（週次入替で昇降格）
+#   local = ②ディーラーAI分析の現役枠 / local_bench = その補欠
+TIERS = ("core", "strategic", "longtail", "retired",
+         "car", "car_bench", "local", "local_bench")
 DEMAND_HISTORY_MAX = 12
 
 
