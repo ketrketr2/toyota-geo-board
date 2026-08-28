@@ -1,0 +1,177 @@
+# ============================================================
+#  ①車種別AI分析（CAR × AI DEEP DIVE）対象車種マスタ
+#
+#  focus   : 深掘り対象の重点8車種（トヨタ）
+#  rivals  : 比較観測する競合車種（他メイク＋トヨタ社内）
+#  aliases : 回答本文との照合語。誤検出しやすい語は guards で先に除去する
+#  検出は「全車種のalias を長い順に走査し、当たった区間をマスク」方式。
+#  （例: ヤリスクロスを先に確定させないと ヤリス に誤配分される）
+# ============================================================
+version: 1
+updated_on: "2026-08-28"
+
+segs:
+  compact_tall: "コンパクト（トールワゴン）"
+  minivan_s: "スモールミニバン"
+  minivan_m: "ミドルミニバン"
+  minivan_l: "ラージミニバン"
+  compact_hb: "コンパクト（ハッチバック）"
+  suv_compact: "コンパクトSUV"
+  suv_off: "本格オフローダー"
+
+focus:
+  - id: roomy
+    name: "ルーミー"
+    seg: compact_tall
+    slug: "/roomy"
+    aliases: ["ルーミー", "ROOMY"]
+    rivals: [solio, thor, delica_mini]
+    rivals_own: [sienta]
+  - id: sienta
+    name: "シエンタ"
+    seg: minivan_s
+    slug: "/sienta"
+    aliases: ["シエンタ", "SIENTA"]
+    rivals: [freed]
+    rivals_own: [roomy, noah, voxy]
+  - id: alphard
+    name: "アルファード"
+    seg: minivan_l
+    slug: "/alphard"
+    aliases: ["アルファード", "ALPHARD"]
+    rivals: [elgrand]
+    rivals_own: [vellfire, voxy]
+  - id: voxy
+    name: "ヴォクシー"
+    seg: minivan_m
+    slug: "/voxy"
+    aliases: ["ヴォクシー", "ボクシー", "VOXY"]
+    rivals: [serena, stepwgn]
+    rivals_own: [noah, alphard]
+  - id: noah
+    name: "ノア"
+    seg: minivan_m
+    slug: "/noah"
+    aliases: ["ノア", "NOAH"]
+    guards: ["ノアール"]
+    rivals: [serena, stepwgn]
+    rivals_own: [voxy, sienta]
+  - id: aqua
+    name: "アクア"
+    seg: compact_hb
+    slug: "/aqua"
+    aliases: ["アクア", "AQUA"]
+    guards: ["アクアリウム", "アクアライン", "アクアパーク", "アクアマリン", "アクアクララ"]
+    rivals: [note, fit]
+    rivals_own: [yaris]
+  - id: raize
+    name: "ライズ"
+    seg: suv_compact
+    slug: "/raize"
+    aliases: ["ライズ", "RAIZE"]
+    guards: ["サンライズ", "サプライズ", "ハイライズ", "エンタープライズ", "ライズする", "ライズし"]
+    rivals: [rocky, wrv, crossbee]
+    rivals_own: [yariscross]
+  - id: lc250
+    name: "ランドクルーザー250"
+    seg: suv_off
+    slug: "/landcruiser250"
+    aliases: ["ランドクルーザー250", "ランドクルーザー 250", "ランクル250", "ランクル 250"]
+    rivals: [jimny_sierra, xtrail, outlander]
+    rivals_own: [lc300, lc70, rav4]
+
+rivals:
+  - id: solio
+    name: "ソリオ"
+    brand: suzuki
+    aliases: ["ソリオ", "SOLIO"]
+  - id: thor
+    name: "トール"
+    brand: daihatsu
+    aliases: ["トール", "THOR"]
+    guards: ["インストール", "ストール", "トールサイズ", "トールペイント"]
+  - id: delica_mini
+    name: "デリカミニ"
+    brand: mitsubishi
+    aliases: ["デリカミニ", "デリカ ミニ"]
+  - id: freed
+    name: "フリード"
+    brand: honda
+    aliases: ["フリード", "FREED"]
+  - id: serena
+    name: "セレナ"
+    brand: nissan
+    aliases: ["セレナ", "SERENA"]
+  - id: stepwgn
+    name: "ステップワゴン"
+    brand: honda
+    aliases: ["ステップワゴン", "ステップ ワゴン", "STEP WGN", "STEPWGN"]
+  - id: elgrand
+    name: "エルグランド"
+    brand: nissan
+    aliases: ["エルグランド"]
+  - id: note
+    name: "ノート"
+    brand: nissan
+    aliases: ["ノート", "NOTE"]
+    guards: ["ノートパソコン", "ノートPC", "ノートpc", "ノートブック"]
+  - id: fit
+    name: "フィット"
+    brand: honda
+    aliases: ["フィット", "FIT"]
+    guards: ["フィットネス", "フィッティング", "フィットする", "フィットし", "フィット感", "アウトフィット"]
+  - id: rocky
+    name: "ロッキー"
+    brand: daihatsu
+    aliases: ["ロッキー", "ROCKY"]
+    guards: ["ロッキー山"]
+  - id: wrv
+    name: "WR-V"
+    brand: honda
+    aliases: ["WR-V", "WRV"]
+  - id: crossbee
+    name: "クロスビー"
+    brand: suzuki
+    aliases: ["クロスビー", "XBEE"]
+  - id: jimny_sierra
+    name: "ジムニー/シエラ"
+    brand: suzuki
+    aliases: ["ジムニーシエラ", "ジムニー シエラ", "ジムニー", "JIMNY"]
+  - id: xtrail
+    name: "エクストレイル"
+    brand: nissan
+    aliases: ["エクストレイル", "X-TRAIL"]
+  - id: outlander
+    name: "アウトランダー"
+    brand: mitsubishi
+    aliases: ["アウトランダー", "OUTLANDER"]
+  # ---- トヨタ社内の比較対象（表示可・けんけん確認済み 2026-08-28） ----
+  - id: vellfire
+    name: "ヴェルファイア"
+    brand: toyota
+    aliases: ["ヴェルファイア", "ベルファイア", "VELLFIRE"]
+  - id: yaris
+    name: "ヤリス"
+    brand: toyota
+    aliases: ["ヤリス", "YARIS"]
+    guards: ["ヤリスクロス", "ヤリス クロス"]
+  - id: yariscross
+    name: "ヤリスクロス"
+    brand: toyota
+    aliases: ["ヤリスクロス", "ヤリス クロス", "YARIS CROSS"]
+  - id: lc300
+    name: "ランドクルーザー300"
+    brand: toyota
+    aliases: ["ランドクルーザー300", "ランクル300", "ランドクルーザー 300", "ランクル 300"]
+  - id: lc70
+    name: "ランドクルーザー70"
+    brand: toyota
+    aliases: ["ランドクルーザー70", "ランクル70", "ランドクルーザー\"70\""]
+  - id: rav4
+    name: "RAV4"
+    brand: toyota
+    aliases: ["RAV4", "rav4"]
+  - id: prado
+    name: "プラド"
+    brand: toyota
+    aliases: ["プラド", "ランドクルーザープラド", "PRADO"]

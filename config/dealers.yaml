@@ -1,0 +1,122 @@
+# ============================================================
+#  ②ディーラーAI分析 対象販社マスタ（新潟×愛知）
+#  main: 主役販社（仮設定・差し替え可能な設計。2026-08-28 けんけん了承済み）
+#  検出はcars.yamlと同じ「長いalias優先＋マスク」方式。
+#  domains は引用ドメインの販社紐付けに使う。
+#  出典: carwork/dealer_research.md（愛自販会員一覧・各社公式 2026-08時点）
+# ============================================================
+version: 1
+updated_on: "2026-08-28"
+
+niigata:
+  main: niigata_toyota
+  dealers:
+    - id: niigata_toyota
+      name: "新潟トヨタ自動車"
+      brand: toyota
+      aliases: ["新潟トヨタ自動車", "新潟トヨタ"]
+      domains: ["niigata-toyota.co.jp"]
+    - id: corolla_niigata
+      name: "トヨタカローラ新潟"
+      brand: toyota
+      aliases: ["トヨタカローラ新潟", "カローラ新潟"]
+      domains: ["toyotacorolla-niigata.jp"]
+    - id: netz_niigata
+      name: "ネッツトヨタ新潟"
+      brand: toyota
+      aliases: ["ネッツトヨタ新潟", "ネッツ新潟"]
+      domains: ["netz-niigata.jp"]
+    - id: niigata_toyopet
+      name: "新潟トヨペット"
+      brand: toyota
+      aliases: ["新潟トヨペット"]
+      domains: ["niigata.toyopet-dealer.jp"]
+    - id: niigata_nissan
+      name: "新潟日産（NSグループ）"
+      brand: nissan
+      aliases: ["新潟日産自動車", "新潟日産", "日産プリンス新潟", "日産サティオ新潟"]
+      domains: ["ns-hd.co.jp", "niigata-nissan.co.jp"]
+    - id: honda_niigata
+      name: "Honda Cars 新潟各社"
+      brand: honda
+      aliases: ["ホンダカーズ新潟", "Honda Cars 新潟", "ホンダカーズ越後", "ホンダカーズ新潟県央"]
+      domains: ["hondacars-niigatachuo.co.jp", "hondacars-niigatakeno.co.jp", "hondacars-echigochuo.co.jp", "hondacars-niigataminami.co.jp"]
+    - id: suzuki_niigata
+      name: "スズキ新潟販売／スズキ自販新潟"
+      brand: suzuki
+      aliases: ["スズキ新潟販売", "スズキ自販新潟"]
+      domains: []
+    - id: daihatsu_niigata
+      name: "新潟ダイハツモータース"
+      brand: daihatsu
+      aliases: ["新潟ダイハツモータース", "新潟ダイハツ"]
+      domains: ["niigata.dd.daihatsu.co.jp"]
+    - id: subaru_niigata
+      name: "スバル北信越（新潟）"
+      brand: subaru
+      aliases: ["スバル北信越", "新潟スバル"]
+      domains: ["niigata-subaru.co.jp"]
+
+aichi:
+  main: aichi_toyota
+  dealers:
+    - id: aichi_toyota
+      name: "愛知トヨタ（EAST/WEST）"
+      brand: toyota
+      aliases: ["愛知トヨタEAST", "愛知トヨタWEST", "愛知トヨタ自動車", "愛知トヨタ", "ATグループ"]
+      domains: ["aichi-toyota.jp", "at-group.jp"]
+    - id: ntp_toyopet
+      name: "NTP名古屋トヨペット"
+      brand: toyota
+      aliases: ["NTP名古屋トヨペット", "名古屋トヨペット", "NTPグループ"]
+      domains: ["ntpgroup.jp", "nagoyatoyopet.jp"]
+    - id: corolla_nagoya
+      name: "トヨタカローラ名古屋"
+      brand: toyota
+      aliases: ["トヨタカローラ名古屋", "カローラ名古屋"]
+      domains: ["c-nagoya.co.jp"]
+    - id: corolla_aichi
+      name: "トヨタカローラ愛知"
+      brand: toyota
+      aliases: ["トヨタカローラ愛知", "カローラ愛知"]
+      domains: ["c-aichi.co.jp"]
+    - id: tm_chukyo
+      name: "トヨタモビリティ中京"
+      brand: toyota
+      aliases: ["トヨタモビリティ中京", "トヨタカローラ中京"]
+      domains: ["tm-chukyo.co.jp"]
+    - id: tm_higashinagoya
+      name: "トヨタモビリティ東名古屋"
+      brand: toyota
+      aliases: ["トヨタモビリティ東名古屋", "ネッツトヨタ東名古屋"]
+      domains: ["tm-higashinagoya.co.jp", "netz-tng.co.jp"]
+    - id: netz_chubu
+      name: "ネッツトヨタ中部"
+      brand: toyota
+      aliases: ["ネッツトヨタ中部"]
+      domains: ["netzchubu.co.jp"]
+    - id: netz_aichi_old
+      name: "（旧）ネッツトヨタ愛知・東海 ※誤案内検出用"
+      brand: toyota
+      aliases: ["ネッツトヨタ愛知", "ネッツトヨタ東海"]
+      domains: []
+    - id: nissan_aichi
+      name: "日産系（愛知）"
+      brand: nissan
+      aliases: ["日産愛知販売", "東愛知日産", "三河日産", "愛知日産"]
+      domains: []
+    - id: honda_aichi
+      name: "Honda系（愛知）"
+      brand: honda
+      aliases: ["ホンダモビリティ中部", "ホンダカーズ愛知", "ホンダカーズ東海", "ホンダカーズ三河"]
+      domains: ["hondamobility-chubu.co.jp"]
+    - id: suzuki_aichi
+      name: "スズキ系（愛知）"
+      brand: suzuki
+      aliases: ["愛知スズキ販売", "スズキ自販中部", "スズキ自販東海"]
+      domains: []
+    - id: daihatsu_aichi
+      name: "愛知ダイハツ"
+      brand: daihatsu
+      aliases: ["愛知ダイハツ"]
+      domains: ["aichi-daihatsu.co.jp"]

@@ -69,9 +69,12 @@ budget:
 sampling:
   runs_per_prompt: 3              # 既定値。面ごとに surfaces[].runs で上書きできる
   tier_schedule:
-    core:        { frequency: daily,   max_prompts: 60,   runs: 3 }
+    core:        { frequency: daily,   max_prompts: 70,   runs: 3 }
     strategic:   { frequency: weekly,  max_prompts: 200,  runs: 2 }
     longtail:    { frequency: monthly, max_prompts: 3000, runs: 1 }
+    # ①②の独立枠（run_car.py 専用。run_daily.py では回らない）
+    car:         { frequency: manual,  max_prompts: 450,  runs: 1 }
+    local:       { frequency: manual,  max_prompts: 90,   runs: 1 }
 
 # ---- スコア重み（合計100）----
 # SNS(アーンド引用)を独立因数に格上げした6因数モデル
