@@ -111,4 +111,4 @@ classification:
 
 reference_domains: ["wikipedia.org", "ja.wikipedia.org"]
 press_domains: ["prtimes.jp", "kyodonewsprwire.jp", "atpress.ne.jp"]
-noise_patterns: ["mapbox.com", "/legal", "/terms", "/privacy", "policies"]
+noise_patterns: ["mapbox.com", "/legal", "/terms", "/privacy", "policies", "google.com/goto"]
