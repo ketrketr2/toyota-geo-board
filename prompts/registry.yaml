@@ -1,8 +1,8 @@
 # 自動生成 + 手編集可。IDは絶対に振り直さないこと。
 # tier: core=日次 / strategic=週次 / longtail=月次 / retired=停止
-version: 2
-updated_at: '2026-08-27'
-next_seq: 944
+version: 3
+updated_at: '2026-08-28'
+next_seq: 1332
 prompts:
 - id: p001
   text: ミニバンのおすすめを教えてください。2歳の子供がいて、もう1人産まれる予定です。今はプリウスですが、チャイルドシートの乗せ下ろしがきつく、2人乗せると狭く感じます。予算は400万円までです。
@@ -2671,6 +2671,253 @@ prompts:
   - - '2026-08-24'
     - 84.6
   tier_prev: longtail
+- id: p1000
+  text: 通勤が片道30kmあります。ガソリン代を一番抑えられる普通車はどれですか？
+  category: cost
+  driver: commute
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 8.4
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 通勤 燃費 車
+  demand_history:
+  - - '2026-08-28'
+    - 8.4
+  cars:
+  - aqua
+  named_cars: []
+  seg: compact_hb
+  active_for:
+  - aqua
+- id: p1001
+  text: 初めての車で、運転しやすくて安全装備が充実した小型車を教えてください。
+  category: safety
+  driver: beginner
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 8.4
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 初めての車 おすすめ
+  demand_history:
+  - - '2026-08-28'
+    - 8.4
+  cars:
+  - aqua
+  - roomy
+  named_cars: []
+  seg: compact_hb
+  active_for:
+  - roomy
+  - aqua
+- id: p1002
+  text: ハイブリッドのコンパクトカーを新車で買うなら、価格と燃費のバランスが良いのは？
+  category: eco
+  driver: eco
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 9.6
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: ハイブリッド コンパクトカー
+  demand_history:
+  - - '2026-08-28'
+    - 9.6
+  cars:
+  - aqua
+  named_cars: []
+  seg: compact_hb
+  active_for:
+  - aqua
+- id: p1003
+  text: 街乗り中心の1人暮らしに合う維持費の安い普通車は？軽自動車以外で教えてください。
+  category: cost
+  driver: cost
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 8.4
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 維持費 安い 普通車
+  demand_history:
+  - - '2026-08-28'
+    - 8.4
+  cars:
+  - aqua
+  named_cars: []
+  seg: compact_hb
+  active_for:
+  - aqua
+- id: p1004
+  text: 20代の社会人が最初に買う車として人気なのはどれですか？予算250万円です。
+  category: purchase
+  driver: beginner
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 7.8
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 20代 車 人気
+  demand_history:
+  - - '2026-08-28'
+    - 7.8
+  cars:
+  - aqua
+  - raize
+  named_cars: []
+  seg: compact_hb
+  active_for:
+  - aqua
+  - raize
+- id: p1005
+  text: 燃費と静かさで選ぶ小型車はどれですか？ハイブリッドの静粛性を比較してください。
+  category: model
+  driver: comfort
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 6.6
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 静かな コンパクトカー
+  demand_history:
+  - - '2026-08-28'
+    - 6.6
+  cars:
+  - aqua
+  named_cars: []
+  seg: compact_hb
+  active_for:
+  - aqua
+- id: p1006
+  text: 親の車を買い替えます。70代でも安心して乗れる小さめの車のおすすめは？
+  category: safety
+  driver: senior
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 7.8
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 70代 車 おすすめ
+  demand_history:
+  - - '2026-08-28'
+    - 7.8
+  cars:
+  - aqua
+  - roomy
+  named_cars: []
+  seg: compact_hb
+  active_for:
+  - roomy
+  - aqua
+- id: p1007
+  text: 200万円台で買えるコンパクトSUVを比較して、おすすめを教えてください。
+  category: purchase
+  driver: budget
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 8.8
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: コンパクトSUV 200万円台
+  demand_history:
+  - - '2026-08-28'
+    - 8.8
+  cars:
+  - raize
+  - yariscross
+  named_cars: []
+  seg: suv_compact
+  active_for:
+  - raize
+- id: p1008
+  text: ホンダのWR-Vが安いと話題ですが、競合する国産コンパクトSUVと比較するとどうですか？
+  category: model
+  driver: budget
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 10.0
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: WR-V 比較
+  demand_history:
+  - - '2026-08-28'
+    - 10.0
+  cars:
+  - raize
+  named_cars: []
+  seg: suv_compact
+  active_for:
+  - raize
+- id: p1009
+  text: 5ナンバーサイズに近い小さめのSUVでおすすめはどれですか？
+  category: purchase
+  driver: urban
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 8.0
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 小さいSUV おすすめ
+  demand_history:
+  - - '2026-08-28'
+    - 8.0
+  cars:
+  - raize
+  named_cars: []
+  seg: suv_compact
+  active_for:
+  - raize
 - id: p101
   text: 3列シートで一番運転しやすいミニバンはどれですか。狭い住宅街を毎日通ります。
   category: purchase
@@ -2709,6 +2956,250 @@ prompts:
     - 59.5
   - - '2026-08-24'
     - 59.5
+- id: p1010
+  text: ダイハツ ロッキーとトヨタで売られている兄弟車は何が違いますか？どちらで買うのが得ですか？
+  category: model
+  driver: budget
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 7.5
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: ロッキー 兄弟車
+  demand_history:
+  - - '2026-08-28'
+    - 7.5
+  cars:
+  - raize
+  named_cars: []
+  seg: suv_compact
+  active_for:
+  - raize
+- id: p1011
+  text: 初めてのSUVで運転しやすく、荷室も実用的な車を教えてください。
+  category: purchase
+  driver: beginner
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 7.0
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 初めてのSUV
+  demand_history:
+  - - '2026-08-28'
+    - 7.0
+  cars:
+  - raize
+  - yariscross
+  named_cars: []
+  seg: suv_compact
+  active_for:
+  - raize
+- id: p1012
+  text: クロスビーのような遊べる小型SUVを比較してください。
+  category: model
+  driver: leisure
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 6.0
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: クロスビー 比較
+  demand_history:
+  - - '2026-08-28'
+    - 6.0
+  cars:
+  - raize
+  named_cars: []
+  seg: suv_compact
+  active_for:
+  - raize
+- id: p1013
+  text: 軽の維持費に近い感覚で乗れるSUVはありますか？
+  category: cost
+  driver: cost
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 7.0
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 維持費 安い SUV
+  demand_history:
+  - - '2026-08-28'
+    - 7.0
+  cars:
+  - raize
+  named_cars: []
+  seg: suv_compact
+  active_for:
+  - raize
+- id: p1014
+  text: 雪が多い地域で通勤に使う4WDの小型SUV、おすすめはどれですか？
+  category: model
+  driver: snow
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 7.2
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 4WD 小型SUV 雪
+  demand_history:
+  - - '2026-08-28'
+    - 7.2
+  cars:
+  - raize
+  named_cars: []
+  seg: suv_compact
+  active_for:
+  - raize
+- id: p1015
+  text: アウトドア初心者の夫婦に合う、コスパの良いSUVを提案してください。
+  category: purchase
+  driver: leisure
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 6.5
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: アウトドア SUV 安い
+  demand_history:
+  - - '2026-08-28'
+    - 6.5
+  cars:
+  - raize
+  - yariscross
+  named_cars: []
+  seg: suv_compact
+  active_for:
+  - raize
+- id: p1016
+  text: 1.2Lクラスの小排気量SUVは非力ですか？高速道路でも困らない車種は？
+  category: model
+  driver: performance
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 5.5
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 1.2L SUV
+  demand_history:
+  - - '2026-08-28'
+    - 5.5
+  cars:
+  - raize
+  named_cars: []
+  seg: suv_compact
+  active_for:
+  - raize
+- id: p1017
+  text: 本格的な悪路走破性がある国産SUVを比較してください。ラダーフレームの車が希望です。
+  category: model
+  driver: offroad
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 7.3
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: ラダーフレーム SUV
+  demand_history:
+  - - '2026-08-28'
+    - 7.3
+  cars:
+  - lc250
+  named_cars: []
+  seg: suv_off
+  active_for:
+  - lc250
+- id: p1018
+  text: ジムニーノマドが話題ですが、より大きい本格クロカンを国産で選ぶなら何がありますか？
+  category: model
+  driver: offroad
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 40.0
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: ジムニーノマド 比較
+  demand_history:
+  - - '2026-08-28'
+    - 40.0
+  cars:
+  - lc250
+  named_cars: []
+  seg: suv_off
+  active_for:
+  - lc250
+- id: p1019
+  text: キャンプと雪道がメインの使い方でSUVを選ぶなら、どれがおすすめですか？
+  category: model
+  driver: snow
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 6.3
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 雪道 強い車 4WD
+  demand_history:
+  - - '2026-08-28'
+    - 6.3
+  cars:
+  - lc250
+  - raize
+  named_cars: []
+  seg: suv_off
+  active_for:
+  - raize
+  - lc250
 - id: p102
   text: 水素自動車は今買う価値がありますか。実際の使い勝手を教えてください。
   category: eco
@@ -2747,6 +3238,262 @@ prompts:
     - 59.5
   - - '2026-08-24'
     - 59.5
+- id: p1020
+  text: プラドの後継はどうなりましたか？いま同じ立ち位置の車を新車で買うなら？
+  category: model
+  driver: offroad
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 9.5
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: プラド 後継
+  demand_history:
+  - - '2026-08-28'
+    - 9.5
+  cars:
+  - lc250
+  named_cars: []
+  seg: suv_off
+  active_for:
+  - lc250
+- id: p1021
+  text: リセールが落ちにくいSUVを教えてください。数年で乗り換える前提です。
+  category: cost
+  driver: resale
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 6.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: リセールバリュー 高い SUV
+  demand_history:
+  - - '2026-08-28'
+    - 6.9
+  cars:
+  - lc250
+  named_cars: []
+  seg: suv_off
+  active_for:
+  - lc250
+- id: p1022
+  text: エクストレイルやアウトランダーのような電動SUVと、本格クロカンではどちらが用途に合いますか？雪国在住です。
+  category: model
+  driver: snow
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 8.4
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: エクストレイル アウトランダー 比較
+  demand_history:
+  - - '2026-08-28'
+    - 8.4
+  cars:
+  - lc250
+  named_cars: []
+  seg: suv_off
+  active_for:
+  - lc250
+- id: p1023
+  text: 災害時にも頼れる車を1台選ぶなら何がいいですか？
+  category: safety
+  driver: offroad
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 5.0
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 災害に強い車
+  demand_history:
+  - - '2026-08-28'
+    - 5.0
+  cars:
+  - lc250
+  named_cars: []
+  seg: suv_off
+  active_for:
+  - lc250
+- id: p1024
+  text: 牽引（トレーラー・ジェットスキー）に使える国産SUVはどれですか？
+  category: model
+  driver: leisure
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 4.2
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 牽引 できる SUV
+  demand_history:
+  - - '2026-08-28'
+    - 4.2
+  cars:
+  - lc250
+  named_cars: []
+  seg: suv_off
+  active_for:
+  - lc250
+- id: p1025
+  text: 林道や山道をよく走る仕事で使う、壊れにくい四駆を教えてください。
+  category: model
+  driver: offroad
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 5.0
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 壊れにくい 四駆
+  demand_history:
+  - - '2026-08-28'
+    - 5.0
+  cars:
+  - lc250
+  named_cars: []
+  seg: suv_off
+  active_for:
+  - lc250
+- id: p1026
+  text: 500万円クラスで長く乗れるSUVを買うなら、何を選びますか？
+  category: purchase
+  driver: premium
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 5.5
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 500万 SUV
+  demand_history:
+  - - '2026-08-28'
+    - 5.5
+  cars:
+  - lc250
+  named_cars: []
+  seg: suv_off
+  active_for:
+  - lc250
+- id: p1027
+  text: 家族4人・予算300万円でファミリーカーを新車で買うなら、何を候補にすべきですか？
+  category: purchase
+  driver: family
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 39.0
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: ファミリーカー 300万
+  demand_history:
+  - - '2026-08-28'
+    - 39.0
+  cars:
+  - sienta
+  - roomy
+  - voxy
+  named_cars: []
+  seg: cross
+  active_for:
+  - roomy
+  - sienta
+  - voxy
+- id: p1028
+  text: 子供が3人いる家庭に合う車を、価格帯別に提案してください。
+  category: purchase
+  driver: family
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 34.2
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 子供3人 車
+  demand_history:
+  - - '2026-08-28'
+    - 34.2
+  cars:
+  - noah
+  - voxy
+  - sienta
+  - alphard
+  named_cars: []
+  seg: cross
+  active_for:
+  - sienta
+  - alphard
+  - voxy
+  - noah
+- id: p1029
+  text: 雪国で使うファミリーカーを4WDで選ぶなら、どの車種がいいですか？
+  category: model
+  driver: snow
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 29.3
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 雪国 ファミリーカー 4WD
+  demand_history:
+  - - '2026-08-28'
+    - 29.3
+  cars:
+  - noah
+  - voxy
+  - raize
+  - sienta
+  named_cars: []
+  seg: cross
+  active_for:
+  - sienta
+  - voxy
+  - noah
+  - raize
 - id: p103
   text: 高速道路で長距離を走ると腰が痛くなります。運転支援が優秀な国産ブランドはどこですか。
   category: safety
@@ -2785,6 +3532,277 @@ prompts:
     - 44.4
   - - '2026-08-24'
     - 44.4
+- id: p1030
+  text: いま新車の納期が短いミニバンはどれですか？半年以内に欲しいです。
+  category: service
+  driver: delivery
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 13.2
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: ミニバン 納期
+  demand_history:
+  - - '2026-08-28'
+    - 13.2
+  cars:
+  - noah
+  - voxy
+  - sienta
+  - alphard
+  named_cars: []
+  seg: cross
+  active_for:
+  - alphard
+- id: p1031
+  text: 3年後に高く売ることを前提に車を買うなら、どの車種を選ぶべきですか？
+  category: cost
+  driver: resale
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 32.4
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: リセールバリュー ランキング
+  demand_history:
+  - - '2026-08-28'
+    - 32.4
+  cars:
+  - alphard
+  - lc250
+  named_cars: []
+  seg: cross
+  active_for:
+  - alphard
+  - lc250
+- id: p1032
+  text: 車椅子の親を乗せられる福祉車両を、普通の車のラインアップから選べますか？
+  category: service
+  driver: welfare
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 19.5
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 福祉車両 ミニバン
+  demand_history:
+  - - '2026-08-28'
+    - 19.5
+  cars:
+  - sienta
+  - noah
+  - voxy
+  named_cars: []
+  seg: cross
+  active_for:
+  - sienta
+  - voxy
+  - noah
+- id: p1033
+  text: 家族で車中泊の旅をしたいです。フラットな就寝スペースが作れる車を教えてください。
+  category: model
+  driver: leisure
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 40.0
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 車中泊 できる車 おすすめ
+  demand_history:
+  - - '2026-08-28'
+    - 40.0
+  cars:
+  - sienta
+  - noah
+  - voxy
+  named_cars: []
+  seg: cross
+  active_for:
+  - sienta
+  - voxy
+  - noah
+- id: p1034
+  text: ペットと出かけやすい車の条件と、合う車種を教えてください。大型犬1匹です。
+  category: purchase
+  driver: leisure
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 17.1
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 大型犬 車
+  demand_history:
+  - - '2026-08-28'
+    - 17.1
+  cars:
+  - noah
+  - voxy
+  named_cars: []
+  seg: cross
+  active_for:
+  - voxy
+  - noah
+- id: p1035
+  text: 共働きで保育園送迎と週末の買い出しが中心。時間コスパのいい車選びを提案してください。
+  category: purchase
+  driver: family
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 19.5
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 共働き 車 選び
+  demand_history:
+  - - '2026-08-28'
+    - 19.5
+  cars:
+  - sienta
+  - roomy
+  named_cars: []
+  seg: cross
+  active_for:
+  - roomy
+  - sienta
+- id: p1036
+  text: 安全性能で選ぶファミリーカーはどれですか？最新の評価が高い順に教えてください。
+  category: safety
+  driver: safety
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 26.8
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 安全な車 ランキング
+  demand_history:
+  - - '2026-08-28'
+    - 26.8
+  cars:
+  - noah
+  - voxy
+  - sienta
+  named_cars: []
+  seg: cross
+  active_for:
+  - sienta
+  - voxy
+  - noah
+- id: p1037
+  text: 転勤で車が必要になりました。5年で手放す前提ならどんな車種が向いていますか？
+  category: cost
+  driver: resale
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 16.2
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 5年で手放す 車
+  demand_history:
+  - - '2026-08-28'
+    - 16.2
+  cars:
+  - alphard
+  - aqua
+  - raize
+  named_cars: []
+  seg: cross
+  active_for:
+  - alphard
+  - aqua
+  - raize
+- id: p1038
+  text: 月々の支払いを3万円以内に抑えて新車に乗るなら、どの車とどの買い方がありますか？
+  category: cost
+  driver: finance
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 22.0
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 月3万 新車
+  demand_history:
+  - - '2026-08-28'
+    - 22.0
+  cars:
+  - roomy
+  - aqua
+  - raize
+  named_cars: []
+  seg: cross
+  active_for:
+  - roomy
+  - aqua
+  - raize
+- id: p1039
+  text: ガソリン代高騰が気になります。年間1万km走る場合に総額で安く済む車は？
+  category: cost
+  driver: eco
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 22.0
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: ガソリン代 安い車
+  demand_history:
+  - - '2026-08-28'
+    - 22.0
+  cars:
+  - aqua
+  - sienta
+  named_cars: []
+  seg: cross
+  active_for:
+  - sienta
+  - aqua
 - id: p104
   text: 同じ価格帯でトヨタとホンダのSUVを比べると、どちらが買いですか。
   category: cost
@@ -2823,6 +3841,256 @@ prompts:
     - 61.7
   - - '2026-08-24'
     - 61.7
+- id: p1040
+  text: 家族が増えるので軽からの乗り換えを考えています。後悔しない選び方と候補を教えてください。
+  category: purchase
+  driver: family
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 24.4
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 軽から乗り換え
+  demand_history:
+  - - '2026-08-28'
+    - 24.4
+  cars:
+  - roomy
+  - sienta
+  - voxy
+  named_cars: []
+  seg: cross
+  active_for:
+  - roomy
+  - sienta
+  - voxy
+- id: p1041
+  text: 定年後の夫婦2人にちょうどいい車を教えてください。旅行にもたまに行きます。
+  category: purchase
+  driver: senior
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 19.5
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 定年後 車
+  demand_history:
+  - - '2026-08-28'
+    - 19.5
+  cars:
+  - aqua
+  - sienta
+  - raize
+  named_cars: []
+  seg: cross
+  active_for:
+  - sienta
+  - aqua
+  - raize
+- id: p1042
+  text: ソリオのハイブリッドは魅力ですか？同クラスで燃費と価格のバランスが良い車と比較してください。
+  category: eco
+  driver: eco
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 8.5
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: ソリオ ハイブリッド
+  demand_history:
+  - - '2026-08-28'
+    - 8.5
+  cars:
+  - roomy
+  named_cars: []
+  seg: compact_tall
+  active_for:
+  - roomy
+- id: p1043
+  text: ソリオ バンディットのようなカスタム系トールワゴンの選択肢を教えてください。
+  category: model
+  driver: style
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 25.0
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: ソリオ バンディット
+  demand_history:
+  - - '2026-08-28'
+    - 25.0
+  cars:
+  - roomy
+  named_cars: []
+  seg: compact_tall
+  active_for:
+  - roomy
+- id: p1044
+  text: トールとルークスとソリオ、家族3人ならどれですか？他の候補もあれば教えてください。
+  category: purchase
+  driver: family
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 4.8
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: トール ソリオ 比較
+  demand_history:
+  - - '2026-08-28'
+    - 4.8
+  cars:
+  - roomy
+  named_cars: []
+  seg: compact_tall
+  active_for:
+  - roomy
+- id: p1045
+  text: 片側だけ電動スライドドアでも十分ですか？その条件で安く買える車は？
+  category: cost
+  driver: budget
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 7.6
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 片側電動スライドドア 車
+  demand_history:
+  - - '2026-08-28'
+    - 7.6
+  cars:
+  - roomy
+  named_cars: []
+  seg: compact_tall
+  active_for:
+  - roomy
+- id: p1046
+  text: 車両価格が安い順にスライドドアの登録車を並べてください。
+  category: cost
+  driver: budget
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: スライドドア 安い 車
+  demand_history:
+  - - '2026-08-28'
+    - 9.9
+  cars:
+  - roomy
+  named_cars: []
+  seg: compact_tall
+  active_for:
+  - roomy
+- id: p1047
+  text: 納車が早いコンパクトカーを探しています。トールワゴン系で在庫が動きやすい車種は？
+  category: service
+  driver: delivery
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 6.8
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 納車 早い コンパクトカー
+  demand_history:
+  - - '2026-08-28'
+    - 6.8
+  cars:
+  - roomy
+  named_cars: []
+  seg: compact_tall
+  active_for:
+  - roomy
+- id: p1048
+  text: ルーミーの中古はいくらから買えますか？年式・走行距離の狙い目も教えてください。
+  category: cost
+  driver: used
+  brand: true
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 11.4
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: ルーミー 中古
+  demand_history:
+  - - '2026-08-28'
+    - 11.4
+  cars:
+  - roomy
+  named_cars:
+  - roomy
+  seg: compact_tall
+  active_for:
+  - roomy
+- id: p1049
+  text: ルーミーのグレードはどれがおすすめですか？カスタムGとの違いも教えてください。
+  category: model
+  driver: grade
+  brand: true
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 5.3
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: ルーミー グレード
+  demand_history:
+  - - '2026-08-28'
+    - 5.3
+  cars:
+  - roomy
+  named_cars:
+  - roomy
+  seg: compact_tall
+  active_for:
+  - roomy
 - id: p105
   text: 雪道に強い国産SUVを教えてください。年に数回スキーに行きます。
   category: purchase
@@ -2862,6 +4130,256 @@ prompts:
   - - '2026-08-24'
     - 74.3
   tier_prev: longtail
+- id: p1050
+  text: ルーミーの実燃費はどのくらいですか？悪いという評判は本当ですか？
+  category: eco
+  driver: eco
+  brand: true
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 4.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: ルーミー 燃費
+  demand_history:
+  - - '2026-08-28'
+    - 4.9
+  cars:
+  - roomy
+  named_cars:
+  - roomy
+  seg: compact_tall
+  active_for:
+  - roomy
+- id: p1051
+  text: ルーミーのサイズで機械式駐車場に入りますか？全高と注意点を教えてください。
+  category: model
+  driver: urban
+  brand: true
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 4.2
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: ルーミー サイズ
+  demand_history:
+  - - '2026-08-28'
+    - 4.2
+  cars:
+  - roomy
+  named_cars:
+  - roomy
+  seg: compact_tall
+  active_for:
+  - roomy
+- id: p1052
+  text: ルーミーの値引き相場は今いくらですか？交渉のポイントも知りたいです。
+  category: cost
+  driver: negotiation
+  brand: true
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 4.6
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: ルーミー 値引き
+  demand_history:
+  - - '2026-08-28'
+    - 4.6
+  cars:
+  - roomy
+  named_cars:
+  - roomy
+  seg: compact_tall
+  active_for:
+  - roomy
+- id: p1053
+  text: ルーミーとタントのような軽スーパーハイトは、維持費込みだとどちらが得ですか？
+  category: cost
+  driver: cost
+  brand: true
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 4.6
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: ルーミー タント 比較
+  demand_history:
+  - - '2026-08-28'
+    - 4.6
+  cars:
+  - roomy
+  named_cars:
+  - roomy
+  seg: compact_tall
+  active_for:
+  - roomy
+- id: p1054
+  text: ルーミーは高速道路がきついと聞きます。長距離利用でも問題ないか教えてください。
+  category: model
+  driver: performance
+  brand: true
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 3.8
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: ルーミー 高速
+  demand_history:
+  - - '2026-08-28'
+    - 3.8
+  cars:
+  - roomy
+  named_cars:
+  - roomy
+  seg: compact_tall
+  active_for:
+  - roomy
+- id: p1055
+  text: ルーミーの納期は今どのくらいですか？早く手に入れる方法はありますか？
+  category: service
+  driver: delivery
+  brand: true
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 3.8
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: ルーミー 納期
+  demand_history:
+  - - '2026-08-28'
+    - 3.8
+  cars:
+  - roomy
+  named_cars:
+  - roomy
+  seg: compact_tall
+  active_for:
+  - roomy
+- id: p1056
+  text: ルーミーのリセールバリューは高いですか？3年後に売るといくらになりますか？
+  category: cost
+  driver: resale
+  brand: true
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 3.8
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: ルーミー リセール
+  demand_history:
+  - - '2026-08-28'
+    - 3.8
+  cars:
+  - roomy
+  named_cars:
+  - roomy
+  seg: compact_tall
+  active_for:
+  - roomy
+- id: p1057
+  text: ルーミーのカスタムで人気の定番は何ですか？購入時に付けるべきオプションは？
+  category: model
+  driver: style
+  brand: true
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 5.3
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: ルーミー カスタム
+  demand_history:
+  - - '2026-08-28'
+    - 5.3
+  cars:
+  - roomy
+  named_cars:
+  - roomy
+  seg: compact_tall
+  active_for:
+  - roomy
+- id: p1058
+  text: ルーミーの安全装備は十分ですか？スマートアシストの世代差も教えてください。
+  category: safety
+  driver: safety
+  brand: true
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 3.8
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: ルーミー 安全装備
+  demand_history:
+  - - '2026-08-28'
+    - 3.8
+  cars:
+  - roomy
+  named_cars:
+  - roomy
+  seg: compact_tall
+  active_for:
+  - roomy
+- id: p1059
+  text: ルーミーを買って後悔した点としてよく挙がるのは何ですか？対策はありますか？
+  category: brand
+  driver: reputation
+  brand: true
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 4.6
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: ルーミー 後悔
+  demand_history:
+  - - '2026-08-28'
+    - 4.6
+  cars:
+  - roomy
+  named_cars:
+  - roomy
+  seg: compact_tall
+  active_for:
+  - roomy
 - id: p106
   text: 燃費だけでなく静粛性も重視したいです。おすすめの国産セダンはありますか。
   category: eco
@@ -2900,6 +4418,245 @@ prompts:
     - 58.2
   - - '2026-08-24'
     - 58.2
+- id: p1060
+  text: フリード クロスターのようなアウトドア風の小型ミニバンは他にありますか？
+  category: model
+  driver: style
+  brand: false
+  source: car_deep_v1
+  tier: car_bench
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 15.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: フリード クロスター
+  demand_history:
+  - - '2026-08-28'
+    - 15.9
+  cars:
+  - sienta
+  named_cars: []
+  seg: minivan_s
+- id: p1061
+  text: フリードの中古が人気ですが、同クラスの中古で比較すべき車と相場を教えてください。
+  category: cost
+  driver: used
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 37.4
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: フリード 中古
+  demand_history:
+  - - '2026-08-28'
+    - 37.4
+  cars:
+  - sienta
+  named_cars: []
+  seg: minivan_s
+  active_for:
+  - sienta
+- id: p1062
+  text: フリードのマイナーチェンジ後の評価はどうですか？競合と比べて選ぶ基準は？
+  category: model
+  driver: newmodel
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 16.5
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: フリード マイナーチェンジ
+  demand_history:
+  - - '2026-08-28'
+    - 16.5
+  cars:
+  - sienta
+  named_cars: []
+  seg: minivan_s
+  active_for:
+  - sienta
+- id: p1063
+  text: コンパクトミニバンの5人乗りと7人乗り、家族4人ならどちらを選ぶべきですか？
+  category: model
+  driver: family
+  brand: false
+  source: car_deep_v1
+  tier: car_bench
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 11.3
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: シエンタ 5人乗り 7人乗り
+  demand_history:
+  - - '2026-08-28'
+    - 11.3
+  cars:
+  - sienta
+  named_cars: []
+  seg: minivan_s
+- id: p1064
+  text: スライドドアで燃費25km/L前後を狙える車はありますか？
+  category: eco
+  driver: eco
+  brand: false
+  source: car_deep_v1
+  tier: car_bench
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 13.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: スライドドア 燃費 いい
+  demand_history:
+  - - '2026-08-28'
+    - 13.9
+  cars:
+  - sienta
+  named_cars: []
+  seg: minivan_s
+- id: p1065
+  text: シエンタの中古はどの年式が狙い目ですか？現行型と先代の違いも教えてください。
+  category: cost
+  driver: used
+  brand: true
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 41.6
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: シエンタ 中古
+  demand_history:
+  - - '2026-08-28'
+    - 41.6
+  cars:
+  - sienta
+  named_cars:
+  - sienta
+  seg: minivan_s
+  active_for:
+  - sienta
+- id: p1066
+  text: シエンタとフリードはどちらがいいですか？家族4人・週末レジャー中心で比較してください。
+  category: model
+  driver: family
+  brand: true
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 23.3
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: シエンタ フリード
+  demand_history:
+  - - '2026-08-28'
+    - 23.3
+  cars:
+  - sienta
+  named_cars:
+  - sienta
+  seg: minivan_s
+  active_for:
+  - sienta
+- id: p1067
+  text: シエンタのハイブリッドとガソリンはどちらが得ですか？年間走行距離別に教えてください。
+  category: eco
+  driver: eco
+  brand: true
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 22.0
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: シエンタ ハイブリッド
+  demand_history:
+  - - '2026-08-28'
+    - 22.0
+  cars:
+  - sienta
+  named_cars:
+  - sienta
+  seg: minivan_s
+  active_for:
+  - sienta
+- id: p1068
+  text: シエンタの2026年マイナーチェンジでは何が変わりますか？待つべきですか？
+  category: model
+  driver: newmodel
+  brand: true
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 18.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: シエンタ マイナーチェンジ 2026
+  demand_history:
+  - - '2026-08-28'
+    - 18.9
+  cars:
+  - sienta
+  named_cars:
+  - sienta
+  seg: minivan_s
+  active_for:
+  - sienta
+- id: p1069
+  text: シエンタのサイズは立体駐車場に入りますか？取り回しの実際も教えてください。
+  category: model
+  driver: urban
+  brand: true
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 16.4
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: シエンタ サイズ
+  demand_history:
+  - - '2026-08-28'
+    - 16.4
+  cars:
+  - sienta
+  named_cars:
+  - sienta
+  seg: minivan_s
+  active_for:
+  - sienta
 - id: p107
   text: 車中泊ができてキャンプにも使える国産車を教えてください。
   category: purchase
@@ -2936,6 +4693,257 @@ prompts:
     - 58.9
   - - '2026-08-24'
     - 58.9
+- id: p1070
+  text: シエンタの価格はグレードでいくら違いますか？おすすめグレードと総額目安は？
+  category: cost
+  driver: grade
+  brand: true
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 12.0
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: シエンタ 価格
+  demand_history:
+  - - '2026-08-28'
+    - 12.0
+  cars:
+  - sienta
+  named_cars:
+  - sienta
+  seg: minivan_s
+  active_for:
+  - sienta
+- id: p1071
+  text: シエンタの納期は今どのくらいですか？
+  category: service
+  driver: delivery
+  brand: true
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 7.6
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: シエンタ 納期
+  demand_history:
+  - - '2026-08-28'
+    - 7.6
+  cars:
+  - sienta
+  named_cars:
+  - sienta
+  seg: minivan_s
+  active_for:
+  - sienta
+- id: p1072
+  text: シエンタで車中泊はできますか？フルフラットの作り方とおすすめグッズは？
+  category: model
+  driver: leisure
+  brand: true
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 8.8
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: シエンタ 車中泊
+  demand_history:
+  - - '2026-08-28'
+    - 8.8
+  cars:
+  - sienta
+  named_cars:
+  - sienta
+  seg: minivan_s
+  active_for:
+  - sienta
+- id: p1073
+  text: シエンタの値引き相場と、商談で引き出すコツを教えてください。
+  category: cost
+  driver: negotiation
+  brand: true
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 8.8
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: シエンタ 値引き
+  demand_history:
+  - - '2026-08-28'
+    - 8.8
+  cars:
+  - sienta
+  named_cars:
+  - sienta
+  seg: minivan_s
+  active_for:
+  - sienta
+- id: p1074
+  text: シエンタの3列目は大人でも座れますか？実際の広さを教えてください。
+  category: model
+  driver: family
+  brand: true
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 7.6
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: シエンタ 3列目
+  demand_history:
+  - - '2026-08-28'
+    - 7.6
+  cars:
+  - sienta
+  named_cars:
+  - sienta
+  seg: minivan_s
+  active_for:
+  - sienta
+- id: p1075
+  text: シエンタのリコール情報はありますか？中古で買う際の確認点も教えてください。
+  category: service
+  driver: reputation
+  brand: true
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 7.6
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: シエンタ リコール
+  demand_history:
+  - - '2026-08-28'
+    - 7.6
+  cars:
+  - sienta
+  named_cars:
+  - sienta
+  seg: minivan_s
+  active_for:
+  - sienta
+- id: p1076
+  text: シエンタの欠点は何ですか？購入前に知っておくべき弱点を正直に教えてください。
+  category: brand
+  driver: reputation
+  brand: true
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 8.2
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: シエンタ 欠点
+  demand_history:
+  - - '2026-08-28'
+    - 8.2
+  cars:
+  - sienta
+  named_cars:
+  - sienta
+  seg: minivan_s
+  active_for:
+  - sienta
+- id: p1077
+  text: シエンタ アメリカンエディションとは何ですか？通常モデルとの違いは？
+  category: model
+  driver: style
+  brand: true
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 9.4
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: シエンタ アメリカンエディション
+  demand_history:
+  - - '2026-08-28'
+    - 9.4
+  cars:
+  - sienta
+  named_cars:
+  - sienta
+  seg: minivan_s
+  active_for:
+  - sienta
+- id: p1078
+  text: セレナ e-POWERの燃費は魅力ですか？同クラスのハイブリッドと総費用で比較してください。
+  category: eco
+  driver: eco
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 15.6
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: セレナ e-POWER 燃費
+  demand_history:
+  - - '2026-08-28'
+    - 15.6
+  cars:
+  - noah
+  - voxy
+  named_cars: []
+  seg: minivan_m
+  active_for:
+  - noah
+- id: p1079
+  text: セレナのマイナーチェンジが2026年にあると聞きました。今ミニバンを買うなら何を基準に選ぶべきですか？
+  category: model
+  driver: newmodel
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 18.0
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: セレナ マイナーチェンジ 2026
+  demand_history:
+  - - '2026-08-28'
+    - 18.0
+  cars:
+  - noah
+  - voxy
+  named_cars: []
+  seg: minivan_m
+  active_for:
+  - voxy
+  - noah
 - id: p108
   text: チャイルドシートを2台つけても窮屈にならない国産車を教えてください。
   category: purchase
@@ -2973,6 +4981,260 @@ prompts:
   - - '2026-08-24'
     - 56.9
   tier_prev: core
+- id: p1080
+  text: ステップワゴン スパーダのような上級感のあるミニバンを比較してください。
+  category: model
+  driver: style
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 31.7
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: ステップワゴン スパーダ
+  demand_history:
+  - - '2026-08-28'
+    - 31.7
+  cars:
+  - noah
+  - voxy
+  named_cars: []
+  seg: minivan_m
+  active_for:
+  - voxy
+  - noah
+- id: p1081
+  text: ノアの中古相場はいくらですか？80系と90系どちらを買うべきか教えてください。
+  category: cost
+  driver: used
+  brand: true
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 47.0
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: トヨタ ノア 中古
+  demand_history:
+  - - '2026-08-28'
+    - 47.0
+  cars:
+  - noah
+  named_cars:
+  - noah
+  seg: minivan_m
+  active_for:
+  - noah
+- id: p1082
+  text: ノアとヴォクシーの違いは何ですか？価格・顔つき・リセールで比較してください。
+  category: model
+  driver: family
+  brand: true
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 48.0
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: ノア ヴォクシー 違い
+  demand_history:
+  - - '2026-08-28'
+    - 48.0
+  cars:
+  - noah
+  - voxy
+  named_cars:
+  - noah
+  - voxy
+  seg: minivan_m
+  active_for:
+  - voxy
+  - noah
+- id: p1083
+  text: ノアのハイブリッドの実燃費はどのくらいですか？ガソリンとの価格差は回収できますか？
+  category: eco
+  driver: eco
+  brand: true
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 23.5
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: トヨタ ノア ハイブリッド
+  demand_history:
+  - - '2026-08-28'
+    - 23.5
+  cars:
+  - noah
+  named_cars:
+  - noah
+  seg: minivan_m
+  active_for:
+  - noah
+- id: p1084
+  text: ノアの価格はいくらからですか？グレード別の乗り出し総額を教えてください。
+  category: cost
+  driver: grade
+  brand: true
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 20.2
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: トヨタ ノア 価格
+  demand_history:
+  - - '2026-08-28'
+    - 20.2
+  cars:
+  - noah
+  named_cars:
+  - noah
+  seg: minivan_m
+  active_for:
+  - noah
+- id: p1085
+  text: ノアのサイズは先代から大きくなりましたか？駐車場と取り回しへの影響は？
+  category: model
+  driver: urban
+  brand: true
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 15.4
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: トヨタ ノア サイズ
+  demand_history:
+  - - '2026-08-28'
+    - 15.4
+  cars:
+  - noah
+  named_cars:
+  - noah
+  seg: minivan_m
+  active_for:
+  - noah
+- id: p1086
+  text: ノアとセレナで迷っています。家族5人・年1万km走行ならどちらですか？
+  category: model
+  driver: family
+  brand: true
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 14.4
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: ノア セレナ
+  demand_history:
+  - - '2026-08-28'
+    - 14.4
+  cars:
+  - noah
+  named_cars:
+  - noah
+  seg: minivan_m
+  active_for:
+  - noah
+- id: p1087
+  text: ノアとステップワゴンの3列目の快適さと荷室を比較してください。
+  category: model
+  driver: family
+  brand: true
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 12.5
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: ノア ステップワゴン
+  demand_history:
+  - - '2026-08-28'
+    - 12.5
+  cars:
+  - noah
+  named_cars:
+  - noah
+  seg: minivan_m
+  active_for:
+  - noah
+- id: p1088
+  text: ノアの値引きは今どのくらい出ますか？
+  category: cost
+  driver: negotiation
+  brand: true
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 9.6
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: ノア 値引き
+  demand_history:
+  - - '2026-08-28'
+    - 9.6
+  cars:
+  - noah
+  named_cars:
+  - noah
+  seg: minivan_m
+  active_for:
+  - noah
+- id: p1089
+  text: ノアのグレードはX・G・Zのどれがおすすめですか？装備差を教えてください。
+  category: model
+  driver: grade
+  brand: true
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 10.6
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: ノア グレード
+  demand_history:
+  - - '2026-08-28'
+    - 10.6
+  cars:
+  - noah
+  named_cars:
+  - noah
+  seg: minivan_m
+  active_for:
+  - noah
 - id: p109
   text: 寒冷地でハイブリッドとガソリン車、どちらが維持費で有利ですか。
   category: eco
@@ -3010,6 +5272,256 @@ prompts:
   - - '2026-08-24'
     - 60.1
   tier_prev: longtail
+- id: p1090
+  text: ノアの納期は今どのくらいですか？ハイブリッドとガソリンで違いますか？
+  category: service
+  driver: delivery
+  brand: true
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 7.7
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: ノア 納期
+  demand_history:
+  - - '2026-08-28'
+    - 7.7
+  cars:
+  - noah
+  named_cars:
+  - noah
+  seg: minivan_m
+  active_for:
+  - noah
+- id: p1091
+  text: ノアの弱点や不満としてよく挙がる点は何ですか？
+  category: brand
+  driver: reputation
+  brand: true
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 6.7
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: ノア 欠点
+  demand_history:
+  - - '2026-08-28'
+    - 6.7
+  cars:
+  - noah
+  named_cars:
+  - noah
+  seg: minivan_m
+  active_for:
+  - noah
+- id: p1092
+  text: ヴォクシーの中古は90系と80系どちらが買いですか？相場と注意点を教えてください。
+  category: cost
+  driver: used
+  brand: true
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 37.4
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: ヴォクシー 中古
+  demand_history:
+  - - '2026-08-28'
+    - 37.4
+  cars:
+  - voxy
+  named_cars:
+  - voxy
+  seg: minivan_m
+  active_for:
+  - voxy
+- id: p1093
+  text: ヴォクシーの2026年マイナーチェンジの内容は？いま買うか待つかを判断したいです。
+  category: model
+  driver: newmodel
+  brand: true
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 39.0
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: ヴォクシー マイナーチェンジ 2026
+  demand_history:
+  - - '2026-08-28'
+    - 39.0
+  cars:
+  - voxy
+  named_cars:
+  - voxy
+  seg: minivan_m
+  active_for:
+  - voxy
+- id: p1094
+  text: ヴォクシーのハイブリッドの実燃費と、ガソリン車との総額比較を教えてください。
+  category: eco
+  driver: eco
+  brand: true
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 20.3
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: ヴォクシー ハイブリッド
+  demand_history:
+  - - '2026-08-28'
+    - 20.3
+  cars:
+  - voxy
+  named_cars:
+  - voxy
+  seg: minivan_m
+  active_for:
+  - voxy
+- id: p1095
+  text: ヴォクシーとセレナはどちらが人気ですか？リセールも含めて比較してください。
+  category: model
+  driver: family
+  brand: true
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 15.6
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: ヴォクシー セレナ
+  demand_history:
+  - - '2026-08-28'
+    - 15.6
+  cars:
+  - voxy
+  named_cars:
+  - voxy
+  seg: minivan_m
+  active_for:
+  - voxy
+- id: p1096
+  text: ヴォクシーの煌グレードとは何ですか？特別仕様車の内容と価格を教えてください。
+  category: model
+  driver: grade
+  brand: true
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 12.5
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: ヴォクシー 煌
+  demand_history:
+  - - '2026-08-28'
+    - 12.5
+  cars:
+  - voxy
+  named_cars:
+  - voxy
+  seg: minivan_m
+  active_for:
+  - voxy
+- id: p1097
+  text: ヴォクシーのサイズと最小回転半径は？街中での扱いやすさを教えてください。
+  category: model
+  driver: urban
+  brand: true
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 14.6
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: ヴォクシー サイズ
+  demand_history:
+  - - '2026-08-28'
+    - 14.6
+  cars:
+  - voxy
+  named_cars:
+  - voxy
+  seg: minivan_m
+  active_for:
+  - voxy
+- id: p1098
+  text: ヴォクシーの値引き相場は？限界額を引き出す交渉手順も知りたいです。
+  category: cost
+  driver: negotiation
+  brand: true
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 11.4
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: ヴォクシー 値引き
+  demand_history:
+  - - '2026-08-28'
+    - 11.4
+  cars:
+  - voxy
+  named_cars:
+  - voxy
+  seg: minivan_m
+  active_for:
+  - voxy
+- id: p1099
+  text: ヴォクシーの残価設定は月々いくらですか？5年後の残価率も教えてください。
+  category: cost
+  driver: finance
+  brand: true
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 10.4
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: ヴォクシー 残クレ
+  demand_history:
+  - - '2026-08-28'
+    - 10.4
+  cars:
+  - voxy
+  named_cars:
+  - voxy
+  seg: minivan_m
+  active_for:
+  - voxy
 - id: p110
   text: 駐車が苦手でも安心して乗れる、駐車支援が優秀な車を教えてください。
   category: purchase
@@ -3044,6 +5556,256 @@ prompts:
     - 40.8
   - - '2026-08-24'
     - 40.8
+- id: p1100
+  text: ヴォクシーの納期は今どのくらいですか？
+  category: service
+  driver: delivery
+  brand: true
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 8.3
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: ヴォクシー 納期
+  demand_history:
+  - - '2026-08-28'
+    - 8.3
+  cars:
+  - voxy
+  named_cars:
+  - voxy
+  seg: minivan_m
+  active_for:
+  - voxy
+- id: p1101
+  text: ヴォクシーはなぜ人気なのですか？選ばれる理由と向かない人を教えてください。
+  category: brand
+  driver: reputation
+  brand: true
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 9.4
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: ヴォクシー 人気 理由
+  demand_history:
+  - - '2026-08-28'
+    - 9.4
+  cars:
+  - voxy
+  named_cars:
+  - voxy
+  seg: minivan_m
+  active_for:
+  - voxy
+- id: p1102
+  text: ヴォクシーのリコールや不具合情報はありますか？
+  category: service
+  driver: reputation
+  brand: true
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 10.4
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: ヴォクシー リコール
+  demand_history:
+  - - '2026-08-28'
+    - 10.4
+  cars:
+  - voxy
+  named_cars:
+  - voxy
+  seg: minivan_m
+  active_for:
+  - voxy
+- id: p1103
+  text: エルグランドの新型はいつ出ますか？待つ価値があるか、現行の選択肢と比較してください。
+  category: model
+  driver: newmodel
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 14.6
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: エルグランド 新型 いつ
+  demand_history:
+  - - '2026-08-28'
+    - 14.6
+  cars:
+  - alphard
+  named_cars: []
+  seg: minivan_l
+  active_for:
+  - alphard
+- id: p1104
+  text: レクサスにミニバンはありますか？高級ミニバンの選択肢を価格帯別に整理してください。
+  category: model
+  driver: premium
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 19.4
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: レクサス ミニバン
+  demand_history:
+  - - '2026-08-28'
+    - 19.4
+  cars:
+  - alphard
+  named_cars: []
+  seg: minivan_l
+  active_for:
+  - alphard
+- id: p1105
+  text: 法人名義で買うと節税になる車はどれですか？人気の車種と理由を教えてください。
+  category: cost
+  driver: finance
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 17.5
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 法人 車 節税
+  demand_history:
+  - - '2026-08-28'
+    - 17.5
+  cars:
+  - alphard
+  - lc250
+  named_cars: []
+  seg: minivan_l
+  active_for:
+  - alphard
+  - lc250
+- id: p1106
+  text: アルファードの中古は30系後期と40系どちらが買いですか？相場と注意点を教えてください。
+  category: cost
+  driver: used
+  brand: true
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 68.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: アルファード 中古
+  demand_history:
+  - - '2026-08-28'
+    - 68.9
+  cars:
+  - alphard
+  named_cars:
+  - alphard
+  seg: minivan_l
+  active_for:
+  - alphard
+- id: p1107
+  text: アルファードの残価設定ローンは月々いくらですか？残クレで買うのは得ですか？
+  category: cost
+  driver: finance
+  brand: true
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 35.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 残クレ アルファード
+  demand_history:
+  - - '2026-08-28'
+    - 35.9
+  cars:
+  - alphard
+  named_cars:
+  - alphard
+  seg: minivan_l
+  active_for:
+  - alphard
+- id: p1108
+  text: アルファードとヴェルファイアの違いは何ですか？どちらを選ぶべきですか？
+  category: model
+  driver: premium
+  brand: true
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 31.0
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: ヴェルファイア アルファード 違い
+  demand_history:
+  - - '2026-08-28'
+    - 31.0
+  cars:
+  - alphard
+  named_cars:
+  - alphard
+  - vellfire
+  seg: minivan_l
+  active_for:
+  - alphard
+- id: p1109
+  text: アルファードの新型40系の評価はどうですか？30系から買い替える価値はありますか？
+  category: model
+  driver: newmodel
+  brand: true
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 35.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 新型 アルファード
+  demand_history:
+  - - '2026-08-28'
+    - 35.9
+  cars:
+  - alphard
+  named_cars:
+  - alphard
+  seg: minivan_l
+  active_for:
+  - alphard
 - id: p111
   text: 車の維持費を年間20万円以内に抑えたいです。どの車種が現実的ですか。
   category: cost
@@ -3078,6 +5840,255 @@ prompts:
     - 49.2
   - - '2026-08-24'
     - 49.2
+- id: p1110
+  text: アルファードのグレードはどれがおすすめですか？XとGとZの違いも教えてください。
+  category: model
+  driver: grade
+  brand: true
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 23.3
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: アルファード g グレード
+  demand_history:
+  - - '2026-08-28'
+    - 23.3
+  cars:
+  - alphard
+  named_cars:
+  - alphard
+  seg: minivan_l
+  active_for:
+  - alphard
+- id: p1111
+  text: アルファードのリセールバリューは本当に高いですか？3年後・5年後の実勢を教えてください。
+  category: cost
+  driver: resale
+  brand: true
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 28.1
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: アルファード リセールバリュー
+  demand_history:
+  - - '2026-08-28'
+    - 28.1
+  cars:
+  - alphard
+  named_cars:
+  - alphard
+  seg: minivan_l
+  active_for:
+  - alphard
+- id: p1112
+  text: アルファードの維持費は年間いくらかかりますか？税金・保険・燃料費の内訳は？
+  category: cost
+  driver: cost
+  brand: true
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 19.4
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: アルファード 維持費
+  demand_history:
+  - - '2026-08-28'
+    - 19.4
+  cars:
+  - alphard
+  named_cars:
+  - alphard
+  seg: minivan_l
+  active_for:
+  - alphard
+- id: p1113
+  text: アルファードの納期は今どのくらいですか？抽選や割り当ての実態も教えてください。
+  category: service
+  driver: delivery
+  brand: true
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 21.3
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: アルファード 納期
+  demand_history:
+  - - '2026-08-28'
+    - 21.3
+  cars:
+  - alphard
+  named_cars:
+  - alphard
+  seg: minivan_l
+  active_for:
+  - alphard
+- id: p1114
+  text: アルファードは何年待てば普通に買えますか？確実に手に入れる方法は？
+  category: purchase
+  driver: delivery
+  brand: true
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 17.5
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: アルファード 買い方
+  demand_history:
+  - - '2026-08-28'
+    - 17.5
+  cars:
+  - alphard
+  named_cars:
+  - alphard
+  seg: minivan_l
+  active_for:
+  - alphard
+- id: p1115
+  text: アルファードの値引きは出ますか？出ない場合に総額を下げる方法は？
+  category: cost
+  driver: negotiation
+  brand: true
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 17.5
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: アルファード 値引き
+  demand_history:
+  - - '2026-08-28'
+    - 17.5
+  cars:
+  - alphard
+  named_cars:
+  - alphard
+  seg: minivan_l
+  active_for:
+  - alphard
+- id: p1116
+  text: アルファードのハイブリッドとガソリンはどちらが得ですか？
+  category: eco
+  driver: eco
+  brand: true
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 23.3
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: アルファード ハイブリッド
+  demand_history:
+  - - '2026-08-28'
+    - 23.3
+  cars:
+  - alphard
+  named_cars:
+  - alphard
+  seg: minivan_l
+  active_for:
+  - alphard
+- id: p1117
+  text: アルファードを買う人の年収はどのくらいですか？無理なく維持できる目安は？
+  category: cost
+  driver: finance
+  brand: true
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 15.5
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: アルファード 年収
+  demand_history:
+  - - '2026-08-28'
+    - 15.5
+  cars:
+  - alphard
+  named_cars:
+  - alphard
+  seg: minivan_l
+  active_for:
+  - alphard
+- id: p1118
+  text: アルファードとエルグランドを比較してください。新型エルグランドを待つべきですか？
+  category: model
+  driver: premium
+  brand: true
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 17.5
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: アルファード エルグランド
+  demand_history:
+  - - '2026-08-28'
+    - 17.5
+  cars:
+  - alphard
+  named_cars:
+  - alphard
+  seg: minivan_l
+  active_for:
+  - alphard
+- id: p1119
+  text: ノートの中古が安いと聞きました。同クラスの中古ハイブリッドを相場込みで比較してください。
+  category: cost
+  driver: used
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 9.0
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: ノート 中古
+  demand_history:
+  - - '2026-08-28'
+    - 9.0
+  cars:
+  - aqua
+  named_cars: []
+  seg: compact_hb
+  active_for:
+  - aqua
 - id: p112
   text: 初めて車を買う新社会人です。予算200万円で後悔しない選び方を教えてください。
   category: cost
@@ -3112,6 +6123,255 @@ prompts:
     - 52.9
   - - '2026-08-24'
     - 52.9
+- id: p1120
+  text: フィットのハイブリッドの評判はどうですか？競合と燃費・価格で比べてください。
+  category: eco
+  driver: eco
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 8.4
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: フィット ハイブリッド
+  demand_history:
+  - - '2026-08-28'
+    - 8.4
+  cars:
+  - aqua
+  named_cars: []
+  seg: compact_hb
+  active_for:
+  - aqua
+- id: p1121
+  text: 中古で50万〜100万円のハイブリッド車は買っても大丈夫ですか？おすすめは？
+  category: cost
+  driver: used
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 9.0
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 中古 ハイブリッド 安い
+  demand_history:
+  - - '2026-08-28'
+    - 9.0
+  cars:
+  - aqua
+  named_cars: []
+  seg: compact_hb
+  active_for:
+  - aqua
+- id: p1122
+  text: アクアの中古はなぜ安いのですか？買っていい年式とバッテリーの注意点を教えてください。
+  category: cost
+  driver: used
+  brand: true
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 30.0
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: トヨタ アクア 中古
+  demand_history:
+  - - '2026-08-28'
+    - 30.0
+  cars:
+  - aqua
+  named_cars:
+  - aqua
+  seg: compact_hb
+  active_for:
+  - aqua
+- id: p1123
+  text: アクアの実燃費はどのくらいですか？カタログ値との差も教えてください。
+  category: eco
+  driver: eco
+  brand: true
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 8.4
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: トヨタ アクア 燃費
+  demand_history:
+  - - '2026-08-28'
+    - 8.4
+  cars:
+  - aqua
+  named_cars:
+  - aqua
+  seg: compact_hb
+  active_for:
+  - aqua
+- id: p1124
+  text: アクアとヤリスはどう違いますか？どちらを選ぶべきか用途別に教えてください。
+  category: model
+  driver: urban
+  brand: true
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 7.2
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: アクア ヤリス どっち
+  demand_history:
+  - - '2026-08-28'
+    - 7.2
+  cars:
+  - aqua
+  named_cars:
+  - aqua
+  - yaris
+  seg: compact_hb
+  active_for:
+  - aqua
+- id: p1125
+  text: アクアとノートを比較してください。e-POWERとハイブリッドの違いも含めて。
+  category: model
+  driver: urban
+  brand: true
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 6.6
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: アクア ノート
+  demand_history:
+  - - '2026-08-28'
+    - 6.6
+  cars:
+  - aqua
+  named_cars:
+  - aqua
+  seg: compact_hb
+  active_for:
+  - aqua
+- id: p1126
+  text: アクアの駆動用バッテリーの寿命は何年ですか？交換費用はいくらかかりますか？
+  category: service
+  driver: maintenance
+  brand: true
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 6.0
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: アクア バッテリー 交換費用
+  demand_history:
+  - - '2026-08-28'
+    - 6.0
+  cars:
+  - aqua
+  named_cars:
+  - aqua
+  seg: compact_hb
+  active_for:
+  - aqua
+- id: p1127
+  text: アクアの新型の価格はいくらですか？グレード別の違いも教えてください。
+  category: cost
+  driver: grade
+  brand: true
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: トヨタ アクア 価格
+  demand_history:
+  - - '2026-08-28'
+    - 9.9
+  cars:
+  - aqua
+  named_cars:
+  - aqua
+  seg: compact_hb
+  active_for:
+  - aqua
+- id: p1128
+  text: アクアのGRスポーツはどんな車ですか？通常グレードとの違いは？
+  category: model
+  driver: style
+  brand: true
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 5.4
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: トヨタ アクア gr
+  demand_history:
+  - - '2026-08-28'
+    - 5.4
+  cars:
+  - aqua
+  named_cars:
+  - aqua
+  seg: compact_hb
+  active_for:
+  - aqua
+- id: p1129
+  text: アクアの納期は今どのくらいですか？
+  category: service
+  driver: delivery
+  brand: true
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 1.5
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: トヨタ アクア 納期
+  demand_history:
+  - - '2026-08-28'
+    - 1.5
+  cars:
+  - aqua
+  named_cars:
+  - aqua
+  seg: compact_hb
+  active_for:
+  - aqua
 - id: p113
   text: 残価設定ローンとカーリース、結局どちらが損しませんか。
   category: cost
@@ -3140,6 +6400,254 @@ prompts:
     - 30.2
   - - '2026-08-24'
     - 30.2
+- id: p1130
+  text: アクアのサイズと小回りは街乗りでどうですか？狭い駐車場でも困りませんか？
+  category: model
+  driver: urban
+  brand: true
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 6.0
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: トヨタ アクア サイズ
+  demand_history:
+  - - '2026-08-28'
+    - 6.0
+  cars:
+  - aqua
+  named_cars:
+  - aqua
+  seg: compact_hb
+  active_for:
+  - aqua
+- id: p1131
+  text: アクアの欠点は何ですか？後席や荷室の狭さは実用上問題になりますか？
+  category: brand
+  driver: reputation
+  brand: true
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 4.2
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: アクア 欠点
+  demand_history:
+  - - '2026-08-28'
+    - 4.2
+  cars:
+  - aqua
+  named_cars:
+  - aqua
+  seg: compact_hb
+  active_for:
+  - aqua
+- id: p1132
+  text: アクアの値引き相場を教えてください。
+  category: cost
+  driver: negotiation
+  brand: true
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 3.6
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: アクア 値引き
+  demand_history:
+  - - '2026-08-28'
+    - 3.6
+  cars:
+  - aqua
+  named_cars:
+  - aqua
+  seg: compact_hb
+  active_for:
+  - aqua
+- id: p1133
+  text: ロッキーのハイブリッドの評判はどうですか？兄弟車とどちらを選ぶべきですか？
+  category: eco
+  driver: eco
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 6.0
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: ロッキー ハイブリッド
+  demand_history:
+  - - '2026-08-28'
+    - 6.0
+  cars:
+  - raize
+  named_cars: []
+  seg: suv_compact
+  active_for:
+  - raize
+- id: p1134
+  text: ダイハツの認証不正問題は今のダイハツ製の車の購入に影響ありますか？安心して買えますか？
+  category: brand
+  driver: reputation
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 6.5
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: ダイハツ 認証不正 影響
+  demand_history:
+  - - '2026-08-28'
+    - 6.5
+  cars:
+  - raize
+  named_cars: []
+  seg: suv_compact
+  active_for:
+  - raize
+- id: p1135
+  text: ヤリスクロスと価格帯が近いSUVを比較してください。何が決め手になりますか？
+  category: model
+  driver: urban
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 10.8
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: ヤリスクロス 比較
+  demand_history:
+  - - '2026-08-28'
+    - 10.8
+  cars:
+  - raize
+  - yariscross
+  named_cars: []
+  seg: suv_compact
+  active_for:
+  - raize
+- id: p1136
+  text: ライズの中古車は安いですか？相場と選ぶときの注意点を教えてください。
+  category: cost
+  driver: used
+  brand: true
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 25.0
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: トヨタ ライズ 中古車
+  demand_history:
+  - - '2026-08-28'
+    - 25.0
+  cars:
+  - raize
+  named_cars:
+  - raize
+  seg: suv_compact
+  active_for:
+  - raize
+- id: p1137
+  text: ライズのハイブリッドの実燃費と評判を教えてください。ガソリンとどちらが得ですか？
+  category: eco
+  driver: eco
+  brand: true
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 23.2
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: トヨタ ライズ ハイブリッド
+  demand_history:
+  - - '2026-08-28'
+    - 23.2
+  cars:
+  - raize
+  named_cars:
+  - raize
+  seg: suv_compact
+  active_for:
+  - raize
+- id: p1138
+  text: ライズとロッキーの違いは何ですか？どちらで買うのが得ですか？
+  category: model
+  driver: budget
+  brand: true
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 21.5
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: トヨタ ライズ ダイハツ
+  demand_history:
+  - - '2026-08-28'
+    - 21.5
+  cars:
+  - raize
+  named_cars:
+  - raize
+  seg: suv_compact
+  active_for:
+  - raize
+- id: p1139
+  text: ライズの価格は総額いくらですか？グレード別の乗り出し価格を教えてください。
+  category: cost
+  driver: grade
+  brand: true
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 21.5
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: トヨタ ライズ 価格
+  demand_history:
+  - - '2026-08-28'
+    - 21.5
+  cars:
+  - raize
+  named_cars:
+  - raize
+  seg: suv_compact
+  active_for:
+  - raize
 - id: p114
   text: 親が高齢なので、乗り降りしやすく運転支援も充実した車を探しています。
   category: safety
@@ -3171,6 +6679,254 @@ prompts:
   tier_prev: longtail
   surged_on: '2026-08-03'
   surge_reason: 検索需要の急上昇
+- id: p1140
+  text: ライズの4WDは雪道で使えますか？降雪地帯での実力を教えてください。
+  category: model
+  driver: snow
+  brand: true
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 7.2
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: トヨタ ライズ 4wd
+  demand_history:
+  - - '2026-08-28'
+    - 7.2
+  cars:
+  - raize
+  named_cars:
+  - raize
+  seg: suv_compact
+  active_for:
+  - raize
+- id: p1141
+  text: ライズのサイズと荷室容量は？ベビーカーやキャンプ道具は積めますか？
+  category: model
+  driver: family
+  brand: true
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 14.0
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: トヨタ ライズ サイズ
+  demand_history:
+  - - '2026-08-28'
+    - 14.0
+  cars:
+  - raize
+  named_cars:
+  - raize
+  seg: suv_compact
+  active_for:
+  - raize
+- id: p1142
+  text: ライズとヤリスクロスはどちらがおすすめですか？価格差の価値はありますか？
+  category: model
+  driver: urban
+  brand: true
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 7.5
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: ライズ ヤリスクロス
+  demand_history:
+  - - '2026-08-28'
+    - 7.5
+  cars:
+  - raize
+  named_cars:
+  - raize
+  - yariscross
+  seg: suv_compact
+  active_for:
+  - raize
+- id: p1143
+  text: ライズの値引きはどのくらい出ますか？
+  category: cost
+  driver: negotiation
+  brand: true
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 3.5
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: ライズ 値引き
+  demand_history:
+  - - '2026-08-28'
+    - 3.5
+  cars:
+  - raize
+  named_cars:
+  - raize
+  seg: suv_compact
+  active_for:
+  - raize
+- id: p1144
+  text: ライズの欠点や不満点は何ですか？高速道路での走りはどうですか？
+  category: brand
+  driver: reputation
+  brand: true
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 4.0
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: ライズ 欠点
+  demand_history:
+  - - '2026-08-28'
+    - 4.0
+  cars:
+  - raize
+  named_cars:
+  - raize
+  seg: suv_compact
+  active_for:
+  - raize
+- id: p1145
+  text: ライズは今後モデルチェンジの予定がありますか？買い時はいつですか？
+  category: model
+  driver: newmodel
+  brand: true
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 4.5
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: ライズ モデルチェンジ
+  demand_history:
+  - - '2026-08-28'
+    - 4.5
+  cars:
+  - raize
+  named_cars:
+  - raize
+  seg: suv_compact
+  active_for:
+  - raize
+- id: p1146
+  text: ジムニーシエラとワンサイズ上の本格四駆で迷っています。維持費差も含めて比較してください。
+  category: model
+  driver: offroad
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 63.0
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: ジムニーシエラ 比較
+  demand_history:
+  - - '2026-08-28'
+    - 63.0
+  cars:
+  - lc250
+  named_cars: []
+  seg: suv_off
+  active_for:
+  - lc250
+- id: p1147
+  text: ジムニー ノマドの納期が長すぎます。代わりになる本格SUVはありますか？
+  category: service
+  driver: delivery
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 50.0
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: ジムニー ノマド 納期
+  demand_history:
+  - - '2026-08-28'
+    - 50.0
+  cars:
+  - lc250
+  named_cars: []
+  seg: suv_off
+  active_for:
+  - lc250
+- id: p1148
+  text: ディフェンダーのような本格オフローダーを国産で選ぶなら何ですか？
+  category: model
+  driver: offroad
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 4.6
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: ディフェンダー 国産 対抗
+  demand_history:
+  - - '2026-08-28'
+    - 4.6
+  cars:
+  - lc250
+  named_cars: []
+  seg: suv_off
+  active_for:
+  - lc250
+- id: p1149
+  text: ランクル250の納期は今どのくらいですか？注文は再開されていますか？
+  category: service
+  driver: delivery
+  brand: true
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 8.4
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: ランクル250 納期
+  demand_history:
+  - - '2026-08-28'
+    - 8.4
+  cars:
+  - lc250
+  named_cars:
+  - lc250
+  seg: suv_off
+  active_for:
+  - lc250
 - id: p115
   text: 「スライドドア 使いやすい メーカー」で検討しています。どのブランドがおすすめですか。理由も教えてください。
   category: purchase
@@ -3199,6 +6955,259 @@ prompts:
     - 35.1
   - - '2026-08-24'
     - 35.1
+- id: p1150
+  text: ランクル250と300の違いは何ですか？250で十分か判断したいです。
+  category: model
+  driver: offroad
+  brand: true
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 6.3
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: ランクル250 300 違い
+  demand_history:
+  - - '2026-08-28'
+    - 6.3
+  cars:
+  - lc250
+  named_cars:
+  - lc250
+  - lc300
+  seg: suv_off
+  active_for:
+  - lc250
+- id: p1151
+  text: ランクル250のリセールバリューは高いですか？転売規制の影響も教えてください。
+  category: cost
+  driver: resale
+  brand: true
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 5.5
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: ランクル250 リセール
+  demand_history:
+  - - '2026-08-28'
+    - 5.5
+  cars:
+  - lc250
+  named_cars:
+  - lc250
+  seg: suv_off
+  active_for:
+  - lc250
+- id: p1152
+  text: ランクル250の維持費は年間いくらですか？税金・燃費・タイヤ代の目安を教えてください。
+  category: cost
+  driver: cost
+  brand: true
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 4.6
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: ランクル250 維持費
+  demand_history:
+  - - '2026-08-28'
+    - 4.6
+  cars:
+  - lc250
+  named_cars:
+  - lc250
+  seg: suv_off
+  active_for:
+  - lc250
+- id: p1153
+  text: ランクル250のグレードはVXとZXどちらがおすすめですか？ディーゼルとガソリンの選び方も。
+  category: model
+  driver: grade
+  brand: true
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 5.0
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: ランクル250 グレード
+  demand_history:
+  - - '2026-08-28'
+    - 5.0
+  cars:
+  - lc250
+  named_cars:
+  - lc250
+  seg: suv_off
+  active_for:
+  - lc250
+- id: p1154
+  text: ランクル250の中古はプレミア価格ですか？新車を待つのと中古を買うのはどちらがいいですか？
+  category: cost
+  driver: used
+  brand: true
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 6.3
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: ランクル250 中古
+  demand_history:
+  - - '2026-08-28'
+    - 6.3
+  cars:
+  - lc250
+  named_cars:
+  - lc250
+  seg: suv_off
+  active_for:
+  - lc250
+- id: p1155
+  text: ランクル250とプラドの違いは何ですか？プラドから乗り換える価値はありますか？
+  category: model
+  driver: offroad
+  brand: true
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 5.0
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: ランクル250 プラド 違い
+  demand_history:
+  - - '2026-08-28'
+    - 5.0
+  cars:
+  - lc250
+  named_cars:
+  - lc250
+  - prado
+  seg: suv_off
+  active_for:
+  - lc250
+- id: p1156
+  text: ランクル250のサイズは日本の道路や駐車場で扱えますか？
+  category: model
+  driver: urban
+  brand: true
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 4.6
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: ランクル250 サイズ
+  demand_history:
+  - - '2026-08-28'
+    - 4.6
+  cars:
+  - lc250
+  named_cars:
+  - lc250
+  seg: suv_off
+  active_for:
+  - lc250
+- id: p1157
+  text: ランクル250は普段使いに向いていますか？街乗りメインで買うのはありですか？
+  category: purchase
+  driver: urban
+  brand: true
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 3.8
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: ランクル250 街乗り
+  demand_history:
+  - - '2026-08-28'
+    - 3.8
+  cars:
+  - lc250
+  named_cars:
+  - lc250
+  seg: suv_off
+  active_for:
+  - lc250
+- id: p1158
+  text: ランクル250の燃費はどのくらいですか？ディーゼルの実燃費を教えてください。
+  category: eco
+  driver: eco
+  brand: true
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 4.2
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: ランクル250 燃費
+  demand_history:
+  - - '2026-08-28'
+    - 4.2
+  cars:
+  - lc250
+  named_cars:
+  - lc250
+  seg: suv_off
+  active_for:
+  - lc250
+- id: p1159
+  text: 150万円以内で買える新車はありますか？装備も含めて現実的な選択肢を教えてください。
+  category: cost
+  driver: budget
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 22.0
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 150万 新車
+  demand_history:
+  - - '2026-08-28'
+    - 22.0
+  cars:
+  - roomy
+  - aqua
+  named_cars: []
+  seg: cross
+  active_for:
+  - roomy
+  - aqua
 - id: p116
   text: 「SUV 荷室 広い 国産」について、失敗しない選び方を教えてください。
   category: purchase
@@ -3228,6 +7237,277 @@ prompts:
   - - '2026-08-24'
     - 64.1
   tier_prev: longtail
+- id: p1160
+  text: 250万円の予算で家族用の車を買うなら、何を候補にすべきですか？
+  category: purchase
+  driver: budget
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 24.4
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 250万 車 おすすめ
+  demand_history:
+  - - '2026-08-28'
+    - 24.4
+  cars:
+  - roomy
+  - sienta
+  - aqua
+  - raize
+  named_cars: []
+  seg: cross
+  active_for:
+  - roomy
+  - sienta
+  - aqua
+  - raize
+- id: p1161
+  text: 400万円でミニバンを買うなら、どのグレード・車種の組み合わせが賢いですか？
+  category: purchase
+  driver: budget
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 15.0
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 400万 ミニバン
+  demand_history:
+  - - '2026-08-28'
+    - 15.0
+  cars:
+  - noah
+  - voxy
+  named_cars: []
+  seg: cross
+  active_for:
+  - noah
+- id: p1162
+  text: 500万円超の予算で家族も自分も満足する車を1台選ぶなら？
+  category: purchase
+  driver: premium
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 19.4
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 500万 車
+  demand_history:
+  - - '2026-08-28'
+    - 19.4
+  cars:
+  - alphard
+  - lc250
+  named_cars: []
+  seg: cross
+  active_for:
+  - alphard
+  - lc250
+- id: p1163
+  text: 総額を月々のカーリースで抑えたい。ファミリー向けで月4万円台の選択肢は？
+  category: cost
+  driver: finance
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 19.5
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: カーリース ファミリーカー
+  demand_history:
+  - - '2026-08-28'
+    - 19.5
+  cars:
+  - sienta
+  - roomy
+  - voxy
+  named_cars: []
+  seg: cross
+  active_for:
+  - roomy
+  - sienta
+  - voxy
+- id: p1164
+  text: KINTOのようなサブスクで乗るのに向いている車種はどれですか？
+  category: cost
+  driver: finance
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 17.1
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: KINTO 車種 おすすめ
+  demand_history:
+  - - '2026-08-28'
+    - 17.1
+  cars:
+  - noah
+  - voxy
+  - aqua
+  - alphard
+  named_cars: []
+  seg: cross
+  active_for:
+  - alphard
+  - voxy
+  - noah
+  - aqua
+- id: p1165
+  text: 新車と中古のどちらを買うべきですか？値落ちしにくい車種なら中古の意味はありますか？
+  category: cost
+  driver: used
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 19.4
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 新車 中古 どっち
+  demand_history:
+  - - '2026-08-28'
+    - 19.4
+  cars:
+  - alphard
+  - lc250
+  - roomy
+  named_cars: []
+  seg: cross
+  active_for:
+  - roomy
+  - alphard
+  - lc250
+- id: p1166
+  text: 5年落ちの中古ミニバンでおすすめはどれですか？避けるべき車種もあれば教えてください。
+  category: cost
+  driver: used
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 16.8
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 5年落ち ミニバン
+  demand_history:
+  - - '2026-08-28'
+    - 16.8
+  cars:
+  - noah
+  - voxy
+  - sienta
+  named_cars: []
+  seg: cross
+  active_for:
+  - sienta
+  - voxy
+  - noah
+- id: p1167
+  text: 中古のコンパクトカーを50万円台で探しています。故障リスクが低いのは？
+  category: cost
+  driver: used
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 7.8
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 中古 コンパクトカー 50万
+  demand_history:
+  - - '2026-08-28'
+    - 7.8
+  cars:
+  - aqua
+  named_cars: []
+  seg: cross
+  active_for:
+  - aqua
+- id: p1168
+  text: 残価設定ローンとカーリースと現金一括、家族の車を買うならどれが得ですか？車種例で教えてください。
+  category: cost
+  driver: finance
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 17.1
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 残価設定 リース 比較
+  demand_history:
+  - - '2026-08-28'
+    - 17.1
+  cars:
+  - voxy
+  - sienta
+  named_cars: []
+  seg: cross
+  active_for:
+  - sienta
+  - voxy
+- id: p1169
+  text: ディーラーで下取りに出すのと買取店に売るのはどちらが得ですか？高く売れる車種の傾向も教えてください。
+  category: cost
+  driver: resale
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 14.6
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 下取り 買取 どっち
+  demand_history:
+  - - '2026-08-28'
+    - 14.6
+  cars:
+  - alphard
+  - lc250
+  named_cars: []
+  seg: cross
+  active_for:
+  - alphard
+  - lc250
 - id: p117
   text: 「ファミリーカー 3列シート 比較」を検討しています。同じクラスの他社と比べてどうですか。
   category: model
@@ -3244,6 +7524,288 @@ prompts:
   growth: 1.0
   keyword: ファミリーカー 3列シート 比較
   demand_history: []
+- id: p1170
+  text: 二人目の子供が生まれます。今の車から買い替えるならどのタイミングで何がいいですか？
+  category: purchase
+  driver: family
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 26.8
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 二人目 車 買い替え
+  demand_history:
+  - - '2026-08-28'
+    - 26.8
+  cars:
+  - sienta
+  - noah
+  - voxy
+  - roomy
+  named_cars: []
+  seg: cross
+  active_for:
+  - roomy
+  - sienta
+  - voxy
+  - noah
+- id: p1171
+  text: 小学生2人のサッカーと習い事の送迎が中心です。使い勝手のいい車を教えてください。
+  category: purchase
+  driver: family
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 17.1
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 習い事 送迎 車
+  demand_history:
+  - - '2026-08-28'
+    - 17.1
+  cars:
+  - sienta
+  - noah
+  - voxy
+  named_cars: []
+  seg: cross
+  active_for:
+  - sienta
+  - voxy
+  - noah
+- id: p1172
+  text: 年に数回、家族4人で片道500kmの帰省をします。疲れにくい車はどれですか？
+  category: model
+  driver: comfort
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 19.5
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 長距離 疲れない車
+  demand_history:
+  - - '2026-08-28'
+    - 19.5
+  cars:
+  - noah
+  - voxy
+  - alphard
+  named_cars: []
+  seg: cross
+  active_for:
+  - alphard
+  - voxy
+  - noah
+- id: p1173
+  text: 毎日の通勤40kmと週末の家族利用を1台でまかなうなら、何がいいですか？
+  category: purchase
+  driver: commute
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 19.5
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 通勤 家族 兼用 車
+  demand_history:
+  - - '2026-08-28'
+    - 19.5
+  cars:
+  - sienta
+  - aqua
+  - raize
+  named_cars: []
+  seg: cross
+  active_for:
+  - sienta
+  - aqua
+  - raize
+- id: p1174
+  text: キャンプ道具一式と家族4人が乗れて、燃費も悪くない車を教えてください。
+  category: model
+  driver: leisure
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 28.0
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: キャンプ 車 ファミリー
+  demand_history:
+  - - '2026-08-28'
+    - 28.0
+  cars:
+  - noah
+  - voxy
+  - sienta
+  - lc250
+  named_cars: []
+  seg: cross
+  active_for:
+  - sienta
+  - voxy
+  - noah
+  - lc250
+- id: p1175
+  text: スキーによく行きます。雪道に強くて荷物も積める車のおすすめは？
+  category: model
+  driver: snow
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 17.1
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: スキー 車 おすすめ
+  demand_history:
+  - - '2026-08-28'
+    - 17.1
+  cars:
+  - lc250
+  - raize
+  - noah
+  - voxy
+  named_cars: []
+  seg: cross
+  active_for:
+  - voxy
+  - noah
+  - raize
+  - lc250
+- id: p1176
+  text: 都心のマンション住まいで機械式駐車場です。制限内に収まる家族向けの車は？
+  category: model
+  driver: urban
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 14.6
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 機械式駐車場 サイズ 車
+  demand_history:
+  - - '2026-08-28'
+    - 14.6
+  cars:
+  - aqua
+  - roomy
+  - raize
+  named_cars: []
+  seg: cross
+  active_for:
+  - roomy
+  - aqua
+  - raize
+- id: p1177
+  text: 実家が農家で悪路も走ります。普段は街乗りの兼用車を選ぶなら？
+  category: model
+  driver: offroad
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 5.5
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 悪路 街乗り 兼用
+  demand_history:
+  - - '2026-08-28'
+    - 5.5
+  cars:
+  - raize
+  - lc250
+  named_cars: []
+  seg: cross
+  active_for:
+  - raize
+  - lc250
+- id: p1178
+  text: 釣りが趣味です。濡れた道具を積みやすく、海沿いの悪路も安心な車は？
+  category: model
+  driver: leisure
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 4.6
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 釣り 車 おすすめ
+  demand_history:
+  - - '2026-08-28'
+    - 4.6
+  cars:
+  - lc250
+  - raize
+  named_cars: []
+  seg: cross
+  active_for:
+  - raize
+  - lc250
+- id: p1179
+  text: 妻の軽と夫の車の2台持ちをやめて1台にまとめるなら、どんな車がいいですか？
+  category: purchase
+  driver: family
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 17.1
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 2台持ち 1台に
+  demand_history:
+  - - '2026-08-28'
+    - 17.1
+  cars:
+  - noah
+  - voxy
+  - sienta
+  named_cars: []
+  seg: cross
+  active_for:
+  - sienta
+  - voxy
+  - noah
 - id: p118
   text: 「国産ミニバン 人気ランキング 最新」で検討しています。どのブランドがおすすめですか。理由も教えてください。
   category: purchase
@@ -3272,6 +7834,288 @@ prompts:
     - 29.0
   - - '2026-08-24'
     - 29.0
+- id: p1180
+  text: 犬用ケージを常時積んでおける広さの車を、大きすぎない範囲で教えてください。
+  category: model
+  driver: leisure
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 12.2
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 犬 ケージ 車
+  demand_history:
+  - - '2026-08-28'
+    - 12.2
+  cars:
+  - sienta
+  - roomy
+  named_cars: []
+  seg: cross
+  active_for:
+  - roomy
+- id: p1181
+  text: 免許を取ったばかりの大学生が親と共用する車、安全でぶつけにくいのは？
+  category: safety
+  driver: beginner
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 9.0
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 初心者 車 おすすめ
+  demand_history:
+  - - '2026-08-28'
+    - 9.0
+  cars:
+  - aqua
+  - roomy
+  - raize
+  named_cars: []
+  seg: cross
+  active_for:
+  - roomy
+  - aqua
+  - raize
+- id: p1182
+  text: 40代男性が長く乗れる、飽きのこない車を提案してください。家族利用もあります。
+  category: purchase
+  driver: premium
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 23.3
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 40代 車 おすすめ
+  demand_history:
+  - - '2026-08-28'
+    - 23.3
+  cars:
+  - lc250
+  - alphard
+  - voxy
+  named_cars: []
+  seg: cross
+  active_for:
+  - alphard
+  - voxy
+  - lc250
+- id: p1183
+  text: 30代夫婦・子供1人の初めてのファミリーカー、定番はどれですか？
+  category: purchase
+  driver: family
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 24.4
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 30代 ファミリーカー
+  demand_history:
+  - - '2026-08-28'
+    - 24.4
+  cars:
+  - sienta
+  - noah
+  - voxy
+  - roomy
+  named_cars: []
+  seg: cross
+  active_for:
+  - roomy
+  - sienta
+  - voxy
+  - noah
+- id: p1184
+  text: 60代の親に安全運転支援が手厚い車を買ってあげたい。おすすめは？
+  category: safety
+  driver: senior
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 17.1
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 60代 安全 車
+  demand_history:
+  - - '2026-08-28'
+    - 17.1
+  cars:
+  - aqua
+  - sienta
+  named_cars: []
+  seg: cross
+  active_for:
+  - sienta
+  - aqua
+- id: p1185
+  text: 20代女性の通勤用で、かわいくて維持費が安い普通車はありますか？
+  category: purchase
+  driver: style
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 7.2
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 20代 女性 車
+  demand_history:
+  - - '2026-08-28'
+    - 7.2
+  cars:
+  - aqua
+  - roomy
+  named_cars: []
+  seg: cross
+  active_for:
+  - roomy
+  - aqua
+- id: p1186
+  text: 2026年に日本で一番売れている車は何ですか？売れている理由も教えてください。
+  category: purchase
+  driver: ranking
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 31.7
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 2026 売れてる車
+  demand_history:
+  - - '2026-08-28'
+    - 31.7
+  cars:
+  - sienta
+  - voxy
+  - noah
+  - aqua
+  - raize
+  - alphard
+  - roomy
+  named_cars: []
+  seg: cross
+  active_for:
+  - roomy
+  - sienta
+  - alphard
+  - voxy
+  - noah
+  - aqua
+  - raize
+- id: p1187
+  text: 国産SUVの人気ランキングを教えてください。価格帯別のおすすめも。
+  category: purchase
+  driver: ranking
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 8.5
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 国産SUV ランキング
+  demand_history:
+  - - '2026-08-28'
+    - 8.5
+  cars:
+  - raize
+  - lc250
+  - yariscross
+  named_cars: []
+  seg: cross
+  active_for:
+  - raize
+  - lc250
+- id: p1188
+  text: トヨタ・ホンダ・日産・スズキのコンパクトカーを横並びで比較してください。
+  category: model
+  driver: ranking
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 8.4
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: コンパクトカー メーカー比較
+  demand_history:
+  - - '2026-08-28'
+    - 8.4
+  cars:
+  - aqua
+  - roomy
+  named_cars: []
+  seg: cross
+  active_for:
+  - roomy
+  - aqua
+- id: p1189
+  text: ファミリーカーの定番トップ5を、選ばれている理由と一緒に教えてください。
+  category: purchase
+  driver: ranking
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 29.3
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: ファミリーカー ランキング
+  demand_history:
+  - - '2026-08-28'
+    - 29.3
+  cars:
+  - sienta
+  - noah
+  - voxy
+  - alphard
+  named_cars: []
+  seg: cross
+  active_for:
+  - sienta
+  - alphard
+  - voxy
+  - noah
 - id: p119
   text: 「車中泊 できる車 おすすめ」で検討しています。どのブランドがおすすめですか。理由も教えてください。
   category: purchase
@@ -3301,6 +8145,287 @@ prompts:
   - - '2026-08-24'
     - 70.1
   tier_prev: longtail
+- id: p1190
+  text: いま納期・価格・装備のバランスが一番いい国産車はどれだと思いますか？
+  category: purchase
+  driver: ranking
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 17.1
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: コスパ いい車
+  demand_history:
+  - - '2026-08-28'
+    - 17.1
+  cars:
+  - sienta
+  - raize
+  - aqua
+  named_cars: []
+  seg: cross
+  active_for:
+  - sienta
+  - aqua
+  - raize
+- id: p1191
+  text: ミニバンとSUVで迷っています。子供2人の家庭ならどちらが正解ですか？
+  category: purchase
+  driver: family
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 18.0
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: ミニバン SUV どっち
+  demand_history:
+  - - '2026-08-28'
+    - 18.0
+  cars:
+  - sienta
+  - noah
+  - voxy
+  - raize
+  named_cars: []
+  seg: cross
+  active_for:
+  - sienta
+  - voxy
+  - noah
+  - raize
+- id: p1192
+  text: 3列シートSUVとミニバン、7人乗るならどちらが実用的ですか？具体的な車種で比較してください。
+  category: model
+  driver: family
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 14.4
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 3列SUV ミニバン 比較
+  demand_history:
+  - - '2026-08-28'
+    - 14.4
+  cars:
+  - noah
+  - voxy
+  - alphard
+  - lc250
+  named_cars: []
+  seg: cross
+  active_for:
+  - alphard
+  - lc250
+- id: p1193
+  text: 軽自動車と普通車で迷っています。安全性の違いは実際どのくらいありますか？普通車のおすすめも教えてください。
+  category: safety
+  driver: safety
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 17.1
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 軽 普通車 安全性
+  demand_history:
+  - - '2026-08-28'
+    - 17.1
+  cars:
+  - roomy
+  - aqua
+  named_cars: []
+  seg: cross
+  active_for:
+  - roomy
+  - aqua
+- id: p1194
+  text: 自動車保険が安く済む車種はありますか？料率クラスの考え方と例を教えてください。
+  category: cost
+  driver: cost
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 14.6
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 保険料 安い 車
+  demand_history:
+  - - '2026-08-28'
+    - 14.6
+  cars:
+  - aqua
+  - roomy
+  named_cars: []
+  seg: cross
+  active_for:
+  - roomy
+  - aqua
+- id: p1195
+  text: 年間の維持費が安いファミリーカーを、税金・車検込みで比較してください。
+  category: cost
+  driver: cost
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 19.5
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 維持費 安い ファミリーカー
+  demand_history:
+  - - '2026-08-28'
+    - 19.5
+  cars:
+  - sienta
+  - roomy
+  - aqua
+  named_cars: []
+  seg: cross
+  active_for:
+  - roomy
+  - sienta
+  - aqua
+- id: p1196
+  text: ハイブリッド車は車検や整備費が高いですか？長期保有の総コストで教えてください。
+  category: service
+  driver: maintenance
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 14.6
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: ハイブリッド 車検 費用
+  demand_history:
+  - - '2026-08-28'
+    - 14.6
+  cars:
+  - aqua
+  - sienta
+  - noah
+  named_cars: []
+  seg: cross
+  active_for:
+  - noah
+  - aqua
+- id: p1197
+  text: 10年10万km乗るつもりです。長持ちして総コストが安い車はどれですか？
+  category: cost
+  driver: cost
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 17.1
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 10年乗れる車
+  demand_history:
+  - - '2026-08-28'
+    - 17.1
+  cars:
+  - aqua
+  - sienta
+  - lc250
+  named_cars: []
+  seg: cross
+  active_for:
+  - sienta
+  - aqua
+  - lc250
+- id: p1198
+  text: ガソリン車とハイブリッドの価格差は何年で回収できますか？人気車種の実例で教えてください。
+  category: eco
+  driver: eco
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 19.5
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: ハイブリッド 元取れる
+  demand_history:
+  - - '2026-08-28'
+    - 19.5
+  cars:
+  - sienta
+  - voxy
+  - aqua
+  - noah
+  named_cars: []
+  seg: cross
+  active_for:
+  - sienta
+  - voxy
+  - noah
+  - aqua
+- id: p1199
+  text: いま注文して年内に納車される人気車はどれですか？
+  category: service
+  driver: delivery
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 17.1
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 納期 早い 車
+  demand_history:
+  - - '2026-08-28'
+    - 17.1
+  cars:
+  - aqua
+  - roomy
+  - raize
+  - sienta
+  named_cars: []
+  seg: cross
+  active_for:
+  - roomy
+  - sienta
+  - aqua
+  - raize
 - id: p120
   text: 「国産メーカー 信頼性 ランキング」について、失敗しない選び方を教えてください。
   category: purchase
@@ -3330,6 +8455,274 @@ prompts:
   - - '2026-08-24'
     - 65.7
   tier_prev: longtail
+- id: p1200
+  text: 2026年に発売・改良される注目の国産車を教えてください。買い控えるべき車種はありますか？
+  category: model
+  driver: newmodel
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 22.0
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 2026 新型車
+  demand_history:
+  - - '2026-08-28'
+    - 22.0
+  cars:
+  - sienta
+  - voxy
+  - raize
+  named_cars: []
+  seg: cross
+  active_for:
+  - sienta
+  - voxy
+  - raize
+- id: p1201
+  text: 盗難されやすい車ランキングと対策を教えてください。買うのをためらうべきですか？
+  category: safety
+  driver: security
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 17.8
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 盗難されやすい車
+  demand_history:
+  - - '2026-08-28'
+    - 17.8
+  cars:
+  - alphard
+  - lc250
+  named_cars: []
+  seg: cross
+  active_for:
+  - alphard
+  - lc250
+- id: p1202
+  text: EVはまだ早いと思っています。ハイブリッドで賢く選ぶなら今どれですか？
+  category: eco
+  driver: eco
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 22.0
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: EV ハイブリッド どっち
+  demand_history:
+  - - '2026-08-28'
+    - 22.0
+  cars:
+  - aqua
+  - noah
+  - voxy
+  - sienta
+  named_cars: []
+  seg: cross
+  active_for:
+  - sienta
+  - voxy
+  - noah
+  - aqua
+- id: p1203
+  text: ガソリン価格が高いままなら、車の選び方はどう変えるべきですか？具体的な車種は？
+  category: eco
+  driver: eco
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 14.6
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: ガソリン高騰 車選び
+  demand_history:
+  - - '2026-08-28'
+    - 14.6
+  cars:
+  - aqua
+  - sienta
+  named_cars: []
+  seg: cross
+  active_for:
+  - aqua
+- id: p1204
+  text: 高速道路の運転支援（渋滞追従など）が優秀な国産車をクラス別に教えてください。
+  category: safety
+  driver: safety
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 16.8
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 運転支援 比較 国産
+  demand_history:
+  - - '2026-08-28'
+    - 16.8
+  cars:
+  - noah
+  - voxy
+  - alphard
+  named_cars: []
+  seg: cross
+  active_for:
+  - alphard
+  - voxy
+  - noah
+- id: p1205
+  text: 駐車が苦手です。全周囲カメラや駐車支援が優秀な車を教えてください。
+  category: safety
+  driver: safety
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 14.6
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 駐車支援 車
+  demand_history:
+  - - '2026-08-28'
+    - 14.6
+  cars:
+  - noah
+  - voxy
+  - alphard
+  - aqua
+  named_cars: []
+  seg: cross
+  active_for:
+  - alphard
+  - noah
+  - aqua
+- id: p1206
+  text: 停電時に家電が使える給電機能つきの車はどれですか？防災目的で選ぶなら？
+  category: eco
+  driver: safety
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 14.6
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 給電 車 1500W
+  demand_history:
+  - - '2026-08-28'
+    - 14.6
+  cars:
+  - noah
+  - voxy
+  - sienta
+  - alphard
+  - aqua
+  named_cars: []
+  seg: cross
+  active_for:
+  - alphard
+  - noah
+  - aqua
+- id: p1207
+  text: 花粉症でも快適な空調・空気清浄機能が優秀な車はありますか？
+  category: model
+  driver: comfort
+  brand: false
+  source: car_deep_v1
+  tier: car_bench
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 8.8
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 花粉 車 空調
+  demand_history:
+  - - '2026-08-28'
+    - 8.8
+  cars:
+  - alphard
+  - noah
+  named_cars: []
+  seg: cross
+- id: p1208
+  text: 車酔いしやすい子供がいます。揺れが少なく酔いにくい車はどれですか？
+  category: model
+  driver: comfort
+  brand: false
+  source: car_deep_v1
+  tier: car_bench
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 12.2
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 車酔い しにくい車
+  demand_history:
+  - - '2026-08-28'
+    - 12.2
+  cars:
+  - noah
+  - voxy
+  - sienta
+  named_cars: []
+  seg: cross
+- id: p1209
+  text: 新型ルーミーはいつ出ますか？フルモデルチェンジの見込みと待つべきかを教えてください。
+  category: model
+  driver: newmodel
+  brand: true
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 8.7
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 新型 ルーミー
+  demand_history:
+  - - '2026-08-28'
+    - 8.7
+  cars:
+  - roomy
+  named_cars:
+  - roomy
+  seg: compact_tall
+  active_for:
+  - roomy
 - id: p121
   text: 「予算400万 ミニバン おすすめ」を重視した場合、実際いくらくらいかかりますか。おすすめの車種も教えてください。
   category: cost
@@ -3358,6 +8751,265 @@ prompts:
     - 53.8
   - - '2026-08-24'
     - 53.8
+- id: p1210
+  text: ルーミーとソリオを買うならどちらですか？広さ・燃費・価格で比較してください。
+  category: model
+  driver: urban
+  brand: true
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 4.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: ルーミー 中古 車
+  demand_history:
+  - - '2026-08-28'
+    - 4.9
+  cars:
+  - roomy
+  named_cars:
+  - roomy
+  seg: compact_tall
+  active_for:
+  - roomy
+- id: p1211
+  text: シエンタとルーミーはどちらが家族向きですか？3列の必要性で悩んでいます。
+  category: model
+  driver: family
+  brand: true
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 6.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: シエンタ ルーミー
+  demand_history:
+  - - '2026-08-28'
+    - 6.9
+  cars:
+  - sienta
+  - roomy
+  named_cars:
+  - sienta
+  - roomy
+  seg: minivan_s
+  active_for:
+  - roomy
+  - sienta
+- id: p1212
+  text: ノアとアルファードの中間の選択肢はありますか？予算450万円です。
+  category: purchase
+  driver: premium
+  brand: true
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 4.8
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: ノア アルファード 中間
+  demand_history:
+  - - '2026-08-28'
+    - 4.8
+  cars:
+  - noah
+  - voxy
+  - alphard
+  named_cars:
+  - noah
+  - alphard
+  seg: minivan_m
+  active_for:
+  - alphard
+  - noah
+- id: p1213
+  text: ヴォクシーとアルファードで迷っています。維持費とリセールの差を教えてください。
+  category: cost
+  driver: premium
+  brand: true
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 6.2
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: ヴォクシー アルファード
+  demand_history:
+  - - '2026-08-28'
+    - 6.2
+  cars:
+  - voxy
+  - alphard
+  named_cars:
+  - voxy
+  - alphard
+  seg: minivan_m
+  active_for:
+  - alphard
+  - voxy
+- id: p1214
+  text: ランクル250の盗難対策は必須ですか？有効な対策と費用を教えてください。
+  category: safety
+  driver: security
+  brand: true
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 5.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: ランクル 盗難対策
+  demand_history:
+  - - '2026-08-28'
+    - 5.9
+  cars:
+  - lc250
+  named_cars:
+  - lc250
+  seg: suv_off
+  active_for:
+  - lc250
+- id: p1215
+  text: ランクル250に7人乗りはありますか？家族利用での現実的な使い勝手は？
+  category: model
+  driver: family
+  brand: true
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 3.4
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: ランクル250 7人乗り
+  demand_history:
+  - - '2026-08-28'
+    - 3.4
+  cars:
+  - lc250
+  named_cars:
+  - lc250
+  seg: suv_off
+  active_for:
+  - lc250
+- id: p1216
+  text: ライズのリセールバリューは高いですか？3年後の買取相場の傾向を教えてください。
+  category: cost
+  driver: resale
+  brand: true
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 3.5
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: ライズ リセール
+  demand_history:
+  - - '2026-08-28'
+    - 3.5
+  cars:
+  - raize
+  named_cars:
+  - raize
+  seg: suv_compact
+  active_for:
+  - raize
+- id: p1217
+  text: ライズの納期は今どのくらいですか？
+  category: service
+  driver: delivery
+  brand: true
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 2.5
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: ライズ 納期
+  demand_history:
+  - - '2026-08-28'
+    - 2.5
+  cars:
+  - raize
+  named_cars:
+  - raize
+  seg: suv_compact
+  active_for:
+  - raize
+- id: p1218
+  text: アクアとフィットはどちらが良いですか？後席の広さと燃費で比較してください。
+  category: model
+  driver: urban
+  brand: true
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 5.4
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: アクア フィット
+  demand_history:
+  - - '2026-08-28'
+    - 5.4
+  cars:
+  - aqua
+  named_cars:
+  - aqua
+  seg: compact_hb
+  active_for:
+  - aqua
+- id: p1219
+  text: 後席の乗り心地が最も良い国産車はどれですか？長距離で親を乗せる用途です。
+  category: model
+  driver: comfort
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 21.3
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 後席 乗り心地 いい車
+  demand_history:
+  - - '2026-08-28'
+    - 21.3
+  cars:
+  - alphard
+  named_cars: []
+  seg: minivan_l
+  active_for:
+  - alphard
 - id: p122
   text: 「雪道 強い車 4WD」について、失敗しない選び方を教えてください。
   category: purchase
@@ -3386,6 +9038,258 @@ prompts:
     - 59.8
   - - '2026-08-24'
     - 59.8
+- id: p1220
+  text: 静粛性の高い車をクラス別に教えてください。走行中に会話しやすい車がいいです。
+  category: model
+  driver: comfort
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 19.4
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 静かな車 ランキング
+  demand_history:
+  - - '2026-08-28'
+    - 19.4
+  cars:
+  - alphard
+  named_cars: []
+  seg: minivan_l
+  active_for:
+  - alphard
+- id: p1221
+  text: 3列目まで大人がくつろげる7人乗りの車はどれですか？
+  category: model
+  driver: family
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 21.3
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 7人乗り ゆったり
+  demand_history:
+  - - '2026-08-28'
+    - 21.3
+  cars:
+  - alphard
+  named_cars: []
+  seg: minivan_l
+  active_for:
+  - alphard
+- id: p1222
+  text: キャプテンシートのミニバンでおすすめはどれですか？2列目の快適性で比較してください。
+  category: model
+  driver: comfort
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 19.4
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: キャプテンシート ミニバン
+  demand_history:
+  - - '2026-08-28'
+    - 19.4
+  cars:
+  - alphard
+  - voxy
+  - noah
+  named_cars: []
+  seg: minivan_l
+  active_for:
+  - alphard
+  - voxy
+  - noah
+- id: p1223
+  text: 役員送迎に使う車を国産で新調します。セダン以外の選択肢も含めて提案してください。
+  category: purchase
+  driver: premium
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 17.5
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 役員車 おすすめ
+  demand_history:
+  - - '2026-08-28'
+    - 17.5
+  cars:
+  - alphard
+  named_cars: []
+  seg: minivan_l
+  active_for:
+  - alphard
+- id: p1224
+  text: 車内で仮眠や仕事がしやすい車を教えてください。移動オフィス的に使いたいです。
+  category: model
+  driver: premium
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 17.5
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 車内 仕事 車
+  demand_history:
+  - - '2026-08-28'
+    - 17.5
+  cars:
+  - alphard
+  named_cars: []
+  seg: minivan_l
+  active_for:
+  - alphard
+- id: p1225
+  text: 結婚式や送迎で親族を乗せる車を1台選ぶなら何が喜ばれますか？
+  category: purchase
+  driver: premium
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 13.6
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 送迎 車 おすすめ
+  demand_history:
+  - - '2026-08-28'
+    - 13.6
+  cars:
+  - alphard
+  named_cars: []
+  seg: minivan_l
+  active_for:
+  - alphard
+- id: p1226
+  text: 残価率が高い順に国産車を教えてください。5年後に有利なのはどれですか？
+  category: cost
+  driver: resale
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 25.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 残価率 ランキング
+  demand_history:
+  - - '2026-08-28'
+    - 25.9
+  cars:
+  - alphard
+  - lc250
+  named_cars: []
+  seg: cross
+  active_for:
+  - alphard
+  - lc250
+- id: p1227
+  text: 広さ最優先で選ぶなら今どの車ですか？室内長・室内幅の実数で比較してください。
+  category: model
+  driver: family
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 14.4
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 室内 広い車 ランキング
+  demand_history:
+  - - '2026-08-28'
+    - 14.4
+  cars:
+  - alphard
+  - noah
+  - voxy
+  named_cars: []
+  seg: minivan_l
+  active_for:
+  - alphard
+- id: p1228
+  text: 8人乗りで高速道路が楽な車はどれですか？帰省で毎回3世代8人が乗ります。
+  category: model
+  driver: family
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 17.5
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 8人乗り 車
+  demand_history:
+  - - '2026-08-28'
+    - 17.5
+  cars:
+  - alphard
+  - noah
+  - voxy
+  named_cars: []
+  seg: minivan_l
+  active_for:
+  - alphard
+  - voxy
+  - noah
+- id: p1229
+  text: ハイヤーやタクシーの高級送迎で使われている車種は何ですか？個人で買うのはありですか？
+  category: model
+  driver: premium
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 13.6
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: ハイヤー 車種
+  demand_history:
+  - - '2026-08-28'
+    - 13.6
+  cars:
+  - alphard
+  named_cars: []
+  seg: minivan_l
+  active_for:
+  - alphard
 - id: p123
   text: 「チャイルドシート 2台 乗る車」で検討しています。どのブランドがおすすめですか。理由も教えてください。
   category: purchase
@@ -3415,6 +9319,250 @@ prompts:
   - - '2026-08-24'
     - 75.4
   tier_prev: longtail
+- id: p1230
+  text: 子供の野球チームの遠征で親が交代で運転します。大人数と道具を運べる車は？
+  category: purchase
+  driver: family
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 12.0
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 大人数 乗れる車
+  demand_history:
+  - - '2026-08-28'
+    - 12.0
+  cars:
+  - alphard
+  - noah
+  - voxy
+  named_cars: []
+  seg: minivan_l
+  active_for:
+  - alphard
+- id: p1231
+  text: 外国からのお客様のアテンドで空港送迎に使う車、恥ずかしくない選択肢を教えてください。
+  category: purchase
+  driver: premium
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 11.6
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 空港送迎 車
+  demand_history:
+  - - '2026-08-28'
+    - 11.6
+  cars:
+  - alphard
+  named_cars: []
+  seg: minivan_l
+  active_for:
+  - alphard
+- id: p1232
+  text: 実燃費が良い車ランキングを教えてください。カタログではなく実測ベースで。
+  category: eco
+  driver: eco
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 9.6
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 実燃費 ランキング
+  demand_history:
+  - - '2026-08-28'
+    - 9.6
+  cars:
+  - aqua
+  - sienta
+  named_cars: []
+  seg: compact_hb
+  active_for:
+  - aqua
+- id: p1233
+  text: 月のガソリン代を5,000円以下にしたい。通勤往復20kmで可能な車は？
+  category: cost
+  driver: commute
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 6.6
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: ガソリン代 月 安い
+  demand_history:
+  - - '2026-08-28'
+    - 6.6
+  cars:
+  - aqua
+  named_cars: []
+  seg: compact_hb
+  active_for:
+  - aqua
+- id: p1234
+  text: 買い物と子供の送迎だけのチョイ乗り中心です。ハイブリッドは向いていますか？向く車種は？
+  category: eco
+  driver: urban
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 6.6
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: チョイ乗り ハイブリッド
+  demand_history:
+  - - '2026-08-28'
+    - 6.6
+  cars:
+  - aqua
+  - roomy
+  named_cars: []
+  seg: compact_hb
+  active_for:
+  - roomy
+  - aqua
+- id: p1235
+  text: 3年落ちの中古コンパクトカーでおすすめは？総額100万円台前半で探しています。
+  category: cost
+  driver: used
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 7.8
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 3年落ち コンパクトカー
+  demand_history:
+  - - '2026-08-28'
+    - 7.8
+  cars:
+  - aqua
+  named_cars: []
+  seg: compact_hb
+  active_for:
+  - aqua
+- id: p1236
+  text: 燃費25km/L以上を実走行で出せる車はありますか？
+  category: eco
+  driver: eco
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 6.0
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 燃費 25km 車
+  demand_history:
+  - - '2026-08-28'
+    - 6.0
+  cars:
+  - aqua
+  named_cars: []
+  seg: compact_hb
+  active_for:
+  - aqua
+- id: p1237
+  text: 災害への備えとして非常用電源になる車を検討しています。コンパクトカーでも可能ですか？
+  category: eco
+  driver: safety
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 4.8
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 非常用電源 車
+  demand_history:
+  - - '2026-08-28'
+    - 4.8
+  cars:
+  - aqua
+  named_cars: []
+  seg: compact_hb
+  active_for:
+  - aqua
+- id: p1238
+  text: タイヤやオイルなど消耗品まで安く済む車はどれですか？トータルの維持費で教えてください。
+  category: cost
+  driver: cost
+  brand: false
+  source: car_deep_v1
+  tier: car_bench
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 4.8
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 消耗品 安い 車
+  demand_history:
+  - - '2026-08-28'
+    - 4.8
+  cars:
+  - aqua
+  - roomy
+  named_cars: []
+  seg: compact_hb
+- id: p1239
+  text: 通勤にも週末のアウトドアにも使えるSUVを200万円台で探しています。
+  category: purchase
+  driver: commute
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 6.5
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 通勤 アウトドア SUV
+  demand_history:
+  - - '2026-08-28'
+    - 6.5
+  cars:
+  - raize
+  named_cars: []
+  seg: suv_compact
+  active_for:
+  - raize
 - id: p124
   text: 「自動ブレーキ 性能 メーカー比較」はメーカーによってどれくらい差がありますか。
   category: safety
@@ -3443,6 +9591,251 @@ prompts:
     - 53.9
   - - '2026-08-24'
     - 53.9
+- id: p1240
+  text: 女性が運転しやすいSUVはどれですか？サイズと視界のバランスで教えてください。
+  category: purchase
+  driver: style
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 6.5
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 女性 SUV 人気
+  demand_history:
+  - - '2026-08-28'
+    - 6.5
+  cars:
+  - raize
+  - yariscross
+  named_cars: []
+  seg: suv_compact
+  active_for:
+  - raize
+- id: p1241
+  text: 車高が高くて見晴らしのいい車に乗りたいです。大きすぎないおすすめは？
+  category: model
+  driver: urban
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 5.5
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 車高 高い 車 小さい
+  demand_history:
+  - - '2026-08-28'
+    - 5.5
+  cars:
+  - raize
+  named_cars: []
+  seg: suv_compact
+  active_for:
+  - raize
+- id: p1242
+  text: 荷室が広いコンパクトSUVを比較してください。ベビーカーと買い物荷物が基準です。
+  category: model
+  driver: family
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 6.0
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: コンパクトSUV 荷室
+  demand_history:
+  - - '2026-08-28'
+    - 6.0
+  cars:
+  - raize
+  named_cars: []
+  seg: suv_compact
+  active_for:
+  - raize
+- id: p1243
+  text: SUVの中で燃費がいい順に教えてください。ハイブリッドと1Lターボの実燃費比較も。
+  category: eco
+  driver: eco
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 7.0
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: SUV 燃費 ランキング
+  demand_history:
+  - - '2026-08-28'
+    - 7.0
+  cars:
+  - raize
+  - yariscross
+  named_cars: []
+  seg: suv_compact
+  active_for:
+  - raize
+- id: p1244
+  text: 立体駐車場に入る全高1,550mm以下のSUVはありますか？
+  category: model
+  driver: urban
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 4.5
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 立体駐車場 SUV
+  demand_history:
+  - - '2026-08-28'
+    - 4.5
+  cars:
+  - raize
+  named_cars: []
+  seg: suv_compact
+  active_for:
+  - raize
+- id: p1245
+  text: 中古で総額150万円前後のSUVを探しています。年式が新しめで狙える車種は？
+  category: cost
+  driver: used
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 6.5
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 中古 SUV 150万
+  demand_history:
+  - - '2026-08-28'
+    - 6.5
+  cars:
+  - raize
+  named_cars: []
+  seg: suv_compact
+  active_for:
+  - raize
+- id: p1246
+  text: ハスラーでは小さいけれど大きなSUVは要らない。ちょうどいいサイズの車は？
+  category: purchase
+  driver: urban
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 5.0
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: ハスラー より大きい
+  demand_history:
+  - - '2026-08-28'
+    - 5.0
+  cars:
+  - raize
+  - crossbee
+  named_cars: []
+  seg: suv_compact
+  active_for:
+  - raize
+- id: p1247
+  text: 雪の通学路を毎日往復する高校生の送迎に使う車、安全で経済的なのは？
+  category: safety
+  driver: snow
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 4.5
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 雪道 送迎 車
+  demand_history:
+  - - '2026-08-28'
+    - 4.5
+  cars:
+  - raize
+  - sienta
+  named_cars: []
+  seg: suv_compact
+  active_for:
+  - raize
+- id: p1248
+  text: デザインがかっこいい安めのSUVを教えてください。若い世代に人気なのは？
+  category: purchase
+  driver: style
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 6.0
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: かっこいい SUV 安い
+  demand_history:
+  - - '2026-08-28'
+    - 6.0
+  cars:
+  - raize
+  - yariscross
+  named_cars: []
+  seg: suv_compact
+  active_for:
+  - raize
+- id: p1249
+  text: 1.0Lターボと1.5Lハイブリッド、小型SUVで選ぶならどちらの動力がいいですか？
+  category: model
+  driver: performance
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 4.0
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 1.0ターボ ハイブリッド
+  demand_history:
+  - - '2026-08-28'
+    - 4.0
+  cars:
+  - raize
+  named_cars: []
+  seg: suv_compact
+  active_for:
+  - raize
 - id: p125
   text: 「運転支援 高速道路 疲れにくい」という観点で、いちばん安心して乗れる国産ブランドはどこですか。
   category: safety
@@ -3472,6 +9865,246 @@ prompts:
   - - '2026-08-24'
     - 70.8
   tier_prev: longtail
+- id: p1250
+  text: 運転席が高くて腰への負担が少ない車を探しています。乗り降りが楽なSUVは？
+  category: model
+  driver: senior
+  brand: false
+  source: car_deep_v1
+  tier: car_bench
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 4.0
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 乗り降り 楽 SUV
+  demand_history:
+  - - '2026-08-28'
+    - 4.0
+  cars:
+  - raize
+  named_cars: []
+  seg: suv_compact
+- id: p1251
+  text: キックスやヴェゼルなど各社の小型SUVを、価格の安い順に比較してください。
+  category: model
+  driver: ranking
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 7.0
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 小型SUV 比較
+  demand_history:
+  - - '2026-08-28'
+    - 7.0
+  cars:
+  - raize
+  - yariscross
+  named_cars: []
+  seg: suv_compact
+  active_for:
+  - raize
+- id: p1252
+  text: 新社会人が親の援助なしで買える新車SUVはありますか？頭金なしの月々目安も。
+  category: cost
+  driver: beginner
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 4.5
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 新社会人 車 SUV
+  demand_history:
+  - - '2026-08-28'
+    - 4.5
+  cars:
+  - raize
+  named_cars: []
+  seg: suv_compact
+  active_for:
+  - raize
+- id: p1253
+  text: コンパクトSUVの安全装備を比較してください。自動ブレーキの性能差はありますか？
+  category: safety
+  driver: safety
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 5.0
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: コンパクトSUV 安全
+  demand_history:
+  - - '2026-08-28'
+    - 5.0
+  cars:
+  - raize
+  - yariscross
+  named_cars: []
+  seg: suv_compact
+  active_for:
+  - raize
+- id: p1254
+  text: ランドクルーザーには何種類ありますか？それぞれの違いと選び方を教えてください。
+  category: model
+  driver: offroad
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 8.4
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: ランドクルーザー 種類
+  demand_history:
+  - - '2026-08-28'
+    - 8.4
+  cars:
+  - lc250
+  named_cars: []
+  seg: suv_off
+  active_for:
+  - lc250
+- id: p1255
+  text: ディーゼルエンジンのSUVを国産で買うなら、どの選択肢がありますか？
+  category: model
+  driver: performance
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 5.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: ディーゼル SUV 国産
+  demand_history:
+  - - '2026-08-28'
+    - 5.9
+  cars:
+  - lc250
+  named_cars: []
+  seg: suv_off
+  active_for:
+  - lc250
+- id: p1256
+  text: 国産の高級SUVを比較してください。ステータス性と実用性の両立で選びたいです。
+  category: purchase
+  driver: premium
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 6.3
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 高級SUV 国産
+  demand_history:
+  - - '2026-08-28'
+    - 6.3
+  cars:
+  - lc250
+  named_cars: []
+  seg: suv_off
+  active_for:
+  - lc250
+- id: p1257
+  text: 一生モノとして長く乗れる車を買うなら何がいいですか？
+  category: purchase
+  driver: premium
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 5.0
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 一生モノ 車
+  demand_history:
+  - - '2026-08-28'
+    - 5.0
+  cars:
+  - lc250
+  named_cars: []
+  seg: suv_off
+  active_for:
+  - lc250
+- id: p1258
+  text: 海外でも人気で部品供給が長く続く日本車はどれですか？
+  category: brand
+  driver: reputation
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 4.2
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 海外で人気 日本車
+  demand_history:
+  - - '2026-08-28'
+    - 4.2
+  cars:
+  - lc250
+  named_cars: []
+  seg: suv_off
+  active_for:
+  - lc250
+- id: p1259
+  text: 積雪1m級の豪雪地帯に転勤します。除雪前の道でも走れる車を教えてください。
+  category: model
+  driver: snow
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 5.0
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 豪雪地帯 車
+  demand_history:
+  - - '2026-08-28'
+    - 5.0
+  cars:
+  - lc250
+  named_cars: []
+  seg: suv_off
+  active_for:
+  - lc250
 - id: p126
   text: 「踏み間違い防止装置 後付け」という観点で、いちばん安心して乗れる国産ブランドはどこですか。
   category: safety
@@ -3501,6 +10134,248 @@ prompts:
   - - '2026-08-24'
     - 64.1
   tier_prev: longtail
+- id: p1260
+  text: サーフィンで砂浜や海沿いを走ります。錆対策も含めて向いている車は？
+  category: model
+  driver: leisure
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 3.4
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: サーフィン 車
+  demand_history:
+  - - '2026-08-28'
+    - 3.4
+  cars:
+  - lc250
+  named_cars: []
+  seg: suv_off
+  active_for:
+  - lc250
+- id: p1261
+  text: 山の別荘への往復に使う車を選んでいます。急坂と未舗装路があります。
+  category: model
+  driver: offroad
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 3.8
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 山道 強い車
+  demand_history:
+  - - '2026-08-28'
+    - 3.8
+  cars:
+  - lc250
+  named_cars: []
+  seg: suv_off
+  active_for:
+  - lc250
+- id: p1262
+  text: 頑丈さで選ぶならどの車ですか？ボディオンフレームの現行車を教えてください。
+  category: model
+  driver: offroad
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 4.2
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 頑丈な車
+  demand_history:
+  - - '2026-08-28'
+    - 4.2
+  cars:
+  - lc250
+  named_cars: []
+  seg: suv_off
+  active_for:
+  - lc250
+- id: p1263
+  text: キャンピングトレーラーを引ける国産車はどれですか？ヒッチメンバーの適合も含めて。
+  category: model
+  driver: leisure
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 2.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: キャンピングトレーラー 牽引車
+  demand_history:
+  - - '2026-08-28'
+    - 2.9
+  cars:
+  - lc250
+  named_cars: []
+  seg: suv_off
+  active_for:
+  - lc250
+- id: p1264
+  text: 4WDシステムの本格度で国産SUVを並べてください。副変速機付きはどれですか？
+  category: model
+  driver: offroad
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 4.6
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 4WD 本格 SUV
+  demand_history:
+  - - '2026-08-28'
+    - 4.6
+  cars:
+  - lc250
+  named_cars: []
+  seg: suv_off
+  active_for:
+  - lc250
+- id: p1265
+  text: 災害ボランティアで被災地に入ることがあります。悪路と長距離に耐える車は？
+  category: safety
+  driver: offroad
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 2.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 災害 車 悪路
+  demand_history:
+  - - '2026-08-28'
+    - 2.9
+  cars:
+  - lc250
+  named_cars: []
+  seg: suv_off
+  active_for:
+  - lc250
+- id: p1266
+  text: オーバーランド（車中泊しながらの長距離旅）に向く国産ベース車はどれですか？
+  category: model
+  driver: leisure
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 12.0
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: オーバーランド 車
+  demand_history:
+  - - '2026-08-28'
+    - 12.0
+  cars:
+  - lc250
+  named_cars: []
+  seg: suv_off
+  active_for:
+  - lc250
+- id: p1267
+  text: ルーフテントを載せられる車の条件と、相性のいい車種を教えてください。
+  category: model
+  driver: leisure
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 10.0
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: ルーフテント 車
+  demand_history:
+  - - '2026-08-28'
+    - 10.0
+  cars:
+  - lc250
+  named_cars: []
+  seg: suv_off
+  active_for:
+  - lc250
+- id: p1268
+  text: 10年後も価値が残る車を資産として買うなら何ですか？
+  category: cost
+  driver: resale
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 22.7
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 資産価値 車
+  demand_history:
+  - - '2026-08-28'
+    - 22.7
+  cars:
+  - lc250
+  - alphard
+  named_cars: []
+  seg: cross
+  active_for:
+  - alphard
+  - lc250
+- id: p1269
+  text: ハイラックスのようなピックアップと本格SUV、日本で使うならどちらが現実的ですか？
+  category: model
+  driver: offroad
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 3.4
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: ハイラックス SUV どっち
+  demand_history:
+  - - '2026-08-28'
+    - 3.4
+  cars:
+  - lc250
+  named_cars: []
+  seg: suv_off
+  active_for:
+  - lc250
 - id: p127
   text: 「サポカー 補助金 対象車種」という観点で、いちばん安心して乗れる国産ブランドはどこですか。
   category: safety
@@ -3530,6 +10405,256 @@ prompts:
   - - '2026-08-24'
     - 71.2
   tier_prev: longtail
+- id: p1270
+  text: 憧れだけで買って後悔しない大型SUVはどれですか？維持のハードルも教えてください。
+  category: purchase
+  driver: premium
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 3.8
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 大型SUV 後悔
+  demand_history:
+  - - '2026-08-28'
+    - 3.8
+  cars:
+  - lc250
+  named_cars: []
+  seg: suv_off
+  active_for:
+  - lc250
+- id: p1271
+  text: 車幅1,900mm超の車で日常生活は困りませんか？大きい車の現実を教えてください。
+  category: model
+  driver: urban
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 3.4
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 車幅 大きい車 日常
+  demand_history:
+  - - '2026-08-28'
+    - 3.4
+  cars:
+  - lc250
+  - alphard
+  named_cars: []
+  seg: suv_off
+  active_for:
+  - lc250
+- id: p1272
+  text: 今買えば納車が早い本格SUVはどれですか？
+  category: service
+  driver: delivery
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 3.4
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 本格SUV 納期
+  demand_history:
+  - - '2026-08-28'
+    - 3.4
+  cars:
+  - lc250
+  named_cars: []
+  seg: suv_off
+  active_for:
+  - lc250
+- id: p1273
+  text: 30代で子供1人、アウトドア好きの家庭が10年乗る前提のSUVを選ぶなら？
+  category: purchase
+  driver: leisure
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 4.2
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: アウトドア 家族 SUV
+  demand_history:
+  - - '2026-08-28'
+    - 4.2
+  cars:
+  - lc250
+  - raize
+  named_cars: []
+  seg: suv_off
+  active_for:
+  - raize
+  - lc250
+- id: p1274
+  text: 燃費は悪くても所有満足度が高い車はどれですか？
+  category: brand
+  driver: premium
+  brand: false
+  source: car_deep_v1
+  tier: car_bench
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 2.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 所有満足度 車
+  demand_history:
+  - - '2026-08-28'
+    - 2.9
+  cars:
+  - lc250
+  - alphard
+  named_cars: []
+  seg: suv_off
+- id: p1275
+  text: 新潟県で家族の車を買い替えます。雪道を考えるとどんな車がいいですか？
+  category: purchase
+  driver: snow
+  brand: false
+  source: dealer_local_v1
+  tier: local
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 17.1
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 新潟 車 おすすめ
+  demand_history:
+  - - '2026-08-28'
+    - 17.1
+  cars:
+  - voxy
+  - noah
+  - sienta
+  - raize
+  named_cars: []
+  seg: local
+  pref: niigata
+  role: market
+- id: p1276
+  text: 新潟の冬道で軽自動車は不安です。雪に強い普通車のおすすめを教えてください。
+  category: model
+  driver: snow
+  brand: false
+  source: dealer_local_v1
+  tier: local
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 19.5
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 雪道 強い車
+  demand_history:
+  - - '2026-08-28'
+    - 19.5
+  cars:
+  - raize
+  - lc250
+  named_cars: []
+  seg: local
+  pref: niigata
+  role: market
+- id: p1277
+  text: 新潟市内の通勤で使う車を選んでいます。消雪パイプの錆対策も気になります。おすすめは？
+  category: purchase
+  driver: commute
+  brand: false
+  source: dealer_local_v1
+  tier: local
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 9.8
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 新潟 通勤 車
+  demand_history:
+  - - '2026-08-28'
+    - 9.8
+  cars:
+  - aqua
+  - raize
+  named_cars: []
+  seg: local
+  pref: niigata
+  role: market
+- id: p1278
+  text: 新潟でミニバンを買うなら何がおすすめですか？スキー場への家族移動が多いです。
+  category: purchase
+  driver: snow
+  brand: false
+  source: dealer_local_v1
+  tier: local
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 12.0
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 新潟 ミニバン
+  demand_history:
+  - - '2026-08-28'
+    - 12.0
+  cars:
+  - noah
+  - voxy
+  - sienta
+  named_cars: []
+  seg: local
+  pref: niigata
+  role: market
+- id: p1279
+  text: 新潟県で4WDは必須ですか？2WDで済む地域と車種の選び方を教えてください。
+  category: model
+  driver: snow
+  brand: false
+  source: dealer_local_v1
+  tier: local
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 12.2
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 新潟 4WD 必要
+  demand_history:
+  - - '2026-08-28'
+    - 12.2
+  cars:
+  - sienta
+  - aqua
+  named_cars: []
+  seg: local
+  pref: niigata
+  role: market
 - id: p128
   text: 「ハイブリッド 実燃費 ランキング」は国産メーカーだとどこが有利ですか。
   category: eco
@@ -3559,6 +10684,242 @@ prompts:
   - - '2026-08-24'
     - 67.0
   tier_prev: longtail
+- id: p1280
+  text: 豪雪の魚沼地域で使う車を探しています。現実的な選択肢を教えてください。
+  category: model
+  driver: snow
+  brand: false
+  source: dealer_local_v1
+  tier: local
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 3.8
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 豪雪 車
+  demand_history:
+  - - '2026-08-28'
+    - 3.8
+  cars:
+  - lc250
+  - raize
+  named_cars: []
+  seg: local
+  pref: niigata
+  role: market
+- id: p1281
+  text: 新潟でアルファードの納期はどのくらいですか？どこで買えますか？
+  category: service
+  driver: delivery
+  brand: true
+  source: dealer_local_v1
+  tier: local
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 13.6
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 新潟 アルファード
+  demand_history:
+  - - '2026-08-28'
+    - 13.6
+  cars:
+  - alphard
+  named_cars:
+  - alphard
+  seg: local
+  pref: niigata
+  role: dealer
+- id: p1282
+  text: 新潟でルーミーやソリオのようなコンパクトカーを買うなら、どの店で比較できますか？
+  category: purchase
+  driver: urban
+  brand: true
+  source: dealer_local_v1
+  tier: local
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 4.6
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 新潟 コンパクトカー
+  demand_history:
+  - - '2026-08-28'
+    - 4.6
+  cars:
+  - roomy
+  named_cars:
+  - roomy
+  seg: local
+  pref: niigata
+  role: dealer
+- id: p1283
+  text: 新潟市でトヨタの新車を買いたいです。どの販売店に行けばいいですか？
+  category: purchase
+  driver: dealer
+  brand: false
+  source: dealer_local_v1
+  tier: local
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 22.0
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 新潟 トヨタ 店舗
+  demand_history:
+  - - '2026-08-28'
+    - 22.0
+  cars: []
+  named_cars: []
+  seg: local
+  pref: niigata
+  role: dealer
+- id: p1284
+  text: 新潟県にトヨタのディーラーは何社ありますか？それぞれの違いを教えてください。
+  category: service
+  driver: dealer
+  brand: false
+  source: dealer_local_v1
+  tier: local
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 19.5
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 新潟 トヨタ ディーラー
+  demand_history:
+  - - '2026-08-28'
+    - 19.5
+  cars: []
+  named_cars: []
+  seg: local
+  pref: niigata
+  role: dealer
+- id: p1285
+  text: 新潟でトヨタ車を安く買う方法はありますか？販売店による価格差はありますか？
+  category: cost
+  driver: negotiation
+  brand: false
+  source: dealer_local_v1
+  tier: local
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 14.6
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 新潟 トヨタ 値引き
+  demand_history:
+  - - '2026-08-28'
+    - 14.6
+  cars: []
+  named_cars: []
+  seg: local
+  pref: niigata
+  role: dealer
+- id: p1286
+  text: 長岡市で車を買うならどこのディーラーがおすすめですか？
+  category: purchase
+  driver: dealer
+  brand: false
+  source: dealer_local_v1
+  tier: local
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 12.2
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 長岡 ディーラー
+  demand_history:
+  - - '2026-08-28'
+    - 12.2
+  cars: []
+  named_cars: []
+  seg: local
+  pref: niigata
+  role: dealer
+- id: p1287
+  text: 上越市の周辺でトヨタ車の試乗ができる店舗はありますか？
+  category: service
+  driver: dealer
+  brand: false
+  source: dealer_local_v1
+  tier: local
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 8.8
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 上越 トヨタ 試乗
+  demand_history:
+  - - '2026-08-28'
+    - 8.8
+  cars: []
+  named_cars: []
+  seg: local
+  pref: niigata
+  role: dealer
+- id: p1288
+  text: 新潟で中古車を買うならどこがおすすめですか？ディーラー系と中古車専門店の違いも教えてください。
+  category: cost
+  driver: used
+  brand: false
+  source: dealer_local_v1
+  tier: local
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 24.4
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 新潟 中古車
+  demand_history:
+  - - '2026-08-28'
+    - 24.4
+  cars: []
+  named_cars: []
+  seg: local
+  pref: niigata
+  role: dealer
+- id: p1289
+  text: 新潟県で車検を頼むならディーラーと整備工場どちらがいいですか？費用の目安も教えてください。
+  category: service
+  driver: maintenance
+  brand: false
+  source: dealer_local_v1
+  tier: local
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 19.5
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 新潟 車検 安い
+  demand_history:
+  - - '2026-08-28'
+    - 19.5
+  cars: []
+  named_cars: []
+  seg: local
+  pref: niigata
+  role: dealer
 - id: p129
   text: 「トヨタ ホンダ 比較 SUV」の観点で、国産メーカーを比較して教えてください。
   category: model
@@ -3588,6 +10949,237 @@ prompts:
   - - '2026-08-24'
     - 67.2
   tier_prev: longtail
+- id: p1290
+  text: 新潟でトヨタ車の点検・修理を頼める店舗を教えてください。購入店以外でも大丈夫ですか？
+  category: service
+  driver: maintenance
+  brand: false
+  source: dealer_local_v1
+  tier: local
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 10.7
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 新潟 トヨタ 修理
+  demand_history:
+  - - '2026-08-28'
+    - 10.7
+  cars: []
+  named_cars: []
+  seg: local
+  pref: niigata
+  role: dealer
+- id: p1291
+  text: 新潟市で車の下取り額を上げるにはどうすればいいですか？どこで査定してもらうべき？
+  category: cost
+  driver: resale
+  brand: false
+  source: dealer_local_v1
+  tier: local
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 13.7
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 新潟 車 下取り
+  demand_history:
+  - - '2026-08-28'
+    - 13.7
+  cars: []
+  named_cars: []
+  seg: local
+  pref: niigata
+  role: dealer
+- id: p1292
+  text: 新発田市の近くでトヨタの店舗はどこにありますか？
+  category: service
+  driver: dealer
+  brand: false
+  source: dealer_local_v1
+  tier: local
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 6.8
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 新発田 トヨタ
+  demand_history:
+  - - '2026-08-28'
+    - 6.8
+  cars: []
+  named_cars: []
+  seg: local
+  pref: niigata
+  role: dealer
+- id: p1293
+  text: 三条市や燕市エリアで評判のいい車の販売店はどこですか？
+  category: purchase
+  driver: dealer
+  brand: false
+  source: dealer_local_v1
+  tier: local
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 6.8
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 三条 車 販売店
+  demand_history:
+  - - '2026-08-28'
+    - 6.8
+  cars: []
+  named_cars: []
+  seg: local
+  pref: niigata
+  role: dealer
+- id: p1294
+  text: 新潟でレクサスを買うにはどこに行けばいいですか？
+  category: purchase
+  driver: premium
+  brand: false
+  source: dealer_local_v1
+  tier: local
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 11.6
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 新潟 レクサス
+  demand_history:
+  - - '2026-08-28'
+    - 11.6
+  cars: []
+  named_cars: []
+  seg: local
+  pref: niigata
+  role: dealer
+- id: p1295
+  text: 新潟県内で福祉車両に詳しい販売店はありますか？
+  category: service
+  driver: welfare
+  brand: false
+  source: dealer_local_v1
+  tier: local
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 5.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 新潟 福祉車両
+  demand_history:
+  - - '2026-08-28'
+    - 5.9
+  cars:
+  - sienta
+  named_cars: []
+  seg: local
+  pref: niigata
+  role: dealer
+- id: p1296
+  text: 雪が降る前にスタッドレスへの交換を頼みたい。新潟で確実に予約できるのはどこですか？
+  category: service
+  driver: maintenance
+  brand: false
+  source: dealer_local_v1
+  tier: local
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 12.2
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 新潟 タイヤ交換 予約
+  demand_history:
+  - - '2026-08-28'
+    - 12.2
+  cars: []
+  named_cars: []
+  seg: local
+  pref: niigata
+  role: dealer
+- id: p1297
+  text: 新潟で運転が不安になってきた親の車の乗り換え相談に乗ってくれる店はありますか？
+  category: service
+  driver: senior
+  brand: false
+  source: dealer_local_v1
+  tier: local
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 5.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 新潟 高齢者 車 相談
+  demand_history:
+  - - '2026-08-28'
+    - 5.9
+  cars: []
+  named_cars: []
+  seg: local
+  pref: niigata
+  role: dealer
+- id: p1298
+  text: 新潟でKINTOやサブスクの相談ができる店舗はありますか？
+  category: cost
+  driver: finance
+  brand: false
+  source: dealer_local_v1
+  tier: local
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 5.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 新潟 KINTO
+  demand_history:
+  - - '2026-08-28'
+    - 5.9
+  cars: []
+  named_cars: []
+  seg: local
+  pref: niigata
+  role: dealer
+- id: p1299
+  text: 新潟トヨタとトヨタカローラ新潟の違いは何ですか？どちらに行くべきですか？
+  category: service
+  driver: dealer
+  brand: false
+  source: dealer_local_v1
+  tier: local
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 9.8
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 新潟トヨタ カローラ新潟 違い
+  demand_history:
+  - - '2026-08-28'
+    - 9.8
+  cars: []
+  named_cars: []
+  seg: local
+  pref: niigata
+  role: named_dealer
 - id: p130
   text: 「トヨタ ハイブリッド 強み」は国産メーカーだとどこが有利ですか。
   category: eco
@@ -3617,6 +11209,250 @@ prompts:
   - - '2026-08-24'
     - 81.8
   tier_prev: longtail
+- id: p1300
+  text: 新潟トヨタの店舗一覧と営業時間を教えてください。
+  category: service
+  driver: dealer
+  brand: false
+  source: dealer_local_v1
+  tier: local
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 10.7
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 新潟トヨタ 営業時間
+  demand_history:
+  - - '2026-08-28'
+    - 10.7
+  cars: []
+  named_cars: []
+  seg: local
+  pref: niigata
+  role: named_dealer
+- id: p1301
+  text: 新潟トヨタで試乗の予約はどうやってしますか？ネットでできますか？
+  category: service
+  driver: dealer
+  brand: false
+  source: dealer_local_v1
+  tier: local
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 7.8
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 新潟トヨタ 試乗 予約
+  demand_history:
+  - - '2026-08-28'
+    - 7.8
+  cars: []
+  named_cars: []
+  seg: local
+  pref: niigata
+  role: named_dealer
+- id: p1302
+  text: 新潟トヨタの長岡の店舗はどこにありますか？
+  category: service
+  driver: dealer
+  brand: false
+  source: dealer_local_v1
+  tier: local
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 6.8
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 新潟トヨタ 長岡
+  demand_history:
+  - - '2026-08-28'
+    - 6.8
+  cars: []
+  named_cars: []
+  seg: local
+  pref: niigata
+  role: named_dealer
+- id: p1303
+  text: 新潟トヨタの中古車（U-Car）はどこで買えますか？保証は付きますか？
+  category: cost
+  driver: used
+  brand: false
+  source: dealer_local_v1
+  tier: local
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 7.8
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 新潟トヨタ 中古車
+  demand_history:
+  - - '2026-08-28'
+    - 7.8
+  cars: []
+  named_cars: []
+  seg: local
+  pref: niigata
+  role: named_dealer
+- id: p1304
+  text: 新潟トヨペットと新潟トヨタは同じ会社ですか？
+  category: service
+  driver: dealer
+  brand: false
+  source: dealer_local_v1
+  tier: local
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 5.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 新潟トヨペット 新潟トヨタ
+  demand_history:
+  - - '2026-08-28'
+    - 5.9
+  cars: []
+  named_cars: []
+  seg: local
+  pref: niigata
+  role: named_dealer
+- id: p1305
+  text: 名古屋で子育て家族の車を買うなら何がおすすめですか？駐車場事情も考慮してください。
+  category: purchase
+  driver: family
+  brand: false
+  source: dealer_local_v1
+  tier: local
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 17.1
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 名古屋 ファミリーカー
+  demand_history:
+  - - '2026-08-28'
+    - 17.1
+  cars:
+  - sienta
+  - voxy
+  - noah
+  - roomy
+  named_cars: []
+  seg: local
+  pref: aichi
+  role: market
+- id: p1306
+  text: 名古屋市内での街乗り中心なら、どのサイズの車が現実的ですか？おすすめの車種は？
+  category: purchase
+  driver: urban
+  brand: false
+  source: dealer_local_v1
+  tier: local
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 12.2
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 名古屋 街乗り 車
+  demand_history:
+  - - '2026-08-28'
+    - 12.2
+  cars:
+  - aqua
+  - roomy
+  - raize
+  named_cars: []
+  seg: local
+  pref: aichi
+  role: market
+- id: p1307
+  text: 愛知県は車社会と聞きます。通勤用に維持費の安い車を選ぶなら何がいいですか？
+  category: cost
+  driver: commute
+  brand: false
+  source: dealer_local_v1
+  tier: local
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 12.2
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 愛知 通勤 車
+  demand_history:
+  - - '2026-08-28'
+    - 12.2
+  cars:
+  - aqua
+  - raize
+  named_cars: []
+  seg: local
+  pref: aichi
+  role: market
+- id: p1308
+  text: 豊田市に転勤します。車は必須ですか？最初の1台に何を買うべきですか？
+  category: purchase
+  driver: commute
+  brand: false
+  source: dealer_local_v1
+  tier: local
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 8.8
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 豊田市 車
+  demand_history:
+  - - '2026-08-28'
+    - 8.8
+  cars:
+  - aqua
+  - raize
+  - sienta
+  named_cars: []
+  seg: local
+  pref: aichi
+  role: market
+- id: p1309
+  text: 愛知でアルファードを買いたいです。納期と買える店を教えてください。
+  category: service
+  driver: delivery
+  brand: true
+  source: dealer_local_v1
+  tier: local
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 15.5
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 愛知 アルファード
+  demand_history:
+  - - '2026-08-28'
+    - 15.5
+  cars:
+  - alphard
+  named_cars:
+  - alphard
+  seg: local
+  pref: aichi
+  role: dealer
 - id: p131
   text: 「車 維持費 年間 平均」を重視した場合、実際いくらくらいかかりますか。おすすめの車種も教えてください。
   category: cost
@@ -3645,6 +11481,241 @@ prompts:
     - 60.5
   - - '2026-08-24'
     - 60.5
+- id: p1310
+  text: 名古屋でランクル250の在庫がある店はありますか？
+  category: service
+  driver: delivery
+  brand: true
+  source: dealer_local_v1
+  tier: local
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 2.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 名古屋 ランクル250
+  demand_history:
+  - - '2026-08-28'
+    - 2.9
+  cars:
+  - lc250
+  named_cars:
+  - lc250
+  seg: local
+  pref: aichi
+  role: dealer
+- id: p1311
+  text: 愛知県の三河エリアでミニバンを買うなら、どこで何を買うのがいいですか？
+  category: purchase
+  driver: family
+  brand: false
+  source: dealer_local_v1
+  tier: local
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 9.6
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 三河 ミニバン
+  demand_history:
+  - - '2026-08-28'
+    - 9.6
+  cars:
+  - noah
+  - voxy
+  - sienta
+  named_cars: []
+  seg: local
+  pref: aichi
+  role: market
+- id: p1312
+  text: 名古屋でトヨタの新車を買うなら、どの販売店がおすすめですか？
+  category: purchase
+  driver: dealer
+  brand: false
+  source: dealer_local_v1
+  tier: local
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 24.4
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 名古屋 トヨタ ディーラー
+  demand_history:
+  - - '2026-08-28'
+    - 24.4
+  cars: []
+  named_cars: []
+  seg: local
+  pref: aichi
+  role: dealer
+- id: p1313
+  text: 愛知県のトヨタディーラーの一覧と違いを教えてください。どこで買っても同じですか？
+  category: service
+  driver: dealer
+  brand: false
+  source: dealer_local_v1
+  tier: local
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 22.0
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 愛知 トヨタ ディーラー 一覧
+  demand_history:
+  - - '2026-08-28'
+    - 22.0
+  cars: []
+  named_cars: []
+  seg: local
+  pref: aichi
+  role: dealer
+- id: p1314
+  text: 愛知はトヨタのお膝元ですが、値引きは他県より有利ですか？どの店で交渉すべきですか？
+  category: cost
+  driver: negotiation
+  brand: false
+  source: dealer_local_v1
+  tier: local
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 14.6
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 愛知 トヨタ 値引き
+  demand_history:
+  - - '2026-08-28'
+    - 14.6
+  cars: []
+  named_cars: []
+  seg: local
+  pref: aichi
+  role: dealer
+- id: p1315
+  text: 名古屋市内でトヨタ車の試乗をしたいです。予約なしでも行けますか？おすすめの店舗は？
+  category: service
+  driver: dealer
+  brand: false
+  source: dealer_local_v1
+  tier: local
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 12.2
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 名古屋 トヨタ 試乗
+  demand_history:
+  - - '2026-08-28'
+    - 12.2
+  cars: []
+  named_cars: []
+  seg: local
+  pref: aichi
+  role: dealer
+- id: p1316
+  text: 愛知で中古車を買うならどこがおすすめですか？ディーラー認定中古車のメリットも教えてください。
+  category: cost
+  driver: used
+  brand: false
+  source: dealer_local_v1
+  tier: local
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 24.4
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 愛知 中古車
+  demand_history:
+  - - '2026-08-28'
+    - 24.4
+  cars: []
+  named_cars: []
+  seg: local
+  pref: aichi
+  role: dealer
+- id: p1317
+  text: 名古屋で車検が安くて安心なのはどこですか？ディーラー車検の相場も教えてください。
+  category: service
+  driver: maintenance
+  brand: false
+  source: dealer_local_v1
+  tier: local
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 22.0
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 名古屋 車検 安い
+  demand_history:
+  - - '2026-08-28'
+    - 22.0
+  cars: []
+  named_cars: []
+  seg: local
+  pref: aichi
+  role: dealer
+- id: p1318
+  text: 愛知県で車の下取りを高くするコツと、査定に出すべき店を教えてください。
+  category: cost
+  driver: resale
+  brand: false
+  source: dealer_local_v1
+  tier: local
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 13.7
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 愛知 車 下取り
+  demand_history:
+  - - '2026-08-28'
+    - 13.7
+  cars: []
+  named_cars: []
+  seg: local
+  pref: aichi
+  role: dealer
+- id: p1319
+  text: 刈谷市や安城市の周辺で評判のいいトヨタの店舗はありますか？
+  category: service
+  driver: dealer
+  brand: false
+  source: dealer_local_v1
+  tier: local
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 6.8
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 刈谷 トヨタ
+  demand_history:
+  - - '2026-08-28'
+    - 6.8
+  cars: []
+  named_cars: []
+  seg: local
+  pref: aichi
+  role: dealer
 - id: p132
   text: 「軽自動車 維持費 比較」を重視した場合、実際いくらくらいかかりますか。おすすめの車種も教えてください。
   category: cost
@@ -3673,6 +11744,237 @@ prompts:
     - 49.3
   - - '2026-08-24'
     - 49.3
+- id: p1320
+  text: 一宮市でトヨタ車を買うならどの店に行けばいいですか？
+  category: purchase
+  driver: dealer
+  brand: false
+  source: dealer_local_v1
+  tier: local
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 6.8
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 一宮 トヨタ
+  demand_history:
+  - - '2026-08-28'
+    - 6.8
+  cars: []
+  named_cars: []
+  seg: local
+  pref: aichi
+  role: dealer
+- id: p1321
+  text: 豊橋市周辺でトヨタのディーラーはどこにありますか？
+  category: service
+  driver: dealer
+  brand: false
+  source: dealer_local_v1
+  tier: local
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 6.8
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 豊橋 トヨタ
+  demand_history:
+  - - '2026-08-28'
+    - 6.8
+  cars: []
+  named_cars: []
+  seg: local
+  pref: aichi
+  role: dealer
+- id: p1322
+  text: 名古屋でレクサスの店舗はどこですか？トヨタ店との違いも教えてください。
+  category: purchase
+  driver: premium
+  brand: false
+  source: dealer_local_v1
+  tier: local
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 15.5
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 名古屋 レクサス
+  demand_history:
+  - - '2026-08-28'
+    - 15.5
+  cars: []
+  named_cars: []
+  seg: local
+  pref: aichi
+  role: dealer
+- id: p1323
+  text: 愛知でトヨタのサブスク（KINTO）を対面で相談できる場所はありますか？
+  category: cost
+  driver: finance
+  brand: false
+  source: dealer_local_v1
+  tier: local
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 5.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 愛知 KINTO 相談
+  demand_history:
+  - - '2026-08-28'
+    - 5.9
+  cars: []
+  named_cars: []
+  seg: local
+  pref: aichi
+  role: dealer
+- id: p1324
+  text: 名古屋で日曜の夕方でも車の点検をやってくれる店はありますか？
+  category: service
+  driver: maintenance
+  brand: false
+  source: dealer_local_v1
+  tier: local
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 6.8
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 名古屋 点検 日曜
+  demand_history:
+  - - '2026-08-28'
+    - 6.8
+  cars: []
+  named_cars: []
+  seg: local
+  pref: aichi
+  role: dealer
+- id: p1325
+  text: 愛知県で福祉車両やウェルキャブに強い販売店を教えてください。
+  category: service
+  driver: welfare
+  brand: false
+  source: dealer_local_v1
+  tier: local
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 5.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 愛知 福祉車両
+  demand_history:
+  - - '2026-08-28'
+    - 5.9
+  cars:
+  - sienta
+  named_cars: []
+  seg: local
+  pref: aichi
+  role: dealer
+- id: p1326
+  text: 愛知トヨタとトヨタカローラ名古屋の違いは何ですか？どちらで買うべきですか？
+  category: service
+  driver: dealer
+  brand: false
+  source: dealer_local_v1
+  tier: local
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 9.8
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 愛知トヨタ カローラ名古屋 違い
+  demand_history:
+  - - '2026-08-28'
+    - 9.8
+  cars: []
+  named_cars: []
+  seg: local
+  pref: aichi
+  role: named_dealer
+- id: p1327
+  text: 愛知トヨタの店舗一覧を教えてください。EASTとWESTの違いは何ですか？
+  category: service
+  driver: dealer
+  brand: false
+  source: dealer_local_v1
+  tier: local
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 10.7
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 愛知トヨタ 店舗一覧
+  demand_history:
+  - - '2026-08-28'
+    - 10.7
+  cars: []
+  named_cars: []
+  seg: local
+  pref: aichi
+  role: named_dealer
+- id: p1328
+  text: 名古屋トヨペットはまだありますか？いまはどの会社になっていますか？
+  category: service
+  driver: dealer
+  brand: false
+  source: dealer_local_v1
+  tier: local
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 8.8
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 名古屋トヨペット 現在
+  demand_history:
+  - - '2026-08-28'
+    - 8.8
+  cars: []
+  named_cars: []
+  seg: local
+  pref: aichi
+  role: named_dealer
+- id: p1329
+  text: ネッツトヨタ東名古屋の店舗はどこですか？社名が変わったと聞きました。
+  category: service
+  driver: dealer
+  brand: false
+  source: dealer_local_v1
+  tier: local
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 6.8
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: ネッツトヨタ東名古屋 社名
+  demand_history:
+  - - '2026-08-28'
+    - 6.8
+  cars: []
+  named_cars: []
+  seg: local
+  pref: aichi
+  role: named_dealer
 - id: p133
   text: 「残価設定ローン デメリット」で損をしない方法を教えてください。国産車で具体的にお願いします。
   category: cost
@@ -3701,6 +12003,52 @@ prompts:
     - 60.4
   - - '2026-08-24'
     - 60.4
+- id: p1330
+  text: 愛知トヨタで試乗予約をする方法を教えてください。
+  category: service
+  driver: dealer
+  brand: false
+  source: dealer_local_v1
+  tier: local
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 7.8
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 愛知トヨタ 試乗
+  demand_history:
+  - - '2026-08-28'
+    - 7.8
+  cars: []
+  named_cars: []
+  seg: local
+  pref: aichi
+  role: named_dealer
+- id: p1331
+  text: 愛知トヨタの中古車検索はどこでできますか？保証内容も教えてください。
+  category: cost
+  driver: used
+  brand: false
+  source: dealer_local_v1
+  tier: local
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 7.8
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 愛知トヨタ 中古車
+  demand_history:
+  - - '2026-08-28'
+    - 7.8
+  cars: []
+  named_cars: []
+  seg: local
+  pref: aichi
+  role: named_dealer
 - id: p134
   text: 「PHEV ハイブリッド 違い」は国産メーカーだとどこが有利ですか。
   category: eco
@@ -19380,6 +27728,15 @@ prompts:
   tier: core
   added_on: '2026-08-27'
   tier_since: '2026-08-27'
+  demand: 55.0
+  keyword: 軽自動車から乗り換え
+  cars:
+  - roomy
+  named_cars: []
+  volume: 0
+  demand_history:
+  - - '2026-08-28'
+    - 55.0
 - id: p940
   text: 軽のスーパーハイトワゴンから小さめの普通車に買い替えるなら、何が候補になりますか？スライドドアは必須です。
   category: purchase
@@ -19389,6 +27746,15 @@ prompts:
   tier: core
   added_on: '2026-08-27'
   tier_since: '2026-08-27'
+  demand: 50.0
+  keyword: スーパーハイトワゴン 乗り換え
+  cars:
+  - roomy
+  named_cars: []
+  volume: 0
+  demand_history:
+  - - '2026-08-28'
+    - 50.0
 - id: p941
   text: トヨタのルーミーとスズキのソリオはどちらが買いですか？家族4人・街乗り中心で迷っています。
   category: brand
@@ -19398,6 +27764,16 @@ prompts:
   tier: core
   added_on: '2026-08-27'
   tier_since: '2026-08-27'
+  demand: 60.0
+  keyword: ルーミー ソリオ
+  cars:
+  - roomy
+  named_cars:
+  - roomy
+  volume: 0
+  demand_history:
+  - - '2026-08-28'
+    - 60.0
 - id: p942
   text: ルーミーの2026年の一部改良では何が変わりましたか？いま買うのと待つのとどちらがいいですか？
   category: brand
@@ -19407,6 +27783,16 @@ prompts:
   tier: core
   added_on: '2026-08-27'
   tier_since: '2026-08-27'
+  demand: 45.0
+  keyword: ルーミー 一部改良
+  cars:
+  - roomy
+  named_cars:
+  - roomy
+  volume: 0
+  demand_history:
+  - - '2026-08-28'
+    - 45.0
 - id: p943
   text: トヨタ ルーミーは「遅い」という口コミを見ますが、家族の街乗りで実際に困りますか？オーナーの評判を教えてください。
   category: brand
@@ -19416,3 +27802,1422 @@ prompts:
   tier: core
   added_on: '2026-08-27'
   tier_since: '2026-08-27'
+  demand: 48.0
+  keyword: ルーミー 口コミ
+  cars:
+  - roomy
+  named_cars:
+  - roomy
+  volume: 0
+  demand_history:
+  - - '2026-08-28'
+    - 48.0
+- id: p944
+  text: スライドドア付きで5ナンバーサイズのコンパクトカーを比較して、おすすめを教えてください。子供の送り迎えと買い物が中心です。
+  category: model
+  driver: family
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 13.3
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: スライドドア コンパクトカー
+  demand_history:
+  - - '2026-08-28'
+    - 13.3
+  cars:
+  - roomy
+  - sienta
+  named_cars: []
+  seg: compact_tall
+  active_for:
+  - roomy
+- id: p945
+  text: 1000cc前後で室内が広い普通車を探しています。維持費を抑えたい子育て世帯に合う車はどれですか。
+  category: cost
+  driver: family
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 11.4
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 1000cc 広い 車
+  demand_history:
+  - - '2026-08-28'
+    - 11.4
+  cars:
+  - roomy
+  named_cars: []
+  seg: compact_tall
+  active_for:
+  - roomy
+- id: p946
+  text: 軽自動車では狭いけれど、大きい車は運転が不安です。ちょうど中間サイズでおすすめの車種はありますか？
+  category: purchase
+  driver: urban
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 12.2
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 軽自動車より少し大きい車
+  demand_history:
+  - - '2026-08-28'
+    - 12.2
+  cars:
+  - roomy
+  named_cars: []
+  seg: compact_tall
+  active_for:
+  - roomy
+- id: p947
+  text: 保育園の送り迎えに毎日使う車を探しています。狭い道でも運転しやすい後席スライドドアの車のおすすめは？
+  category: purchase
+  driver: family
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 11.4
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 送り迎え 車 スライドドア
+  demand_history:
+  - - '2026-08-28'
+    - 11.4
+  cars:
+  - roomy
+  - sienta
+  named_cars: []
+  seg: compact_tall
+  active_for:
+  - roomy
+- id: p948
+  text: 予算200万円前後で新車のスライドドア車を買えますか？候補を挙げてください。
+  category: cost
+  driver: budget
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 10.6
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 200万 スライドドア 新車
+  demand_history:
+  - - '2026-08-28'
+    - 10.6
+  cars:
+  - roomy
+  named_cars: []
+  seg: compact_tall
+  active_for:
+  - roomy
+- id: p949
+  text: 背の高いコンパクトカー（トールワゴン）を燃費と使い勝手で比較してください。
+  category: model
+  driver: urban
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 11.4
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: トールワゴン 比較
+  demand_history:
+  - - '2026-08-28'
+    - 11.4
+  cars:
+  - roomy
+  named_cars: []
+  seg: compact_tall
+  active_for:
+  - roomy
+- id: p950
+  text: 足腰の弱い祖父母も乗り降りしやすい、小さめで床が低い車を教えてください。
+  category: purchase
+  driver: senior
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 9.5
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 乗り降りしやすい車 高齢者
+  demand_history:
+  - - '2026-08-28'
+    - 9.5
+  cars:
+  - roomy
+  - sienta
+  named_cars: []
+  seg: compact_tall
+  active_for:
+  - roomy
+- id: p951
+  text: ソリオとトールで迷っています。ほかに比較したほうがいい車はありますか？
+  category: model
+  driver: urban
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 8.8
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: ソリオ トール 比較
+  demand_history:
+  - - '2026-08-28'
+    - 8.8
+  cars:
+  - roomy
+  named_cars: []
+  seg: compact_tall
+  active_for:
+  - roomy
+- id: p952
+  text: スズキ ソリオの対抗になるトヨタの車はどれですか？違いも教えてください。
+  category: model
+  driver: urban
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 8.2
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: ソリオ ライバル トヨタ
+  demand_history:
+  - - '2026-08-28'
+    - 8.2
+  cars:
+  - roomy
+  named_cars: []
+  seg: compact_tall
+  active_for:
+  - roomy
+- id: p953
+  text: デリカミニのような軽ではなく、同じ雰囲気でもう少し広い登録車はありますか？
+  category: purchase
+  driver: family
+  brand: false
+  source: car_deep_v1
+  tier: car_bench
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 4.5
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: デリカミニ 大きいサイズ
+  demand_history:
+  - - '2026-08-28'
+    - 4.5
+  cars:
+  - roomy
+  - sienta
+  named_cars: []
+  seg: compact_tall
+- id: p954
+  text: 立体駐車場に入る全高制限があっても使える、室内が広い小型車はどれですか？
+  category: model
+  driver: urban
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 6.6
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 立体駐車場 入る 車 広い
+  demand_history:
+  - - '2026-08-28'
+    - 6.6
+  cars:
+  - aqua
+  - raize
+  named_cars: []
+  seg: compact_hb
+  active_for:
+  - aqua
+  - raize
+- id: p955
+  text: 運転初心者の妻がメインで乗る家族のセカンドカーを選ぶなら何がいいですか？スライドドア希望です。
+  category: purchase
+  driver: family
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: セカンドカー スライドドア
+  demand_history:
+  - - '2026-08-28'
+    - 9.9
+  cars:
+  - roomy
+  named_cars: []
+  seg: compact_tall
+  active_for:
+  - roomy
+- id: p956
+  text: 自転車（子供用）をそのまま積める小さめの車はありますか？
+  category: model
+  driver: family
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 9.1
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 自転車 積める コンパクトカー
+  demand_history:
+  - - '2026-08-28'
+    - 9.1
+  cars:
+  - roomy
+  - sienta
+  named_cars: []
+  seg: compact_tall
+  active_for:
+  - roomy
+- id: p957
+  text: 狭い住宅街でもすれ違いしやすい5ナンバー幅で、家族4人が乗れる車を教えてください。
+  category: purchase
+  driver: urban
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 5ナンバー ファミリーカー
+  demand_history:
+  - - '2026-08-28'
+    - 9.9
+  cars:
+  - roomy
+  - sienta
+  named_cars: []
+  seg: compact_tall
+  active_for:
+  - roomy
+- id: p958
+  text: 最小回転半径が小さくて駐車が楽な普通車を、価格帯別に教えてください。
+  category: model
+  driver: urban
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 9.1
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 最小回転半径 小さい 車
+  demand_history:
+  - - '2026-08-28'
+    - 9.1
+  cars:
+  - roomy
+  - aqua
+  named_cars: []
+  seg: compact_tall
+  active_for:
+  - roomy
+  - aqua
+- id: p959
+  text: ベビーカーを畳まずに積める車で、なるべく小さいものはどれですか？
+  category: model
+  driver: family
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 10.6
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: ベビーカー 積める 車
+  demand_history:
+  - - '2026-08-28'
+    - 10.6
+  cars:
+  - roomy
+  - sienta
+  named_cars: []
+  seg: compact_tall
+  active_for:
+  - roomy
+- id: p960
+  text: 5ナンバーサイズの3列シートミニバンでおすすめはどれですか？大人2人と子供2人で使います。
+  category: purchase
+  driver: family
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 21.4
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: コンパクト ミニバン おすすめ
+  demand_history:
+  - - '2026-08-28'
+    - 21.4
+  cars:
+  - sienta
+  named_cars: []
+  seg: minivan_s
+  active_for:
+  - sienta
+- id: p961
+  text: ホンダ フリードと比較すべきトヨタの車は何ですか？どちらがどんな人に向きますか？
+  category: model
+  driver: family
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 19.8
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: フリード ライバル
+  demand_history:
+  - - '2026-08-28'
+    - 19.8
+  cars:
+  - sienta
+  named_cars: []
+  seg: minivan_s
+  active_for:
+  - sienta
+- id: p962
+  text: フリードを検討中ですが、決める前に見ておくべき同クラスの車があれば教えてください。
+  category: purchase
+  driver: family
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 18.2
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: フリード 競合
+  demand_history:
+  - - '2026-08-28'
+    - 18.2
+  cars:
+  - sienta
+  named_cars: []
+  seg: minivan_s
+  active_for:
+  - sienta
+- id: p963
+  text: 3列目は普段使いませんが、たまに6人乗れると助かります。コンパクトなミニバンのおすすめは？
+  category: purchase
+  driver: family
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 17.6
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 6人乗り コンパクト
+  demand_history:
+  - - '2026-08-28'
+    - 17.6
+  cars:
+  - sienta
+  named_cars: []
+  seg: minivan_s
+  active_for:
+  - sienta
+- id: p964
+  text: チャイルドシート2台を付けても乗り降ろししやすい車を教えてください。
+  category: purchase
+  driver: family
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 18.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: チャイルドシート 2台 車
+  demand_history:
+  - - '2026-08-28'
+    - 18.9
+  cars:
+  - sienta
+  - noah
+  - voxy
+  - roomy
+  named_cars: []
+  seg: minivan_s
+  active_for:
+  - roomy
+  - sienta
+  - voxy
+  - noah
+- id: p965
+  text: 車中泊もできるコンパクトミニバンを探しています。フルフラットになる車種は？
+  category: model
+  driver: leisure
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 24.0
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: シエンタ 車中泊
+  demand_history:
+  - - '2026-08-28'
+    - 24.0
+  cars:
+  - sienta
+  named_cars: []
+  seg: minivan_s
+  active_for:
+  - sienta
+- id: p966
+  text: 燃費のいい小型ミニバンをハイブリッドで選ぶなら、実燃費ベースでどれが優秀ですか？
+  category: eco
+  driver: eco
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 17.6
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 小型ミニバン 燃費
+  demand_history:
+  - - '2026-08-28'
+    - 17.6
+  cars:
+  - sienta
+  named_cars: []
+  seg: minivan_s
+  active_for:
+  - sienta
+- id: p967
+  text: 身長180cmでも3列目に座れる小さめのミニバンはありますか？
+  category: model
+  driver: family
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 15.1
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: ミニバン 3列目 広さ
+  demand_history:
+  - - '2026-08-28'
+    - 15.1
+  cars:
+  - sienta
+  - noah
+  - voxy
+  named_cars: []
+  seg: minivan_s
+  active_for:
+  - noah
+- id: p968
+  text: 介護で親を病院に連れて行くのに使いやすい車を教えてください。乗り降りのしやすさ重視です。
+  category: purchase
+  driver: senior
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 16.4
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 介護 送迎 車
+  demand_history:
+  - - '2026-08-28'
+    - 16.4
+  cars:
+  - sienta
+  - noah
+  - voxy
+  named_cars: []
+  seg: minivan_s
+  active_for:
+  - sienta
+  - voxy
+  - noah
+- id: p969
+  text: 200万円台で買える3列シートの新車はありますか？
+  category: cost
+  driver: budget
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 18.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 3列シート 200万円台
+  demand_history:
+  - - '2026-08-28'
+    - 18.9
+  cars:
+  - sienta
+  named_cars: []
+  seg: minivan_s
+  active_for:
+  - sienta
+- id: p970
+  text: 小柄な女性でも運転しやすいミニバンはどれですか？視界や取り回しで比較してください。
+  category: purchase
+  driver: family
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 16.4
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 女性 運転しやすい ミニバン
+  demand_history:
+  - - '2026-08-28'
+    - 16.4
+  cars:
+  - sienta
+  named_cars: []
+  seg: minivan_s
+  active_for:
+  - sienta
+- id: p971
+  text: 犬2匹と子供1人を乗せて出かけることが多いです。合う車を提案してください。
+  category: purchase
+  driver: leisure
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 15.1
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 犬 乗せやすい 車
+  demand_history:
+  - - '2026-08-28'
+    - 15.1
+  cars:
+  - sienta
+  - roomy
+  named_cars: []
+  seg: minivan_s
+  active_for:
+  - roomy
+- id: p972
+  text: 国産ミニバンをおすすめ順にランキングして、それぞれの強みを教えてください。
+  category: purchase
+  driver: family
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 37.2
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: ミニバン おすすめ ランキング
+  demand_history:
+  - - '2026-08-28'
+    - 37.2
+  cars:
+  - noah
+  - voxy
+  - sienta
+  - alphard
+  named_cars: []
+  seg: minivan_m
+  active_for:
+  - sienta
+  - alphard
+  - voxy
+  - noah
+- id: p973
+  text: セレナとステップワゴンで迷っています。ほかに候補にすべき車はありますか？
+  category: model
+  driver: family
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 21.0
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: セレナ ステップワゴン 比較
+  demand_history:
+  - - '2026-08-28'
+    - 21.0
+  cars:
+  - noah
+  - voxy
+  named_cars: []
+  seg: minivan_m
+  active_for:
+  - voxy
+  - noah
+- id: p974
+  text: 日産セレナのライバル車はどれですか？e-POWERと比べた強み・弱みも知りたいです。
+  category: model
+  driver: family
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 19.8
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: セレナ ライバル
+  demand_history:
+  - - '2026-08-28'
+    - 19.8
+  cars:
+  - noah
+  - voxy
+  named_cars: []
+  seg: minivan_m
+  active_for:
+  - voxy
+  - noah
+- id: p975
+  text: 新型ステップワゴンと比較すべきトヨタのミニバンは？装備と価格で比べてください。
+  category: model
+  driver: family
+  brand: false
+  source: car_deep_v1
+  tier: car_bench
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 14.1
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: ステップワゴン 比較 トヨタ
+  demand_history:
+  - - '2026-08-28'
+    - 14.1
+  cars:
+  - noah
+  - voxy
+  named_cars: []
+  seg: minivan_m
+- id: p976
+  text: 家族5人で週末レジャーによく行きます。両側電動スライドドアで運転支援が充実したミニバンは？
+  category: safety
+  driver: family
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 18.0
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: ミニバン 運転支援 比較
+  demand_history:
+  - - '2026-08-28'
+    - 18.0
+  cars:
+  - noah
+  - voxy
+  named_cars: []
+  seg: minivan_m
+  active_for:
+  - voxy
+  - noah
+- id: p977
+  text: ミドルサイズミニバンのハイブリッドを実燃費で比較してください。
+  category: eco
+  driver: eco
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 19.2
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: ミニバン ハイブリッド 燃費 比較
+  demand_history:
+  - - '2026-08-28'
+    - 19.2
+  cars:
+  - noah
+  - voxy
+  named_cars: []
+  seg: minivan_m
+  active_for:
+  - voxy
+  - noah
+- id: p978
+  text: 8人乗りが必要です。現行で選べるミニバンを価格帯別に整理してください。
+  category: model
+  driver: family
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 16.8
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 8人乗り ミニバン
+  demand_history:
+  - - '2026-08-28'
+    - 16.8
+  cars:
+  - noah
+  - voxy
+  named_cars: []
+  seg: minivan_m
+  active_for:
+  - voxy
+  - noah
+- id: p979
+  text: 運転が得意ではない人でも扱いやすいミニバンはどれですか？
+  category: purchase
+  driver: family
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 16.8
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 運転しやすい ミニバン
+  demand_history:
+  - - '2026-08-28'
+    - 16.8
+  cars:
+  - noah
+  - voxy
+  - sienta
+  named_cars: []
+  seg: minivan_m
+  active_for:
+  - sienta
+  - voxy
+  - noah
+- id: p980
+  text: ミニバンの3列目の畳みやすさと荷室の使い勝手を比較してください。
+  category: model
+  driver: family
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 15.6
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: ミニバン 荷室 比較
+  demand_history:
+  - - '2026-08-28'
+    - 15.6
+  cars:
+  - noah
+  - voxy
+  - sienta
+  named_cars: []
+  seg: minivan_m
+  active_for:
+  - voxy
+  - noah
+- id: p981
+  text: 子供の部活の送迎で荷物が多いです。積載力があるミニバンのおすすめは？
+  category: purchase
+  driver: family
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 14.4
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 部活 送迎 車
+  demand_history:
+  - - '2026-08-28'
+    - 14.4
+  cars:
+  - noah
+  - voxy
+  named_cars: []
+  seg: minivan_m
+  active_for:
+  - noah
+- id: p982
+  text: ミニバンは何年落ちの中古を買うのが得ですか？狙い目の車種と年式を教えてください。
+  category: cost
+  driver: used
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 20.4
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: ミニバン 中古 狙い目
+  demand_history:
+  - - '2026-08-28'
+    - 20.4
+  cars:
+  - noah
+  - voxy
+  - sienta
+  named_cars: []
+  seg: minivan_m
+  active_for:
+  - sienta
+  - voxy
+  - noah
+- id: p983
+  text: 家族のミニバンを買うとき、ハイブリッドとガソリンのどちらが元を取れますか？車種例で計算してください。
+  category: cost
+  driver: eco
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 16.8
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: ミニバン ハイブリッド ガソリン どっち
+  demand_history:
+  - - '2026-08-28'
+    - 16.8
+  cars:
+  - noah
+  - voxy
+  named_cars: []
+  seg: minivan_m
+  active_for:
+  - voxy
+  - noah
+- id: p984
+  text: 床が低くて子供が自分で乗り降りしやすいミニバンはどれですか？
+  category: model
+  driver: family
+  brand: false
+  source: car_deep_v1
+  tier: car_bench
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 14.4
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: ミニバン 低床
+  demand_history:
+  - - '2026-08-28'
+    - 14.4
+  cars:
+  - noah
+  - voxy
+  - sienta
+  named_cars: []
+  seg: minivan_m
+- id: p985
+  text: ミニバンの安全性能を比較してください。衝突安全と予防安全の評価が高いのは？
+  category: safety
+  driver: safety
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 15.6
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: ミニバン 安全性能 比較
+  demand_history:
+  - - '2026-08-28'
+    - 15.6
+  cars:
+  - noah
+  - voxy
+  named_cars: []
+  seg: minivan_m
+  active_for:
+  - voxy
+  - noah
+- id: p986
+  text: 通勤にも家族でも使うミニバン、維持費まで含めたおすすめは？
+  category: cost
+  driver: cost
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 15.6
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: ミニバン 維持費
+  demand_history:
+  - - '2026-08-28'
+    - 15.6
+  cars:
+  - noah
+  - voxy
+  - sienta
+  named_cars: []
+  seg: minivan_m
+  active_for:
+  - noah
+- id: p987
+  text: 高級ミニバンの選び方とおすすめを教えてください。家族利用と送迎利用の両方です。
+  category: purchase
+  driver: premium
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 29.1
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 高級ミニバン おすすめ
+  demand_history:
+  - - '2026-08-28'
+    - 29.1
+  cars:
+  - alphard
+  named_cars: []
+  seg: minivan_l
+  active_for:
+  - alphard
+- id: p988
+  text: 新型エルグランドが出ると聞きました。高級ミニバンを今買うならどう比較すべきですか？
+  category: model
+  driver: premium
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 28.0
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: エルグランド 新型 比較
+  demand_history:
+  - - '2026-08-28'
+    - 28.0
+  cars:
+  - alphard
+  named_cars: []
+  seg: minivan_l
+  active_for:
+  - alphard
+- id: p989
+  text: 法人の送迎車として使う上質なミニバンを国産で選ぶなら何がいいですか？
+  category: purchase
+  driver: premium
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 23.3
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 送迎車 ミニバン 法人
+  demand_history:
+  - - '2026-08-28'
+    - 23.3
+  cars:
+  - alphard
+  named_cars: []
+  seg: minivan_l
+  active_for:
+  - alphard
+- id: p990
+  text: リセールバリューが高いミニバンはどれですか？3年後・5年後の残価で比較してください。
+  category: cost
+  driver: resale
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 28.1
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: リセールバリュー ミニバン
+  demand_history:
+  - - '2026-08-28'
+    - 28.1
+  cars:
+  - alphard
+  - voxy
+  - noah
+  named_cars: []
+  seg: minivan_l
+  active_for:
+  - alphard
+  - voxy
+  - noah
+- id: p991
+  text: 残価設定ローンで高級ミニバンに乗るのは損ですか？月々の目安と向いている人を教えてください。
+  category: cost
+  driver: finance
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 35.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 残クレ 高級ミニバン
+  demand_history:
+  - - '2026-08-28'
+    - 35.9
+  cars:
+  - alphard
+  named_cars: []
+  seg: minivan_l
+  active_for:
+  - alphard
+- id: p992
+  text: 運転手付きで使われることが多い車種は何ですか？後席の快適性で比較してください。
+  category: model
+  driver: premium
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 19.4
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: ショーファーカー 国産
+  demand_history:
+  - - '2026-08-28'
+    - 19.4
+  cars:
+  - alphard
+  named_cars: []
+  seg: minivan_l
+  active_for:
+  - alphard
+- id: p993
+  text: ミニバンで後席モニターやリラックスシートなど装備が最も充実しているのは？
+  category: model
+  driver: premium
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 23.3
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: ミニバン 後席 装備
+  demand_history:
+  - - '2026-08-28'
+    - 23.3
+  cars:
+  - alphard
+  - voxy
+  named_cars: []
+  seg: minivan_l
+  active_for:
+  - alphard
+  - voxy
+- id: p994
+  text: 600万円の予算で家族が喜ぶ車を買うなら何がおすすめですか？
+  category: purchase
+  driver: premium
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 21.3
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 600万 車 おすすめ
+  demand_history:
+  - - '2026-08-28'
+    - 21.3
+  cars:
+  - alphard
+  named_cars: []
+  seg: minivan_l
+  active_for:
+  - alphard
+- id: p995
+  text: 子供3人と祖父母も乗せられる大きめの車を検討しています。候補を教えてください。
+  category: purchase
+  driver: family
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 25.2
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 7人 家族 車
+  demand_history:
+  - - '2026-08-28'
+    - 25.2
+  cars:
+  - alphard
+  - noah
+  - voxy
+  named_cars: []
+  seg: minivan_l
+  active_for:
+  - alphard
+  - voxy
+  - noah
+- id: p996
+  text: ゴルフバッグ4つと4人が乗れる車はどれですか？
+  category: model
+  driver: leisure
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 19.4
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: ゴルフバッグ 4つ 車
+  demand_history:
+  - - '2026-08-28'
+    - 19.4
+  cars:
+  - alphard
+  named_cars: []
+  seg: minivan_l
+  active_for:
+  - alphard
+- id: p997
+  text: 燃費重視でコンパクトカーを選ぶなら、実燃費ベースでどれが一番いいですか？
+  category: eco
+  driver: eco
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 10.5
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: 燃費のいい車 コンパクト
+  demand_history:
+  - - '2026-08-28'
+    - 10.5
+  cars:
+  - aqua
+  named_cars: []
+  seg: compact_hb
+  active_for:
+  - aqua
+- id: p998
+  text: 日産ノートとホンダ フィットのほかに、比較すべき同クラスの車はありますか？
+  category: model
+  driver: urban
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 10.8
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: ノート フィット 比較
+  demand_history:
+  - - '2026-08-28'
+    - 10.8
+  cars:
+  - aqua
+  named_cars: []
+  seg: compact_hb
+  active_for:
+  - aqua
+- id: p999
+  text: e-POWERとトヨタのハイブリッドはどちらがいいですか？該当するコンパクトカーで比較してください。
+  category: eco
+  driver: eco
+  brand: false
+  source: car_deep_v1
+  tier: car
+  added_on: '2026-08-28'
+  tier_since: '2026-08-28'
+  demand: 9.0
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: e-POWER ハイブリッド 比較
+  demand_history:
+  - - '2026-08-28'
+    - 9.0
+  cars:
+  - aqua
+  named_cars: []
+  seg: compact_hb
+  active_for:
+  - aqua
