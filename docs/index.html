@@ -1058,6 +1058,10 @@ body.locked{overflow:hidden}
   .stamp{font-size:10px;margin-left:auto}
   #themeBtn{display:none}          /* テーマはモバイルバー側に出す */
 }
+.freshbadge{display:inline-block;margin-left:8px;padding:2px 8px;border-radius:999px;
+  font-size:10.5px;font-weight:700;letter-spacing:.04em;vertical-align:1px;
+  color:var(--warn,#F5A524);border:1px solid var(--warn,#F5A524);
+  background:color-mix(in srgb,var(--warn,#F5A524) 12%,transparent)}
 </style>
 </head>
 <body class="locked">
@@ -4044,7 +4048,21 @@ fetch("data/latest.json?"+Date.now()).then(r=>r.json()).then(d=>{
       + " だけで計算しています。面の数が違う日どうしを比べると、実力が動いていなくてもスコアが動くためです。";})();
   document.getElementById("brandName").textContent=(d.site.brand||"TOYOTA");
   document.getElementById("ownerTag").textContent="AI VISIBILITY BOARD";
-  document.getElementById("stamp").innerHTML=`データ日 <b>${d.generated_at}</b> ／ 蓄積 ${d.available_days}日`;
+  // 「最終更新」の鮮度表示。更新が止まった日でも、古い数字を今日のものとして
+  // 見せないための表示。日数はブラウザ側で毎回計算するので、サイトを作り直さ
+  // なくても常に正しい経過日数が出る（＝止まっている間も自動で更新される）。
+  (function(){
+    const jstToday=new Date(Date.now()+(new Date().getTimezoneOffset()+540)*60000);
+    const p=(d.generated_at||"").split("-").map(Number);
+    const age=(p.length===3)
+      ? Math.round((Date.UTC(jstToday.getFullYear(),jstToday.getMonth(),jstToday.getDate())
+                    -Date.UTC(p[0],p[1]-1,p[2]))/86400000) : 0;
+    const stale=age>=2;   // 前日データは正常運転（当日は集計途中のため前日を出す設計）
+    document.getElementById("stamp").innerHTML=
+      `データ日 <b>${d.generated_at}</b> ／ 蓄積 ${d.available_days}日`
+      + (stale?` <span class="freshbadge" title="この日以降のデータは取得できていません。表示中の数値はすべて ${d.generated_at} 時点の実測値です。">最終更新 ${age}日前</span>`:"");
+    if(stale) setTimeout(()=>toast(`<b style="color:var(--warn)">最終更新 ${age}日前</b><br><span style="color:var(--sub)">表示中の数値は ${d.generated_at} 時点の実測値です</span>`,7000),1100);
+  })();
   document.getElementById("foot").innerHTML=`更新 ${d.generated_at}<br>クエリ ${d.counts.prompts} / 回答 ${num(d.counts.responses)}<br>${esc(d.site.target_domain)}<br>GitHub Actions で自動生成`;
   render();
   const t=tierScore(d.score);
