@@ -5490,438 +5490,53 @@
   },
   {
     "date": "2026-08-30",
-    "candidates": 507,
+    "candidates": 513,
     "added": [
       {
-        "id": "p1332",
-        "text": "中古で安くて燃費良くてファミリーカーにおすすめの車って何 ...",
+        "id": "p1394",
+        "text": "中古のアルファードの購入を考えています。2022年式、走行 ...",
         "source": "chiebukuro",
         "demand": 9.9,
         "volume": 0
       },
       {
-        "id": "p1333",
-        "text": "運転が苦手な初心者でも乗りやすい車を教えて ...",
+        "id": "p1395",
+        "text": "新型エルグランドが発売されましたがミニバンに魅力を感じ ...",
         "source": "chiebukuro",
         "demand": 9.9,
         "volume": 0
       },
       {
-        "id": "p1334",
-        "text": "「ヴォクシー ハイブリッド 燃費 実燃費」について、カタログ値ではなく実際のところを教えてください。",
-        "source": "suggest",
-        "demand": null,
-        "volume": 0
-      },
-      {
-        "id": "p1335",
-        "text": "2代目フィットハイブリッド実燃費を教えて下さい！日本一周 ...",
+        "id": "p1396",
+        "text": "ランクル300は実燃費どのくらいでしょうか？",
         "source": "chiebukuro",
         "demand": 9.9,
         "volume": 0
       },
       {
-        "id": "p1336",
-        "text": "壊れにくい軽自動車のメーカーは？",
-        "source": "paa",
-        "demand": null,
-        "volume": 0
-      },
-      {
-        "id": "p1337",
-        "text": "軽自動車で1番売れている車は？",
-        "source": "paa",
-        "demand": null,
-        "volume": 0
-      },
-      {
-        "id": "p1338",
-        "text": "乗り心地が一番いい軽自動車は？",
-        "source": "paa",
-        "demand": null,
-        "volume": 0
-      },
-      {
-        "id": "p1339",
-        "text": "軽自動車何がおすすめでしょうか？あまり車に興味なく",
+        "id": "p1397",
+        "text": "ハイブリッド車そんなに燃費いいの？リッター30キロ ...",
         "source": "chiebukuro",
         "demand": 9.9,
         "volume": 0
       },
       {
-        "id": "p1340",
-        "text": "女性や初心者におすすめの軽自動車はありますか?",
+        "id": "p1398",
+        "text": "ランクル300系の納期について質問です。2021年8月上旬に ...",
         "source": "chiebukuro",
         "demand": 9.9,
         "volume": 0
       },
       {
-        "id": "p1341",
-        "text": "安全性能が一番高い車は？",
-        "source": "paa",
-        "demand": null,
-        "volume": 0
-      },
-      {
-        "id": "p1342",
-        "text": "日本での高速道路での自動運転について、どんなふうに運転が ...",
+        "id": "p1399",
+        "text": "新規客がランドクルーザー300を新車で買うことは可能ですか？",
         "source": "chiebukuro",
         "demand": 9.9,
         "volume": 0
       },
       {
-        "id": "p1343",
-        "text": "高い車を買う場合で、リセールバリューまで考えて買うという ...",
-        "source": "chiebukuro",
-        "demand": 9.9,
-        "volume": 0
-      },
-      {
-        "id": "p1344",
-        "text": "車で維持費が安くてかっこいいのありますか",
-        "source": "chiebukuro",
-        "demand": 9.9,
-        "volume": 0
-      },
-      {
-        "id": "p1345",
-        "text": "納車が遅すぎる場合はキャンセルできますか？",
-        "source": "paa",
-        "demand": null,
-        "volume": 0
-      },
-      {
-        "id": "p1346",
-        "text": "車のサブスク？実際どうでしょうか？色々なメーカーや企業 ...",
-        "source": "chiebukuro",
-        "demand": 9.9,
-        "volume": 0
-      },
-      {
-        "id": "p1347",
-        "text": "雪道に強い車はどこの会社ですか？",
-        "source": "paa",
-        "demand": null,
-        "volume": 0
-      },
-      {
-        "id": "p1348",
-        "text": "雪道に強い車のメーカーは？",
-        "source": "paa",
-        "demand": null,
-        "volume": 0
-      },
-      {
-        "id": "p1349",
-        "text": "基本的に高齢者が乗り降りしやすい車って、スライドドアの車 ...",
-        "source": "chiebukuro",
-        "demand": 9.9,
-        "volume": 0
-      },
-      {
-        "id": "p1350",
-        "text": "新社会人におすすめの車はありますか？あまり値段が高めじゃ ...",
-        "source": "chiebukuro",
-        "demand": 9.9,
-        "volume": 0
-      },
-      {
-        "id": "p1351",
-        "text": "社会人2年目です。車を買おうか迷っています。-現状として",
-        "source": "chiebukuro",
-        "demand": 9.9,
-        "volume": 0
-      },
-      {
-        "id": "p1352",
-        "text": "中古車を買ってはいけない時期はいつですか？",
-        "source": "paa",
-        "demand": null,
-        "volume": 0
-      },
-      {
-        "id": "p1353",
-        "text": "中古車買う時の質問について質問何か質問しておいた方が良い ...",
-        "source": "chiebukuro",
-        "demand": 9.9,
-        "volume": 0
-      },
-      {
-        "id": "p1354",
-        "text": "アルファード 新車 何ヶ月待ち？",
-        "source": "paa",
-        "demand": null,
-        "volume": 0
-      },
-      {
-        "id": "p1355",
-        "text": "2026年6月にアルファードはどうなる？",
-        "source": "paa",
-        "demand": null,
-        "volume": 0
-      },
-      {
-        "id": "p1356",
-        "text": "私は頭が悪い20代前半です。馬鹿なんでアルファード40系を ...",
-        "source": "chiebukuro",
-        "demand": 9.9,
-        "volume": 0
-      },
-      {
-        "id": "p1357",
-        "text": "千葉県民です。先日の大雨で、残クレで買ったアルファードが ...",
-        "source": "chiebukuro",
-        "demand": 9.9,
-        "volume": 0
-      },
-      {
-        "id": "p1358",
-        "text": "アルファードを残クレで買って、残クレ期間終わったころに ...",
-        "source": "chiebukuro",
-        "demand": 9.9,
-        "volume": 0
-      },
-      {
-        "id": "p1359",
-        "text": "ヴェルファイアのほうがアルファードよりも少し高いのはなぜ？",
-        "source": "chiebukuro",
-        "demand": 9.9,
-        "volume": 0
-      },
-      {
-        "id": "p1360",
-        "text": "ステップワゴンのダメなところは？",
-        "source": "paa",
-        "demand": null,
-        "volume": 0
-      },
-      {
-        "id": "p1361",
-        "text": "最近アルファードやヴェルファイアが多く走っています。子供 ...",
-        "source": "chiebukuro",
-        "demand": 9.9,
-        "volume": 0
-      },
-      {
-        "id": "p1362",
-        "text": "ステップワゴンかノアどっち？3人目が生まれる予定なので",
-        "source": "chiebukuro",
-        "demand": 9.9,
-        "volume": 0
-      },
-      {
-        "id": "p1363",
-        "text": "ハイブリッド車がダメな理由は何ですか？",
-        "source": "paa",
-        "demand": null,
-        "volume": 0
-      },
-      {
-        "id": "p1364",
-        "text": "ハリアーのマイナーチェンジは2026年にいつですか？",
-        "source": "paa",
-        "demand": null,
-        "volume": 0
-      },
-      {
-        "id": "p1365",
-        "text": "ハリアーPHEVについて、良い評価ばかり目立ちますが、逆に ...",
-        "source": "chiebukuro",
-        "demand": 9.9,
-        "volume": 0
-      },
-      {
-        "id": "p1366",
-        "text": "トヨタハリアーはなぜあんなに高い？",
-        "source": "chiebukuro",
-        "demand": 9.9,
-        "volume": 0
-      },
-      {
-        "id": "p1367",
-        "text": "ハリアーphevGグレートを2026年2月に契約しました。その時...",
-        "source": "chiebukuro",
-        "demand": 19.8,
-        "volume": 0
-      },
-      {
-        "id": "p1368",
-        "text": "走りでシエンタとフリードのどちらがよいですか？",
-        "source": "paa",
-        "demand": null,
-        "volume": 0
-      },
-      {
-        "id": "p1369",
-        "text": "シエンタはやめたほうがいいですか？",
-        "source": "paa",
-        "demand": null,
-        "volume": 0
-      },
-      {
-        "id": "p1370",
-        "text": "フリードとシエンタの燃費はどちらがよいですか？",
-        "source": "paa",
-        "demand": null,
-        "volume": 0
-      },
-      {
-        "id": "p1371",
-        "text": "シエンタとフリードよく比較されますが金額ならシエンタ乗り ...",
-        "source": "chiebukuro",
-        "demand": 9.9,
-        "volume": 0
-      },
-      {
-        "id": "p1372",
-        "text": "クラウンの次期モデルチェンジはいつですか？",
-        "source": "paa",
-        "demand": null,
-        "volume": 0
-      },
-      {
-        "id": "p1373",
-        "text": "クラウンってモデルチェンジのサイクルが早すぎませんか？",
-        "source": "chiebukuro",
-        "demand": 9.9,
-        "volume": 0
-      },
-      {
-        "id": "p1374",
-        "text": "クラウンクロスオーバーZを検討中",
-        "source": "chiebukuro",
-        "demand": 9.9,
-        "volume": 0
-      },
-      {
-        "id": "p1375",
-        "text": "クラウンスポーツは具体的に何が違うのでしょうか。",
-        "source": "chiebukuro",
-        "demand": 9.9,
-        "volume": 0
-      },
-      {
-        "id": "p1376",
-        "text": "クラウンスポーツとクラウンクロスオーバーではどちらが高級 ...",
-        "source": "chiebukuro",
-        "demand": 9.9,
-        "volume": 0
-      },
-      {
-        "id": "p1377",
-        "text": "ランクル300ハイブリッドの価格は？",
-        "source": "paa",
-        "demand": null,
-        "volume": 0
-      },
-      {
-        "id": "p1378",
-        "text": "ディーラーからランクル300の抽選に参加しませんかと連絡が ...",
-        "source": "chiebukuro",
-        "demand": 9.9,
-        "volume": 0
-      },
-      {
-        "id": "p1379",
-        "text": "ランクル300のガソリンとディーゼルで長く乗るにはどちらが ...",
-        "source": "chiebukuro",
-        "demand": 9.9,
-        "volume": 0
-      },
-      {
-        "id": "p1380",
-        "text": "ランクル300の納車待ち期間は？",
-        "source": "paa",
-        "demand": null,
-        "volume": 0
-      },
-      {
-        "id": "p1381",
-        "text": "ランクル300の2026年の納期は？",
-        "source": "paa",
-        "demand": null,
-        "volume": 0
-      },
-      {
-        "id": "p1382",
-        "text": "ランクル300の納期はどのくらいですか？",
-        "source": "paa",
-        "demand": null,
-        "volume": 0
-      },
-      {
-        "id": "p1383",
-        "text": "ランクル300のリセール率は？",
-        "source": "paa",
-        "demand": null,
-        "volume": 0
-      },
-      {
-        "id": "p1384",
-        "text": "昨日トヨタから連絡があり、ランドクルーザー300の販売枠を ...",
-        "source": "chiebukuro",
-        "demand": 9.9,
-        "volume": 0
-      },
-      {
-        "id": "p1385",
-        "text": "ランクル300グレードによって納期は違うのでしょうか ...",
-        "source": "chiebukuro",
-        "demand": 9.9,
-        "volume": 0
-      },
-      {
-        "id": "p1386",
-        "text": "GRヤリスクロスは4WDできますか？",
-        "source": "paa",
-        "demand": null,
-        "volume": 0
-      },
-      {
-        "id": "p1387",
-        "text": "トヨタのヤリスクロスに乗っているかた、乗り心地は ...",
-        "source": "chiebukuro",
-        "demand": 9.9,
-        "volume": 0
-      },
-      {
-        "id": "p1388",
-        "text": "ヤリスクロスGRスポーツかZどちらを購入しようか迷ってい ...",
-        "source": "chiebukuro",
-        "demand": 9.9,
-        "volume": 0
-      },
-      {
-        "id": "p1389",
-        "text": "トヨタのハイランダーはどこで買えますか？",
-        "source": "paa",
-        "demand": null,
-        "volume": 0
-      },
-      {
-        "id": "p1390",
-        "text": "タンドラ、ハイランダーって国内需要あるんでしょうか。価格 ...",
-        "source": "chiebukuro",
-        "demand": 9.9,
-        "volume": 0
-      },
-      {
-        "id": "p1391",
-        "text": "米国生産車が日本にやってきます。トヨタはカムリ",
-        "source": "chiebukuro",
-        "demand": 9.9,
-        "volume": 0
-      },
-      {
-        "id": "p1392",
-        "text": "GR86F型の新車とフルカスタム中古、どちらを選びますか ...",
-        "source": "chiebukuro",
-        "demand": 9.9,
-        "volume": 0
-      },
-      {
-        "id": "p1393",
-        "text": "GR86のE型（最新型）についてフルモデルチェンジの話も出 ...",
+        "id": "p1400",
+        "text": "ヤリスクロスについて教えて下さい。 ハイブリット4WDを ...",
         "source": "chiebukuro",
         "demand": 9.9,
         "volume": 0
@@ -5929,40 +5544,19 @@
     ],
     "promoted": [],
     "surged": [],
-    "demoted": [
-      {
-        "id": "p082",
-        "text": "トヨタ車は割高だと言われますが、実際のところコストパフォーマンスはどうですか？",
-        "demand": 59.4
-      },
-      {
-        "id": "p109",
-        "text": "寒冷地でハイブリッドとガソリン車、どちらが維持費で有利ですか。",
-        "demand": 60.1
-      },
-      {
-        "id": "p087",
-        "text": "トヨタの中古車を買うときに注意すべき点と、認定中古車のメリットを教えてください。",
-        "demand": 62.3
-      },
-      {
-        "id": "p050",
-        "text": "日本で環境配慮型の車（ハイブリッド・電気・燃料電池など）に強いメーカーはどこですか？",
-        "demand": 63.1
-      }
-    ],
+    "demoted": [],
     "tiers": {
       "strategic": 31,
       "core": 63,
-      "longtail": 879,
+      "longtail": 886,
       "car": 320,
       "car_bench": 11,
       "local": 57
     },
     "tiers_before": {
-      "strategic": 27,
-      "core": 67,
-      "longtail": 817,
+      "strategic": 31,
+      "core": 63,
+      "longtail": 879,
       "car": 320,
       "car_bench": 11,
       "local": 57
