@@ -86,6 +86,16 @@ jobs:
             echo "本日は収穫日ではありません（JST月曜のみ実行）"
           fi
 
+      # 車種/ディーラー系クエリの月間検索ボリューム。
+      # search_volume/live は 700kw/リクエスト・対象 ~350kw ≒ $0.05〜0.08/日 と安価なので毎日回す。
+      # 資格情報が無ければスクリプト側でスキップ（正常終了）。
+      - name: Search volumes (daily, cheap)
+        if: ${{ env.PROBE_ONLY != 'true' && github.event_name != 'push' }}
+        env:
+          DATAFORSEO_LOGIN:    ${{ secrets.DATAFORSEO_LOGIN || vars.DATAFORSEO_LOGIN || secrets.DATAFORCED_LOGIN }}
+          DATAFORSEO_PASSWORD: ${{ secrets.DATAFORSEO_PASSWORD }}
+        run: python src/volumes_car.py
+
       - name: Collect & build
         if: ${{ env.PROBE_ONLY != 'true' && github.event_name != 'push' }}
         env:
@@ -132,6 +142,7 @@ jobs:
           git config user.name  "geo-board-bot"
           git config user.email "actions@users.noreply.github.com"
           git add data/snapshots data/fanout data/harvest_log.json prompts/registry.yaml
+          git add data/search_volumes.json 2>/dev/null || true
           git diff --staged --quiet || git commit -m "chore: snapshot $(date -u +%Y-%m-%d)"
           git push
 
