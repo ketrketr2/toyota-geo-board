@@ -72,13 +72,24 @@ focus:
     guards: ["サンライズ", "サプライズ", "ハイライズ", "エンタープライズ", "ライズする", "ライズし"]
     rivals: [rocky, wrv, crossbee]
     rivals_own: [yariscross]
+  # ランクルは 250/300/70/プラド を1つのブランドとして数える。
+  # 販売台数がもともとランクル系合算のため、言及だけ250単独だと分母がずれる。
+  # RAV4 は別ブランドとして扱う（ランクル系ではない）。
   - id: lc250
-    name: "ランドクルーザー250"
+    name: "ランドクルーザー"
     seg: suv_off
-    slug: "/landcruiser250"
-    aliases: ["ランドクルーザー250", "ランドクルーザー 250", "ランクル250", "ランクル 250"]
+    # slug は GA のパス前方一致用（/landcruiser250 も /landcruiser300 も拾う）。
+    # 公式サイトに「ランクル系まとめ」ページは無い（/landcruiser/ はトップに転送される）ため、
+    # 画面のリンク先は url で 250 のページを指す。
+    slug: "/landcruiser"
+    url: "https://toyota.jp/landcruiser250/"
+    aliases: ["ランドクルーザー250", "ランドクルーザー 250", "ランクル250", "ランクル 250",
+              "ランドクルーザー300", "ランクル300", "ランドクルーザー 300", "ランクル 300",
+              "ランドクルーザー70", "ランクル70", "ランドクルーザー 70", "ランクル 70",
+              "ランドクルーザープラド", "ランクルプラド", "プラド", "PRADO",
+              "ランドクルーザー", "ランクル", "LAND CRUISER", "Land Cruiser", "LANDCRUISER"]
     rivals: [jimny_sierra, xtrail, outlander]
-    rivals_own: [lc300, lc70, rav4]
+    rivals_own: [rav4]
 
 rivals:
   - id: solio
@@ -89,7 +100,11 @@ rivals:
     name: "トール"
     brand: daihatsu
     aliases: ["トール", "THOR"]
-    guards: ["インストール", "ストール", "トールサイズ", "トールペイント"]
+    # 「トールワゴン」は車型の一般名詞。ダイハツ・トールの言及として数えると
+    # ルーミー系の回答でほぼ必ず誤検出され、第一想起が実態より高く出る。
+    guards: ["インストール", "ストール", "トールサイズ", "トールペイント",
+             "トールワゴン", "トール ワゴン", "ハイトール", "スーパートール",
+             "トールタイプ", "トール系", "軽トール", "トールボーイ"]
   - id: delica_mini
     name: "デリカミニ"
     brand: mitsubishi
@@ -159,19 +174,9 @@ rivals:
     name: "ヤリスクロス"
     brand: toyota
     aliases: ["ヤリスクロス", "ヤリス クロス", "YARIS CROSS"]
-  - id: lc300
-    name: "ランドクルーザー300"
-    brand: toyota
-    aliases: ["ランドクルーザー300", "ランクル300", "ランドクルーザー 300", "ランクル 300"]
-  - id: lc70
-    name: "ランドクルーザー70"
-    brand: toyota
-    aliases: ["ランドクルーザー70", "ランクル70", "ランドクルーザー\"70\""]
+  # lc300 / lc70 / prado は focus の lc250（＝ランドクルーザー）に統合済み。
+  # 別枠で残すと同じブランドの言及が分散し、販売台数（ランクル系合算）と分母がずれる。
   - id: rav4
     name: "RAV4"
     brand: toyota
     aliases: ["RAV4", "rav4"]
-  - id: prado
-    name: "プラド"
-    brand: toyota
-    aliases: ["プラド", "ランドクルーザープラド", "PRADO"]
