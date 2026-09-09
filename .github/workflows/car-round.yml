@@ -1,8 +1,8 @@
 name: car-round
 
 # ①車種別AI分析（tier=car）／②ディーラーAI分析（tier=local）の計測。
-# メインの daily-geo-board とは完全に分離。手動発火のみ（定常スケジュールは
-# 予算確定後にこのファイルへ cron を足す）。
+# メインの daily-geo-board とは完全に分離。
+# 発火: 手動（workflow_dispatch）または triggers/car-round.json の更新push（Mac側のデータマンから実行するため）。
 on:
   workflow_dispatch:
     inputs:
@@ -16,6 +16,9 @@ on:
       cap:
         description: "この1回の支払上限（USD）"
         default: "60"
+  push:
+    branches: [main]
+    paths: ["triggers/car-round.json"]
 
 permissions:
   contents: write
@@ -39,6 +42,20 @@ jobs:
       - name: Install
         run: pip install -r requirements.txt
 
+      - name: Resolve parameters (dispatch inputs or triggers/car-round.json)
+        id: params
+        run: |
+          if [ "${{ github.event_name }}" = "push" ]; then
+            TIERS=$(python3 -c "import json;print(json.load(open('triggers/car-round.json')).get('tiers','local'))")
+            CAP=$(python3 -c "import json;print(json.load(open('triggers/car-round.json')).get('cap','30'))")
+            ALL=$(python3 -c "import json;print('--all-surfaces' if json.load(open('triggers/car-round.json')).get('all_surfaces',True) else '')")
+          else
+            TIERS="${{ inputs.tiers }}"; CAP="${{ inputs.cap }}"
+            ALL="${{ inputs.all_surfaces == true && '--all-surfaces' || '' }}"
+          fi
+          echo "tiers=$TIERS" >> $GITHUB_OUTPUT; echo "cap=$CAP" >> $GITHUB_OUTPUT; echo "all=$ALL" >> $GITHUB_OUTPUT
+          echo "tiers=$TIERS cap=$CAP all=$ALL"
+
       - name: Run car round
         env:
           GEO_BOARD_MODE:      ${{ vars.GEO_BOARD_MODE || 'demo' }}
@@ -46,9 +63,9 @@ jobs:
           DATAFORSEO_PASSWORD: ${{ secrets.DATAFORSEO_PASSWORD }}
         run: |
           python src/run_car.py \
-            --tiers "${{ inputs.tiers }}" \
-            ${{ inputs.all_surfaces == true && '--all-surfaces' || '' }} \
-            --cap "${{ inputs.cap }}"
+            --tiers "${{ steps.params.outputs.tiers }}" \
+            ${{ steps.params.outputs.all }} \
+            --cap "${{ steps.params.outputs.cap }}"
 
       - name: Commit results
         if: ${{ always() }}

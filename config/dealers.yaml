@@ -120,3 +120,43 @@ aichi:
       brand: daihatsu
       aliases: ["愛知ダイハツ"]
       domains: ["aichi-daihatsu.co.jp"]
+
+# 長野（2026-09-09追加。うっぴぃ=長野トヨタの公式マスコット。2021-04にトヨペット・カローラ長野・ネッツ長野を吸収合併／NTPトヨタ信州は2020-07にカローラ南信・ネッツ信州を合併）
+nagano:
+  main: nagano_toyota
+  dealers:
+    - id: nagano_toyota
+      name: "長野トヨタ自動車（ユーグループ）"
+      brand: toyota
+      aliases: ["長野トヨタ自動車", "長野トヨタ", "ユーグループ", "長野トヨペット", "トヨタカローラ長野", "ネッツトヨタ長野", "うっぴぃ"]
+      domains: ["nagano-toyota.jp", "toyota-ugroup.com"]
+    - id: ntp_shinshu
+      name: "NTPトヨタ信州"
+      brand: toyota
+      aliases: ["NTPトヨタ信州", "ＮＴＰトヨタ信州", "トヨタ信州", "トヨタカローラ南信", "ネッツトヨタ信州"]
+      domains: ["ntp-toyota-shinshu.com", "ntp-toyota-shinshu.jp", "ntp-toyota-shinshu2020.com"]
+    - id: nissan_nagano
+      name: "日産系（長野）"
+      brand: nissan
+      aliases: ["長野日産自動車", "長野日産", "日産プリンス長野", "松本日産", "日産サティオ松本"]
+      domains: []
+    - id: honda_nagano
+      name: "Honda Cars 長野各社"
+      brand: honda
+      aliases: ["ホンダカーズ長野", "Honda Cars 長野", "ホンダカーズ信州", "ホンダカーズ松本", "ホンダカーズ長野中央"]
+      domains: []
+    - id: suzuki_nagano
+      name: "スズキ系（長野）"
+      brand: suzuki
+      aliases: ["スズキ自販長野", "長野スズキ販売", "スズキ自販松本"]
+      domains: []
+    - id: daihatsu_nagano
+      name: "長野ダイハツ"
+      brand: daihatsu
+      aliases: ["長野ダイハツモータース", "長野ダイハツ"]
+      domains: []
+    - id: subaru_nagano
+      name: "長野スバル"
+      brand: subaru
+      aliases: ["長野スバル", "スバル信州"]
+      domains: []

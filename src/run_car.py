@@ -125,7 +125,7 @@ def collect(jobs: list[dict]) -> list[dict]:
 def _dealer_catalog() -> list[dict]:
     cfg = load("dealers")
     rows = []
-    for pref in ("niigata", "aichi"):
+    for pref in [k for k, v in cfg.items() if isinstance(v, dict) and v.get("dealers")]:
         for d in cfg[pref]["dealers"]:
             rows.append({**d, "pref": pref, "main": d["id"] == cfg[pref]["main"]})
     return rows
@@ -233,7 +233,7 @@ def summarize_local(cells: list[dict]) -> dict:
     """②の一次集計: 県×主役販社の出現。named_dealer は自明出現のため除外して測る。"""
     cfg = load("dealers")
     out = {}
-    for pref in ("niigata", "aichi"):
+    for pref in [k for k, v in cfg.items() if isinstance(v, dict) and v.get("dealers")]:
         main = cfg[pref]["main"]
         tgt = [c for c in cells if c.get("pref") == pref and c.get("role") in ("dealer", "market")]
         dq = [c for c in tgt if c.get("role") == "dealer"]
