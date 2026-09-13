@@ -2,7 +2,7 @@
 # tier: core=日次 / strategic=週次 / longtail=月次 / retired=停止
 version: 3
 updated_at: '2026-09-13'
-next_seq: 1887
+next_seq: 1924
 prompts:
 - id: p001
   text: ミニバンのおすすめを教えてください。2歳の子供がいて、もう1人産まれる予定です。今はプリウスですが、チャイルドシートの乗せ下ろしがきつく、2人乗せると狭く感じます。予算は400万円までです。
@@ -14157,7 +14157,7 @@ prompts:
   demand: 59.5
   volume: 0
   fanout_hits: 0
-  ugc_hits: 29
+  ugc_hits: 40
   growth: 1.0
   keyword: null
   demand_history:
@@ -14195,7 +14195,7 @@ prompts:
   demand: 59.5
   volume: 0
   fanout_hits: 0
-  ugc_hits: 29
+  ugc_hits: 40
   growth: 1.0
   keyword: null
   demand_history:
@@ -14217,7 +14217,7 @@ prompts:
   demand: 59.5
   volume: 0
   fanout_hits: 0
-  ugc_hits: 22
+  ugc_hits: 32
   growth: 1.0
   keyword: null
   demand_history:
@@ -14296,6 +14296,28 @@ prompts:
   tier: longtail
   added_on: '2026-09-06'
   tier_since: '2026-09-06'
+  demand: 29.8
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 3
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-09-06'
+    - 9.9
+  - - '2026-09-07'
+    - 19.8
+  - - '2026-09-13'
+    - 29.8
+- id: p1416
+  text: 動画で見るタイムズカー | カーシェアリングの ...
+  category: purchase
+  driver: null
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-09-06'
+  tier_since: '2026-09-06'
   demand: 19.8
   volume: 0
   fanout_hits: 0
@@ -14306,31 +14328,9 @@ prompts:
   - - '2026-09-06'
     - 9.9
   - - '2026-09-07'
-    - 19.8
-  - - '2026-09-13'
-    - 19.8
-- id: p1416
-  text: 動画で見るタイムズカー | カーシェアリングの ...
-  category: purchase
-  driver: null
-  brand: false
-  source: chiebukuro
-  tier: longtail
-  added_on: '2026-09-06'
-  tier_since: '2026-09-06'
-  demand: 9.9
-  volume: 0
-  fanout_hits: 0
-  ugc_hits: 1
-  growth: 1.0
-  keyword: null
-  demand_history:
-  - - '2026-09-06'
-    - 9.9
-  - - '2026-09-07'
     - 9.9
   - - '2026-09-13'
-    - 9.9
+    - 19.8
 - id: p1417
   text: 寒い季節こそ“車とつなげる”が快適！カーサイドvsカーリア
   category: purchase
@@ -14510,10 +14510,10 @@ prompts:
   tier: longtail
   added_on: '2026-09-06'
   tier_since: '2026-09-06'
-  demand: 29.8
+  demand: 39.7
   volume: 0
   fanout_hits: 0
-  ugc_hits: 3
+  ugc_hits: 4
   growth: 1.0
   keyword: null
   demand_history:
@@ -14522,7 +14522,7 @@ prompts:
   - - '2026-09-07'
     - 19.8
   - - '2026-09-13'
-    - 29.8
+    - 39.7
 - id: p1425
   text: 小谷実由 (@omiyuno)
   category: purchase
@@ -14532,10 +14532,10 @@ prompts:
   tier: longtail
   added_on: '2026-09-06'
   tier_since: '2026-09-06'
-  demand: 29.8
+  demand: 39.7
   volume: 0
   fanout_hits: 0
-  ugc_hits: 3
+  ugc_hits: 4
   growth: 1.0
   keyword: null
   demand_history:
@@ -14544,7 +14544,7 @@ prompts:
   - - '2026-09-07'
     - 19.8
   - - '2026-09-13'
-    - 29.8
+    - 39.7
 - id: p1426
   text: マクドナルド「50円の新商品」を実食レビュー（進撃のグルメ）
   category: purchase
@@ -14734,10 +14734,10 @@ prompts:
   tier: longtail
   added_on: '2026-09-06'
   tier_since: '2026-09-06'
-  demand: 29.8
+  demand: 39.7
   volume: 0
   fanout_hits: 0
-  ugc_hits: 3
+  ugc_hits: 4
   growth: 1.0
   keyword: null
   demand_history:
@@ -14746,7 +14746,7 @@ prompts:
   - - '2026-09-07'
     - 19.8
   - - '2026-09-13'
-    - 29.8
+    - 39.7
 - id: p1435
   text: 軽自動車で一番いいのはどれ？
   category: purchase
@@ -15122,10 +15122,10 @@ prompts:
   tier: longtail
   added_on: '2026-09-06'
   tier_since: '2026-09-06'
-  demand: 29.8
+  demand: 39.7
   volume: 0
   fanout_hits: 0
-  ugc_hits: 3
+  ugc_hits: 4
   growth: 1.0
   keyword: null
   demand_history:
@@ -15134,7 +15134,7 @@ prompts:
   - - '2026-09-07'
     - 19.8
   - - '2026-09-13'
-    - 29.8
+    - 39.7
 - id: p1452
   text: ヤマト運輸、8/22～9/12の期間中は全国的に配送遅延が発生 ...
   category: purchase
@@ -15232,10 +15232,10 @@ prompts:
   tier: longtail
   added_on: '2026-09-06'
   tier_since: '2026-09-06'
-  demand: 29.8
+  demand: 39.7
   volume: 0
   fanout_hits: 0
-  ugc_hits: 3
+  ugc_hits: 4
   growth: 1.0
   keyword: null
   demand_history:
@@ -15244,7 +15244,7 @@ prompts:
   - - '2026-09-07'
     - 19.8
   - - '2026-09-13'
-    - 29.8
+    - 39.7
 - id: p1457
   text: リセールバリューが最強の車は？
   category: purchase
@@ -15510,10 +15510,10 @@ prompts:
   tier: longtail
   added_on: '2026-09-06'
   tier_since: '2026-09-06'
-  demand: 19.8
+  demand: 29.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 2
+  ugc_hits: 3
   growth: 1.0
   keyword: null
   demand_history:
@@ -15522,7 +15522,7 @@ prompts:
   - - '2026-09-07'
     - 9.9
   - - '2026-09-13'
-    - 19.8
+    - 29.8
 - id: p147
   text: 「ミニバン おすすめ コンパクト」について、失敗しない選び方を教えてください。
   category: purchase
@@ -15614,10 +15614,10 @@ prompts:
   tier: longtail
   added_on: '2026-09-06'
   tier_since: '2026-09-06'
-  demand: 19.8
+  demand: 29.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 2
+  ugc_hits: 3
   growth: 1.0
   keyword: null
   demand_history:
@@ -15626,7 +15626,7 @@ prompts:
   - - '2026-09-07'
     - 9.9
   - - '2026-09-13'
-    - 19.8
+    - 29.8
 - id: p1474
   text: 【ドライバー脱スライス】長いクラブが当たらない人の“振り方 ...
   category: purchase
@@ -15636,10 +15636,10 @@ prompts:
   tier: longtail
   added_on: '2026-09-06'
   tier_since: '2026-09-06'
-  demand: 19.8
+  demand: 29.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 2
+  ugc_hits: 3
   growth: 1.0
   keyword: null
   demand_history:
@@ -15648,7 +15648,7 @@ prompts:
   - - '2026-09-07'
     - 9.9
   - - '2026-09-13'
-    - 19.8
+    - 29.8
 - id: p1475
   text: 令和8年分 財産評価基準書 板橋区
   category: purchase
@@ -15680,10 +15680,10 @@ prompts:
   tier: longtail
   added_on: '2026-09-06'
   tier_since: '2026-09-06'
-  demand: 29.8
+  demand: 39.7
   volume: 0
   fanout_hits: 0
-  ugc_hits: 3
+  ugc_hits: 4
   growth: 1.0
   keyword: null
   demand_history:
@@ -15692,7 +15692,7 @@ prompts:
   - - '2026-09-07'
     - 19.8
   - - '2026-09-13'
-    - 29.8
+    - 39.7
 - id: p1477
   text: 特定路線価設定申出書｜名古屋国税局
   category: purchase
@@ -15724,10 +15724,10 @@ prompts:
   tier: longtail
   added_on: '2026-09-06'
   tier_since: '2026-09-06'
-  demand: 29.8
+  demand: 39.7
   volume: 0
   fanout_hits: 0
-  ugc_hits: 3
+  ugc_hits: 4
   growth: 1.0
   keyword: null
   demand_history:
@@ -15736,7 +15736,7 @@ prompts:
   - - '2026-09-07'
     - 19.8
   - - '2026-09-13'
-    - 29.8
+    - 39.7
 - id: p1479
   text: 令和8年分 財産評価基準書 練馬区
   category: purchase
@@ -15746,10 +15746,10 @@ prompts:
   tier: longtail
   added_on: '2026-09-06'
   tier_since: '2026-09-06'
-  demand: 29.8
+  demand: 39.7
   volume: 0
   fanout_hits: 0
-  ugc_hits: 3
+  ugc_hits: 4
   growth: 1.0
   keyword: null
   demand_history:
@@ -15758,7 +15758,7 @@ prompts:
   - - '2026-09-07'
     - 19.8
   - - '2026-09-13'
-    - 29.8
+    - 39.7
 - id: p148
   text: 「ミニバン おすすめ 安い」で損をしない方法を教えてください。国産車で具体的にお願いします。
   category: cost
@@ -15784,10 +15784,10 @@ prompts:
   tier: longtail
   added_on: '2026-09-06'
   tier_since: '2026-09-06'
-  demand: 9.9
+  demand: 19.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 1
+  ugc_hits: 2
   growth: 1.0
   keyword: null
   demand_history:
@@ -15796,7 +15796,7 @@ prompts:
   - - '2026-09-07'
     - 9.9
   - - '2026-09-13'
-    - 9.9
+    - 19.8
 - id: p1481
   text: カーリースはやめた方がいいですか？
   category: cost
@@ -15822,10 +15822,10 @@ prompts:
   tier: longtail
   added_on: '2026-09-06'
   tier_since: '2026-09-06'
-  demand: 29.8
+  demand: 39.7
   volume: 0
   fanout_hits: 0
-  ugc_hits: 3
+  ugc_hits: 4
   growth: 1.0
   keyword: null
   demand_history:
@@ -15834,7 +15834,7 @@ prompts:
   - - '2026-09-07'
     - 19.8
   - - '2026-09-13'
-    - 29.8
+    - 39.7
 - id: p1483
   text: '"#応答せよ🧸 #V6サブスク解禁なんだ 遂にこの日がやって来た ...'
   category: cost
@@ -15844,10 +15844,10 @@ prompts:
   tier: longtail
   added_on: '2026-09-06'
   tier_since: '2026-09-06'
-  demand: 29.8
+  demand: 39.7
   volume: 0
   fanout_hits: 0
-  ugc_hits: 3
+  ugc_hits: 4
   growth: 1.0
   keyword: null
   demand_history:
@@ -15856,7 +15856,7 @@ prompts:
   - - '2026-09-07'
     - 19.8
   - - '2026-09-13'
-    - 29.8
+    - 39.7
 - id: p1484
   text: 『サブスクというシステムを考えた人は地獄に堕ちて欲しいと ...
   category: cost
@@ -15866,10 +15866,10 @@ prompts:
   tier: longtail
   added_on: '2026-09-06'
   tier_since: '2026-09-06'
-  demand: 29.8
+  demand: 39.7
   volume: 0
   fanout_hits: 0
-  ugc_hits: 3
+  ugc_hits: 4
   growth: 1.0
   keyword: null
   demand_history:
@@ -15878,7 +15878,7 @@ prompts:
   - - '2026-09-07'
     - 19.8
   - - '2026-09-13'
-    - 29.8
+    - 39.7
 - id: p1485
   text: そのサブスク本当にお得？ 街で調査「知らないものが…」「餃子 ...
   category: cost
@@ -15888,10 +15888,10 @@ prompts:
   tier: longtail
   added_on: '2026-09-06'
   tier_since: '2026-09-06'
-  demand: 29.8
+  demand: 39.7
   volume: 0
   fanout_hits: 0
-  ugc_hits: 3
+  ugc_hits: 4
   growth: 1.0
   keyword: null
   demand_history:
@@ -15900,7 +15900,7 @@ prompts:
   - - '2026-09-07'
     - 19.8
   - - '2026-09-13'
-    - 29.8
+    - 39.7
 - id: p1486
   text: 話題のアプリで契約中のサブスクを全部計算してみた結果
   category: cost
@@ -15910,10 +15910,10 @@ prompts:
   tier: longtail
   added_on: '2026-09-06'
   tier_since: '2026-09-06'
-  demand: 29.8
+  demand: 39.7
   volume: 0
   fanout_hits: 0
-  ugc_hits: 3
+  ugc_hits: 4
   growth: 1.0
   keyword: null
   demand_history:
@@ -15922,7 +15922,7 @@ prompts:
   - - '2026-09-07'
     - 19.8
   - - '2026-09-13'
-    - 29.8
+    - 39.7
 - id: p1487
   text: '[9 Subscriptions] The Ones I Keep & The ...'
   category: purchase
@@ -16118,10 +16118,10 @@ prompts:
   tier: longtail
   added_on: '2026-09-06'
   tier_since: '2026-09-06'
-  demand: 19.8
+  demand: 29.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 2
+  ugc_hits: 3
   growth: 1.0
   keyword: null
   demand_history:
@@ -16130,7 +16130,7 @@ prompts:
   - - '2026-09-07'
     - 9.9
   - - '2026-09-13'
-    - 19.8
+    - 29.8
 - id: p1496
   text: コハクって最終話でどうなりましたか？司が氷河は...
   category: purchase
@@ -16310,10 +16310,10 @@ prompts:
   tier: longtail
   added_on: '2026-09-06'
   tier_since: '2026-09-06'
-  demand: 39.7
+  demand: 49.6
   volume: 0
   fanout_hits: 0
-  ugc_hits: 4
+  ugc_hits: 5
   growth: 1.0
   keyword: null
   demand_history:
@@ -16322,7 +16322,7 @@ prompts:
   - - '2026-09-07'
     - 19.8
   - - '2026-09-13'
-    - 39.7
+    - 49.6
 - id: p1504
   text: アバックWEB-SHOP / 中古ページTOP
   category: purchase
@@ -16398,10 +16398,10 @@ prompts:
   tier: longtail
   added_on: '2026-09-06'
   tier_since: '2026-09-06'
-  demand: 29.8
+  demand: 39.7
   volume: 0
   fanout_hits: 0
-  ugc_hits: 3
+  ugc_hits: 4
   growth: 1.0
   keyword: null
   demand_history:
@@ -16410,7 +16410,7 @@ prompts:
   - - '2026-09-07'
     - 19.8
   - - '2026-09-13'
-    - 29.8
+    - 39.7
 - id: p1508
   text: 自動車保険の安い補償プラン。自動車保険料を安く抑える方法
   category: cost
@@ -16420,10 +16420,10 @@ prompts:
   tier: longtail
   added_on: '2026-09-06'
   tier_since: '2026-09-06'
-  demand: 29.8
+  demand: 39.7
   volume: 0
   fanout_hits: 0
-  ugc_hits: 3
+  ugc_hits: 4
   growth: 1.0
   keyword: null
   demand_history:
@@ -16432,7 +16432,7 @@ prompts:
   - - '2026-09-07'
     - 19.8
   - - '2026-09-13'
-    - 29.8
+    - 39.7
 - id: p1509
   text: 【材料2つ】安くて簡単で痩せる！もち粉不要！豆腐で作る！ ...
   category: purchase
@@ -16480,10 +16480,10 @@ prompts:
   tier: longtail
   added_on: '2026-09-06'
   tier_since: '2026-09-06'
-  demand: 29.8
+  demand: 39.7
   volume: 0
   fanout_hits: 0
-  ugc_hits: 3
+  ugc_hits: 4
   growth: 1.0
   keyword: null
   demand_history:
@@ -16492,7 +16492,7 @@ prompts:
   - - '2026-09-07'
     - 19.8
   - - '2026-09-13'
-    - 29.8
+    - 39.7
 - id: p1511
   text: 【節約おかずレシピ10選】安くておいしい！満腹感のあるカサ ...
   category: purchase
@@ -16502,10 +16502,10 @@ prompts:
   tier: longtail
   added_on: '2026-09-06'
   tier_since: '2026-09-06'
-  demand: 29.8
+  demand: 39.7
   volume: 0
   fanout_hits: 0
-  ugc_hits: 3
+  ugc_hits: 4
   growth: 1.0
   keyword: null
   demand_history:
@@ -16514,7 +16514,7 @@ prompts:
   - - '2026-09-07'
     - 19.8
   - - '2026-09-13'
-    - 29.8
+    - 39.7
 - id: p1512
   text: TEMUの商品ページに飛んだらルーレットが行われ、PayPay ...
   category: purchase
@@ -16546,10 +16546,10 @@ prompts:
   tier: longtail
   added_on: '2026-09-06'
   tier_since: '2026-09-06'
-  demand: 19.8
+  demand: 29.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 2
+  ugc_hits: 3
   growth: 1.0
   keyword: null
   demand_history:
@@ -16558,7 +16558,7 @@ prompts:
   - - '2026-09-07'
     - 9.9
   - - '2026-09-13'
-    - 19.8
+    - 29.8
 - id: p1514
   text: み！るきーずの方にお聞きしたいです。M!LKメンバーの ...
   category: purchase
@@ -17016,10 +17016,10 @@ prompts:
   tier: longtail
   added_on: '2026-09-06'
   tier_since: '2026-09-06'
-  demand: 29.8
+  demand: 39.7
   volume: 0
   fanout_hits: 0
-  ugc_hits: 3
+  ugc_hits: 4
   growth: 1.0
   keyword: null
   demand_history:
@@ -17028,7 +17028,7 @@ prompts:
   - - '2026-09-07'
     - 19.8
   - - '2026-09-13'
-    - 29.8
+    - 39.7
 - id: p1535
   text: プロ直伝！アゴが高いバンカー攻略法 【芹澤信雄】【ハワイ合宿】
   category: purchase
@@ -17038,10 +17038,10 @@ prompts:
   tier: longtail
   added_on: '2026-09-06'
   tier_since: '2026-09-06'
-  demand: 29.8
+  demand: 39.7
   volume: 0
   fanout_hits: 0
-  ugc_hits: 3
+  ugc_hits: 4
   growth: 1.0
   keyword: null
   demand_history:
@@ -17050,7 +17050,7 @@ prompts:
   - - '2026-09-07'
     - 19.8
   - - '2026-09-13'
-    - 29.8
+    - 39.7
 - id: p1536
   text: 質の高い教師の確保のための教職の魅力向上に向けた環境 ...
   category: purchase
@@ -17060,10 +17060,10 @@ prompts:
   tier: longtail
   added_on: '2026-09-06'
   tier_since: '2026-09-06'
-  demand: 29.8
+  demand: 39.7
   volume: 0
   fanout_hits: 0
-  ugc_hits: 3
+  ugc_hits: 4
   growth: 1.0
   keyword: null
   demand_history:
@@ -17072,7 +17072,7 @@ prompts:
   - - '2026-09-07'
     - 19.8
   - - '2026-09-13'
-    - 29.8
+    - 39.7
 - id: p1537
   text: ｢競合より数万円高い｣のに子育て層から指名買い⋯ ...
   category: purchase
@@ -17176,10 +17176,10 @@ prompts:
   tier: longtail
   added_on: '2026-09-06'
   tier_since: '2026-09-06'
-  demand: 29.8
+  demand: 39.7
   volume: 0
   fanout_hits: 0
-  ugc_hits: 3
+  ugc_hits: 4
   growth: 1.0
   keyword: null
   demand_history:
@@ -17188,7 +17188,7 @@ prompts:
   - - '2026-09-07'
     - 19.8
   - - '2026-09-13'
-    - 29.8
+    - 39.7
 - id: p1541
   text: 新型インフルエンザ等対策
   category: purchase
@@ -17198,10 +17198,10 @@ prompts:
   tier: longtail
   added_on: '2026-09-06'
   tier_since: '2026-09-06'
-  demand: 29.8
+  demand: 39.7
   volume: 0
   fanout_hits: 0
-  ugc_hits: 3
+  ugc_hits: 4
   growth: 1.0
   keyword: null
   demand_history:
@@ -17210,7 +17210,7 @@ prompts:
   - - '2026-09-07'
     - 19.8
   - - '2026-09-13'
-    - 29.8
+    - 39.7
 - id: p1542
   text: 通が激推しするニュータッチの凄麺って本当にうめえの？
   category: purchase
@@ -17242,10 +17242,10 @@ prompts:
   tier: longtail
   added_on: '2026-09-06'
   tier_since: '2026-09-06'
-  demand: 19.8
+  demand: 29.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 2
+  ugc_hits: 3
   growth: 1.0
   keyword: null
   demand_history:
@@ -17254,7 +17254,7 @@ prompts:
   - - '2026-09-07'
     - 9.9
   - - '2026-09-13'
-    - 19.8
+    - 29.8
 - id: p1544
   text: 【高速燃費が…】納車された新型キックスG e-4ORCEで320km ...
   category: eco
@@ -17604,10 +17604,10 @@ prompts:
   tier: longtail
   added_on: '2026-09-06'
   tier_since: '2026-09-06'
-  demand: 29.8
+  demand: 39.7
   volume: 0
   fanout_hits: 0
-  ugc_hits: 3
+  ugc_hits: 4
   growth: 1.0
   keyword: null
   demand_history:
@@ -17616,7 +17616,7 @@ prompts:
   - - '2026-09-07'
     - 19.8
   - - '2026-09-13'
-    - 29.8
+    - 39.7
 - id: p156
   text: 中古のミニバンの購入を検討しています。
   category: purchase
@@ -17660,10 +17660,10 @@ prompts:
   tier: longtail
   added_on: '2026-09-06'
   tier_since: '2026-09-06'
-  demand: 19.8
+  demand: 29.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 2
+  ugc_hits: 3
   growth: 1.0
   keyword: null
   demand_history:
@@ -17672,7 +17672,7 @@ prompts:
   - - '2026-09-07'
     - 9.9
   - - '2026-09-13'
-    - 19.8
+    - 29.8
 - id: p1561
   text: 八高線の新型ハイブリッド車両に乗ってみた（47NEWS）
   category: eco
@@ -17704,10 +17704,10 @@ prompts:
   tier: longtail
   added_on: '2026-09-06'
   tier_since: '2026-09-06'
-  demand: 19.8
+  demand: 29.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 2
+  ugc_hits: 3
   growth: 1.0
   keyword: null
   demand_history:
@@ -17716,7 +17716,7 @@ prompts:
   - - '2026-09-07'
     - 9.9
   - - '2026-09-13'
-    - 19.8
+    - 29.8
 - id: p1563
   text: スズキ新型「スイフトスポーツ」が2027年に復活!?48V ...
   category: brand
@@ -17780,10 +17780,10 @@ prompts:
   tier: longtail
   added_on: '2026-09-06'
   tier_since: '2026-09-06'
-  demand: 29.8
+  demand: 39.7
   volume: 0
   fanout_hits: 0
-  ugc_hits: 3
+  ugc_hits: 4
   growth: 1.0
   keyword: null
   demand_history:
@@ -17792,7 +17792,7 @@ prompts:
   - - '2026-09-07'
     - 19.8
   - - '2026-09-13'
-    - 29.8
+    - 39.7
 - id: p1567
   text: 「もんじゅ」廃止措置推進チーム
   category: purchase
@@ -17846,10 +17846,10 @@ prompts:
   tier: longtail
   added_on: '2026-09-06'
   tier_since: '2026-09-06'
-  demand: 29.8
+  demand: 39.7
   volume: 0
   fanout_hits: 0
-  ugc_hits: 3
+  ugc_hits: 4
   growth: 1.0
   keyword: null
   demand_history:
@@ -17858,7 +17858,7 @@ prompts:
   - - '2026-09-07'
     - 19.8
   - - '2026-09-13'
-    - 29.8
+    - 39.7
 - id: p157
   text: みなさんのおすすめのミニバンはありますか。家族構成は夫婦 ...
   category: purchase
@@ -17924,10 +17924,10 @@ prompts:
   tier: longtail
   added_on: '2026-09-06'
   tier_since: '2026-09-06'
-  demand: 29.8
+  demand: 39.7
   volume: 0
   fanout_hits: 0
-  ugc_hits: 3
+  ugc_hits: 4
   growth: 1.0
   keyword: null
   demand_history:
@@ -17936,7 +17936,7 @@ prompts:
   - - '2026-09-07'
     - 19.8
   - - '2026-09-13'
-    - 29.8
+    - 39.7
 - id: p1572
   text: 【500万円前後でどれを買う？】トヨタ「ハリアー」「RAV4 ...
   category: brand
@@ -17968,10 +17968,10 @@ prompts:
   tier: longtail
   added_on: '2026-09-06'
   tier_since: '2026-09-06'
-  demand: 29.8
+  demand: 39.7
   volume: 0
   fanout_hits: 0
-  ugc_hits: 3
+  ugc_hits: 4
   growth: 1.0
   keyword: null
   demand_history:
@@ -17980,7 +17980,7 @@ prompts:
   - - '2026-09-07'
     - 19.8
   - - '2026-09-13'
-    - 29.8
+    - 39.7
 - id: p1574
   text: トヨタ ハリアー | トヨタ自動車WEBサイト
   category: brand
@@ -17990,10 +17990,10 @@ prompts:
   tier: longtail
   added_on: '2026-09-06'
   tier_since: '2026-09-06'
-  demand: 29.8
+  demand: 39.7
   volume: 0
   fanout_hits: 0
-  ugc_hits: 3
+  ugc_hits: 4
   growth: 1.0
   keyword: null
   demand_history:
@@ -18002,7 +18002,7 @@ prompts:
   - - '2026-09-07'
     - 19.8
   - - '2026-09-13'
-    - 29.8
+    - 39.7
 - id: p1575
   text: 【比較動画】トヨタ ハリアー vs レクサス NX350h
   category: model
@@ -18012,10 +18012,10 @@ prompts:
   tier: longtail
   added_on: '2026-09-06'
   tier_since: '2026-09-06'
-  demand: 29.8
+  demand: 39.7
   volume: 0
   fanout_hits: 0
-  ugc_hits: 3
+  ugc_hits: 4
   growth: 1.0
   keyword: null
   demand_history:
@@ -18024,7 +18024,7 @@ prompts:
   - - '2026-09-07'
     - 19.8
   - - '2026-09-13'
-    - 29.8
+    - 39.7
 - id: p1576
   text: トヨタ WEBカタログ | ハリアー | トヨタ自動車WEBサイト
   category: brand
@@ -18034,10 +18034,10 @@ prompts:
   tier: longtail
   added_on: '2026-09-06'
   tier_since: '2026-09-06'
-  demand: 29.8
+  demand: 39.7
   volume: 0
   fanout_hits: 0
-  ugc_hits: 3
+  ugc_hits: 4
   growth: 1.0
   keyword: null
   demand_history:
@@ -18046,7 +18046,7 @@ prompts:
   - - '2026-09-07'
     - 19.8
   - - '2026-09-13'
-    - 29.8
+    - 39.7
 - id: p1577
   text: 操縦安定性もアップしたハリアーの乗り心地はいかがですか？ ...
   category: model
@@ -18100,10 +18100,10 @@ prompts:
   tier: longtail
   added_on: '2026-09-06'
   tier_since: '2026-09-06'
-  demand: 19.8
+  demand: 39.7
   volume: 0
   fanout_hits: 0
-  ugc_hits: 2
+  ugc_hits: 4
   growth: 1.0
   keyword: null
   demand_history:
@@ -18112,7 +18112,7 @@ prompts:
   - - '2026-09-07'
     - 19.8
   - - '2026-09-13'
-    - 19.8
+    - 39.7
 - id: p158
   text: オススメのミニバンを教えてください。子ども3人います ...
   category: purchase
@@ -18452,10 +18452,10 @@ prompts:
   tier: longtail
   added_on: '2026-09-06'
   tier_since: '2026-09-06'
-  demand: 29.8
+  demand: 39.7
   volume: 0
   fanout_hits: 0
-  ugc_hits: 3
+  ugc_hits: 4
   growth: 1.0
   keyword: null
   demand_history:
@@ -18464,7 +18464,7 @@ prompts:
   - - '2026-09-07'
     - 19.8
   - - '2026-09-13'
-    - 29.8
+    - 39.7
 - id: p1594
   text: '[New Crown Sedan] Everyone screams when they drive it'
   category: eco
@@ -18704,10 +18704,10 @@ prompts:
   tier: longtail
   added_on: '2026-09-06'
   tier_since: '2026-09-06'
-  demand: 19.8
+  demand: 29.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 2
+  ugc_hits: 3
   growth: 1.0
   keyword: null
   demand_history:
@@ -18716,7 +18716,7 @@ prompts:
   - - '2026-09-07'
     - 9.9
   - - '2026-09-13'
-    - 19.8
+    - 29.8
 - id: p1605
   text: 【1番燃費が良い軽自動車は？】アルト・ワゴンR・ミライース3台 ...
   category: eco
@@ -18726,10 +18726,10 @@ prompts:
   tier: longtail
   added_on: '2026-09-06'
   tier_since: '2026-09-06'
-  demand: 19.8
+  demand: 29.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 2
+  ugc_hits: 3
   growth: 1.0
   keyword: null
   demand_history:
@@ -18738,7 +18738,7 @@ prompts:
   - - '2026-09-07'
     - 9.9
   - - '2026-09-13'
-    - 19.8
+    - 29.8
 - id: p1606
   text: 【燃費とガソリン代がヤベェ…】新型レクサスGX550バージョンL ...
   category: eco
@@ -18748,10 +18748,10 @@ prompts:
   tier: longtail
   added_on: '2026-09-06'
   tier_since: '2026-09-06'
-  demand: 19.8
+  demand: 29.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 2
+  ugc_hits: 3
   growth: 1.0
   keyword: null
   demand_history:
@@ -18760,7 +18760,7 @@ prompts:
   - - '2026-09-07'
     - 9.9
   - - '2026-09-13'
-    - 19.8
+    - 29.8
 - id: p1607
   text: 速い！ 燃費いい！ お手頃な価格！ 三拍子揃ったストロング ...
   category: eco
@@ -18770,10 +18770,10 @@ prompts:
   tier: longtail
   added_on: '2026-09-06'
   tier_since: '2026-09-06'
-  demand: 19.8
+  demand: 29.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 2
+  ugc_hits: 3
   growth: 1.0
   keyword: null
   demand_history:
@@ -18782,7 +18782,7 @@ prompts:
   - - '2026-09-07'
     - 9.9
   - - '2026-09-13'
-    - 19.8
+    - 29.8
 - id: p1608
   text: ミライースの実燃費を測定してみた
   category: eco
@@ -18906,10 +18906,10 @@ prompts:
   tier: longtail
   added_on: '2026-09-06'
   tier_since: '2026-09-06'
-  demand: 19.8
+  demand: 29.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 2
+  ugc_hits: 3
   growth: 1.0
   keyword: null
   demand_history:
@@ -18918,7 +18918,7 @@ prompts:
   - - '2026-09-07'
     - 19.8
   - - '2026-09-13'
-    - 19.8
+    - 29.8
 - id: p1614
   text: A super fast Hilux 4WD! We built it and drove it, and its off- ...
   category: purchase
@@ -18950,10 +18950,10 @@ prompts:
   tier: longtail
   added_on: '2026-09-06'
   tier_since: '2026-09-06'
-  demand: 19.8
+  demand: 29.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 2
+  ugc_hits: 3
   growth: 1.0
   keyword: null
   demand_history:
@@ -18962,7 +18962,7 @@ prompts:
   - - '2026-09-07'
     - 19.8
   - - '2026-09-13'
-    - 19.8
+    - 29.8
 - id: p1616
   text: 日産 エルグランド 1.5 G e-4ORCE 4WD
   category: brand
@@ -18994,10 +18994,10 @@ prompts:
   tier: longtail
   added_on: '2026-09-06'
   tier_since: '2026-09-06'
-  demand: 19.8
+  demand: 29.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 2
+  ugc_hits: 3
   growth: 1.0
   keyword: null
   demand_history:
@@ -19006,7 +19006,7 @@ prompts:
   - - '2026-09-07'
     - 19.8
   - - '2026-09-13'
-    - 19.8
+    - 29.8
 - id: p1618
   text: Toyota Harrier Hybrid 4WD Model [Test Drive Report] Is ...
   category: purchase
@@ -19016,10 +19016,10 @@ prompts:
   tier: longtail
   added_on: '2026-09-06'
   tier_since: '2026-09-06'
-  demand: 19.8
+  demand: 29.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 2
+  ugc_hits: 3
   growth: 1.0
   keyword: null
   demand_history:
@@ -19028,7 +19028,7 @@ prompts:
   - - '2026-09-07'
     - 19.8
   - - '2026-09-13'
-    - 19.8
+    - 29.8
 - id: p1619
   text: グランドハイランダーは日本で販売されていますか？
   category: purchase
@@ -19070,10 +19070,10 @@ prompts:
   tier: longtail
   added_on: '2026-09-06'
   tier_since: '2026-09-06'
-  demand: 29.8
+  demand: 39.7
   volume: 0
   fanout_hits: 0
-  ugc_hits: 3
+  ugc_hits: 4
   growth: 1.0
   keyword: null
   demand_history:
@@ -19082,7 +19082,7 @@ prompts:
   - - '2026-09-07'
     - 19.8
   - - '2026-09-13'
-    - 29.8
+    - 39.7
 - id: p1621
   text: 商品の返品・交換・修理について | ハイランダー公式ストア
   category: service
@@ -19092,10 +19092,10 @@ prompts:
   tier: longtail
   added_on: '2026-09-06'
   tier_since: '2026-09-06'
-  demand: 29.8
+  demand: 39.7
   volume: 0
   fanout_hits: 0
-  ugc_hits: 3
+  ugc_hits: 4
   growth: 1.0
   keyword: null
   demand_history:
@@ -19104,7 +19104,7 @@ prompts:
   - - '2026-09-07'
     - 19.8
   - - '2026-09-13'
-    - 29.8
+    - 39.7
 - id: p1622
   text: あのハイランダーがどうやら激変したらしい！最新キャンプ道具 ...
   category: purchase
@@ -19114,10 +19114,10 @@ prompts:
   tier: longtail
   added_on: '2026-09-06'
   tier_since: '2026-09-06'
-  demand: 29.8
+  demand: 39.7
   volume: 0
   fanout_hits: 0
-  ugc_hits: 3
+  ugc_hits: 4
   growth: 1.0
   keyword: null
   demand_history:
@@ -19126,7 +19126,7 @@ prompts:
   - - '2026-09-07'
     - 19.8
   - - '2026-09-13'
-    - 29.8
+    - 39.7
 - id: p1623
   text: 【3列シート】トヨタ巨大SUV「ハイランダー」徹底紹介！
   category: brand
@@ -19136,10 +19136,10 @@ prompts:
   tier: longtail
   added_on: '2026-09-06'
   tier_since: '2026-09-06'
-  demand: 29.8
+  demand: 39.7
   volume: 0
   fanout_hits: 0
-  ugc_hits: 3
+  ugc_hits: 4
   growth: 1.0
   keyword: null
   demand_history:
@@ -19148,7 +19148,7 @@ prompts:
   - - '2026-09-07'
     - 19.8
   - - '2026-09-13'
-    - 29.8
+    - 39.7
 - id: p1624
   text: トヨタ ハイランダー | トヨタ自動車WEBサイト
   category: brand
@@ -19158,10 +19158,10 @@ prompts:
   tier: longtail
   added_on: '2026-09-06'
   tier_since: '2026-09-06'
-  demand: 29.8
+  demand: 39.7
   volume: 0
   fanout_hits: 0
-  ugc_hits: 3
+  ugc_hits: 4
   growth: 1.0
   keyword: null
   demand_history:
@@ -19170,7 +19170,7 @@ prompts:
   - - '2026-09-07'
     - 19.8
   - - '2026-09-13'
-    - 29.8
+    - 39.7
 - id: p1625
   text: Hilander（ハイランダー）公式ストア｜アウトドアテーブル ...
   category: purchase
@@ -19180,10 +19180,10 @@ prompts:
   tier: longtail
   added_on: '2026-09-06'
   tier_since: '2026-09-06'
-  demand: 29.8
+  demand: 39.7
   volume: 0
   fanout_hits: 0
-  ugc_hits: 3
+  ugc_hits: 4
   growth: 1.0
   keyword: null
   demand_history:
@@ -19192,7 +19192,7 @@ prompts:
   - - '2026-09-07'
     - 19.8
   - - '2026-09-13'
-    - 29.8
+    - 39.7
 - id: p1626
   text: 86を買って後悔した人はいますか？
   category: purchase
@@ -19682,17 +19682,17 @@ prompts:
   tier: longtail
   added_on: '2026-09-07'
   tier_since: '2026-09-07'
-  demand: 29.8
+  demand: 39.7
   volume: 0
   fanout_hits: 0
-  ugc_hits: 3
+  ugc_hits: 4
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-09-07'
     - 19.8
   - - '2026-09-13'
-    - 29.8
+    - 39.7
 - id: p1649
   text: RX 350 Fスポーツ 4WD 2026年式 中古車詳細
   category: purchase
@@ -19778,17 +19778,17 @@ prompts:
   tier: longtail
   added_on: '2026-09-07'
   tier_since: '2026-09-07'
-  demand: 19.8
+  demand: 29.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 2
+  ugc_hits: 3
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-09-07'
     - 9.9
   - - '2026-09-13'
-    - 19.8
+    - 29.8
 - id: p1653
   text: ニュアンスパーマを頼んだら乾かしたらもう意味わからない ...
   category: purchase
@@ -19821,7 +19821,7 @@ prompts:
   demand: 59.5
   volume: 0
   fanout_hits: 0
-  ugc_hits: 7
+  ugc_hits: 11
   growth: 1.0
   keyword: null
   demand_history:
@@ -20200,17 +20200,17 @@ prompts:
   tier: longtail
   added_on: '2026-09-07'
   tier_since: '2026-09-07'
-  demand: 19.8
+  demand: 29.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 2
+  ugc_hits: 3
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-09-07'
     - 9.9
   - - '2026-09-13'
-    - 19.8
+    - 29.8
 - id: p1672
   text: 【選ぶならどっち？】ターボ vs スーパーチャージャー
   category: model
@@ -20300,26 +20300,6 @@ prompts:
   tier: longtail
   added_on: '2026-09-07'
   tier_since: '2026-09-07'
-  demand: 9.9
-  volume: 0
-  fanout_hits: 0
-  ugc_hits: 1
-  growth: 1.0
-  keyword: null
-  demand_history:
-  - - '2026-09-07'
-    - 9.9
-  - - '2026-09-13'
-    - 9.9
-- id: p1677
-  text: 尾道市子育て世帯等中古住宅取得支援事業補助金
-  category: purchase
-  driver: null
-  brand: false
-  source: chiebukuro
-  tier: longtail
-  added_on: '2026-09-07'
-  tier_since: '2026-09-07'
   demand: 19.8
   volume: 0
   fanout_hits: 0
@@ -20331,6 +20311,26 @@ prompts:
     - 9.9
   - - '2026-09-13'
     - 19.8
+- id: p1677
+  text: 尾道市子育て世帯等中古住宅取得支援事業補助金
+  category: purchase
+  driver: null
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-09-07'
+  tier_since: '2026-09-07'
+  demand: 29.8
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 3
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-09-07'
+    - 9.9
+  - - '2026-09-13'
+    - 29.8
 - id: p1678
   text: 自動車税減免申請（商品中古自動車）
   category: purchase
@@ -20760,17 +20760,17 @@ prompts:
   tier: longtail
   added_on: '2026-09-07'
   tier_since: '2026-09-07'
-  demand: 19.8
+  demand: 29.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 2
+  ugc_hits: 3
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-09-07'
     - 9.9
   - - '2026-09-13'
-    - 19.8
+    - 29.8
 - id: p1697
   text: ミニバン専門店の整備工場長が教える！故障の多い ...
   category: service
@@ -20820,17 +20820,17 @@ prompts:
   tier: longtail
   added_on: '2026-09-07'
   tier_since: '2026-09-07'
-  demand: 19.8
+  demand: 29.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 2
+  ugc_hits: 3
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-09-07'
     - 9.9
   - - '2026-09-13'
-    - 19.8
+    - 29.8
 - id: p170
   text: 国産車のミドルサイズSUVでオススメはありますか？居住性と ...
   category: model
@@ -20914,17 +20914,17 @@ prompts:
   tier: longtail
   added_on: '2026-09-07'
   tier_since: '2026-09-07'
-  demand: 19.8
+  demand: 29.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 2
+  ugc_hits: 3
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-09-07'
     - 9.9
   - - '2026-09-13'
-    - 19.8
+    - 29.8
 - id: p1703
   text: 主婦（主夫）年金は廃止される? 今から備えておきたい 3つの ...
   category: purchase
@@ -20990,17 +20990,17 @@ prompts:
   tier: longtail
   added_on: '2026-09-07'
   tier_since: '2026-09-07'
-  demand: 9.9
+  demand: 19.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 1
+  ugc_hits: 2
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-09-07'
     - 9.9
   - - '2026-09-13'
-    - 9.9
+    - 19.8
 - id: p1707
   text: VIVANTのバルカ共和国っていうのはモンゴルの中に存在し ...
   category: purchase
@@ -21338,17 +21338,17 @@ prompts:
   tier: longtail
   added_on: '2026-09-07'
   tier_since: '2026-09-07'
-  demand: 19.8
+  demand: 29.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 2
+  ugc_hits: 3
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-09-07'
     - 9.9
   - - '2026-09-13'
-    - 19.8
+    - 29.8
 - id: p1722
   text: アップグレードされたMac Studioの納期が10〜12週間?!
   category: service
@@ -21378,17 +21378,17 @@ prompts:
   tier: longtail
   added_on: '2026-09-07'
   tier_since: '2026-09-07'
-  demand: 19.8
+  demand: 29.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 2
+  ugc_hits: 3
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-09-07'
     - 9.9
   - - '2026-09-13'
-    - 19.8
+    - 29.8
 - id: p1724
   text: 市民税・県民税・森林環境税 特別徴収税額の納期の特例 ...
   category: service
@@ -21398,17 +21398,17 @@ prompts:
   tier: longtail
   added_on: '2026-09-07'
   tier_since: '2026-09-07'
-  demand: 19.8
+  demand: 29.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 2
+  ugc_hits: 3
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-09-07'
     - 9.9
   - - '2026-09-13'
-    - 19.8
+    - 29.8
 - id: p1725
   text: シンナーが足りない！塗装業者・納期未定に募る不安
   category: service
@@ -21418,17 +21418,17 @@ prompts:
   tier: longtail
   added_on: '2026-09-07'
   tier_since: '2026-09-07'
-  demand: 19.8
+  demand: 29.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 2
+  ugc_hits: 3
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-09-07'
     - 9.9
   - - '2026-09-13'
-    - 19.8
+    - 29.8
 - id: p1726
   text: 【家庭菜園の土壌改良】これを使うと簡単だし
   category: purchase
@@ -22248,15 +22248,15 @@ prompts:
   tier: longtail
   added_on: '2026-09-13'
   tier_since: '2026-09-13'
-  demand: 9.9
+  demand: 19.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 1
+  ugc_hits: 2
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-09-13'
-    - 9.9
+    - 19.8
 - id: p1761
   text: 【徹底解説】最強リセールのミニバントップ5を業販台数日本一 ...
   category: purchase
@@ -22266,15 +22266,15 @@ prompts:
   tier: longtail
   added_on: '2026-09-13'
   tier_since: '2026-09-13'
-  demand: 9.9
+  demand: 19.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 1
+  ugc_hits: 2
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-09-13'
-    - 9.9
+    - 19.8
 - id: p1762
   text: 【新型 エルグランド】そもそもミニバンに走行性能は必要なの ...
   category: purchase
@@ -22284,15 +22284,15 @@ prompts:
   tier: longtail
   added_on: '2026-09-13'
   tier_since: '2026-09-13'
-  demand: 9.9
+  demand: 19.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 1
+  ugc_hits: 2
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-09-13'
-    - 9.9
+    - 19.8
 - id: p1763
   text: コンパクトミニバン シエンタの売れてる秘密探ってみた。 ...
   category: purchase
@@ -22302,15 +22302,15 @@ prompts:
   tier: longtail
   added_on: '2026-09-13'
   tier_since: '2026-09-13'
-  demand: 9.9
+  demand: 19.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 1
+  ugc_hits: 2
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-09-13'
-    - 9.9
+    - 19.8
 - id: p1764
   text: 50万くらいで買えるコンパクトミニバン！,TOYOTA SPADE ...
   category: purchase
@@ -22320,15 +22320,15 @@ prompts:
   tier: longtail
   added_on: '2026-09-13'
   tier_since: '2026-09-13'
-  demand: 9.9
+  demand: 19.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 1
+  ugc_hits: 2
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-09-13'
-    - 9.9
+    - 19.8
 - id: p1765
   text: 日産 ミニバン生産を栃木に集約へ（ロイター）
   category: brand
@@ -22338,15 +22338,15 @@ prompts:
   tier: longtail
   added_on: '2026-09-13'
   tier_since: '2026-09-13'
-  demand: 9.9
+  demand: 19.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 1
+  ugc_hits: 2
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-09-13'
-    - 9.9
+    - 19.8
 - id: p1766
   text: 買ってはいけないSUVは？
   category: purchase
@@ -22375,7 +22375,7 @@ prompts:
   demand: 59.5
   volume: 0
   fanout_hits: 0
-  ugc_hits: 10
+  ugc_hits: 21
   growth: 1.0
   keyword: null
   demand_history:
@@ -22530,15 +22530,15 @@ prompts:
   tier: longtail
   added_on: '2026-09-13'
   tier_since: '2026-09-13'
-  demand: 9.9
+  demand: 19.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 1
+  ugc_hits: 2
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-09-13'
-    - 9.9
+    - 19.8
 - id: p1775
   text: GOODS | メラメラの実 争奪戦
   category: purchase
@@ -22548,15 +22548,15 @@ prompts:
   tier: longtail
   added_on: '2026-09-13'
   tier_since: '2026-09-13'
-  demand: 9.9
+  demand: 19.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 1
+  ugc_hits: 2
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-09-13'
-    - 9.9
+    - 19.8
 - id: p1776
   text: 30時間でマスター Webデザイン 改訂版 HTML5＆CSS3
   category: purchase
@@ -22566,15 +22566,15 @@ prompts:
   tier: longtail
   added_on: '2026-09-13'
   tier_since: '2026-09-13'
-  demand: 9.9
+  demand: 19.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 1
+  ugc_hits: 2
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-09-13'
-    - 9.9
+    - 19.8
 - id: p1777
   text: 乾燥×大雨で“実が裂ける”ミカンがピンチ
   category: purchase
@@ -22584,15 +22584,15 @@ prompts:
   tier: longtail
   added_on: '2026-09-13'
   tier_since: '2026-09-13'
-  demand: 9.9
+  demand: 19.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 1
+  ugc_hits: 2
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-09-13'
-    - 9.9
+    - 19.8
 - id: p1778
   text: '後悔しない考え方【先生の愛猫れいちゃん】#猫 #cat #動物病院'
   category: purchase
@@ -22602,15 +22602,15 @@ prompts:
   tier: longtail
   added_on: '2026-09-13'
   tier_since: '2026-09-13'
-  demand: 9.9
+  demand: 19.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 1
+  ugc_hits: 2
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-09-13'
-    - 9.9
+    - 19.8
 - id: p1779
   text: 後悔と不安の日々です | 乳がんは江戸川病院
   category: purchase
@@ -22620,15 +22620,15 @@ prompts:
   tier: longtail
   added_on: '2026-09-13'
   tier_since: '2026-09-13'
-  demand: 9.9
+  demand: 19.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 1
+  ugc_hits: 2
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-09-13'
-    - 9.9
+    - 19.8
 - id: p178
   text: みなさんなら4人家族（両親、子×2）の場合、なんの車を選び ...
   category: purchase
@@ -22672,15 +22672,15 @@ prompts:
   tier: longtail
   added_on: '2026-09-13'
   tier_since: '2026-09-13'
-  demand: 9.9
+  demand: 19.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 1
+  ugc_hits: 2
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-09-13'
-    - 9.9
+    - 19.8
 - id: p1781
   text: 後悔をなくすことができなくても、後悔を活かすことはできる。
   category: purchase
@@ -22690,15 +22690,15 @@ prompts:
   tier: longtail
   added_on: '2026-09-13'
   tier_since: '2026-09-13'
-  demand: 9.9
+  demand: 19.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 1
+  ugc_hits: 2
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-09-13'
-    - 9.9
+    - 19.8
 - id: p1782
   text: 「大好き」は言って後悔しないだろう | 川島菜月オフィシャル ...
   category: purchase
@@ -22708,15 +22708,15 @@ prompts:
   tier: longtail
   added_on: '2026-09-13'
   tier_since: '2026-09-13'
-  demand: 9.9
+  demand: 19.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 1
+  ugc_hits: 2
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-09-13'
-    - 9.9
+    - 19.8
 - id: p1783
   text: コスト爆増！？引き戸を選択すると後悔する理由について解説し ...
   category: cost
@@ -22744,15 +22744,15 @@ prompts:
   tier: longtail
   added_on: '2026-09-13'
   tier_since: '2026-09-13'
-  demand: 9.9
+  demand: 19.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 1
+  ugc_hits: 2
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-09-13'
-    - 9.9
+    - 19.8
 - id: p1785
   text: 日産自動車2026年7月度 生産・販売・輸出実績（速報）
   category: brand
@@ -22762,15 +22762,15 @@ prompts:
   tier: longtail
   added_on: '2026-09-13'
   tier_since: '2026-09-13'
-  demand: 9.9
+  demand: 19.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 1
+  ugc_hits: 2
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-09-13'
-    - 9.9
+    - 19.8
 - id: p1786
   text: A110 S エンストン 2024年式 中古車詳細
   category: purchase
@@ -22780,15 +22780,15 @@ prompts:
   tier: longtail
   added_on: '2026-09-13'
   tier_since: '2026-09-13'
-  demand: 9.9
+  demand: 19.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 1
+  ugc_hits: 2
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-09-13'
-    - 9.9
+    - 19.8
 - id: p1787
   text: 映画「パーフェクトブルー」の解説をお願いします。面白かっ ...
   category: purchase
@@ -22834,15 +22834,15 @@ prompts:
   tier: longtail
   added_on: '2026-09-13'
   tier_since: '2026-09-13'
-  demand: 9.9
+  demand: 19.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 1
+  ugc_hits: 2
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-09-13'
-    - 9.9
+    - 19.8
 - id: p179
   text: ファミリーカーの選び方今スポーツカーを乗っていますが子供を ...
   category: purchase
@@ -22886,15 +22886,15 @@ prompts:
   tier: longtail
   added_on: '2026-09-13'
   tier_since: '2026-09-13'
-  demand: 9.9
+  demand: 19.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 1
+  ugc_hits: 2
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-09-13'
-    - 9.9
+    - 19.8
 - id: p1791
   text: 【お悩み解決！菰田潔の運転レッスン】アクセル・ブレーキ編
   category: purchase
@@ -22904,15 +22904,15 @@ prompts:
   tier: longtail
   added_on: '2026-09-13'
   tier_since: '2026-09-13'
-  demand: 9.9
+  demand: 19.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 1
+  ugc_hits: 2
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-09-13'
-    - 9.9
+    - 19.8
 - id: p1792
   text: 移乗中の母の尻もち ブレーキ掛けた車いすがなぜ動く？原因 ...
   category: purchase
@@ -22922,15 +22922,15 @@ prompts:
   tier: longtail
   added_on: '2026-09-13'
   tier_since: '2026-09-13'
-  demand: 9.9
+  demand: 19.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 1
+  ugc_hits: 2
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-09-13'
-    - 9.9
+    - 19.8
 - id: p1793
   text: ハッピーIINB抑速ブレーキ2 | 商品検索
   category: purchase
@@ -22940,15 +22940,15 @@ prompts:
   tier: longtail
   added_on: '2026-09-13'
   tier_since: '2026-09-13'
-  demand: 9.9
+  demand: 19.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 1
+  ugc_hits: 2
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-09-13'
-    - 9.9
+    - 19.8
 - id: p1794
   text: '[Shocking!!] Explaining why electric parking brakes are ...'
   category: purchase
@@ -22958,15 +22958,15 @@ prompts:
   tier: longtail
   added_on: '2026-09-13'
   tier_since: '2026-09-13'
-  demand: 9.9
+  demand: 19.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 1
+  ugc_hits: 2
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-09-13'
-    - 9.9
+    - 19.8
 - id: p1795
   text: クルコンは疲れない？
   category: purchase
@@ -22992,15 +22992,15 @@ prompts:
   tier: longtail
   added_on: '2026-09-13'
   tier_since: '2026-09-13'
-  demand: 9.9
+  demand: 19.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 1
+  ugc_hits: 2
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-09-13'
-    - 9.9
+    - 19.8
 - id: p1797
   text: 道路整備課（高速道路整備推進室）
   category: service
@@ -23010,15 +23010,15 @@ prompts:
   tier: longtail
   added_on: '2026-09-13'
   tier_since: '2026-09-13'
-  demand: 9.9
+  demand: 19.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 1
+  ugc_hits: 2
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-09-13'
-    - 9.9
+    - 19.8
 - id: p1798
   text: アジア大会選手輸送で道路を抑制 公共交通機関の利用呼びかけ
   category: purchase
@@ -23028,15 +23028,15 @@ prompts:
   tier: longtail
   added_on: '2026-09-13'
   tier_since: '2026-09-13'
-  demand: 9.9
+  demand: 19.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 1
+  ugc_hits: 2
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-09-13'
-    - 9.9
+    - 19.8
 - id: p1799
   text: 国土交通省四国地方整備局 道路部
   category: service
@@ -23098,15 +23098,15 @@ prompts:
   tier: longtail
   added_on: '2026-09-13'
   tier_since: '2026-09-13'
-  demand: 9.9
+  demand: 19.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 1
+  ugc_hits: 2
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-09-13'
-    - 9.9
+    - 19.8
 - id: p1801
   text: なぜマイケルの子供は彼に似てないのですか？
   category: purchase
@@ -23116,15 +23116,15 @@ prompts:
   tier: longtail
   added_on: '2026-09-13'
   tier_since: '2026-09-13'
-  demand: 9.9
+  demand: 29.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 1
+  ugc_hits: 3
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-09-13'
-    - 9.9
+    - 29.8
 - id: p1802
   text: LINEで2つアカウント作る方法ってありませんか？大学生です
   category: purchase
@@ -23134,15 +23134,15 @@ prompts:
   tier: longtail
   added_on: '2026-09-13'
   tier_since: '2026-09-13'
-  demand: 39.7
+  demand: 59.5
   volume: 0
   fanout_hits: 0
-  ugc_hits: 4
+  ugc_hits: 6
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-09-13'
-    - 39.7
+    - 59.5
 - id: p1803
   text: 日本一長い名前の山「牛奥ノ雁ヶ腹摺山」と甲州アルプス縦走
   category: purchase
@@ -23152,15 +23152,15 @@ prompts:
   tier: longtail
   added_on: '2026-09-13'
   tier_since: '2026-09-13'
-  demand: 9.9
+  demand: 19.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 1
+  ugc_hits: 2
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-09-13'
-    - 9.9
+    - 19.8
 - id: p1804
   text: 'A Hundred Years of Japanese Language Studies #10'
   category: purchase
@@ -23170,15 +23170,15 @@ prompts:
   tier: longtail
   added_on: '2026-09-13'
   tier_since: '2026-09-13'
-  demand: 9.9
+  demand: 19.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 1
+  ugc_hits: 2
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-09-13'
-    - 9.9
+    - 19.8
 - id: p1805
   text: すごく長い間、一緒にいてくれたので、あなたの姿を見てみたい ...
   category: purchase
@@ -23188,15 +23188,15 @@ prompts:
   tier: longtail
   added_on: '2026-09-13'
   tier_since: '2026-09-13'
-  demand: 9.9
+  demand: 19.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 1
+  ugc_hits: 2
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-09-13'
-    - 9.9
+    - 19.8
 - id: p1806
   text: 令和8年分 財産評価基準書 港区
   category: purchase
@@ -23206,15 +23206,15 @@ prompts:
   tier: longtail
   added_on: '2026-09-13'
   tier_since: '2026-09-13'
-  demand: 9.9
+  demand: 19.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 1
+  ugc_hits: 2
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-09-13'
-    - 9.9
+    - 19.8
 - id: p1807
   text: 令和8年分 財産評価基準書 中野区
   category: purchase
@@ -23224,15 +23224,15 @@ prompts:
   tier: longtail
   added_on: '2026-09-13'
   tier_since: '2026-09-13'
-  demand: 9.9
+  demand: 19.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 1
+  ugc_hits: 2
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-09-13'
-    - 9.9
+    - 19.8
 - id: p1808
   text: '【3分でわかる】時価と簿価 #新NISA # ...'
   category: purchase
@@ -23328,35 +23328,17 @@ prompts:
   tier: longtail
   added_on: '2026-09-13'
   tier_since: '2026-09-13'
-  demand: 9.9
+  demand: 19.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 1
+  ugc_hits: 2
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-09-13'
-    - 9.9
+    - 19.8
 - id: p1812
   text: 一人暮らしにかかる全ての初期費用ってどのくらい貯金をして ...
-  category: purchase
-  driver: null
-  brand: false
-  source: chiebukuro
-  tier: longtail
-  added_on: '2026-09-13'
-  tier_since: '2026-09-13'
-  demand: 9.9
-  volume: 0
-  fanout_hits: 0
-  ugc_hits: 1
-  growth: 1.0
-  keyword: null
-  demand_history:
-  - - '2026-09-13'
-    - 9.9
-- id: p1813
-  text: 0120967214から電話が来てたのですが出た方がよかってので ...
   category: purchase
   driver: null
   brand: false
@@ -23373,6 +23355,24 @@ prompts:
   demand_history:
   - - '2026-09-13'
     - 19.8
+- id: p1813
+  text: 0120967214から電話が来てたのですが出た方がよかってので ...
+  category: purchase
+  driver: null
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-09-13'
+  tier_since: '2026-09-13'
+  demand: 39.7
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 4
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-09-13'
+    - 39.7
 - id: p1814
   text: 70代におすすめの自動車は？
   category: purchase
@@ -23398,15 +23398,15 @@ prompts:
   tier: longtail
   added_on: '2026-09-13'
   tier_since: '2026-09-13'
-  demand: 9.9
+  demand: 19.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 1
+  ugc_hits: 2
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-09-13'
-    - 9.9
+    - 19.8
 - id: p1816
   text: 【不破聖衣来】実業団デビューまでまもなく！新社会人の出社＆ ...
   category: purchase
@@ -23416,15 +23416,15 @@ prompts:
   tier: longtail
   added_on: '2026-09-13'
   tier_since: '2026-09-13'
-  demand: 9.9
+  demand: 19.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 1
+  ugc_hits: 2
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-09-13'
-    - 9.9
+    - 19.8
 - id: p1817
   text: バイオマス産業社会ネットワーク
   category: purchase
@@ -23434,15 +23434,15 @@ prompts:
   tier: longtail
   added_on: '2026-09-13'
   tier_since: '2026-09-13'
-  demand: 9.9
+  demand: 19.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 1
+  ugc_hits: 2
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-09-13'
-    - 9.9
+    - 19.8
 - id: p1818
   text: 放送大学「教育の社会学（'25）」（テレビ授業科目案内）
   category: purchase
@@ -23452,15 +23452,15 @@ prompts:
   tier: longtail
   added_on: '2026-09-13'
   tier_since: '2026-09-13'
-  demand: 9.9
+  demand: 19.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 1
+  ugc_hits: 2
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-09-13'
-    - 9.9
+    - 19.8
 - id: p1819
   text: '#緑黄色社会 New Album「#あたまご」｜INTERVIEW 03【2/2】 ...'
   category: purchase
@@ -23470,15 +23470,15 @@ prompts:
   tier: longtail
   added_on: '2026-09-13'
   tier_since: '2026-09-13'
-  demand: 9.9
+  demand: 19.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 1
+  ugc_hits: 2
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-09-13'
-    - 9.9
+    - 19.8
 - id: p182
   text: 「ヴォクシー ハイブリッド 燃費 実燃費」について、国産メーカーではどこが有利か教えてください。
   category: eco
@@ -23538,15 +23538,15 @@ prompts:
   tier: longtail
   added_on: '2026-09-13'
   tier_since: '2026-09-13'
-  demand: 9.9
+  demand: 19.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 1
+  ugc_hits: 2
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-09-13'
-    - 9.9
+    - 19.8
 - id: p1823
   text: 【フラット35】中古住宅 技術基準・物件検査手続のご案内
   category: purchase
@@ -23592,15 +23592,15 @@ prompts:
   tier: longtail
   added_on: '2026-09-13'
   tier_since: '2026-09-13'
-  demand: 9.9
+  demand: 19.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 1
+  ugc_hits: 2
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-09-13'
-    - 9.9
+    - 19.8
 - id: p1826
   text: 【板前の超裏技】スーパーの安くて硬いステーキが柔らかく大 ...
   category: purchase
@@ -23610,15 +23610,15 @@ prompts:
   tier: longtail
   added_on: '2026-09-13'
   tier_since: '2026-09-13'
-  demand: 9.9
+  demand: 19.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 1
+  ugc_hits: 2
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-09-13'
-    - 9.9
+    - 19.8
 - id: p1827
   text: 新型アルファードの納車時期は？
   category: purchase
@@ -23694,15 +23694,15 @@ prompts:
   tier: longtail
   added_on: '2026-09-13'
   tier_since: '2026-09-13'
-  demand: 9.9
+  demand: 19.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 1
+  ugc_hits: 2
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-09-13'
-    - 9.9
+    - 19.8
 - id: p1831
   text: 【Eカラ比較】 レクサス LM 500h vs トヨタ アルファード ｜試乗編 ...
   category: model
@@ -23712,15 +23712,15 @@ prompts:
   tier: longtail
   added_on: '2026-09-13'
   tier_since: '2026-09-13'
-  demand: 9.9
+  demand: 19.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 1
+  ugc_hits: 2
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-09-13'
-    - 9.9
+    - 19.8
 - id: p1832
   text: 【新車購入】新型アルファードが凄すぎる！中身をご紹介します！
   category: purchase
@@ -23730,15 +23730,15 @@ prompts:
   tier: longtail
   added_on: '2026-09-13'
   tier_since: '2026-09-13'
-  demand: 9.9
+  demand: 19.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 1
+  ugc_hits: 2
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-09-13'
-    - 9.9
+    - 19.8
 - id: p1833
   text: アルファード（トヨタ）の中古車・中古車情報
   category: brand
@@ -23748,15 +23748,15 @@ prompts:
   tier: longtail
   added_on: '2026-09-13'
   tier_since: '2026-09-13'
-  demand: 9.9
+  demand: 19.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 1
+  ugc_hits: 2
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-09-13'
-    - 9.9
+    - 19.8
 - id: p1834
   text: アルファード/ヴェルファイア（30系）
   category: purchase
@@ -23766,15 +23766,15 @@ prompts:
   tier: longtail
   added_on: '2026-09-13'
   tier_since: '2026-09-13'
-  demand: 9.9
+  demand: 19.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 1
+  ugc_hits: 2
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-09-13'
-    - 9.9
+    - 19.8
 - id: p1835
   text: アルファード | トヨタカローラ広島公式サイト
   category: brand
@@ -23784,15 +23784,15 @@ prompts:
   tier: longtail
   added_on: '2026-09-13'
   tier_since: '2026-09-13'
-  demand: 9.9
+  demand: 19.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 1
+  ugc_hits: 2
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-09-13'
-    - 9.9
+    - 19.8
 - id: p1836
   text: トヨタ・アルファードの中古車価格はなぜ高騰しているのですか？
   category: cost
@@ -23850,15 +23850,15 @@ prompts:
   tier: longtail
   added_on: '2026-09-13'
   tier_since: '2026-09-13'
-  demand: 9.9
+  demand: 19.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 1
+  ugc_hits: 2
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-09-13'
-    - 9.9
+    - 19.8
 - id: p184
   text: 「シエンタ 燃費 ハイブリッド 実燃費」について、カタログ値ではなく実際のところを教えてください。
   category: eco
@@ -23884,15 +23884,15 @@ prompts:
   tier: longtail
   added_on: '2026-09-13'
   tier_since: '2026-09-13'
-  demand: 9.9
+  demand: 19.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 1
+  ugc_hits: 2
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-09-13'
-    - 9.9
+    - 19.8
 - id: p1841
   text: 生物多様性の観点から重要度の高い海域
   category: purchase
@@ -23902,15 +23902,15 @@ prompts:
   tier: longtail
   added_on: '2026-09-13'
   tier_since: '2026-09-13'
-  demand: 9.9
+  demand: 19.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 1
+  ugc_hits: 2
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-09-13'
-    - 9.9
+    - 19.8
 - id: p1842
   text: 新型窓口販売方式による5年利付国債（第187回）の発行条件等
   category: purchase
@@ -23920,15 +23920,15 @@ prompts:
   tier: longtail
   added_on: '2026-09-13'
   tier_since: '2026-09-13'
-  demand: 9.9
+  demand: 19.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 1
+  ugc_hits: 2
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-09-13'
-    - 9.9
+    - 19.8
 - id: p1843
   text: 新型セレナ【勝手に最強グレード会議】ガソリンXVこそ本命！ 1- ...
   category: model
@@ -23938,15 +23938,15 @@ prompts:
   tier: longtail
   added_on: '2026-09-13'
   tier_since: '2026-09-13'
-  demand: 9.9
+  demand: 19.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 1
+  ugc_hits: 2
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-09-13'
-    - 9.9
+    - 19.8
 - id: p1844
   text: 1年目の通知表 新型「ホンダ・プレリュード」の販売実績は想定 ...
   category: brand
@@ -23956,15 +23956,15 @@ prompts:
   tier: longtail
   added_on: '2026-09-13'
   tier_since: '2026-09-13'
-  demand: 9.9
+  demand: 19.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 1
+  ugc_hits: 2
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-09-13'
-    - 9.9
+    - 19.8
 - id: p1845
   text: SHEINsaverというものに加入？しちゃいました必要なものを ...
   category: purchase
@@ -24008,15 +24008,15 @@ prompts:
   tier: longtail
   added_on: '2026-09-13'
   tier_since: '2026-09-13'
-  demand: 9.9
+  demand: 19.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 1
+  ugc_hits: 2
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-09-13'
-    - 9.9
+    - 19.8
 - id: p1848
   text: ハリアーのPHEVはなくなりますか？
   category: eco
@@ -24094,15 +24094,15 @@ prompts:
   tier: longtail
   added_on: '2026-09-13'
   tier_since: '2026-09-13'
-  demand: 9.9
+  demand: 19.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 1
+  ugc_hits: 2
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-09-13'
-    - 9.9
+    - 19.8
 - id: p1852
   text: 「ハリアー PHEV に乗ってみた！」 環境王子 試乗！ せとeco ...
   category: eco
@@ -24112,15 +24112,15 @@ prompts:
   tier: longtail
   added_on: '2026-09-13'
   tier_since: '2026-09-13'
-  demand: 9.9
+  demand: 19.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 1
+  ugc_hits: 2
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-09-13'
-    - 9.9
+    - 19.8
 - id: p1853
   text: 【どっちが良い!?】ハリアーとクラウンスポーツ を 内外装徹底 ...
   category: model
@@ -24130,15 +24130,15 @@ prompts:
   tier: longtail
   added_on: '2026-09-13'
   tier_since: '2026-09-13'
-  demand: 9.9
+  demand: 19.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 1
+  ugc_hits: 2
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-09-13'
-    - 9.9
+    - 19.8
 - id: p1854
   text: トヨタのマイナーチェンジは2026年に何になりますか？
   category: brand
@@ -24164,15 +24164,15 @@ prompts:
   tier: longtail
   added_on: '2026-09-13'
   tier_since: '2026-09-13'
-  demand: 9.9
+  demand: 19.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 1
+  ugc_hits: 2
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-09-13'
-    - 9.9
+    - 19.8
 - id: p1856
   text: '[My favorite car is the Toyota Sienta] Customized for ...'
   category: purchase
@@ -24182,15 +24182,15 @@ prompts:
   tier: longtail
   added_on: '2026-09-13'
   tier_since: '2026-09-13'
-  demand: 9.9
+  demand: 19.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 1
+  ugc_hits: 2
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-09-13'
-    - 9.9
+    - 19.8
 - id: p1857
   text: トヨタ『シエンタ』次期型は2027年登場か---新開発1.5Lエンジン ...
   category: brand
@@ -24200,15 +24200,15 @@ prompts:
   tier: longtail
   added_on: '2026-09-13'
   tier_since: '2026-09-13'
-  demand: 9.9
+  demand: 19.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 1
+  ugc_hits: 2
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-09-13'
-    - 9.9
+    - 19.8
 - id: p1858
   text: 【2026年8月一部改良】シエンタは何が変わる？2トーン廃止・ ...
   category: purchase
@@ -24218,15 +24218,15 @@ prompts:
   tier: longtail
   added_on: '2026-09-13'
   tier_since: '2026-09-13'
-  demand: 9.9
+  demand: 19.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 1
+  ugc_hits: 2
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-09-13'
-    - 9.9
+    - 19.8
 - id: p1859
   text: 【新型 シエンタ 驚愕】愚策か英断か？ あえて3列目を広くし ...
   category: purchase
@@ -24236,15 +24236,15 @@ prompts:
   tier: longtail
   added_on: '2026-09-13'
   tier_since: '2026-09-13'
-  demand: 9.9
+  demand: 19.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 1
+  ugc_hits: 2
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-09-13'
-    - 9.9
+    - 19.8
 - id: p186
   text: ハイブリッド車の実際の燃費は？
   category: eco
@@ -24270,15 +24270,15 @@ prompts:
   tier: longtail
   added_on: '2026-09-13'
   tier_since: '2026-09-13'
-  demand: 9.9
+  demand: 19.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 1
+  ugc_hits: 2
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-09-13'
-    - 9.9
+    - 19.8
 - id: p1861
   text: クラウンクロスオーバーのマイナーチェンジは2026年に予定されていますか？
   category: purchase
@@ -24304,15 +24304,15 @@ prompts:
   tier: longtail
   added_on: '2026-09-13'
   tier_since: '2026-09-13'
-  demand: 9.9
+  demand: 19.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 1
+  ugc_hits: 2
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-09-13'
-    - 9.9
+    - 19.8
 - id: p1863
   text: 【急げ！】新型ヴォクシーのマイナーチェンジ 改良の内容と改善 ...
   category: purchase
@@ -24322,15 +24322,15 @@ prompts:
   tier: longtail
   added_on: '2026-09-13'
   tier_since: '2026-09-13'
-  demand: 9.9
+  demand: 19.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 1
+  ugc_hits: 2
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-09-13'
-    - 9.9
+    - 19.8
 - id: p1864
   text: 【賛否両論】新型フィットZの良い所・残念な所!マイナーチェンジ ...
   category: purchase
@@ -24340,15 +24340,15 @@ prompts:
   tier: longtail
   added_on: '2026-09-13'
   tier_since: '2026-09-13'
-  demand: 9.9
+  demand: 19.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 1
+  ugc_hits: 2
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-09-13'
-    - 9.9
+    - 19.8
 - id: p1865
   text: ホットウォーターディスペンサーEHWDシリーズの ...
   category: purchase
@@ -24358,15 +24358,15 @@ prompts:
   tier: longtail
   added_on: '2026-09-13'
   tier_since: '2026-09-13'
-  demand: 9.9
+  demand: 19.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 1
+  ugc_hits: 2
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-09-13'
-    - 9.9
+    - 19.8
 - id: p1866
   text: 「マイナーチェンジでさらに魅力増？」Bセグメントジープの ...
   category: purchase
@@ -24376,15 +24376,15 @@ prompts:
   tier: longtail
   added_on: '2026-09-13'
   tier_since: '2026-09-13'
-  demand: 9.9
+  demand: 19.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 1
+  ugc_hits: 2
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-09-13'
-    - 9.9
+    - 19.8
 - id: p1867
   text: フェアレディZ NISMO」をマイナーチェンジ
   category: purchase
@@ -24394,15 +24394,15 @@ prompts:
   tier: longtail
   added_on: '2026-09-13'
   tier_since: '2026-09-13'
-  demand: 9.9
+  demand: 19.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 1
+  ugc_hits: 2
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-09-13'
-    - 9.9
+    - 19.8
 - id: p1868
   text: 新型クラウンのクロスオーバーとセダンの違いは何ですか？
   category: model
@@ -24460,15 +24460,15 @@ prompts:
   tier: longtail
   added_on: '2026-09-13'
   tier_since: '2026-09-13'
-  demand: 9.9
+  demand: 19.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 1
+  ugc_hits: 2
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-09-13'
-    - 9.9
+    - 19.8
 - id: p1871
   text: 簡単パンレシピ｜ポップオーバーの作り方 混ぜて焼くだけ
   category: purchase
@@ -24478,15 +24478,15 @@ prompts:
   tier: longtail
   added_on: '2026-09-13'
   tier_since: '2026-09-13'
-  demand: 9.9
+  demand: 19.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 1
+  ugc_hits: 2
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-09-13'
-    - 9.9
+    - 19.8
 - id: p1872
   text: 登山のロープワーク ③｜オーバーハンドノット
   category: purchase
@@ -24496,15 +24496,15 @@ prompts:
   tier: longtail
   added_on: '2026-09-13'
   tier_since: '2026-09-13'
-  demand: 9.9
+  demand: 19.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 1
+  ugc_hits: 2
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-09-13'
-    - 9.9
+    - 19.8
 - id: p1873
   text: 'ろう者がよく使うオーバー！#手話 #日本手話'
   category: purchase
@@ -24514,15 +24514,15 @@ prompts:
   tier: longtail
   added_on: '2026-09-13'
   tier_since: '2026-09-13'
-  demand: 9.9
+  demand: 19.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 1
+  ugc_hits: 2
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-09-13'
-    - 9.9
+    - 19.8
 - id: p1874
   text: レディース プルオーバー（saori）
   category: purchase
@@ -24532,15 +24532,15 @@ prompts:
   tier: longtail
   added_on: '2026-09-13'
   tier_since: '2026-09-13'
-  demand: 9.9
+  demand: 19.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 1
+  ugc_hits: 2
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-09-13'
-    - 9.9
+    - 19.8
 - id: p1875
   text: 新型ランクル300ハイブリッドは発売されるのか？
   category: eco
@@ -24566,15 +24566,15 @@ prompts:
   tier: longtail
   added_on: '2026-09-13'
   tier_since: '2026-09-13'
-  demand: 9.9
+  demand: 19.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 1
+  ugc_hits: 2
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-09-13'
-    - 9.9
+    - 19.8
 - id: p1877
   text: 【燃費チェック】メルセデス・ベンツ G400d マヌの燃費はいかに ...
   category: eco
@@ -24584,15 +24584,15 @@ prompts:
   tier: longtail
   added_on: '2026-09-13'
   tier_since: '2026-09-13'
-  demand: 9.9
+  demand: 19.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 1
+  ugc_hits: 2
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-09-13'
-    - 9.9
+    - 19.8
 - id: p1878
   text: 'CDWのHPサーバーの納期は？ : r/sysadmin'
   category: service
@@ -24602,15 +24602,15 @@ prompts:
   tier: longtail
   added_on: '2026-09-13'
   tier_since: '2026-09-13'
-  demand: 9.9
+  demand: 19.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 1
+  ugc_hits: 2
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-09-13'
-    - 9.9
+    - 19.8
 - id: p1879
   text: 自分がいま苦戦している納期。その納期に対する責任の大切さ ...
   category: service
@@ -24620,15 +24620,15 @@ prompts:
   tier: longtail
   added_on: '2026-09-13'
   tier_since: '2026-09-13'
-  demand: 9.9
+  demand: 19.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 1
+  ugc_hits: 2
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-09-13'
-    - 9.9
+    - 19.8
 - id: p188
   text: ハイブリッド車で1番燃費がいいのはどれですか？
   category: eco
@@ -24763,6 +24763,60 @@ prompts:
   demand_history:
   - - '2026-09-13'
     - 9.9
+- id: p1887
+  text: スポーツカーの魅力を体験 高松市でモータースポーツ ...
+  category: purchase
+  driver: null
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-09-13'
+  tier_since: '2026-09-13'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-09-13'
+    - 9.9
+- id: p1888
+  text: カーフリーデーin金沢
+  category: purchase
+  driver: null
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-09-13'
+  tier_since: '2026-09-13'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-09-13'
+    - 9.9
+- id: p1889
+  text: 【販売終了】カートゥギャザータープ TT5-791-TN
+  category: purchase
+  driver: null
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-09-13'
+  tier_since: '2026-09-13'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-09-13'
+    - 9.9
 - id: p189
   text: 実燃費が一番いい車は？
   category: eco
@@ -24779,6 +24833,184 @@ prompts:
   growth: 1.0
   keyword: null
   demand_history: []
+- id: p1890
+  text: Lucky Car Channel
+  category: purchase
+  driver: null
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-09-13'
+  tier_since: '2026-09-13'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-09-13'
+    - 9.9
+- id: p1891
+  text: 【白内障手術】症例数より大切なこと。後悔しない眼科医の ...
+  category: purchase
+  driver: null
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-09-13'
+  tier_since: '2026-09-13'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-09-13'
+    - 9.9
+- id: p1892
+  text: 東京喰種のAT終了後数Gでいく東京上空って引き戻し前兆です ...
+  category: purchase
+  driver: null
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-09-13'
+  tier_since: '2026-09-13'
+  demand: 19.8
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 2
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-09-13'
+    - 19.8
+- id: p1893
+  text: 武蔵野市バリアフリー道路特定事業計画
+  category: purchase
+  driver: null
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-09-13'
+  tier_since: '2026-09-13'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-09-13'
+    - 9.9
+- id: p1894
+  text: 残価設定ローンは損得ありますか？
+  category: cost
+  driver: resale
+  brand: false
+  source: paa
+  tier: longtail
+  added_on: '2026-09-13'
+  tier_since: '2026-09-13'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p1895
+  text: 付録3 5分でできる！情報セキュリティ自社診断
+  category: purchase
+  driver: null
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-09-13'
+  tier_since: '2026-09-13'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-09-13'
+    - 9.9
+- id: p1896
+  text: 持続可能な社会のために ナマケモノにもできるアクション・ ...
+  category: purchase
+  driver: null
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-09-13'
+  tier_since: '2026-09-13'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-09-13'
+    - 9.9
+- id: p1897
+  text: 自分の言葉で説明できるようになってほしい「できる」と「わかる」 ...
+  category: purchase
+  driver: null
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-09-13'
+  tier_since: '2026-09-13'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-09-13'
+    - 9.9
+- id: p1898
+  text: 【ピーマンの簡単レシピ】一瞬で出来る！簡単うますぎる。
+  category: purchase
+  driver: null
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-09-13'
+  tier_since: '2026-09-13'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-09-13'
+    - 9.9
+- id: p1899
+  text: 誰もが活躍できるやまぐちの企業
+  category: purchase
+  driver: null
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-09-13'
+  tier_since: '2026-09-13'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-09-13'
+    - 9.9
 - id: p190
   text: ハイブリッド車の実燃費って実際どんくらいですか？
   category: eco
@@ -24813,6 +25045,186 @@ prompts:
     - 59.5
   - - '2026-09-13'
     - 59.5
+- id: p1900
+  text: '何ができると言うの？ #藤川千愛 #chiaifujikawa #なかったことに'
+  category: purchase
+  driver: null
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-09-13'
+  tier_since: '2026-09-13'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-09-13'
+    - 9.9
+- id: p1901
+  text: 弟者 (@Otojya) / X
+  category: purchase
+  driver: null
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-09-13'
+  tier_since: '2026-09-13'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-09-13'
+    - 9.9
+- id: p1902
+  text: 新潟県後期高齢者医療広域連合
+  category: purchase
+  driver: null
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-09-13'
+  tier_since: '2026-09-13'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-09-13'
+    - 9.9
+- id: p1903
+  text: 有料老人ホームに関する不当な表示
+  category: purchase
+  driver: null
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-09-13'
+  tier_since: '2026-09-13'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-09-13'
+    - 9.9
+- id: p1904
+  text: 障害者社会参加推進室
+  category: purchase
+  driver: null
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-09-13'
+  tier_since: '2026-09-13'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-09-13'
+    - 9.9
+- id: p1905
+  text: JIFF | 一般社団法人 日本障がい者サッカー連盟
+  category: purchase
+  driver: null
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-09-13'
+  tier_since: '2026-09-13'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-09-13'
+    - 9.9
+- id: p1906
+  text: 新規就農者チャレンジ事業
+  category: purchase
+  driver: null
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-09-13'
+  tier_since: '2026-09-13'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-09-13'
+    - 9.9
+- id: p1907
+  text: 社会学科、片上 平二郎准教授に聞く、10の質問
+  category: purchase
+  driver: null
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-09-13'
+  tier_since: '2026-09-13'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-09-13'
+    - 9.9
+- id: p1908
+  text: 自動車税の減免（中古商品車）
+  category: purchase
+  driver: null
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-09-13'
+  tier_since: '2026-09-13'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-09-13'
+    - 9.9
+- id: p1909
+  text: 中古住宅・リフォームトータルプランについて
+  category: purchase
+  driver: null
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-09-13'
+  tier_since: '2026-09-13'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-09-13'
+    - 9.9
 - id: p191
   text: ハイブリッド車の実燃費についてわたしは、平成27年式の ...
   category: eco
@@ -24847,6 +25259,174 @@ prompts:
     - 59.5
   - - '2026-09-13'
     - 59.5
+- id: p1910
+  text: 俺の裏山、世界最高難度らしい ～中古ドローンでいつも ...
+  category: cost
+  driver: subscription
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-09-13'
+  tier_since: '2026-09-13'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-09-13'
+    - 9.9
+- id: p1911
+  text: 男性に入れられた瞬間ってどんな感覚ですか？
+  category: purchase
+  driver: null
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-09-13'
+  tier_since: '2026-09-13'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-09-13'
+    - 9.9
+- id: p1912
+  text: 秋田火力発電所4号機の廃止について
+  category: purchase
+  driver: null
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-09-13'
+  tier_since: '2026-09-13'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-09-13'
+    - 9.9
+- id: p1913
+  text: 医薬品医療機器等法第10条 各種休廃止等の届出
+  category: purchase
+  driver: null
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-09-13'
+  tier_since: '2026-09-13'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-09-13'
+    - 9.9
+- id: p1914
+  text: フリードとシエンタではどちらが広いですか？
+  category: purchase
+  driver: null
+  brand: true
+  source: paa
+  tier: longtail
+  added_on: '2026-09-13'
+  tier_since: '2026-09-13'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p1915
+  text: シエンタとフリードの価格を比較するとどちらが安いですか？
+  category: cost
+  driver: cost
+  brand: true
+  source: paa
+  tier: longtail
+  added_on: '2026-09-13'
+  tier_since: '2026-09-13'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p1916
+  text: シエンタとフリードはどちらが高いですか？
+  category: purchase
+  driver: null
+  brand: true
+  source: paa
+  tier: longtail
+  added_on: '2026-09-13'
+  tier_since: '2026-09-13'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p1917
+  text: シエンタとフリードの排気量の違いは？
+  category: model
+  driver: null
+  brand: true
+  source: paa
+  tier: longtail
+  added_on: '2026-09-13'
+  tier_since: '2026-09-13'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p1918
+  text: ランドクルーザー300の燃費は悪いですか？
+  category: eco
+  driver: hybrid
+  brand: false
+  source: paa
+  tier: longtail
+  added_on: '2026-09-13'
+  tier_since: '2026-09-13'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p1919
+  text: ランクル300ハイブリッドは日本でいつ発売されますか?
+  category: eco
+  driver: hybrid
+  brand: true
+  source: paa
+  tier: longtail
+  added_on: '2026-09-13'
+  tier_since: '2026-09-13'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
 - id: p192
   text: 燃費のいいハイブリッド車の実燃費はどれくらいですか30km ...
   category: eco
@@ -24881,6 +25461,74 @@ prompts:
     - 49.6
   - - '2026-09-13'
     - 49.6
+- id: p1920
+  text: Mazda CX-5 4WD Model [Public Road Test Drive] The New ...
+  category: purchase
+  driver: null
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-09-13'
+  tier_since: '2026-09-13'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-09-13'
+    - 9.9
+- id: p1921
+  text: 日産エルグランドG e-4ORCE（4WD）【試乗記】 “オレ”のミニバン
+  category: brand
+  driver: minivan
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-09-13'
+  tier_since: '2026-09-13'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-09-13'
+    - 9.9
+- id: p1922
+  text: ハイランダーの米国価格はいくらですか？
+  category: cost
+  driver: null
+  brand: false
+  source: paa
+  tier: longtail
+  added_on: '2026-09-13'
+  tier_since: '2026-09-13'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p1923
+  text: ハイランダーはトヨタから日本発売されるのはいつですか？
+  category: brand
+  driver: null
+  brand: true
+  source: paa
+  tier: longtail
+  added_on: '2026-09-13'
+  tier_since: '2026-09-13'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
 - id: p193
   text: ハイブリッド車の実燃費はカタログ燃費の何割ぐらいが目安？
   category: eco
