@@ -511,7 +511,8 @@ def build_md(daily, agg28, agg365, mon, dev, ctry, pages, pages365, gd_out, dail
     a("# GA4実測データ：toyota.jp（本格移行用 / account 324699885）")
     a("")
     a("- 区分: 共有可。**実測データ**（デモ・推定ではない）。出典: GA4「Toyota.jp【本格移行用】- GA4」を Windsor.ai 経由で取得（GitHub Actions ga4-daily が毎朝自動更新）")
-    a(f"- 取得日: {TODAY}（データ終端 {YB}）。**この数値を答えるときの出典は「GA4実測（toyota.jp）M/D〜M/D／{TODAY.month}/{TODAY.day}取得」の形で、答えに使った期間と取得日を明記する**")
+    a(f"- 取得日: {TODAY}（データ終端 {YB}）。**出典は「GA4実測（toyota.jp）〈答えに使った期間〉／{TODAY.month}/{TODAY.day}取得」と書く。"
+      f"取得日は {TODAY.month}/{TODAY.day}（データ終端の {YB.month}/{YB.day} ではない）**")
     a(f"- 期間の早見: 28日集計 {D28}〜{YB} ／ 365日集計 {D365}〜{YB} ／ 月次 {m0.strftime('%Y-%m')}〜{YB.strftime('%Y-%m')}（{len(mon)}か月）／ 日次の表 {DD}〜{YB}（{DAILY_DAYS}日）／ 日次CSV {m0}〜{YB}")
     a("- 指標の意味: セッション=訪問数、UU=総ユーザー、新規=初訪問のユーザー、PV=表示回数（screen_page_views）、CV=キーイベント（GA4の\"conversions\"）")
     a("- **UUは足し算しない**: 28日・365日・各月のUUは、その期間で重複を除いて集計した値。日次や月次のUUを足して別の期間のUUにしない（足すと同じ人を何度も数える）。セッション・新規・PV・CVは足してよい")
