@@ -18,6 +18,9 @@ GitHub Actions（ga4-daily）で毎朝実行する。Mac側のデータマンは
   2. 長い期間は月ごとに分けて取り、日付の抜けを照合する。抜けた日は1日単位で取り直す
      （1年まとめて取ると、ある日の行だけが黙って欠けることがあった）
   3. 打ち切り・欠損・不整合は資料と last_check.txt に必ず書く。致命的なものは終了コード1で止め、古い資料を上書きしない
+  4. AIらしいのにどのサービスにも入らない流入元を毎朝探し、last_check.txt に書く（9月の gemini 表記の見落としの再発防止）
+  5. 月次で前月から35%以上動いた月は資料に明記する（計測の変更か実際の変化かを確かめずに前年比を外へ出さない）
+  6. 毎日の取得は差分だけ（日次は直近40日と抜けのある月、AI流入は直近10日と抜けのある月）。毎月1日と判定規則の変更時は全期間を取り直す
 
 環境変数
   WINDSOR_API_KEY       必須（GitHub Secrets）
@@ -25,6 +28,7 @@ GitHub Actions（ga4-daily）で毎朝実行する。Mac側のデータマンは
   GA4_DAILY_DAYS        資料に載せる日次の日数（既定40）
   GA4_AI_REFRESH_DAYS   AI流入を毎回取り直す直近日数（既定10。速報値を確定値で上書きするため）
   GA4_OUT_DIR           試験用の出力先
+  GA4_FULL=1            保存済みの日次を使わず全期間を取り直す（毎月1日は自動で全期間）
   GA4_MOCK=1            ネットに出ずに合成データで動かす（コードの動作確認用）
 """
 from __future__ import annotations
@@ -42,7 +46,8 @@ from collections import defaultdict
 from datetime import date, datetime, timedelta, timezone
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from ai_sources import RULES_VERSION, SERVICES, classify, windsor_filter  # noqa: E402
+from ai_sources import (RULES_VERSION, SERVICES, classify, hint_filter, unclassified_ai_like,  # noqa: E402
+                        windsor_filter)
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 ACC = "324699885"
@@ -57,6 +62,9 @@ DAILY_DAYS = int(os.environ.get("GA4_DAILY_DAYS", "40"))
 AI_REFRESH_DAYS = int(os.environ.get("GA4_AI_REFRESH_DAYS", "10"))
 OUT_DIR = os.environ.get("GA4_OUT_DIR") or os.path.join(ROOT, "data")
 MAX_ROWS = 200000
+FULL = os.environ.get("GA4_FULL") == "1" or TODAY.day == 1
+HINT_MIN = 20                                       # 見落とし点検：直近7日でこのセッション数以上なら知らせる
+STEP = 0.35                                         # 月次の段差：前月比でこれ以上動いたら資料に書く
 
 D28 = YB - timedelta(days=27)
 D365 = YB - timedelta(days=364)
@@ -77,6 +85,7 @@ SVC_JP = {"chatgpt": "ChatGPT", "gemini": "Gemini", "copilot": "Copilot", "perpl
 WARN: list[str] = []      # 資料と点検結果に書く注意
 FAIL: list[str] = []      # 致命的。資料を更新しない
 NOTE: list[str] = []      # 点検で確認できたこと
+OWNER: list[str] = []     # けんけんさんだけに知らせる注意（資料には書かない。last_check.txt の WARN 行になる）
 
 
 # ---------------------------------------------------------------- 取得
@@ -100,6 +109,10 @@ def _mock(fields, dfrom, dto, flt):
                 rows.append({"date": str(d), "source": src, "sessions": int(base * rnd.uniform(0.8, 1.2))})
             if not flt:
                 rows.append({"date": str(d), "source": "google", "sessions": 150000})
+    elif "source" in fields:
+        for src, c in (("chatgpt.com", 5000), ("gemini", 200), ("felo.ai", 25), ("kagi.com", 18), ("notebooklm.google.com", 4),
+                       ("tagassistant.google.com", 30), ("u.email.openai.com", 2)):
+            rows.append({"source": src, "sessions": c})
     elif "date" in fields:
         for d in days:
             if d.day == 29 and len(days) > 3 and d.month % 3 == 0:
@@ -217,6 +230,19 @@ def fetch_daily(d0: date, d1: date):
     return by, still
 
 
+def load_daily_csv() -> dict:
+    """前回までの日次CSV（リポジトリの data/ga4/）。読めない・列が足りないときは空＝全期間を取り直す。"""
+    p = os.path.join(ROOT, "data", "ga4", "toyota_jp_ga4_daily.csv")
+    try:
+        with open(p, encoding="utf-8") as f:
+            rows = list(csv.DictReader(f))
+    except Exception:  # noqa: BLE001
+        return {}
+    if not rows or any(k not in rows[0] for k in ["date"] + METRICS):
+        return {}
+    return {r["date"]: {k: n(r.get(k)) for k in METRICS} for r in rows if r.get("date")}
+
+
 def fetch_ai(d0: date, d1: date, use_filter: bool = True):
     """AIアシスタント経由セッションを日次×サービスで取る（月ごと・抜けは1日単位で取り直す）。"""
     flt = windsor_filter()
@@ -283,7 +309,25 @@ def main():
     m0 = month_start(YB, MONTHS - 1)              # 月次・日次CSVの開始（月初）
 
     # --- 取得 ---
-    daily, daily_missing = fetch_daily(m0, YB)
+    # 日次：保存済みのCSVがあれば、直近40日と抜けのある月だけ取り直す（毎月1日・GA4_FULL=1 は全期間）
+    old = {} if FULL else load_daily_csv()
+    recent_from = max(m0, YB - timedelta(days=max(DAILY_DAYS, 40) - 1))
+    if old:
+        holes = [(a, b) for a, b in month_chunks(m0, recent_from - timedelta(days=1))
+                 if any(str(d) not in old for d in daterange(a, b))]
+        ranges = holes + [(recent_from, YB)]
+        daily = {d: v for d, v in old.items() if str(m0) <= d < str(recent_from)}
+        NOTE.append(f"日次：保存済み {len(daily)} 日はそのまま使い、直近 {(YB - recent_from).days + 1} 日"
+                    + (f"と抜けのある {len(holes)} か月" if holes else "") + "を取り直した（毎月1日は全期間を取り直す）")
+    else:
+        ranges = [(m0, YB)]
+        daily = {}
+        NOTE.append("日次：全期間を取り直した" + ("（毎月1日または GA4_FULL=1）" if FULL else "（保存済みのCSVが無い・読めない）"))
+    daily_missing: list[str] = []
+    for a, b in ranges:
+        got, miss = fetch_daily(a, b)
+        daily.update(got)
+        daily_missing += miss
     agg28 = aggregate(D28, YB)
     agg365 = aggregate(D365, YB)
     monthly_rows = windsor(["year_month"] + METRICS, m0, YB)
@@ -325,6 +369,10 @@ def main():
         gd = json.load(open(gpath, encoding="utf-8"))
     except Exception:  # noqa: BLE001
         gd = {}
+    old_rules = (gd.get("_meta") or {}).get("rules")
+    if gd and old_rules != RULES_VERSION:
+        NOTE.append(f"AI流入：判定規則が変わったため（{old_rules or '旧規則'} → {RULES_VERSION}）、{m0}以降を全て取り直した")
+        gd = {}
     have = {k for k in gd if not k.startswith("_")}
     need_months = [(a, b) for a, b in month_chunks(m0, YB) if any(str(d) not in have for d in daterange(a, b))]
     refresh_from = YB - timedelta(days=AI_REFRESH_DAYS - 1)
@@ -337,6 +385,26 @@ def main():
     if full_yb is not None:
         ai[str(YB)] = full_yb
     ai_missing = sorted(set(d for d in ai_missing if d not in ai))
+
+    # 見落としの点検：AIらしいのにどのサービスにも入っていない流入元（直近7日）
+    d7 = YB - timedelta(days=6)
+    try:
+        try:
+            hrows = windsor(["source", "sessions"], d7, YB, hint_filter())
+        except RuntimeError:
+            hrows = windsor(["source", "sessions"], d7, YB)
+        cand = unclassified_ai_like((r.get("source"), r.get("sessions", 0)) for r in hrows)
+        big = [(s_, c) for s_, c in cand if c >= HINT_MIN]
+        small = [(s_, c) for s_, c in cand if c < HINT_MIN]
+        if big:
+            OWNER.append(f"AIらしいのに分類されていない流入元（{d7}〜{YB}・{HINT_MIN}セッション以上）："
+                         + "、".join(f"{s_} {c}" for s_, c in big[:8])
+                         + "。src/ai_sources.py の SVC_KEYS（数える）か KNOWN_OTHER（数えない）に追加するか判断が要る")
+        NOTE.append("AI流入元の見落とし点検（直近7日）："
+                    + ("、".join(f"{s_} {c}" for s_, c in small[:6]) + f" は{HINT_MIN}未満のため様子見" if small else "該当なし")
+                    + ("" if not big else f"／{HINT_MIN}以上 {len(big)} 件は上の WARN を参照"))
+    except RuntimeError as e:
+        OWNER.append(f"AI流入元の見落とし点検に失敗：{str(e)[:120]}")
 
     # --- 致命的な点検（失敗したら資料を更新しない） ---
     if not daily or str(YB) not in daily:
@@ -527,6 +595,12 @@ def build_md(daily, agg28, agg365, mon, dev, ctry, pages, pages365, gd_out, dail
     if big:
         a("")
         a(f"※ セッションが前年同月から3割以上動いている月: {', '.join(big)}。原因（計測方法の変更など）はこの資料では確かめていない。前年比を伝えるときはこの点を添える")
+    steps = month_steps(mon)
+    if steps:
+        a("")
+        a(f"※ 前月から{int(STEP * 100)}%以上動いた月（計測設定の変更か実際の変化かは、この資料では確かめていない。前年比や期間の比較がこの月をまたぐときは、その旨を添える）")
+        for line in steps:
+            a(f"- {line}")
     a("")
     a(f"## 日次推移（直近{DAILY_DAYS}日：{DD}〜{YB}。UUはその日のUU）")
     a("| 日付 | セッション | UU | 新規 | PV | CV |")
@@ -562,10 +636,31 @@ def build_md(daily, agg28, agg365, mon, dev, ctry, pages, pages365, gd_out, dail
     return "\n".join(L) + "\n"
 
 
+def month_steps(mon) -> list:
+    """完了した月どうしで、前月比 STEP 以上動いた指標を拾う。セッションが動かずに他だけ動いた場合はそれも書く。"""
+    names = {"sessions": "セッション", "totalusers": "月間UU", "screen_page_views": "PV", "conversions": "CV"}
+    cur_ym = YB.strftime("%Y%m")
+    yms = [ym for ym in sorted(mon) if ym != cur_ym or YB == month_end(YB)]
+    out = []
+    for prev, ym in zip(yms, yms[1:]):
+        p, v = mon[prev], mon[ym]
+        moved = []
+        for k, lab in names.items():
+            if p.get(k) and abs(v[k] / p[k] - 1) >= STEP:
+                moved.append(f"{lab} {pct(v[k], p[k])}")
+        if not moved:
+            continue
+        line = f"{ym[:4]}-{ym[4:]}：" + "、".join(moved)
+        if p.get("sessions") and abs(v["sessions"] / p["sessions"] - 1) < 0.15:
+            line += f"（セッションは {pct(v['sessions'], p['sessions'])}。この指標だけが大きく動いている）"
+        out.append(line)
+    return out
+
+
 def write_check():
     lines = [f"ga4_report 点検 {datetime.now(JST).strftime('%Y-%m-%d %H:%M JST')}（データ終端 {YB}）"]
     lines += ["FAIL: " + x for x in FAIL]
-    lines += ["WARN: " + x for x in WARN]
+    lines += ["WARN: " + x for x in WARN + OWNER]
     lines += ["OK: " + x for x in NOTE]
     txt = "\n".join(lines) + "\n"
     with open(out_path("ga4", "last_check.txt"), "w", encoding="utf-8") as f:

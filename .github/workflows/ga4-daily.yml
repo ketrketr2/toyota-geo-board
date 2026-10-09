@@ -6,6 +6,7 @@ name: ga4-daily
 # を更新する。鍵は GitHub Secrets（WINDSOR_API_KEY）にだけ置く。Mac側のデータマンはこのリポジトリを pull して取り込む。
 # GitHub の schedule は混雑で数時間遅れたり落ちたりするため、早朝と朝の2回入れている（内容が同じなら何もコミットしない）。
 # 点検で致命的な問題が出たら終了コード1で止まり、前日の資料を上書きしない（実行は赤になる）。
+# push に3回失敗したときも赤にする（黙って古いままにしない）。Mac側（boards_sync.py）も、点検の失敗と資料の古さを毎回見て、けんけんさんにDMする。
 on:
   schedule:
     - cron: "47 19 * * *"    # 04:47 JST
@@ -14,6 +15,10 @@ on:
     inputs:
       dry_run:
         description: "試験実行（コミットせず、出力を成果物として保存）"
+        type: boolean
+        default: false
+      full:
+        description: "保存済みの日次を使わず全期間を取り直す（通常は毎月1日だけ自動で全期間）"
         type: boolean
         default: false
   push:
@@ -40,6 +45,7 @@ jobs:
         env:
           WINDSOR_API_KEY: ${{ secrets.WINDSOR_API_KEY }}
           GA4_OUT_DIR: ${{ (inputs.dry_run || github.ref != 'refs/heads/main') && '/tmp/ga4_out' || '' }}
+          GA4_FULL: ${{ inputs.full && '1' || '' }}
         run: python src/ga4_report.py
       - name: Show dry-run output
         if: ${{ always() && (inputs.dry_run || github.ref != 'refs/heads/main') }}
@@ -64,10 +70,14 @@ jobs:
         run: |
           git config user.name  "geo-board-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add -f data/ga4 data/ga4_daily.json || true
-          git diff --staged --quiet || git commit -m "chore: ga4 daily $(date -u +%Y-%m-%dT%H:%M)"
-          git pull --rebase -q || true
-          git push || true
+          git add -f data/ga4 data/ga4_daily.json
+          git diff --staged --quiet && { echo "変更なし"; exit 0; }
+          git commit -m "chore: ga4 daily $(date -u +%Y-%m-%dT%H:%M)"
+          for i in 1 2 3; do
+            git pull --rebase -q && git push && exit 0
+            echo "push 失敗（${i}回目）。少し待って取り直す"; sleep $((i * 15))
+          done
+          echo "::error::push に3回失敗した。データマンには前日の資料が残る"; exit 1
       - name: Commit check result on failure
         if: ${{ failure() && !inputs.dry_run && github.ref == 'refs/heads/main' }}
         run: |
@@ -75,5 +85,4 @@ jobs:
           git config user.email "actions@users.noreply.github.com"
           git add -f data/ga4/last_check.txt || true
           git diff --staged --quiet || git commit -m "chore: ga4 daily check FAILED $(date -u +%Y-%m-%dT%H:%M)"
-          git pull --rebase -q || true
-          git push || true
+          for i in 1 2 3; do git pull --rebase -q && git push && break; sleep $((i * 15)); done
