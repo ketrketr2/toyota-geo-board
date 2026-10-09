@@ -48,33 +48,11 @@ _BOT_RE = re.compile("|".join(re.escape(b[0]) for b in AI_BOTS), re.I)
 
 
 # ---------------------------------------------------------------- GA4
-# source文字列 → サービス名の判定。ドメイン完全一致ではなくキーワードで拾う。
-# 実測では "openai" "copilot.com" のような表記が主流で、ドメイン一致だけだと大半を取りこぼす（実測の6割は "openai"）。
-_SVC_KEYS = [
-    ("chatgpt", ("chatgpt", "openai")),
-    ("gemini", ("gemini.google.com",)),        # 社内系 *.gemini.oneoffice.jp を誤検知しないためFQDNで
-    ("copilot", ("copilot",)),
-    ("grok", ("grok",)),
-    ("deepseek", ("deepseek",)),
-    ("claude", ("claude",)),
-    ("perplexity", ("perplexity",)),
-]
-# 社内ツール・検証環境の除外（toyota.jp実測で確認済みのノイズ）
-_SVC_EXCLUDE = ("toyotaconnected", "azurewebsites", "oneoffice.jp", "uhw.jp", "ngrok")
-
-
-def _classify_sources(pairs) -> dict:
-    """[(source, sessions)] をサービス別に集計する。"""
-    out = Counter()
-    for src, n in pairs:
-        s = (src or "").lower()
-        if any(x in s for x in _SVC_EXCLUDE):
-            continue
-        for svc, keys in _SVC_KEYS:
-            if any(k in s for k in keys):
-                out[svc] += int(n)
-                break
-    return {svc: out.get(svc, 0) for svc, _ in _SVC_KEYS}
+# source文字列 → サービス名の判定は src/ai_sources.py に一本化（データマン用のGA4資料と同じ規則）。
+# 2026-10-09: Gemini の単独表記 "gemini"（2026-09-04〜）を数えるよう規則を更新。
+from ai_sources import EXCLUDE as _SVC_EXCLUDE  # noqa: E402,F401
+from ai_sources import SVC_KEYS as _SVC_KEYS  # noqa: E402,F401
+from ai_sources import classify as _classify_sources  # noqa: E402
 
 
 def _ga4_target_day(day: str) -> str:
@@ -117,6 +95,7 @@ def ga4_sessions(day: str) -> dict:
                     "date_from": t, "date_to": t,
                     "fields": "source,sessions",
                     "select_accounts": env("GA4_PROPERTY_ID") or "324699885",
+                    "_max_rows": "50000",
                     "_renderer": "json"},
             timeout=60)
         r.raise_for_status()
