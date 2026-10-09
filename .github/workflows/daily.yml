@@ -25,7 +25,7 @@ on:
       - "config/**"
       - "prompts/**"
       - "!prompts/registry.yaml"   # ← 収穫botが毎週書き換えるので対象外
-      - "data/ga4_daily.json"      # ← GA4実測の日次更新（Claude定例タスクが置く）で画面を作り直す
+      - "data/ga4_daily.json"      # ← AI経由セッションの日次（ga4-daily が毎朝更新）。※GITHUB_TOKEN の push では起動しないので、通常は次の定時実行で反映
       - ".github/workflows/**"
 
 permissions:
@@ -144,6 +144,7 @@ jobs:
           git add data/snapshots data/fanout data/harvest_log.json prompts/registry.yaml
           git add data/search_volumes.json 2>/dev/null || true
           git diff --staged --quiet || git commit -m "chore: snapshot $(date -u +%Y-%m-%d)"
+          git pull --rebase -q || true    # ga4-daily のコミットと重なっても押し戻されないように
           git push
 
       # push（＝こちらがソースを直したとき）は AI を叩かない。

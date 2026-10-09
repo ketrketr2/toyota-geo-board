@@ -1,11 +1,21 @@
 name: ga4-daily
 
-# toyota.jp の GA4 実測（Windsor.ai経由）を毎朝取得し、データマン用の日本語資料 data/ga4/toyota_jp_ga4.md を更新する。
-# 鍵はGitHub Secrets（WINDSOR_API_KEY）にだけ置く。Mac側のデータマンはこのリポジトリを pull して資料に取り込む。
+# toyota.jp の GA4 実測（Windsor.ai経由）を毎朝取得し、
+#   data/ga4/        … データマン用の日本語資料（toyota_jp_ga4.md）と計算用CSV、自己点検の結果（last_check.txt）
+#   data/ga4_daily.json … GEOボード用の AI 経由セッション日次（直近は毎朝取り直して確定値に置き換える）
+# を更新する。鍵は GitHub Secrets（WINDSOR_API_KEY）にだけ置く。Mac側のデータマンはこのリポジトリを pull して取り込む。
+# GitHub の schedule は混雑で数時間遅れたり落ちたりするため、早朝と朝の2回入れている（内容が同じなら何もコミットしない）。
+# 点検で致命的な問題が出たら終了コード1で止まり、前日の資料を上書きしない（実行は赤になる）。
 on:
   schedule:
-    - cron: "40 21 * * *"    # 06:40 JST
+    - cron: "47 19 * * *"    # 04:47 JST
+    - cron: "11 23 * * *"    # 08:11 JST（予備）
   workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "試験実行（コミットせず、出力を成果物として保存）"
+        type: boolean
+        default: false
   push:
     branches: [main]
     paths: ["triggers/ga4-daily.json"]
@@ -20,7 +30,7 @@ concurrency:
 jobs:
   ga4:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 40
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -29,12 +39,30 @@ jobs:
       - name: Fetch GA4 via Windsor and build report
         env:
           WINDSOR_API_KEY: ${{ secrets.WINDSOR_API_KEY }}
+          GA4_OUT_DIR: ${{ inputs.dry_run && '/tmp/ga4_out' || '' }}
         run: python src/ga4_report.py
+      - name: Upload dry-run output
+        if: ${{ always() && inputs.dry_run }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: ga4-dry-run
+          path: /tmp/ga4_out
+          if-no-files-found: warn
       - name: Commit
+        if: ${{ !inputs.dry_run }}
         run: |
           git config user.name  "geo-board-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add -f data/ga4 || true
+          git add -f data/ga4 data/ga4_daily.json || true
           git diff --staged --quiet || git commit -m "chore: ga4 daily $(date -u +%Y-%m-%dT%H:%M)"
+          git pull --rebase -q || true
+          git push || true
+      - name: Commit check result on failure
+        if: ${{ failure() && !inputs.dry_run }}
+        run: |
+          git config user.name  "geo-board-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add -f data/ga4/last_check.txt || true
+          git diff --staged --quiet || git commit -m "chore: ga4 daily check FAILED $(date -u +%Y-%m-%dT%H:%M)"
           git pull --rebase -q || true
           git push || true

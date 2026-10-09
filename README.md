@@ -46,8 +46,9 @@ UI・スコア・差分・アラートまで全部そのまま確認できる。
 | `ACCESS_LOG_PATH` | AIボット到達（変数で指定） | 自社サーバー/CDNのアクセスログ | 無料 |
 | `SLACK_WEBHOOK_URL` | 日次通知 | Slack App → Incoming Webhooks | 無料 |
 
-> AI経由セッション（GA4）は ①GA4 Data API → ②Windsor.ai（`WINDSOR_API_KEY`）→ ③`data/ga4_daily.json`（手動/Claude日次更新の実測）→ ④demo値 の順で解決される。
-> 2026-08-25 に 06-14〜08-24 の実測を `data/ga4_daily.json` へ投入済み（表示はスナップショット日の前日実績）。
+> AI経由セッション（GA4）は ①GA4 Data API → ②Windsor.ai（`WINDSOR_API_KEY`）→ ③`data/ga4_daily.json` → ④demo値 の順で解決され、スナップショットに入る（表示はスナップショット日の前日実績）。
+> `data/ga4_daily.json` は ga4-daily（`src/ga4_report.py`）が毎朝更新する確定値（約25か月分、直近10日は毎朝取り直し）。画面ではスナップショットの速報値より優先して表示される。
+> サービス判定の規則は `src/ai_sources.py` に一本化（2026-10-09: Gemini の単独表記 "gemini" を追加）。
 
 > **課金が発生するのは DataForSEO だけ**。500プロンプト × 4サーフェス × 日次で月 $50〜300 の想定。
 > 最初は `config/settings.yaml` の `tier_schedule.core.max_prompts` を小さくして様子を見ること。
