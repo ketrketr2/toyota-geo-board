@@ -95,6 +95,7 @@ def ga4_sessions(day: str) -> dict:
                     "date_from": t, "date_to": t,
                     "fields": "source,sessions",
                     "select_accounts": env("GA4_PROPERTY_ID") or "324699885",
+                    "_max_rows": "50000",
                     "_renderer": "json"},
             timeout=60)
         r.raise_for_status()

@@ -80,7 +80,7 @@ COUNTRY_JP = {"Japan": "日本", "Singapore": "シンガポール", "United Stat
 DEVICE_JP = {"mobile": "モバイル", "desktop": "PC(デスクトップ)", "tablet": "タブレット", "smart tv": "スマートTV",
              "smarttv": "スマートTV", "(other)": "その他（GA4がまとめた行）"}
 SVC_JP = {"chatgpt": "ChatGPT", "gemini": "Gemini", "copilot": "Copilot", "perplexity": "Perplexity",
-          "claude": "Claude", "grok": "Grok", "deepseek": "DeepSeek"}
+          "claude": "Claude", "grok": "Grok", "deepseek": "DeepSeek", "doubao": "豆包（Doubao）", "other_ai": "その他のAI"}
 
 WARN: list[str] = []      # 資料と点検結果に書く注意
 FAIL: list[str] = []      # 致命的。資料を更新しない
@@ -616,7 +616,7 @@ def build_md(daily, agg28, agg365, mon, dev, ctry, pages, pages365, gd_out, dail
     days = sorted(k for k in gd_out if not k.startswith("_"))
     if days:
         a("## AIアシスタント経由のセッション")
-        a(f"- 日次×サービス（ChatGPT／Gemini／Copilot／Perplexity／Claude／Grok／DeepSeek）の実測を {days[0]}〜{days[-1]} で毎朝更新。表はダッシュボード資料「GA4 AI経由セッション（日次）」、計算用は ai_referrals_daily.csv")
+        a(f"- 日次×サービス（{'／'.join(SVC_JP.get(x, x) for x in SERVICES)}）の実測を {days[0]}〜{days[-1]} で毎朝更新。表は資料「GA4 AI経由セッション（日次・サービス別の実測）」、計算用は ai_referrals_daily.csv")
         a("")
     a("## データの注意（自動点検の結果）")
     a("- 前日分は速報値。GA4は処理に24〜48時間かかり、その間に数字が増えることがある（直近1〜2日は低めに出る）")
