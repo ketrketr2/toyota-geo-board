@@ -17,8 +17,8 @@ on:
         type: boolean
         default: false
   push:
-    branches: [main]
-    paths: ["triggers/ga4-daily.json"]
+    branches: [main, "fix/**"]
+    paths: ["triggers/ga4-daily.json", "src/ga4_report.py", "src/ai_sources.py", ".github/workflows/ga4-daily.yml"]
 
 permissions:
   contents: write
@@ -39,17 +39,28 @@ jobs:
       - name: Fetch GA4 via Windsor and build report
         env:
           WINDSOR_API_KEY: ${{ secrets.WINDSOR_API_KEY }}
-          GA4_OUT_DIR: ${{ inputs.dry_run && '/tmp/ga4_out' || '' }}
+          GA4_OUT_DIR: ${{ (inputs.dry_run || github.ref != 'refs/heads/main') && '/tmp/ga4_out' || '' }}
         run: python src/ga4_report.py
+      - name: Show dry-run output
+        if: ${{ always() && (inputs.dry_run || github.ref != 'refs/heads/main') }}
+        run: |
+          ls -la /tmp/ga4_out /tmp/ga4_out/ga4 || true
+          cat /tmp/ga4_out/ga4/last_check.txt || true
+          echo "===== toyota_jp_ga4.md ====="
+          cat /tmp/ga4_out/ga4/toyota_jp_ga4.md || true
+          echo "===== monthly.csv ====="
+          cat /tmp/ga4_out/ga4/toyota_jp_ga4_monthly.csv || true
+          echo "===== ai tail ====="
+          tail -n 20 /tmp/ga4_out/ga4/ai_referrals_daily.csv || true
       - name: Upload dry-run output
-        if: ${{ always() && inputs.dry_run }}
+        if: ${{ always() && (inputs.dry_run || github.ref != 'refs/heads/main') }}
         uses: actions/upload-artifact@v4
         with:
           name: ga4-dry-run
           path: /tmp/ga4_out
           if-no-files-found: warn
       - name: Commit
-        if: ${{ !inputs.dry_run }}
+        if: ${{ !inputs.dry_run && github.ref == 'refs/heads/main' }}
         run: |
           git config user.name  "geo-board-bot"
           git config user.email "actions@users.noreply.github.com"
@@ -58,7 +69,7 @@ jobs:
           git pull --rebase -q || true
           git push || true
       - name: Commit check result on failure
-        if: ${{ failure() && !inputs.dry_run }}
+        if: ${{ failure() && !inputs.dry_run && github.ref == 'refs/heads/main' }}
         run: |
           git config user.name  "geo-board-bot"
           git config user.email "actions@users.noreply.github.com"
