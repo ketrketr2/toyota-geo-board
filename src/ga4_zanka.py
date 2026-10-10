@@ -106,9 +106,24 @@ def run(tag, fields, dfrom, dto, flt):
 
 
 def main():
+    only_cv = "--only-cv" in sys.argv
     res = {"generated_at": datetime.now(JST).isoformat(), "account": ACC,
            "range28": [str(D28), str(YB)], "range90": [str(D90), str(YB)]}
     Z = ZANKA_PATHS + COMPARE_PATHS
+    if only_cv:
+        res["landing_conv1"] = run("landing_conv1", ["landing_page", "sessions"] + CONV1, D28, YB, or_filter("landing_page", Z))
+        res["landing_conv2"] = run("landing_conv2", ["landing_page", "sessions"] + CONV2, D28, YB, or_filter("landing_page", Z))
+        res["page_conv1"] = run("page_conv1", ["page_path", "sessions"] + CONV1, D28, YB, or_filter("page_path", Z))
+        res["page_clicks"] = run("page_clicks", ["page_path", "event_name", "customevent_event_label", "event_count"],
+                                 D28, YB, [or_filter("page_path", ZANKA_PATHS), "and", ["event_name", "eq", "custom_link_click"]])
+        res["page_clicks_id"] = run("page_clicks_id", ["page_path", "customevent_link_id", "event_count"],
+                                    D28, YB, [or_filter("page_path", ZANKA_PATHS), "and", ["event_name", "eq", "custom_link_click"]])
+        res["pages_ai_90"] = run("pages_ai_90", ["page_path", "source", "sessions"], D90, YB,
+                                 [or_filter("page_path", ZANKA_PATHS + ["/alphard/"]), "and", or_filter("source", AI_SRC)])
+        res["log"] = LOG
+        (OUT / f"ga4_cv_{TODAY}.json").write_text(json.dumps(res, ensure_ascii=False, indent=1), encoding="utf-8")
+        print(f"完了(cv): {sum(1 for l in LOG if l.get('ok'))}/{len(LOG)}")
+        return
     # 1. ページパス別・日別（90日）
     res["pages_daily"] = run("pages_daily", ["date", "page_path", "sessions", "screen_page_views", "totalusers"],
                              D90, YB, or_filter("page_path", Z))

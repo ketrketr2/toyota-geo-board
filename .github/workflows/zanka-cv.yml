@@ -1,0 +1,39 @@
+name: zanka-cv
+
+# 残価設定型プラン関連ページの GA4 実測だけを取り直す（Windsor.ai）。
+# 発火: 手動（workflow_dispatch）または triggers/zanka-cv.json の更新push。
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ["triggers/zanka-cv.json"]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: zanka-cv
+  cancel-in-progress: false
+
+jobs:
+  ga4:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: GA4 (Windsor) for zanka pages
+        env:
+          WINDSOR_API_KEY: ${{ secrets.WINDSOR_API_KEY }}
+        run: python src/ga4_zanka.py --only-cv
+      - name: Commit
+        if: ${{ always() }}
+        run: |
+          git config user.name  "geo-board-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add -f data/zanka || true
+          git diff --staged --quiet || git commit -m "chore: zanka cv $(date -u +%Y-%m-%dT%H:%M)"
+          git pull --rebase -q || true
+          git push || true
