@@ -5,6 +5,15 @@ name: zanka-flat
 #  ② DataForSEO: 残価語 × desktop/mobile の自然検索（AIO・引用元・PAA）、キーワード候補（SERP item types 付き）
 on:
   workflow_dispatch:
+    inputs:
+      only_sc:
+        description: "Search Console だけ取り直す"
+        type: boolean
+        default: false
+      skip_aio:
+        description: "AIO/SERP を飛ばす"
+        type: boolean
+        default: false
   push:
     branches: [main]
     paths: ["triggers/zanka-flat.json"]
@@ -30,8 +39,10 @@ jobs:
         continue-on-error: true
         env:
           WINDSOR_API_KEY: ${{ secrets.WINDSOR_API_KEY }}
-        run: python src/ga4_zanka.py --flat
+        run: |
+          if [ "${{ inputs.only_sc }}" = "true" ]; then python src/ga4_zanka.py --sc; else python src/ga4_zanka.py --flat; python src/ga4_zanka.py --sc; fi
       - name: AIO / SERP (API)
+        if: ${{ inputs.skip_aio != true }}
         continue-on-error: true
         env:
           DATAFORSEO_LOGIN:    ${{ secrets.DATAFORSEO_LOGIN || vars.DATAFORSEO_LOGIN || secrets.DATAFORCED_LOGIN }}

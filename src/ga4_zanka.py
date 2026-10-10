@@ -178,12 +178,35 @@ def flat():
     print(f"完了(flat): {sum(1 for l in LOG if l.get('ok'))}/{len(LOG)}")
 
 
+
+def sc():
+    """Search Console（GA4連携）のランディング別クリック・表示・順位。フィールドの組み合わせ違いを順に試す。"""
+    res = {"generated_at": datetime.now(JST).isoformat(), "account": ACC, "range28": [str(D28), str(YB)]}
+    variants = [
+        ("sc_lp_full", ["landing_page_plus_query_string", "organic_google_search_clicks", "organic_google_search_impressions", "organic_google_search_click_through_rate", "organic_google_search_average_position"], or_filter("landing_page_plus_query_string", ZANKA_PATHS)),
+        ("sc_lp_ci", ["landing_page_plus_query_string", "organic_google_search_clicks", "organic_google_search_impressions"], or_filter("landing_page_plus_query_string", ZANKA_PATHS)),
+        ("sc_lp_ci_nofilter", ["landing_page_plus_query_string", "organic_google_search_clicks", "organic_google_search_impressions"], None),
+        ("sc_lp_pos_nofilter", ["landing_page_plus_query_string", "organic_google_search_average_position", "organic_google_search_click_through_rate"], None),
+        ("sc_lp_plain", ["landing_page", "organic_google_search_clicks", "organic_google_search_impressions"], or_filter("landing_page", ZANKA_PATHS)),
+    ]
+    for tag, fields, flt in variants:
+        res[tag] = run(tag, fields, D28, YB, flt)
+    # スクロール（小さく）：ページ別 scroll イベント数
+    res["scroll_ev"] = run("scroll_ev", ["page_path", "event_count"], D28, YB, [or_filter("page_path", ZANKA_PATHS), "and", ["event_name", "eq", "scroll"]])
+    res["view_ev"] = run("view_ev", ["page_path", "event_count"], D28, YB, [or_filter("page_path", ZANKA_PATHS), "and", ["event_name", "eq", "page_view"]])
+    res["log"] = LOG
+    (OUT / f"ga4_sc_{TODAY}.json").write_text(json.dumps(res, ensure_ascii=False, indent=1), encoding="utf-8")
+    print(f"完了(sc): {sum(1 for l in LOG if l.get('ok'))}/{len(LOG)}")
+
+
 def main():
     only_cv = "--only-cv" in sys.argv
     if "--compare" in sys.argv:
         compare(); return
     if "--flat" in sys.argv:
         flat(); return
+    if "--sc" in sys.argv:
+        sc(); return
     res = {"generated_at": datetime.now(JST).isoformat(), "account": ACC,
            "range28": [str(D28), str(YB)], "range90": [str(D90), str(YB)]}
     Z = ZANKA_PATHS + COMPARE_PATHS
