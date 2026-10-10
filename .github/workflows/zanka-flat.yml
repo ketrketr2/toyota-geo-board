@@ -1,0 +1,49 @@
+name: zanka-flat
+
+# 残価ページの現状把握（フラットなGA分析）と、検索面のAIによる概要（AIO）の現状把握。
+#  ① GA4（Windsor）: 365日トレンド・エンゲージメント・新規/リピート・チャネル・地域・時間帯・イベント・次ページ・Search Console
+#  ② DataForSEO: 残価語 × desktop/mobile の自然検索（AIO・引用元・PAA）、キーワード候補（SERP item types 付き）
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ["triggers/zanka-flat.json"]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: zanka-flat
+  cancel-in-progress: false
+
+jobs:
+  flat:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -q pyyaml requests
+      - name: GA4 flat (Windsor)
+        continue-on-error: true
+        env:
+          WINDSOR_API_KEY: ${{ secrets.WINDSOR_API_KEY }}
+        run: python src/ga4_zanka.py --flat
+      - name: AIO / SERP (API)
+        continue-on-error: true
+        env:
+          DATAFORSEO_LOGIN:    ${{ secrets.DATAFORSEO_LOGIN || vars.DATAFORSEO_LOGIN || secrets.DATAFORCED_LOGIN }}
+          DATAFORSEO_PASSWORD: ${{ secrets.DATAFORSEO_PASSWORD }}
+          GEO_BOARD_MODE: ${{ vars.GEO_BOARD_MODE || 'live' }}
+        run: python src/zanka_aio.py
+      - name: Commit
+        if: ${{ always() }}
+        run: |
+          git config user.name  "geo-board-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add -f data/zanka || true
+          git diff --staged --quiet || git commit -m "chore: zanka flat $(date -u +%Y-%m-%dT%H:%M)"
+          git pull --rebase -q || true
+          git push || true

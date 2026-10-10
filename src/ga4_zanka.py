@@ -131,10 +131,59 @@ def compare():
     print(f"完了(compare): {sum(1 for l in LOG if l.get('ok'))}/{len(LOG)}")
 
 
+# ---------------- 現状把握（フラットなGA分析） ----------------
+D365 = YB - timedelta(days=364)
+ZREF = ["toyota.jp" + z for z in ZANKA_PATHS]
+
+
+def flat():
+    """残価ページ群の現状を、評価を混ぜずに一通り取る（28日・90日・365日）。"""
+    res = {"generated_at": datetime.now(JST).isoformat(), "account": ACC,
+           "range28": [str(D28), str(YB)], "range90": [str(D90), str(YB)], "range365": [str(D365), str(YB)]}
+    Z = or_filter("page_path", ZANKA_PATHS)
+    # 1. 365日：残価ページ群の日別セッション（季節性・CP効果）と、サイト全体
+    res["zanka_daily_365"] = run("zanka_daily_365", ["date", "page_path", "sessions"], D365, YB, Z)
+    res["site_daily_365"] = run("site_daily_365", ["date", "sessions"], D365, YB, None)
+    # 2. エンゲージメント（28日）
+    res["engage"] = run("engage", ["page_path", "sessions", "engaged_sessions", "engagement_rate", "bounce_rate",
+                                   "average_engagement_time_per_session", "user_engagement_duration", "screen_page_views", "totalusers", "newusers"], D28, YB, Z)
+    # 3. 新規／リピート、チャネル、デバイス、地域、時間帯（28日）
+    res["new_ret"] = run("new_ret", ["page_path", "new_vs_returning", "sessions"], D28, YB, Z)
+    res["channel"] = run("channel", ["page_path", "session_default_channel_group", "sessions"], D28, YB, Z)
+    res["landing_channel"] = run("landing_channel", ["landing_page", "session_default_channel_group", "sessions", "engaged_sessions"], D28, YB, or_filter("landing_page", ZANKA_PATHS))
+    res["region"] = run("region", ["page_path", "region", "sessions"], D28, YB, Z)
+    res["hour"] = run("hour", ["hour", "sessions"], D28, YB, Z)
+    res["age"] = run("age", ["page_path", "age", "sessions"], D28, YB, Z)
+    res["gender"] = run("gender", ["page_path", "gender", "sessions"], D28, YB, Z)
+    # 4. イベント（スクロール・クリック等）
+    res["events"] = run("events", ["page_path", "event_name", "event_count"], D28, YB, Z)
+    res["scroll"] = run("scroll", ["page_path", "percent_scrolled", "event_count"], D28, YB, [Z, "and", ["event_name", "eq", "scroll"]])
+    # 5. 残価ページの次に見たページ（page_referrer が残価ページ）
+    res["outflow"] = run("outflow", ["page_referrer", "page_path", "sessions"], D28, YB, or_filter("page_referrer", ZREF))
+    # 6. Search Console（GA4連携）：ランディング別のクリック・表示・掲載順位
+    res["sc_landing"] = run("sc_landing", ["landing_page_plus_query_string", "organic_google_search_clicks", "organic_google_search_impressions",
+                                           "organic_google_search_click_through_rate", "organic_google_search_average_position"],
+                            D28, YB, or_filter("landing_page_plus_query_string", ZANKA_PATHS))
+    res["sc_site"] = run("sc_site", ["date", "organic_google_search_clicks", "organic_google_search_impressions"], D28, YB, None)
+    # 7. 参照元の詳細（28日）：残価ページ群への source/medium/campaign
+    res["source"] = run("source", ["page_path", "source", "medium", "sessions"], D28, YB, Z)
+    res["landing_source"] = run("landing_source", ["landing_page", "source", "medium", "sessions", "engaged_sessions"] + CONVC, D28, YB, or_filter("landing_page", ZANKA_PATHS))
+    # 8. ページ別のキーイベント（28日・全種）
+    res["page_conv"] = run("page_conv", ["page_path", "sessions"] + CONV1 + CONV2, D28, YB, Z)
+    res["landing_conv"] = run("landing_conv", ["landing_page", "sessions"] + CONV1 + CONV2, D28, YB, or_filter("landing_page", ZANKA_PATHS))
+    # 9. 直前ページ（内部リンク元）
+    res["referrer"] = run("referrer", ["page_path", "page_referrer", "sessions"], D28, YB, Z)
+    res["log"] = LOG
+    (OUT / f"ga4_flat_{TODAY}.json").write_text(json.dumps(res, ensure_ascii=False, indent=1), encoding="utf-8")
+    print(f"完了(flat): {sum(1 for l in LOG if l.get('ok'))}/{len(LOG)}")
+
+
 def main():
     only_cv = "--only-cv" in sys.argv
     if "--compare" in sys.argv:
         compare(); return
+    if "--flat" in sys.argv:
+        flat(); return
     res = {"generated_at": datetime.now(JST).isoformat(), "account": ACC,
            "range28": [str(D28), str(YB)], "range90": [str(D90), str(YB)]}
     Z = ZANKA_PATHS + COMPARE_PATHS
