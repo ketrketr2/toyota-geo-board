@@ -35,14 +35,25 @@ jobs:
         with:
           python-version: "3.12"
       - run: pip install -q pyyaml requests
+      - name: Resolve parameters
+        id: params
+        run: |
+          if [ "${{ github.event_name }}" = "push" ]; then
+            ONLY_SC=$(python3 -c "import json;print(str(json.load(open('triggers/zanka-flat.json')).get('only_sc',False)).lower())")
+            SKIP_AIO=$(python3 -c "import json;print(str(json.load(open('triggers/zanka-flat.json')).get('skip_aio',False)).lower())")
+          else
+            ONLY_SC="${{ inputs.only_sc }}"; SKIP_AIO="${{ inputs.skip_aio }}"
+          fi
+          echo "only_sc=$ONLY_SC" >> $GITHUB_OUTPUT; echo "skip_aio=$SKIP_AIO" >> $GITHUB_OUTPUT
+          echo "only_sc=$ONLY_SC skip_aio=$SKIP_AIO"
       - name: GA4 flat (Windsor)
         continue-on-error: true
         env:
           WINDSOR_API_KEY: ${{ secrets.WINDSOR_API_KEY }}
         run: |
-          if [ "${{ inputs.only_sc }}" = "true" ]; then python src/ga4_zanka.py --sc; else python src/ga4_zanka.py --flat; python src/ga4_zanka.py --sc; fi
+          if [ "${{ steps.params.outputs.only_sc }}" = "true" ]; then python src/ga4_zanka.py --sc; else python src/ga4_zanka.py --flat; python src/ga4_zanka.py --sc; fi
       - name: AIO / SERP (API)
-        if: ${{ inputs.skip_aio != true }}
+        if: ${{ steps.params.outputs.skip_aio != 'true' }}
         continue-on-error: true
         env:
           DATAFORSEO_LOGIN:    ${{ secrets.DATAFORSEO_LOGIN || vars.DATAFORSEO_LOGIN || secrets.DATAFORCED_LOGIN }}
