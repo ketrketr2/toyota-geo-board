@@ -1,0 +1,616 @@
+{
+ "generated_at": "2026-10-10T23:48:26.849377+09:00",
+ "account": "324699885",
+ "range28": [
+  "2026-09-12",
+  "2026-10-09"
+ ],
+ "sc_lp_full": {
+  "fields": [
+   "landing_page_plus_query_string",
+   "organic_google_search_clicks",
+   "organic_google_search_impressions",
+   "organic_google_search_click_through_rate",
+   "organic_google_search_average_position"
+  ],
+  "filter": [
+   [
+    "landing_page_plus_query_string",
+    "contains",
+    "/request/payment"
+   ],
+   "or",
+   [
+    "landing_page_plus_query_string",
+    "contains",
+    "/request/howtobuy"
+   ],
+   "or",
+   [
+    "landing_page_plus_query_string",
+    "contains",
+    "/request/tripleassist"
+   ],
+   "or",
+   [
+    "landing_page_plus_query_string",
+    "contains",
+    "/request/compare"
+   ],
+   "or",
+   [
+    "landing_page_plus_query_string",
+    "contains",
+    "/request/kinto"
+   ],
+   "or",
+   [
+    "landing_page_plus_query_string",
+    "contains",
+    "/information/minivan/zanka"
+   ],
+   "or",
+   [
+    "landing_page_plus_query_string",
+    "contains",
+    "/madoguchi/column/06"
+   ]
+  ],
+  "rows": null
+ },
+ "sc_lp_ci": {
+  "fields": [
+   "landing_page_plus_query_string",
+   "organic_google_search_clicks",
+   "organic_google_search_impressions"
+  ],
+  "filter": [
+   [
+    "landing_page_plus_query_string",
+    "contains",
+    "/request/payment"
+   ],
+   "or",
+   [
+    "landing_page_plus_query_string",
+    "contains",
+    "/request/howtobuy"
+   ],
+   "or",
+   [
+    "landing_page_plus_query_string",
+    "contains",
+    "/request/tripleassist"
+   ],
+   "or",
+   [
+    "landing_page_plus_query_string",
+    "contains",
+    "/request/compare"
+   ],
+   "or",
+   [
+    "landing_page_plus_query_string",
+    "contains",
+    "/request/kinto"
+   ],
+   "or",
+   [
+    "landing_page_plus_query_string",
+    "contains",
+    "/information/minivan/zanka"
+   ],
+   "or",
+   [
+    "landing_page_plus_query_string",
+    "contains",
+    "/madoguchi/column/06"
+   ]
+  ],
+  "rows": null
+ },
+ "sc_lp_ci_nofilter": {
+  "fields": [
+   "landing_page_plus_query_string",
+   "organic_google_search_clicks",
+   "organic_google_search_impressions"
+  ],
+  "filter": null,
+  "rows": null
+ },
+ "sc_lp_pos_nofilter": {
+  "fields": [
+   "landing_page_plus_query_string",
+   "organic_google_search_average_position",
+   "organic_google_search_click_through_rate"
+  ],
+  "filter": null,
+  "rows": null
+ },
+ "sc_lp_plain": {
+  "fields": [
+   "landing_page",
+   "organic_google_search_clicks",
+   "organic_google_search_impressions"
+  ],
+  "filter": [
+   [
+    "landing_page",
+    "contains",
+    "/request/payment"
+   ],
+   "or",
+   [
+    "landing_page",
+    "contains",
+    "/request/howtobuy"
+   ],
+   "or",
+   [
+    "landing_page",
+    "contains",
+    "/request/tripleassist"
+   ],
+   "or",
+   [
+    "landing_page",
+    "contains",
+    "/request/compare"
+   ],
+   "or",
+   [
+    "landing_page",
+    "contains",
+    "/request/kinto"
+   ],
+   "or",
+   [
+    "landing_page",
+    "contains",
+    "/information/minivan/zanka"
+   ],
+   "or",
+   [
+    "landing_page",
+    "contains",
+    "/madoguchi/column/06"
+   ]
+  ],
+  "rows": null
+ },
+ "scroll_ev": {
+  "fields": [
+   "page_path",
+   "event_count"
+  ],
+  "filter": [
+   [
+    [
+     "page_path",
+     "contains",
+     "/request/payment"
+    ],
+    "or",
+    [
+     "page_path",
+     "contains",
+     "/request/howtobuy"
+    ],
+    "or",
+    [
+     "page_path",
+     "contains",
+     "/request/tripleassist"
+    ],
+    "or",
+    [
+     "page_path",
+     "contains",
+     "/request/compare"
+    ],
+    "or",
+    [
+     "page_path",
+     "contains",
+     "/request/kinto"
+    ],
+    "or",
+    [
+     "page_path",
+     "contains",
+     "/information/minivan/zanka"
+    ],
+    "or",
+    [
+     "page_path",
+     "contains",
+     "/madoguchi/column/06"
+    ]
+   ],
+   "and",
+   [
+    "event_name",
+    "eq",
+    "scroll"
+   ]
+  ],
+  "rows": null
+ },
+ "view_ev": {
+  "fields": [
+   "page_path",
+   "event_count"
+  ],
+  "filter": [
+   [
+    [
+     "page_path",
+     "contains",
+     "/request/payment"
+    ],
+    "or",
+    [
+     "page_path",
+     "contains",
+     "/request/howtobuy"
+    ],
+    "or",
+    [
+     "page_path",
+     "contains",
+     "/request/tripleassist"
+    ],
+    "or",
+    [
+     "page_path",
+     "contains",
+     "/request/compare"
+    ],
+    "or",
+    [
+     "page_path",
+     "contains",
+     "/request/kinto"
+    ],
+    "or",
+    [
+     "page_path",
+     "contains",
+     "/information/minivan/zanka"
+    ],
+    "or",
+    [
+     "page_path",
+     "contains",
+     "/madoguchi/column/06"
+    ]
+   ],
+   "and",
+   [
+    "event_name",
+    "eq",
+    "page_view"
+   ]
+  ],
+  "rows": null
+ },
+ "log": [
+  {
+   "tag": "sc_lp_full",
+   "fields": [
+    "landing_page_plus_query_string",
+    "organic_google_search_clicks",
+    "organic_google_search_impressions",
+    "organic_google_search_click_through_rate",
+    "organic_google_search_average_position"
+   ],
+   "from": "2026-09-12",
+   "to": "2026-10-09",
+   "filter": [
+    [
+     "landing_page_plus_query_string",
+     "contains",
+     "/request/payment"
+    ],
+    "or",
+    [
+     "landing_page_plus_query_string",
+     "contains",
+     "/request/howtobuy"
+    ],
+    "or",
+    [
+     "landing_page_plus_query_string",
+     "contains",
+     "/request/tripleassist"
+    ],
+    "or",
+    [
+     "landing_page_plus_query_string",
+     "contains",
+     "/request/compare"
+    ],
+    "or",
+    [
+     "landing_page_plus_query_string",
+     "contains",
+     "/request/kinto"
+    ],
+    "or",
+    [
+     "landing_page_plus_query_string",
+     "contains",
+     "/information/minivan/zanka"
+    ],
+    "or",
+    [
+     "landing_page_plus_query_string",
+     "contains",
+     "/madoguchi/column/06"
+    ]
+   ],
+   "ok": false,
+   "error": "HTTP 400 {\"error\":\"GA4 cannot return these fields in one request: the selected dimensions and metrics are incompatible. Fix: remove one of them, or split the request. If the request contains source_medium, use session_source_medium instead. Guide: https://ga-dev-tools.web.app/ga4/dimensions-metrics-explorer/ [Error pulling data for account 324699885]\",\"code\":\"user_error\"}\n"
+  },
+  {
+   "tag": "sc_lp_ci",
+   "fields": [
+    "landing_page_plus_query_string",
+    "organic_google_search_clicks",
+    "organic_google_search_impressions"
+   ],
+   "from": "2026-09-12",
+   "to": "2026-10-09",
+   "filter": [
+    [
+     "landing_page_plus_query_string",
+     "contains",
+     "/request/payment"
+    ],
+    "or",
+    [
+     "landing_page_plus_query_string",
+     "contains",
+     "/request/howtobuy"
+    ],
+    "or",
+    [
+     "landing_page_plus_query_string",
+     "contains",
+     "/request/tripleassist"
+    ],
+    "or",
+    [
+     "landing_page_plus_query_string",
+     "contains",
+     "/request/compare"
+    ],
+    "or",
+    [
+     "landing_page_plus_query_string",
+     "contains",
+     "/request/kinto"
+    ],
+    "or",
+    [
+     "landing_page_plus_query_string",
+     "contains",
+     "/information/minivan/zanka"
+    ],
+    "or",
+    [
+     "landing_page_plus_query_string",
+     "contains",
+     "/madoguchi/column/06"
+    ]
+   ],
+   "ok": false,
+   "error": "HTTP 400 {\"error\":\"GA4 cannot return these fields in one request: the selected dimensions and metrics are incompatible. Fix: remove one of them, or split the request. If the request contains source_medium, use session_source_medium instead. Guide: https://ga-dev-tools.web.app/ga4/dimensions-metrics-explorer/ [Error pulling data for account 324699885]\",\"code\":\"user_error\"}\n"
+  },
+  {
+   "tag": "sc_lp_ci_nofilter",
+   "fields": [
+    "landing_page_plus_query_string",
+    "organic_google_search_clicks",
+    "organic_google_search_impressions"
+   ],
+   "from": "2026-09-12",
+   "to": "2026-10-09",
+   "filter": null,
+   "ok": false,
+   "error": "HTTP 400 {\"error\":\"GA4 cannot return these fields in one request: the selected dimensions and metrics are incompatible. Fix: remove one of them, or split the request. If the request contains source_medium, use session_source_medium instead. Guide: https://ga-dev-tools.web.app/ga4/dimensions-metrics-explorer/ [Error pulling data for account 324699885]\",\"code\":\"user_error\"}\n"
+  },
+  {
+   "tag": "sc_lp_pos_nofilter",
+   "fields": [
+    "landing_page_plus_query_string",
+    "organic_google_search_average_position",
+    "organic_google_search_click_through_rate"
+   ],
+   "from": "2026-09-12",
+   "to": "2026-10-09",
+   "filter": null,
+   "ok": false,
+   "error": "HTTP 400 {\"error\":\"GA4 cannot return these fields in one request: the selected dimensions and metrics are incompatible. Fix: remove one of them, or split the request. If the request contains source_medium, use session_source_medium instead. Guide: https://ga-dev-tools.web.app/ga4/dimensions-metrics-explorer/ [Error pulling data for account 324699885]\",\"code\":\"user_error\"}\n"
+  },
+  {
+   "tag": "sc_lp_plain",
+   "fields": [
+    "landing_page",
+    "organic_google_search_clicks",
+    "organic_google_search_impressions"
+   ],
+   "from": "2026-09-12",
+   "to": "2026-10-09",
+   "filter": [
+    [
+     "landing_page",
+     "contains",
+     "/request/payment"
+    ],
+    "or",
+    [
+     "landing_page",
+     "contains",
+     "/request/howtobuy"
+    ],
+    "or",
+    [
+     "landing_page",
+     "contains",
+     "/request/tripleassist"
+    ],
+    "or",
+    [
+     "landing_page",
+     "contains",
+     "/request/compare"
+    ],
+    "or",
+    [
+     "landing_page",
+     "contains",
+     "/request/kinto"
+    ],
+    "or",
+    [
+     "landing_page",
+     "contains",
+     "/information/minivan/zanka"
+    ],
+    "or",
+    [
+     "landing_page",
+     "contains",
+     "/madoguchi/column/06"
+    ]
+   ],
+   "ok": false,
+   "error": "HTTP 400 {\"error\":\"GA4 cannot return these fields in one request: the selected dimensions and metrics are incompatible. Fix: remove one of them, or split the request. If the request contains source_medium, use session_source_medium instead. Guide: https://ga-dev-tools.web.app/ga4/dimensions-metrics-explorer/ [Error pulling data for account 324699885]\",\"code\":\"user_error\"}\n"
+  },
+  {
+   "tag": "scroll_ev",
+   "fields": [
+    "page_path",
+    "event_count"
+   ],
+   "from": "2026-09-12",
+   "to": "2026-10-09",
+   "filter": [
+    [
+     [
+      "page_path",
+      "contains",
+      "/request/payment"
+     ],
+     "or",
+     [
+      "page_path",
+      "contains",
+      "/request/howtobuy"
+     ],
+     "or",
+     [
+      "page_path",
+      "contains",
+      "/request/tripleassist"
+     ],
+     "or",
+     [
+      "page_path",
+      "contains",
+      "/request/compare"
+     ],
+     "or",
+     [
+      "page_path",
+      "contains",
+      "/request/kinto"
+     ],
+     "or",
+     [
+      "page_path",
+      "contains",
+      "/information/minivan/zanka"
+     ],
+     "or",
+     [
+      "page_path",
+      "contains",
+      "/madoguchi/column/06"
+     ]
+    ],
+    "and",
+    [
+     "event_name",
+     "eq",
+     "scroll"
+    ]
+   ],
+   "ok": false,
+   "error": "HTTP 400 {\"error\":\"Data size is too big. Request less fields, accounts or date range. [Error pulling data for account 324699885]\",\"code\":\"user_error\"}\n"
+  },
+  {
+   "tag": "view_ev",
+   "fields": [
+    "page_path",
+    "event_count"
+   ],
+   "from": "2026-09-12",
+   "to": "2026-10-09",
+   "filter": [
+    [
+     [
+      "page_path",
+      "contains",
+      "/request/payment"
+     ],
+     "or",
+     [
+      "page_path",
+      "contains",
+      "/request/howtobuy"
+     ],
+     "or",
+     [
+      "page_path",
+      "contains",
+      "/request/tripleassist"
+     ],
+     "or",
+     [
+      "page_path",
+      "contains",
+      "/request/compare"
+     ],
+     "or",
+     [
+      "page_path",
+      "contains",
+      "/request/kinto"
+     ],
+     "or",
+     [
+      "page_path",
+      "contains",
+      "/information/minivan/zanka"
+     ],
+     "or",
+     [
+      "page_path",
+      "contains",
+      "/madoguchi/column/06"
+     ]
+    ],
+    "and",
+    [
+     "event_name",
+     "eq",
+     "page_view"
+    ]
+   ],
+   "ok": false,
+   "error": "HTTP 400 {\"error\":\"Data size is too big. Request less fields, accounts or date range. [Error pulling data for account 324699885]\",\"code\":\"user_error\"}\n"
+  }
+ ]
+}
