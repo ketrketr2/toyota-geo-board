@@ -92,56 +92,55 @@ def first_ok(variants, dfrom, dto, flt_field_candidates, needles, tag, max_rows=
     return {"fields": None, "rows": None}
 
 
+CONV = ["conversions", "conversions_estimate_simulation_complete", "conversions_dealer_search",
+        "conversions_dealer_estimate_complete", "conversions_purchase_consultation_complete",
+        "conversions_catalog_request_dealer_complete", "conversions_test_drive_instant_reserve_complete",
+        "conversions_test_drive_normal_reserve_complete", "conversions_maker_estimate_complete",
+        "conversions_lead_complete", "conversions_sign_up"]
+AI_SRC = ["chatgpt", "openai", "gemini", "copilot", "perplexity", "claude", "grok", "deepseek"]
+
+
+def run(tag, fields, dfrom, dto, flt):
+    rows = q(fields, dfrom, dto, flt, tag=tag)
+    return {"fields": fields, "filter": flt, "rows": rows}
+
+
 def main():
-    # 0. 使えるフィールド一覧（表記の確認用）
-    try:
-        with urllib.request.urlopen(f"{BASE}/fields?api_key={KEY}", timeout=120) as r:
-            fields_doc = json.loads(r.read().decode("utf-8"))
-        (OUT / "ga4_fields.json").write_text(json.dumps(fields_doc, ensure_ascii=False, indent=1), encoding="utf-8")
-        print("fields doc saved", flush=True)
-    except Exception as e:
-        print(f"fields doc NG: {e}", file=sys.stderr)
-
-    res = {"generated_at": datetime.now(JST).isoformat(), "account": ACC, "range28": [str(D28), str(YB)], "range90": [str(D90), str(YB)]}
-
+    res = {"generated_at": datetime.now(JST).isoformat(), "account": ACC,
+           "range28": [str(D28), str(YB)], "range90": [str(D90), str(YB)]}
+    Z = ZANKA_PATHS + COMPARE_PATHS
     # 1. ページパス別・日別（90日）
-    res["pages_daily"] = first_ok(
-        [["date", "pagepath", "sessions", "screenpageviews", "totalusers"],
-         ["date", "page_path", "sessions", "screenpageviews", "totalusers"],
-         ["date", "pagePath", "sessions", "screenPageViews", "totalUsers"]],
-        D90, YB, ["pagepath", "page_path", "pagePath"], ZANKA_PATHS + COMPARE_PATHS, "pages_daily")
-
-    # 2. 参照元別（28日）：AI経由（chatgpt / gemini / copilot / perplexity / claude）を含む
-    res["pages_source"] = first_ok(
-        [["pagepath", "sessionsource", "sessionmedium", "sessions", "totalusers"],
-         ["pagepath", "source", "medium", "sessions", "totalusers"],
-         ["page_path", "session_source", "session_medium", "sessions", "totalusers"]],
-        D28, YB, ["pagepath", "pagepath", "page_path"], ZANKA_PATHS + COMPARE_PATHS, "pages_source")
-
-    # 3. ランディング別（28日）
-    res["landing_source"] = first_ok(
-        [["landingpage", "sessionsource", "sessionmedium", "sessiondefaultchannelgroup", "sessions", "newusers"],
-         ["landingpage", "source", "medium", "sessions", "newusers"],
-         ["landing_page", "session_source", "session_medium", "sessions", "newusers"]],
-        D28, YB, ["landingpage", "landingpage", "landing_page"], ZANKA_PATHS + COMPARE_PATHS, "landing_source")
-
-    # 4. イベント（28日）：残価ページ内のクリック等
-    res["pages_events"] = first_ok(
-        [["pagepath", "eventname", "eventcount"],
-         ["page_path", "event_name", "event_count"],
-         ["pagePath", "eventName", "eventCount"]],
-        D28, YB, ["pagepath", "page_path", "pagePath"], ZANKA_PATHS, "pages_events")
-
-    # 5. サイト全体のAI参照元（90日・日別）比較用
-    res["site_ai_daily"] = first_ok(
-        [["date", "sessionsource", "sessions"], ["date", "source", "sessions"]],
-        D90, YB, ["sessionsource", "source"],
-        ["chatgpt", "openai", "gemini", "copilot", "perplexity", "claude", "grok", "deepseek"], "site_ai_daily")
-
-    # 6. 残価ページのページタイトル確認（28日）
-    res["pages_title"] = first_ok(
-        [["pagepath", "pagetitle", "sessions"], ["page_path", "page_title", "sessions"]],
-        D28, YB, ["pagepath", "page_path"], ZANKA_PATHS, "pages_title")
+    res["pages_daily"] = run("pages_daily", ["date", "page_path", "sessions", "screen_page_views", "totalusers"],
+                             D90, YB, or_filter("page_path", Z))
+    # 2. ページ×参照元（28日）
+    res["pages_source"] = run("pages_source", ["page_path", "source", "medium", "sessions", "totalusers"],
+                              D28, YB, or_filter("page_path", Z))
+    # 3. ランディング×参照元（28日）
+    res["landing_source"] = run("landing_source", ["landing_page", "source", "medium", "session_default_channel_group", "sessions", "newusers"],
+                                D28, YB, or_filter("landing_page", Z))
+    # 4. ランディング別のCV（28日）＝接触後CV
+    res["landing_conv"] = run("landing_conv", ["landing_page", "sessions"] + CONV, D28, YB, or_filter("landing_page", Z))
+    # 5. ページ別のCV（28日）
+    res["page_conv"] = run("page_conv", ["page_path", "sessions"] + CONV, D28, YB, or_filter("page_path", Z))
+    # 6. ページ内のクリック（28日）
+    res["page_clicks"] = run("page_clicks", ["page_path", "event_name", "customevent_link_label", "event_count"],
+                             D28, YB, [or_filter("page_path", ZANKA_PATHS), "and", ["event_name", "eq", "custom_link_click"]])
+    res["page_cta"] = run("page_cta", ["page_path", "customevent_cta_type", "customevent_link_label", "event_count"],
+                          D28, YB, or_filter("page_path", ZANKA_PATHS))
+    # 7. サイト全体のAI参照元（90日・日別）
+    res["site_ai_daily"] = run("site_ai_daily", ["date", "source", "sessions"], D90, YB, or_filter("source", AI_SRC))
+    # 8. 残価ページへのAI参照元（90日・日別）
+    res["pages_ai_daily"] = run("pages_ai_daily", ["date", "page_path", "source", "sessions"], D90, YB,
+                                [or_filter("page_path", Z), "and", or_filter("source", AI_SRC)])
+    # 9. タイトル・デバイス・エンゲージメント（28日）
+    res["pages_title"] = run("pages_title", ["page_path", "pagetitle", "sessions"], D28, YB, or_filter("page_path", ZANKA_PATHS))
+    res["pages_device"] = run("pages_device", ["page_path", "devicecategory", "sessions"], D28, YB, or_filter("page_path", ZANKA_PATHS))
+    res["pages_engage"] = run("pages_engage", ["page_path", "sessions", "engaged_sessions", "average_session_duration", "screen_page_views", "newusers"],
+                              D28, YB, or_filter("page_path", Z))
+    # 10. 見積りシミュレーション完了・販売店検索のサイト全体日別（90日）比較用
+    res["site_conv_daily"] = run("site_conv_daily", ["date", "sessions"] + CONV, D90, YB, None)
+    # 11. ページ参照元（page_referrer）：残価ページに来る直前のページ（28日）
+    res["pages_referrer"] = run("pages_referrer", ["page_path", "page_referrer", "sessions"], D28, YB, or_filter("page_path", ZANKA_PATHS))
 
     res["log"] = LOG
     (OUT / f"ga4_zanka_{TODAY}.json").write_text(json.dumps(res, ensure_ascii=False, indent=1), encoding="utf-8")
