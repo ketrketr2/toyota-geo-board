@@ -92,11 +92,11 @@ def first_ok(variants, dfrom, dto, flt_field_candidates, needles, tag, max_rows=
     return {"fields": None, "rows": None}
 
 
-CONV = ["conversions", "conversions_estimate_simulation_complete", "conversions_dealer_search",
-        "conversions_dealer_estimate_complete", "conversions_purchase_consultation_complete",
-        "conversions_catalog_request_dealer_complete", "conversions_test_drive_instant_reserve_complete",
-        "conversions_test_drive_normal_reserve_complete", "conversions_maker_estimate_complete",
-        "conversions_lead_complete", "conversions_sign_up"]
+CONV1 = ["conversions", "conversions_estimate_simulation_complete", "conversions_dealer_search",
+         "conversions_dealer_estimate_complete", "conversions_purchase_consultation_complete"]
+CONV2 = ["conversions_catalog_request_dealer_complete", "conversions_test_drive_instant_reserve_complete",
+         "conversions_test_drive_normal_reserve_complete", "conversions_maker_estimate_complete",
+         "conversions_lead_complete", "conversions_sign_up"]
 AI_SRC = ["chatgpt", "openai", "gemini", "copilot", "perplexity", "claude", "grok", "deepseek"]
 
 
@@ -119,26 +119,33 @@ def main():
     res["landing_source"] = run("landing_source", ["landing_page", "source", "medium", "session_default_channel_group", "sessions", "newusers"],
                                 D28, YB, or_filter("landing_page", Z))
     # 4. ランディング別のCV（28日）＝接触後CV
-    res["landing_conv"] = run("landing_conv", ["landing_page", "sessions"] + CONV, D28, YB, or_filter("landing_page", Z))
+    res["landing_conv1"] = run("landing_conv1", ["landing_page", "sessions"] + CONV1, D28, YB, or_filter("landing_page", Z))
+    res["landing_conv2"] = run("landing_conv2", ["landing_page", "sessions"] + CONV2, D28, YB, or_filter("landing_page", Z))
     # 5. ページ別のCV（28日）
-    res["page_conv"] = run("page_conv", ["page_path", "sessions"] + CONV, D28, YB, or_filter("page_path", Z))
+    res["page_conv1"] = run("page_conv1", ["page_path", "sessions"] + CONV1, D28, YB, or_filter("page_path", Z))
+    res["page_conv2"] = run("page_conv2", ["page_path", "sessions"] + CONV2, D28, YB, or_filter("page_path", Z))
     # 6. ページ内のクリック（28日）
-    res["page_clicks"] = run("page_clicks", ["page_path", "event_name", "customevent_link_label", "event_count"],
+    res["page_clicks"] = run("page_clicks", ["page_path", "event_name", "customevent_event_label", "event_count"],
                              D28, YB, [or_filter("page_path", ZANKA_PATHS), "and", ["event_name", "eq", "custom_link_click"]])
-    res["page_cta"] = run("page_cta", ["page_path", "customevent_cta_type", "customevent_link_label", "event_count"],
+    res["page_clicks_id"] = run("page_clicks_id", ["page_path", "customevent_link_id", "event_count"],
+                                D28, YB, [or_filter("page_path", ZANKA_PATHS), "and", ["event_name", "eq", "custom_link_click"]])
+    res["page_cta"] = run("page_cta", ["page_path", "customevent_button_name", "event_count"],
                           D28, YB, or_filter("page_path", ZANKA_PATHS))
     # 7. サイト全体のAI参照元（90日・日別）
     res["site_ai_daily"] = run("site_ai_daily", ["date", "source", "sessions"], D90, YB, or_filter("source", AI_SRC))
     # 8. 残価ページへのAI参照元（90日・日別）
-    res["pages_ai_daily"] = run("pages_ai_daily", ["date", "page_path", "source", "sessions"], D90, YB,
-                                [or_filter("page_path", Z), "and", or_filter("source", AI_SRC)])
+    res["pages_ai_daily"] = run("pages_ai_daily", ["date", "page_path", "source", "sessions"], D28, YB,
+                                [or_filter("page_path", ZANKA_PATHS + ["/alphard/"]), "and", or_filter("source", AI_SRC)])
+    res["pages_ai_90"] = run("pages_ai_90", ["page_path", "source", "sessions"], D90, YB,
+                             [or_filter("page_path", ZANKA_PATHS + ["/alphard/"]), "and", or_filter("source", AI_SRC)])
     # 9. タイトル・デバイス・エンゲージメント（28日）
     res["pages_title"] = run("pages_title", ["page_path", "pagetitle", "sessions"], D28, YB, or_filter("page_path", ZANKA_PATHS))
     res["pages_device"] = run("pages_device", ["page_path", "devicecategory", "sessions"], D28, YB, or_filter("page_path", ZANKA_PATHS))
     res["pages_engage"] = run("pages_engage", ["page_path", "sessions", "engaged_sessions", "average_session_duration", "screen_page_views", "newusers"],
                               D28, YB, or_filter("page_path", Z))
     # 10. 見積りシミュレーション完了・販売店検索のサイト全体日別（90日）比較用
-    res["site_conv_daily"] = run("site_conv_daily", ["date", "sessions"] + CONV, D90, YB, None)
+    res["site_conv_daily1"] = run("site_conv_daily1", ["date", "sessions"] + CONV1, D90, YB, None)
+    res["site_conv_daily2"] = run("site_conv_daily2", ["date", "sessions"] + CONV2, D90, YB, None)
     # 11. ページ参照元（page_referrer）：残価ページに来る直前のページ（28日）
     res["pages_referrer"] = run("pages_referrer", ["page_path", "page_referrer", "sessions"], D28, YB, or_filter("page_path", ZANKA_PATHS))
 
