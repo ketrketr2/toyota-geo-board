@@ -105,8 +105,36 @@ def run(tag, fields, dfrom, dto, flt):
     return {"fields": fields, "filter": flt, "rows": rows}
 
 
+# ---------------- 比較用（相対評価） ----------------
+GROUPS = {
+    "zanka": ZANKA_PATHS,
+    "alphard": ["/alphard/"], "vellfire": ["/vellfire/"], "noah_voxy": ["/noah/", "/voxy/"], "sienta": ["/sienta/"],
+    "request_all": ["/request/"], "kinto": ["/kinto/"], "estimate": ["/service/estimate"], "dealer": ["/dealer/"],
+    "carlineup": ["/carlineup/"], "ucar": ["/ucar/"], "campaign": ["/information/campaign/"],
+}
+CONVC = ["conversions_estimate_simulation_complete", "conversions_maker_estimate_complete",
+         "conversions_dealer_estimate_complete", "conversions_dealer_search"]
+
+
+def compare():
+    res = {"generated_at": datetime.now(JST).isoformat(), "account": ACC, "range28": [str(D28), str(YB)]}
+    res["site_daily"] = run("site_daily", ["date", "sessions"] + CONVC, D28, YB, None)
+    res["pages"] = {}
+    res["landing"] = {}
+    for g, paths in GROUPS.items():
+        res["pages"][g] = run(f"pages_{g}", ["page_path", "sessions"], D28, YB, or_filter("page_path", paths))
+        res["landing"][g] = run(f"landing_{g}", ["landing_page", "sessions"] + CONVC, D28, YB, or_filter("landing_page", paths))
+    res["device_zanka"] = run("device_zanka", ["devicecategory", "sessions"], D28, YB, or_filter("page_path", ZANKA_PATHS))
+    res["device_site"] = run("device_site", ["devicecategory", "sessions"], D28, YB, None)
+    res["log"] = LOG
+    (OUT / f"ga4_compare_{TODAY}.json").write_text(json.dumps(res, ensure_ascii=False, indent=1), encoding="utf-8")
+    print(f"完了(compare): {sum(1 for l in LOG if l.get('ok'))}/{len(LOG)}")
+
+
 def main():
     only_cv = "--only-cv" in sys.argv
+    if "--compare" in sys.argv:
+        compare(); return
     res = {"generated_at": datetime.now(JST).isoformat(), "account": ACC,
            "range28": [str(D28), str(YB)], "range90": [str(D90), str(YB)]}
     Z = ZANKA_PATHS + COMPARE_PATHS

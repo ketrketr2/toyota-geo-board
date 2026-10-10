@@ -1,0 +1,44 @@
+name: zanka-compare
+
+# 残価ページの相対評価用：比較ページ群のGA4（Windsor）と、残価検索語の月間検索ボリューム。
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ["triggers/zanka-compare.json"]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: zanka-compare
+  cancel-in-progress: false
+
+jobs:
+  compare:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -q pyyaml requests
+      - name: GA4 compare groups (Windsor)
+        env:
+          WINDSOR_API_KEY: ${{ secrets.WINDSOR_API_KEY }}
+        run: python src/ga4_zanka.py --compare
+      - name: Search volumes (API)
+        env:
+          DATAFORSEO_LOGIN:    ${{ secrets.DATAFORSEO_LOGIN || vars.DATAFORSEO_LOGIN || secrets.DATAFORCED_LOGIN }}
+          DATAFORSEO_PASSWORD: ${{ secrets.DATAFORSEO_PASSWORD }}
+        run: python src/zanka_volume.py
+      - name: Commit
+        if: ${{ always() }}
+        run: |
+          git config user.name  "geo-board-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add -f data/zanka || true
+          git diff --staged --quiet || git commit -m "chore: zanka compare $(date -u +%Y-%m-%dT%H:%M)"
+          git pull --rebase -q || true
+          git push || true
