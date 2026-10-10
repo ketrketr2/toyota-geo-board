@@ -1,0 +1,4793 @@
+{
+ "generated_at": "2026-10-10T09:13:55.357175+09:00",
+ "account": "324699885",
+ "range28": [
+  "2026-09-12",
+  "2026-10-09"
+ ],
+ "range90": [
+  "2026-07-12",
+  "2026-10-09"
+ ],
+ "pages_daily": {
+  "fields": null,
+  "rows": null
+ },
+ "pages_source": {
+  "fields": null,
+  "rows": null
+ },
+ "landing_source": {
+  "fields": null,
+  "rows": null
+ },
+ "pages_events": {
+  "fields": [
+   "page_path",
+   "event_name",
+   "event_count"
+  ],
+  "filter_field": "page_path",
+  "rows": [
+   {
+    "page_path": "/request/payment/",
+    "event_name": "page_view",
+    "event_count": 7438.0
+   },
+   {
+    "page_path": "/request/payment/",
+    "event_name": "user_engagement",
+    "event_count": 7473.0
+   },
+   {
+    "page_path": "/request/howtobuy/",
+    "event_name": "page_view",
+    "event_count": 5747.0
+   },
+   {
+    "page_path": "/request/howtobuy/",
+    "event_name": "user_engagement",
+    "event_count": 5287.0
+   },
+   {
+    "page_path": "/request/compare/",
+    "event_name": "scroll",
+    "event_count": 4408.0
+   },
+   {
+    "page_path": "/request/payment/",
+    "event_name": "session_start",
+    "event_count": 4334.0
+   },
+   {
+    "page_path": "/request/payment/",
+    "event_name": "custom_link_click",
+    "event_count": 3155.0
+   },
+   {
+    "page_path": "/information/minivan/zanka/",
+    "event_name": "page_view",
+    "event_count": 3055.0
+   },
+   {
+    "page_path": "/information/minivan/zanka/",
+    "event_name": "user_engagement",
+    "event_count": 2903.0
+   },
+   {
+    "page_path": "/madoguchi/column/06/",
+    "event_name": "page_view",
+    "event_count": 3009.0
+   },
+   {
+    "page_path": "/madoguchi/column/06/",
+    "event_name": "session_start",
+    "event_count": 2508.0
+   },
+   {
+    "page_path": "/madoguchi/column/06/",
+    "event_name": "user_engagement",
+    "event_count": 2359.0
+   },
+   {
+    "page_path": "/information/minivan/zanka/",
+    "event_name": "session_start",
+    "event_count": 1808.0
+   },
+   {
+    "page_path": "/request/howtobuy/",
+    "event_name": "session_start",
+    "event_count": 1750.0
+   },
+   {
+    "page_path": "/request/howtobuy/",
+    "event_name": "custom_link_click",
+    "event_count": 2212.0
+   },
+   {
+    "page_path": "/request/payment/",
+    "event_name": "first_visit",
+    "event_count": 1695.0
+   },
+   {
+    "page_path": "/request/compare/",
+    "event_name": "page_view",
+    "event_count": 1715.0
+   },
+   {
+    "page_path": "/request/kinto/",
+    "event_name": "page_view",
+    "event_count": 1568.0
+   },
+   {
+    "page_path": "/madoguchi/column/06/",
+    "event_name": "first_visit",
+    "event_count": 1198.0
+   },
+   {
+    "page_path": "/request/payment/tripleassist4/",
+    "event_name": "custom_link_click",
+    "event_count": 1259.0
+   },
+   {
+    "page_path": "/request/compare/",
+    "event_name": "user_engagement",
+    "event_count": 1322.0
+   },
+   {
+    "page_path": "/information/minivan/zanka/",
+    "event_name": "custom_link_click",
+    "event_count": 1135.0
+   },
+   {
+    "page_path": "/request/kinto/",
+    "event_name": "user_engagement",
+    "event_count": 1224.0
+   },
+   {
+    "page_path": "/information/minivan/zanka/",
+    "event_name": "first_visit",
+    "event_count": 858.0
+   },
+   {
+    "page_path": "/request/compare/",
+    "event_name": "custom_link_click",
+    "event_count": 1058.0
+   },
+   {
+    "page_path": "/request/kinto/",
+    "event_name": "session_start",
+    "event_count": 985.0
+   },
+   {
+    "page_path": "/request/howtobuy/",
+    "event_name": "first_visit",
+    "event_count": 569.0
+   },
+   {
+    "page_path": "/request/payment/tripleassist4/",
+    "event_name": "page_view",
+    "event_count": 716.0
+   },
+   {
+    "page_path": "/request/kinto/",
+    "event_name": "first_visit",
+    "event_count": 542.0
+   },
+   {
+    "page_path": "/request/payment/tripleassist4/",
+    "event_name": "user_engagement",
+    "event_count": 617.0
+   },
+   {
+    "page_path": "/madoguchi/column/06/",
+    "event_name": "custom_link_click",
+    "event_count": 375.0
+   },
+   {
+    "page_path": "/request/payment/tripleassist1/",
+    "event_name": "user_engagement",
+    "event_count": 202.0
+   },
+   {
+    "page_path": "/request/payment/tripleassist1/",
+    "event_name": "page_view",
+    "event_count": 266.0
+   },
+   {
+    "page_path": "/request/payment/tripleassist4/",
+    "event_name": "session_start",
+    "event_count": 343.0
+   },
+   {
+    "page_path": "/request/compare/",
+    "event_name": "session_start",
+    "event_count": 211.0
+   },
+   {
+    "page_path": "/request/payment/tripleassist2/",
+    "event_name": "page_view",
+    "event_count": 133.0
+   },
+   {
+    "page_path": "/request/compare/",
+    "event_name": "first_visit",
+    "event_count": 46.0
+   },
+   {
+    "page_path": "/request/payment/tripleassist2/",
+    "event_name": "user_engagement",
+    "event_count": 103.0
+   },
+   {
+    "page_path": "/request/payment/tripleassist1/",
+    "event_name": "custom_link_click",
+    "event_count": 88.0
+   },
+   {
+    "page_path": "/request/payment/tripleassist4/",
+    "event_name": "first_visit",
+    "event_count": 134.0
+   },
+   {
+    "page_path": "/request/payment/tripleassist1/",
+    "event_name": "session_start",
+    "event_count": 25.0
+   },
+   {
+    "page_path": "/request/payment/tripleassist2/",
+    "event_name": "session_start",
+    "event_count": 24.0
+   },
+   {
+    "page_path": "/request/payment/tripleassist2/",
+    "event_name": "custom_link_click",
+    "event_count": 36.0
+   },
+   {
+    "page_path": "/request/payment/tripleassist1/",
+    "event_name": "first_visit",
+    "event_count": 4.0
+   },
+   {
+    "page_path": "/request/payment/tripleassist2/",
+    "event_name": "first_visit",
+    "event_count": 12.0
+   },
+   {
+    "page_path": "/request/kinto/",
+    "event_name": "custom_link_click",
+    "event_count": 62.0
+   }
+  ]
+ },
+ "site_ai_daily": {
+  "fields": [
+   "date",
+   "source",
+   "sessions"
+  ],
+  "filter_field": "source",
+  "rows": [
+   {
+    "date": "2026-07-12",
+    "source": "openai",
+    "sessions": 571.0
+   },
+   {
+    "date": "2026-07-12",
+    "source": "chatgpt.com",
+    "sessions": 441.0
+   },
+   {
+    "date": "2026-07-12",
+    "source": "copilot.com",
+    "sessions": 20.0
+   },
+   {
+    "date": "2026-07-12",
+    "source": "gemini.google.com",
+    "sessions": 15.0
+   },
+   {
+    "date": "2026-07-12",
+    "source": "openai?utm_source=openai",
+    "sessions": 5.0
+   },
+   {
+    "date": "2026-07-12",
+    "source": "perplexity",
+    "sessions": 3.0
+   },
+   {
+    "date": "2026-07-12",
+    "source": "claude.ai",
+    "sessions": 1.0
+   },
+   {
+    "date": "2026-07-13",
+    "source": "chatgpt.com",
+    "sessions": 421.0
+   },
+   {
+    "date": "2026-07-13",
+    "source": "openai",
+    "sessions": 397.0
+   },
+   {
+    "date": "2026-07-13",
+    "source": "gemini.google.com",
+    "sessions": 27.0
+   },
+   {
+    "date": "2026-07-13",
+    "source": "copilot.com",
+    "sessions": 17.0
+   },
+   {
+    "date": "2026-07-13",
+    "source": "chatgpt.com?utm_source=chatgpt.com",
+    "sessions": 4.0
+   },
+   {
+    "date": "2026-07-13",
+    "source": "claude.ai",
+    "sessions": 4.0
+   },
+   {
+    "date": "2026-07-13",
+    "source": "copilot.microsoft.com",
+    "sessions": 2.0
+   },
+   {
+    "date": "2026-07-13",
+    "source": "perplexity",
+    "sessions": 2.0
+   },
+   {
+    "date": "2026-07-13",
+    "source": "wbtxa.gemini.oneoffice.jp",
+    "sessions": 1.0
+   },
+   {
+    "date": "2026-07-14",
+    "source": "chatgpt.com",
+    "sessions": 363.0
+   },
+   {
+    "date": "2026-07-14",
+    "source": "openai",
+    "sessions": 291.0
+   },
+   {
+    "date": "2026-07-14",
+    "source": "copilot.com",
+    "sessions": 22.0
+   },
+   {
+    "date": "2026-07-14",
+    "source": "gemini.google.com",
+    "sessions": 22.0
+   },
+   {
+    "date": "2026-07-14",
+    "source": "perplexity",
+    "sessions": 5.0
+   },
+   {
+    "date": "2026-07-14",
+    "source": "copilot.microsoft.com",
+    "sessions": 4.0
+   },
+   {
+    "date": "2026-07-14",
+    "source": "perplexity.ai",
+    "sessions": 2.0
+   },
+   {
+    "date": "2026-07-14",
+    "source": "claude.ai",
+    "sessions": 1.0
+   },
+   {
+    "date": "2026-07-15",
+    "source": "chatgpt.com",
+    "sessions": 386.0
+   },
+   {
+    "date": "2026-07-15",
+    "source": "openai",
+    "sessions": 359.0
+   },
+   {
+    "date": "2026-07-15",
+    "source": "gemini.google.com",
+    "sessions": 25.0
+   },
+   {
+    "date": "2026-07-15",
+    "source": "copilot.com",
+    "sessions": 17.0
+   },
+   {
+    "date": "2026-07-15",
+    "source": "perplexity",
+    "sessions": 5.0
+   },
+   {
+    "date": "2026-07-15",
+    "source": "perplexity.ai",
+    "sessions": 5.0
+   },
+   {
+    "date": "2026-07-15",
+    "source": "copilot.microsoft.com",
+    "sessions": 3.0
+   },
+   {
+    "date": "2026-07-15",
+    "source": "openai))",
+    "sessions": 1.0
+   },
+   {
+    "date": "2026-07-15",
+    "source": "openai?utm_source=openai",
+    "sessions": 1.0
+   },
+   {
+    "date": "2026-07-16",
+    "source": "openai",
+    "sessions": 401.0
+   },
+   {
+    "date": "2026-07-16",
+    "source": "chatgpt.com",
+    "sessions": 387.0
+   },
+   {
+    "date": "2026-07-16",
+    "source": "gemini.google.com",
+    "sessions": 28.0
+   },
+   {
+    "date": "2026-07-16",
+    "source": "copilot.com",
+    "sessions": 9.0
+   },
+   {
+    "date": "2026-07-16",
+    "source": "perplexity",
+    "sessions": 3.0
+   },
+   {
+    "date": "2026-07-16",
+    "source": "openai))",
+    "sessions": 1.0
+   },
+   {
+    "date": "2026-07-16",
+    "source": "perplexity.ai",
+    "sessions": 1.0
+   },
+   {
+    "date": "2026-07-17",
+    "source": "openai",
+    "sessions": 361.0
+   },
+   {
+    "date": "2026-07-17",
+    "source": "chatgpt.com",
+    "sessions": 357.0
+   },
+   {
+    "date": "2026-07-17",
+    "source": "gemini.google.com",
+    "sessions": 22.0
+   },
+   {
+    "date": "2026-07-17",
+    "source": "copilot.com",
+    "sessions": 10.0
+   },
+   {
+    "date": "2026-07-17",
+    "source": "copilot.microsoft.com",
+    "sessions": 1.0
+   },
+   {
+    "date": "2026-07-17",
+    "source": "perplexity",
+    "sessions": 1.0
+   },
+   {
+    "date": "2026-07-18",
+    "source": "openai",
+    "sessions": 440.0
+   },
+   {
+    "date": "2026-07-18",
+    "source": "chatgpt.com",
+    "sessions": 430.0
+   },
+   {
+    "date": "2026-07-18",
+    "source": "copilot.com",
+    "sessions": 17.0
+   },
+   {
+    "date": "2026-07-18",
+    "source": "gemini.google.com",
+    "sessions": 12.0
+   },
+   {
+    "date": "2026-07-18",
+    "source": "perplexity",
+    "sessions": 3.0
+   },
+   {
+    "date": "2026-07-18",
+    "source": "chatgpt.com?utm_source=chatgpt.com",
+    "sessions": 2.0
+   },
+   {
+    "date": "2026-07-18",
+    "source": "openai?utm_source=openai",
+    "sessions": 2.0
+   },
+   {
+    "date": "2026-07-18",
+    "source": "perplexity.ai",
+    "sessions": 1.0
+   },
+   {
+    "date": "2026-07-19",
+    "source": "chatgpt.com",
+    "sessions": 515.0
+   },
+   {
+    "date": "2026-07-19",
+    "source": "openai",
+    "sessions": 495.0
+   },
+   {
+    "date": "2026-07-19",
+    "source": "copilot.com",
+    "sessions": 22.0
+   },
+   {
+    "date": "2026-07-19",
+    "source": "gemini.google.com",
+    "sessions": 16.0
+   },
+   {
+    "date": "2026-07-19",
+    "source": "perplexity.ai",
+    "sessions": 6.0
+   },
+   {
+    "date": "2026-07-19",
+    "source": "openai?utm_source=openai",
+    "sessions": 5.0
+   },
+   {
+    "date": "2026-07-19",
+    "source": "perplexity",
+    "sessions": 2.0
+   },
+   {
+    "date": "2026-07-19",
+    "source": "chatgpt.com?utm_source=chatgpt.com",
+    "sessions": 1.0
+   },
+   {
+    "date": "2026-07-19",
+    "source": "openai))",
+    "sessions": 1.0
+   },
+   {
+    "date": "2026-07-20",
+    "source": "openai",
+    "sessions": 512.0
+   },
+   {
+    "date": "2026-07-20",
+    "source": "chatgpt.com",
+    "sessions": 454.0
+   },
+   {
+    "date": "2026-07-20",
+    "source": "copilot.com",
+    "sessions": 20.0
+   },
+   {
+    "date": "2026-07-20",
+    "source": "gemini.google.com",
+    "sessions": 15.0
+   },
+   {
+    "date": "2026-07-20",
+    "source": "perplexity",
+    "sessions": 3.0
+   },
+   {
+    "date": "2026-07-20",
+    "source": "perplexity.ai",
+    "sessions": 3.0
+   },
+   {
+    "date": "2026-07-20",
+    "source": "copilot.microsoft.com",
+    "sessions": 2.0
+   },
+   {
+    "date": "2026-07-20",
+    "source": "claude.ai",
+    "sessions": 1.0
+   },
+   {
+    "date": "2026-07-21",
+    "source": "openai",
+    "sessions": 426.0
+   },
+   {
+    "date": "2026-07-21",
+    "source": "chatgpt.com",
+    "sessions": 414.0
+   },
+   {
+    "date": "2026-07-21",
+    "source": "gemini.google.com",
+    "sessions": 25.0
+   },
+   {
+    "date": "2026-07-21",
+    "source": "copilot.com",
+    "sessions": 15.0
+   },
+   {
+    "date": "2026-07-21",
+    "source": "perplexity",
+    "sessions": 5.0
+   },
+   {
+    "date": "2026-07-21",
+    "source": "claude.ai",
+    "sessions": 4.0
+   },
+   {
+    "date": "2026-07-21",
+    "source": "perplexity.ai",
+    "sessions": 4.0
+   },
+   {
+    "date": "2026-07-21",
+    "source": "chatgpt.com?utm_source=chatgpt.com",
+    "sessions": 1.0
+   },
+   {
+    "date": "2026-07-22",
+    "source": "chatgpt.com",
+    "sessions": 427.0
+   },
+   {
+    "date": "2026-07-22",
+    "source": "openai",
+    "sessions": 421.0
+   },
+   {
+    "date": "2026-07-22",
+    "source": "gemini.google.com",
+    "sessions": 23.0
+   },
+   {
+    "date": "2026-07-22",
+    "source": "copilot.com",
+    "sessions": 18.0
+   },
+   {
+    "date": "2026-07-22",
+    "source": "perplexity",
+    "sessions": 6.0
+   },
+   {
+    "date": "2026-07-22",
+    "source": "perplexity.ai",
+    "sessions": 3.0
+   },
+   {
+    "date": "2026-07-22",
+    "source": "claude.ai",
+    "sessions": 2.0
+   },
+   {
+    "date": "2026-07-23",
+    "source": "chatgpt.com",
+    "sessions": 470.0
+   },
+   {
+    "date": "2026-07-23",
+    "source": "openai",
+    "sessions": 414.0
+   },
+   {
+    "date": "2026-07-23",
+    "source": "gemini.google.com",
+    "sessions": 23.0
+   },
+   {
+    "date": "2026-07-23",
+    "source": "copilot.com",
+    "sessions": 17.0
+   },
+   {
+    "date": "2026-07-23",
+    "source": "chatgpt.com?utm_source=chatgpt.com",
+    "sessions": 3.0
+   },
+   {
+    "date": "2026-07-23",
+    "source": "claude.ai",
+    "sessions": 2.0
+   },
+   {
+    "date": "2026-07-23",
+    "source": "perplexity",
+    "sessions": 1.0
+   },
+   {
+    "date": "2026-07-23",
+    "source": "perplexity.ai",
+    "sessions": 1.0
+   },
+   {
+    "date": "2026-07-24",
+    "source": "openai",
+    "sessions": 434.0
+   },
+   {
+    "date": "2026-07-24",
+    "source": "chatgpt.com",
+    "sessions": 425.0
+   },
+   {
+    "date": "2026-07-24",
+    "source": "gemini.google.com",
+    "sessions": 32.0
+   },
+   {
+    "date": "2026-07-24",
+    "source": "copilot.com",
+    "sessions": 15.0
+   },
+   {
+    "date": "2026-07-24",
+    "source": "perplexity",
+    "sessions": 7.0
+   },
+   {
+    "date": "2026-07-24",
+    "source": "claude.ai",
+    "sessions": 2.0
+   },
+   {
+    "date": "2026-07-24",
+    "source": "chatgpt.com?utm_source=chatgpt.com",
+    "sessions": 1.0
+   },
+   {
+    "date": "2026-07-24",
+    "source": "copilot.microsoft.com",
+    "sessions": 1.0
+   },
+   {
+    "date": "2026-07-24",
+    "source": "openai?utm_source=openai",
+    "sessions": 1.0
+   },
+   {
+    "date": "2026-07-25",
+    "source": "openai",
+    "sessions": 557.0
+   },
+   {
+    "date": "2026-07-25",
+    "source": "chatgpt.com",
+    "sessions": 516.0
+   },
+   {
+    "date": "2026-07-25",
+    "source": "gemini.google.com",
+    "sessions": 14.0
+   },
+   {
+    "date": "2026-07-25",
+    "source": "copilot.com",
+    "sessions": 13.0
+   },
+   {
+    "date": "2026-07-25",
+    "source": "perplexity",
+    "sessions": 6.0
+   },
+   {
+    "date": "2026-07-25",
+    "source": "claude.ai",
+    "sessions": 4.0
+   },
+   {
+    "date": "2026-07-25",
+    "source": "chatgpt.com?utm_source=chatgpt.com",
+    "sessions": 3.0
+   },
+   {
+    "date": "2026-07-25",
+    "source": "copilot.microsoft.com",
+    "sessions": 1.0
+   },
+   {
+    "date": "2026-07-25",
+    "source": "openai?utm_source=openai",
+    "sessions": 1.0
+   },
+   {
+    "date": "2026-07-25",
+    "source": "perplexity.ai",
+    "sessions": 1.0
+   },
+   {
+    "date": "2026-07-26",
+    "source": "chatgpt.com",
+    "sessions": 569.0
+   },
+   {
+    "date": "2026-07-26",
+    "source": "openai",
+    "sessions": 503.0
+   },
+   {
+    "date": "2026-07-26",
+    "source": "copilot.com",
+    "sessions": 23.0
+   },
+   {
+    "date": "2026-07-26",
+    "source": "gemini.google.com",
+    "sessions": 14.0
+   },
+   {
+    "date": "2026-07-26",
+    "source": "chatgpt.com?utm_source=chatgpt.com",
+    "sessions": 2.0
+   },
+   {
+    "date": "2026-07-26",
+    "source": "openai?utm_source=openai",
+    "sessions": 2.0
+   },
+   {
+    "date": "2026-07-26",
+    "source": "perplexity",
+    "sessions": 1.0
+   },
+   {
+    "date": "2026-07-27",
+    "source": "chatgpt.com",
+    "sessions": 492.0
+   },
+   {
+    "date": "2026-07-27",
+    "source": "openai",
+    "sessions": 466.0
+   },
+   {
+    "date": "2026-07-27",
+    "source": "gemini.google.com",
+    "sessions": 30.0
+   },
+   {
+    "date": "2026-07-27",
+    "source": "copilot.com",
+    "sessions": 25.0
+   },
+   {
+    "date": "2026-07-27",
+    "source": "chatgpt.com?utm_source=chatgpt.com",
+    "sessions": 6.0
+   },
+   {
+    "date": "2026-07-27",
+    "source": "claude.ai",
+    "sessions": 6.0
+   },
+   {
+    "date": "2026-07-27",
+    "source": "perplexity.ai",
+    "sessions": 3.0
+   },
+   {
+    "date": "2026-07-27",
+    "source": "perplexity",
+    "sessions": 2.0
+   },
+   {
+    "date": "2026-07-27",
+    "source": "openai?utm_source=openai",
+    "sessions": 1.0
+   },
+   {
+    "date": "2026-07-28",
+    "source": "openai",
+    "sessions": 409.0
+   },
+   {
+    "date": "2026-07-28",
+    "source": "chatgpt.com",
+    "sessions": 403.0
+   },
+   {
+    "date": "2026-07-28",
+    "source": "gemini.google.com",
+    "sessions": 27.0
+   },
+   {
+    "date": "2026-07-28",
+    "source": "copilot.com",
+    "sessions": 13.0
+   },
+   {
+    "date": "2026-07-28",
+    "source": "perplexity",
+    "sessions": 8.0
+   },
+   {
+    "date": "2026-07-28",
+    "source": "claude.ai",
+    "sessions": 2.0
+   },
+   {
+    "date": "2026-07-28",
+    "source": "perplexity.ai",
+    "sessions": 2.0
+   },
+   {
+    "date": "2026-07-29",
+    "source": "chatgpt.com",
+    "sessions": 403.0
+   },
+   {
+    "date": "2026-07-29",
+    "source": "openai",
+    "sessions": 367.0
+   },
+   {
+    "date": "2026-07-29",
+    "source": "gemini.google.com",
+    "sessions": 28.0
+   },
+   {
+    "date": "2026-07-29",
+    "source": "copilot.com",
+    "sessions": 12.0
+   },
+   {
+    "date": "2026-07-29",
+    "source": "claude.ai",
+    "sessions": 4.0
+   },
+   {
+    "date": "2026-07-29",
+    "source": "perplexity",
+    "sessions": 2.0
+   },
+   {
+    "date": "2026-07-29",
+    "source": "perplexity.ai",
+    "sessions": 2.0
+   },
+   {
+    "date": "2026-07-29",
+    "source": "openai?utm_source=openai",
+    "sessions": 1.0
+   },
+   {
+    "date": "2026-07-29",
+    "source": "wbtxa.gemini.oneoffice.jp",
+    "sessions": 1.0
+   },
+   {
+    "date": "2026-07-30",
+    "source": "openai",
+    "sessions": 416.0
+   },
+   {
+    "date": "2026-07-30",
+    "source": "chatgpt.com",
+    "sessions": 374.0
+   },
+   {
+    "date": "2026-07-30",
+    "source": "gemini.google.com",
+    "sessions": 29.0
+   },
+   {
+    "date": "2026-07-30",
+    "source": "copilot.com",
+    "sessions": 14.0
+   },
+   {
+    "date": "2026-07-30",
+    "source": "claude.ai",
+    "sessions": 2.0
+   },
+   {
+    "date": "2026-07-30",
+    "source": "perplexity.ai",
+    "sessions": 1.0
+   },
+   {
+    "date": "2026-07-31",
+    "source": "openai",
+    "sessions": 361.0
+   },
+   {
+    "date": "2026-07-31",
+    "source": "chatgpt.com",
+    "sessions": 354.0
+   },
+   {
+    "date": "2026-07-31",
+    "source": "gemini.google.com",
+    "sessions": 28.0
+   },
+   {
+    "date": "2026-07-31",
+    "source": "copilot.com",
+    "sessions": 13.0
+   },
+   {
+    "date": "2026-07-31",
+    "source": "perplexity.ai",
+    "sessions": 3.0
+   },
+   {
+    "date": "2026-07-31",
+    "source": "perplexity",
+    "sessions": 2.0
+   },
+   {
+    "date": "2026-08-01",
+    "source": "chatgpt.com",
+    "sessions": 445.0
+   },
+   {
+    "date": "2026-08-01",
+    "source": "openai",
+    "sessions": 372.0
+   },
+   {
+    "date": "2026-08-01",
+    "source": "copilot.com",
+    "sessions": 18.0
+   },
+   {
+    "date": "2026-08-01",
+    "source": "gemini.google.com",
+    "sessions": 8.0
+   },
+   {
+    "date": "2026-08-01",
+    "source": "perplexity",
+    "sessions": 6.0
+   },
+   {
+    "date": "2026-08-01",
+    "source": "claude.ai",
+    "sessions": 1.0
+   },
+   {
+    "date": "2026-08-01",
+    "source": "openai?utm_source=openai",
+    "sessions": 1.0
+   },
+   {
+    "date": "2026-08-01",
+    "source": "perplexity.ai",
+    "sessions": 1.0
+   },
+   {
+    "date": "2026-08-02",
+    "source": "chatgpt.com",
+    "sessions": 472.0
+   },
+   {
+    "date": "2026-08-02",
+    "source": "openai",
+    "sessions": 340.0
+   },
+   {
+    "date": "2026-08-02",
+    "source": "copilot.com",
+    "sessions": 32.0
+   },
+   {
+    "date": "2026-08-02",
+    "source": "gemini.google.com",
+    "sessions": 12.0
+   },
+   {
+    "date": "2026-08-02",
+    "source": "perplexity",
+    "sessions": 7.0
+   },
+   {
+    "date": "2026-08-02",
+    "source": "chatgpt.com?utm_source=chatgpt.com",
+    "sessions": 2.0
+   },
+   {
+    "date": "2026-08-02",
+    "source": "copilot.microsoft.com",
+    "sessions": 1.0
+   },
+   {
+    "date": "2026-08-02",
+    "source": "perplexity.ai",
+    "sessions": 1.0
+   },
+   {
+    "date": "2026-08-03",
+    "source": "chatgpt.com",
+    "sessions": 442.0
+   },
+   {
+    "date": "2026-08-03",
+    "source": "openai",
+    "sessions": 264.0
+   },
+   {
+    "date": "2026-08-03",
+    "source": "copilot.com",
+    "sessions": 22.0
+   },
+   {
+    "date": "2026-08-03",
+    "source": "gemini.google.com",
+    "sessions": 20.0
+   },
+   {
+    "date": "2026-08-03",
+    "source": "perplexity",
+    "sessions": 2.0
+   },
+   {
+    "date": "2026-08-03",
+    "source": "claude.ai",
+    "sessions": 1.0
+   },
+   {
+    "date": "2026-08-04",
+    "source": "chatgpt.com",
+    "sessions": 379.0
+   },
+   {
+    "date": "2026-08-04",
+    "source": "openai",
+    "sessions": 233.0
+   },
+   {
+    "date": "2026-08-04",
+    "source": "gemini.google.com",
+    "sessions": 23.0
+   },
+   {
+    "date": "2026-08-04",
+    "source": "copilot.com",
+    "sessions": 9.0
+   },
+   {
+    "date": "2026-08-04",
+    "source": "perplexity",
+    "sessions": 5.0
+   },
+   {
+    "date": "2026-08-04",
+    "source": "perplexity.ai",
+    "sessions": 4.0
+   },
+   {
+    "date": "2026-08-04",
+    "source": "chatgpt.com?utm_source=chatgpt.com",
+    "sessions": 1.0
+   },
+   {
+    "date": "2026-08-05",
+    "source": "chatgpt.com",
+    "sessions": 382.0
+   },
+   {
+    "date": "2026-08-05",
+    "source": "openai",
+    "sessions": 377.0
+   },
+   {
+    "date": "2026-08-05",
+    "source": "copilot.com",
+    "sessions": 18.0
+   },
+   {
+    "date": "2026-08-05",
+    "source": "gemini.google.com",
+    "sessions": 17.0
+   },
+   {
+    "date": "2026-08-05",
+    "source": "claude.ai",
+    "sessions": 5.0
+   },
+   {
+    "date": "2026-08-05",
+    "source": "perplexity",
+    "sessions": 2.0
+   },
+   {
+    "date": "2026-08-05",
+    "source": "perplexity.ai",
+    "sessions": 2.0
+   },
+   {
+    "date": "2026-08-06",
+    "source": "openai",
+    "sessions": 440.0
+   },
+   {
+    "date": "2026-08-06",
+    "source": "chatgpt.com",
+    "sessions": 382.0
+   },
+   {
+    "date": "2026-08-06",
+    "source": "gemini.google.com",
+    "sessions": 25.0
+   },
+   {
+    "date": "2026-08-06",
+    "source": "copilot.com",
+    "sessions": 17.0
+   },
+   {
+    "date": "2026-08-06",
+    "source": "chatgpt.com?utm_source=chatgpt.com",
+    "sessions": 3.0
+   },
+   {
+    "date": "2026-08-06",
+    "source": "perplexity",
+    "sessions": 2.0
+   },
+   {
+    "date": "2026-08-06",
+    "source": "perplexity.ai",
+    "sessions": 2.0
+   },
+   {
+    "date": "2026-08-06",
+    "source": "chatgpt.com.",
+    "sessions": 1.0
+   },
+   {
+    "date": "2026-08-06",
+    "source": "claude.ai",
+    "sessions": 1.0
+   },
+   {
+    "date": "2026-08-07",
+    "source": "openai",
+    "sessions": 433.0
+   },
+   {
+    "date": "2026-08-07",
+    "source": "chatgpt.com",
+    "sessions": 417.0
+   },
+   {
+    "date": "2026-08-07",
+    "source": "gemini.google.com",
+    "sessions": 13.0
+   },
+   {
+    "date": "2026-08-07",
+    "source": "copilot.com",
+    "sessions": 11.0
+   },
+   {
+    "date": "2026-08-07",
+    "source": "claude.ai",
+    "sessions": 8.0
+   },
+   {
+    "date": "2026-08-07",
+    "source": "perplexity.ai",
+    "sessions": 3.0
+   },
+   {
+    "date": "2026-08-07",
+    "source": "perplexity",
+    "sessions": 2.0
+   },
+   {
+    "date": "2026-08-07",
+    "source": "chatgpt.com?utm_source=chatgpt.com",
+    "sessions": 1.0
+   },
+   {
+    "date": "2026-08-08",
+    "source": "chatgpt.com",
+    "sessions": 564.0
+   },
+   {
+    "date": "2026-08-08",
+    "source": "openai",
+    "sessions": 522.0
+   },
+   {
+    "date": "2026-08-08",
+    "source": "gemini.google.com",
+    "sessions": 16.0
+   },
+   {
+    "date": "2026-08-08",
+    "source": "copilot.com",
+    "sessions": 15.0
+   },
+   {
+    "date": "2026-08-08",
+    "source": "chatgpt.com?utm_source=chatgpt.com",
+    "sessions": 2.0
+   },
+   {
+    "date": "2026-08-08",
+    "source": "claude.ai",
+    "sessions": 2.0
+   },
+   {
+    "date": "2026-08-08",
+    "source": "openai?utm_source=openai",
+    "sessions": 2.0
+   },
+   {
+    "date": "2026-08-09",
+    "source": "chatgpt.com",
+    "sessions": 638.0
+   },
+   {
+    "date": "2026-08-09",
+    "source": "openai",
+    "sessions": 592.0
+   },
+   {
+    "date": "2026-08-09",
+    "source": "copilot.com",
+    "sessions": 32.0
+   },
+   {
+    "date": "2026-08-09",
+    "source": "gemini.google.com",
+    "sessions": 20.0
+   },
+   {
+    "date": "2026-08-09",
+    "source": "perplexity",
+    "sessions": 4.0
+   },
+   {
+    "date": "2026-08-09",
+    "source": "chatgpt.com?utm_source=chatgpt.com",
+    "sessions": 2.0
+   },
+   {
+    "date": "2026-08-09",
+    "source": "claude.ai",
+    "sessions": 1.0
+   },
+   {
+    "date": "2026-08-09",
+    "source": "perplexity.ai",
+    "sessions": 1.0
+   },
+   {
+    "date": "2026-08-10",
+    "source": "chatgpt.com",
+    "sessions": 502.0
+   },
+   {
+    "date": "2026-08-10",
+    "source": "openai",
+    "sessions": 478.0
+   },
+   {
+    "date": "2026-08-10",
+    "source": "copilot.com",
+    "sessions": 18.0
+   },
+   {
+    "date": "2026-08-10",
+    "source": "gemini.google.com",
+    "sessions": 17.0
+   },
+   {
+    "date": "2026-08-10",
+    "source": "chatgpt.com?utm_source=chatgpt.com",
+    "sessions": 2.0
+   },
+   {
+    "date": "2026-08-10",
+    "source": "claude.ai",
+    "sessions": 2.0
+   },
+   {
+    "date": "2026-08-11",
+    "source": "chatgpt.com",
+    "sessions": 620.0
+   },
+   {
+    "date": "2026-08-11",
+    "source": "openai",
+    "sessions": 485.0
+   },
+   {
+    "date": "2026-08-11",
+    "source": "copilot.com",
+    "sessions": 25.0
+   },
+   {
+    "date": "2026-08-11",
+    "source": "gemini.google.com",
+    "sessions": 16.0
+   },
+   {
+    "date": "2026-08-11",
+    "source": "perplexity",
+    "sessions": 4.0
+   },
+   {
+    "date": "2026-08-11",
+    "source": "chatgpt.com?utm_source=chatgpt.com",
+    "sessions": 1.0
+   },
+   {
+    "date": "2026-08-11",
+    "source": "claude.ai",
+    "sessions": 1.0
+   },
+   {
+    "date": "2026-08-11",
+    "source": "perplexity.ai",
+    "sessions": 1.0
+   },
+   {
+    "date": "2026-08-12",
+    "source": "openai",
+    "sessions": 611.0
+   },
+   {
+    "date": "2026-08-12",
+    "source": "chatgpt.com",
+    "sessions": 539.0
+   },
+   {
+    "date": "2026-08-12",
+    "source": "copilot.com",
+    "sessions": 19.0
+   },
+   {
+    "date": "2026-08-12",
+    "source": "gemini.google.com",
+    "sessions": 17.0
+   },
+   {
+    "date": "2026-08-12",
+    "source": "perplexity",
+    "sessions": 3.0
+   },
+   {
+    "date": "2026-08-12",
+    "source": "perplexity.ai",
+    "sessions": 2.0
+   },
+   {
+    "date": "2026-08-12",
+    "source": "chatgpt.com?utm_source=chatgpt.com",
+    "sessions": 1.0
+   },
+   {
+    "date": "2026-08-12",
+    "source": "claude.ai",
+    "sessions": 1.0
+   },
+   {
+    "date": "2026-08-13",
+    "source": "openai",
+    "sessions": 644.0
+   },
+   {
+    "date": "2026-08-13",
+    "source": "chatgpt.com",
+    "sessions": 543.0
+   },
+   {
+    "date": "2026-08-13",
+    "source": "gemini.google.com",
+    "sessions": 21.0
+   },
+   {
+    "date": "2026-08-13",
+    "source": "copilot.com",
+    "sessions": 15.0
+   },
+   {
+    "date": "2026-08-13",
+    "source": "perplexity",
+    "sessions": 4.0
+   },
+   {
+    "date": "2026-08-13",
+    "source": "chatgpt.com?utm_source=chatgpt.com",
+    "sessions": 1.0
+   },
+   {
+    "date": "2026-08-13",
+    "source": "claude.ai",
+    "sessions": 1.0
+   },
+   {
+    "date": "2026-08-13",
+    "source": "perplexity.ai",
+    "sessions": 1.0
+   },
+   {
+    "date": "2026-08-14",
+    "source": "openai",
+    "sessions": 665.0
+   },
+   {
+    "date": "2026-08-14",
+    "source": "chatgpt.com",
+    "sessions": 543.0
+   },
+   {
+    "date": "2026-08-14",
+    "source": "copilot.com",
+    "sessions": 18.0
+   },
+   {
+    "date": "2026-08-14",
+    "source": "gemini.google.com",
+    "sessions": 14.0
+   },
+   {
+    "date": "2026-08-14",
+    "source": "perplexity.ai",
+    "sessions": 2.0
+   },
+   {
+    "date": "2026-08-15",
+    "source": "openai",
+    "sessions": 665.0
+   },
+   {
+    "date": "2026-08-15",
+    "source": "chatgpt.com",
+    "sessions": 552.0
+   },
+   {
+    "date": "2026-08-15",
+    "source": "copilot.com",
+    "sessions": 13.0
+   },
+   {
+    "date": "2026-08-15",
+    "source": "gemini.google.com",
+    "sessions": 9.0
+   },
+   {
+    "date": "2026-08-15",
+    "source": "openai?utm_source=openai",
+    "sessions": 1.0
+   },
+   {
+    "date": "2026-08-15",
+    "source": "perplexity.ai",
+    "sessions": 1.0
+   },
+   {
+    "date": "2026-08-16",
+    "source": "openai",
+    "sessions": 732.0
+   },
+   {
+    "date": "2026-08-16",
+    "source": "chatgpt.com",
+    "sessions": 650.0
+   },
+   {
+    "date": "2026-08-16",
+    "source": "copilot.com",
+    "sessions": 20.0
+   },
+   {
+    "date": "2026-08-16",
+    "source": "gemini.google.com",
+    "sessions": 13.0
+   },
+   {
+    "date": "2026-08-16",
+    "source": "claude.ai",
+    "sessions": 2.0
+   },
+   {
+    "date": "2026-08-16",
+    "source": "perplexity",
+    "sessions": 2.0
+   },
+   {
+    "date": "2026-08-17",
+    "source": "openai",
+    "sessions": 694.0
+   },
+   {
+    "date": "2026-08-17",
+    "source": "chatgpt.com",
+    "sessions": 624.0
+   },
+   {
+    "date": "2026-08-17",
+    "source": "copilot.com",
+    "sessions": 23.0
+   },
+   {
+    "date": "2026-08-17",
+    "source": "gemini.google.com",
+    "sessions": 23.0
+   },
+   {
+    "date": "2026-08-17",
+    "source": "perplexity.ai",
+    "sessions": 5.0
+   },
+   {
+    "date": "2026-08-17",
+    "source": "perplexity",
+    "sessions": 4.0
+   },
+   {
+    "date": "2026-08-17",
+    "source": "claude.ai",
+    "sessions": 2.0
+   },
+   {
+    "date": "2026-08-18",
+    "source": "openai",
+    "sessions": 677.0
+   },
+   {
+    "date": "2026-08-18",
+    "source": "chatgpt.com",
+    "sessions": 671.0
+   },
+   {
+    "date": "2026-08-18",
+    "source": "gemini.google.com",
+    "sessions": 29.0
+   },
+   {
+    "date": "2026-08-18",
+    "source": "copilot.com",
+    "sessions": 20.0
+   },
+   {
+    "date": "2026-08-18",
+    "source": "perplexity.ai",
+    "sessions": 9.0
+   },
+   {
+    "date": "2026-08-18",
+    "source": "claude.ai",
+    "sessions": 3.0
+   },
+   {
+    "date": "2026-08-18",
+    "source": "perplexity",
+    "sessions": 3.0
+   },
+   {
+    "date": "2026-08-19",
+    "source": "openai",
+    "sessions": 767.0
+   },
+   {
+    "date": "2026-08-19",
+    "source": "chatgpt.com",
+    "sessions": 735.0
+   },
+   {
+    "date": "2026-08-19",
+    "source": "gemini.google.com",
+    "sessions": 17.0
+   },
+   {
+    "date": "2026-08-19",
+    "source": "copilot.com",
+    "sessions": 13.0
+   },
+   {
+    "date": "2026-08-19",
+    "source": "chatgpt.com?utm_source=chatgpt.com",
+    "sessions": 5.0
+   },
+   {
+    "date": "2026-08-19",
+    "source": "claude.ai",
+    "sessions": 2.0
+   },
+   {
+    "date": "2026-08-19",
+    "source": "perplexity",
+    "sessions": 2.0
+   },
+   {
+    "date": "2026-08-19",
+    "source": "perplexity.ai",
+    "sessions": 2.0
+   },
+   {
+    "date": "2026-08-19",
+    "source": "18db-153-215-211-114.ngrok-free.app",
+    "sessions": 1.0
+   },
+   {
+    "date": "2026-08-19",
+    "source": "openai?utm_source=openai",
+    "sessions": 1.0
+   },
+   {
+    "date": "2026-08-20",
+    "source": "openai",
+    "sessions": 756.0
+   },
+   {
+    "date": "2026-08-20",
+    "source": "chatgpt.com",
+    "sessions": 622.0
+   },
+   {
+    "date": "2026-08-20",
+    "source": "gemini.google.com",
+    "sessions": 17.0
+   },
+   {
+    "date": "2026-08-20",
+    "source": "copilot.com",
+    "sessions": 7.0
+   },
+   {
+    "date": "2026-08-20",
+    "source": "chatgpt.com?utm_source=chatgpt.com",
+    "sessions": 6.0
+   },
+   {
+    "date": "2026-08-20",
+    "source": "claude.ai",
+    "sessions": 3.0
+   },
+   {
+    "date": "2026-08-21",
+    "source": "openai",
+    "sessions": 781.0
+   },
+   {
+    "date": "2026-08-21",
+    "source": "chatgpt.com",
+    "sessions": 652.0
+   },
+   {
+    "date": "2026-08-21",
+    "source": "gemini.google.com",
+    "sessions": 24.0
+   },
+   {
+    "date": "2026-08-21",
+    "source": "copilot.com",
+    "sessions": 13.0
+   },
+   {
+    "date": "2026-08-21",
+    "source": "claude.ai",
+    "sessions": 3.0
+   },
+   {
+    "date": "2026-08-21",
+    "source": "perplexity",
+    "sessions": 3.0
+   },
+   {
+    "date": "2026-08-21",
+    "source": "chatgpt.com?utm_source=chatgpt.com",
+    "sessions": 2.0
+   },
+   {
+    "date": "2026-08-22",
+    "source": "openai",
+    "sessions": 842.0
+   },
+   {
+    "date": "2026-08-22",
+    "source": "chatgpt.com",
+    "sessions": 731.0
+   },
+   {
+    "date": "2026-08-22",
+    "source": "copilot.com",
+    "sessions": 29.0
+   },
+   {
+    "date": "2026-08-22",
+    "source": "gemini.google.com",
+    "sessions": 18.0
+   },
+   {
+    "date": "2026-08-22",
+    "source": "perplexity",
+    "sessions": 3.0
+   },
+   {
+    "date": "2026-08-22",
+    "source": "chatgpt.com?utm_source=chatgpt.com",
+    "sessions": 1.0
+   },
+   {
+    "date": "2026-08-23",
+    "source": "openai",
+    "sessions": 1017.0
+   },
+   {
+    "date": "2026-08-23",
+    "source": "chatgpt.com",
+    "sessions": 781.0
+   },
+   {
+    "date": "2026-08-23",
+    "source": "gemini.google.com",
+    "sessions": 16.0
+   },
+   {
+    "date": "2026-08-23",
+    "source": "copilot.com",
+    "sessions": 14.0
+   },
+   {
+    "date": "2026-08-23",
+    "source": "perplexity",
+    "sessions": 4.0
+   },
+   {
+    "date": "2026-08-23",
+    "source": "chatgpt.com?utm_source=chatgpt.com",
+    "sessions": 2.0
+   },
+   {
+    "date": "2026-08-23",
+    "source": "claude.ai",
+    "sessions": 1.0
+   },
+   {
+    "date": "2026-08-23",
+    "source": "copilot.microsoft.com",
+    "sessions": 1.0
+   },
+   {
+    "date": "2026-08-24",
+    "source": "openai",
+    "sessions": 872.0
+   },
+   {
+    "date": "2026-08-24",
+    "source": "chatgpt.com",
+    "sessions": 714.0
+   },
+   {
+    "date": "2026-08-24",
+    "source": "gemini.google.com",
+    "sessions": 35.0
+   },
+   {
+    "date": "2026-08-24",
+    "source": "copilot.com",
+    "sessions": 12.0
+   },
+   {
+    "date": "2026-08-24",
+    "source": "perplexity",
+    "sessions": 7.0
+   },
+   {
+    "date": "2026-08-24",
+    "source": "chatgpt.com?utm_source=chatgpt.com",
+    "sessions": 5.0
+   },
+   {
+    "date": "2026-08-24",
+    "source": "claude.ai",
+    "sessions": 3.0
+   },
+   {
+    "date": "2026-08-24",
+    "source": "perplexity.ai",
+    "sessions": 2.0
+   },
+   {
+    "date": "2026-08-25",
+    "source": "openai",
+    "sessions": 833.0
+   },
+   {
+    "date": "2026-08-25",
+    "source": "chatgpt.com",
+    "sessions": 716.0
+   },
+   {
+    "date": "2026-08-25",
+    "source": "gemini.google.com",
+    "sessions": 38.0
+   },
+   {
+    "date": "2026-08-25",
+    "source": "copilot.com",
+    "sessions": 15.0
+   },
+   {
+    "date": "2026-08-25",
+    "source": "perplexity",
+    "sessions": 4.0
+   },
+   {
+    "date": "2026-08-25",
+    "source": "openai?utm_source=openai",
+    "sessions": 2.0
+   },
+   {
+    "date": "2026-08-25",
+    "source": "chatgpt.com?utm_source=chatgpt.com",
+    "sessions": 1.0
+   },
+   {
+    "date": "2026-08-25",
+    "source": "claude.ai",
+    "sessions": 1.0
+   },
+   {
+    "date": "2026-08-26",
+    "source": "openai",
+    "sessions": 906.0
+   },
+   {
+    "date": "2026-08-26",
+    "source": "chatgpt.com",
+    "sessions": 684.0
+   },
+   {
+    "date": "2026-08-26",
+    "source": "gemini.google.com",
+    "sessions": 34.0
+   },
+   {
+    "date": "2026-08-26",
+    "source": "copilot.com",
+    "sessions": 22.0
+   },
+   {
+    "date": "2026-08-26",
+    "source": "claude.ai",
+    "sessions": 2.0
+   },
+   {
+    "date": "2026-08-27",
+    "source": "openai",
+    "sessions": 855.0
+   },
+   {
+    "date": "2026-08-27",
+    "source": "chatgpt.com",
+    "sessions": 680.0
+   },
+   {
+    "date": "2026-08-27",
+    "source": "copilot.com",
+    "sessions": 18.0
+   },
+   {
+    "date": "2026-08-27",
+    "source": "gemini.google.com",
+    "sessions": 18.0
+   },
+   {
+    "date": "2026-08-27",
+    "source": "chatgpt.com?utm_source=chatgpt.com",
+    "sessions": 7.0
+   },
+   {
+    "date": "2026-08-27",
+    "source": "claude.ai",
+    "sessions": 2.0
+   },
+   {
+    "date": "2026-08-27",
+    "source": "openai?utm_source=openai",
+    "sessions": 1.0
+   },
+   {
+    "date": "2026-08-27",
+    "source": "perplexity",
+    "sessions": 1.0
+   },
+   {
+    "date": "2026-08-28",
+    "source": "openai",
+    "sessions": 823.0
+   },
+   {
+    "date": "2026-08-28",
+    "source": "chatgpt.com",
+    "sessions": 592.0
+   },
+   {
+    "date": "2026-08-28",
+    "source": "gemini.google.com",
+    "sessions": 32.0
+   },
+   {
+    "date": "2026-08-28",
+    "source": "copilot.com",
+    "sessions": 12.0
+   },
+   {
+    "date": "2026-08-28",
+    "source": "perplexity",
+    "sessions": 6.0
+   },
+   {
+    "date": "2026-08-28",
+    "source": "claude.ai",
+    "sessions": 5.0
+   },
+   {
+    "date": "2026-08-28",
+    "source": "chatgpt.com?utm_source=chatgpt.com",
+    "sessions": 2.0
+   },
+   {
+    "date": "2026-08-28",
+    "source": "perplexity.ai",
+    "sessions": 2.0
+   },
+   {
+    "date": "2026-08-29",
+    "source": "openai",
+    "sessions": 1000.0
+   },
+   {
+    "date": "2026-08-29",
+    "source": "chatgpt.com",
+    "sessions": 729.0
+   },
+   {
+    "date": "2026-08-29",
+    "source": "gemini.google.com",
+    "sessions": 22.0
+   },
+   {
+    "date": "2026-08-29",
+    "source": "copilot.com",
+    "sessions": 16.0
+   },
+   {
+    "date": "2026-08-29",
+    "source": "perplexity",
+    "sessions": 3.0
+   },
+   {
+    "date": "2026-08-29",
+    "source": "chatgpt.com?utm_source=chatgpt.com",
+    "sessions": 2.0
+   },
+   {
+    "date": "2026-08-30",
+    "source": "openai",
+    "sessions": 1011.0
+   },
+   {
+    "date": "2026-08-30",
+    "source": "chatgpt.com",
+    "sessions": 803.0
+   },
+   {
+    "date": "2026-08-30",
+    "source": "gemini.google.com",
+    "sessions": 14.0
+   },
+   {
+    "date": "2026-08-30",
+    "source": "copilot.com",
+    "sessions": 13.0
+   },
+   {
+    "date": "2026-08-30",
+    "source": "chatgpt.com?utm_source=chatgpt.com",
+    "sessions": 3.0
+   },
+   {
+    "date": "2026-08-30",
+    "source": "openai?utm_source=openai",
+    "sessions": 2.0
+   },
+   {
+    "date": "2026-08-30",
+    "source": "perplexity.ai",
+    "sessions": 2.0
+   },
+   {
+    "date": "2026-08-30",
+    "source": "enterprise.perplexity.ai",
+    "sessions": 1.0
+   },
+   {
+    "date": "2026-08-30",
+    "source": "perplexity?utm_source=perplexity",
+    "sessions": 1.0
+   },
+   {
+    "date": "2026-08-31",
+    "source": "openai",
+    "sessions": 879.0
+   },
+   {
+    "date": "2026-08-31",
+    "source": "chatgpt.com",
+    "sessions": 694.0
+   },
+   {
+    "date": "2026-08-31",
+    "source": "gemini.google.com",
+    "sessions": 23.0
+   },
+   {
+    "date": "2026-08-31",
+    "source": "copilot.com",
+    "sessions": 17.0
+   },
+   {
+    "date": "2026-08-31",
+    "source": "chatgpt.com?utm_source=chatgpt.com",
+    "sessions": 2.0
+   },
+   {
+    "date": "2026-08-31",
+    "source": "chatgpt.co",
+    "sessions": 1.0
+   },
+   {
+    "date": "2026-08-31",
+    "source": "chatgpt.comこのページに記載のあるものかと思われます。",
+    "sessions": 1.0
+   },
+   {
+    "date": "2026-08-31",
+    "source": "enterprise.perplexity.ai",
+    "sessions": 1.0
+   },
+   {
+    "date": "2026-08-31",
+    "source": "perplexity.ai",
+    "sessions": 1.0
+   },
+   {
+    "date": "2026-09-01",
+    "source": "openai",
+    "sessions": 858.0
+   },
+   {
+    "date": "2026-09-01",
+    "source": "chatgpt.com",
+    "sessions": 634.0
+   },
+   {
+    "date": "2026-09-01",
+    "source": "gemini.google.com",
+    "sessions": 26.0
+   },
+   {
+    "date": "2026-09-01",
+    "source": "copilot.com",
+    "sessions": 14.0
+   },
+   {
+    "date": "2026-09-01",
+    "source": "perplexity",
+    "sessions": 2.0
+   },
+   {
+    "date": "2026-09-01",
+    "source": "perplexity.ai",
+    "sessions": 2.0
+   },
+   {
+    "date": "2026-09-02",
+    "source": "openai",
+    "sessions": 772.0
+   },
+   {
+    "date": "2026-09-02",
+    "source": "chatgpt.com",
+    "sessions": 672.0
+   },
+   {
+    "date": "2026-09-02",
+    "source": "gemini.google.com",
+    "sessions": 39.0
+   },
+   {
+    "date": "2026-09-02",
+    "source": "copilot.com",
+    "sessions": 12.0
+   },
+   {
+    "date": "2026-09-02",
+    "source": "openai?utm_source=openai",
+    "sessions": 3.0
+   },
+   {
+    "date": "2026-09-02",
+    "source": "perplexity.ai",
+    "sessions": 2.0
+   },
+   {
+    "date": "2026-09-02",
+    "source": "chatgpt.com?utm_source=chatgpt.com",
+    "sessions": 1.0
+   },
+   {
+    "date": "2026-09-02",
+    "source": "copilot.microsoft.com",
+    "sessions": 1.0
+   },
+   {
+    "date": "2026-09-02",
+    "source": "perplexity",
+    "sessions": 1.0
+   },
+   {
+    "date": "2026-09-03",
+    "source": "openai",
+    "sessions": 791.0
+   },
+   {
+    "date": "2026-09-03",
+    "source": "chatgpt.com",
+    "sessions": 718.0
+   },
+   {
+    "date": "2026-09-03",
+    "source": "gemini.google.com",
+    "sessions": 20.0
+   },
+   {
+    "date": "2026-09-03",
+    "source": "copilot.com",
+    "sessions": 15.0
+   },
+   {
+    "date": "2026-09-03",
+    "source": "openai?utm_source=openai",
+    "sessions": 4.0
+   },
+   {
+    "date": "2026-09-03",
+    "source": "perplexity.ai",
+    "sessions": 4.0
+   },
+   {
+    "date": "2026-09-03",
+    "source": "chatgpt.com?utm_source=chatgpt.com",
+    "sessions": 2.0
+   },
+   {
+    "date": "2026-09-03",
+    "source": "claude.ai",
+    "sessions": 2.0
+   },
+   {
+    "date": "2026-09-03",
+    "source": "perplexity",
+    "sessions": 1.0
+   },
+   {
+    "date": "2026-09-04",
+    "source": "openai",
+    "sessions": 739.0
+   },
+   {
+    "date": "2026-09-04",
+    "source": "chatgpt.com",
+    "sessions": 735.0
+   },
+   {
+    "date": "2026-09-04",
+    "source": "gemini.google.com",
+    "sessions": 22.0
+   },
+   {
+    "date": "2026-09-04",
+    "source": "copilot.com",
+    "sessions": 19.0
+   },
+   {
+    "date": "2026-09-04",
+    "source": "perplexity.ai",
+    "sessions": 4.0
+   },
+   {
+    "date": "2026-09-04",
+    "source": "claude.ai",
+    "sessions": 1.0
+   },
+   {
+    "date": "2026-09-04",
+    "source": "gemini",
+    "sessions": 1.0
+   },
+   {
+    "date": "2026-09-04",
+    "source": "perplexity",
+    "sessions": 1.0
+   },
+   {
+    "date": "2026-09-05",
+    "source": "chatgpt.com",
+    "sessions": 809.0
+   },
+   {
+    "date": "2026-09-05",
+    "source": "openai",
+    "sessions": 771.0
+   },
+   {
+    "date": "2026-09-05",
+    "source": "gemini.google.com",
+    "sessions": 20.0
+   },
+   {
+    "date": "2026-09-05",
+    "source": "copilot.com",
+    "sessions": 6.0
+   },
+   {
+    "date": "2026-09-05",
+    "source": "chatgpt.com?utm_source=chatgpt.com",
+    "sessions": 5.0
+   },
+   {
+    "date": "2026-09-05",
+    "source": "claude.ai",
+    "sessions": 3.0
+   },
+   {
+    "date": "2026-09-05",
+    "source": "perplexity",
+    "sessions": 3.0
+   },
+   {
+    "date": "2026-09-05",
+    "source": "openai?utm_source=openai",
+    "sessions": 1.0
+   },
+   {
+    "date": "2026-09-05",
+    "source": "r.openai.com",
+    "sessions": 1.0
+   },
+   {
+    "date": "2026-09-06",
+    "source": "chatgpt.com",
+    "sessions": 902.0
+   },
+   {
+    "date": "2026-09-06",
+    "source": "openai",
+    "sessions": 817.0
+   },
+   {
+    "date": "2026-09-06",
+    "source": "gemini.google.com",
+    "sessions": 24.0
+   },
+   {
+    "date": "2026-09-06",
+    "source": "copilot.com",
+    "sessions": 16.0
+   },
+   {
+    "date": "2026-09-06",
+    "source": "perplexity",
+    "sessions": 6.0
+   },
+   {
+    "date": "2026-09-06",
+    "source": "chatgpt.com?utm_source=chatgpt.com",
+    "sessions": 3.0
+   },
+   {
+    "date": "2026-09-06",
+    "source": "claude.ai",
+    "sessions": 1.0
+   },
+   {
+    "date": "2026-09-06",
+    "source": "copilot.microsoft.com",
+    "sessions": 1.0
+   },
+   {
+    "date": "2026-09-06",
+    "source": "gemini",
+    "sessions": 1.0
+   },
+   {
+    "date": "2026-09-07",
+    "source": "chatgpt.com",
+    "sessions": 756.0
+   },
+   {
+    "date": "2026-09-07",
+    "source": "openai",
+    "sessions": 651.0
+   },
+   {
+    "date": "2026-09-07",
+    "source": "gemini.google.com",
+    "sessions": 29.0
+   },
+   {
+    "date": "2026-09-07",
+    "source": "copilot.com",
+    "sessions": 8.0
+   },
+   {
+    "date": "2026-09-07",
+    "source": "chatgpt.com(url)",
+    "sessions": 4.0
+   },
+   {
+    "date": "2026-09-07",
+    "source": "openai?utm_source=openai",
+    "sessions": 1.0
+   },
+   {
+    "date": "2026-09-07",
+    "source": "perplexity",
+    "sessions": 1.0
+   },
+   {
+    "date": "2026-09-07",
+    "source": "perplexity.ai",
+    "sessions": 1.0
+   },
+   {
+    "date": "2026-09-08",
+    "source": "chatgpt.com",
+    "sessions": 627.0
+   },
+   {
+    "date": "2026-09-08",
+    "source": "openai",
+    "sessions": 312.0
+   },
+   {
+    "date": "2026-09-08",
+    "source": "gemini.google.com",
+    "sessions": 23.0
+   },
+   {
+    "date": "2026-09-08",
+    "source": "copilot.com",
+    "sessions": 10.0
+   },
+   {
+    "date": "2026-09-08",
+    "source": "perplexity.ai",
+    "sessions": 4.0
+   },
+   {
+    "date": "2026-09-08",
+    "source": "chatgpt.com?utm_source=chatgpt.com",
+    "sessions": 2.0
+   },
+   {
+    "date": "2026-09-08",
+    "source": "claude.ai",
+    "sessions": 2.0
+   },
+   {
+    "date": "2026-09-08",
+    "source": "gemini",
+    "sessions": 1.0
+   },
+   {
+    "date": "2026-09-08",
+    "source": "perplexity",
+    "sessions": 1.0
+   },
+   {
+    "date": "2026-09-09",
+    "source": "chatgpt.com",
+    "sessions": 649.0
+   },
+   {
+    "date": "2026-09-09",
+    "source": "openai",
+    "sessions": 414.0
+   },
+   {
+    "date": "2026-09-09",
+    "source": "gemini.google.com",
+    "sessions": 22.0
+   },
+   {
+    "date": "2026-09-09",
+    "source": "copilot.com",
+    "sessions": 12.0
+   },
+   {
+    "date": "2026-09-09",
+    "source": "perplexity.ai",
+    "sessions": 3.0
+   },
+   {
+    "date": "2026-09-09",
+    "source": "chatgpt.com?utm_source=chatgpt.com",
+    "sessions": 2.0
+   },
+   {
+    "date": "2026-09-09",
+    "source": "perplexity",
+    "sessions": 2.0
+   },
+   {
+    "date": "2026-09-09",
+    "source": "cdn.platform.openai.com",
+    "sessions": 1.0
+   },
+   {
+    "date": "2026-09-10",
+    "source": "chatgpt.com",
+    "sessions": 664.0
+   },
+   {
+    "date": "2026-09-10",
+    "source": "openai",
+    "sessions": 393.0
+   },
+   {
+    "date": "2026-09-10",
+    "source": "gemini.google.com",
+    "sessions": 25.0
+   },
+   {
+    "date": "2026-09-10",
+    "source": "copilot.com",
+    "sessions": 13.0
+   },
+   {
+    "date": "2026-09-10",
+    "source": "gemini",
+    "sessions": 4.0
+   },
+   {
+    "date": "2026-09-10",
+    "source": "chatgpt.com?utm_source=chatgpt.com",
+    "sessions": 2.0
+   },
+   {
+    "date": "2026-09-10",
+    "source": "perplexity",
+    "sessions": 1.0
+   },
+   {
+    "date": "2026-09-11",
+    "source": "chatgpt.com",
+    "sessions": 704.0
+   },
+   {
+    "date": "2026-09-11",
+    "source": "openai",
+    "sessions": 552.0
+   },
+   {
+    "date": "2026-09-11",
+    "source": "gemini.google.com",
+    "sessions": 22.0
+   },
+   {
+    "date": "2026-09-11",
+    "source": "copilot.com",
+    "sessions": 15.0
+   },
+   {
+    "date": "2026-09-11",
+    "source": "perplexity.ai",
+    "sessions": 5.0
+   },
+   {
+    "date": "2026-09-11",
+    "source": "openai?utm_source=openai",
+    "sessions": 4.0
+   },
+   {
+    "date": "2026-09-11",
+    "source": "perplexity",
+    "sessions": 3.0
+   },
+   {
+    "date": "2026-09-11",
+    "source": "gemini",
+    "sessions": 2.0
+   },
+   {
+    "date": "2026-09-11",
+    "source": "copilotsearch.com",
+    "sessions": 1.0
+   },
+   {
+    "date": "2026-09-12",
+    "source": "chatgpt.com",
+    "sessions": 782.0
+   },
+   {
+    "date": "2026-09-12",
+    "source": "openai",
+    "sessions": 654.0
+   },
+   {
+    "date": "2026-09-12",
+    "source": "gemini.google.com",
+    "sessions": 18.0
+   },
+   {
+    "date": "2026-09-12",
+    "source": "copilot.com",
+    "sessions": 8.0
+   },
+   {
+    "date": "2026-09-12",
+    "source": "gemini",
+    "sessions": 5.0
+   },
+   {
+    "date": "2026-09-12",
+    "source": "chatgpt.com?utm_source=chatgpt.com",
+    "sessions": 2.0
+   },
+   {
+    "date": "2026-09-13",
+    "source": "chatgpt.com",
+    "sessions": 950.0
+   },
+   {
+    "date": "2026-09-13",
+    "source": "openai",
+    "sessions": 733.0
+   },
+   {
+    "date": "2026-09-13",
+    "source": "copilot.com",
+    "sessions": 23.0
+   },
+   {
+    "date": "2026-09-13",
+    "source": "gemini.google.com",
+    "sessions": 17.0
+   },
+   {
+    "date": "2026-09-13",
+    "source": "gemini",
+    "sessions": 6.0
+   },
+   {
+    "date": "2026-09-13",
+    "source": "perplexity",
+    "sessions": 4.0
+   },
+   {
+    "date": "2026-09-13",
+    "source": "chatgpt.com?utm_source=chatgpt.com",
+    "sessions": 1.0
+   },
+   {
+    "date": "2026-09-14",
+    "source": "chatgpt.com",
+    "sessions": 736.0
+   },
+   {
+    "date": "2026-09-14",
+    "source": "openai",
+    "sessions": 569.0
+   },
+   {
+    "date": "2026-09-14",
+    "source": "gemini.google.com",
+    "sessions": 20.0
+   },
+   {
+    "date": "2026-09-14",
+    "source": "copilot.com",
+    "sessions": 13.0
+   },
+   {
+    "date": "2026-09-14",
+    "source": "openai?utm_source=openai",
+    "sessions": 4.0
+   },
+   {
+    "date": "2026-09-14",
+    "source": "gemini",
+    "sessions": 2.0
+   },
+   {
+    "date": "2026-09-14",
+    "source": "chatgpt.com?utm_source=chatgpt.com",
+    "sessions": 1.0
+   },
+   {
+    "date": "2026-09-14",
+    "source": "perplexity",
+    "sessions": 1.0
+   },
+   {
+    "date": "2026-09-14",
+    "source": "perplexity.ai",
+    "sessions": 1.0
+   },
+   {
+    "date": "2026-09-15",
+    "source": "chatgpt.com",
+    "sessions": 721.0
+   },
+   {
+    "date": "2026-09-15",
+    "source": "openai",
+    "sessions": 551.0
+   },
+   {
+    "date": "2026-09-15",
+    "source": "gemini.google.com",
+    "sessions": 20.0
+   },
+   {
+    "date": "2026-09-15",
+    "source": "copilot.com",
+    "sessions": 15.0
+   },
+   {
+    "date": "2026-09-15",
+    "source": "chatgpt.com?utm_source=chatgpt.com",
+    "sessions": 5.0
+   },
+   {
+    "date": "2026-09-15",
+    "source": "gemini",
+    "sessions": 4.0
+   },
+   {
+    "date": "2026-09-15",
+    "source": "perplexity",
+    "sessions": 3.0
+   },
+   {
+    "date": "2026-09-15",
+    "source": "perplexity.ai",
+    "sessions": 2.0
+   },
+   {
+    "date": "2026-09-15",
+    "source": "claude.ai",
+    "sessions": 1.0
+   },
+   {
+    "date": "2026-09-15",
+    "source": "openai?utm_source=openai",
+    "sessions": 1.0
+   },
+   {
+    "date": "2026-09-16",
+    "source": "chatgpt.com",
+    "sessions": 781.0
+   },
+   {
+    "date": "2026-09-16",
+    "source": "openai",
+    "sessions": 627.0
+   },
+   {
+    "date": "2026-09-16",
+    "source": "copilot.com",
+    "sessions": 13.0
+   },
+   {
+    "date": "2026-09-16",
+    "source": "gemini.google.com",
+    "sessions": 10.0
+   },
+   {
+    "date": "2026-09-16",
+    "source": "gemini",
+    "sessions": 7.0
+   },
+   {
+    "date": "2026-09-16",
+    "source": "perplexity.ai",
+    "sessions": 3.0
+   },
+   {
+    "date": "2026-09-16",
+    "source": "chatgpt.com?utm_source=chatgpt.com",
+    "sessions": 2.0
+   },
+   {
+    "date": "2026-09-16",
+    "source": "perplexity",
+    "sessions": 1.0
+   },
+   {
+    "date": "2026-09-17",
+    "source": "chatgpt.com",
+    "sessions": 644.0
+   },
+   {
+    "date": "2026-09-17",
+    "source": "openai",
+    "sessions": 551.0
+   },
+   {
+    "date": "2026-09-17",
+    "source": "gemini.google.com",
+    "sessions": 21.0
+   },
+   {
+    "date": "2026-09-17",
+    "source": "copilot.com",
+    "sessions": 10.0
+   },
+   {
+    "date": "2026-09-17",
+    "source": "gemini",
+    "sessions": 3.0
+   },
+   {
+    "date": "2026-09-17",
+    "source": "chatgpt.com?utm_source=chatgpt.com",
+    "sessions": 2.0
+   },
+   {
+    "date": "2026-09-17",
+    "source": "perplexity.ai",
+    "sessions": 2.0
+   },
+   {
+    "date": "2026-09-18",
+    "source": "chatgpt.com",
+    "sessions": 636.0
+   },
+   {
+    "date": "2026-09-18",
+    "source": "openai",
+    "sessions": 474.0
+   },
+   {
+    "date": "2026-09-18",
+    "source": "gemini",
+    "sessions": 26.0
+   },
+   {
+    "date": "2026-09-18",
+    "source": "gemini.google.com",
+    "sessions": 11.0
+   },
+   {
+    "date": "2026-09-18",
+    "source": "copilot.com",
+    "sessions": 6.0
+   },
+   {
+    "date": "2026-09-18",
+    "source": "chatgpt.com?utm_source=chatgpt.com",
+    "sessions": 2.0
+   },
+   {
+    "date": "2026-09-18",
+    "source": "tmc-azureopenai.azurewebsites.net",
+    "sessions": 2.0
+   },
+   {
+    "date": "2026-09-18",
+    "source": "claude.ai",
+    "sessions": 1.0
+   },
+   {
+    "date": "2026-09-18",
+    "source": "perplexity.ai",
+    "sessions": 1.0
+   },
+   {
+    "date": "2026-09-19",
+    "source": "chatgpt.com",
+    "sessions": 755.0
+   },
+   {
+    "date": "2026-09-19",
+    "source": "openai",
+    "sessions": 476.0
+   },
+   {
+    "date": "2026-09-19",
+    "source": "gemini",
+    "sessions": 35.0
+   },
+   {
+    "date": "2026-09-19",
+    "source": "gemini.google.com",
+    "sessions": 8.0
+   },
+   {
+    "date": "2026-09-19",
+    "source": "copilot.com",
+    "sessions": 7.0
+   },
+   {
+    "date": "2026-09-19",
+    "source": "chatgpt.com?utm_source=chatgpt.com",
+    "sessions": 3.0
+   },
+   {
+    "date": "2026-09-19",
+    "source": "perplexity",
+    "sessions": 2.0
+   },
+   {
+    "date": "2026-09-19",
+    "source": "claude.ai",
+    "sessions": 1.0
+   },
+   {
+    "date": "2026-09-19",
+    "source": "copilot.microsoft.com",
+    "sessions": 1.0
+   },
+   {
+    "date": "2026-09-20",
+    "source": "chatgpt.com",
+    "sessions": 815.0
+   },
+   {
+    "date": "2026-09-20",
+    "source": "openai",
+    "sessions": 523.0
+   },
+   {
+    "date": "2026-09-20",
+    "source": "gemini",
+    "sessions": 44.0
+   },
+   {
+    "date": "2026-09-20",
+    "source": "copilot.com",
+    "sessions": 12.0
+   },
+   {
+    "date": "2026-09-20",
+    "source": "gemini.google.com",
+    "sessions": 7.0
+   },
+   {
+    "date": "2026-09-21",
+    "source": "chatgpt.com",
+    "sessions": 822.0
+   },
+   {
+    "date": "2026-09-21",
+    "source": "openai",
+    "sessions": 551.0
+   },
+   {
+    "date": "2026-09-21",
+    "source": "gemini",
+    "sessions": 46.0
+   },
+   {
+    "date": "2026-09-21",
+    "source": "copilot.com",
+    "sessions": 23.0
+   },
+   {
+    "date": "2026-09-21",
+    "source": "chatgpt.com?utm_source=chatgpt.com",
+    "sessions": 5.0
+   },
+   {
+    "date": "2026-09-21",
+    "source": "gemini.google.com",
+    "sessions": 5.0
+   },
+   {
+    "date": "2026-09-21",
+    "source": "perplexity",
+    "sessions": 3.0
+   },
+   {
+    "date": "2026-09-21",
+    "source": "perplexity.ai",
+    "sessions": 2.0
+   },
+   {
+    "date": "2026-09-21",
+    "source": "claude.ai",
+    "sessions": 1.0
+   },
+   {
+    "date": "2026-09-22",
+    "source": "chatgpt.com",
+    "sessions": 763.0
+   },
+   {
+    "date": "2026-09-22",
+    "source": "openai",
+    "sessions": 749.0
+   },
+   {
+    "date": "2026-09-22",
+    "source": "gemini",
+    "sessions": 39.0
+   },
+   {
+    "date": "2026-09-22",
+    "source": "copilot.com",
+    "sessions": 11.0
+   },
+   {
+    "date": "2026-09-22",
+    "source": "gemini.google.com",
+    "sessions": 6.0
+   },
+   {
+    "date": "2026-09-22",
+    "source": "perplexity",
+    "sessions": 2.0
+   },
+   {
+    "date": "2026-09-22",
+    "source": "chatgpt.com?utm_source=chatgpt.com",
+    "sessions": 1.0
+   },
+   {
+    "date": "2026-09-23",
+    "source": "chatgpt.com",
+    "sessions": 923.0
+   },
+   {
+    "date": "2026-09-23",
+    "source": "openai",
+    "sessions": 813.0
+   },
+   {
+    "date": "2026-09-23",
+    "source": "gemini",
+    "sessions": 45.0
+   },
+   {
+    "date": "2026-09-23",
+    "source": "copilot.com",
+    "sessions": 15.0
+   },
+   {
+    "date": "2026-09-23",
+    "source": "gemini.google.com",
+    "sessions": 8.0
+   },
+   {
+    "date": "2026-09-23",
+    "source": "perplexity.ai",
+    "sessions": 3.0
+   },
+   {
+    "date": "2026-09-23",
+    "source": "perplexity",
+    "sessions": 1.0
+   },
+   {
+    "date": "2026-09-24",
+    "source": "openai",
+    "sessions": 681.0
+   },
+   {
+    "date": "2026-09-24",
+    "source": "chatgpt.com",
+    "sessions": 653.0
+   },
+   {
+    "date": "2026-09-24",
+    "source": "gemini",
+    "sessions": 57.0
+   },
+   {
+    "date": "2026-09-24",
+    "source": "copilot.com",
+    "sessions": 10.0
+   },
+   {
+    "date": "2026-09-24",
+    "source": "gemini.google.com",
+    "sessions": 5.0
+   },
+   {
+    "date": "2026-09-24",
+    "source": "chatgpt.com?utm_source=chatgpt.com",
+    "sessions": 3.0
+   },
+   {
+    "date": "2026-09-24",
+    "source": "perplexity",
+    "sessions": 2.0
+   },
+   {
+    "date": "2026-09-24",
+    "source": "perplexity.ai",
+    "sessions": 2.0
+   },
+   {
+    "date": "2026-09-24",
+    "source": "copilot.microsoft.com",
+    "sessions": 1.0
+   },
+   {
+    "date": "2026-09-24",
+    "source": "openai?utm_source=openai",
+    "sessions": 1.0
+   },
+   {
+    "date": "2026-09-25",
+    "source": "chatgpt.com",
+    "sessions": 694.0
+   },
+   {
+    "date": "2026-09-25",
+    "source": "openai",
+    "sessions": 677.0
+   },
+   {
+    "date": "2026-09-25",
+    "source": "gemini",
+    "sessions": 59.0
+   },
+   {
+    "date": "2026-09-25",
+    "source": "copilot.com",
+    "sessions": 7.0
+   },
+   {
+    "date": "2026-09-25",
+    "source": "perplexity.ai",
+    "sessions": 2.0
+   },
+   {
+    "date": "2026-09-25",
+    "source": "chatgpt.com?utm_source=chatgpt.com",
+    "sessions": 1.0
+   },
+   {
+    "date": "2026-09-25",
+    "source": "u.email.openai.com",
+    "sessions": 1.0
+   },
+   {
+    "date": "2026-09-26",
+    "source": "chatgpt.com",
+    "sessions": 895.0
+   },
+   {
+    "date": "2026-09-26",
+    "source": "openai",
+    "sessions": 847.0
+   },
+   {
+    "date": "2026-09-26",
+    "source": "gemini",
+    "sessions": 69.0
+   },
+   {
+    "date": "2026-09-26",
+    "source": "copilot.com",
+    "sessions": 7.0
+   },
+   {
+    "date": "2026-09-26",
+    "source": "chatgpt.com?utm_source=chatgpt.com",
+    "sessions": 2.0
+   },
+   {
+    "date": "2026-09-26",
+    "source": "copilot.microsoft.com",
+    "sessions": 1.0
+   },
+   {
+    "date": "2026-09-26",
+    "source": "gemini.google.com",
+    "sessions": 1.0
+   },
+   {
+    "date": "2026-09-26",
+    "source": "perplexity.ai",
+    "sessions": 1.0
+   },
+   {
+    "date": "2026-09-27",
+    "source": "chatgpt.com",
+    "sessions": 935.0
+   },
+   {
+    "date": "2026-09-27",
+    "source": "openai",
+    "sessions": 829.0
+   },
+   {
+    "date": "2026-09-27",
+    "source": "gemini",
+    "sessions": 68.0
+   },
+   {
+    "date": "2026-09-27",
+    "source": "copilot.com",
+    "sessions": 13.0
+   },
+   {
+    "date": "2026-09-27",
+    "source": "perplexity",
+    "sessions": 5.0
+   },
+   {
+    "date": "2026-09-27",
+    "source": "gemini.google.com",
+    "sessions": 3.0
+   },
+   {
+    "date": "2026-09-27",
+    "source": "chatgpt.com?utm_source=chatgpt.com",
+    "sessions": 2.0
+   },
+   {
+    "date": "2026-09-27",
+    "source": "gemini?utm_source=gemini",
+    "sessions": 2.0
+   },
+   {
+    "date": "2026-09-28",
+    "source": "chatgpt.com",
+    "sessions": 711.0
+   },
+   {
+    "date": "2026-09-28",
+    "source": "openai",
+    "sessions": 690.0
+   },
+   {
+    "date": "2026-09-28",
+    "source": "gemini",
+    "sessions": 51.0
+   },
+   {
+    "date": "2026-09-28",
+    "source": "copilot.com",
+    "sessions": 13.0
+   },
+   {
+    "date": "2026-09-28",
+    "source": "gemini.google.com",
+    "sessions": 2.0
+   },
+   {
+    "date": "2026-09-28",
+    "source": "gemini?utm_source=gemini",
+    "sessions": 2.0
+   },
+   {
+    "date": "2026-09-28",
+    "source": "perplexity",
+    "sessions": 2.0
+   },
+   {
+    "date": "2026-09-28",
+    "source": "chatgpt.com?utm_source=chatgpt.com",
+    "sessions": 1.0
+   },
+   {
+    "date": "2026-09-28",
+    "source": "perplexity.ai",
+    "sessions": 1.0
+   },
+   {
+    "date": "2026-09-30",
+    "source": "chatgpt.com",
+    "sessions": 753.0
+   },
+   {
+    "date": "2026-09-30",
+    "source": "openai",
+    "sessions": 637.0
+   },
+   {
+    "date": "2026-09-30",
+    "source": "gemini.google.com",
+    "sessions": 22.0
+   },
+   {
+    "date": "2026-09-30",
+    "source": "gemini",
+    "sessions": 11.0
+   },
+   {
+    "date": "2026-09-30",
+    "source": "copilot.com",
+    "sessions": 10.0
+   },
+   {
+    "date": "2026-09-30",
+    "source": "perplexity",
+    "sessions": 9.0
+   },
+   {
+    "date": "2026-09-30",
+    "source": "chatgpt.co",
+    "sessions": 1.0
+   },
+   {
+    "date": "2026-09-30",
+    "source": "chatgpt.com?utm_source=chatgpt.com",
+    "sessions": 1.0
+   },
+   {
+    "date": "2026-09-30",
+    "source": "openai?utm_source=openai",
+    "sessions": 1.0
+   },
+   {
+    "date": "2026-09-30",
+    "source": "perplexity.ai",
+    "sessions": 1.0
+   },
+   {
+    "date": "2026-10-01",
+    "source": "chatgpt.com",
+    "sessions": 735.0
+   },
+   {
+    "date": "2026-10-01",
+    "source": "openai",
+    "sessions": 567.0
+   },
+   {
+    "date": "2026-10-01",
+    "source": "gemini.google.com",
+    "sessions": 19.0
+   },
+   {
+    "date": "2026-10-01",
+    "source": "copilot.com",
+    "sessions": 7.0
+   },
+   {
+    "date": "2026-10-01",
+    "source": "chatgpt.com?utm_source=chatgpt.com",
+    "sessions": 6.0
+   },
+   {
+    "date": "2026-10-01",
+    "source": "gemini",
+    "sessions": 2.0
+   },
+   {
+    "date": "2026-10-01",
+    "source": "perplexity.ai",
+    "sessions": 1.0
+   },
+   {
+    "date": "2026-10-02",
+    "source": "chatgpt.com",
+    "sessions": 722.0
+   },
+   {
+    "date": "2026-10-02",
+    "source": "openai",
+    "sessions": 642.0
+   },
+   {
+    "date": "2026-10-02",
+    "source": "copilot.com",
+    "sessions": 15.0
+   },
+   {
+    "date": "2026-10-02",
+    "source": "gemini.google.com",
+    "sessions": 15.0
+   },
+   {
+    "date": "2026-10-02",
+    "source": "chatgpt.com?utm_source=chatgpt.com",
+    "sessions": 2.0
+   },
+   {
+    "date": "2026-10-02",
+    "source": "perplexity",
+    "sessions": 2.0
+   },
+   {
+    "date": "2026-10-02",
+    "source": "gemini",
+    "sessions": 1.0
+   },
+   {
+    "date": "2026-10-03",
+    "source": "chatgpt.com",
+    "sessions": 788.0
+   },
+   {
+    "date": "2026-10-03",
+    "source": "openai",
+    "sessions": 744.0
+   },
+   {
+    "date": "2026-10-03",
+    "source": "gemini.google.com",
+    "sessions": 10.0
+   },
+   {
+    "date": "2026-10-03",
+    "source": "copilot.com",
+    "sessions": 8.0
+   },
+   {
+    "date": "2026-10-03",
+    "source": "chatgpt.com?utm_source=chatgpt.com",
+    "sessions": 4.0
+   },
+   {
+    "date": "2026-10-03",
+    "source": "openai?utm_source=openai",
+    "sessions": 2.0
+   },
+   {
+    "date": "2026-10-03",
+    "source": "gemini",
+    "sessions": 1.0
+   },
+   {
+    "date": "2026-10-03",
+    "source": "perplexity",
+    "sessions": 1.0
+   },
+   {
+    "date": "2026-10-04",
+    "source": "chatgpt.com",
+    "sessions": 988.0
+   },
+   {
+    "date": "2026-10-04",
+    "source": "openai",
+    "sessions": 776.0
+   },
+   {
+    "date": "2026-10-04",
+    "source": "gemini",
+    "sessions": 17.0
+   },
+   {
+    "date": "2026-10-04",
+    "source": "gemini.google.com",
+    "sessions": 17.0
+   },
+   {
+    "date": "2026-10-04",
+    "source": "perplexity",
+    "sessions": 13.0
+   },
+   {
+    "date": "2026-10-04",
+    "source": "copilot.com",
+    "sessions": 4.0
+   },
+   {
+    "date": "2026-10-04",
+    "source": "openai?utm_source=openai",
+    "sessions": 4.0
+   },
+   {
+    "date": "2026-10-04",
+    "source": "chatgpt.com?utm_source=chatgpt.com",
+    "sessions": 3.0
+   },
+   {
+    "date": "2026-10-04",
+    "source": "claude.ai",
+    "sessions": 2.0
+   },
+   {
+    "date": "2026-10-05",
+    "source": "chatgpt.com",
+    "sessions": 749.0
+   },
+   {
+    "date": "2026-10-05",
+    "source": "openai",
+    "sessions": 632.0
+   },
+   {
+    "date": "2026-10-05",
+    "source": "gemini.google.com",
+    "sessions": 21.0
+   },
+   {
+    "date": "2026-10-05",
+    "source": "copilot.com",
+    "sessions": 14.0
+   },
+   {
+    "date": "2026-10-05",
+    "source": "claude.ai",
+    "sessions": 5.0
+   },
+   {
+    "date": "2026-10-05",
+    "source": "gemini",
+    "sessions": 4.0
+   },
+   {
+    "date": "2026-10-05",
+    "source": "perplexity",
+    "sessions": 2.0
+   },
+   {
+    "date": "2026-10-05",
+    "source": "chatgpt.com?utm_source=chatgpt.com",
+    "sessions": 1.0
+   },
+   {
+    "date": "2026-10-05",
+    "source": "perplexity.ai",
+    "sessions": 1.0
+   },
+   {
+    "date": "2026-10-06",
+    "source": "chatgpt.com",
+    "sessions": 718.0
+   },
+   {
+    "date": "2026-10-06",
+    "source": "openai",
+    "sessions": 636.0
+   },
+   {
+    "date": "2026-10-06",
+    "source": "gemini.google.com",
+    "sessions": 20.0
+   },
+   {
+    "date": "2026-10-06",
+    "source": "copilot.com",
+    "sessions": 6.0
+   },
+   {
+    "date": "2026-10-06",
+    "source": "gemini",
+    "sessions": 3.0
+   },
+   {
+    "date": "2026-10-06",
+    "source": "tmc-azureopenai.azurewebsites.net",
+    "sessions": 2.0
+   },
+   {
+    "date": "2026-10-06",
+    "source": "chatgpt.com?utm_source=chatgpt.com",
+    "sessions": 1.0
+   },
+   {
+    "date": "2026-10-06",
+    "source": "perplexity",
+    "sessions": 1.0
+   },
+   {
+    "date": "2026-10-06",
+    "source": "perplexity.ai",
+    "sessions": 1.0
+   },
+   {
+    "date": "2026-10-07",
+    "source": "chatgpt.com",
+    "sessions": 795.0
+   },
+   {
+    "date": "2026-10-07",
+    "source": "openai",
+    "sessions": 662.0
+   },
+   {
+    "date": "2026-10-07",
+    "source": "gemini.google.com",
+    "sessions": 14.0
+   },
+   {
+    "date": "2026-10-07",
+    "source": "copilot.com",
+    "sessions": 4.0
+   },
+   {
+    "date": "2026-10-07",
+    "source": "gemini",
+    "sessions": 4.0
+   },
+   {
+    "date": "2026-10-07",
+    "source": "tmc-azureopenai.azurewebsites.net",
+    "sessions": 2.0
+   },
+   {
+    "date": "2026-10-07",
+    "source": "openai?utm_source=openai",
+    "sessions": 1.0
+   },
+   {
+    "date": "2026-10-07",
+    "source": "perplexity.ai",
+    "sessions": 1.0
+   },
+   {
+    "date": "2026-10-08",
+    "source": "openai",
+    "sessions": 750.0
+   },
+   {
+    "date": "2026-10-08",
+    "source": "chatgpt.com",
+    "sessions": 680.0
+   },
+   {
+    "date": "2026-10-08",
+    "source": "gemini.google.com",
+    "sessions": 18.0
+   },
+   {
+    "date": "2026-10-08",
+    "source": "copilot.com",
+    "sessions": 9.0
+   },
+   {
+    "date": "2026-10-08",
+    "source": "perplexity",
+    "sessions": 5.0
+   },
+   {
+    "date": "2026-10-08",
+    "source": "chatgpt.com?utm_source=chatgpt.com",
+    "sessions": 3.0
+   },
+   {
+    "date": "2026-10-08",
+    "source": "perplexity.ai",
+    "sessions": 2.0
+   },
+   {
+    "date": "2026-10-08",
+    "source": "chatgpt.genai.mil",
+    "sessions": 1.0
+   },
+   {
+    "date": "2026-10-08",
+    "source": "gemini",
+    "sessions": 1.0
+   },
+   {
+    "date": "2026-10-08",
+    "source": "openai?utm_source=openai",
+    "sessions": 1.0
+   },
+   {
+    "date": "2026-10-09",
+    "source": "openai",
+    "sessions": 565.0
+   },
+   {
+    "date": "2026-10-09",
+    "source": "chatgpt.com",
+    "sessions": 343.0
+   },
+   {
+    "date": "2026-10-09",
+    "source": "gemini.google.com",
+    "sessions": 13.0
+   },
+   {
+    "date": "2026-10-09",
+    "source": "copilot.com",
+    "sessions": 6.0
+   },
+   {
+    "date": "2026-10-09",
+    "source": "perplexity.ai",
+    "sessions": 4.0
+   },
+   {
+    "date": "2026-10-09",
+    "source": "alphard-vellfire-payment.ctyq8kspzn.chatgpt.site",
+    "sessions": 3.0
+   },
+   {
+    "date": "2026-10-09",
+    "source": "perplexity",
+    "sessions": 3.0
+   },
+   {
+    "date": "2026-10-09",
+    "source": "chatgpt.genai.mil",
+    "sessions": 1.0
+   },
+   {
+    "date": "2026-10-09",
+    "source": "gemini",
+    "sessions": 1.0
+   },
+   {
+    "date": "2026-10-09",
+    "source": "openai?utm_source=openai",
+    "sessions": 1.0
+   }
+  ]
+ },
+ "pages_title": {
+  "fields": null,
+  "rows": null
+ },
+ "log": [
+  {
+   "tag": "pages_daily/pagepath",
+   "fields": [
+    "date",
+    "pagepath",
+    "sessions",
+    "screenpageviews",
+    "totalusers"
+   ],
+   "from": "2026-07-12",
+   "to": "2026-10-09",
+   "filter": [
+    [
+     "pagepath",
+     "contains",
+     "/request/payment"
+    ],
+    "or",
+    [
+     "pagepath",
+     "contains",
+     "/request/howtobuy"
+    ],
+    "or",
+    [
+     "pagepath",
+     "contains",
+     "/request/tripleassist"
+    ],
+    "or",
+    [
+     "pagepath",
+     "contains",
+     "/request/compare"
+    ],
+    "or",
+    [
+     "pagepath",
+     "contains",
+     "/request/kinto"
+    ],
+    "or",
+    [
+     "pagepath",
+     "contains",
+     "/information/minivan/zanka"
+    ],
+    "or",
+    [
+     "pagepath",
+     "contains",
+     "/madoguchi/column/06"
+    ],
+    "or",
+    [
+     "pagepath",
+     "contains",
+     "/alphard/"
+    ],
+    "or",
+    [
+     "pagepath",
+     "contains",
+     "/vellfire/"
+    ],
+    "or",
+    [
+     "pagepath",
+     "contains",
+     "/estimate"
+    ]
+   ],
+   "ok": false,
+   "error": "HTTP 400 {\"error\":\"Unexpected field(s): {'pagepath', 'screenpageviews'}. Did you mean: pagepath -> page_path; screenpageviews -> screen_page_views. Please check the supported field list (https://windsor.ai/data-field/googleanalytics4/).\",\"code\":\"unknown_field\"}\n"
+  },
+  {
+   "tag": "pages_daily/page_path",
+   "fields": [
+    "date",
+    "page_path",
+    "sessions",
+    "screenpageviews",
+    "totalusers"
+   ],
+   "from": "2026-07-12",
+   "to": "2026-10-09",
+   "filter": [
+    [
+     "page_path",
+     "contains",
+     "/request/payment"
+    ],
+    "or",
+    [
+     "page_path",
+     "contains",
+     "/request/howtobuy"
+    ],
+    "or",
+    [
+     "page_path",
+     "contains",
+     "/request/tripleassist"
+    ],
+    "or",
+    [
+     "page_path",
+     "contains",
+     "/request/compare"
+    ],
+    "or",
+    [
+     "page_path",
+     "contains",
+     "/request/kinto"
+    ],
+    "or",
+    [
+     "page_path",
+     "contains",
+     "/information/minivan/zanka"
+    ],
+    "or",
+    [
+     "page_path",
+     "contains",
+     "/madoguchi/column/06"
+    ],
+    "or",
+    [
+     "page_path",
+     "contains",
+     "/alphard/"
+    ],
+    "or",
+    [
+     "page_path",
+     "contains",
+     "/vellfire/"
+    ],
+    "or",
+    [
+     "page_path",
+     "contains",
+     "/estimate"
+    ]
+   ],
+   "ok": false,
+   "error": "HTTP 400 {\"error\":\"Unexpected field(s): {'screenpageviews'}. Did you mean: screenpageviews -> screen_page_views. Please check the supported field list (https://windsor.ai/data-field/googleanalytics4/).\",\"code\":\"unknown_field\"}\n"
+  },
+  {
+   "tag": "pages_daily/pagePath",
+   "fields": [
+    "date",
+    "pagePath",
+    "sessions",
+    "screenPageViews",
+    "totalUsers"
+   ],
+   "from": "2026-07-12",
+   "to": "2026-10-09",
+   "filter": [
+    [
+     "pagePath",
+     "contains",
+     "/request/payment"
+    ],
+    "or",
+    [
+     "pagePath",
+     "contains",
+     "/request/howtobuy"
+    ],
+    "or",
+    [
+     "pagePath",
+     "contains",
+     "/request/tripleassist"
+    ],
+    "or",
+    [
+     "pagePath",
+     "contains",
+     "/request/compare"
+    ],
+    "or",
+    [
+     "pagePath",
+     "contains",
+     "/request/kinto"
+    ],
+    "or",
+    [
+     "pagePath",
+     "contains",
+     "/information/minivan/zanka"
+    ],
+    "or",
+    [
+     "pagePath",
+     "contains",
+     "/madoguchi/column/06"
+    ],
+    "or",
+    [
+     "pagePath",
+     "contains",
+     "/alphard/"
+    ],
+    "or",
+    [
+     "pagePath",
+     "contains",
+     "/vellfire/"
+    ],
+    "or",
+    [
+     "pagePath",
+     "contains",
+     "/estimate"
+    ]
+   ],
+   "ok": false,
+   "error": "HTTP 400 {\"error\":\"Unexpected field(s): {'pagepath', 'screenpageviews'}. Did you mean: pagepath -> page_path; screenpageviews -> screen_page_views. Please check the supported field list (https://windsor.ai/data-field/googleanalytics4/).\",\"code\":\"unknown_field\"}\n"
+  },
+  {
+   "tag": "pages_source/pagepath",
+   "fields": [
+    "pagepath",
+    "sessionsource",
+    "sessionmedium",
+    "sessions",
+    "totalusers"
+   ],
+   "from": "2026-09-12",
+   "to": "2026-10-09",
+   "filter": [
+    [
+     "pagepath",
+     "contains",
+     "/request/payment"
+    ],
+    "or",
+    [
+     "pagepath",
+     "contains",
+     "/request/howtobuy"
+    ],
+    "or",
+    [
+     "pagepath",
+     "contains",
+     "/request/tripleassist"
+    ],
+    "or",
+    [
+     "pagepath",
+     "contains",
+     "/request/compare"
+    ],
+    "or",
+    [
+     "pagepath",
+     "contains",
+     "/request/kinto"
+    ],
+    "or",
+    [
+     "pagepath",
+     "contains",
+     "/information/minivan/zanka"
+    ],
+    "or",
+    [
+     "pagepath",
+     "contains",
+     "/madoguchi/column/06"
+    ],
+    "or",
+    [
+     "pagepath",
+     "contains",
+     "/alphard/"
+    ],
+    "or",
+    [
+     "pagepath",
+     "contains",
+     "/vellfire/"
+    ],
+    "or",
+    [
+     "pagepath",
+     "contains",
+     "/estimate"
+    ]
+   ],
+   "ok": false,
+   "error": "HTTP 400 {\"error\":\"Unexpected field(s): {'sessionmedium', 'pagepath', 'sessionsource'}. Did you mean: pagepath -> page_path; sessionmedium -> medium; sessionsource -> source. Please check the supported field list (https://windsor.ai/data-field/googleanalytics4/).\",\"code\":\"unknown_field\"}\n"
+  },
+  {
+   "tag": "pages_source/pagepath",
+   "fields": [
+    "pagepath",
+    "source",
+    "medium",
+    "sessions",
+    "totalusers"
+   ],
+   "from": "2026-09-12",
+   "to": "2026-10-09",
+   "filter": [
+    [
+     "pagepath",
+     "contains",
+     "/request/payment"
+    ],
+    "or",
+    [
+     "pagepath",
+     "contains",
+     "/request/howtobuy"
+    ],
+    "or",
+    [
+     "pagepath",
+     "contains",
+     "/request/tripleassist"
+    ],
+    "or",
+    [
+     "pagepath",
+     "contains",
+     "/request/compare"
+    ],
+    "or",
+    [
+     "pagepath",
+     "contains",
+     "/request/kinto"
+    ],
+    "or",
+    [
+     "pagepath",
+     "contains",
+     "/information/minivan/zanka"
+    ],
+    "or",
+    [
+     "pagepath",
+     "contains",
+     "/madoguchi/column/06"
+    ],
+    "or",
+    [
+     "pagepath",
+     "contains",
+     "/alphard/"
+    ],
+    "or",
+    [
+     "pagepath",
+     "contains",
+     "/vellfire/"
+    ],
+    "or",
+    [
+     "pagepath",
+     "contains",
+     "/estimate"
+    ]
+   ],
+   "ok": false,
+   "error": "HTTP 400 {\"error\":\"Unexpected field(s): {'pagepath'}. Did you mean: pagepath -> page_path. Please check the supported field list (https://windsor.ai/data-field/googleanalytics4/).\",\"code\":\"unknown_field\"}\n"
+  },
+  {
+   "tag": "pages_source/page_path",
+   "fields": [
+    "page_path",
+    "session_source",
+    "session_medium",
+    "sessions",
+    "totalusers"
+   ],
+   "from": "2026-09-12",
+   "to": "2026-10-09",
+   "filter": [
+    [
+     "page_path",
+     "contains",
+     "/request/payment"
+    ],
+    "or",
+    [
+     "page_path",
+     "contains",
+     "/request/howtobuy"
+    ],
+    "or",
+    [
+     "page_path",
+     "contains",
+     "/request/tripleassist"
+    ],
+    "or",
+    [
+     "page_path",
+     "contains",
+     "/request/compare"
+    ],
+    "or",
+    [
+     "page_path",
+     "contains",
+     "/request/kinto"
+    ],
+    "or",
+    [
+     "page_path",
+     "contains",
+     "/information/minivan/zanka"
+    ],
+    "or",
+    [
+     "page_path",
+     "contains",
+     "/madoguchi/column/06"
+    ],
+    "or",
+    [
+     "page_path",
+     "contains",
+     "/alphard/"
+    ],
+    "or",
+    [
+     "page_path",
+     "contains",
+     "/vellfire/"
+    ],
+    "or",
+    [
+     "page_path",
+     "contains",
+     "/estimate"
+    ]
+   ],
+   "ok": false,
+   "error": "HTTP 400 {\"error\":\"Unexpected field(s): {'session_source', 'session_medium'}. Did you mean: session_medium -> medium; session_source -> source. Please check the supported field list (https://windsor.ai/data-field/googleanalytics4/).\",\"code\":\"unknown_field\"}\n"
+  },
+  {
+   "tag": "landing_source/landingpage",
+   "fields": [
+    "landingpage",
+    "sessionsource",
+    "sessionmedium",
+    "sessiondefaultchannelgroup",
+    "sessions",
+    "newusers"
+   ],
+   "from": "2026-09-12",
+   "to": "2026-10-09",
+   "filter": [
+    [
+     "landingpage",
+     "contains",
+     "/request/payment"
+    ],
+    "or",
+    [
+     "landingpage",
+     "contains",
+     "/request/howtobuy"
+    ],
+    "or",
+    [
+     "landingpage",
+     "contains",
+     "/request/tripleassist"
+    ],
+    "or",
+    [
+     "landingpage",
+     "contains",
+     "/request/compare"
+    ],
+    "or",
+    [
+     "landingpage",
+     "contains",
+     "/request/kinto"
+    ],
+    "or",
+    [
+     "landingpage",
+     "contains",
+     "/information/minivan/zanka"
+    ],
+    "or",
+    [
+     "landingpage",
+     "contains",
+     "/madoguchi/column/06"
+    ],
+    "or",
+    [
+     "landingpage",
+     "contains",
+     "/alphard/"
+    ],
+    "or",
+    [
+     "landingpage",
+     "contains",
+     "/vellfire/"
+    ],
+    "or",
+    [
+     "landingpage",
+     "contains",
+     "/estimate"
+    ]
+   ],
+   "ok": false,
+   "error": "HTTP 400 {\"error\":\"Unexpected field(s): {'sessionmedium', 'landingpage', 'sessionsource', 'sessiondefaultchannelgroup'}. Did you mean: landingpage -> landing_page; sessiondefaultchannelgroup -> session_default_channel_group; sessionmedium -> medium; sessionsource -> source. Please check the supported field list (https://windsor.ai/data-field/googleanalytics4/).\",\"code\":\"unknown_field\"}\n"
+  },
+  {
+   "tag": "landing_source/landingpage",
+   "fields": [
+    "landingpage",
+    "source",
+    "medium",
+    "sessions",
+    "newusers"
+   ],
+   "from": "2026-09-12",
+   "to": "2026-10-09",
+   "filter": [
+    [
+     "landingpage",
+     "contains",
+     "/request/payment"
+    ],
+    "or",
+    [
+     "landingpage",
+     "contains",
+     "/request/howtobuy"
+    ],
+    "or",
+    [
+     "landingpage",
+     "contains",
+     "/request/tripleassist"
+    ],
+    "or",
+    [
+     "landingpage",
+     "contains",
+     "/request/compare"
+    ],
+    "or",
+    [
+     "landingpage",
+     "contains",
+     "/request/kinto"
+    ],
+    "or",
+    [
+     "landingpage",
+     "contains",
+     "/information/minivan/zanka"
+    ],
+    "or",
+    [
+     "landingpage",
+     "contains",
+     "/madoguchi/column/06"
+    ],
+    "or",
+    [
+     "landingpage",
+     "contains",
+     "/alphard/"
+    ],
+    "or",
+    [
+     "landingpage",
+     "contains",
+     "/vellfire/"
+    ],
+    "or",
+    [
+     "landingpage",
+     "contains",
+     "/estimate"
+    ]
+   ],
+   "ok": false,
+   "error": "HTTP 400 {\"error\":\"Unexpected field(s): {'landingpage'}. Did you mean: landingpage -> landing_page. Please check the supported field list (https://windsor.ai/data-field/googleanalytics4/).\",\"code\":\"unknown_field\"}\n"
+  },
+  {
+   "tag": "landing_source/landing_page",
+   "fields": [
+    "landing_page",
+    "session_source",
+    "session_medium",
+    "sessions",
+    "newusers"
+   ],
+   "from": "2026-09-12",
+   "to": "2026-10-09",
+   "filter": [
+    [
+     "landing_page",
+     "contains",
+     "/request/payment"
+    ],
+    "or",
+    [
+     "landing_page",
+     "contains",
+     "/request/howtobuy"
+    ],
+    "or",
+    [
+     "landing_page",
+     "contains",
+     "/request/tripleassist"
+    ],
+    "or",
+    [
+     "landing_page",
+     "contains",
+     "/request/compare"
+    ],
+    "or",
+    [
+     "landing_page",
+     "contains",
+     "/request/kinto"
+    ],
+    "or",
+    [
+     "landing_page",
+     "contains",
+     "/information/minivan/zanka"
+    ],
+    "or",
+    [
+     "landing_page",
+     "contains",
+     "/madoguchi/column/06"
+    ],
+    "or",
+    [
+     "landing_page",
+     "contains",
+     "/alphard/"
+    ],
+    "or",
+    [
+     "landing_page",
+     "contains",
+     "/vellfire/"
+    ],
+    "or",
+    [
+     "landing_page",
+     "contains",
+     "/estimate"
+    ]
+   ],
+   "ok": false,
+   "error": "HTTP 400 {\"error\":\"Unexpected field(s): {'session_source', 'session_medium'}. Did you mean: session_medium -> medium; session_source -> source. Please check the supported field list (https://windsor.ai/data-field/googleanalytics4/).\",\"code\":\"unknown_field\"}\n"
+  },
+  {
+   "tag": "pages_events/pagepath",
+   "fields": [
+    "pagepath",
+    "eventname",
+    "eventcount"
+   ],
+   "from": "2026-09-12",
+   "to": "2026-10-09",
+   "filter": [
+    [
+     "pagepath",
+     "contains",
+     "/request/payment"
+    ],
+    "or",
+    [
+     "pagepath",
+     "contains",
+     "/request/howtobuy"
+    ],
+    "or",
+    [
+     "pagepath",
+     "contains",
+     "/request/tripleassist"
+    ],
+    "or",
+    [
+     "pagepath",
+     "contains",
+     "/request/compare"
+    ],
+    "or",
+    [
+     "pagepath",
+     "contains",
+     "/request/kinto"
+    ],
+    "or",
+    [
+     "pagepath",
+     "contains",
+     "/information/minivan/zanka"
+    ],
+    "or",
+    [
+     "pagepath",
+     "contains",
+     "/madoguchi/column/06"
+    ]
+   ],
+   "ok": false,
+   "error": "HTTP 400 {\"error\":\"Unexpected field(s): {'eventcount', 'eventname', 'pagepath'}. Did you mean: eventcount -> event_count; eventname -> event_name; pagepath -> page_path. Please check the supported field list (https://windsor.ai/data-field/googleanalytics4/).\",\"code\":\"unknown_field\"}\n"
+  },
+  {
+   "tag": "pages_events/page_path",
+   "fields": [
+    "page_path",
+    "event_name",
+    "event_count"
+   ],
+   "from": "2026-09-12",
+   "to": "2026-10-09",
+   "filter": [
+    [
+     "page_path",
+     "contains",
+     "/request/payment"
+    ],
+    "or",
+    [
+     "page_path",
+     "contains",
+     "/request/howtobuy"
+    ],
+    "or",
+    [
+     "page_path",
+     "contains",
+     "/request/tripleassist"
+    ],
+    "or",
+    [
+     "page_path",
+     "contains",
+     "/request/compare"
+    ],
+    "or",
+    [
+     "page_path",
+     "contains",
+     "/request/kinto"
+    ],
+    "or",
+    [
+     "page_path",
+     "contains",
+     "/information/minivan/zanka"
+    ],
+    "or",
+    [
+     "page_path",
+     "contains",
+     "/madoguchi/column/06"
+    ]
+   ],
+   "rows": 46,
+   "ok": true,
+   "keys": [
+    "event_count",
+    "event_name",
+    "page_path"
+   ]
+  },
+  {
+   "tag": "site_ai_daily/sessionsource",
+   "fields": [
+    "date",
+    "sessionsource",
+    "sessions"
+   ],
+   "from": "2026-07-12",
+   "to": "2026-10-09",
+   "filter": [
+    [
+     "sessionsource",
+     "contains",
+     "chatgpt"
+    ],
+    "or",
+    [
+     "sessionsource",
+     "contains",
+     "openai"
+    ],
+    "or",
+    [
+     "sessionsource",
+     "contains",
+     "gemini"
+    ],
+    "or",
+    [
+     "sessionsource",
+     "contains",
+     "copilot"
+    ],
+    "or",
+    [
+     "sessionsource",
+     "contains",
+     "perplexity"
+    ],
+    "or",
+    [
+     "sessionsource",
+     "contains",
+     "claude"
+    ],
+    "or",
+    [
+     "sessionsource",
+     "contains",
+     "grok"
+    ],
+    "or",
+    [
+     "sessionsource",
+     "contains",
+     "deepseek"
+    ]
+   ],
+   "ok": false,
+   "error": "HTTP 400 {\"error\":\"Unexpected field(s): {'sessionsource'}. Did you mean: sessionsource -> source. Please check the supported field list (https://windsor.ai/data-field/googleanalytics4/).\",\"code\":\"unknown_field\"}\n"
+  },
+  {
+   "tag": "site_ai_daily/source",
+   "fields": [
+    "date",
+    "source",
+    "sessions"
+   ],
+   "from": "2026-07-12",
+   "to": "2026-10-09",
+   "filter": [
+    [
+     "source",
+     "contains",
+     "chatgpt"
+    ],
+    "or",
+    [
+     "source",
+     "contains",
+     "openai"
+    ],
+    "or",
+    [
+     "source",
+     "contains",
+     "gemini"
+    ],
+    "or",
+    [
+     "source",
+     "contains",
+     "copilot"
+    ],
+    "or",
+    [
+     "source",
+     "contains",
+     "perplexity"
+    ],
+    "or",
+    [
+     "source",
+     "contains",
+     "claude"
+    ],
+    "or",
+    [
+     "source",
+     "contains",
+     "grok"
+    ],
+    "or",
+    [
+     "source",
+     "contains",
+     "deepseek"
+    ]
+   ],
+   "rows": 697,
+   "ok": true,
+   "keys": [
+    "date",
+    "sessions",
+    "source"
+   ]
+  },
+  {
+   "tag": "pages_title/pagepath",
+   "fields": [
+    "pagepath",
+    "pagetitle",
+    "sessions"
+   ],
+   "from": "2026-09-12",
+   "to": "2026-10-09",
+   "filter": [
+    [
+     "pagepath",
+     "contains",
+     "/request/payment"
+    ],
+    "or",
+    [
+     "pagepath",
+     "contains",
+     "/request/howtobuy"
+    ],
+    "or",
+    [
+     "pagepath",
+     "contains",
+     "/request/tripleassist"
+    ],
+    "or",
+    [
+     "pagepath",
+     "contains",
+     "/request/compare"
+    ],
+    "or",
+    [
+     "pagepath",
+     "contains",
+     "/request/kinto"
+    ],
+    "or",
+    [
+     "pagepath",
+     "contains",
+     "/information/minivan/zanka"
+    ],
+    "or",
+    [
+     "pagepath",
+     "contains",
+     "/madoguchi/column/06"
+    ]
+   ],
+   "ok": false,
+   "error": "HTTP 400 {\"error\":\"Unexpected field(s): {'pagepath'}. Did you mean: pagepath -> page_path. Please check the supported field list (https://windsor.ai/data-field/googleanalytics4/).\",\"code\":\"unknown_field\"}\n"
+  },
+  {
+   "tag": "pages_title/page_path",
+   "fields": [
+    "page_path",
+    "page_title",
+    "sessions"
+   ],
+   "from": "2026-09-12",
+   "to": "2026-10-09",
+   "filter": [
+    [
+     "page_path",
+     "contains",
+     "/request/payment"
+    ],
+    "or",
+    [
+     "page_path",
+     "contains",
+     "/request/howtobuy"
+    ],
+    "or",
+    [
+     "page_path",
+     "contains",
+     "/request/tripleassist"
+    ],
+    "or",
+    [
+     "page_path",
+     "contains",
+     "/request/compare"
+    ],
+    "or",
+    [
+     "page_path",
+     "contains",
+     "/request/kinto"
+    ],
+    "or",
+    [
+     "page_path",
+     "contains",
+     "/information/minivan/zanka"
+    ],
+    "or",
+    [
+     "page_path",
+     "contains",
+     "/madoguchi/column/06"
+    ]
+   ],
+   "ok": false,
+   "error": "HTTP 400 {\"error\":\"Unexpected field(s): {'page_title'}. Did you mean: page_title -> pagetitle. Please check the supported field list (https://windsor.ai/data-field/googleanalytics4/).\",\"code\":\"unknown_field\"}\n"
+  }
+ ]
+}
