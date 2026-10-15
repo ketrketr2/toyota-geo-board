@@ -8,6 +8,7 @@ GitHub Actions（ga4-daily）で毎朝実行する。Mac側のデータマンは
   ga4/toyota_jp_ga4.md          データマンが読む日本語資料
   ga4/toyota_jp_ga4_daily.csv   日次（約25か月分）。任意期間の集計用
   ga4/toyota_jp_ga4_monthly.csv 月次（UUは月内の重複を除いた値）
+  ga4/toyota_jp_ga4_channel_monthly.csv 月次×チャネル（流入元の既定グループ。セッション・UU）
   ga4/ai_referrals_daily.csv    AIアシスタント経由セッションの日次×サービス
   ga4/last_check.txt            自己点検の結果
   ga4_daily.json                GEOボード用のAI経由セッション日次（確定値で毎朝上書き）
@@ -118,6 +119,15 @@ def _mock(fields, dfrom, dto, flt):
             if d.day == 29 and len(days) > 3 and d.month % 3 == 0:
                 continue
             rows.append({"date": str(d), **m()})
+    elif "year_month" in fields and "session_default_channel_group" in fields:
+        ym = sorted({d.strftime("%Y%m") for d in days})
+        for y in ym:
+            n = sum(1 for d in days if d.strftime("%Y%m") == y)
+            for ch, f in (("Organic Search", .45), ("Direct", .30), ("Referral", .10), ("Paid Search", .06),
+                          ("Organic Social", .03), ("Display", .02), ("AI Assistant", .001), ("(other)", .0005)):
+                r = m(n * 0.95 * f)
+                r["totalusers"] = int(r["sessions"] * 0.55)
+                rows.append({"year_month": y, "session_default_channel_group": ch, **r})
     elif "year_month" in fields:
         ym = sorted({d.strftime("%Y%m") for d in days})
         for y in ym:
@@ -334,6 +344,18 @@ def main():
     dev = windsor(["devicecategory", "sessions", "totalusers", "newusers"], D28, YB)
     ctry = windsor(["country", "sessions", "totalusers"], D28, YB)
     try:
+        dev365 = windsor(["devicecategory", "sessions", "totalusers", "newusers"], D365, YB)
+        ctry365 = windsor(["country", "sessions", "totalusers"], D365, YB)
+    except RuntimeError as e:
+        dev365, ctry365 = [], []
+        WARN.append(f"デバイス別・国別（365日）の取得に失敗：{str(e)[:120]}")
+    # チャネル別（GA4の既定チャネルグループ）×月。AI以外の流入元の内訳をここで持つ
+    try:
+        chan_rows = windsor(["year_month", "session_default_channel_group", "sessions", "totalusers"], m0, YB)
+    except RuntimeError as e:
+        chan_rows = []
+        WARN.append(f"チャネル別月次の取得に失敗：{str(e)[:120]}")
+    try:
         pages = windsor(["pagetitle", "sessions", "totalusers", "newusers"], D28, YB, [["sessions", "gt", 1000]])
     except RuntimeError:
         pages = windsor(["pagetitle", "sessions", "totalusers", "newusers"], D28, YB)
@@ -454,6 +476,24 @@ def main():
             if not 0.97 <= ratio <= 1.10:
                 WARN.append(f"月次と日次のセッションの差が大きい：{ym} 月次 {fmt(v['sessions'])} ／日次合計 {fmt(s)}（{ratio:.3f}倍）")
 
+    # --- チャネル別×月 ---
+    chan: dict[str, dict[str, dict]] = defaultdict(dict)       # ym -> channel -> {sessions,totalusers}
+    for r in chan_rows:
+        ym = str(r.get("year_month", ""))
+        ch = str(r.get("session_default_channel_group", "")).strip() or "(not set)"
+        if len(ym) != 6:
+            continue
+        cur = chan[ym].setdefault(ch, {"sessions": 0.0, "totalusers": 0.0})
+        cur["sessions"] += n(r.get("sessions"))
+        cur["totalusers"] += n(r.get("totalusers"))
+    for ym, v in mon.items():
+        if ym in chan and v["sessions"]:
+            ratio = sum(x["sessions"] for x in chan[ym].values()) / v["sessions"]
+            if not 0.97 <= ratio <= 1.03:
+                WARN.append(f"チャネル別の合計と月次が合わない：{ym} チャネル合計/月次 = {ratio:.3f}")
+    if chan_rows and not chan:
+        WARN.append("チャネル別月次：取得はできたが year_month が読めず表にできなかった")
+
     # --- AI流入を ga4_daily.json に反映 ---
     for d, v in ai.items():
         gd[d] = v
@@ -471,11 +511,12 @@ def main():
         gd_out[k] = {svc: int(gd[k].get(svc, 0)) for svc in SERVICES}
 
     # --- 書き出し ---
-    write_csvs(daily, mon, gd_out, m0)
+    write_csvs(daily, mon, gd_out, m0, chan)
     with open(out_path("ga4_daily.json"), "w", encoding="utf-8") as f:
         json.dump(gd_out, f, ensure_ascii=False, indent=1)
         f.write("\n")
-    md = build_md(daily, agg28, agg365, mon, dev, ctry, pages, pages365, gd_out, daily_missing, m0)
+    md = build_md(daily, agg28, agg365, mon, dev, ctry, pages, pages365, gd_out, daily_missing, m0,
+                  dev365=dev365, ctry365=ctry365, chan=chan)
     with open(out_path("ga4", "toyota_jp_ga4.md"), "w", encoding="utf-8") as f:
         f.write(md)
     write_check()
@@ -483,7 +524,7 @@ def main():
           f"months={len(mon)} daily={len(daily)} ai_days={len(keys)} warn={len(WARN)}")
 
 
-def write_csvs(daily, mon, gd_out, m0):
+def write_csvs(daily, mon, gd_out, m0, chan=None):
     with open(out_path("ga4", "toyota_jp_ga4_daily.csv"), "w", encoding="utf-8", newline="") as f:
         w = csv.writer(f)
         w.writerow(["date"] + METRICS)
@@ -496,6 +537,14 @@ def write_csvs(daily, mon, gd_out, m0):
         for ym in sorted(mon):
             part = str(YB) if ym == YB.strftime("%Y%m") and YB != month_end(YB) else ""
             w.writerow([ym] + [mon[ym][k] for k in METRICS] + [part])
+    if chan:
+        with open(out_path("ga4", "toyota_jp_ga4_channel_monthly.csv"), "w", encoding="utf-8", newline="") as f:
+            w = csv.writer(f)
+            w.writerow(["year_month", "channel", "sessions", "totalusers", "partial_until"])
+            for ym in sorted(chan):
+                part = str(YB) if ym == YB.strftime("%Y%m") and YB != month_end(YB) else ""
+                for ch, v in sorted(chan[ym].items(), key=lambda kv: -kv[1]["sessions"]):
+                    w.writerow([ym, ch, int(round(v["sessions"])), int(round(v["totalusers"])), part])
     with open(out_path("ga4", "ai_referrals_daily.csv"), "w", encoding="utf-8", newline="") as f:
         w = csv.writer(f)
         w.writerow(["date"] + SERVICES + ["total"])
@@ -504,7 +553,8 @@ def write_csvs(daily, mon, gd_out, m0):
             w.writerow([d] + [v[s] for s in SERVICES] + [sum(v[s] for s in SERVICES)])
 
 
-def build_md(daily, agg28, agg365, mon, dev, ctry, pages, pages365, gd_out, daily_missing, m0):
+def build_md(daily, agg28, agg365, mon, dev, ctry, pages, pages365, gd_out, daily_missing, m0,
+             dev365=None, ctry365=None, chan=None):
     S = agg28["sessions"]
     L = []
     a = L.append
@@ -513,9 +563,9 @@ def build_md(daily, agg28, agg365, mon, dev, ctry, pages, pages365, gd_out, dail
     a("- 区分: 共有可。**実測データ**（デモ・推定ではない）。出典: GA4「Toyota.jp【本格移行用】- GA4」を Windsor.ai 経由で取得（GitHub Actions ga4-daily が毎朝自動更新）")
     a(f"- 取得日: {TODAY}（データ終端 {YB}）。**出典は「GA4実測（toyota.jp）〈答えに使った期間〉／{TODAY.month}/{TODAY.day}取得」と書く。"
       f"取得日は {TODAY.month}/{TODAY.day}（データ終端の {YB.month}/{YB.day} ではない）**")
-    a(f"- 期間の早見: 28日集計 {D28}〜{YB} ／ 365日集計 {D365}〜{YB} ／ 月次 {m0.strftime('%Y-%m')}〜{YB.strftime('%Y-%m')}（{len(mon)}か月）／ 日次の表 {DD}〜{YB}（{DAILY_DAYS}日）／ 日次CSV {m0}〜{YB}")
+    a(f"- 期間の早見: 28日集計 {D28}〜{YB} ／ 365日集計 {D365}〜{YB} ／ 月次 {m0.strftime('%Y-%m')}〜{YB.strftime('%Y-%m')}（{len(mon)}か月）／ 日次の表 {DD}〜{YB}（{DAILY_DAYS}日）／ 日次CSV {m0}〜{YB} ／ チャネル別（流入元）月次 {m0.strftime('%Y-%m')}〜{YB.strftime('%Y-%m')}")
     a("- 指標の意味: セッション=訪問数、UU=総ユーザー、新規=初訪問のユーザー、PV=表示回数（screen_page_views）、CV=キーイベント（GA4の\"conversions\"）")
-    a("- **UUは足し算しない**: 28日・365日・各月のUUは、その期間で重複を除いて集計した値。日次や月次のUUを足して別の期間のUUにしない（足すと同じ人を何度も数える）。セッション・新規・PV・CVは足してよい")
+    a("- **UUは足し算しない**: 28日・365日・各月のUUは、その期間で重複を除いて集計した値。日次や月次のUUを足して別の期間のUUにしない（足すと同じ人を何度も数える）。新規・PV・CVは足してよい。セッションも足してよいが、日次を足すと期間集計より約0.5%多くなる（日をまたぐ訪問が両日に数えられるため）。期間のセッションは資料の集計値を優先し、日次CSVの合計で答えるときは「日次合計」と書く")
     a("- どのチャンネルでも実数で回答してよい。数値は原文ママ、捏造しない")
     a("")
     a(f"## 全体サマリー（直近28日：{D28}〜{YB}）")
@@ -547,6 +597,28 @@ def build_md(daily, agg28, agg365, mon, dev, ctry, pages, pages365, gd_out, dail
     for k, v in sorted(cs.items(), key=lambda kv: -kv[1]["sessions"])[:10]:
         a(f"- {COUNTRY_JP.get(k, k)}: {fmt(v['sessions'])}（{v['sessions'] / max(S, 1) * 100:.1f}%）／ UU {fmt(v['totalusers'])}")
     a("")
+    if agg365 and dev365:
+        S365 = agg365["sessions"]
+        a(f"## デバイス別（直近365日：{D365}〜{YB}・セッション。UUは365日間の重複を除いた値）")
+        dv2 = defaultdict(lambda: defaultdict(float))
+        for r in dev365:
+            k = str(r.get("devicecategory", "")).lower()
+            for m in ("sessions", "totalusers", "newusers"):
+                dv2[k][m] += n(r.get(m))
+        for k, v in sorted(dv2.items(), key=lambda kv: -kv[1]["sessions"]):
+            a(f"- {DEVICE_JP.get(k, k)}: {fmt(v['sessions'])}（{v['sessions'] / max(S365, 1) * 100:.1f}%）／ UU {fmt(v['totalusers'])}・新規 {fmt(v['newusers'])}")
+        a("")
+    if agg365 and ctry365:
+        S365 = agg365["sessions"]
+        a(f"## 国別（直近365日：{D365}〜{YB}・セッション・上位10）")
+        cs2 = defaultdict(lambda: defaultdict(float))
+        for r in ctry365:
+            k = str(r.get("country", ""))
+            for m in ("sessions", "totalusers"):
+                cs2[k][m] += n(r.get(m))
+        for k, v in sorted(cs2.items(), key=lambda kv: -kv[1]["sessions"])[:10]:
+            a(f"- {COUNTRY_JP.get(k, k)}: {fmt(v['sessions'])}（{v['sessions'] / max(S365, 1) * 100:.1f}%）／ UU {fmt(v['totalusers'])}")
+        a("")
 
     def page_table(rows, title, cols3, top=40):
         pg = defaultdict(lambda: defaultdict(float))
@@ -603,6 +675,28 @@ def build_md(daily, agg28, agg365, mon, dev, ctry, pages, pages365, gd_out, dail
         for line in steps:
             a(f"- {line}")
     a("")
+    if chan:
+        yms = sorted(chan)
+        tot = defaultdict(float)
+        for ym in yms:
+            for ch, v in chan[ym].items():
+                tot[ch] += v["sessions"]
+        chs = [c for c, _ in sorted(tot.items(), key=lambda kv: -kv[1])][:9]
+        rest = [c for c in tot if c not in chs]
+        a(f"## チャネル別（流入元）月次推移（{yms[0][:4]}-{yms[0][4:]}〜{yms[-1][:4]}-{yms[-1][4:]}・セッション。GA4の既定チャネルグループ）")
+        a("- Organic Search=検索の自然流入、Direct=直接（URL入力・ブックマーク・アプリ等）、Referral=他サイトからのリンク、Paid Search=検索広告、Organic Social=SNSの自然流入、Paid Social=SNS広告、Display=ディスプレイ広告、Email=メール、Organic Video=動画サイト、AI Assistant=GA4標準のAI判定（Claude・Perplexity等は含まない。AI経由はAI経由セッションの資料を使う）")
+        a("- 月のUU（チャネル内の重複を除いた値）は toyota_jp_ga4_channel_monthly.csv にある。チャネルをまたいで足さない")
+        a("| 年月 | 合計 | " + " | ".join(esc(c) for c in chs) + (" | その他 |" if rest else " |"))
+        a("|---|---:|" + "---:|" * (len(chs) + (1 if rest else 0)))
+        for ym in yms:
+            row = chan[ym]
+            lab = f"{ym[:4]}-{ym[4:]}" + (f"（{YB.month}/{YB.day}まで）" if ym == YB.strftime("%Y%m") and YB != month_end(YB) else "")
+            total = sum(v["sessions"] for v in row.values())
+            cells = [fmt(row.get(c, {}).get("sessions", 0)) for c in chs]
+            if rest:
+                cells.append(fmt(sum(row.get(c, {}).get("sessions", 0) for c in rest)))
+            a(f"| {lab} | {fmt(total)} | " + " | ".join(cells) + " |")
+        a("")
     a(f"## 日次推移（直近{DAILY_DAYS}日：{DD}〜{YB}。UUはその日のUU）")
     a("| 日付 | セッション | UU | 新規 | PV | CV |")
     a("|---|---:|---:|---:|---:|---:|")
@@ -630,10 +724,11 @@ def build_md(daily, agg28, agg365, mon, dev, ctry, pages, pages365, gd_out, dail
         a("- 欠損・打ち切り・不整合は見つからなかった")
     a("")
     a("## この資料の使い方（データマン向け）")
-    a("- 直近の数字・デバイス・国・ページ（28日／365日）・月次・前年同月比・日次・AI経由セッションは、この資料の実数で答える")
+    a("- 直近の数字・デバイス・国・ページ（28日／365日）・月次・前年同月比・チャネル別（流入元）月次・日次・AI経由セッションは、この資料の実数で答える")
     a("- 任意の期間のセッション・新規・PV・CVは、同じ場所の toyota_jp_ga4_daily.csv を python で合計して答える（使った期間と日数を添える）。その期間のUUは足し算で作らない。28日・365日・各月以外の期間のUUが要るときは ga4.py で取りに行く")
     a("- AI経由の日次・サービス別の計算は ai_referrals_daily.csv を使う")
-    a("- ここに無い切り口（AI以外の流入元・チャネル、URL単位など）は ga4.py で取りに行く。取れないときは、出せる範囲を先に出し、出せない部分は「この切り口は今の集計に含まれていない」とだけ書く")
+    a("- 任意の月のチャネル別UUは toyota_jp_ga4_channel_monthly.csv を使う")
+    a("- ここに無い切り口（流入元の個別サイト名、URL単位、月以外の期間のチャネル別など）は ga4.py で取りに行く。取れないときは、出せる範囲を先に出し、出せない部分は「この切り口は今の集計に含まれていない」とだけ書く")
     return "\n".join(L) + "\n"
 
 
