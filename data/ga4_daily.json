@@ -8185,7 +8185,7 @@
   "other_ai": 0
  },
  "2026-10-14": {
-  "chatgpt": 1001,
+  "chatgpt": 1088,
   "gemini": 19,
   "copilot": 2,
   "grok": 0,
@@ -8193,6 +8193,6 @@
   "claude": 0,
   "perplexity": 3,
   "doubao": 11,
-  "other_ai": 2
+  "other_ai": 3
  }
 }
