@@ -16,8 +16,12 @@
 from __future__ import annotations
 
 import argparse
+import os
+import random
 import re
 import sys
+import threading
+import time
 from collections import Counter
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime
@@ -108,6 +112,27 @@ def pick_latest(names: list[str], family: str, default: str) -> str:
     return best if _version(best) >= _version(default) else default
 
 
+def gemini_candidates(names: list[str]) -> list[str]:
+    """Gemini の flash 系を新しい順に（lite・試験版などは除く）。"""
+    bad = ("mini", "nano", "codex", "audio", "search", "realtime", "lite", "exp", "image", "tts", "embedding", "live")
+    cand = [n for n in names if re.fullmatch(r"gemini-\d+(?:\.\d+)?-flash(?:-preview)?(?:-\d+-\d+)?", n)]
+    cand = [n for n in cand if not any(b in n.replace("gemini", "") for b in bad)]
+    return sorted(set(cand), key=lambda n: (_version(n), "preview" not in n, -len(n)), reverse=True)
+
+
+def probe_ok(s: dict, query: str = "中古車はどこで買うのがいいですか") -> bool:
+    """上限エラー（rate_limit）が続くモデルかどうかを、本番の前に1問だけ投げて確かめる。"""
+    for i in range(4):
+        try:
+            llm.fetch_llm_response(query, s)
+            return True
+        except Exception as e:  # noqa: BLE001
+            if not _rate_limited(e):
+                return True          # 上限以外のエラーはモデルを変える理由にしない
+            time.sleep(10 * 2 ** i)
+    return False
+
+
 # ---------------------------------------------------------------- 取得
 def serp_aio(keyword: str) -> dict:
     """自然検索（上位20件）とAIによる概要を1回で取る。"""
@@ -180,6 +205,15 @@ def resolve_redirects(rows: list[dict]) -> dict:
     return {"redirects": len(urls), "resolved": len(got)}
 
 
+# 面ごとの同時実行数（Gemini は上限エラーが出やすいので絞る）
+_SEM = {"gemini": threading.Semaphore(int(os.environ.get("UCAR_GEMINI_WORKERS", "2")))}
+
+
+def _rate_limited(e: Exception) -> bool:
+    t = str(e).lower()
+    return "rate_limit" in t or "50301" in t or "too many requests" in t or "429" in t
+
+
 def run_one(job: dict) -> dict | None:
     p, s = job["p"], job["s"]
     if llm._over_budget(job["cap"]):
@@ -187,35 +221,48 @@ def run_one(job: dict) -> dict | None:
     if s["id"] in _FALLBACK:
         s = dict(s, model=_FALLBACK[s["id"]])
     query = p["kw"] if s["provider"] == "serp" else p["chat"]
-    for attempt in range(3):
+    attempt, waits = 0, 0
+    while True:
         try:
-            if s["id"] == "aio":
-                res = serp_aio(query)
-            elif s["provider"] == "serp":
-                res = llm.fetch_serp_ai(query, s)
-                res["has_ai"] = bool((res.get("text") or "").strip())
-            else:
-                res = llm.fetch_llm_response(query, s)
+            sem = _SEM.get(s["id"])
+            if sem:
+                sem.acquire()
+            try:
+                if s["id"] == "aio":
+                    res = serp_aio(query)
+                elif s["provider"] == "serp":
+                    res = llm.fetch_serp_ai(query, s)
+                    res["has_ai"] = bool((res.get("text") or "").strip())
+                else:
+                    res = llm.fetch_llm_response(query, s)
+            finally:
+                if sem:
+                    sem.release()
             return {"stamp": job["stamp"], "date": job["day"], "qid": p["id"], "group": p["group"],
                     "named": bool(p.get("named")), "surface": s["id"], "model": s.get("model"),
                     "run": job["run"], "query": query, **res}
         except Exception as e:  # noqa: BLE001
             msg = f"{p['id']}/{s['id']} run{job['run']}: {type(e).__name__}: {e}"
             # 新しいモデル名で弾かれたら設定値に戻してやり直す
-            if s.get("model_default") and s.get("model") != s["model_default"] and "model" in str(e).lower():
+            if s.get("model_default") and s.get("model") != s["model_default"] and "model" in str(e).lower() \
+                    and not _rate_limited(e):
                 print(f"  ! {msg} → {s['model_default']} に戻す", file=sys.stderr)
                 _FALLBACK[s["id"]] = s["model_default"]
                 s = dict(s, model=s["model_default"])
                 continue
-            if attempt == 2:
+            # 上限エラーは時間をおいて取り直す（最大6回、10秒→2分）
+            if _rate_limited(e) and waits < 6:
+                waits += 1
+                time.sleep(min(120, 5 * 2 ** waits) + random.uniform(0, 5))
+                continue
+            attempt += 1
+            if attempt >= 3:
                 print(f"  ! {msg}", file=sys.stderr)
                 with llm._COST_LOCK:
                     if len(llm._ERRORS) < 60:
                         llm._ERRORS.append(msg)
                 return None
-            import time
             time.sleep(2 ** attempt * 1.5)
-    return None
 
 
 def main():
@@ -226,6 +273,7 @@ def main():
     ap.add_argument("--no-llm", action="store_true", help="ChatGPT・Gemini を飛ばす")
     ap.add_argument("--no-volume", action="store_true")
     ap.add_argument("--only", default="", help="カンマ区切りの質問ID（試し打ち用）")
+    ap.add_argument("--surfaces", default="", help="カンマ区切りのAI面（例 gemini）。取り直し用。空なら4つ全部")
     a = ap.parse_args()
     if demo_mode():
         sys.exit("run_ucar はデモ実行を提供しません。GEO_BOARD_MODE=live と DataForSEO 認証を設定してください。")
@@ -246,6 +294,8 @@ def main():
     for s in cfg["surfaces"]:
         if s["id"] not in ("aio", "aimode", "chatgpt", "gemini"):
             continue
+        if a.surfaces and s["id"] not in a.surfaces.split(","):
+            continue
         s = dict(s)
         if s["provider"] != "serp":
             if a.no_llm:
@@ -255,9 +305,19 @@ def main():
             models_seen[s["id"]] = names
             s["model_default"] = s["model"]
             s["model"] = pick_latest(names, s["id"], s["model"])
+            if s["id"] == "gemini" and names:
+                # 上限エラーが続くモデルは避け、次に新しい flash に下げる（全回答を同じモデルでそろえる）
+                lower = [n for n in gemini_candidates(names) if _version(n) < _version(s["model"])]
+                order = [s["model"]] + [n for n in lower if "preview" not in n][:2]
+                for m in order:
+                    if probe_ok(dict(s, model=m)):
+                        if m != s["model"]:
+                            print(f"  ! gemini: {s['model']} は上限エラーが続くため {m} を使う", file=sys.stderr, flush=True)
+                        s["model"] = m
+                        break
         surfaces.append(s)
     print("AI面: " + ", ".join(f"{s['id']}({s.get('model', 'SERP')})" for s in surfaces), flush=True)
-    write_json(OUT / f"models_{day}.json", {"stamp": stamp, "available": models_seen,
+    write_json(OUT / f"models_{stamp}.json", {"stamp": stamp, "available": models_seen,
                                             "used": {s["id"]: s.get("model") for s in surfaces}})
 
     # 検索数（1日1回）
