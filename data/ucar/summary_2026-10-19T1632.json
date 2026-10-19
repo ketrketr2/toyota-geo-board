@@ -1,0 +1,30 @@
+{
+  "stamp": "2026-10-19T1632",
+  "day": "2026-10-19",
+  "n_prompts": 4,
+  "n_jobs": 12,
+  "n_responses": 4,
+  "by_surface": {
+    "aio": 4
+  },
+  "runs_llm": 3,
+  "spent_usd": 0.022,
+  "calls": 4,
+  "errors": [
+    "C7/aio run0: RuntimeError: 40101 Internal SE Server Error.",
+    "A5/aio run2: RuntimeError: 40101 Internal SE Server Error.",
+    "C3/aio run1: RuntimeError: 40101 Internal SE Server Error.",
+    "A5/aio run0: RuntimeError: 40101 Internal SE Server Error.",
+    "C3/aio run2: RuntimeError: 40101 Internal SE Server Error.",
+    "C7/aio run1: RuntimeError: 40101 Internal SE Server Error.",
+    "A5/aio run1: RuntimeError: 40101 Internal SE Server Error.",
+    "T20/aio run2: RuntimeError: 40101 Internal SE Server Error."
+  ],
+  "redirects": {
+    "redirects": 0,
+    "resolved": 0
+  },
+  "models": {
+    "aio": null
+  }
+}
