@@ -59,18 +59,24 @@ jobs:
             RUNS=$(python3 -c "import json;print(json.load(open('$T')).get('runs','3'))")
             SKIP=$(python3 -c "import json;print('--no-llm' if json.load(open('$T')).get('skip_llm',False) else '')")
             GO=1
+            # 取り直し（push のときだけ効く）：surfaces で面を絞る、skip_ga4 で GA4 を飛ばす
+            SURF=$(python3 -c "import json;print(json.load(open('$T')).get('surfaces',''))")
+            GA4=$(python3 -c "import json;print(0 if json.load(open('$T')).get('skip_ga4',False) else 1)")
             if [ "${{ github.event_name }}" = "schedule" ]; then
+              SURF=""; GA4=1
               # daily_until の日までは毎朝1回（日ごとのぶれ）。round2 の日は runs 回（事前計測2回目）
               GO=$(python3 -c "import json,datetime as d;j=json.load(open('$T'));t=(d.datetime.utcnow()+d.timedelta(hours=9)).date().isoformat();u=j.get('daily_until','');print(1 if (u and t<=u) or t==j.get('round2','') else 0)")
               RUNS=$(python3 -c "import json,datetime as d;j=json.load(open('$T'));t=(d.datetime.utcnow()+d.timedelta(hours=9)).date().isoformat();print(j.get('runs','3') if t==j.get('round2','') else j.get('daily_runs','1'))")
             fi
           fi
+          EXTRA=""; [ -n "${SURF:-}" ] && EXTRA="--surfaces $SURF"
           echo "cap=$CAP" >> $GITHUB_OUTPUT; echo "runs=$RUNS" >> $GITHUB_OUTPUT
           echo "skip=$SKIP" >> $GITHUB_OUTPUT; echo "go=$GO" >> $GITHUB_OUTPUT
-          echo "cap=$CAP runs=$RUNS skip=$SKIP go=$GO"
+          echo "extra=$EXTRA" >> $GITHUB_OUTPUT; echo "ga4=${GA4:-1}" >> $GITHUB_OUTPUT
+          echo "cap=$CAP runs=$RUNS skip=$SKIP go=$GO extra=$EXTRA ga4=${GA4:-1}"
 
       - name: GA4 (Windsor) for used-car pages
-        if: ${{ steps.params.outputs.go == '1' }}
+        if: ${{ steps.params.outputs.go == '1' && steps.params.outputs.ga4 == '1' }}
         continue-on-error: true
         env:
           WINDSOR_API_KEY: ${{ secrets.WINDSOR_API_KEY }}
@@ -93,7 +99,7 @@ jobs:
           DATAFORSEO_LOGIN:    ${{ secrets.DATAFORSEO_LOGIN || vars.DATAFORSEO_LOGIN || secrets.DATAFORCED_LOGIN }}
           DATAFORSEO_PASSWORD: ${{ secrets.DATAFORSEO_PASSWORD }}
         run: |
-          python src/run_ucar.py --cap "${{ steps.params.outputs.cap }}" --runs "${{ steps.params.outputs.runs }}" ${{ steps.params.outputs.skip }}
+          python src/run_ucar.py --cap "${{ steps.params.outputs.cap }}" --runs "${{ steps.params.outputs.runs }}" ${{ steps.params.outputs.skip }} ${{ steps.params.outputs.extra }}
 
       - name: Commit results
         if: ${{ always() && steps.params.outputs.go == '1' }}
