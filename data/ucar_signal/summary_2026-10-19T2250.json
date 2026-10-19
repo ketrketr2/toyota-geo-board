@@ -1,0 +1,29 @@
+{
+  "stamp": "2026-10-19T2250",
+  "day": "2026-10-19",
+  "n_prompts": 1761,
+  "n_jobs": 4722,
+  "n_responses": 4721,
+  "by_surface": {
+    "aimode": 1760,
+    "aio": 1761,
+    "chatgpt": 600,
+    "gemini": 600
+  },
+  "runs_llm": 1,
+  "spent_usd": 46.6629,
+  "calls": 4722,
+  "errors": [
+    "S0288/aimode run0: RuntimeError: 50401 Internal Error - Timeout."
+  ],
+  "redirects": {
+    "redirects": 1800,
+    "resolved": 1800
+  },
+  "models": {
+    "chatgpt": "gpt-6.1-sol",
+    "aio": null,
+    "aimode": null,
+    "gemini": "gemini-3.8-flash"
+  }
+}
