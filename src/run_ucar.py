@@ -278,6 +278,7 @@ def main():
     ap.add_argument("--prompts", default="", help="質問のファイル（既定 config/ucar_prompts.yaml）。例 config/ucar382_prompts.yaml")
     ap.add_argument("--out", default="", help="結果の置き場所（data/ の下。既定 ucar）。例 ucar382")
     ap.add_argument("--checkpoint", type=int, default=0, help="この件数ごとに途中結果を書き出す（0なら最後だけ）")
+    ap.add_argument("--shuffle", action="store_true", help="ジョブの順を混ぜる（途中で止まっても区分やAIが偏らない）")
     a = ap.parse_args()
     global OUT, PROMPTS
     if a.prompts:
@@ -351,6 +352,8 @@ def main():
             n = a.runs if s["provider"] != "serp" else (a.serp_runs if a.serp_runs is not None else a.runs)
             for run in range(n):
                 jobs.append({"day": day, "stamp": stamp, "p": p, "s": s, "run": run, "cap": a.cap})
+    if a.shuffle:
+        random.Random(20261019).shuffle(jobs)
     print(f"ジョブ {len(jobs)} 件（上限 ${a.cap}）{dict(Counter(j['s']['id'] for j in jobs))}", flush=True)
 
     # Gemini は別の列で回す（同時実行を絞るため。同じ列だと待ちのジョブが他の面の枠までふさぐ）
