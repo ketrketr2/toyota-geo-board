@@ -1,0 +1,21 @@
+{
+  "stamp": "2026-10-19T1602",
+  "day": "2026-10-19",
+  "n_prompts": 84,
+  "n_jobs": 252,
+  "n_responses": 252,
+  "by_surface": {
+    "gemini": 252
+  },
+  "runs_llm": 3,
+  "spent_usd": 2.5459,
+  "calls": 253,
+  "errors": [],
+  "redirects": {
+    "redirects": 388,
+    "resolved": 388
+  },
+  "models": {
+    "gemini": "gemini-3.8-flash"
+  }
+}
