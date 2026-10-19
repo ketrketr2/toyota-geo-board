@@ -36,11 +36,12 @@ from common import DATA, JST, ROOT, demo_mode, load, today, write_json  # noqa: 
 from collect import llm  # noqa: E402
 
 OUT = DATA / "ucar"
+PROMPTS = ROOT / "config" / "ucar_prompts.yaml"
 
 
 # ---------------------------------------------------------------- 質問
 def ucar_prompts() -> list[dict]:
-    with open(ROOT / "config" / "ucar_prompts.yaml", encoding="utf-8") as f:
+    with open(PROMPTS, encoding="utf-8") as f:
         return yaml.safe_load(f)["prompts"]
 
 
@@ -274,7 +275,15 @@ def main():
     ap.add_argument("--no-volume", action="store_true")
     ap.add_argument("--only", default="", help="カンマ区切りの質問ID（試し打ち用）")
     ap.add_argument("--surfaces", default="", help="カンマ区切りのAI面（例 gemini）。取り直し用。空なら4つ全部")
+    ap.add_argument("--prompts", default="", help="質問のファイル（既定 config/ucar_prompts.yaml）。例 config/ucar382_prompts.yaml")
+    ap.add_argument("--out", default="", help="結果の置き場所（data/ の下。既定 ucar）。例 ucar382")
+    ap.add_argument("--checkpoint", type=int, default=0, help="この件数ごとに途中結果を書き出す（0なら最後だけ）")
     a = ap.parse_args()
+    global OUT, PROMPTS
+    if a.prompts:
+        PROMPTS = ROOT / a.prompts
+    if a.out:
+        OUT = DATA / a.out
     if demo_mode():
         sys.exit("run_ucar はデモ実行を提供しません。GEO_BOARD_MODE=live と DataForSEO 認証を設定してください。")
 
@@ -336,14 +345,20 @@ def main():
     jobs = []
     for p in prompts:
         for s in surfaces:
+            # 広く測る回：ChatGPT・Gemini は抜き取りの問（llm: true）だけ。llm の無い問は従来どおり全部
+            if s["provider"] != "serp" and p.get("llm") is False:
+                continue
             n = a.runs if s["provider"] != "serp" else (a.serp_runs if a.serp_runs is not None else a.runs)
             for run in range(n):
                 jobs.append({"day": day, "stamp": stamp, "p": p, "s": s, "run": run, "cap": a.cap})
-    print(f"ジョブ {len(jobs)} 件（上限 ${a.cap}）", flush=True)
+    print(f"ジョブ {len(jobs)} 件（上限 ${a.cap}）{dict(Counter(j['s']['id'] for j in jobs))}", flush=True)
 
+    # Gemini は別の列で回す（同時実行を絞るため。同じ列だと待ちのジョブが他の面の枠までふさぐ）
+    n_main = int(os.environ.get("UCAR_WORKERS", "10"))
+    n_gem = int(os.environ.get("UCAR_GEMINI_WORKERS", "2"))
     out, done = [], 0
-    with ThreadPoolExecutor(max_workers=10) as ex:
-        futs = [ex.submit(run_one, j) for j in jobs]
+    with ThreadPoolExecutor(max_workers=n_main) as ex, ThreadPoolExecutor(max_workers=n_gem) as exg:
+        futs = [(exg if j["s"]["id"] == "gemini" else ex).submit(run_one, j) for j in jobs]
         for fut in as_completed(futs):
             r = fut.result()
             done += 1
@@ -351,6 +366,10 @@ def main():
                 out.append(r)
             if done % 50 == 0:
                 print(f"  … {done}/{len(jobs)} 完了（成功 {len(out)} / ${llm.spent()['usd']:.2f}）", flush=True)
+            if a.checkpoint and done % a.checkpoint == 0:
+                # 途中で止まっても取れた分は残す（最後に同じ名前で全量を書き直す）
+                write_json(OUT / f"responses_{stamp}.json",
+                           sorted(out, key=lambda r: (r["qid"], r["surface"], r["run"])), compact=True)
     out.sort(key=lambda r: (r["qid"], r["surface"], r["run"]))
     try:
         rs = resolve_redirects(out)
