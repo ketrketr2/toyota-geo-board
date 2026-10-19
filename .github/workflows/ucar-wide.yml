@@ -69,7 +69,7 @@ jobs:
           GEO_BOARD_MODE:      ${{ vars.GEO_BOARD_MODE || 'demo' }}
           DATAFORSEO_LOGIN:    ${{ secrets.DATAFORSEO_LOGIN || vars.DATAFORSEO_LOGIN || secrets.DATAFORCED_LOGIN }}
           DATAFORSEO_PASSWORD: ${{ secrets.DATAFORSEO_PASSWORD }}
-          UCAR_WORKERS: "16"
+          UCAR_WORKERS: "28"   # DataForSEO の同時実行の上限（30）に収める（＋Gemini 2）
           UCAR_GEMINI_WORKERS: "2"
         run: |
           python src/run_ucar.py --checkpoint 400 --prompts "${{ steps.params.outputs.prompts }}" --out "${{ steps.params.outputs.out }}" --runs "${{ steps.params.outputs.runs }}" --cap "${{ steps.params.outputs.cap }}" ${{ steps.params.outputs.extra }}
