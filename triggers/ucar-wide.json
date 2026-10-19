@@ -3,6 +3,6 @@
  "out": "ucar_signal",
  "runs": "1",
  "cap": "70",
- "note": "UCAR SIGNAL の1,761本。AIO・AIモードは全本、ChatGPT・Gemini は区分ごとに無作為50本（計600本）。84問（data/ucar）とは別に data/ucar_signal に置く",
- "requested_at": "2026-10-19T22:33:08+09:00"
+ "note": "UCAR SIGNAL の1,761本。AIO・AIモードは全本、ChatGPT・Gemini は区分ごとに無作為50本（計600本）。84問（data/ucar）とは別に data/ucar_signal に置く（再実行：同時実行28）",
+ "requested_at": "2026-10-19T22:42:35+09:00"
 }
