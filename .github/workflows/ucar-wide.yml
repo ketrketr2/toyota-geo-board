@@ -33,7 +33,7 @@ concurrency:
 jobs:
   wide:
     runs-on: ubuntu-latest
-    timeout-minutes: 240
+    timeout-minutes: 350   # GitHub の上限は6時間
     steps:
       - uses: actions/checkout@v4
 
@@ -64,7 +64,7 @@ jobs:
           echo "prompts=$PROMPTS out=$OUTD runs=$RUNS cap=$CAP extra=$EXTRA"
 
       - name: AI surfaces + SERP + volumes (DataForSEO)
-        timeout-minutes: 200   # 止まっても下の Commit を走らせて、途中まで取れた分を残す
+        timeout-minutes: 330   # 止まっても下の Commit を走らせて、途中まで取れた分を残す（ジョブは混ぜてあるので偏らない）
         env:
           GEO_BOARD_MODE:      ${{ vars.GEO_BOARD_MODE || 'demo' }}
           DATAFORSEO_LOGIN:    ${{ secrets.DATAFORSEO_LOGIN || vars.DATAFORSEO_LOGIN || secrets.DATAFORCED_LOGIN }}
@@ -72,7 +72,7 @@ jobs:
           UCAR_WORKERS: "28"   # DataForSEO の同時実行の上限（30）に収める（＋Gemini 2）
           UCAR_GEMINI_WORKERS: "2"
         run: |
-          python src/run_ucar.py --checkpoint 400 --prompts "${{ steps.params.outputs.prompts }}" --out "${{ steps.params.outputs.out }}" --runs "${{ steps.params.outputs.runs }}" --cap "${{ steps.params.outputs.cap }}" ${{ steps.params.outputs.extra }}
+          python src/run_ucar.py --checkpoint 400 --shuffle --prompts "${{ steps.params.outputs.prompts }}" --out "${{ steps.params.outputs.out }}" --runs "${{ steps.params.outputs.runs }}" --cap "${{ steps.params.outputs.cap }}" ${{ steps.params.outputs.extra }}
 
       - name: Commit results
         if: ${{ always() }}
