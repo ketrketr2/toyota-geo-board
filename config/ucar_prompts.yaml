@@ -1,0 +1,695 @@
+version: '2026-10-19'
+note: 中古車U 事前計測の質問。AIO/AIモードは kw、ChatGPT/Geminiは chat を投げる。重点34・比較用30は10/14確定、トヨタ指名20は10/19追加（根岸さんの表の『トヨタ指名クエリ』用）。
+prompts:
+- id: A1
+  group: 重点
+  named: false
+  stage: Ask
+  theme: 新車か中古車か
+  kw: 新車 中古車 どっち
+  chat: 車の買い替えを考えています。新車と中古車、どちらを選ぶべきですか？
+  media: null
+- id: A2
+  group: 重点
+  named: false
+  stage: Ask
+  theme: 初めての中古車
+  kw: 初めて 中古車 買う
+  chat: 初めて中古車を買うなら、どうするのがおすすめですか？
+  media: null
+- id: A3
+  group: 重点
+  named: false
+  stage: Ask
+  theme: 買い方
+  kw: 中古車 おすすめ 買い方
+  chat: 中古車のおすすめの買い方を教えてください。
+  media: livedoor News
+- id: A4
+  group: 重点
+  named: false
+  stage: Ask
+  theme: 失敗しない選び方
+  kw: 中古車 失敗しない方法
+  chat: 中古車選びで失敗しない方法を教えてください。
+  media: グーネットマガジン
+- id: A5
+  group: 重点
+  named: false
+  stage: Ask
+  theme: 家族向け
+  kw: ファミリー向け 中古車 おすすめ
+  chat: 家族で乗る中古車を探しています。ファミリー向けのおすすめを教えてください。
+  media: グーネットマガジン
+- id: A6
+  group: 重点
+  named: false
+  stage: Ask
+  theme: 予算
+  kw: 予算200万円 中古車
+  chat: 予算200万円で買えるおすすめの中古車を教えてください。
+  media: グーネットマガジン
+- id: A7
+  group: 重点
+  named: false
+  stage: Ask
+  theme: ミニバン
+  kw: ミニバン 中古車 おすすめ
+  chat: 中古のミニバンを買うなら、おすすめはどれですか？
+  media: グーネットマガジン
+- id: A8
+  group: 重点
+  named: false
+  stage: Ask
+  theme: ハイブリッド
+  kw: ハイブリッド中古車 安い
+  chat: 中古のハイブリッド車を安く買いたいです。おすすめの車種と注意点を教えてください。
+  media: グーネットマガジン
+- id: A9
+  group: 重点
+  named: false
+  stage: Ask
+  theme: 年式・走行距離
+  kw: 中古車 何年落ち お得
+  chat: 中古車は何年落ち・走行距離何キロくらいが一番お得ですか？
+  media: null
+- id: A10
+  group: 重点
+  named: false
+  stage: Ask
+  theme: 狙い目
+  kw: 中古車 狙い目
+  chat: いま中古車で狙い目の車を教えてください。
+  media: null
+- id: I1
+  group: 重点
+  named: false
+  stage: Interest
+  theme: どこで買うか
+  kw: 中古車 どこで買う
+  chat: 中古車はどこで買うのが安心ですか？
+  media: livedoor News
+- id: I2
+  group: 重点
+  named: false
+  stage: Interest
+  theme: 販売店選び
+  kw: 中古車 販売店 おすすめ
+  chat: おすすめの中古車販売店を教えてください。
+  media: null
+- id: I3
+  group: 重点
+  named: false
+  stage: Interest
+  theme: 探すサイト
+  kw: 中古車 サイト おすすめ
+  chat: 中古車を探すなら、どのサイトがおすすめですか？
+  media: null
+- id: I4
+  group: 重点
+  named: false
+  stage: Interest
+  theme: ディーラーの価値
+  kw: ディーラー 中古車 メリット
+  chat: ディーラーで中古車を買うメリットは何ですか？
+  media: null
+- id: I5
+  group: 重点
+  named: false
+  stage: Interest
+  theme: ディーラーと専門店
+  kw: ディーラー 中古車 専門店 違い
+  chat: ディーラーの中古車と、中古車専門店の違いは何ですか？
+  media: null
+- id: I6
+  group: 重点
+  named: false
+  stage: Interest
+  theme: 販売店の比べ方
+  kw: 中古車販売 比較
+  chat: 中古車の販売店を比べるときは、どこを見ればいいですか？
+  media: null
+- id: I7
+  group: 重点
+  named: false
+  stage: Interest
+  theme: 人気の車
+  kw: 人気中古車ランキング
+  chat: 人気の中古車ランキングを教えてください。
+  media: null
+- id: I8
+  group: 重点
+  named: false
+  stage: Interest
+  theme: ディーラーで買うか
+  kw: 中古車 ディーラーで買うべき
+  chat: 中古車はディーラーで買うべきですか？
+  media: null
+- id: I9
+  group: 重点
+  named: false
+  stage: Interest
+  theme: ディーラーは高いか
+  kw: 中古車 ディーラー 高い
+  chat: ディーラーの中古車はなぜ高いのですか？高くても買う価値はありますか？
+  media: null
+- id: I10
+  group: 重点
+  named: false
+  stage: Interest
+  theme: ネットか店か
+  kw: 中古車 ネット 店舗 どっち
+  chat: 中古車はネットで買うのと、お店で買うのと、どちらがいいですか？
+  media: null
+- id: C1
+  group: 重点
+  named: false
+  stage: Confirm
+  theme: 認定中古車とは
+  kw: 認定中古車とは
+  chat: 認定中古車とは何ですか？普通の中古車と何が違いますか？
+  media: ベストカー
+- id: C2
+  group: 重点
+  named: false
+  stage: Confirm
+  theme: 認定中古車のメリット
+  kw: 認定中古車 メリット
+  chat: 認定中古車のメリットとデメリットを教えてください。
+  media: ベストカー
+- id: C3
+  group: 重点
+  named: false
+  stage: Confirm
+  theme: メーカー認定の比較
+  kw: メーカー 認定中古車 比較
+  chat: メーカーの認定中古車を比べると、どこがおすすめですか？
+  media: null
+- id: C4
+  group: 重点
+  named: false
+  stage: Confirm
+  theme: 保証
+  kw: 中古車 保証 おすすめ
+  chat: 中古車の保証が手厚いのはどこですか？
+  media: ベストカー
+- id: C5
+  group: 重点
+  named: false
+  stage: Confirm
+  theme: ハイブリッドの不安
+  kw: 中古 ハイブリッド バッテリー 寿命
+  chat: 中古のハイブリッド車はバッテリーが心配です。大丈夫ですか？
+  media: null
+- id: C6
+  group: 重点
+  named: false
+  stage: Confirm
+  theme: 車両検査証明書
+  kw: 車両検査証明書とは
+  chat: 中古車の車両検査証明書とは何ですか？
+  media: ベストカー
+- id: C7
+  group: 重点
+  named: false
+  stage: Confirm
+  theme: 比べて選ぶ
+  kw: 中古車 比較 おすすめ
+  chat: 中古車を比べて選ぶときのポイントと、おすすめを教えてください。
+  media: グーネットマガジン
+- id: C8
+  group: 重点
+  named: true
+  stage: Confirm
+  theme: 評判（指名）
+  kw: トヨタ認定中古車 評判
+  chat: トヨタ認定中古車の評判はどうですか？
+  media: ベストカー
+- id: C9
+  group: 重点
+  named: true
+  stage: Confirm
+  theme: 特徴（指名）
+  kw: トヨタ 中古車とは
+  chat: トヨタの中古車にはどんな特徴がありますか？
+  media: null
+- id: C10
+  group: 重点
+  named: false
+  stage: Confirm
+  theme: 遠方の在庫
+  kw: 中古車 遠方 購入
+  chat: 遠くのお店にある中古車を、取り寄せて買うことはできますか？
+  media: null
+- id: X1
+  group: 重点
+  named: false
+  stage: Action
+  theme: オンライン購入
+  kw: 中古車 オンライン購入
+  chat: 中古車をオンラインで買っても大丈夫ですか？買い方も教えてください。
+  media: livedoor News
+- id: X2
+  group: 重点
+  named: true
+  stage: Action
+  theme: オンライン購入（指名）
+  kw: トヨタ中古車 オンライン購入
+  chat: トヨタの中古車はオンラインで買えますか？
+  media: null
+- id: X3
+  group: 重点
+  named: false
+  stage: Action
+  theme: 買う流れ
+  kw: 中古車 買う流れ
+  chat: 中古車を買うときの流れと、必要な手続きを教えてください。
+  media: null
+- id: X4
+  group: 重点
+  named: false
+  stage: Action
+  theme: 在庫の探し方
+  kw: 中古車 探し方
+  chat: 欲しい中古車の在庫は、どうやって探すのが効率的ですか？
+  media: null
+- id: B1
+  group: 比較用
+  named: false
+  stage: null
+  theme: 軽自動車
+  kw: 軽 中古車 おすすめ
+  chat: 中古の軽自動車でおすすめはどれですか？
+  media: null
+- id: B2
+  group: 比較用
+  named: false
+  stage: null
+  theme: 軽自動車
+  kw: 軽自動車 中古 安い
+  chat: 安い中古の軽自動車を探すコツを教えてください。
+  media: null
+- id: B3
+  group: 比較用
+  named: false
+  stage: null
+  theme: 軽自動車
+  kw: 軽バン 中古
+  chat: 中古の軽バンでおすすめはどれですか？
+  media: null
+- id: B4
+  group: 比較用
+  named: false
+  stage: null
+  theme: 安さ・価格
+  kw: 安い中古車
+  chat: 安くて状態のいい中古車を見つける方法は？
+  media: null
+- id: B5
+  group: 比較用
+  named: false
+  stage: null
+  theme: 安さ・価格
+  kw: 50万で買える車 おすすめ
+  chat: 50万円で買えるおすすめの中古車は？
+  media: null
+- id: B6
+  group: 比較用
+  named: false
+  stage: null
+  theme: 安さ・価格
+  kw: 車検付き 激安 中古車
+  chat: 車検付きで安い中古車は買っても大丈夫ですか？
+  media: null
+- id: B7
+  group: 比較用
+  named: false
+  stage: null
+  theme: 安さ・価格
+  kw: 中古車 平均価格
+  chat: 中古車の平均価格はいくらくらいですか？
+  media: null
+- id: B8
+  group: 比較用
+  named: false
+  stage: null
+  theme: 安さ・価格
+  kw: 中古車 値段 相場
+  chat: 中古車の値段の相場はどう決まりますか？
+  media: null
+- id: B9
+  group: 比較用
+  named: false
+  stage: null
+  theme: 新古車
+  kw: 新古車
+  chat: 新古車（未使用車）とは何ですか？お得ですか？
+  media: null
+- id: B10
+  group: 比較用
+  named: false
+  stage: null
+  theme: 用途
+  kw: suv 中古 おすすめ
+  chat: 中古のSUVでおすすめはどれですか？
+  media: null
+- id: B11
+  group: 比較用
+  named: false
+  stage: null
+  theme: 用途
+  kw: 雪道に強い車 中古
+  chat: 雪道に強い中古車を教えてください。
+  media: null
+- id: B12
+  group: 比較用
+  named: false
+  stage: null
+  theme: 用途
+  kw: キャンプ 車 中古 おすすめ
+  chat: キャンプに使える中古車のおすすめは？
+  media: null
+- id: B13
+  group: 比較用
+  named: false
+  stage: null
+  theme: 用途
+  kw: スポーツカー 安い 中古
+  chat: 安く買える中古のスポーツカーは？
+  media: null
+- id: B14
+  group: 比較用
+  named: false
+  stage: null
+  theme: 車種
+  kw: アルファード 中古 相場
+  chat: アルファードの中古の相場はいくらですか？
+  media: null
+- id: B15
+  group: 比較用
+  named: false
+  stage: null
+  theme: 車種
+  kw: ハイエース 中古
+  chat: ハイエースの中古を買うときの注意点は？
+  media: null
+- id: B16
+  group: 比較用
+  named: false
+  stage: null
+  theme: 車種
+  kw: ランクル 中古 値段
+  chat: ランドクルーザーの中古の値段はどれくらいですか？
+  media: null
+- id: B17
+  group: 比較用
+  named: false
+  stage: null
+  theme: 車種
+  kw: クラウン 中古 相場
+  chat: クラウンの中古の相場と、年式ごとの違いを教えてください。
+  media: null
+- id: B18
+  group: 比較用
+  named: false
+  stage: null
+  theme: 車種
+  kw: ハリアー 中古 相場
+  chat: ハリアーの中古の相場はいくらですか？
+  media: null
+- id: B19
+  group: 比較用
+  named: false
+  stage: null
+  theme: 車種
+  kw: ヤリスクロス 中古 相場
+  chat: ヤリスクロスの中古の相場はいくらですか？
+  media: null
+- id: B20
+  group: 比較用
+  named: false
+  stage: null
+  theme: 車種
+  kw: カローラクロス 中古 安い
+  chat: カローラクロスの中古は安く買えますか？
+  media: null
+- id: B21
+  group: 比較用
+  named: false
+  stage: null
+  theme: 車種
+  kw: c-hr 中古 安い
+  chat: C-HRの中古は安く買えますか？
+  media: null
+- id: B22
+  group: 比較用
+  named: false
+  stage: null
+  theme: 車種
+  kw: ハイラックス 中古
+  chat: ハイラックスの中古を買うときの注意点は？
+  media: null
+- id: B23
+  group: 比較用
+  named: false
+  stage: null
+  theme: 車種
+  kw: gr86 中古
+  chat: GR86の中古は買いですか？
+  media: null
+- id: B24
+  group: 比較用
+  named: false
+  stage: null
+  theme: 車種
+  kw: レクサス 中古 おすすめ
+  chat: レクサスの中古でおすすめのモデルは？
+  media: null
+- id: B25
+  group: 比較用
+  named: false
+  stage: null
+  theme: 地域
+  kw: 札幌 中古車
+  chat: 札幌で中古車を買うなら、どこを見ればいいですか？
+  media: null
+- id: B26
+  group: 比較用
+  named: false
+  stage: null
+  theme: 地域
+  kw: 沖縄 中古車
+  chat: 沖縄で中古車を買うときの注意点は？
+  media: null
+- id: B27
+  group: 比較用
+  named: false
+  stage: null
+  theme: お金・手続き
+  kw: 中古車 ローン 金利
+  chat: 中古車ローンの金利の目安はどれくらいですか？
+  media: null
+- id: B28
+  group: 比較用
+  named: false
+  stage: null
+  theme: お金・手続き
+  kw: 中古車 諸費用
+  chat: 中古車を買うときの諸費用はいくらかかりますか？
+  media: null
+- id: B29
+  group: 比較用
+  named: false
+  stage: null
+  theme: お金・手続き
+  kw: 中古車 カーリース 比較
+  chat: 中古車を買うのとカーリース、どちらが得ですか？
+  media: null
+- id: B30
+  group: 比較用
+  named: false
+  stage: null
+  theme: お金・手続き
+  kw: 中古車 名義変更 手続き
+  chat: 中古車の名義変更の手続きを教えてください。
+  media: null
+- id: T01
+  group: トヨタ指名
+  named: true
+  stage: Interest
+  theme: トヨタのお店
+  kw: トヨタ 中古車
+  chat: トヨタの中古車を買うなら、どこで買うのがいいですか？
+  media: null
+  vol_proto: 90500
+- id: T02
+  group: トヨタ指名
+  named: true
+  stage: Confirm
+  theme: 認定中古車
+  kw: トヨタ認定中古車
+  chat: トヨタ認定中古車はどんな中古車ですか？選ぶメリットを教えてください。
+  media: null
+  vol_proto: 27100
+- id: T03
+  group: トヨタ指名
+  named: true
+  stage: Action
+  theme: トヨタのお店
+  kw: トヨタ 中古車販売店
+  chat: トヨタの中古車を扱っているお店はどこですか？
+  media: null
+  vol_proto: 14800
+- id: T04
+  group: トヨタ指名
+  named: true
+  stage: Interest
+  theme: トヨタのお店
+  kw: トヨタ 中古車 ディーラー
+  chat: トヨタのディーラーで中古車を買うのはおすすめですか？
+  media: null
+  vol_proto: 9900
+- id: T05
+  group: トヨタ指名
+  named: true
+  stage: Action
+  theme: GAZOO
+  kw: トヨタ 中古車 gazoo
+  chat: GAZOOでトヨタの中古車を探せますか？使い方を教えてください。
+  media: null
+  vol_proto: 6600
+- id: T06
+  group: トヨタ指名
+  named: true
+  stage: Confirm
+  theme: 認定中古車
+  kw: トヨタ認定中古車とは
+  chat: トヨタ認定中古車とは何ですか？普通の中古車との違いを教えてください。
+  media: null
+  vol_proto: 5400
+- id: T07
+  group: トヨタ指名
+  named: true
+  stage: Interest
+  theme: トヨタのお店
+  kw: トヨタ 中古車 安い
+  chat: トヨタの中古車を安く買う方法はありますか？
+  media: null
+  vol_proto: 4400
+- id: T08
+  group: トヨタ指名
+  named: true
+  stage: Interest
+  theme: トヨタのお店
+  kw: トヨタ 中古車 おすすめ
+  chat: トヨタの中古車でおすすめの買い方を教えてください。
+  media: null
+  vol_proto: 3600
+- id: T09
+  group: トヨタ指名
+  named: true
+  stage: Confirm
+  theme: 認定中古車
+  kw: トヨタ認定中古車 後悔
+  chat: トヨタ認定中古車を買って後悔することはありますか？
+  media: null
+  vol_proto: 3600
+- id: T10
+  group: トヨタ指名
+  named: true
+  stage: Confirm
+  theme: 認定中古車
+  kw: トヨタ 中古車 保証
+  chat: トヨタの中古車にはどんな保証が付きますか？
+  media: null
+  vol_proto: 2900
+- id: T11
+  group: トヨタ指名
+  named: true
+  stage: Confirm
+  theme: 認定中古車ライト
+  kw: トヨタ認定中古車ライト
+  chat: トヨタ認定中古車ライトとは何ですか？通常の認定中古車と何が違いますか？
+  media: null
+  vol_proto: 880
+- id: T12
+  group: トヨタ指名
+  named: true
+  stage: Action
+  theme: 認定中古車
+  kw: トヨタ認定中古車 値引き
+  chat: トヨタ認定中古車は値引きできますか？
+  media: null
+  vol_proto: 1300
+- id: T13
+  group: トヨタ指名
+  named: true
+  stage: Confirm
+  theme: 認定中古車
+  kw: トヨタ認定中古車 メリット
+  chat: トヨタ認定中古車のメリットとデメリットを教えてください。
+  media: null
+  vol_proto: 1000
+- id: T14
+  group: トヨタ指名
+  named: true
+  stage: Action
+  theme: オンラインストア
+  kw: トヨタ中古車オンラインストア
+  chat: トヨタ中古車オンラインストアとはどんなサービスですか？安心して買えますか？
+  media: null
+  vol_proto: null
+- id: T15
+  group: トヨタ指名
+  named: true
+  stage: Action
+  theme: トヨタのお店
+  kw: トヨタ 中古車 東京
+  chat: 東京でトヨタの中古車を買うなら、どこがおすすめですか？
+  media: null
+  vol_proto: 4400
+- id: T16
+  group: トヨタ指名
+  named: true
+  stage: Action
+  theme: トヨタのお店
+  kw: トヨタ 中古車 店舗
+  chat: 近くのトヨタの中古車のお店を探す方法を教えてください。
+  media: null
+  vol_proto: 1300
+- id: T17
+  group: トヨタ指名
+  named: true
+  stage: Interest
+  theme: トヨタのお店
+  kw: トヨタ 中古車 suv
+  chat: トヨタのSUVを中古で買うなら、どこがおすすめですか？
+  media: null
+  vol_proto: 2400
+- id: T18
+  group: トヨタ指名
+  named: true
+  stage: Confirm
+  theme: 認定中古車
+  kw: トヨタ ハイブリッド 中古 保証
+  chat: トヨタのハイブリッド車を中古で買うとき、保証はどうなりますか？
+  media: null
+  vol_proto: null
+- id: T19
+  group: トヨタ指名
+  named: true
+  stage: Ask
+  theme: トヨタのお店
+  kw: トヨタ 中古車 初心者
+  chat: 初めて中古車を買うなら、トヨタのお店で買うのは安心ですか？
+  media: null
+  vol_proto: 70
+- id: T20
+  group: トヨタ指名
+  named: true
+  stage: Confirm
+  theme: メーカー比較
+  kw: 認定中古車 トヨタ ホンダ 比較
+  chat: トヨタとホンダの認定中古車は、どちらがおすすめですか？
+  media: null
+  vol_proto: null
