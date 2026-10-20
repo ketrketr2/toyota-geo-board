@@ -1,10 +1,10 @@
 {
  "_meta": {
   "source": "GA4 property 324699885 (toyota.jp) via Windsor.ai（ga4-daily が毎朝更新）",
-  "fetched": "2026-10-20",
+  "fetched": "2026-10-21",
   "coverage": [
    "2024-10-01",
-   "2026-10-19"
+   "2026-10-20"
   ],
   "refresh": "直近10日は毎朝取り直し（前日分は速報値のため）",
   "rules": "ai_sources v3（2026-10-09: gemini 単独表記・豆包・その他のAIを追加、OpenAIのメール配信を除外）",
@@ -8240,14 +8240,25 @@
   "other_ai": 0
  },
  "2026-10-19": {
-  "chatgpt": 1611,
-  "gemini": 23,
-  "copilot": 15,
+  "chatgpt": 1823,
+  "gemini": 27,
+  "copilot": 17,
   "grok": 0,
   "deepseek": 0,
   "claude": 0,
   "perplexity": 3,
   "doubao": 10,
+  "other_ai": 0
+ },
+ "2026-10-20": {
+  "chatgpt": 1277,
+  "gemini": 14,
+  "copilot": 11,
+  "grok": 0,
+  "deepseek": 0,
+  "claude": 0,
+  "perplexity": 3,
+  "doubao": 11,
   "other_ai": 0
  }
 }
