@@ -1,0 +1,38 @@
+{
+  "stamp": "2026-10-21T0907",
+  "day": "2026-10-21",
+  "n_prompts": 84,
+  "n_jobs": 336,
+  "n_responses": 326,
+  "by_surface": {
+    "aimode": 84,
+    "aio": 84,
+    "chatgpt": 84,
+    "gemini": 74
+  },
+  "runs_llm": 1,
+  "spent_usd": 5.7196,
+  "calls": 327,
+  "errors": [
+    "A1/gemini run0: RuntimeError: 50301 3rd Party API Service Unavailable (rate_limit_exceeded).",
+    "A2/gemini run0: RuntimeError: 50301 3rd Party API Service Unavailable (rate_limit_exceeded).",
+    "A3/gemini run0: RuntimeError: 50301 3rd Party API Service Unavailable (rate_limit_exceeded).",
+    "A4/gemini run0: RuntimeError: 50301 3rd Party API Service Unavailable (rate_limit_exceeded).",
+    "A6/gemini run0: RuntimeError: 50301 3rd Party API Service Unavailable (rate_limit_exceeded).",
+    "A5/gemini run0: RuntimeError: 50301 3rd Party API Service Unavailable (rate_limit_exceeded).",
+    "A7/gemini run0: RuntimeError: 50301 3rd Party API Service Unavailable (rate_limit_exceeded).",
+    "A8/gemini run0: RuntimeError: 50301 3rd Party API Service Unavailable (rate_limit_exceeded).",
+    "A10/gemini run0: RuntimeError: 50301 3rd Party API Service Unavailable (rate_limit_exceeded).",
+    "A9/gemini run0: RuntimeError: 50301 3rd Party API Service Unavailable (rate_limit_exceeded)."
+  ],
+  "redirects": {
+    "redirects": 117,
+    "resolved": 117
+  },
+  "models": {
+    "chatgpt": "gpt-6.1-sol",
+    "aio": null,
+    "aimode": null,
+    "gemini": "gemini-3.7-flash"
+  }
+}
