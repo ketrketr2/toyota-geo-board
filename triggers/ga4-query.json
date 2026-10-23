@@ -1,0 +1,11 @@
+{
+  "queries": [
+    {"id": "madoguchi_monthly", "title": "toyota.jp/madoguchi/ 配下の月別アクセス（2025-06〜2026-09）",
+     "from": "2025-06-01", "to": "2026-09-30", "by": "month", "dims": ["page_path"],
+     "filters": [["page_path", "contains", "/madoguchi/"]], "rollup_depth": 2, "top": 30},
+    {"id": "aushop_referrer_28d", "title": "toyota.jp/aushop/ への流入元ページ（直近90日）",
+     "from": "2026-07-23", "to": "2026-10-22", "by": "none", "dims": ["page_referrer"],
+     "filters": [["page_path", "contains", "/aushop/"]], "metrics": ["sessions", "totalusers"], "top": 50}
+  ],
+  "note": "初期動作確認＋データマンの未回答（madoguchi・aushop）用", "requested_at": "2026-10-23T19:00:00+09:00"
+}

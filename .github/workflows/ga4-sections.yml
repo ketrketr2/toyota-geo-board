@@ -1,0 +1,54 @@
+name: ga4-sections
+
+# config/ga4_sections.json のURL配下を毎朝、月別に集計して data/ga4/sections/ に push する。
+on:
+  schedule:
+    - cron: "37 19 * * *"    # 04:37 JST
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "試験実行（コミットしない）"
+        type: boolean
+        default: false
+  push:
+    branches: [main]
+    paths: ["config/ga4_sections.json", "src/ga4_sections.py", ".github/workflows/ga4-sections.yml"]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: ga4-sections
+  cancel-in-progress: false
+
+jobs:
+  query:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run queries
+        id: run
+        continue-on-error: true
+        env:
+          WINDSOR_API_KEY: ${{ secrets.WINDSOR_API_KEY }}
+        run: python src/ga4_sections.py
+      - name: Commit results
+        if: ${{ !inputs.dry_run }}
+        run: |
+          git config user.name  "geo-board-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add -f data/ga4/sections
+          git diff --staged --quiet && { echo "変更なし"; exit 0; }
+          git commit -m "chore: ga4 sections $(date -u +%Y-%m-%dT%H:%M)"
+          for i in 1 2 3; do
+            git pull --rebase -q && git push && exit 0
+            echo "push 失敗（${i}回目）"; sleep $((i * 15))
+          done
+          echo "::error::push に3回失敗"; exit 1
+      - name: Fail if any query failed
+        if: ${{ steps.run.outcome == 'failure' }}
+        run: echo "::error::失敗した依頼がある。data/ga4/sections/sections_monthly.md を見る"; exit 1

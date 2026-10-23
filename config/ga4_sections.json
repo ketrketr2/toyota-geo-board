@@ -1,0 +1,14 @@
+{
+  "_説明": "ここに書いたURL配下は、毎朝 月別のセッション・UU・PVを自動集計する（data/ga4/sections/）。新しい施策ページを追加したら1行足すだけ。",
+  "months": 13,
+  "sections": [
+    {"name": "お近くの窓口(madoguchi)", "contains": "/madoguchi/"},
+    {"name": "auショップ(aushop)", "contains": "/aushop/"},
+    {"name": "カタログ請求(request/webcatalog)", "contains": "/request/webcatalog/"},
+    {"name": "見積(estimate)", "contains": "/estimate"},
+    {"name": "アルファード", "contains": "/alphard/"},
+    {"name": "ヴェルファイア", "contains": "/vellfire/"},
+    {"name": "リクエスト系ページ全体(request)", "contains": "/request/"},
+    {"name": "中古車(ucar)", "contains": "/ucar/"}
+  ]
+}

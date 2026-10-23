@@ -1,0 +1,53 @@
+name: ga4-query
+
+# GA4 の臨時クエリ。triggers/ga4-query.json を main に push すると、鍵付きで取得して data/ga4/adhoc/ に結果を push する。
+# 書式と守っていることは src/ga4_query.py の先頭を参照。Mac側に WINDSOR_API_KEY は不要。
+on:
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "試験実行（コミットしない）"
+        type: boolean
+        default: false
+  push:
+    branches: [main]
+    paths: ["triggers/ga4-query.json", "src/ga4_query.py", ".github/workflows/ga4-query.yml"]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: ga4-query
+  cancel-in-progress: false
+
+jobs:
+  query:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run queries
+        id: run
+        continue-on-error: true
+        env:
+          WINDSOR_API_KEY: ${{ secrets.WINDSOR_API_KEY }}
+        run: python src/ga4_query.py triggers/ga4-query.json
+      - name: Commit results
+        if: ${{ !inputs.dry_run }}
+        run: |
+          git config user.name  "geo-board-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add -f data/ga4/adhoc
+          git diff --staged --quiet && { echo "変更なし"; exit 0; }
+          git commit -m "chore: ga4 adhoc $(date -u +%Y-%m-%dT%H:%M)"
+          for i in 1 2 3; do
+            git pull --rebase -q && git push && exit 0
+            echo "push 失敗（${i}回目）"; sleep $((i * 15))
+          done
+          echo "::error::push に3回失敗"; exit 1
+      - name: Fail if any query failed
+        if: ${{ steps.run.outcome == 'failure' }}
+        run: echo "::error::失敗した依頼がある。data/ga4/adhoc/INDEX.md を見る"; exit 1
