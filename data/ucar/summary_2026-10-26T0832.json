@@ -1,0 +1,33 @@
+{
+  "stamp": "2026-10-26T0832",
+  "day": "2026-10-26",
+  "n_prompts": 84,
+  "n_jobs": 1008,
+  "n_responses": 1003,
+  "by_surface": {
+    "aimode": 252,
+    "aio": 247,
+    "chatgpt": 252,
+    "gemini": 252
+  },
+  "runs_llm": 3,
+  "spent_usd": 17.0083,
+  "calls": 1004,
+  "errors": [
+    "A5/aio run2: RuntimeError: 40101 Internal SE Server Error.",
+    "A5/aio run1: RuntimeError: 40101 Internal SE Server Error.",
+    "C3/aio run0: RuntimeError: 40101 Internal SE Server Error.",
+    "T20/aio run2: RuntimeError: 40101 Internal SE Server Error.",
+    "T20/aio run0: RuntimeError: 40101 Internal SE Server Error."
+  ],
+  "redirects": {
+    "redirects": 370,
+    "resolved": 370
+  },
+  "models": {
+    "chatgpt": "gpt-6.1-sol",
+    "aio": null,
+    "aimode": null,
+    "gemini": "gemini-3.8-flash"
+  }
+}
