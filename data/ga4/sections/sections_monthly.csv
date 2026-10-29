@@ -11,7 +11,7 @@ year_month,section,path_contains,sessions,uu_in_month,pageviews
 202607,auショップ(aushop),/aushop/,969,791,1415
 202608,auショップ(aushop),/aushop/,922,730,1450
 202609,auショップ(aushop),/aushop/,2362,1994,2948
-202610,auショップ(aushop),/aushop/,6504,5004,8562
+202610,auショップ(aushop),/aushop/,6934,5362,9235
 202510,お近くの窓口(madoguchi),/madoguchi/,27753,25078,39758
 202511,お近くの窓口(madoguchi),/madoguchi/,25176,22847,36772
 202512,お近くの窓口(madoguchi),/madoguchi/,27356,24121,37241
@@ -24,7 +24,7 @@ year_month,section,path_contains,sessions,uu_in_month,pageviews
 202607,お近くの窓口(madoguchi),/madoguchi/,9257,8054,15812
 202608,お近くの窓口(madoguchi),/madoguchi/,9494,8370,16371
 202609,お近くの窓口(madoguchi),/madoguchi/,11818,10401,20286
-202610,お近くの窓口(madoguchi),/madoguchi/,9116,7973,15023
+202610,お近くの窓口(madoguchi),/madoguchi/,9367,8193,15377
 202510,アクア,/aqua/,408877,300887,900913
 202511,アクア,/aqua/,333694,255684,757335
 202512,アクア,/aqua/,293462,216854,633078
@@ -37,7 +37,7 @@ year_month,section,path_contains,sessions,uu_in_month,pageviews
 202607,アクア,/aqua/,208050,140139,471359
 202608,アクア,/aqua/,162361,112357,336765
 202609,アクア,/aqua/,151529,103267,309326
-202610,アクア,/aqua/,122531,83810,249962
+202610,アクア,/aqua/,126632,86299,257847
 202510,アルファード,/alphard/,435436,311863,841992
 202511,アルファード,/alphard/,420165,293733,779997
 202512,アルファード,/alphard/,380998,283593,739252
@@ -50,7 +50,7 @@ year_month,section,path_contains,sessions,uu_in_month,pageviews
 202607,アルファード,/alphard/,320930,216999,605582
 202608,アルファード,/alphard/,318305,222045,617251
 202609,アルファード,/alphard/,315386,207565,574423
-202610,アルファード,/alphard/,209587,145390,404690
+202610,アルファード,/alphard/,215575,148990,416504
 202510,カタログ請求(request/webcatalog),/request/webcatalog/,1512217,870318,1835977
 202511,カタログ請求(request/webcatalog),/request/webcatalog/,1357425,785385,1690435
 202512,カタログ請求(request/webcatalog),/request/webcatalog/,1551416,894819,1924296
@@ -63,7 +63,7 @@ year_month,section,path_contains,sessions,uu_in_month,pageviews
 202607,カタログ請求(request/webcatalog),/request/webcatalog/,1101057,506608,1358496
 202608,カタログ請求(request/webcatalog),/request/webcatalog/,1037870,529132,1299329
 202609,カタログ請求(request/webcatalog),/request/webcatalog/,1223976,598346,1526896
-202610,カタログ請求(request/webcatalog),/request/webcatalog/,951932,449131,1173291
+202610,カタログ請求(request/webcatalog),/request/webcatalog/,979965,462139,1213179
 202510,シエンタ,/sienta/,483348,340537,1095570
 202511,シエンタ,/sienta/,454785,312528,995954
 202512,シエンタ,/sienta/,454389,331054,994195
@@ -76,7 +76,7 @@ year_month,section,path_contains,sessions,uu_in_month,pageviews
 202607,シエンタ,/sienta/,284844,184703,611365
 202608,シエンタ,/sienta/,356819,232265,782292
 202609,シエンタ,/sienta/,296813,194044,612187
-202610,シエンタ,/sienta/,226664,148331,454012
+202610,シエンタ,/sienta/,233050,151940,466902
 202510,ノア,/noah/,336823,234092,732437
 202511,ノア,/noah/,316535,218242,666067
 202512,ノア,/noah/,294009,208872,641006
@@ -89,7 +89,7 @@ year_month,section,path_contains,sessions,uu_in_month,pageviews
 202607,ノア,/noah/,195887,129697,408822
 202608,ノア,/noah/,216818,140663,454386
 202609,ノア,/noah/,234832,151762,474985
-202610,ノア,/noah/,192453,123487,366731
+202610,ノア,/noah/,197659,127354,378626
 202510,ライズ,/raize/,334119,234090,743235
 202511,ライズ,/raize/,371903,261304,822419
 202512,ライズ,/raize/,374665,270252,821044
@@ -102,7 +102,7 @@ year_month,section,path_contains,sessions,uu_in_month,pageviews
 202607,ライズ,/raize/,149219,109396,307442
 202608,ライズ,/raize/,164609,118049,331704
 202609,ライズ,/raize/,152991,107642,316302
-202610,ライズ,/raize/,149399,99693,302585
+202610,ライズ,/raize/,155638,103453,314872
 202510,リクエスト系ページ全体(request),/request/,1564793,909263,1933522
 202511,リクエスト系ページ全体(request),/request/,1418832,824152,1780184
 202512,リクエスト系ページ全体(request),/request/,1623868,936469,2014761
@@ -115,7 +115,7 @@ year_month,section,path_contains,sessions,uu_in_month,pageviews
 202607,リクエスト系ページ全体(request),/request/,1131746,529247,1419319
 202608,リクエスト系ページ全体(request),/request/,1067643,551319,1363959
 202609,リクエスト系ページ全体(request),/request/,1257361,617402,1587045
-202610,リクエスト系ページ全体(request),/request/,975439,466109,1220768
+202610,リクエスト系ページ全体(request),/request/,1005050,479627,1262140
 202510,ルーミー,/roomy/,284498,206113,577573
 202511,ルーミー,/roomy/,302598,224451,650880
 202512,ルーミー,/roomy/,309969,239300,668243
@@ -128,7 +128,7 @@ year_month,section,path_contains,sessions,uu_in_month,pageviews
 202607,ルーミー,/roomy/,142900,103499,300123
 202608,ルーミー,/roomy/,182220,127149,384176
 202609,ルーミー,/roomy/,208265,146385,442225
-202610,ルーミー,/roomy/,173983,116652,344455
+202610,ルーミー,/roomy/,178789,118946,353778
 202510,ヴェルファイア,/vellfire/,210142,156897,406703
 202511,ヴェルファイア,/vellfire/,191661,142932,368992
 202512,ヴェルファイア,/vellfire/,189686,143021,363015
@@ -141,7 +141,7 @@ year_month,section,path_contains,sessions,uu_in_month,pageviews
 202607,ヴェルファイア,/vellfire/,149816,106415,288822
 202608,ヴェルファイア,/vellfire/,159401,112312,301797
 202609,ヴェルファイア,/vellfire/,148216,104832,277583
-202610,ヴェルファイア,/vellfire/,116826,81906,219617
+202610,ヴェルファイア,/vellfire/,119454,83913,226141
 202510,ヴォクシー,/voxy/,345703,251875,721527
 202511,ヴォクシー,/voxy/,352817,252337,732658
 202512,ヴォクシー,/voxy/,339704,253963,714972
@@ -154,7 +154,7 @@ year_month,section,path_contains,sessions,uu_in_month,pageviews
 202607,ヴォクシー,/voxy/,210203,136614,413477
 202608,ヴォクシー,/voxy/,225442,149512,454193
 202609,ヴォクシー,/voxy/,244885,161871,474614
-202610,ヴォクシー,/voxy/,195312,132088,372083
+202610,ヴォクシー,/voxy/,201088,136271,384812
 202510,中古車(ucar),/ucar/,343,341,362
 202511,中古車(ucar),/ucar/,389,386,405
 202512,中古車(ucar),/ucar/,403,403,447
@@ -167,7 +167,7 @@ year_month,section,path_contains,sessions,uu_in_month,pageviews
 202607,中古車(ucar),/ucar/,511,439,15
 202608,中古車(ucar),/ucar/,453,390,37
 202609,中古車(ucar),/ucar/,452,383,30
-202610,中古車(ucar),/ucar/,390,327,37
+202610,中古車(ucar),/ucar/,401,335,38
 202510,見積(estimate),/estimate,1633396,1089246,5362886
 202511,見積(estimate),/estimate,1585627,1019959,4843378
 202512,見積(estimate),/estimate,1784354,1108650,5457033
@@ -180,4 +180,4 @@ year_month,section,path_contains,sessions,uu_in_month,pageviews
 202607,見積(estimate),/estimate,1016423,585630,3003487
 202608,見積(estimate),/estimate,1070924,621025,3247355
 202609,見積(estimate),/estimate,1026079,598098,3176661
-202610,見積(estimate),/estimate,821799,476449,2426377
+202610,見積(estimate),/estimate,848555,488237,2500135
