@@ -14,6 +14,8 @@
   - slack_probe … ボットのトークンで Slack を読むだけの確認（ボット自身・指定利用者の状態・ボットのDM一覧と
                    指定利用者とのDMの有無／共有状態／直近5件の時刻）。書き込みはしない
   - claude_check … 回答役の頭脳（claude -p）が動くかを短い問いで確かめる
+  - missed_scan … 止まっていた間（since 以降）にボットへ来ていた質問（ボットとのDM・チャンネルでの@メンション）を
+                   読むだけで一覧にする。回答や投稿はしない
 常時（依頼が無くても毎回）:
   - 見張り … 応答役のエラーログに Slack 接続の切断（BrokenPipe 等）が出続けていたら（前回点検から3件以上、
              かつ30秒の観察中にも新たに出る）、自動で再起動し、中井さんとデータマンのDMに一言知らせる。
@@ -353,12 +355,20 @@ def slack_api(method: str, params: dict) -> dict:
     tok = bot_token()
     if not tok:
         return {"ok": False, "error": "no_bot_token"}
+    import urllib.error
     url = "https://slack.com/api/" + method + ("?" + urllib.parse.urlencode(params) if params else "")
-    try:
-        req = urllib.request.Request(url, headers={"Authorization": "Bearer " + tok})
-        return json.loads(urllib.request.urlopen(req, timeout=20).read().decode())
-    except Exception as e:  # noqa: BLE001
-        return {"ok": False, "error": type(e).__name__}
+    for attempt in range(3):
+        try:
+            req = urllib.request.Request(url, headers={"Authorization": "Bearer " + tok})
+            return json.loads(urllib.request.urlopen(req, timeout=20).read().decode())
+        except urllib.error.HTTPError as e:
+            if e.code == 429 and attempt < 2:
+                time.sleep(min(int(e.headers.get("Retry-After", "3") or 3), 20))
+                continue
+            return {"ok": False, "error": f"HTTP{e.code}"}
+        except Exception as e:  # noqa: BLE001
+            return {"ok": False, "error": type(e).__name__}
+    return {"ok": False, "error": "ratelimited"}
 
 
 def slack_probe(user_ids) -> dict:
@@ -429,11 +439,107 @@ def claude_check() -> dict:
         pass
     try:
         r = subprocess.run([os.path.join(HOME, ".local", "bin", "claude"), "-p", "1+1の答えを半角数字だけで返して",
-                            "--max-turns", "1"], capture_output=True, text=True, timeout=150, env=env, cwd=DM_DIR)
+                            "--max-turns", "1"], capture_output=True, text=True, timeout=100, env=env, cwd=DM_DIR)
         return {"rc": r.returncode, "sec": round(time.time() - t0, 1), "out": redact(r.stdout)[:300],
                 "err": redact(r.stderr)[-600:]}
     except Exception as e:  # noqa: BLE001
         return {"error": f"{type(e).__name__}: {e}"[:300], "sec": round(time.time() - t0, 1)}
+
+
+SYSTEM_SUBTYPES = {"channel_join", "channel_leave", "group_join", "group_leave", "bot_message", "bot_add",
+                   "bot_remove", "channel_topic", "channel_purpose", "channel_name", "pinned_item",
+                   "message_changed", "message_deleted"}
+
+
+def missed_scan(since: float) -> dict:
+    out = {"since": datetime.fromtimestamp(since, JST).isoformat()}
+    me = slack_api("auth.test", {})
+    bot_uid = me.get("user_id", "")
+    found, errors, calls = [], [], 0
+    # 1) ボットとのDM
+    ims, cursor = [], ""
+    for _ in range(10):
+        prm = {"types": "im", "limit": 200}
+        if cursor:
+            prm["cursor"] = cursor
+        r = slack_api("conversations.list", prm)
+        if not r.get("ok"):
+            errors.append(f"im list: {r.get('error')}")
+            break
+        ims += r.get("channels", [])
+        cursor = (r.get("response_metadata") or {}).get("next_cursor") or ""
+        if not cursor:
+            break
+    out["im_total"] = len(ims)
+    for c in ims:
+        if c.get("is_user_deleted") or c.get("user") in ("USLACKBOT", bot_uid):
+            continue
+        if calls > 180:
+            errors.append("呼び出し上限で打ち切り")
+            break
+        h = slack_api("conversations.history", {"channel": c["id"], "oldest": f"{since:.6f}", "limit": 50})
+        calls += 1
+        if not h.get("ok"):
+            errors.append(f"{c['id']}: {h.get('error')}")
+            continue
+        for m in h.get("messages", []):
+            if m.get("bot_id") or m.get("user") == bot_uid or m.get("subtype") in SYSTEM_SUBTYPES:
+                continue
+            found.append({"where": "DM", "channel": c["id"], "user": m.get("user"), "ts": m.get("ts"),
+                          "thread_ts": m.get("thread_ts"), "replies": m.get("reply_count", 0),
+                          "text": (m.get("text") or "")[:160]})
+    # 2) ボットが入っているチャンネルでの @メンション（親メッセージ）
+    chans, cursor = [], ""
+    for _ in range(10):
+        prm = {"types": "public_channel,private_channel", "limit": 200, "exclude_archived": "true"}
+        if cursor:
+            prm["cursor"] = cursor
+        r = slack_api("users.conversations", prm)
+        if not r.get("ok"):
+            errors.append(f"channel list: {r.get('error')}")
+            break
+        chans += r.get("channels", [])
+        cursor = (r.get("response_metadata") or {}).get("next_cursor") or ""
+        if not cursor:
+            break
+    out["channel_total"] = len(chans)
+    for c in chans:
+        if calls > 260:
+            errors.append("呼び出し上限で打ち切り")
+            break
+        h = slack_api("conversations.history", {"channel": c["id"], "oldest": f"{since:.6f}", "limit": 200})
+        calls += 1
+        if not h.get("ok"):
+            errors.append(f"{c.get('name')}: {h.get('error')}")
+            continue
+        for m in h.get("messages", []):
+            if f"<@{bot_uid}>" in (m.get("text") or "") and not m.get("bot_id") and m.get("user") != bot_uid:
+                found.append({"where": "#" + str(c.get("name")), "channel": c["id"], "user": m.get("user"),
+                              "ts": m.get("ts"), "thread_ts": m.get("thread_ts"), "replies": m.get("reply_count", 0),
+                              "text": (m.get("text") or "")[:160]})
+            # スレッド内の @メンションも拾う（返信のあるスレッドだけ）
+            if m.get("reply_count") and calls <= 260:
+                rp = slack_api("conversations.replies", {"channel": c["id"], "ts": m["ts"], "oldest": f"{since:.6f}",
+                                                         "limit": 100})
+                calls += 1
+                for x in (rp.get("messages") or [])[1:]:
+                    if float(x.get("ts", 0)) >= since and f"<@{bot_uid}>" in (x.get("text") or "") \
+                            and not x.get("bot_id") and x.get("user") != bot_uid:
+                        found.append({"where": "#" + str(c.get("name")) + "（スレッド）", "channel": c["id"],
+                                      "user": x.get("user"), "ts": x.get("ts"), "thread_ts": x.get("thread_ts"),
+                                      "text": (x.get("text") or "")[:160]})
+    # 名前を付ける
+    names = {}
+    for f in found:
+        u = f.get("user")
+        if u and u not in names:
+            ui = slack_api("users.info", {"user": u})
+            names[u] = ((ui.get("user") or {}).get("profile") or {}).get("real_name") or u
+        f["name"] = names.get(u, u)
+        f["at"] = datetime.fromtimestamp(float(f["ts"]), JST).strftime("%m/%d %H:%M")
+    found.sort(key=lambda x: float(x["ts"]))
+    out.update(found=found, errors=errors[:30], api_calls=calls)
+    return out
 
 
 def run():
@@ -476,6 +582,8 @@ def run():
             result["actions"]["slack_probe"] = slack_probe(uids)
         elif a == "claude_check":
             result["actions"]["claude_check"] = claude_check()
+        elif a == "missed_scan":
+            result["actions"]["missed_scan"] = missed_scan(float(req.get("since", time.time() - 86400)))
     result["finished"] = datetime.now(JST).isoformat()
     blob = seal(json.dumps(result, ensure_ascii=False).encode(), req["requester_pub"], f"ops-{rid}")
     rel = f"ops/result-{rid}.bin"
