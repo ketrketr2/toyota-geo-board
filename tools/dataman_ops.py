@@ -126,7 +126,10 @@ BOT_LOG = os.path.join(DM_DIR, "logs", "bot.log")
 WD_STATE = os.path.join(DM_DIR, "secrets", "bot_watchdog.json")
 WD_LOG = os.path.join(DM_DIR, "logs", "watchdog.log")
 NOTIFY_DM = "D0BVAL5DRP1"          # 中井さんとデータマンのDM
-DISCONNECT_PAT = re.compile(r"BrokenPipeError|ConnectionResetError|ConnectionRefusedError|WebSocketConnectionClosed|"
+# Socket Mode（slack_sdk builtin）の接続エラー行。10/26〜30 の停止では on_error invoked（BrokenPipe）が約10秒おきに続いた。
+# 10/30 10:31 には handshake timeout / SSL BAD_LENGTH で一度切れ、自力で戻った（このときは件数・観察で見送りになる）
+DISCONNECT_PAT = re.compile(r"on_error invoked|Failed to establish a connection|Failed to check the state of sock|"
+                            r"BrokenPipeError|ConnectionResetError|ConnectionRefusedError|WebSocketConnectionClosed|"
                             r"Connection is already closed|SSLEOFError|SlackClientNotConnectedError|too_many_websockets")
 
 
@@ -173,7 +176,7 @@ def count_disconnects(since: int) -> int:
         return 0
     with open(BOT_ERR, "rb") as f:
         f.seek(max(since, size - 400000))
-        return len(DISCONNECT_PAT.findall(f.read().decode("utf-8", "replace")))
+        return sum(1 for ln in f.read().decode("utf-8", "replace").splitlines() if DISCONNECT_PAT.search(ln))
 
 
 def answering_now(pid: str) -> bool:
