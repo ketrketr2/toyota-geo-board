@@ -6,12 +6,7 @@
   "missed_scan",
   "claude_check"
  ],
- "probe_users": [
-  "U04TSJ8H96E",
-  "U012FD2046P",
-  "U01CJ5KMKL0"
- ],
  "since": 1793024082,
  "requester_pub": "ERmJwG5DOwbNvHJdbknaPM2mMwYfZcC9w2FDwiqdbiA=",
- "note": "再起動後の確認、渡邉さんほかとボットのDMの状態、頭脳の確認、止まっていた間（10/26 23:14 以降）に来ていた質問の一覧（すべて読み取りのみ）"
+ "note": "点検（読み取りのみ）。結果は依頼者の鍵でしか開けない"
 }
