@@ -1,8 +1,10 @@
 {
- "id": "20261030a",
+ "id": "20261030b",
  "actions": [
-  "diag"
+  "restart_bot",
+  "check_bot",
+  "read_source"
  ],
  "requester_pub": "ERmJwG5DOwbNvHJdbknaPM2mMwYfZcC9w2FDwiqdbiA=",
- "note": "データマン応答停止（10/26夜以降）の原因調査。読み取りのみの点検。結果は依頼者の鍵でしか開けない"
+ "note": "データマン応答停止（Slack 接続の切断が続く）への対処。応答役の再起動→1分後の確認→bot.py/answer.py とライブラリ版の確認（読み取りのみ）。結果は依頼者の鍵でしか開けない"
 }

@@ -125,11 +125,12 @@ def main():
 
 
 def _run_ops():
-    """遠隔点検（tools/dataman_ops.py）。ops/request.json に新しい依頼があるときだけ1回動く。失敗しても取り込みに影響させない。"""
+    """遠隔点検（tools/dataman_ops.py）。毎回: 応答役の見張り（Slack 接続が切れ続けていたら再起動）。
+    ops/request.json に新しい依頼があるときだけ、その作業を1回実行する。失敗しても取り込みに影響させない。"""
     try:
         import subprocess
         here = os.path.dirname(os.path.abspath(__file__))
-        subprocess.run([sys.executable, os.path.join(here, "dataman_ops.py")], timeout=240,
+        subprocess.run([sys.executable, os.path.join(here, "dataman_ops.py")], timeout=480,
                        capture_output=True)
     except Exception:  # noqa: BLE001
         pass

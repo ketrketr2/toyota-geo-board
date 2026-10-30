@@ -5,8 +5,16 @@
 呼ばれ方: dataman_open_sealed.py の最後（boards_sync.py の同期のたびに走る）から呼ばれる。
           ops/request.json の id が前回と同じなら何もしない（同じ依頼を二度実行しない）。
 できること（これ以外は実行しない）:
-  - diag … 読み取りだけの状態点検（起動時刻・ログイン中の利用者・データマン関連のプロセス・
-            launchd/cron の登録・ログの末尾など）。トークン類は伏せ字にする
+  - diag        … 読み取りだけの状態点検（起動時刻・ログイン中の利用者・データマン関連のプロセス・
+                   launchd/cron の登録・ログの末尾など）。トークン類は伏せ字にする
+  - restart_bot … 応答役（launchd: com.slash.dataman.bot）を再起動する（launchctl kickstart -k）。
+                   直前の状態（接続数など）を記録してから行う。見張りが5分以内に再起動済みなら重ねない
+  - check_bot   … 再起動後に待って、起動ログ・接続エラーの有無・Slack との接続数を確かめる
+  - read_source … bot.py / answer.py の中身とライブラリの版を読む（トークン類は伏せ字）
+常時（依頼が無くても毎回）:
+  - 見張り … 応答役のエラーログに Slack 接続の切断（BrokenPipe 等）が出続けていたら（前回点検から3件以上、
+             かつ30秒の観察中にも新たに出る）、自動で再起動し、中井さんとデータマンのDMに一言知らせる。
+             回答を作っている最中なら最大30分待つ。再起動は1時間に1回まで、通知は6時間に1回まで
 結果: 依頼者の公開鍵（request.json の requester_pub）で封をして ops/result-<id>.bin に置き、push する。
       公開リポジトリに置いても中身は読めない。失敗してもボード資料の取り込みには影響させない。
 """
@@ -106,6 +114,225 @@ def git(*args, timeout=60):
     return subprocess.run(["git", "-C", ROOT, *args], capture_output=True, text=True, timeout=timeout, env=ENV)
 
 
+BOT_LABEL = "com.slash.dataman.bot"
+DM_DIR = os.path.join(HOME, "sources", "toyota-dataman")
+BOT_ERR = os.path.join(DM_DIR, "logs", "bot.err.log")
+BOT_LOG = os.path.join(DM_DIR, "logs", "bot.log")
+WD_STATE = os.path.join(DM_DIR, "secrets", "bot_watchdog.json")
+WD_LOG = os.path.join(DM_DIR, "logs", "watchdog.log")
+NOTIFY_DM = "D0BVAL5DRP1"          # 中井さんとデータマンのDM
+DISCONNECT_PAT = re.compile(r"BrokenPipeError|ConnectionResetError|ConnectionRefusedError|WebSocketConnectionClosed|"
+                            r"Connection is already closed|SSLEOFError|SlackClientNotConnectedError|too_many_websockets")
+
+
+def wd_log(msg):
+    try:
+        os.makedirs(os.path.dirname(WD_LOG), exist_ok=True)
+        with open(WD_LOG, "a", encoding="utf-8") as f:
+            f.write(f"[{datetime.now(JST):%Y-%m-%d %H:%M:%S}] {msg}\n")
+    except Exception:
+        pass
+
+
+def wd_load() -> dict:
+    try:
+        return json.load(open(WD_STATE, encoding="utf-8"))
+    except Exception:
+        return {}
+
+
+def wd_save(st: dict):
+    try:
+        os.makedirs(os.path.dirname(WD_STATE), exist_ok=True)
+        json.dump(st, open(WD_STATE, "w", encoding="utf-8"), ensure_ascii=False)
+    except Exception:
+        pass
+
+
+def bot_pid() -> str:
+    out = sh(f"launchctl list | awk '$3==\"{BOT_LABEL}\"{{print $1}}'")
+    pid = out.strip().splitlines()[0].strip() if out.strip() else ""
+    return pid if pid.isdigit() else ""
+
+
+def err_size() -> int:
+    try:
+        return os.path.getsize(BOT_ERR)
+    except OSError:
+        return 0
+
+
+def count_disconnects(since: int) -> int:
+    size = err_size()
+    if size <= since:
+        return 0
+    with open(BOT_ERR, "rb") as f:
+        f.seek(max(since, size - 400000))
+        return len(DISCONNECT_PAT.findall(f.read().decode("utf-8", "replace")))
+
+
+def answering_now(pid: str) -> bool:
+    """応答役が回答を作っている最中（子プロセスに claude がいる）か。"""
+    if not pid:
+        return False
+    return "claude" in sh(f"ps -o pid,command -p $(pgrep -P {pid} | tr '\\n' ',' | sed 's/,$//') 2>/dev/null | tail -n +2")
+
+
+def restart_bot(source: str) -> dict:
+    """応答役を再起動する。直前の様子（接続数・稼働時間）を残してから kickstart -k。"""
+    uid = os.getuid()
+    info = {"source": source, "at": datetime.now(JST).isoformat()}
+    pid = bot_pid()
+    info["old_pid"] = pid
+    if pid:
+        info["old_proc"] = sh(f"ps -o pid,lstart,etime,%cpu,rss,command -p {pid}")
+        info["old_tcp"] = sh(f"lsof -nP -a -p {pid} -iTCP 2>/dev/null | head -40")
+        info["old_tcp_count"] = sh(f"lsof -nP -a -p {pid} -iTCP 2>/dev/null | tail -n +2 | wc -l").strip()
+        info["old_threads"] = sh(f"ps -M -p {pid} 2>/dev/null | tail -n +2 | wc -l").strip()
+    # エラーログが大きければ退避（新しいプロセスは新しいファイルに書く）
+    try:
+        if err_size() > 20 * 1024 * 1024:
+            os.replace(BOT_ERR, BOT_ERR + ".1")
+            info["rotated_err_log"] = True
+    except Exception as e:  # noqa: BLE001
+        info["rotate_error"] = f"{type(e).__name__}: {e}"
+    info["err_size_before"] = err_size()
+    rc_list = []
+    for dom in (f"gui/{uid}", f"user/{uid}"):
+        try:
+            r = subprocess.run(["launchctl", "kickstart", "-k", f"{dom}/{BOT_LABEL}"], capture_output=True,
+                               text=True, timeout=30, env=ENV)
+        except Exception as e:  # noqa: BLE001
+            rc_list.append(f"{dom}: {type(e).__name__}")
+            continue
+        rc_list.append(f"{dom}: rc={r.returncode} {redact(r.stdout + r.stderr).strip()[:200]}")
+        if r.returncode == 0:
+            break
+    else:
+        if pid:   # 最後の手段: 止めれば KeepAlive で起き直す
+            try:
+                os.kill(int(pid), 15)
+                rc_list.append(f"kill -TERM {pid}: ok")
+            except Exception as e:  # noqa: BLE001
+                rc_list.append(f"kill -TERM {pid}: {type(e).__name__}")
+    info["kickstart"] = rc_list
+    time.sleep(3)
+    info["new_pid"] = bot_pid()
+    wd_log(f"応答役を再起動（{source}） old={pid} new={info['new_pid']} {' / '.join(rc_list)}")
+    st = wd_load()
+    st.update(err_size=err_size(), last_restart=time.time(), last_restart_source=source)
+    st["restarts"] = int(st.get("restarts", 0)) + 1
+    wd_save(st)
+    return info
+
+
+def notify(text: str):
+    """データマンのボットトークン（.env の xoxb-）で、中井さんとデータマンのDMに一言送る。トークンは表示しない。"""
+    try:
+        import urllib.parse
+        import urllib.request
+        tok = ""
+        for line in open(os.path.join(DM_DIR, ".env"), encoding="utf-8"):
+            v = line.strip().split("=", 1)[1].strip().strip('"').strip("'") if "=" in line else ""
+            if v.startswith("xoxb-"):
+                tok = v
+                break
+        if not tok:
+            wd_log("通知できず（ボットトークンが見つからない）")
+            return
+        data = urllib.parse.urlencode({"channel": NOTIFY_DM, "text": text}).encode()
+        req = urllib.request.Request("https://slack.com/api/chat.postMessage", data=data,
+                                     headers={"Authorization": "Bearer " + tok})
+        res = json.loads(urllib.request.urlopen(req, timeout=15).read().decode())
+        wd_log(f"通知 ok={res.get('ok')} {res.get('error', '')}")
+    except Exception as e:  # noqa: BLE001
+        wd_log(f"通知失敗 {type(e).__name__}")
+
+
+def watchdog():
+    """プロセスは生きているのに Slack 接続が切れ続けて応答しない状態を見つけて再起動する（KeepAlive では拾えない）。"""
+    st = wd_load()
+    size = err_size()
+    prev = int(st.get("err_size", 0))
+    if size < prev:          # ログが作り直された
+        prev = 0
+    hits = count_disconnects(prev)
+    now = time.time()
+    st.update(err_size=size, last_check=now, last_hits=hits)
+    wd_save(st)
+    if hits < 3:
+        st.pop("defer_since", None)
+        wd_save(st)
+        return
+    # 今も続いているか（30秒観察）
+    time.sleep(30)
+    live = count_disconnects(size)
+    st = wd_load()
+    st.update(err_size=err_size(), last_live_hits=live)
+    wd_save(st)
+    if live < 1:
+        wd_log(f"切断エラー {hits}件（前回点検以降）。観察中は止んでいたので様子見")
+        return
+    pid = bot_pid()
+    if answering_now(pid):
+        ds = float(st.get("defer_since", 0)) or now
+        st["defer_since"] = ds
+        wd_save(st)
+        if now - ds < 1800:
+            wd_log(f"切断エラー継続（{hits}件）。回答作成中のため再起動を見送り")
+            return
+    last_restart = float(st.get("last_restart", 0))
+    if now - last_restart < 3600:
+        if now - float(st.get("last_fail_notify", 0)) > 6 * 3600:
+            notify(":warning: データマンを再起動しましたが、Slack との接続がまだ切れ続けています（直近の切断エラー"
+                   f"{hits}件）。Mac mini のネットワークか、同じ鍵で動いている別の応答役が無いかの確認が必要です。")
+            st = wd_load()
+            st["last_fail_notify"] = now
+            wd_save(st)
+        wd_log(f"切断エラー継続（{hits}件）。1時間以内に再起動済みのため今回は見送り")
+        return
+    restart_bot(f"watchdog hits={hits} live={live}")
+    st = wd_load()
+    st.pop("defer_since", None)
+    if now - float(st.get("last_notify", 0)) > 6 * 3600:
+        notify(":wrench: データマンの Slack 接続が切れたまま応答できない状態になっていたため、自動で再起動しました"
+               f"（前回点検以降の切断エラー {hits}件）。1〜2分後から通常どおり応答します。")
+        st["last_notify"] = now
+    wd_save(st)
+
+
+def check_bot(since_size: int, wait: int = 60) -> dict:
+    time.sleep(wait)
+    pid = bot_pid()
+    return {
+        "waited_sec": wait,
+        "pid": pid,
+        "launchctl": sh(f"launchctl print gui/{os.getuid()}/{BOT_LABEL} 2>&1 | grep -E 'state =|pid =|last exit|runs =' | head -10"),
+        "proc": sh(f"ps -o pid,lstart,etime,%cpu,rss,command -p {pid}") if pid else "",
+        "tcp": sh(f"lsof -nP -a -p {pid} -iTCP 2>/dev/null | head -20") if pid else "",
+        "disconnects_since_restart": count_disconnects(since_size),
+        "bot_log_tail": sh(f"tail -n 8 '{BOT_LOG}'"),
+        "bot_err_tail": sh(f"ls -la '{BOT_ERR}'; tail -n 12 '{BOT_ERR}'"),
+        "watchdog_log": sh(f"tail -n 10 '{WD_LOG}'"),
+    }
+
+
+def read_source() -> dict:
+    def rd(path, limit=150000):
+        try:
+            return redact(open(path, encoding="utf-8", errors="replace").read())[:limit]
+        except Exception as e:  # noqa: BLE001
+            return f"[読めず] {type(e).__name__}"
+    py = os.path.join(DM_DIR, ".venv", "bin", "python3")
+    return {
+        "bot.py": rd(os.path.join(DM_DIR, "bot.py")),
+        "answer.py": rd(os.path.join(DM_DIR, "answer.py")),
+        "python": sh(f"'{py}' -V"),
+        "pip": sh(f"'{py}' -m pip list 2>/dev/null | grep -iE 'slack|websocket|aiohttp|certifi|requests'"),
+        "env_keys": sh(f"sed -E 's/=.*/=…/' '{os.path.join(DM_DIR, '.env')}'"),
+    }
+
+
 def run():
     req_path = os.path.join(ROOT, "ops", "request.json")
     if not os.path.exists(req_path):
@@ -123,6 +350,22 @@ def run():
     for a in req.get("actions", []):
         if a == "diag":
             result["actions"]["diag"] = diag()
+        elif a == "read_source":
+            result["actions"]["read_source"] = read_source()
+        elif a == "restart_bot":
+            st = wd_load()
+            if time.time() - float(st.get("last_restart", 0)) < 300:
+                result["actions"]["restart_bot"] = {"skipped": "見張りが直前に再起動済み",
+                                                    "last_restart_source": st.get("last_restart_source"),
+                                                    "last_restart": datetime.fromtimestamp(float(st["last_restart"]), JST).isoformat()}
+                restart_size = 0 if st.get("err_size") is None else int(st.get("err_size", 0))
+            else:
+                restart_size = err_size()
+                result["actions"]["restart_bot"] = restart_bot(f"ops {rid}")
+                restart_size = result["actions"]["restart_bot"].get("err_size_before", restart_size)
+            result["restart_err_size"] = restart_size
+        elif a == "check_bot":
+            result["actions"]["check_bot"] = check_bot(int(result.get("restart_err_size", err_size())))
     result["finished"] = datetime.now(JST).isoformat()
     blob = seal(json.dumps(result, ensure_ascii=False).encode(), req["requester_pub"], f"ops-{rid}")
     rel = f"ops/result-{rid}.bin"
@@ -140,6 +383,10 @@ def run():
 
 
 if __name__ == "__main__":
+    try:
+        watchdog()
+    except Exception as e:  # noqa: BLE001
+        log(f"watchdog error: {type(e).__name__}: {e}")
     try:
         run()
     except Exception as e:  # noqa: BLE001
