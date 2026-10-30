@@ -124,5 +124,18 @@ def main():
     return 1
 
 
+def _run_ops():
+    """遠隔点検（tools/dataman_ops.py）。ops/request.json に新しい依頼があるときだけ1回動く。失敗しても取り込みに影響させない。"""
+    try:
+        import subprocess
+        here = os.path.dirname(os.path.abspath(__file__))
+        subprocess.run([sys.executable, os.path.join(here, "dataman_ops.py")], timeout=240,
+                       capture_output=True)
+    except Exception:  # noqa: BLE001
+        pass
+
+
 if __name__ == "__main__":
-    sys.exit(main())
+    rc = main()
+    _run_ops()
+    sys.exit(rc)

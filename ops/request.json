@@ -1,0 +1,8 @@
+{
+ "id": "20261030a",
+ "actions": [
+  "diag"
+ ],
+ "requester_pub": "ERmJwG5DOwbNvHJdbknaPM2mMwYfZcC9w2FDwiqdbiA=",
+ "note": "データマン応答停止（10/26夜以降）の原因調査。読み取りのみの点検。結果は依頼者の鍵でしか開けない"
+}
