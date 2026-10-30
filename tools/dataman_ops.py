@@ -11,6 +11,9 @@
                    直前の状態（接続数など）を記録してから行う。見張りが5分以内に再起動済みなら重ねない
   - check_bot   … 再起動後に待って、起動ログ・接続エラーの有無・Slack との接続数を確かめる
   - read_source … bot.py / answer.py の中身とライブラリの版を読む（トークン類は伏せ字）
+  - slack_probe … ボットのトークンで Slack を読むだけの確認（ボット自身・指定利用者の状態・ボットのDM一覧と
+                   指定利用者とのDMの有無／共有状態／直近5件の時刻）。書き込みはしない
+  - claude_check … 回答役の頭脳（claude -p）が動くかを短い問いで確かめる
 常時（依頼が無くても毎回）:
   - 見張り … 応答役のエラーログに Slack 接続の切断（BrokenPipe 等）が出続けていたら（前回点検から3件以上、
              かつ30秒の観察中にも新たに出る）、自動で再起動し、中井さんとデータマンのDMに一言知らせる。
@@ -220,7 +223,8 @@ def restart_bot(source: str) -> dict:
     info["new_pid"] = bot_pid()
     wd_log(f"応答役を再起動（{source}） old={pid} new={info['new_pid']} {' / '.join(rc_list)}")
     st = wd_load()
-    st.update(err_size=err_size(), last_restart=time.time(), last_restart_source=source)
+    st.update(err_size=err_size(), err_size_at_restart=err_size(), last_restart=time.time(),
+              last_restart_source=source)
     st["restarts"] = int(st.get("restarts", 0)) + 1
     wd_save(st)
     return info
@@ -231,12 +235,7 @@ def notify(text: str):
     try:
         import urllib.parse
         import urllib.request
-        tok = ""
-        for line in open(os.path.join(DM_DIR, ".env"), encoding="utf-8"):
-            v = line.strip().split("=", 1)[1].strip().strip('"').strip("'") if "=" in line else ""
-            if v.startswith("xoxb-"):
-                tok = v
-                break
+        tok = bot_token()
         if not tok:
             wd_log("通知できず（ボットトークンが見つからない）")
             return
@@ -333,6 +332,95 @@ def read_source() -> dict:
     }
 
 
+def bot_token() -> str:
+    try:
+        for line in open(os.path.join(DM_DIR, ".env"), encoding="utf-8"):
+            v = line.strip().split("=", 1)[1].strip().strip('"').strip("'") if "=" in line else ""
+            if v.startswith("xoxb-"):
+                return v
+    except Exception:
+        pass
+    return ""
+
+
+def slack_api(method: str, params: dict) -> dict:
+    import urllib.parse
+    import urllib.request
+    tok = bot_token()
+    if not tok:
+        return {"ok": False, "error": "no_bot_token"}
+    url = "https://slack.com/api/" + method + ("?" + urllib.parse.urlencode(params) if params else "")
+    try:
+        req = urllib.request.Request(url, headers={"Authorization": "Bearer " + tok})
+        return json.loads(urllib.request.urlopen(req, timeout=20).read().decode())
+    except Exception as e:  # noqa: BLE001
+        return {"ok": False, "error": type(e).__name__}
+
+
+def slack_probe(user_ids) -> dict:
+    out = {}
+    a = slack_api("auth.test", {})
+    out["auth"] = {k: a.get(k) for k in ("ok", "error", "team", "team_id", "user", "user_id", "bot_id",
+                                         "enterprise_id", "is_enterprise_install")}
+    for uid in user_ids:
+        u = slack_api("users.info", {"user": uid})
+        uu = u.get("user") or {}
+        out[f"user_{uid}"] = {"ok": u.get("ok"), "error": u.get("error"),
+                              **{k: uu.get(k) for k in ("name", "deleted", "is_restricted", "is_ultra_restricted",
+                                                        "is_stranger", "team_id", "is_bot", "updated",
+                                                        "is_invited_user")},
+                              "enterprise_user": bool(uu.get("enterprise_user")),
+                              "real_name": (uu.get("profile") or {}).get("real_name")}
+    ims, cursor = [], ""
+    for _ in range(10):
+        prm = {"types": "im", "limit": 200}
+        if cursor:
+            prm["cursor"] = cursor
+        r = slack_api("conversations.list", prm)
+        if not r.get("ok"):
+            out["im_list_error"] = r.get("error")
+            break
+        ims += r.get("channels", [])
+        cursor = (r.get("response_metadata") or {}).get("next_cursor") or ""
+        if not cursor:
+            break
+    out["im_count"] = len(ims)
+    out["ims"] = [{k: c.get(k) for k in ("id", "user", "is_user_deleted", "created", "is_ext_shared",
+                                         "is_org_shared", "is_archived", "is_open")} for c in ims]
+    for uid in user_ids:
+        hit = [c for c in ims if c.get("user") == uid]
+        if not hit:
+            out[f"im_{uid}"] = "DM一覧を取得できず" if "im_list_error" in out else "ボットのDM一覧に無い"
+            continue
+        cid = hit[0]["id"]
+        info = slack_api("conversations.info", {"channel": cid})
+        ch = info.get("channel") or {}
+        latest = ch.get("latest")
+        d = {"id": cid, "info_ok": info.get("ok"), "error": info.get("error"),
+             **{k: ch.get(k) for k in ("is_ext_shared", "is_org_shared", "is_shared", "is_pending_ext_shared",
+                                       "is_archived", "is_open", "is_user_deleted", "created", "last_read",
+                                       "context_team_id", "shared_team_ids", "connected_team_ids")},
+             "latest_ts": latest.get("ts") if isinstance(latest, dict) else latest}
+        h = slack_api("conversations.history", {"channel": cid, "limit": 5})
+        d["history"] = {"ok": h.get("ok"), "error": h.get("error"),
+                        "msgs": [{"ts": m.get("ts"), "user": m.get("user"), "bot_id": m.get("bot_id"),
+                                  "subtype": m.get("subtype"), "text": (m.get("text") or "")[:60]}
+                                 for m in h.get("messages", [])]}
+        out[f"im_{uid}"] = d
+    return out
+
+
+def claude_check() -> dict:
+    t0 = time.time()
+    try:
+        r = subprocess.run([os.path.join(HOME, ".local", "bin", "claude"), "-p", "1+1の答えを半角数字だけで返して"],
+                           capture_output=True, text=True, timeout=150, env=ENV, cwd=DM_DIR)
+        return {"rc": r.returncode, "sec": round(time.time() - t0, 1), "out": redact(r.stdout)[:300],
+                "err": redact(r.stderr)[-600:]}
+    except Exception as e:  # noqa: BLE001
+        return {"error": f"{type(e).__name__}: {e}"[:300], "sec": round(time.time() - t0, 1)}
+
+
 def run():
     req_path = os.path.join(ROOT, "ops", "request.json")
     if not os.path.exists(req_path):
@@ -366,6 +454,13 @@ def run():
             result["restart_err_size"] = restart_size
         elif a == "check_bot":
             result["actions"]["check_bot"] = check_bot(int(result.get("restart_err_size", err_size())))
+        elif a == "check_now":
+            result["actions"]["check_now"] = check_bot(int(wd_load().get("err_size_at_restart", 0)), wait=0)
+        elif a == "slack_probe":
+            uids = [u for u in req.get("probe_users", []) if re.fullmatch(r"[UW][A-Z0-9]{6,15}", str(u))][:6]
+            result["actions"]["slack_probe"] = slack_probe(uids)
+        elif a == "claude_check":
+            result["actions"]["claude_check"] = claude_check()
     result["finished"] = datetime.now(JST).isoformat()
     blob = seal(json.dumps(result, ensure_ascii=False).encode(), req["requester_pub"], f"ops-{rid}")
     rel = f"ops/result-{rid}.bin"
