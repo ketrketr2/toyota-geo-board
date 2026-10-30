@@ -290,7 +290,9 @@ def watchdog():
             wd_save(st)
         wd_log(f"切断エラー継続（{hits}件）。1時間以内に再起動済みのため今回は見送り")
         return
-    restart_bot(f"watchdog hits={hits} live={live}")
+    info = restart_bot(f"watchdog hits={hits} live={live}")
+    wd_log(f"再起動前の様子: TCP接続 {info.get('old_tcp_count')}本／スレッド {info.get('old_threads')}／"
+           f"{(info.get('old_proc') or '').strip().splitlines()[-1][:120] if info.get('old_proc') else ''}")
     st = wd_load()
     st.pop("defer_since", None)
     if now - float(st.get("last_notify", 0)) > 6 * 3600:
@@ -310,7 +312,9 @@ def check_bot(since_size: int, wait: int = 60) -> dict:
         "proc": sh(f"ps -o pid,lstart,etime,%cpu,rss,command -p {pid}") if pid else "",
         "tcp": sh(f"lsof -nP -a -p {pid} -iTCP 2>/dev/null | head -20") if pid else "",
         "disconnects_since_restart": count_disconnects(since_size),
-        "bot_log_tail": sh(f"tail -n 8 '{BOT_LOG}'"),
+        "bot_log_tail": sh(f"tail -n 8 '{BOT_LOG}' | cut -c1-240"),
+        "bot_out_tail": sh(f"ls -la '{os.path.join(DM_DIR, 'logs', 'bot.out.log')}'; tail -n 6 '{os.path.join(DM_DIR, 'logs', 'bot.out.log')}' | cut -c1-200"),
+        "answer_tail": sh(f"ls -la '{os.path.join(DM_DIR, 'logs', 'answer.log')}'; tail -n 6 '{os.path.join(DM_DIR, 'logs', 'answer.log')}' | cut -c1-200"),
         "bot_err_tail": sh(f"ls -la '{BOT_ERR}'; tail -n 12 '{BOT_ERR}'"),
         "watchdog_log": sh(f"tail -n 10 '{WD_LOG}'"),
     }
@@ -411,10 +415,21 @@ def slack_probe(user_ids) -> dict:
 
 
 def claude_check() -> dict:
+    """answer.py と同じく .env の Claude 用トークンを渡して、短い問いに答えられるかを見る（値は表示しない）。"""
     t0 = time.time()
+    env = dict(ENV)
     try:
-        r = subprocess.run([os.path.join(HOME, ".local", "bin", "claude"), "-p", "1+1の答えを半角数字だけで返して"],
-                           capture_output=True, text=True, timeout=150, env=ENV, cwd=DM_DIR)
+        for line in open(os.path.join(DM_DIR, ".env"), encoding="utf-8"):
+            line = line.strip()
+            if line and not line.startswith("#") and "=" in line:
+                k, v = line.split("=", 1)
+                if k.strip() in ("CLAUDE_CODE_OAUTH_TOKEN", "ANTHROPIC_API_KEY", "ANTHROPIC_AUTH_TOKEN"):
+                    env[k.strip()] = v.strip().strip('"').strip("'")
+    except Exception:
+        pass
+    try:
+        r = subprocess.run([os.path.join(HOME, ".local", "bin", "claude"), "-p", "1+1の答えを半角数字だけで返して",
+                            "--max-turns", "1"], capture_output=True, text=True, timeout=150, env=env, cwd=DM_DIR)
         return {"rc": r.returncode, "sec": round(time.time() - t0, 1), "out": redact(r.stdout)[:300],
                 "err": redact(r.stderr)[-600:]}
     except Exception as e:  # noqa: BLE001

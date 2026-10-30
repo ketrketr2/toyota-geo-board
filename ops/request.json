@@ -1,10 +1,15 @@
 {
- "id": "20261030b",
+ "id": "20261030c",
  "actions": [
-  "restart_bot",
-  "check_bot",
-  "read_source"
+  "check_now",
+  "slack_probe",
+  "claude_check"
+ ],
+ "probe_users": [
+  "U04TSJ8H96E",
+  "U012FD2046P",
+  "U01CJ5KMKL0"
  ],
  "requester_pub": "ERmJwG5DOwbNvHJdbknaPM2mMwYfZcC9w2FDwiqdbiA=",
- "note": "データマン応答停止（Slack 接続の切断が続く）への対処。応答役の再起動→1分後の確認→bot.py/answer.py とライブラリ版の確認（読み取りのみ）。結果は依頼者の鍵でしか開けない"
+ "note": "再起動後の確認（接続・回答の動き）、渡邉さん・むとうさん・中井さんとボットのDMの状態（読み取りのみ）、頭脳の動作確認"
 }
