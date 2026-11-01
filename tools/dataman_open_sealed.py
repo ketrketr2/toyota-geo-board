@@ -113,6 +113,20 @@ def gate(failed: bool, sig: str = "", confirm_runs: int = 1) -> int:
     return 0
 
 
+def digest_job_status() -> str:
+    """資料作り（roomy-command の GitHub Actions: dataman-digest）の直近の結果。公開APIで読むだけ・失敗しても空。"""
+    try:
+        url = "https://api.github.com/repos/ketrketr2/roomy-command/actions/workflows/dataman-digest.yml/runs?per_page=1"
+        with urllib.request.urlopen(urllib.request.Request(url, headers={"User-Agent": "dataman-open-sealed/1"}),
+                                    timeout=10) as r:
+            run = (json.loads(r.read().decode()).get("workflow_runs") or [{}])[0]
+        when = datetime.fromisoformat(run["created_at"].replace("Z", "+00:00")).astimezone(JST)
+        res = {"success": "成功", "failure": "失敗", "cancelled": "中止"}.get(run.get("conclusion") or "", "実行中")
+        return f"資料作りのジョブの直近: {when:%m/%d %H:%M} {res} {run.get('html_url', '')}"
+    except Exception:  # noqa: BLE001
+        return ""
+
+
 def notify_recovered(text: str):
     """直ったことを一度だけ知らせる（データマンのボットから中井さんのDMへ）。失敗しても何もしない。"""
     try:
@@ -177,6 +191,9 @@ def main():
             stale = age_h > a.max_age_hours
             if stale:
                 lines.insert(0, f"**資料が古い（{age_h:.0f}時間前）。GitHub Actions の dataman-digest が止まっている可能性**")
+                job = digest_job_status()
+                print(f"ボード資料が古いままです（最終作成 {built:%m/%d %H:%M}、{age_h:.0f}時間前）。データマンは前回の資料で答えます。"
+                      + (f"\n{job}" if job else ""), file=sys.stderr)
             report(not stale and all(b["ok"] for b in manifest["boards"]), lines)
             if not stale and prev_failed:
                 notify_recovered(f":white_check_mark: ボード資料の取り込みが復旧しました（資料の作成 {manifest['built_at'][:16]}）。"
@@ -187,6 +204,7 @@ def main():
             last_type = type(e).__name__
             continue
     report(False, [f"開けなかった: {last}"])
+    print(f"ボード資料を開けませんでした（{last_type}）。データマンは前回の資料で答えます。", file=sys.stderr)
     # 通信の一時的な失敗で通知しないよう、開けない失敗は2回続いたら（約30分）知らせる
     return gate(True, "open:" + last_type, confirm_runs=2)
 
