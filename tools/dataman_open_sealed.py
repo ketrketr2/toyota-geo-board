@@ -66,7 +66,10 @@ def safe_extract(tar: tarfile.TarFile, dest: str):
         p = os.path.realpath(os.path.join(dest, m.name))
         if not (p == root or p.startswith(root + os.sep)) or m.issym() or m.islnk() or m.isdev():
             raise ValueError(f"不正なパスを含む: {m.name}")
-    tar.extractall(dest, filter="data")
+    try:
+        tar.extractall(dest, filter="data")   # 3.12+（中身は上で確認済み。警告を出さないため）
+    except TypeError:                          # filter 引数の無い古い Python
+        tar.extractall(dest)
 
 
 STATE_PATH = os.path.expanduser("~/sources/toyota-dataman/secrets/open_sealed_state.json")
