@@ -11,7 +11,9 @@ GitHub Actions が毎朝復号して全画面の本文・図の数値・元デ�
 既定の取得元:
   https://raw.githubusercontent.com/ketrketr2/roomy-command/dataman-sealed/sealed/boards.bin
 守っていること:
-  - 開けられない・壊れている・古い（36時間超）ときは、前回の資料を残したまま、理由を _取り込み状況.md に書いて終了コード1
+  - 開けられない・壊れている・古い（36時間超）ときは、前回の資料を残したまま、理由を _取り込み状況.md に書く
+  - 終了コード1（＝同期側が Slack に「失敗しました」と通知する）は、新しい失敗のときと、同じ失敗が続くときは
+    12時間に1回だけにする（15分ごとの同期のたびに同じ通知が飛ばないように）。直ったら一度だけ「復旧」を知らせる
   - 展開は一時フォルダに出してから入れ替える（途中で失敗しても半端な状態にしない）
   - アーカイブ内のパスは boards/ 配下の相対パスだけを許す（../ や絶対パスは拒否）
 """
@@ -64,7 +66,62 @@ def safe_extract(tar: tarfile.TarFile, dest: str):
         p = os.path.realpath(os.path.join(dest, m.name))
         if not (p == root or p.startswith(root + os.sep)) or m.issym() or m.islnk() or m.isdev():
             raise ValueError(f"不正なパスを含む: {m.name}")
-    tar.extractall(dest)
+    tar.extractall(dest, filter="data")
+
+
+STATE_PATH = os.path.expanduser("~/sources/toyota-dataman/secrets/open_sealed_state.json")
+RENOTIFY_HOURS = 12
+
+
+def _state_load():
+    try:
+        return json.load(open(STATE_PATH, encoding="utf-8"))
+    except Exception:  # noqa: BLE001
+        return None
+
+
+def _state_save(st):
+    try:
+        os.makedirs(os.path.dirname(STATE_PATH), exist_ok=True)
+        json.dump(st, open(STATE_PATH, "w", encoding="utf-8"), ensure_ascii=False)
+    except Exception:  # noqa: BLE001
+        pass
+
+
+def gate(failed: bool, sig: str = "", confirm_runs: int = 1) -> int:
+    """戻り値1（同期側が Slack に通知）を出すかどうか。
+    新しい失敗→1（confirm_runs 回続いたら）、同じ失敗の継続→12時間に1回だけ1、それ以外は0。"""
+    now = time.time()
+    st = _state_load()
+    if not failed:
+        _state_save({"sig": "", "since": now, "last_notified": 0, "count": 0})
+        return 0
+    if st is None:            # この仕組みを入れた直後：すでに通知が出ているので黙って記録だけ
+        _state_save({"sig": sig, "since": now, "last_notified": now, "count": 1})
+        print(f"（通知は控えた: {sig}）")
+        return 0
+    if st.get("sig") != sig:
+        st = {"sig": sig, "since": now, "last_notified": 0, "count": 1}
+    else:
+        st["count"] = int(st.get("count", 1)) + 1
+    if st["count"] >= confirm_runs and now - float(st.get("last_notified", 0)) >= RENOTIFY_HOURS * 3600:
+        st["last_notified"] = now
+        _state_save(st)
+        return 1
+    _state_save(st)
+    print(f"（通知は控えた: {sig}。同じ失敗の再通知は{RENOTIFY_HOURS}時間ごと）")
+    return 0
+
+
+def notify_recovered(text: str):
+    """直ったことを一度だけ知らせる（データマンのボットから中井さんのDMへ）。失敗しても何もしない。"""
+    try:
+        here = os.path.dirname(os.path.abspath(__file__))
+        sys.path.insert(0, here)
+        import dataman_ops  # noqa: E402
+        dataman_ops.notify(text)
+    except Exception:  # noqa: BLE001
+        pass
 
 
 def main():
@@ -78,6 +135,10 @@ def main():
     kb_boards = os.path.join(os.path.expanduser(a.kb), "boards")
     status_path = os.path.join(kb_boards, "_取り込み状況.md")
     now = datetime.now(JST)
+    try:
+        prev_failed = "失敗（前回の資料のまま）" in open(status_path, encoding="utf-8").read()
+    except Exception:  # noqa: BLE001
+        prev_failed = False
 
     def report(ok: bool, lines):
         os.makedirs(kb_boards, exist_ok=True)
@@ -89,7 +150,8 @@ def main():
         priv = X25519PrivateKey.from_private_bytes(open(a.key, "rb").read())
     except Exception as e:  # noqa: BLE001
         report(False, [f"秘密鍵を読めない（{type(e).__name__}）。tools/dataman_keygen.py を実行したか確認"])
-        return 1
+        return gate(True, "key")
+    last, last_type = "", "Unknown"
     for url in urls:
         try:
             blob = fetch(url)
@@ -116,12 +178,17 @@ def main():
             if stale:
                 lines.insert(0, f"**資料が古い（{age_h:.0f}時間前）。GitHub Actions の dataman-digest が止まっている可能性**")
             report(not stale and all(b["ok"] for b in manifest["boards"]), lines)
-            return 0 if not stale else 1
+            if not stale and prev_failed:
+                notify_recovered(f":white_check_mark: ボード資料の取り込みが復旧しました（資料の作成 {manifest['built_at'][:16]}）。"
+                                 "データマンは最新のボード資料で答えます。")
+            return gate(stale, "stale")
         except Exception as e:  # noqa: BLE001
             last = f"{url}: {type(e).__name__} {str(e)[:200]}"
+            last_type = type(e).__name__
             continue
     report(False, [f"開けなかった: {last}"])
-    return 1
+    # 通信の一時的な失敗で通知しないよう、開けない失敗は2回続いたら（約30分）知らせる
+    return gate(True, "open:" + last_type, confirm_runs=2)
 
 
 def _run_ops():
