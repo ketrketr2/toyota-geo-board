@@ -19,6 +19,7 @@
   - apply_patch … データマン本体（~/sources/toyota-dataman 直下の .py）を直す。中身は Mac mini の鍵でしか開けない
                    封（sealed_payload）で渡す。差し替え前に退避し、構文チェックに通らなければ全部元に戻す
   - reanswer    … 指定の質問（answers.jsonl から探す）を、元の添付ごと取り直して答え直させる（inbox に置く）
+  - share_file  … データマンが作ったファイル（名前で探す・kb/ と out/ の中だけ）を、けんけんさんへの報告スレッドに付ける
 常時（依頼が無くても毎回）:
   - 見張り … 応答役のエラーログに Slack 接続の切断（BrokenPipe 等）が出続けていたら（前回点検から3件以上、
              かつ30秒の観察中にも新たに出る）、自動で再起動し、中井さんとデータマンのDMに一言知らせる。
@@ -651,6 +652,35 @@ def reanswer(spec: dict) -> dict:
             "asker_name": r.get("asker_name"), "found": len(recs)}
 
 
+def share_file(spec: dict) -> dict:
+    """spec: {"name": "xxx.xlsx", "channel": "D0BVAL5DRP1", "thread_ts": "...", "comment": "..."}"""
+    name = os.path.basename(spec.get("name", ""))
+    if not name or spec.get("channel") != NOTIFY_DM:
+        return {"ok": False, "error": "対象外"}
+    hits = []
+    for root in (os.path.join(DM_DIR, "kb"), os.path.join(DM_DIR, "out")):
+        for dp, _dn, fns in os.walk(root):
+            if name in fns:
+                fp = os.path.join(dp, name)
+                hits.append((os.path.getmtime(fp), fp))
+    if not hits:
+        return {"ok": False, "error": "見つからない"}
+    fp = sorted(hits)[-1][1]
+    try:
+        from slack_sdk import WebClient
+        cl = WebClient(token=bot_token())
+        kw = dict(channel=spec["channel"], file=fp, filename=name, title=name)
+        if spec.get("thread_ts"):
+            kw["thread_ts"] = spec["thread_ts"]
+        if spec.get("comment"):
+            kw["initial_comment"] = spec["comment"]
+        cl.files_upload_v2(**kw)
+        log(f"share_file {name} → {spec['channel']}/{spec.get('thread_ts')}")
+        return {"ok": True, "path": fp.replace(HOME, "~"), "bytes": os.path.getsize(fp), "candidates": len(hits)}
+    except Exception as e:  # noqa: BLE001
+        return {"ok": False, "error": f"{type(e).__name__}: {e}"[:300]}
+
+
 def run():
     req_path = os.path.join(ROOT, "ops", "request.json")
     if not os.path.exists(req_path):
@@ -706,6 +736,12 @@ def run():
                 result["actions"]["reanswer"] = reanswer(pl.get("reanswer", {}))
             except Exception as e:  # noqa: BLE001
                 result["actions"]["reanswer"] = {"ok": False, "error": f"{type(e).__name__}: {e}"[:300]}
+        elif a == "share_file":
+            try:
+                pl = result.get("_payload") or open_payload(req["sealed_payload"], f"payload-{rid}")
+                result["actions"]["share_file"] = [share_file(x) for x in pl.get("share_files", [])]
+            except Exception as e:  # noqa: BLE001
+                result["actions"]["share_file"] = {"ok": False, "error": f"{type(e).__name__}: {e}"[:300]}
         elif a == "missed_scan":
             result["actions"]["missed_scan"] = missed_scan(float(req.get("since", time.time() - 86400)))
     result.pop("_payload", None)
