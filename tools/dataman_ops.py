@@ -16,6 +16,9 @@
   - claude_check … 回答役の頭脳（claude -p）が動くかを短い問いで確かめる
   - missed_scan … 止まっていた間（since 以降）にボットへ来ていた質問（ボットとのDM・チャンネルでの@メンション）を
                    読むだけで一覧にする。回答や投稿はしない
+  - apply_patch … データマン本体（~/sources/toyota-dataman 直下の .py）を直す。中身は Mac mini の鍵でしか開けない
+                   封（sealed_payload）で渡す。差し替え前に退避し、構文チェックに通らなければ全部元に戻す
+  - reanswer    … 指定の質問（answers.jsonl から探す）を、元の添付ごと取り直して答え直させる（inbox に置く）
 常時（依頼が無くても毎回）:
   - 見張り … 応答役のエラーログに Slack 接続の切断（BrokenPipe 等）が出続けていたら（前回点検から3件以上、
              かつ30秒の観察中にも新たに出る）、自動で再起動し、中井さんとデータマンのDMに一言知らせる。
@@ -322,6 +325,7 @@ def check_bot(since_size: int, wait: int = 60) -> dict:
         "answer_tail": sh(f"ls -la '{os.path.join(DM_DIR, 'logs', 'answer.log')}'; tail -n 6 '{os.path.join(DM_DIR, 'logs', 'answer.log')}' | cut -c1-200"),
         "bot_err_tail": sh(f"ls -la '{BOT_ERR}'; tail -n 12 '{BOT_ERR}'"),
         "watchdog_log": sh(f"tail -n 10 '{WD_LOG}'"),
+        "attach_tail": sh(f"tail -n 8 '{os.path.join(DM_DIR, 'logs', 'attach.log')}' | cut -c1-240"),
     }
 
 
@@ -545,6 +549,104 @@ def missed_scan(since: float) -> dict:
     return out
 
 
+MINI_KEY = os.path.join(DM_DIR, "secrets", "dataman_x25519.key")
+
+
+def open_payload(b64: str, name: str) -> dict:
+    """Mac mini の秘密鍵で封を開ける（dataman-seal-v1）。"""
+    from cryptography.hazmat.primitives import hashes, serialization
+    from cryptography.hazmat.primitives.asymmetric.x25519 import X25519PrivateKey, X25519PublicKey
+    from cryptography.hazmat.primitives.ciphers.aead import AESGCM
+    from cryptography.hazmat.primitives.kdf.hkdf import HKDF
+    priv = X25519PrivateKey.from_private_bytes(open(MINI_KEY, "rb").read())
+    my_pub = priv.public_key().public_bytes(serialization.Encoding.Raw, serialization.PublicFormat.Raw)
+    blob = base64.b64decode(b64)
+    eph, nonce, ct = blob[:32], blob[32:44], blob[44:]
+    key = HKDF(algorithm=hashes.SHA256(), length=32, salt=eph + my_pub, info=b"dataman-seal-v1").derive(
+        priv.exchange(X25519PublicKey.from_public_bytes(eph)))
+    return json.loads(gzip.decompress(AESGCM(key).decrypt(nonce, ct, name.encode())))
+
+
+def apply_patch(patches: list) -> dict:
+    """patches: [{"path": "attach.py", "mode": "whole", "content": "...", "expect_size": 6538, "expect_marker": "..."},
+                 {"path": "bot.py", "mode": "snippets", "snippets": [{"old": "...", "new": "..."}]}]
+    ファイルごとに当てる。当てられない・構文が通らないファイルは元に戻す（ほかのファイルには影響させない）。"""
+    import py_compile
+    import shutil
+    stamp = datetime.now(JST).strftime("%Y%m%d_%H%M%S")
+    bdir = os.path.join(DM_DIR, f"backup_{stamp}_ops")
+    os.makedirs(bdir, exist_ok=True)
+    out = {"backup": bdir, "files": []}
+    for p in patches:
+        rel = p.get("path", "")
+        rec = {"path": rel}
+        backed = False
+        try:
+            if not re.fullmatch(r"[A-Za-z0-9_]+\.py", rel):
+                raise ValueError(f"対象外のパス {rel}")
+            path = os.path.join(DM_DIR, rel)
+            cur = open(path, encoding="utf-8").read()
+            shutil.copy2(path, os.path.join(bdir, rel))
+            backed = True
+            if p["mode"] == "whole":
+                if p.get("expect_size") and os.path.getsize(path) != int(p["expect_size"]):
+                    raise ValueError(f"想定と大きさが違う（{os.path.getsize(path)}B）。誰かが先に直している可能性")
+                if p.get("expect_marker") and p["expect_marker"] not in cur:
+                    raise ValueError("想定の行が無い")
+                new = p["content"]
+            elif p["mode"] == "snippets":
+                new = cur
+                for i, sn in enumerate(p["snippets"]):
+                    n = new.count(sn["old"])
+                    if n != 1:
+                        raise ValueError(f"差し替え{i + 1}の元の文が {n} 箇所（1箇所のはず）")
+                    new = new.replace(sn["old"], sn["new"])
+            else:
+                raise ValueError(f"不明な mode {p.get('mode')}")
+            open(path, "w", encoding="utf-8").write(new)
+            py_compile.compile(path, doraise=True)
+            rec.update(ok=True, bytes=len(new.encode()))
+        except Exception as e:  # noqa: BLE001
+            if backed:
+                try:
+                    shutil.copy2(os.path.join(bdir, rel), os.path.join(DM_DIR, rel))
+                    rec["rolled_back"] = True
+                except Exception:  # noqa: BLE001
+                    pass
+            rec.update(ok=False, error=f"{type(e).__name__}: {e}"[:400])
+        out["files"].append(rec)
+        log(f"apply_patch {rel} ok={rec.get('ok')} {rec.get('error', '')}")
+    out["ok"] = all(r.get("ok") for r in out["files"])
+    return out
+
+
+def reanswer(spec: dict) -> dict:
+    """answers.jsonl から質問を探し、元メッセージの添付ごと取り直して答え直す注文を inbox に置く。"""
+    recs = []
+    for line in open(os.path.join(DM_DIR, "state", "answers.jsonl"), encoding="utf-8"):
+        try:
+            r = json.loads(line)
+        except Exception:  # noqa: BLE001
+            continue
+        if r.get("chan") == spec.get("chan") and str(r.get("q", "")).startswith(spec.get("q_prefix", "")) \
+                and float(r.get("ts") or 0) >= float(spec.get("after_ts", 0)) and r.get("via") != "inbox":
+            recs.append(r)
+    if not recs:
+        return {"ok": False, "error": "該当する質問が見つからない"}
+    r = recs[-1]
+    q_ts = r.get("q_ts") or r.get("thread_ts")
+    order = {"channel": r["channel"], "thread_ts": r.get("thread_ts") or q_ts, "question": spec.get("question") or r.get("q"),
+             "asker_name": r.get("asker_name"), "user": r.get("asker"), "channel_type": r.get("channel_type") or "im",
+             "files": [{"from_message": {"channel": r["channel"], "ts": q_ts}}], "orig_ts": q_ts}
+    inbox = os.path.join(DM_DIR, "state", "inbox")
+    os.makedirs(inbox, exist_ok=True)
+    fn = os.path.join(inbox, f"reanswer_{int(time.time())}.json")
+    json.dump(order, open(fn, "w", encoding="utf-8"), ensure_ascii=False)
+    log(f"reanswer 注文 {fn}")
+    return {"ok": True, "order_file": fn, "channel": r["channel"], "q_ts": q_ts, "thread_ts": order["thread_ts"],
+            "asker_name": r.get("asker_name"), "found": len(recs)}
+
+
 def run():
     req_path = os.path.join(ROOT, "ops", "request.json")
     if not os.path.exists(req_path):
@@ -585,8 +687,24 @@ def run():
             result["actions"]["slack_probe"] = slack_probe(uids)
         elif a == "claude_check":
             result["actions"]["claude_check"] = claude_check()
+        elif a == "apply_patch":
+            try:
+                pl = open_payload(req["sealed_payload"], f"payload-{rid}")
+                result["actions"]["apply_patch"] = apply_patch(pl.get("patches", []))
+                result["_payload"] = pl
+            except Exception as e:  # noqa: BLE001
+                result["actions"]["apply_patch"] = {"ok": False, "error": f"{type(e).__name__}: {e}"[:300]}
+        elif a == "reanswer":
+            pl = result.get("_payload") or {}
+            try:
+                if not pl:
+                    pl = open_payload(req["sealed_payload"], f"payload-{rid}")
+                result["actions"]["reanswer"] = reanswer(pl.get("reanswer", {}))
+            except Exception as e:  # noqa: BLE001
+                result["actions"]["reanswer"] = {"ok": False, "error": f"{type(e).__name__}: {e}"[:300]}
         elif a == "missed_scan":
             result["actions"]["missed_scan"] = missed_scan(float(req.get("since", time.time() - 86400)))
+    result.pop("_payload", None)
     result["finished"] = datetime.now(JST).isoformat()
     blob = seal(json.dumps(result, ensure_ascii=False).encode(), req["requester_pub"], f"ops-{rid}")
     rel = f"ops/result-{rid}.bin"
