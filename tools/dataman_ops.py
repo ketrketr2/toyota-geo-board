@@ -326,6 +326,7 @@ def check_bot(since_size: int, wait: int = 60) -> dict:
         "bot_err_tail": sh(f"ls -la '{BOT_ERR}'; tail -n 12 '{BOT_ERR}'"),
         "watchdog_log": sh(f"tail -n 10 '{WD_LOG}'"),
         "attach_tail": sh(f"tail -n 8 '{os.path.join(DM_DIR, 'logs', 'attach.log')}' | cut -c1-240"),
+        "render_tail": sh(f"tail -n 12 '{os.path.join(DM_DIR, 'logs', 'render.log')}' | cut -c1-300"),
     }
 
 
@@ -339,6 +340,9 @@ def read_source() -> dict:
     return {
         "bot.py": rd(os.path.join(DM_DIR, "bot.py")),
         "answer.py": rd(os.path.join(DM_DIR, "answer.py")),
+        "render.py": rd(os.path.join(DM_DIR, "render.py")),
+        "attach.py": rd(os.path.join(DM_DIR, "attach.py")),
+        "followup.py": rd(os.path.join(DM_DIR, "followup.py")),
         "python": sh(f"'{py}' -V"),
         "pip": sh(f"'{py}' -m pip list 2>/dev/null | grep -iE 'slack|websocket|aiohttp|certifi|requests'"),
         "env_keys": sh(f"sed -E 's/=.*/=…/' '{os.path.join(DM_DIR, '.env')}'"),
