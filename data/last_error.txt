@@ -1,9 +1,9 @@
-2026-11-02 live実行が失敗しました
-期待252件 / 取得185件 / 面別 {'chatgpt': 63, 'aio': 59, 'aimode': 63, 'gemini': 0}
-実費 {'usd': 4.0562, 'calls': 185}
+2026-11-05 live実行が失敗しました
+期待252件 / 取得181件 / 面別 {'chatgpt': 63, 'aio': 55, 'aimode': 63, 'gemini': 0}
+実費 {'usd': 4.0558, 'calls': 181}
 
-p130/gemini run0: RuntimeError: 50301 3rd Party API Service Unavailable (rate_limit_exceeded).
 p100/gemini run0: RuntimeError: 50301 3rd Party API Service Unavailable (rate_limit_exceeded).
+p130/gemini run0: RuntimeError: 50301 3rd Party API Service Unavailable (rate_limit_exceeded).
 p140/gemini run0: RuntimeError: 50301 3rd Party API Service Unavailable (rate_limit_exceeded).
 p099/gemini run0: RuntimeError: 50301 3rd Party API Service Unavailable (rate_limit_exceeded).
 p061/gemini run0: RuntimeError: 50301 3rd Party API Service Unavailable (rate_limit_exceeded).
@@ -19,12 +19,12 @@ p119/gemini run0: RuntimeError: 50301 3rd Party API Service Unavailable (rate_li
 p134/gemini run0: RuntimeError: 50301 3rd Party API Service Unavailable (rate_limit_exceeded).
 p096/gemini run0: RuntimeError: 50301 3rd Party API Service Unavailable (rate_limit_exceeded).
 p114/gemini run0: RuntimeError: 50301 3rd Party API Service Unavailable (rate_limit_exceeded).
+p125/aio run0: RuntimeError: 40101 Internal SE Server Error.
 p062/gemini run0: RuntimeError: 50301 3rd Party API Service Unavailable (rate_limit_exceeded).
 p129/gemini run0: RuntimeError: 50301 3rd Party API Service Unavailable (rate_limit_exceeded).
 p128/gemini run0: RuntimeError: 50301 3rd Party API Service Unavailable (rate_limit_exceeded).
-p125/aio run0: RuntimeError: 40101 Internal SE Server Error.
-p134/aio run0: RuntimeError: 40101 Internal SE Server Error.
 p459/gemini run0: RuntimeError: 50301 3rd Party API Service Unavailable (rate_limit_exceeded).
+p096/aio run0: RuntimeError: 40101 Internal SE Server Error.
 p462/gemini run0: RuntimeError: 50301 3rd Party API Service Unavailable (rate_limit_exceeded).
 p469/gemini run0: RuntimeError: 50301 3rd Party API Service Unavailable (rate_limit_exceeded).
 p473/gemini run0: RuntimeError: 50301 3rd Party API Service Unavailable (rate_limit_exceeded).
@@ -32,7 +32,7 @@ p511/gemini run0: RuntimeError: 50301 3rd Party API Service Unavailable (rate_li
 p589/gemini run0: RuntimeError: 50301 3rd Party API Service Unavailable (rate_limit_exceeded).
 p590/gemini run0: RuntimeError: 50301 3rd Party API Service Unavailable (rate_limit_exceeded).
 p684/gemini run0: RuntimeError: 50301 3rd Party API Service Unavailable (rate_limit_exceeded).
-p462/aio run0: RuntimeError: 40101 Internal SE Server Error.
+p511/aio run0: RuntimeError: 40101 Internal SE Server Error.
 p866/gemini run0: RuntimeError: 50301 3rd Party API Service Unavailable (rate_limit_exceeded).
 p003/gemini run0: RuntimeError: 50301 3rd Party API Service Unavailable (rate_limit_exceeded).
 p097/gemini run0: RuntimeError: 50301 3rd Party API Service Unavailable (rate_limit_exceeded).
@@ -40,5 +40,5 @@ p091/gemini run0: RuntimeError: 50301 3rd Party API Service Unavailable (rate_li
 p120/gemini run0: RuntimeError: 50301 3rd Party API Service Unavailable (rate_limit_exceeded).
 p116/gemini run0: RuntimeError: 50301 3rd Party API Service Unavailable (rate_limit_exceeded).
 p126/gemini run0: RuntimeError: 50301 3rd Party API Service Unavailable (rate_limit_exceeded).
+p003/aio run0: RuntimeError: 40101 Internal SE Server Error.
 p090/gemini run0: RuntimeError: 50301 3rd Party API Service Unavailable (rate_limit_exceeded).
-p041/gemini run0: RuntimeError: 50301 3rd Party API Service Unavailable (rate_limit_exceeded).
