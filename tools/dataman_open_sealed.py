@@ -14,6 +14,8 @@ GitHub Actions が毎朝復号して全画面の本文・図の数値・元デ�
   - 開けられない・壊れている・古い（36時間超）ときは、前回の資料を残したまま、理由を _取り込み状況.md に書く
   - 終了コード1（＝同期側が Slack に「失敗しました」と通知する）は、新しい失敗のときと、同じ失敗が続くときは
     12時間に1回だけにする（15分ごとの同期のたびに同じ通知が飛ばないように）。直ったら一度だけ「復旧」を知らせる
+  - 一部のボードだけ読み取れていない（例: U-CAR SIGNAL の画面が0）ときは、その組み合わせが変わったときに一度だけ知らせ、
+    直ったときにも一度だけ知らせる（2026-11-07: 「復旧しました」が同期のたびに流れた不具合の修正）
   - 展開は一時フォルダに出してから入れ替える（途中で失敗しても半端な状態にしない）
   - アーカイブ内のパスは boards/ 配下の相対パスだけを許す（../ や絶対パスは拒否）
 """
@@ -130,6 +132,38 @@ def digest_job_status() -> str:
         return ""
 
 
+BOARD_STATE_PATH = os.path.expanduser("~/sources/toyota-dataman/secrets/open_sealed_boards.json")
+BOARD_NAMES = {"roomy_aio": "ROOMY AIO", "roomy_command": "ROOMY COMMAND", "car_signal": "CAR×AI SIGNAL",
+               "car_deepdive": "車種別AI分析", "ucar_signal": "U-CAR SIGNAL", "ga4_command": "GA4 COMMAND"}
+
+
+def board_watch(failed: list):
+    """一部のボードの読み取り失敗は、失敗の組み合わせが変わったときだけ知らせる（毎回は知らせない）。
+    この仕組みを入れた直後（記録が無いとき）は黙って記録だけする。知らせた失敗が直ったときだけ「直った」を知らせる。"""
+    try:
+        prev_st = json.load(open(BOARD_STATE_PATH, encoding="utf-8"))
+    except Exception:  # noqa: BLE001
+        prev_st = None
+    new_st = {"failed": sorted(failed), "notified": False, "at": time.time()}
+    if prev_st is not None:
+        prev = sorted(prev_st.get("failed", []))
+        if prev == sorted(failed):
+            return
+        if failed:
+            names = "・".join(BOARD_NAMES.get(x, x) for x in failed)
+            notify_recovered(f":warning: ボード資料のうち {names} の画面が読み取れていません（ほかのボードは最新）。"
+                             f"{names} については、データマンは画面の内容を答えられません。")
+            new_st["notified"] = True
+        elif prev_st.get("notified"):
+            names = "・".join(BOARD_NAMES.get(x, x) for x in prev)
+            notify_recovered(f":white_check_mark: {names} も読み取れるようになりました。すべてのボードが最新です。")
+    try:
+        os.makedirs(os.path.dirname(BOARD_STATE_PATH), exist_ok=True)
+        json.dump(new_st, open(BOARD_STATE_PATH, "w", encoding="utf-8"))
+    except Exception:  # noqa: BLE001
+        pass
+
+
 def notify_recovered(text: str):
     """直ったことを一度だけ知らせる（データマンのボットから中井さんのDMへ）。失敗しても何もしない。"""
     try:
@@ -152,14 +186,13 @@ def main():
     kb_boards = os.path.join(os.path.expanduser(a.kb), "boards")
     status_path = os.path.join(kb_boards, "_取り込み状況.md")
     now = datetime.now(JST)
-    try:
-        prev_failed = "失敗（前回の資料のまま）" in open(status_path, encoding="utf-8").read()
-    except Exception:  # noqa: BLE001
-        prev_failed = False
+    st0 = _state_load() or {}
+    was_failing = bool(st0.get("sig"))     # 直前まで「古い・開けない」等の失敗が続いていたか（通知済みの状態）
 
-    def report(ok: bool, lines):
+    def report(ok: bool, lines, result=None):
         os.makedirs(kb_boards, exist_ok=True)
-        head = f"# ボード資料の取り込み状況\n\n- 最終確認: {now:%Y-%m-%d %H:%M} JST\n- 結果: {'OK' if ok else '**失敗（前回の資料のまま）**'}\n"
+        res = result or ("OK" if ok else "**失敗（前回の資料のまま）**")
+        head = f"# ボード資料の取り込み状況\n\n- 最終確認: {now:%Y-%m-%d %H:%M} JST\n- 結果: {res}\n"
         open(status_path, "w", encoding="utf-8").write(head + "\n".join(f"- {x}" for x in lines) + "\n")
         print(("OK " if ok else "FAIL ") + " / ".join(lines))
 
@@ -197,10 +230,18 @@ def main():
                 job = digest_job_status()
                 print(f"ボード資料が古いままです（最終作成 {built:%m/%d %H:%M}、{age_h:.0f}時間前）。データマンは前回の資料で答えます。"
                       + (f"\n{job}" if job else ""), file=sys.stderr)
-            report(not stale and all(b["ok"] for b in manifest["boards"]), lines)
-            if not stale and prev_failed:
-                notify_recovered(f":white_check_mark: ボード資料の取り込みが復旧しました（資料の作成 {manifest['built_at'][:16]}）。"
-                                 "データマンは最新のボード資料で答えます。")
+            failed = [b["name"] for b in manifest["boards"] if not b["ok"]]
+            if stale:
+                report(False, lines, "**古い（前回の資料のまま）**")
+            elif failed:
+                report(False, lines, "一部のボードが読み取れていない: " + "・".join(BOARD_NAMES.get(x, x) for x in failed))
+            else:
+                report(True, lines)
+            if not stale:
+                if was_failing:          # 失敗（古い・開けない）から直ったときだけ、一度知らせる
+                    notify_recovered(f":white_check_mark: ボード資料の取り込みが復旧しました（資料の作成 {manifest['built_at'][:16]}）。"
+                                     "データマンは最新のボード資料で答えます。")
+                board_watch(failed)
             return gate(stale, "stale")
         except Exception as e:  # noqa: BLE001
             last = f"{url}: {type(e).__name__} {str(e)[:200]}"
