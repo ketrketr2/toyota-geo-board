@@ -13357,5 +13357,1087 @@
       "car_bench": 11,
       "local": 87
     }
+  },
+  {
+    "date": "2026-11-08",
+    "candidates": 329,
+    "added": [
+      {
+        "id": "p3906",
+        "text": "ミニバンは運転しやすいですか?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p3907",
+        "text": "全高1800mm以下のミニバンにはどんなものがありますか?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p3908",
+        "text": "7人乗りの国産車のおすすめは?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p3909",
+        "text": "ミニバンの中古車が人気の理由とは？魅力と人気車種 ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p3910",
+        "text": "【ファミリー必見】人気ミニバンの特徴と最新のトレンドを解説！",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p3911",
+        "text": "ミニバンの中古車の狙い目はどれ？探すときのポイントや ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p3912",
+        "text": "【2026年版】5ナンバーのおすすめミニバン10選 新車・中古車 ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p3913",
+        "text": "国産で最強のSUVは何ですか?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p3914",
+        "text": "コスパ最強のSUVは何ですか?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p3915",
+        "text": "国産でかっこいいSUVのおすすめは?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p3916",
+        "text": "SUVのおすすめ車種をジャンル別に紹介！乗るときの注意点も ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p3917",
+        "text": "2025年 安全な車ランキング【SUV編】",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p3918",
+        "text": "【おすすめコンパクトSUV 10選】定番コンパクトカーと同等 ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p3919",
+        "text": "車に興味の無かった人がファミリーカーを検討する上で知って ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p3920",
+        "text": "子育て世代必見！広くて使いやすいおすすめコンパクトカー7選 ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p3921",
+        "text": "【2024年】ファミリーカーおすすめ 人気車種10選",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p3922",
+        "text": "ハイブリッドカーの燃費って実際どのくらいでしょうか？",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p3923",
+        "text": "「ハイブリッド車 実際の燃費」の中古車・中古車情報(61ページ目)",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p3924",
+        "text": "【実燃費対決】トヨタ対ホンダ、国産ハイブリッドバトル",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p3925",
+        "text": "ボディタイプ別 WLTCモード燃費 ランキング",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p3926",
+        "text": "コンパクト・ハイブリッド車の燃費について考察",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p3927",
+        "text": "電気自動車は雨に弱いですか?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p3928",
+        "text": "電気自動車の充電器の長さはどのくらいですか?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p3929",
+        "text": "電気自動車は環境に良いですか?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p3930",
+        "text": "EVを30分充電すると何キロ走れる？",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p3931",
+        "text": "【EVなんてまだ早い？】そう思う人向けに「ぜんぜん売れて ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p3932",
+        "text": "私がEVを買わない理由！日本は「一戸建て」じゃないと電気 ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p3933",
+        "text": "【買わないっ！】電気自動車購入をやめた５つの理由。 ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p3934",
+        "text": "バカデカい電池を積んだEVで大して走らないんじゃむしろ ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p3935",
+        "text": "EVが日本で普及しないわけ｜たかしにぃ",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p3936",
+        "text": "買ってはダメな軽自動車はどれですか？(車種を教えて下さい ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p3937",
+        "text": "Check it out before you buy! 4 compact cars you won't regret ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p3938",
+        "text": "今新車で買える、運転しやすいコンパクトカーを教えて ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p3939",
+        "text": "カローラ スポーツなどのトヨタのコンパクトカーを一挙紹介 ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p3940",
+        "text": "【ゆっくり解説】実質タダで乗れちゃう車も！？損しない車大集合！ ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p3941",
+        "text": "2025年8月の中古車買取相場ランキング／愛車の査定件数と ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p3942",
+        "text": "2025年最新版｜リセールバリューが高い車ランキングTOP10 ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p3943",
+        "text": "【2024年版!】高く売れる軽自動車 ランキング！3年落ち国産 ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p3944",
+        "text": "車の維持費はどのくらいかかりますか?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p3945",
+        "text": "日本で一番安い車は何ですか?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p3946",
+        "text": "手取り20万 車 いくら？",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p3947",
+        "text": "車は何年乗るとコスパが良いですか?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p3948",
+        "text": "車の維持費はどれぐらい高いの？車種別の目安と節約方法を ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p3949",
+        "text": "『速くて安くて維持費も安い車ってなんですか？一通り調べ ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p3950",
+        "text": "自動車の維持費はいくら？年間費用やシミュレーション、節約術 ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p3951",
+        "text": "維持費 安い 低燃費車 の中古車一覧",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p3952",
+        "text": "【整備士が解説】軽自動車とコンパクトカー",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p3953",
+        "text": "新車は「納期遅延」から「納期混乱」の時代に！ 突然早まる ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p3954",
+        "text": "新車の納期がどんどん延びています。最初3ヶ月と言われたのに",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p3955",
+        "text": "数か月～1年待つのもイマドキ普通!? 憧れのクルマを「少し ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p3956",
+        "text": "2022年納車待ちランキング！最長4年の真相と現在の納期動向",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p3957",
+        "text": "カーリースジャーナル | クルマ選びとカーライフを全力応援！",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p3958",
+        "text": "【2024年最新】おすすめのカーリース10社&リース会社の選び方 ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p3959",
+        "text": "「車中泊」が大ブーム！ ところで「どんな人」が泊まっているの!? ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p3960",
+        "text": "【2020年版】車中泊で快適に過ごせる人気の車種8選",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p3961",
+        "text": "雪道では何キロで走るのが一般的ですか?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p3962",
+        "text": "高齢者向けの安全機能搭載の軽自動車（車高制限アリ）で ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p3963",
+        "text": "中古車はどこで買うのが最適？各購入方法の特徴と選び方を ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p3964",
+        "text": "中古車の選び方はここがポイント！チェック項目とお得な買い方",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p3965",
+        "text": "「クルマなんか中古車でいいや」って思うときってありますか ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p3966",
+        "text": "お店選びの基礎知識 | 中古車なら【グーネット】",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p3967",
+        "text": "中古車（愛知県）（支払総額安い順）を探すなら【グーネット】",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p3968",
+        "text": "車種比較｜中古車なら【グーネット中古車】",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p3969",
+        "text": "自分で車検を通す方法はありますか?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p3970",
+        "text": "コバックの車検は高いですか?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p3971",
+        "text": "車検の一括見積もりキャンペーンはありますか?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p3972",
+        "text": "車検を安くしてもらうにはどうしたらいいですか?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p3973",
+        "text": "普通車の車検費用はいくら？内訳と相場・業者別の違いを徹底 ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p3974",
+        "text": "車検の法定費用はいくら？内訳や車種別の金額目安",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p3975",
+        "text": "安い車検はどうやって選ぶの？車検ならコバック枚方店のカミ ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p3976",
+        "text": "【2025年】車検の法定費用とは？車種別の金額やよくある疑問 ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p3977",
+        "text": "24か月点検の費用相場はいくら？業者別の特徴や ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p3978",
+        "text": "ステップワゴンとアルファード、どちらが自分にいいですか?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p3979",
+        "text": "ステップワゴンを買ったのに後悔した理由は?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p3980",
+        "text": "ライバル＆新旧比較(8)",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p3981",
+        "text": "ついに公開! トヨタ新型ミニバン、驚きの次世代デザインを徹底解説 ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p3982",
+        "text": "日産の新型「“8人乗り”ミニバン」が発売！ 最上級より「220 ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p3983",
+        "text": "ホンダのライバル＆新旧比較",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p3984",
+        "text": "新型2026年日産エルグランド発表",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p3985",
+        "text": "[Coming in 2026?] Toyota's New Minivan SUV! Expected to ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p3986",
+        "text": "ガソリン車もPHEVも終売でHEV専用モデルに！ トヨタ ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p3987",
+        "text": "なぜトヨタは「ハリアー」のラインナップからガソリン車を ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p3988",
+        "text": "新型ハリアーについて。ハイブリッドにするか",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p3989",
+        "text": "ハリアー PHEVは電気で何キロくらい走れますか?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p3990",
+        "text": "2026年現在、ガソリン車を買うべきですか?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p3991",
+        "text": "ハリアーのハイブリッドグレードにはどのような違いがありますか?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p3992",
+        "text": "日本では、ガソリン車はいつ廃止されますか?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p3993",
+        "text": "新型ハリアーに鷹エンブレムがない！トヨタのシンボルマーク ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p3994",
+        "text": "2026年新型トヨタハリアー登場 最強の進化を遂げたプレミアムSUV",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p3995",
+        "text": "【現実路線】トヨタ新型ハリアーは2026年に小規模改良が濃厚 ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p3996",
+        "text": "2026年新型トヨタハリアーついに登場！フルモデルチェンジ ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p3997",
+        "text": "【前年比84.7％】「ハリアー」に一体何が？ 改良控え受注 ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p3998",
+        "text": "フリード vs シエンタ、荷室アレンジ対決は五分五分の戦い！ ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p3999",
+        "text": "新型シエンタかフリードか迷っています。同じ値段なら",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p4000",
+        "text": "【比較】フリードよりシエンタを選んだ理由｜夫・妻目線の本音を ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p4001",
+        "text": "『新型フリードは新型シエンタに勝てるのですか。・・・...』 トヨタ ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p4002",
+        "text": "シエンタが8月にマイナーチェンジをするというので",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p4003",
+        "text": "【徹底解説】新型トヨタ・シエンタ 【ニューモデルSHOWCASE】",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p4004",
+        "text": "教えてください！シエンタ2026",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p4005",
+        "text": "トヨタ新型シエンタ 2026年8月3日発売｜新色と廃止装備まとめ",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p4006",
+        "text": "約214万円!? トヨタ新型「シエンタ」まもなく登場！ “4年目の ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p4007",
+        "text": "クラウン一部改良 4タイプの価格と発売日",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p4008",
+        "text": "新型クラウンSUV3モデル比較！クロスオーバー・スポーツ ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p4009",
+        "text": "新型クラウン4種類違いまとめ｜クロスオーバー・スポーツ・セダン ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p4010",
+        "text": "【トヨタ クラウン 新型】セダンでもSUV ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p4011",
+        "text": "ランクル300の受注状況はどうですか?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p4012",
+        "text": "トヨタの新型車はいつ発売されますか?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p4013",
+        "text": "ランドクルーザーにはどのような種類がありますか?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p4014",
+        "text": "ランクル300にハイブリッドモデルはありますか?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p4015",
+        "text": "現行のレクサスLXやランクル300が発売された当初は、希望し ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p4016",
+        "text": "How good is the Yaris Cross, developed by GR? ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p4017",
+        "text": "ヤリスクロス 2020年モデルのレビュー・評価",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p4018",
+        "text": "Yaris Cross GR Sport Female Owner Review",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p4019",
+        "text": "新車約278万円から！ トヨタ新型「“走れる”コンパクトSUV」 ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p4020",
+        "text": "トヨタの「新型\"8人乗り\"SUV」初公開に反響多数！ 「鬼加速 ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p4021",
+        "text": "米国トヨタ ハイランダー 価格・車種カタログ情報 | 自動車 ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p4022",
+        "text": "トヨタ新型「“3列8人乗り”SUV」まもなく登場へ ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p4023",
+        "text": "ハイランダー | トヨタ車なら茨城トヨペット",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p4024",
+        "text": "Creative Trend on X: \"一部改良版・トヨタ新型GR86 (F型)が ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p4025",
+        "text": "GR86 一部改良 | お知らせ｜神奈川トヨタ自動車株式会社",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p4026",
+        "text": "トヨタ「最新GR86」がスゴい！ さらにカイゼンし進化「より ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p4027",
+        "text": "新型BRZ、次なる進化はオープンモデルの追加か！？ 先代86 ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p4028",
+        "text": "4WDで雪道に強いおすすめの車は何ですか?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p4029",
+        "text": "雪道に強い車メーカーはどこですか?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p4030",
+        "text": "雪道に強い4WD軽自動車は?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p4031",
+        "text": "なんちゃって4WDとは何ですか?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p4032",
+        "text": "【トヨタ】雪道も安心して走れるHV4WD（E-Four）とは",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p4033",
+        "text": "ホンダの4WDって雪道に弱いって本当ですか？",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p4034",
+        "text": "雪道は4WDでも油断は禁物｜登坂・ブレーキ性能を検証",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p4035",
+        "text": "『雪道に強い4WDの軽自動車を教えて下さい。豪雪の県に住 ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p4036",
+        "text": "冬に向けて＂雪道でも安心＂4WDの高い発進性能が魅力の ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p4037",
+        "text": "スタッドレスタイヤの購入を検討中です。大阪府在住で普段は ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p4038",
+        "text": "第4話 スタッドレスって必要？その1 の巻",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p4039",
+        "text": "スタッドレスタイヤに換えなくてもスノーチェーンだけは携行す ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p4040",
+        "text": "東京や埼玉や神奈川や千葉に住んでいる方はスタッドレス ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p4041",
+        "text": "運転を続けてしてもいい時間ってどのくらいの長さが目安に ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p4042",
+        "text": "『スムーズな乗り出しが出来、高速道路で安定した走行ができ ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p4043",
+        "text": "長距離ドライブ、少しでも疲れずに楽しみたい！ 「長時間運転 ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p4044",
+        "text": "軽自動車なのに長距離ドライブでも疲れない車ランキング ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p4045",
+        "text": "長距離ドライブがラクすぎ!! 高速安定性で選ぶならコレ ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p4046",
+        "text": "「エアコン 寒冷地仕様 必要か長野県」について、失敗しない選び方を教えてください。",
+        "source": "suggest",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p4047",
+        "text": "寒冷地仕様車とはどのような車ですか?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p4048",
+        "text": "寒冷地仕様の中古車はありますか?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p4049",
+        "text": "寒冷地仕様のエアコンは必要ですか?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p4050",
+        "text": "寒冷地仕様は何が違う？",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p4051",
+        "text": "寒冷地仕様車は一般車とどこが違うのか？冬の安全運転を ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p4052",
+        "text": "寒冷地仕様の車について",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p4053",
+        "text": "[寒冷地仕様] 雪国以外の人にもオススメ！標準車の装備との違い ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p4054",
+        "text": "車で寒冷地仕様とそうでないのはどこが違うのですか？今車を ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p4055",
+        "text": "迷ったら付けて損ない!! メーカーオプションの寒冷地仕様が ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p4056",
+        "text": "寒冷地仕様の車を暖かい地域で乗るのには問題ないですよね ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      }
+    ],
+    "promoted": [],
+    "surged": [],
+    "demoted": [],
+    "tiers": {
+      "strategic": 31,
+      "core": 63,
+      "longtail": 3512,
+      "car": 320,
+      "car_bench": 11,
+      "local": 87
+    },
+    "tiers_before": {
+      "strategic": 31,
+      "core": 63,
+      "longtail": 3361,
+      "car": 320,
+      "car_bench": 11,
+      "local": 87
+    }
   }
 ]
