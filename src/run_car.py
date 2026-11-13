@@ -315,7 +315,7 @@ def main() -> None:
         "cells": cells,
     }
     write_json(CAR_DIR / f"{a.date}.json", snap, compact=True)
-    print(f"  wrote data/car/snapshots/{a.date}.json  実費 ${snap['api_cost']['usd']:.2f} "
+    print(f"  wrote {CAR_DIR.relative_to(DATA.parent)}/{a.date}.json  実費 ${snap['api_cost']['usd']:.2f} "
           f"/ {snap['api_cost']['calls']}回")
     for cid, s in snap["per_car"].items():
         print(f"    {cid:<10} 出現 {s['mention_rate']}% / 第一想起 {s['first_rate']}% "
