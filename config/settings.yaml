@@ -75,6 +75,7 @@ sampling:
     # ①②の独立枠（run_car.py 専用。run_daily.py では回らない）
     car:         { frequency: manual,  max_prompts: 450,  runs: 1 }
     local:       { frequency: manual,  max_prompts: 90,   runs: 1 }
+    car29:       { frequency: manual,  max_prompts: 700,  runs: 1 }   # 29車種版（質問は prompts/car29.yaml）
 
 # ---- スコア重み（合計100）----
 # SNS(アーンド引用)を独立因数に格上げした6因数モデル

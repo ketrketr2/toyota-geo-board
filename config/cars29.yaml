@@ -1,0 +1,1010 @@
+version: 1
+updated_on: '2026-11-13'
+note: ①車種別AI分析の29車種版（tier=car29）。tools/car29_build.py で作る。元の8車種（cars.yaml）は変えない。
+segs:
+  compact_tall: コンパクト（トールワゴン）
+  minivan_s: スモールミニバン
+  minivan_m: ミドルミニバン
+  minivan_l: ラージミニバン
+  compact_hb: コンパクト（ハッチバック）
+  suv_compact: コンパクトSUV
+  suv_off: 本格オフローダー
+  suv_mid: ミドルSUV
+  sedan_c: セダン
+  wagon: ステーションワゴン
+  hatch_c: ハッチバック
+  premium: 上級セダン・クロスオーバー
+  hybrid: ハイブリッド
+  ev: 電動車（EV・燃料電池車）
+  sports: スポーツカー
+  pickup: ピックアップ
+  chauffeur: ショーファーカー
+  van: 商用バン
+focus:
+- id: roomy
+  name: ルーミー
+  seg: compact_tall
+  slug: /roomy
+  aliases:
+  - ルーミー
+  - ROOMY
+  rivals:
+  - solio
+  - thor
+  - delica_mini
+  rivals_own:
+  - sienta
+- id: sienta
+  name: シエンタ
+  seg: minivan_s
+  slug: /sienta
+  aliases:
+  - シエンタ
+  - SIENTA
+  rivals:
+  - freed
+  rivals_own:
+  - roomy
+  - noah
+  - voxy
+- id: alphard
+  name: アルファード
+  seg: minivan_l
+  slug: /alphard
+  aliases:
+  - アルファード
+  - ALPHARD
+  rivals:
+  - elgrand
+  rivals_own:
+  - vellfire
+  - voxy
+- id: voxy
+  name: ヴォクシー
+  seg: minivan_m
+  slug: /voxy
+  aliases:
+  - ヴォクシー
+  - ボクシー
+  - VOXY
+  rivals:
+  - serena
+  - stepwgn
+  rivals_own:
+  - noah
+  - alphard
+- id: noah
+  name: ノア
+  seg: minivan_m
+  slug: /noah
+  aliases:
+  - ノア
+  - NOAH
+  guards:
+  - ノアール
+  rivals:
+  - serena
+  - stepwgn
+  rivals_own:
+  - voxy
+  - sienta
+- id: aqua
+  name: アクア
+  seg: compact_hb
+  slug: /aqua
+  aliases:
+  - アクア
+  - AQUA
+  guards:
+  - アクアリウム
+  - アクアライン
+  - アクアパーク
+  - アクアマリン
+  - アクアクララ
+  rivals:
+  - note
+  - fit
+  rivals_own:
+  - yaris
+- id: raize
+  name: ライズ
+  seg: suv_compact
+  slug: /raize
+  aliases:
+  - ライズ
+  - RAIZE
+  guards:
+  - サンライズ
+  - サプライズ
+  - ハイライズ
+  - エンタープライズ
+  - ライズする
+  - ライズし
+  rivals:
+  - rocky
+  - wrv
+  - crossbee
+  rivals_own:
+  - yariscross
+- id: landcruiser
+  name: ランドクルーザー
+  seg: suv_off
+  slug: /landcruiser
+  url: https://toyota.jp/landcruiser250/
+  aliases:
+  - ランドクルーザー250
+  - ランドクルーザー 250
+  - ランクル250
+  - ランクル 250
+  - ランドクルーザー300
+  - ランクル300
+  - ランドクルーザー 300
+  - ランクル 300
+  - ランドクルーザー70
+  - ランクル70
+  - ランドクルーザー 70
+  - ランクル 70
+  - ランドクルーザープラド
+  - ランクルプラド
+  - プラド
+  - PRADO
+  - ランドクルーザー
+  - ランクル
+  - LAND CRUISER
+  - Land Cruiser
+  - LANDCRUISER
+  rivals:
+  - jimny_sierra
+  - xtrail
+  - outlander
+  rivals_own:
+  - rav4
+- id: yaris
+  name: ヤリス
+  seg: compact_hb
+  slug: /yaris
+  aliases:
+  - ヤリス
+  - YARIS
+  rivals:
+  - fit
+  - note
+  - swift
+  - mazda2
+  rivals_own:
+  - aqua
+  - yariscross
+- id: yariscross
+  name: ヤリス クロス
+  seg: suv_compact
+  slug: /yariscross
+  aliases:
+  - ヤリスクロス
+  - ヤリス クロス
+  - YARIS CROSS
+  rivals:
+  - vezel
+  - wrv
+  - kicks
+  - fronx
+  - cx30
+  rivals_own:
+  - raize
+  - corollacross
+  - yaris
+- id: corolla
+  name: カローラ
+  seg: sedan_c
+  slug: /corolla
+  aliases:
+  - カローラセダン
+  - カローラ セダン
+  - カローラアクシオ
+  - カローラ アクシオ
+  - カローラフィールダー
+  - カローラ フィールダー
+  - カローラ
+  - COROLLA
+  guards:
+  - トヨタカローラ店
+  - カローラ店
+  - カローラ販売店
+  rivals:
+  - mazda3
+  - impreza
+  - civic
+  rivals_own:
+  - prius
+  - corollatouring
+  - corollasport
+- id: corollatouring
+  name: カローラ ツーリング
+  seg: wagon
+  slug: /corollatouring
+  aliases:
+  - カローラツーリング
+  - カローラ ツーリング
+  - COROLLA TOURING
+  rivals:
+  - levorg
+  - legacy
+  rivals_own:
+  - corolla
+  - crownestate
+- id: corollasport
+  name: カローラ スポーツ
+  seg: hatch_c
+  slug: /corollasport
+  aliases:
+  - カローラスポーツ
+  - カローラ スポーツ
+  - COROLLA SPORT
+  rivals:
+  - civic
+  - mazda3
+  - impreza
+  - vw_golf
+  rivals_own:
+  - yaris
+  - corolla
+  - gr_corolla
+- id: corollacross
+  name: カローラ クロス
+  seg: suv_mid
+  slug: /corollacross
+  aliases:
+  - カローラクロス
+  - カローラ クロス
+  - COROLLA CROSS
+  rivals:
+  - vezel
+  - zrv
+  - cx30
+  - kicks
+  rivals_own:
+  - yariscross
+  - rav4
+  - harrier
+- id: crown
+  name: クラウン
+  seg: premium
+  slug: /crown
+  aliases:
+  - クラウンセダン
+  - クラウン セダン
+  - クラウン（セダン）
+  - クラウン
+  - CROWN
+  guards:
+  - クラウンメロン
+  - 中日クラウンズ
+  rivals:
+  - accord
+  - e_class
+  - bmw5
+  - lexus_es
+  rivals_own:
+  - crowncrossover
+  - century
+- id: crownsport
+  name: クラウン（スポーツ）
+  seg: premium
+  slug: /crownsport
+  aliases:
+  - クラウンスポーツ
+  - クラウン スポーツ
+  - クラウン（スポーツ）
+  - CROWN SPORT
+  rivals:
+  - cx60
+  - lexus_nx
+  - glc
+  rivals_own:
+  - harrier
+  - crowncrossover
+- id: crowncrossover
+  name: クラウン（クロスオーバー）
+  seg: premium
+  slug: /crowncrossover
+  aliases:
+  - クラウンクロスオーバー
+  - クラウン クロスオーバー
+  - クラウン（クロスオーバー）
+  - CROWN CROSSOVER
+  rivals:
+  - accord
+  - cx60
+  - legacy
+  rivals_own:
+  - crown
+  - crownsport
+  - prius
+- id: crownestate
+  name: クラウン（エステート）
+  seg: premium
+  slug: /crownestate
+  aliases:
+  - クラウンエステート
+  - クラウン エステート
+  - クラウン（エステート）
+  - CROWN ESTATE
+  rivals:
+  - cx80
+  - legacy
+  - volvo
+  rivals_own:
+  - harrier
+  - crownsport
+- id: prius
+  name: プリウス
+  seg: hybrid
+  slug: /prius
+  aliases:
+  - プリウス
+  - PRIUS
+  rivals:
+  - civic
+  - mazda3
+  - impreza
+  rivals_own:
+  - aqua
+  - corolla
+- id: harrier
+  name: ハリアー
+  seg: suv_mid
+  slug: /harrier
+  aliases:
+  - ハリアー
+  - HARRIER
+  rivals:
+  - cx5
+  - cx60
+  - xtrail
+  - zrv
+  - forester
+  rivals_own:
+  - rav4
+  - crownsport
+  - corollacross
+- id: rav4
+  name: RAV4
+  seg: suv_mid
+  slug: /rav4
+  aliases:
+  - RAV4
+  - RAV 4
+  - ＲＡＶ４
+  - ラブフォー
+  - rav4
+  rivals:
+  - xtrail
+  - forester
+  - cx5
+  - outlander
+  rivals_own:
+  - harrier
+  - corollacross
+  - landcruiser
+- id: bz4x
+  name: bZ4X
+  seg: ev
+  slug: /bz4x
+  aliases:
+  - bZ4X
+  - BZ4X
+  - bz4x
+  rivals:
+  - leaf
+  - ariya
+  - model_y
+  - byd
+  rivals_own:
+  - prius
+  - mirai
+- id: mirai
+  name: MIRAI
+  seg: ev
+  slug: /mirai
+  aliases:
+  - MIRAI
+  - Mirai
+  - ミライ
+  guards:
+  - ミライース
+  - ミライトワ
+  - ミライト
+  - ミライズ
+  rivals:
+  - nexo
+  - crv
+  rivals_own:
+  - bz4x
+  - crown
+- id: vellfire
+  name: ヴェルファイア
+  seg: minivan_l
+  slug: /vellfire
+  aliases:
+  - ヴェルファイア
+  - ベルファイア
+  - VELLFIRE
+  rivals:
+  - elgrand
+  - odyssey
+  - delica_d5
+  - lexus_lm
+  rivals_own:
+  - alphard
+  - noah
+  - voxy
+- id: gr86
+  name: GR86
+  seg: sports
+  slug: /gr86
+  aliases:
+  - GR86
+  - GR 86
+  - ハチロク
+  - トヨタ86
+  - トヨタ 86
+  - TOYOTA 86
+  rivals:
+  - brz
+  - roadster
+  - fairladyz
+  rivals_own:
+  - gr_yaris
+  - gr_supra
+  - corollasport
+- id: hilux
+  name: ハイラックス
+  seg: pickup
+  slug: /hilux
+  aliases:
+  - ハイラックス
+  - HILUX
+  rivals:
+  - triton
+  rivals_own:
+  - landcruiser
+- id: century
+  name: センチュリー
+  seg: chauffeur
+  slug: /century
+  aliases:
+  - センチュリー
+  - CENTURY
+  guards:
+  - センチュリー21
+  - センチュリー２１
+  - センチュリーハイアット
+  - センチュリオン
+  - センチュリーシネマ
+  rivals:
+  - lexus_ls
+  - s_class
+  - rolls
+  rivals_own:
+  - crown
+  - alphard
+- id: probox
+  name: プロボックス
+  seg: van
+  slug: /probox
+  aliases:
+  - プロボックス
+  - PROBOX
+  - サクシード
+  rivals:
+  - nissan_ad
+  - nv200
+  rivals_own:
+  - hiacevan
+- id: hiacevan
+  name: ハイエース
+  seg: van
+  slug: /hiace
+  aliases:
+  - ハイエース
+  - HIACE
+  rivals:
+  - caravan
+  - nv200
+  rivals_own:
+  - probox
+rivals:
+- id: solio
+  name: ソリオ
+  brand: suzuki
+  aliases:
+  - ソリオ
+  - SOLIO
+- id: thor
+  name: トール
+  brand: daihatsu
+  aliases:
+  - トール
+  - THOR
+  guards:
+  - インストール
+  - ストール
+  - トールサイズ
+  - トールペイント
+  - トールワゴン
+  - トール ワゴン
+  - ハイトール
+  - スーパートール
+  - トールタイプ
+  - トール系
+  - 軽トール
+  - トールボーイ
+- id: delica_mini
+  name: デリカミニ
+  brand: mitsubishi
+  aliases:
+  - デリカミニ
+  - デリカ ミニ
+- id: freed
+  name: フリード
+  brand: honda
+  aliases:
+  - フリード
+  - FREED
+- id: serena
+  name: セレナ
+  brand: nissan
+  aliases:
+  - セレナ
+  - SERENA
+- id: stepwgn
+  name: ステップワゴン
+  brand: honda
+  aliases:
+  - ステップワゴン
+  - ステップ ワゴン
+  - STEP WGN
+  - STEPWGN
+- id: elgrand
+  name: エルグランド
+  brand: nissan
+  aliases:
+  - エルグランド
+- id: note
+  name: ノート
+  brand: nissan
+  aliases:
+  - ノート
+  - NOTE
+  guards:
+  - ノートパソコン
+  - ノートPC
+  - ノートpc
+  - ノートブック
+- id: fit
+  name: フィット
+  brand: honda
+  aliases:
+  - フィット
+  - FIT
+  guards:
+  - フィットネス
+  - フィッティング
+  - フィットする
+  - フィットし
+  - フィット感
+  - アウトフィット
+- id: rocky
+  name: ロッキー
+  brand: daihatsu
+  aliases:
+  - ロッキー
+  - ROCKY
+  guards:
+  - ロッキー山
+- id: wrv
+  name: WR-V
+  brand: honda
+  aliases:
+  - WR-V
+  - WRV
+- id: crossbee
+  name: クロスビー
+  brand: suzuki
+  aliases:
+  - クロスビー
+  - XBEE
+- id: jimny_sierra
+  name: ジムニー/シエラ
+  brand: suzuki
+  aliases:
+  - ジムニーシエラ
+  - ジムニー シエラ
+  - ジムニー
+  - JIMNY
+- id: xtrail
+  name: エクストレイル
+  brand: nissan
+  aliases:
+  - エクストレイル
+  - X-TRAIL
+- id: outlander
+  name: アウトランダー
+  brand: mitsubishi
+  aliases:
+  - アウトランダー
+  - OUTLANDER
+- id: swift
+  name: スイフト
+  brand: suzuki
+  aliases:
+  - スイフト
+  - スウィフト
+  - SWIFT
+- id: mazda2
+  name: MAZDA2
+  brand: mazda
+  aliases:
+  - MAZDA2
+  - Mazda2
+  - マツダ2
+  - マツダ２
+  - デミオ
+- id: civic
+  name: シビック
+  brand: honda
+  aliases:
+  - シビック
+  - CIVIC
+  guards:
+  - シビックプライド
+  - シビックテック
+- id: mazda3
+  name: MAZDA3
+  brand: mazda
+  aliases:
+  - MAZDA3
+  - Mazda3
+  - マツダ3
+  - マツダ３
+  - アクセラ
+- id: impreza
+  name: インプレッサ
+  brand: subaru
+  aliases:
+  - インプレッサ
+  - IMPREZA
+- id: levorg
+  name: レヴォーグ
+  brand: subaru
+  aliases:
+  - レヴォーグ
+  - LEVORG
+- id: legacy
+  name: レガシィ アウトバック
+  brand: subaru
+  aliases:
+  - レガシィアウトバック
+  - レガシィ アウトバック
+  - アウトバック
+  - レガシィ
+  - OUTBACK
+- id: forester
+  name: フォレスター
+  brand: subaru
+  aliases:
+  - フォレスター
+  - FORESTER
+- id: brz
+  name: BRZ
+  brand: subaru
+  aliases:
+  - BRZ
+- id: cx5
+  name: CX-5
+  brand: mazda
+  aliases:
+  - CX-5
+  - CX5
+  - ＣＸ－５
+- id: cx30
+  name: CX-30
+  brand: mazda
+  aliases:
+  - CX-30
+  - CX30
+  - ＣＸ－３０
+- id: cx60
+  name: CX-60
+  brand: mazda
+  aliases:
+  - CX-60
+  - CX60
+  - ＣＸ－６０
+- id: cx80
+  name: CX-80
+  brand: mazda
+  aliases:
+  - CX-80
+  - CX80
+  - ＣＸ－８０
+- id: roadster
+  name: ロードスター
+  brand: mazda
+  aliases:
+  - ロードスター
+  - ROADSTER
+- id: accord
+  name: アコード
+  brand: honda
+  aliases:
+  - アコード
+  - ACCORD
+- id: zrv
+  name: ZR-V
+  brand: honda
+  aliases:
+  - ZR-V
+  - ZRV
+- id: vezel
+  name: ヴェゼル
+  brand: honda
+  aliases:
+  - ヴェゼル
+  - VEZEL
+- id: odyssey
+  name: オデッセイ
+  brand: honda
+  aliases:
+  - オデッセイ
+  - ODYSSEY
+- id: crv
+  name: CR-V
+  brand: honda
+  aliases:
+  - CR-V
+  - CRV
+- id: kicks
+  name: キックス
+  brand: nissan
+  aliases:
+  - キックス
+  - KICKS
+  guards:
+  - キックスケーター
+  - キックスタート
+  - キックスクーター
+- id: leaf
+  name: リーフ
+  brand: nissan
+  aliases:
+  - リーフ
+  - LEAF
+  guards:
+  - リーフレット
+  - リーフパイ
+  - リーフレタス
+  - ブルーリーフ
+- id: ariya
+  name: アリア
+  brand: nissan
+  aliases:
+  - 日産アリア
+  - 日産 アリア
+  - アリア
+  - ARIYA
+  guards:
+  - マリア
+  - アリアナ
+  - ダリア
+  - アリアス
+- id: fairladyz
+  name: フェアレディZ
+  brand: nissan
+  aliases:
+  - フェアレディZ
+  - フェアレディ Z
+  - フェアレディ
+- id: caravan
+  name: キャラバン
+  brand: nissan
+  aliases:
+  - キャラバン
+  - CARAVAN
+  - NV350
+  guards:
+  - キャラバンサライ
+  - キャラバン隊
+- id: nv200
+  name: NV200バネット
+  brand: nissan
+  aliases:
+  - NV200バネット
+  - NV200
+  - バネット
+- id: nissan_ad
+  name: ADバン
+  brand: nissan
+  aliases:
+  - ADバン
+  - AD バン
+  - ADエキスパート
+  - 日産AD
+  - 日産 AD
+- id: fronx
+  name: フロンクス
+  brand: suzuki
+  aliases:
+  - フロンクス
+  - FRONX
+- id: delica_d5
+  name: デリカD:5
+  brand: mitsubishi
+  aliases:
+  - デリカD:5
+  - デリカ D:5
+  - デリカD5
+  - デリカ D5
+- id: triton
+  name: トライトン
+  brand: mitsubishi
+  aliases:
+  - トライトン
+  - TRITON
+- id: nexo
+  name: ネッソ
+  brand: hyundai
+  aliases:
+  - ネッソ
+  - NEXO
+- id: model_y
+  name: テスラ モデルY
+  brand: tesla
+  aliases:
+  - モデルY
+  - モデル Y
+  - Model Y
+  - MODEL Y
+- id: model_3
+  name: テスラ モデル3
+  brand: tesla
+  aliases:
+  - モデル3
+  - モデル 3
+  - Model 3
+  - MODEL 3
+- id: byd
+  name: BYD（各車）
+  brand: byd
+  aliases:
+  - BYD
+  - ビーワイディー
+- id: vw_golf
+  name: フォルクスワーゲン ゴルフ
+  brand: vw
+  aliases:
+  - フォルクスワーゲン ゴルフ
+  - フォルクスワーゲンゴルフ
+  - VWゴルフ
+  - VW ゴルフ
+  - Golf
+- id: e_class
+  name: メルセデス Eクラス
+  brand: mercedes
+  aliases:
+  - Eクラス
+  - E クラス
+- id: s_class
+  name: メルセデス Sクラス・マイバッハ
+  brand: mercedes
+  aliases:
+  - マイバッハ
+  - Sクラス
+  - S クラス
+- id: glc
+  name: メルセデス GLC
+  brand: mercedes
+  aliases:
+  - GLC
+- id: bmw5
+  name: BMW 5シリーズ
+  brand: bmw
+  aliases:
+  - 5シリーズ
+  - 5 シリーズ
+- id: volvo
+  name: ボルボ（XC60・V90 など）
+  brand: volvo
+  aliases:
+  - XC60
+  - XC40
+  - XC90
+  - V90
+  - V60
+- id: rolls
+  name: ロールス・ロイス
+  brand: rolls
+  aliases:
+  - ロールス・ロイス
+  - ロールスロイス
+  - ロールス ロイス
+  - ROLLS-ROYCE
+- id: lexus_ls
+  name: レクサス LS
+  brand: lexus
+  aliases:
+  - レクサスLS
+  - レクサス LS
+  - LS500h
+  - LS500
+- id: lexus_es
+  name: レクサス ES
+  brand: lexus
+  aliases:
+  - レクサスES
+  - レクサス ES
+  - ES300h
+- id: lexus_nx
+  name: レクサス NX
+  brand: lexus
+  aliases:
+  - レクサスNX
+  - レクサス NX
+  - NX350h
+  - NX450h+
+- id: lexus_rx
+  name: レクサス RX
+  brand: lexus
+  aliases:
+  - レクサスRX
+  - レクサス RX
+  - RX350h
+  - RX500h
+  - RX450h+
+- id: lexus_lm
+  name: レクサス LM
+  brand: lexus
+  aliases:
+  - レクサスLM
+  - レクサス LM
+  - LM500h
+- id: lexus_lbx
+  name: レクサス LBX
+  brand: lexus
+  aliases:
+  - レクサスLBX
+  - レクサス LBX
+  - LBX
+- id: gr_yaris
+  name: GRヤリス
+  brand: toyota
+  aliases:
+  - GRヤリス
+  - GR ヤリス
+  - GR YARIS
+- id: gr_corolla
+  name: GRカローラ
+  brand: toyota
+  aliases:
+  - GRカローラ
+  - GR カローラ
+  - GR COROLLA
+- id: gr_supra
+  name: GRスープラ
+  brand: toyota
+  aliases:
+  - GRスープラ
+  - GR スープラ
+  - スープラ
+  - SUPRA
+- id: chr
+  name: C-HR
+  brand: toyota
+  aliases:
+  - C-HR
+  - CHR
+- id: camry
+  name: カムリ
+  brand: toyota
+  aliases:
+  - カムリ
+  - CAMRY

@@ -6,6 +6,7 @@
 
   python src/run_car.py --tiers car,local --all-surfaces --cap 60   # テスト1周
   python src/run_car.py --tiers car                                 # 定常運用（面は曜日ルール準拠）
+  python src/run_car.py --tiers car29 --all-surfaces --cap 100      # 29車種版（設定 cars29.yaml・質問 prompts/car29.yaml・結果 data/car/wide/）
 
 ・runs は常に 1（車種別は横比較が目的で、同一クエリの反復より本数を優先する）
 ・--all-surfaces は曜日間引きを無視して有効な全面に投げる（テスト1周用）
@@ -26,12 +27,26 @@ from collect import llm  # noqa: E402
 from analyze import classify_url, POSITIVE, NEGATIVE  # noqa: E402
 
 CAR_DIR = DATA / "car" / "snapshots"
+CARS_CFG = "cars"          # 29車種版（tier=car29）のときは cars29。main() で切り替える
+
+
+def _cars() -> dict:
+    return load(CARS_CFG)
+
+
+def _prompts(tier: str) -> list[dict]:
+    """29車種版の質問は prompts/car29.yaml（tools/car29_build.py で作る）。ほかの枠は従来どおりレジストリから。"""
+    if tier == "car29":
+        import yaml
+        with open(DATA.parent / "prompts" / "car29.yaml", encoding="utf-8") as f:
+            return yaml.safe_load(f)["prompts"]
+    return load_prompts(tier)
 
 
 # ---------------------------------------------------------------- 車種検出
 def _catalog() -> list[dict]:
     """focus + rivals を1枚の検出辞書に。aliasの長い順で照合する。"""
-    cfg = load("cars")
+    cfg = _cars()
     rows = []
     for c in cfg["focus"]:
         rows.append({**c, "own": True})
@@ -94,7 +109,7 @@ def build_jobs(day: str, tiers: list[str], all_surfaces: bool, cap: float) -> li
     jobs = []
     for tier in tiers:
         limit = cfg["sampling"]["tier_schedule"].get(tier, {}).get("max_prompts", 500)
-        for p in load_prompts(tier)[:limit]:
+        for p in _prompts(tier)[:limit]:
             for s in surfaces:
                 jobs.append({"day": day, "p": p, "s": s, "run": 0, "cap": cap, "tier": tier})
     return jobs
@@ -174,7 +189,7 @@ def build_cells(responses: list[dict], prompts_by_id: dict) -> list[dict]:
             cites.append({**info, "url": c0.get("url"), "title": (c0.get("title") or "")[:120]})
             u = (c0.get("url") or "")
             if "toyota.jp" in u:
-                for f in load("cars")["focus"]:
+                for f in _cars()["focus"]:
                     if f["slug"] and ((f["slug"] + "/") in u or u.rstrip("/").endswith(f["slug"])):
                         slug_hits.append(f["id"])
         dealer_hosts = {}
@@ -203,7 +218,7 @@ def summarize(cells: list[dict]) -> dict:
     F2 mention = その車が出現すべきセル（cars に含む・named_car≠当該車）での言及率
     F3 first   = 同セル集合のうち、言及があった中で自社車が全車種中1位だった率
     """
-    cfg = load("cars")
+    cfg = _cars()
     out = {}
     for f in cfg["focus"]:
         cid = f["id"]
@@ -261,10 +276,15 @@ def main() -> None:
     ap.add_argument("--cap", type=float, default=60.0)
     a = ap.parse_args()
     tiers = [t.strip() for t in a.tiers.split(",") if t.strip()]
+    global CARS_CFG, CAR_DIR
+    if "car29" in tiers:
+        if tiers != ["car29"]:
+            sys.exit("car29 は単独で回してください（設定と結果の置き場が別のため）。")
+        CARS_CFG, CAR_DIR = "cars29", DATA / "car" / "wide"
 
     prompts_by_id = {}
     for t in tiers:
-        for p in load_prompts(t):
+        for p in _prompts(t):
             prompts_by_id[p["id"]] = p
     jobs = build_jobs(a.date, tiers, a.all_surfaces, a.cap)
     print(f"[{a.date}] car round: {len(prompts_by_id)}本 × {len({j['s']['id'] for j in jobs})}面 "
