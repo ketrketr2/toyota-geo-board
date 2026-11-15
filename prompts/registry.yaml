@@ -2,7 +2,7 @@
 # tier: core=日次 / strategic=週次 / longtail=月次 / retired=停止
 version: 3
 updated_at: '2026-11-15'
-next_seq: 4459
+next_seq: 4597
 prompts:
 - id: p001
   text: ミニバンのおすすめを教えてください。2歳の子供がいて、もう1人産まれる予定です。今はプリウスですが、チャイルドシートの乗せ下ろしがきつく、2人乗せると狭く感じます。予算は400万円までです。
@@ -14086,7 +14086,7 @@ prompts:
   demand: 59.5
   volume: 0
   fanout_hits: 0
-  ugc_hits: 10
+  ugc_hits: 11
   growth: 1.0
   keyword: null
   demand_history:
@@ -34197,7 +34197,7 @@ prompts:
   demand: 59.5
   volume: 0
   fanout_hits: 0
-  ugc_hits: 10
+  ugc_hits: 11
   growth: 1.0
   keyword: null
   demand_history:
@@ -35712,10 +35712,10 @@ prompts:
   tier: longtail
   added_on: '2026-09-20'
   tier_since: '2026-09-20'
-  demand: 19.8
+  demand: 29.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 2
+  ugc_hits: 3
   growth: 1.0
   keyword: null
   demand_history:
@@ -35736,7 +35736,7 @@ prompts:
   - - '2026-11-08'
     - 19.8
   - - '2026-11-15'
-    - 19.8
+    - 29.8
 - id: p1985
   text: 新型エルグランドを街で見かけるようになりました。販売好調 ...
   category: purchase
@@ -35965,7 +35965,7 @@ prompts:
   demand: 59.5
   volume: 0
   fanout_hits: 0
-  ugc_hits: 9
+  ugc_hits: 10
   growth: 1.0
   keyword: null
   demand_history:
@@ -40729,7 +40729,7 @@ prompts:
   demand: 59.5
   volume: 0
   fanout_hits: 0
-  ugc_hits: 6
+  ugc_hits: 7
   growth: 1.0
   keyword: null
   demand_history:
@@ -43283,7 +43283,7 @@ prompts:
   demand: 59.5
   volume: 0
   fanout_hits: 0
-  ugc_hits: 6
+  ugc_hits: 7
   growth: 1.0
   keyword: null
   demand_history:
@@ -43649,7 +43649,7 @@ prompts:
   demand: 59.5
   volume: 0
   fanout_hits: 0
-  ugc_hits: 10
+  ugc_hits: 11
   growth: 1.0
   keyword: null
   demand_history:
@@ -43967,7 +43967,7 @@ prompts:
   demand: 59.5
   volume: 0
   fanout_hits: 0
-  ugc_hits: 10
+  ugc_hits: 11
   growth: 1.0
   keyword: null
   demand_history:
@@ -44846,10 +44846,10 @@ prompts:
   tier: longtail
   added_on: '2026-10-04'
   tier_since: '2026-10-04'
-  demand: 9.9
+  demand: 19.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 1
+  ugc_hits: 2
   growth: 1.0
   keyword: null
   demand_history:
@@ -44866,7 +44866,7 @@ prompts:
   - - '2026-11-08'
     - 9.9
   - - '2026-11-15'
-    - 9.9
+    - 19.8
 - id: p2294
   text: 「維持費 安い 低燃費車」の中古車を探す【カーセンサー】
   category: eco
@@ -47033,7 +47033,7 @@ prompts:
   demand: 59.5
   volume: 0
   fanout_hits: 0
-  ugc_hits: 16
+  ugc_hits: 17
   growth: 1.0
   keyword: null
   demand_history:
@@ -47601,7 +47601,7 @@ prompts:
   demand: 59.5
   volume: 0
   fanout_hits: 0
-  ugc_hits: 9
+  ugc_hits: 10
   growth: 1.0
   keyword: null
   demand_history:
@@ -48225,7 +48225,7 @@ prompts:
   demand: 59.5
   volume: 0
   fanout_hits: 0
-  ugc_hits: 16
+  ugc_hits: 17
   growth: 1.0
   keyword: null
   demand_history:
@@ -49545,7 +49545,7 @@ prompts:
   demand: 59.5
   volume: 0
   fanout_hits: 0
-  ugc_hits: 6
+  ugc_hits: 7
   growth: 1.0
   keyword: null
   demand_history:
@@ -55296,10 +55296,10 @@ prompts:
   tier: longtail
   added_on: '2026-10-11'
   tier_since: '2026-10-11'
-  demand: 29.8
+  demand: 39.7
   volume: 0
   fanout_hits: 0
-  ugc_hits: 3
+  ugc_hits: 4
   growth: 1.0
   keyword: null
   demand_history:
@@ -55314,7 +55314,7 @@ prompts:
   - - '2026-11-08'
     - 29.8
   - - '2026-11-15'
-    - 29.8
+    - 39.7
 - id: p2664
   text: ファミリーカー なんていう？
   category: purchase
@@ -56048,10 +56048,10 @@ prompts:
   tier: longtail
   added_on: '2026-10-11'
   tier_since: '2026-10-11'
-  demand: 9.9
+  demand: 19.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 1
+  ugc_hits: 2
   growth: 1.0
   keyword: null
   demand_history:
@@ -56066,7 +56066,7 @@ prompts:
   - - '2026-11-08'
     - 9.9
   - - '2026-11-15'
-    - 9.9
+    - 19.8
 - id: p2696
   text: スズキスペーシアのデュアルカメラの自動ブレーキと新型 ...
   category: safety
@@ -57515,7 +57515,7 @@ prompts:
   demand: 59.5
   volume: 0
   fanout_hits: 0
-  ugc_hits: 15
+  ugc_hits: 16
   growth: 1.0
   keyword: null
   demand_history:
@@ -58888,10 +58888,10 @@ prompts:
   tier: longtail
   added_on: '2026-10-11'
   tier_since: '2026-10-11'
-  demand: 39.7
+  demand: 49.6
   volume: 0
   fanout_hits: 0
-  ugc_hits: 4
+  ugc_hits: 5
   growth: 1.0
   keyword: null
   demand_history:
@@ -58906,7 +58906,7 @@ prompts:
   - - '2026-11-08'
     - 29.8
   - - '2026-11-15'
-    - 39.7
+    - 49.6
 - id: p2801
   text: ステップワゴンのグレード一覧比較！おすすめや違い・見分け ...
   category: model
@@ -64020,10 +64020,10 @@ prompts:
   tier: longtail
   added_on: '2026-10-11'
   tier_since: '2026-10-11'
-  demand: 29.8
+  demand: 39.7
   volume: 0
   fanout_hits: 0
-  ugc_hits: 3
+  ugc_hits: 4
   growth: 1.0
   keyword: null
   demand_history:
@@ -64038,7 +64038,7 @@ prompts:
   - - '2026-11-08'
     - 29.8
   - - '2026-11-15'
-    - 29.8
+    - 39.7
 - id: p3008
   text: ランクル300の生産台数は月間500～700台と言われていますが
   category: purchase
@@ -65228,10 +65228,10 @@ prompts:
   tier: longtail
   added_on: '2026-10-18'
   tier_since: '2026-10-18'
-  demand: 29.8
+  demand: 39.7
   volume: 0
   fanout_hits: 0
-  ugc_hits: 3
+  ugc_hits: 4
   growth: 1.0
   keyword: null
   demand_history:
@@ -65244,7 +65244,7 @@ prompts:
   - - '2026-11-08'
     - 29.8
   - - '2026-11-15'
-    - 29.8
+    - 39.7
 - id: p3055
   text: 軽自動車じゃない（登録車）コンパクトカーで
   category: purchase
@@ -67868,10 +67868,10 @@ prompts:
   tier: longtail
   added_on: '2026-10-18'
   tier_since: '2026-10-18'
-  demand: 19.8
+  demand: 29.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 2
+  ugc_hits: 3
   growth: 1.0
   keyword: null
   demand_history:
@@ -67884,7 +67884,7 @@ prompts:
   - - '2026-11-08'
     - 19.8
   - - '2026-11-15'
-    - 19.8
+    - 29.8
 - id: p3165
   text: 『ハリアーの新型ガソリン車はどうしてエンジンが ...
   category: purchase
@@ -71990,10 +71990,10 @@ prompts:
   tier: longtail
   added_on: '2026-10-18'
   tier_since: '2026-10-18'
-  demand: 19.8
+  demand: 29.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 2
+  ugc_hits: 3
   growth: 1.0
   keyword: null
   demand_history:
@@ -72006,7 +72006,7 @@ prompts:
   - - '2026-11-08'
     - 19.8
   - - '2026-11-15'
-    - 19.8
+    - 29.8
 - id: p3337
   text: 新型 2026 トヨタ シエンタが発表されました
   category: brand
@@ -72900,10 +72900,10 @@ prompts:
   tier: longtail
   added_on: '2026-10-25'
   tier_since: '2026-10-25'
-  demand: 29.8
+  demand: 39.7
   volume: 0
   fanout_hits: 0
-  ugc_hits: 3
+  ugc_hits: 4
   growth: 1.0
   keyword: null
   demand_history:
@@ -72914,7 +72914,7 @@ prompts:
   - - '2026-11-08'
     - 29.8
   - - '2026-11-15'
-    - 29.8
+    - 39.7
 - id: p3373
   text: 4人家族向けの軽自動車はありますか?
   category: purchase
@@ -73932,10 +73932,10 @@ prompts:
   tier: longtail
   added_on: '2026-10-25'
   tier_since: '2026-10-25'
-  demand: 29.8
+  demand: 39.7
   volume: 0
   fanout_hits: 0
-  ugc_hits: 3
+  ugc_hits: 4
   growth: 1.0
   keyword: null
   demand_history:
@@ -73946,7 +73946,7 @@ prompts:
   - - '2026-11-08'
     - 19.8
   - - '2026-11-15'
-    - 29.8
+    - 39.7
 - id: p3419
   text: 【驚愕】残価率が90％を超える！300万円以下で手に入る
   category: cost
@@ -75116,10 +75116,10 @@ prompts:
   tier: longtail
   added_on: '2026-10-25'
   tier_since: '2026-10-25'
-  demand: 19.8
+  demand: 29.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 2
+  ugc_hits: 3
   growth: 1.0
   keyword: null
   demand_history:
@@ -75130,7 +75130,7 @@ prompts:
   - - '2026-11-08'
     - 9.9
   - - '2026-11-15'
-    - 19.8
+    - 29.8
 - id: p3474
   text: 新型アルファードはいつ発売されますか?
   category: purchase
@@ -76236,10 +76236,10 @@ prompts:
   tier: longtail
   added_on: '2026-10-25'
   tier_since: '2026-10-25'
-  demand: 49.6
+  demand: 59.5
   volume: 0
   fanout_hits: 0
-  ugc_hits: 5
+  ugc_hits: 6
   growth: 1.0
   keyword: null
   demand_history:
@@ -76250,7 +76250,7 @@ prompts:
   - - '2026-11-08'
     - 49.6
   - - '2026-11-15'
-    - 49.6
+    - 59.5
 - id: p3521
   text: ハリアーのマイナーチェンジはいつですか?
   category: purchase
@@ -78700,10 +78700,10 @@ prompts:
   tier: longtail
   added_on: '2026-10-25'
   tier_since: '2026-10-25'
-  demand: 19.8
+  demand: 29.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 2
+  ugc_hits: 3
   growth: 1.0
   keyword: null
   demand_history:
@@ -78714,7 +78714,7 @@ prompts:
   - - '2026-11-08'
     - 19.8
   - - '2026-11-15'
-    - 19.8
+    - 29.8
 - id: p3632
   text: 2027年新型コンパクトミニバン登場!? 価格118万円・燃費30km/L級 ...
   category: eco
@@ -79502,10 +79502,10 @@ prompts:
   tier: longtail
   added_on: '2026-11-01'
   tier_since: '2026-11-01'
-  demand: 9.9
+  demand: 19.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 1
+  ugc_hits: 2
   growth: 1.0
   keyword: null
   demand_history:
@@ -79514,7 +79514,7 @@ prompts:
   - - '2026-11-08'
     - 9.9
   - - '2026-11-15'
-    - 9.9
+    - 19.8
 - id: p3666
   text: 軽ハイトワゴン ランキング【2025年最新】おすすめ人気車種を ...
   category: purchase
@@ -79718,10 +79718,10 @@ prompts:
   tier: longtail
   added_on: '2026-11-01'
   tier_since: '2026-11-01'
-  demand: 9.9
+  demand: 19.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 1
+  ugc_hits: 2
   growth: 1.0
   keyword: null
   demand_history:
@@ -79730,7 +79730,7 @@ prompts:
   - - '2026-11-08'
     - 9.9
   - - '2026-11-15'
-    - 9.9
+    - 19.8
 - id: p3674
   text: ホンダセンシングとスバルアイサイトはどちらが優れています ...
   category: safety
@@ -80728,10 +80728,10 @@ prompts:
   tier: longtail
   added_on: '2026-11-01'
   tier_since: '2026-11-01'
-  demand: 19.8
+  demand: 29.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 2
+  ugc_hits: 3
   growth: 1.0
   keyword: null
   demand_history:
@@ -80740,7 +80740,7 @@ prompts:
   - - '2026-11-08'
     - 9.9
   - - '2026-11-15'
-    - 19.8
+    - 29.8
 - id: p3717
   text: ステップワゴンとアルファードPHEVを比較｜中古車の ...
   category: eco
@@ -80946,10 +80946,10 @@ prompts:
   tier: longtail
   added_on: '2026-11-01'
   tier_since: '2026-11-01'
-  demand: 39.7
+  demand: 49.6
   volume: 0
   fanout_hits: 0
-  ugc_hits: 4
+  ugc_hits: 5
   growth: 1.0
   keyword: null
   demand_history:
@@ -80958,7 +80958,7 @@ prompts:
   - - '2026-11-08'
     - 29.8
   - - '2026-11-15'
-    - 39.7
+    - 49.6
 - id: p3727
   text: トヨタのハリアーについて質問。 今月マイナーチェンジで ...
   category: brand
@@ -85286,17 +85286,17 @@ prompts:
   tier: longtail
   added_on: '2026-11-08'
   tier_since: '2026-11-08'
-  demand: 9.9
+  demand: 19.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 1
+  ugc_hits: 2
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-11-08'
     - 9.9
   - - '2026-11-15'
-    - 9.9
+    - 19.8
 - id: p3918
   text: 【おすすめコンパクトSUV 10選】定番コンパクトカーと同等 ...
   category: purchase
@@ -85482,17 +85482,17 @@ prompts:
   tier: longtail
   added_on: '2026-11-08'
   tier_since: '2026-11-08'
-  demand: 19.8
+  demand: 29.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 2
+  ugc_hits: 3
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-11-08'
     - 9.9
   - - '2026-11-15'
-    - 19.8
+    - 29.8
 - id: p3927
   text: 電気自動車は雨に弱いですか?
   category: eco
@@ -86878,17 +86878,17 @@ prompts:
   tier: longtail
   added_on: '2026-11-08'
   tier_since: '2026-11-08'
-  demand: 9.9
+  demand: 19.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 1
+  ugc_hits: 2
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-11-08'
     - 9.9
   - - '2026-11-15'
-    - 9.9
+    - 19.8
 - id: p3989
   text: ハリアー PHEVは電気で何キロくらい走れますか?
   category: eco
@@ -87518,17 +87518,17 @@ prompts:
   tier: longtail
   added_on: '2026-11-08'
   tier_since: '2026-11-08'
-  demand: 9.9
+  demand: 19.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 1
+  ugc_hits: 2
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-11-08'
     - 9.9
   - - '2026-11-15'
-    - 9.9
+    - 19.8
 - id: p4019
   text: 新車約278万円から！ トヨタ新型「“走れる”コンパクトSUV」 ...
   category: brand
@@ -88874,17 +88874,17 @@ prompts:
   tier: longtail
   added_on: '2026-11-08'
   tier_since: '2026-11-08'
-  demand: 9.9
+  demand: 19.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 1
+  ugc_hits: 2
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-11-08'
     - 9.9
   - - '2026-11-15'
-    - 9.9
+    - 19.8
 - id: p4085
   text: アクセル全開で振りまわせる相棒！ 走りが楽しいコンパクト ...
   category: purchase
@@ -89814,17 +89814,17 @@ prompts:
   tier: longtail
   added_on: '2026-11-08'
   tier_since: '2026-11-08'
-  demand: 19.8
+  demand: 29.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 2
+  ugc_hits: 3
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-11-08'
     - 9.9
   - - '2026-11-15'
-    - 19.8
+    - 29.8
 - id: p4126
   text: 『30前期アルファードハイブリットからの乗り換え』 ホンダ ...
   category: brand
@@ -89834,17 +89834,17 @@ prompts:
   tier: longtail
   added_on: '2026-11-08'
   tier_since: '2026-11-08'
-  demand: 19.8
+  demand: 29.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 2
+  ugc_hits: 3
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-11-08'
     - 9.9
   - - '2026-11-15'
-    - 19.8
+    - 29.8
 - id: p4127
   text: 出たぞ新型セレナ！ ノア＆ヴォクシーとステップワゴンと ...
   category: purchase
@@ -89854,17 +89854,17 @@ prompts:
   tier: longtail
   added_on: '2026-11-08'
   tier_since: '2026-11-08'
-  demand: 19.8
+  demand: 29.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 2
+  ugc_hits: 3
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-11-08'
     - 9.9
   - - '2026-11-15'
-    - 19.8
+    - 29.8
 - id: p4128
   text: ミニバンで、日産セレナとトヨタのノアならどちらが良いです ...
   category: brand
@@ -91086,17 +91086,17 @@ prompts:
   tier: longtail
   added_on: '2026-11-08'
   tier_since: '2026-11-08'
-  demand: 19.8
+  demand: 29.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 2
+  ugc_hits: 3
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-11-08'
     - 9.9
   - - '2026-11-15'
-    - 19.8
+    - 29.8
 - id: p4183
   text: 4WD語り動画3〜スバルのAWDが雪道に強い理由を考察
   category: brand
@@ -91720,15 +91720,15 @@ prompts:
   tier: longtail
   added_on: '2026-11-15'
   tier_since: '2026-11-15'
-  demand: 9.9
+  demand: 19.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 1
+  ugc_hits: 2
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-11-15'
-    - 9.9
+    - 19.8
 - id: p4212
   text: 「ハイブリッド実燃費」の中古車・中古車情報(4318ページ目)
   category: eco
@@ -91840,15 +91840,15 @@ prompts:
   tier: longtail
   added_on: '2026-11-15'
   tier_since: '2026-11-15'
-  demand: 9.9
+  demand: 19.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 1
+  ugc_hits: 2
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-11-15'
-    - 9.9
+    - 19.8
 - id: p4219
   text: 安河内哲也『EV買うべき？EV向き不向き』
   category: eco
@@ -91858,15 +91858,15 @@ prompts:
   tier: longtail
   added_on: '2026-11-15'
   tier_since: '2026-11-15'
-  demand: 9.9
+  demand: 19.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 1
+  ugc_hits: 2
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-11-15'
-    - 9.9
+    - 19.8
 - id: p422
   text: 40アルファード残クレで買うとだいたいおいくら位ですか ...
   category: purchase
@@ -91916,15 +91916,15 @@ prompts:
   tier: longtail
   added_on: '2026-11-15'
   tier_since: '2026-11-15'
-  demand: 9.9
+  demand: 19.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 1
+  ugc_hits: 2
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-11-15'
-    - 9.9
+    - 19.8
 - id: p4221
   text: 電気自動車(EV)を買わない理由----この記事は、勉強不足だ！
   category: eco
@@ -91952,15 +91952,15 @@ prompts:
   tier: longtail
   added_on: '2026-11-15'
   tier_since: '2026-11-15'
-  demand: 9.9
+  demand: 19.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 1
+  ugc_hits: 2
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-11-15'
-    - 9.9
+    - 19.8
 - id: p4223
   text: 軽ワンボックスのおすすめは?
   category: purchase
@@ -92034,15 +92034,15 @@ prompts:
   tier: longtail
   added_on: '2026-11-15'
   tier_since: '2026-11-15'
-  demand: 9.9
+  demand: 19.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 1
+  ugc_hits: 2
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-11-15'
-    - 9.9
+    - 19.8
 - id: p4228
   text: 軽 自動車 おすすめの中古車｜中古車探しは【U-CATCH】
   category: purchase
@@ -92258,15 +92258,15 @@ prompts:
   tier: longtail
   added_on: '2026-11-15'
   tier_since: '2026-11-15'
-  demand: 9.9
+  demand: 19.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 1
+  ugc_hits: 2
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-11-15'
-    - 9.9
+    - 19.8
 - id: p4239
   text: 残価率が高い車は何ですか?
   category: cost
@@ -92380,15 +92380,15 @@ prompts:
   tier: longtail
   added_on: '2026-11-15'
   tier_since: '2026-11-15'
-  demand: 9.9
+  demand: 19.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 1
+  ugc_hits: 2
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-11-15'
-    - 9.9
+    - 19.8
 - id: p4244
   text: あえて狙う？リセールバリューが悪い中古車はお買い得！ ...
   category: purchase
@@ -92398,15 +92398,15 @@ prompts:
   tier: longtail
   added_on: '2026-11-15'
   tier_since: '2026-11-15'
-  demand: 9.9
+  demand: 19.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 1
+  ugc_hits: 2
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-11-15'
-    - 9.9
+    - 19.8
 - id: p4245
   text: 国産SUVの気になるリセールは？どれを買うか迷っている人必見！
   category: purchase
@@ -92416,15 +92416,15 @@ prompts:
   tier: longtail
   added_on: '2026-11-15'
   tier_since: '2026-11-15'
-  demand: 9.9
+  demand: 19.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 1
+  ugc_hits: 2
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-11-15'
-    - 9.9
+    - 19.8
 - id: p4246
   text: リセールバリューが高い車種一覧2026｜資産価値が下がり ...
   category: purchase
@@ -92434,15 +92434,15 @@ prompts:
   tier: longtail
   added_on: '2026-11-15'
   tier_since: '2026-11-15'
-  demand: 9.9
+  demand: 19.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 1
+  ugc_hits: 2
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-11-15'
-    - 9.9
+    - 19.8
 - id: p4247
   text: 値落ちしないスポーツカーランキング！国産車2020年版 ...
   category: purchase
@@ -92452,15 +92452,15 @@ prompts:
   tier: longtail
   added_on: '2026-11-15'
   tier_since: '2026-11-15'
-  demand: 9.9
+  demand: 19.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 1
+  ugc_hits: 2
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-11-15'
-    - 9.9
+    - 19.8
 - id: p4248
   text: 一番安い軽自動車は何ですか?
   category: cost
@@ -92842,15 +92842,15 @@ prompts:
   tier: longtail
   added_on: '2026-11-15'
   tier_since: '2026-11-15'
-  demand: 9.9
+  demand: 19.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 1
+  ugc_hits: 2
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-11-15'
-    - 9.9
+    - 19.8
 - id: p4269
   text: 残クレ（残価設定ローン）と住宅ローンはまとめられる？基礎 ...
   category: cost
@@ -92860,15 +92860,15 @@ prompts:
   tier: longtail
   added_on: '2026-11-15'
   tier_since: '2026-11-15'
-  demand: 9.9
+  demand: 19.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 1
+  ugc_hits: 2
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-11-15'
-    - 9.9
+    - 19.8
 - id: p427
   text: アルファードは中古か新車かどちらがいいですか？
   category: purchase
@@ -92894,15 +92894,15 @@ prompts:
   tier: longtail
   added_on: '2026-11-15'
   tier_since: '2026-11-15'
-  demand: 9.9
+  demand: 19.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 1
+  ugc_hits: 2
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-11-15'
-    - 9.9
+    - 19.8
 - id: p4271
   text: なぜ「残クレ」（残価設定型クレジット・ローン）はここまで ...
   category: cost
@@ -92930,15 +92930,15 @@ prompts:
   tier: longtail
   added_on: '2026-11-15'
   tier_since: '2026-11-15'
-  demand: 9.9
+  demand: 19.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 1
+  ugc_hits: 2
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-11-15'
-    - 9.9
+    - 19.8
 - id: p4273
   text: 残価設定ローンで新車に乗った人が、住宅ローンで数百万円損した話
   category: cost
@@ -92948,15 +92948,15 @@ prompts:
   tier: longtail
   added_on: '2026-11-15'
   tier_since: '2026-11-15'
-  demand: 9.9
+  demand: 19.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 1
+  ugc_hits: 2
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-11-15'
-    - 9.9
+    - 19.8
 - id: p4274
   text: ニコノリとカルモは、どちらが安いですか?
   category: cost
@@ -93032,15 +93032,15 @@ prompts:
   tier: longtail
   added_on: '2026-11-15'
   tier_since: '2026-11-15'
-  demand: 9.9
+  demand: 19.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 1
+  ugc_hits: 2
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-11-15'
-    - 9.9
+    - 19.8
 - id: p4279
   text: 【2025年版】カーリースの比較一覧｜新車リース21社＆中古 ...
   category: cost
@@ -93050,15 +93050,15 @@ prompts:
   tier: longtail
   added_on: '2026-11-15'
   tier_since: '2026-11-15'
-  demand: 9.9
+  demand: 19.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 1
+  ugc_hits: 2
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-11-15'
-    - 9.9
+    - 19.8
 - id: p428
   text: 30アルファードはなんでこんなに値崩れしたの？数年前まで ...
   category: purchase
@@ -93108,15 +93108,15 @@ prompts:
   tier: longtail
   added_on: '2026-11-15'
   tier_since: '2026-11-15'
-  demand: 9.9
+  demand: 19.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 1
+  ugc_hits: 2
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-11-15'
-    - 9.9
+    - 19.8
 - id: p4281
   text: 車のサブスクのデメリットは回避できる！解消法とお得な ...
   category: cost
@@ -93126,15 +93126,15 @@ prompts:
   tier: longtail
   added_on: '2026-11-15'
   tier_since: '2026-11-15'
-  demand: 9.9
+  demand: 19.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 1
+  ugc_hits: 2
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-11-15'
-    - 9.9
+    - 19.8
 - id: p4282
   text: サブスクとリースの違い解説
   category: cost
@@ -93420,15 +93420,15 @@ prompts:
   tier: longtail
   added_on: '2026-11-15'
   tier_since: '2026-11-15'
-  demand: 19.8
+  demand: 49.6
   volume: 0
   fanout_hits: 0
-  ugc_hits: 2
+  ugc_hits: 5
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-11-15'
-    - 19.8
+    - 49.6
 - id: p4297
   text: スバル「クロストレック」で雪上走行！ 盤石の”AWD”は50年の歴史 ...
   category: brand
@@ -93456,15 +93456,15 @@ prompts:
   tier: longtail
   added_on: '2026-11-15'
   tier_since: '2026-11-15'
-  demand: 9.9
+  demand: 19.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 1
+  ugc_hits: 2
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-11-15'
-    - 9.9
+    - 19.8
 - id: p4299
   text: 車をさがしているんですが、1、雪道に強い（SUV以外）2
   category: purchase
@@ -93596,15 +93596,15 @@ prompts:
   tier: longtail
   added_on: '2026-11-15'
   tier_since: '2026-11-15'
-  demand: 9.9
+  demand: 19.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 1
+  ugc_hits: 2
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-11-15'
-    - 9.9
+    - 19.8
 - id: p4305
   text: 8 BEST Hatchbacks for Senior Drivers in 2025
   category: purchase
@@ -93614,15 +93614,15 @@ prompts:
   tier: longtail
   added_on: '2026-11-15'
   tier_since: '2026-11-15'
-  demand: 9.9
+  demand: 19.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 1
+  ugc_hits: 2
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-11-15'
-    - 9.9
+    - 19.8
 - id: p4306
   text: Best Cars For Elderly Drivers
   category: purchase
@@ -93650,15 +93650,15 @@ prompts:
   tier: longtail
   added_on: '2026-11-15'
   tier_since: '2026-11-15'
-  demand: 9.9
+  demand: 19.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 1
+  ugc_hits: 2
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-11-15'
-    - 9.9
+    - 19.8
 - id: p4308
   text: 高齢者の答えはクラウンクロスオーバーだ
   category: purchase
@@ -93790,15 +93790,15 @@ prompts:
   tier: longtail
   added_on: '2026-11-15'
   tier_since: '2026-11-15'
-  demand: 9.9
+  demand: 19.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 1
+  ugc_hits: 2
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-11-15'
-    - 9.9
+    - 19.8
 - id: p4314
   text: 【急募】新卒が買うべき自動車🚗🚙
   category: purchase
@@ -93844,15 +93844,15 @@ prompts:
   tier: longtail
   added_on: '2026-11-15'
   tier_since: '2026-11-15'
-  demand: 9.9
+  demand: 19.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 1
+  ugc_hits: 2
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-11-15'
-    - 9.9
+    - 19.8
 - id: p4317
   text: 19歳男です。人生で初めて車を購入しようと思うのですが
   category: purchase
@@ -94178,15 +94178,15 @@ prompts:
   tier: longtail
   added_on: '2026-11-15'
   tier_since: '2026-11-15'
-  demand: 9.9
+  demand: 19.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 1
+  ugc_hits: 2
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-11-15'
-    - 9.9
+    - 19.8
 - id: p4332
   text: 車検、思ったより安かった！^^ | まりえのおうちごはん＆節約 ...
   category: cost
@@ -94196,15 +94196,15 @@ prompts:
   tier: longtail
   added_on: '2026-11-15'
   tier_since: '2026-11-15'
-  demand: 9.9
+  demand: 19.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 1
+  ugc_hits: 2
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-11-15'
-    - 9.9
+    - 19.8
 - id: p4333
   text: https://autonavi.car-mo.jp/mag/category/tips/carin...
   category: purchase
@@ -94214,15 +94214,15 @@ prompts:
   tier: longtail
   added_on: '2026-11-15'
   tier_since: '2026-11-15'
-  demand: 9.9
+  demand: 19.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 1
+  ugc_hits: 2
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-11-15'
-    - 9.9
+    - 19.8
 - id: p4334
   text: 【最新版】車検が安い！おすすめサービス5選を徹底紹介！
   category: cost
@@ -94232,15 +94232,15 @@ prompts:
   tier: longtail
   added_on: '2026-11-15'
   tier_since: '2026-11-15'
-  demand: 9.9
+  demand: 19.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 1
+  ugc_hits: 2
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-11-15'
-    - 9.9
+    - 19.8
 - id: p4335
   text: 車検費用をディーラー見積もりの半額にする方法
   category: cost
@@ -94348,15 +94348,15 @@ prompts:
   tier: longtail
   added_on: '2026-11-15'
   tier_since: '2026-11-15'
-  demand: 9.9
+  demand: 19.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 1
+  ugc_hits: 2
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-11-15'
-    - 9.9
+    - 19.8
 - id: p4341
   text: ホンダ ステップワゴンスパーダとトヨタ アルファード 外装・内装 ...
   category: model
@@ -94366,15 +94366,15 @@ prompts:
   tier: longtail
   added_on: '2026-11-15'
   tier_since: '2026-11-15'
-  demand: 9.9
+  demand: 19.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 1
+  ugc_hits: 2
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-11-15'
-    - 9.9
+    - 19.8
 - id: p4342
   text: ノア、ヴォクシー、セレナ、どれがいいですか?
   category: purchase
@@ -94432,15 +94432,15 @@ prompts:
   tier: longtail
   added_on: '2026-11-15'
   tier_since: '2026-11-15'
-  demand: 9.9
+  demand: 19.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 1
+  ugc_hits: 2
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-11-15'
-    - 9.9
+    - 19.8
 - id: p4346
   text: 日産の新型セレナはトヨタのノア三兄弟よりカッコいいですか？？
   category: brand
@@ -94450,15 +94450,15 @@ prompts:
   tier: longtail
   added_on: '2026-11-15'
   tier_since: '2026-11-15'
-  demand: 9.9
+  demand: 19.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 1
+  ugc_hits: 2
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-11-15'
-    - 9.9
+    - 19.8
 - id: p4347
   text: ノアにするかセレナにするか ミニバン購入を考えて ...
   category: purchase
@@ -94468,15 +94468,15 @@ prompts:
   tier: longtail
   added_on: '2026-11-15'
   tier_since: '2026-11-15'
-  demand: 9.9
+  demand: 19.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 1
+  ugc_hits: 2
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-11-15'
-    - 9.9
+    - 19.8
 - id: p4348
   text: 『トヨタノアと日産セレナ、どちらが耐久性ありますかね ...
   category: brand
@@ -94486,15 +94486,15 @@ prompts:
   tier: longtail
   added_on: '2026-11-15'
   tier_since: '2026-11-15'
-  demand: 9.9
+  demand: 19.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 1
+  ugc_hits: 2
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-11-15'
-    - 9.9
+    - 19.8
 - id: p4349
   text: 『NISSANのセレナはなぜトヨタのノア/ヴォクシーより ...
   category: brand
@@ -94504,15 +94504,15 @@ prompts:
   tier: longtail
   added_on: '2026-11-15'
   tier_since: '2026-11-15'
-  demand: 9.9
+  demand: 19.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 1
+  ugc_hits: 2
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-11-15'
-    - 9.9
+    - 19.8
 - id: p435
   text: ステップワゴンとアルファードではどちらが大きいですか？
   category: purchase
@@ -95198,15 +95198,15 @@ prompts:
   tier: longtail
   added_on: '2026-11-15'
   tier_since: '2026-11-15'
-  demand: 9.9
+  demand: 19.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 1
+  ugc_hits: 2
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-11-15'
-    - 9.9
+    - 19.8
 - id: p4384
   text: シエンタは2026年に改良されますか?
   category: purchase
@@ -95976,15 +95976,15 @@ prompts:
   tier: longtail
   added_on: '2026-11-15'
   tier_since: '2026-11-15'
-  demand: 9.9
+  demand: 19.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 1
+  ugc_hits: 2
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-11-15'
-    - 9.9
+    - 19.8
 - id: p4421
   text: ついに公開 2026年トヨタ・ハイランダー 価格衝撃 新型ハイブリッド ...
   category: eco
@@ -95994,15 +95994,15 @@ prompts:
   tier: longtail
   added_on: '2026-11-15'
   tier_since: '2026-11-15'
-  demand: 9.9
+  demand: 19.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 1
+  ugc_hits: 2
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-11-15'
-    - 9.9
+    - 19.8
 - id: p4422
   text: 3列シート SUVがニッチ層に人気
   category: purchase
@@ -96048,15 +96048,15 @@ prompts:
   tier: longtail
   added_on: '2026-11-15'
   tier_since: '2026-11-15'
-  demand: 9.9
+  demand: 19.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 1
+  ugc_hits: 2
   growth: 1.0
   keyword: null
   demand_history:
   - - '2026-11-15'
-    - 9.9
+    - 19.8
 - id: p4425
   text: 【遂に最終F型を発表】GR86の走り、内装、安全装備が変わる！
   category: safety
@@ -96691,6 +96691,22 @@ prompts:
   demand_history:
   - - '2026-11-15'
     - 9.9
+- id: p4459
+  text: ミニバンを買う時、新車と中古、どちらが良いですか?
+  category: purchase
+  driver: minivan
+  brand: false
+  source: paa
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
 - id: p446
   text: セレナとノア どっち がいい 知恵袋？
   category: model
@@ -96707,6 +96723,184 @@ prompts:
   growth: 1.0
   keyword: null
   demand_history: []
+- id: p4460
+  text: 【100万円以下】家族で乗れるミニバン7選｜在庫データで答え合わせ
+  category: purchase
+  driver: minivan
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-11-15'
+    - 9.9
+- id: p4461
+  text: 6人乗りの車人気ランキング
+  category: purchase
+  driver: null
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-11-15'
+    - 9.9
+- id: p4462
+  text: 買ってはいけないミニバンとは？専門家が解説
+  category: purchase
+  driver: minivan
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-11-15'
+    - 9.9
+- id: p4463
+  text: ミニバン一覧｜新車価格・値引き相場表｜ライバル車比較表
+  category: cost
+  driver: minivan
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-11-15'
+    - 9.9
+- id: p4464
+  text: 日本で一番売れてるミニバンとそのライバルの実態は
+  category: purchase
+  driver: minivan
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-11-15'
+    - 9.9
+- id: p4465
+  text: 爆売れしている「ミニバン」ってなに？ 1位は「200万円以下」 ...
+  category: purchase
+  driver: minivan
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-11-15'
+    - 9.9
+- id: p4466
+  text: 5人乗りSUVはどれがいい？選び方やジャンル別おすすめ車種 ...
+  category: purchase
+  driver: null
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-11-15'
+    - 9.9
+- id: p4467
+  text: 国産車SUVは豊富なパワートレーンが強み【クローズアップ後編】
+  category: purchase
+  driver: null
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-11-15'
+    - 9.9
+- id: p4468
+  text: ワゴンRの実燃費はどのくらいですか?
+  category: eco
+  driver: hybrid
+  brand: false
+  source: paa
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p4469
+  text: 「ハイブリッド実燃費」の中古車を探す(4580ページ目)【 ...
+  category: eco
+  driver: hybrid
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-11-15'
+    - 9.9
 - id: p447
   text: ノアとセレナではどちらが運転しやすいですか？
   category: purchase
@@ -96716,6 +96910,176 @@ prompts:
   tier: longtail
   added_on: '2026-08-03'
   tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p4470
+  text: 「ハイブリッド実燃費」の中古車・中古車情報(62ページ目)
+  category: eco
+  driver: hybrid
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-11-15'
+    - 9.9
+- id: p4471
+  text: 電気自動車で車中泊できますか?
+  category: eco
+  driver: cargo
+  brand: false
+  source: paa
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p4472
+  text: 電気自動車(EV)のレビューはどうですか?
+  category: eco
+  driver: hybrid
+  brand: false
+  source: paa
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p4473
+  text: https://carview.yahoo.co.jp/article/detail/3ce2311...
+  category: purchase
+  driver: null
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-11-15'
+    - 9.9
+- id: p4474
+  text: なぜこんなに安い？リセール暴落の原因はバッテリー！実は今 ...
+  category: cost
+  driver: cost
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-11-15'
+    - 9.9
+- id: p4475
+  text: 一番壊れにくい軽自動車は何ですか?
+  category: purchase
+  driver: reliability
+  brand: false
+  source: paa
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p4476
+  text: ★上半期人気の軽自動車ランキング★
+  category: purchase
+  driver: null
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-11-15'
+    - 9.9
+- id: p4477
+  text: 2026年最新版！人気の軽自動車ハイトワゴンランキングと選び方
+  category: purchase
+  driver: null
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-11-15'
+    - 9.9
+- id: p4478
+  text: 長距離運転で疲れない車種は?
+  category: purchase
+  driver: adas
+  brand: false
+  source: paa
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p4479
+  text: コンパクトカーの利点は何ですか?
+  category: purchase
+  driver: urban
+  brand: false
+  source: paa
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
   demand: null
   volume: 0
   fanout_hits: 0
@@ -96739,6 +97103,180 @@ prompts:
   growth: 1.0
   keyword: null
   demand_history: []
+- id: p4480
+  text: コンパクトカーのメリットって何なのでしょう？
+  category: purchase
+  driver: urban
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-11-15'
+    - 9.9
+- id: p4481
+  text: 「人気者」だけが良い車じゃないぞ!! クロウト好みのいい ...
+  category: purchase
+  driver: null
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-11-15'
+    - 9.9
+- id: p4482
+  text: 快適で、運転も楽しい、コンパクト・カーって、どれでしょう？
+  category: purchase
+  driver: urban
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-11-15'
+    - 9.9
+- id: p4483
+  text: 高速道路を楽に運転するにはどうしたらいいですか?
+  category: purchase
+  driver: adas
+  brand: false
+  source: paa
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p4484
+  text: 運転して疲れない車はどんな車ですか?
+  category: purchase
+  driver: adas
+  brand: false
+  source: paa
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p4485
+  text: 高速道路で運転すると疲れるのはなぜですか?
+  category: purchase
+  driver: adas
+  brand: false
+  source: paa
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p4486
+  text: 長距離ドライブにおすすめの車とはどんな車？
+  category: purchase
+  driver: reliability
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-11-15'
+    - 9.9
+- id: p4487
+  text: 【長距離運転で疲れないコツ】
+  category: purchase
+  driver: adas
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-11-15'
+    - 9.9
+- id: p4488
+  text: 車の長距離運転で疲れない車とは？車選びで要注意のチェック ...
+  category: purchase
+  driver: adas
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-11-15'
+    - 9.9
+- id: p4489
+  text: 長距離運転を安全・快適にする、出発前の簡単チェックと疲れ対策
+  category: safety
+  driver: safety
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-11-15'
+    - 9.9
 - id: p449
   text: 車の買い替えについてです。ノアかセレナで迷っています ...
   category: purchase
@@ -96779,6 +97317,182 @@ prompts:
     - 59.5
   - - '2026-11-15'
     - 59.5
+- id: p4490
+  text: 高速道路では、パイロット・アシスト（車線維持支援機能）や全車速 ...
+  category: purchase
+  driver: adas
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-11-15'
+    - 9.9
+- id: p4491
+  text: 車を売るならどこが高く売れる？
+  category: purchase
+  driver: null
+  brand: false
+  source: paa
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p4492
+  text: リセールバリューとは何ですか?
+  category: purchase
+  driver: resale
+  brand: false
+  source: paa
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p4493
+  text: 車の維持費は年間いくらかかる？ 削るならどこ？ ...
+  category: cost
+  driver: cost
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-11-15'
+    - 9.9
+- id: p4494
+  text: 走り屋に人気の車を安く買いたい！スポーツカーの維持費も ...
+  category: cost
+  driver: cost
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-11-15'
+    - 9.9
+- id: p4495
+  text: 軽自動車の維持費は安い？内訳とさらに月々の維持費を安く ...
+  category: cost
+  driver: cost
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-11-15'
+    - 9.9
+- id: p4496
+  text: 車買ったのに納品まで1ヵ月以上待たされてる‥。中古車なのに ...
+  category: purchase
+  driver: null
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-11-15'
+    - 9.9
+- id: p4497
+  text: 新車は納車に時間がかかることを知らない人43.7％！ ...
+  category: purchase
+  driver: null
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-11-15'
+    - 9.9
+- id: p4498
+  text: 長納期とは 人気・最新記事を集めました
+  category: service
+  driver: dealer
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-11-15'
+    - 9.9
+- id: p4499
+  text: '[B!] 半年～1年待ちも！トヨタ車の｢納期｣が長い訳 トヨタの強さ ...'
+  category: service
+  driver: dealer
+  brand: true
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-11-15'
+    - 9.9
 - id: p450
   text: 新型ノアと新型セレナ、値段が同じだとしてどちらかを新車で ...
   category: purchase
@@ -96819,6 +97533,176 @@ prompts:
     - 59.5
   - - '2026-11-15'
     - 59.5
+- id: p4500
+  text: まだまだ続く新車の納期遅延！カローラやシビックなどの納期は
+  category: service
+  driver: dealer
+  brand: true
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-11-15'
+    - 9.9
+- id: p4501
+  text: 残価設定ローンがダメな理由は何ですか?
+  category: cost
+  driver: resale
+  brand: false
+  source: paa
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p4502
+  text: 残価設定をやめた方がいいのはなぜですか?
+  category: cost
+  driver: resale
+  brand: false
+  source: paa
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p4503
+  text: 残クレで1000キロオーバーしたらどうなる?
+  category: purchase
+  driver: subscription
+  brand: false
+  source: paa
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p4504
+  text: 【残価設定ローンの罠と真実】「月々の支払いが安い」の裏に ...
+  category: cost
+  driver: cost
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-11-15'
+    - 9.9
+- id: p4505
+  text: カーリースの7年後は、どうなる?
+  category: cost
+  driver: subscription
+  brand: false
+  source: paa
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p4506
+  text: レンタルとリース、どちらが安いですか?
+  category: cost
+  driver: cost
+  brand: false
+  source: paa
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p4507
+  text: https://subsc-fun.com/car/
+  category: purchase
+  driver: null
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-11-15'
+    - 9.9
+- id: p4508
+  text: 車のサブスクとマンスリーレンタカー、何が違う？契約期間と ...
+  category: cost
+  driver: subscription
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-11-15'
+    - 9.9
+- id: p4509
+  text: 【雪道AWD対決】アウディVSスバル 雪道に強い車はどっち！？ ...
+  category: model
+  driver: null
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-11-15'
+    - 9.9
 - id: p451
   text: 新型ノアと新型セレナ買うならどっちにしますか？みなさんの ...
   category: model
@@ -96859,6 +97743,176 @@ prompts:
     - 59.5
   - - '2026-11-15'
     - 59.5
+- id: p4510
+  text: 『デリカミニ以外のスライドドアタイプで 雪道に強い4WD ...
+  category: purchase
+  driver: minivan
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: 19.8
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 2
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-11-15'
+    - 19.8
+- id: p4511
+  text: 『【自動車】雪道に適した車』 マセラティ のみんなの質問
+  category: purchase
+  driver: null
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-11-15'
+    - 9.9
+- id: p4512
+  text: 60代男性におすすめの軽自動車は何ですか?
+  category: purchase
+  driver: null
+  brand: false
+  source: paa
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p4513
+  text: 安全性が高い軽自動車は何ですか?
+  category: safety
+  driver: safety
+  brand: false
+  source: paa
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p4514
+  text: 8 Easy-to-Drive Cars for Older Women
+  category: purchase
+  driver: null
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-11-15'
+    - 9.9
+- id: p4515
+  text: 'The Best Cars for Seniors: 4 Top Picks If You''re Looking to ...'
+  category: purchase
+  driver: null
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-11-15'
+    - 9.9
+- id: p4516
+  text: 3年落ちの中古車を買うと狙い目ですか?
+  category: purchase
+  driver: null
+  brand: false
+  source: paa
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p4517
+  text: 車検費用を抑えよう！少しでも安く車検を受ける方法 | mattyblog
+  category: cost
+  driver: warranty
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-11-15'
+    - 9.9
+- id: p4518
+  text: セレナとノア、どちらの方が人気ですか?
+  category: purchase
+  driver: null
+  brand: true
+  source: paa
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p4519
+  text: ステップワゴンとノアの違いは何ですか?
+  category: model
+  driver: null
+  brand: true
+  source: paa
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
 - id: p452
   text: 車についてです！ヴォクシーvsノアvsセレナあなたならどれを ...
   category: purchase
@@ -96899,6 +97953,172 @@ prompts:
     - 59.5
   - - '2026-11-15'
     - 59.5
+- id: p4520
+  text: トヨタのノアとヴォクシーの違いは何ですか?
+  category: model
+  driver: null
+  brand: true
+  source: paa
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p4521
+  text: ヴェルファイアは2026年に改良されますか?
+  category: purchase
+  driver: null
+  brand: false
+  source: paa
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p4522
+  text: コンパクトミニバンの定員は何人ですか?
+  category: purchase
+  driver: urban
+  brand: false
+  source: paa
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p4523
+  text: SUVとミニバンの違いは何ですか?
+  category: model
+  driver: minivan
+  brand: false
+  source: paa
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p4524
+  text: ミニバンの新車で人気の車種は何ですか?
+  category: purchase
+  driver: minivan
+  brand: false
+  source: paa
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p4525
+  text: ハリアーナイトシェードの受注は停止されていますか?
+  category: purchase
+  driver: null
+  brand: true
+  source: paa
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p4526
+  text: なぜトヨタは「ハリアー」のラインナップからガソリン車をなくした ...
+  category: brand
+  driver: null
+  brand: true
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-11-15'
+    - 9.9
+- id: p4527
+  text: ハリアー 改良 何が変わったのか【まとめ】確認
+  category: purchase
+  driver: null
+  brand: true
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-11-15'
+    - 9.9
+- id: p4528
+  text: トヨタは水素に失敗したのですか?
+  category: eco
+  driver: hybrid
+  brand: true
+  source: paa
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p4529
+  text: Toyota is suffering from "delivery delays" due to the "huge ...
+  category: purchase
+  driver: null
+  brand: true
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-11-15'
+    - 9.9
 - id: p453
   text: セレナとノアでどちらの方が故障が少なく長く乗れるでしょ ...
   category: purchase
@@ -96939,6 +98159,182 @@ prompts:
     - 59.5
   - - '2026-11-15'
     - 59.5
+- id: p4530
+  text: なぜ人気SUV「ハリアー」の受注取消し？ トヨタ「誠意ある ...
+  category: brand
+  driver: null
+  brand: true
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-11-15'
+    - 9.9
+- id: p4531
+  text: ハリアーPHEVのリアルな燃費と後悔ポイントとは？補助金 ...
+  category: eco
+  driver: hybrid
+  brand: true
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-11-15'
+    - 9.9
+- id: p4532
+  text: 【知らないと後悔する】ハリアーはやめとけと言われる理由とは ...
+  category: purchase
+  driver: null
+  brand: true
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-11-15'
+    - 9.9
+- id: p4533
+  text: ハリアーのリセール率の良いグレードは?
+  category: model
+  driver: resale
+  brand: true
+  source: paa
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p4534
+  text: 【2026年最新】ハリアーは高いだけの車じゃない！「普通 ...
+  category: purchase
+  driver: null
+  brand: true
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-11-15'
+    - 9.9
+- id: p4535
+  text: 2025年モデル最新ハリアーの進化とは？改良ポイントとPHEV ...
+  category: eco
+  driver: hybrid
+  brand: true
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-11-15'
+    - 9.9
+- id: p4536
+  text: 2026 Toyota Harrier Revealed! Stunning New Design, Latest ...
+  category: eco
+  driver: hybrid
+  brand: true
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-11-15'
+    - 9.9
+- id: p4537
+  text: トヨタ ハリアー2026年モデル登場！究極の高級SUVがさらに進化 ...
+  category: brand
+  driver: null
+  brand: true
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-11-15'
+    - 9.9
+- id: p4538
+  text: トヨタ『ハリアー』次期型は2026年後半に発表か…1月の ...
+  category: brand
+  driver: null
+  brand: true
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-11-15'
+    - 9.9
+- id: p4539
+  text: 新型フリードと現行フリードの違いは何ですか?
+  category: model
+  driver: null
+  brand: false
+  source: paa
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
 - id: p454
   text: ノアにするかセレナにするかミニバン購入を考えております ...
   category: purchase
@@ -96979,6 +98375,174 @@ prompts:
     - 59.5
   - - '2026-11-15'
     - 59.5
+- id: p4540
+  text: トヨタの新型コンパクトミニバンは何ですか?
+  category: brand
+  driver: urban
+  brand: true
+  source: paa
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p4541
+  text: シエンタはいつ発売されましたか?
+  category: purchase
+  driver: null
+  brand: true
+  source: paa
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p4542
+  text: トヨタ シエンタ 新型のプラットフォームはどこが進化したのか
+  category: brand
+  driver: null
+  brand: true
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-11-15'
+    - 9.9
+- id: p4543
+  text: 新型シエンタ2026、公式情報を検証してわかった価格と変更点 ...
+  category: cost
+  driver: null
+  brand: true
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-11-15'
+    - 9.9
+- id: p4544
+  text: 2026年トヨタ・シエンタついに公開！静かで力強いハイブリッド性能
+  category: eco
+  driver: hybrid
+  brand: true
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-11-15'
+    - 9.9
+- id: p4545
+  text: シエンタ2026年モデル? | 何事も適当。基本やる気なし。
+  category: purchase
+  driver: null
+  brand: true
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-11-15'
+    - 9.9
+- id: p4546
+  text: 新型クラウンはいつマイナーチェンジされますか?
+  category: purchase
+  driver: null
+  brand: true
+  source: paa
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p4547
+  text: 2026年にトヨタがマイナーチェンジする車はありますか?
+  category: brand
+  driver: null
+  brand: true
+  source: paa
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p4548
+  text: クラウン セダンは2026年にマイナーチェンジされますか?
+  category: purchase
+  driver: null
+  brand: true
+  source: paa
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p4549
+  text: クラウンの次期フルモデルチェンジはいつですか?
+  category: purchase
+  driver: null
+  brand: true
+  source: paa
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
 - id: p455
   text: 2026年に人気のミニバンは？
   category: purchase
@@ -96988,6 +98552,176 @@ prompts:
   tier: longtail
   added_on: '2026-08-03'
   tier_since: '2026-08-03'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p4550
+  text: クラウンクロスオーバーが不人気なのはなぜですか?
+  category: purchase
+  driver: null
+  brand: true
+  source: paa
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p4551
+  text: ランクル300のディーゼルエンジンは故障しやすいですか?
+  category: purchase
+  driver: reliability
+  brand: true
+  source: paa
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p4552
+  text: ランドクルーザー トヨタ「ランクル300」に待望のハイブリッドモデルが ...
+  category: eco
+  driver: hybrid
+  brand: true
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-11-15'
+    - 9.9
+- id: p4553
+  text: VJA300W ランドクルーザー300 性能と維持費 4WD/10AT 5 ...
+  category: cost
+  driver: cost
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-11-15'
+    - 9.9
+- id: p4554
+  text: ランクル300のハイブリッド カタログで燃費が9くらいだとしたら ...
+  category: eco
+  driver: hybrid
+  brand: true
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-11-15'
+    - 9.9
+- id: p4555
+  text: ランクル300と新型ZR-Vどっちが静かに走る？HV（ハイブリッド）vs3 ...
+  category: eco
+  driver: hybrid
+  brand: true
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-11-15'
+    - 9.9
+- id: p4556
+  text: 'landcruiser300の燃費 #landcruiser #燃費 #車好きな人と ...'
+  category: eco
+  driver: hybrid
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-11-15'
+    - 9.9
+- id: p4557
+  text: ランドクルーザー300の納期はどのくらいですか?
+  category: service
+  driver: dealer
+  brand: false
+  source: paa
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p4558
+  text: ランドクルーザー300のハイブリッド車の燃費はどのくらいですか?
+  category: eco
+  driver: hybrid
+  brand: false
+  source: paa
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p4559
+  text: ラブフォー 新型 何ヶ月待ち？
+  category: purchase
+  driver: null
+  brand: false
+  source: paa
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
   demand: null
   volume: 0
   fanout_hits: 0
@@ -97011,6 +98745,180 @@ prompts:
   growth: 1.0
   keyword: null
   demand_history: []
+- id: p4560
+  text: TOYOTA YARIS CROSS GR SPORT HV【走行動画】峠降り ① ...
+  category: purchase
+  driver: null
+  brand: true
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-11-15'
+    - 9.9
+- id: p4561
+  text: 【正直レビュー】ヤリスクロス GRスポーツ試乗! は最高 ...
+  category: purchase
+  driver: null
+  brand: true
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-11-15'
+    - 9.9
+- id: p4562
+  text: ヤリスクロスGRスポーツ｜スペック・装備・価格
+  category: cost
+  driver: null
+  brand: true
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-11-15'
+    - 9.9
+- id: p4563
+  text: コスパ良く格上の走りを実現！ トヨタ・ヤリスクロス GR ...
+  category: brand
+  driver: null
+  brand: true
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-11-15'
+    - 9.9
+- id: p4564
+  text: ハイランダーの評価はどうですか?
+  category: purchase
+  driver: null
+  brand: false
+  source: paa
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p4565
+  text: https://carview.yahoo.co.jp/news/detail/dc33ca5f7a...
+  category: purchase
+  driver: null
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-11-15'
+    - 9.9
+- id: p4566
+  text: 海外で売られている『ハイランダー(トヨタ)』を日本で新車で ...
+  category: brand
+  driver: null
+  brand: true
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-11-15'
+    - 9.9
+- id: p4567
+  text: 米国トヨタ ハイランダー 3.5V6の基本スペック
+  category: model
+  driver: null
+  brand: true
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-11-15'
+    - 9.9
+- id: p4568
+  text: GR86は2026年にマイナーチェンジされますか?
+  category: purchase
+  driver: null
+  brand: false
+  source: paa
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p4569
+  text: GR86 F型の平均値引き額はいくらですか?
+  category: cost
+  driver: null
+  brand: false
+  source: paa
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
 - id: p457
   text: トヨタの2026年の新車のミニバン情報は？
   category: brand
@@ -97027,6 +98935,182 @@ prompts:
   growth: 1.0
   keyword: null
   demand_history: []
+- id: p4570
+  text: GR86を買うなら、何型がおすすめですか?
+  category: purchase
+  driver: null
+  brand: false
+  source: paa
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p4571
+  text: GR86で2速にシフトが入りにくいのはなぜですか?
+  category: purchase
+  driver: null
+  brand: false
+  source: paa
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p4572
+  text: Toyota GR86微幅更新操控表現將有明顯提升
+  category: purchase
+  driver: null
+  brand: true
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-11-15'
+    - 9.9
+- id: p4573
+  text: トヨタGR86が一部改良、3眼アイサイト搭載とソリッド ...
+  category: safety
+  driver: safety
+  brand: true
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-11-15'
+    - 9.9
+- id: p4574
+  text: 新色、操駕雙雙改進Toyota 悄悄推出25 年式GR86！
+  category: purchase
+  driver: null
+  brand: true
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-11-15'
+    - 9.9
+- id: p4575
+  text: Toyota新型「FR跑車」即將上市！「睽違約8年復活」的懷舊 ...
+  category: purchase
+  driver: null
+  brand: true
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-11-15'
+    - 9.9
+- id: p4576
+  text: 3眼アイサイト搭載とソリッドグレー復活で進化
+  category: safety
+  driver: safety
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-11-15'
+    - 9.9
+- id: p4577
+  text: トヨタ 新型GR86 vs 初代86はどこが変わった！？ 写真で ...
+  category: brand
+  driver: null
+  brand: true
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-11-15'
+    - 9.9
+- id: p4578
+  text: 『雪道で一番性能の良い4WDシステムはどこの4WDですか ...
+  category: purchase
+  driver: null
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-11-15'
+    - 9.9
+- id: p4579
+  text: 4WDスポーツカー完全ガイド｜雪道も速く走れる国産＆外車 ...
+  category: purchase
+  driver: null
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-11-15'
+    - 9.9
 - id: p458
   text: ホンダの新型ミニバンは2027年に発売されますか？
   category: brand
@@ -97043,6 +99127,176 @@ prompts:
   growth: 1.0
   keyword: null
   demand_history: []
+- id: p4580
+  text: 雪道を走る時、たとえばジープやスバルのSUVの4WDは普通 ...
+  category: brand
+  driver: null
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-11-15'
+    - 9.9
+- id: p4581
+  text: スバルの4WDが雪国で圧倒的に愛される理由 この安心感は ...
+  category: brand
+  driver: null
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-11-15'
+    - 9.9
+- id: p4582
+  text: スバルが雪道に強い理由3つ！雪道走行性能が最強の車種は ...
+  category: brand
+  driver: null
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-11-15'
+    - 9.9
+- id: p4583
+  text: スタッドレスタイヤがいらない地域はどこですか?
+  category: purchase
+  driver: null
+  brand: false
+  source: paa
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p4584
+  text: スタッドレスが必要となるエリアはどこですか?
+  category: purchase
+  driver: null
+  brand: false
+  source: paa
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p4585
+  text: チェーン規制でスタッドレスタイヤは走行できませんか?
+  category: purchase
+  driver: null
+  brand: false
+  source: paa
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p4586
+  text: 4駆でもスタッドレスタイヤは必要ですか?
+  category: purchase
+  driver: null
+  brand: false
+  source: paa
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p4587
+  text: 長距離ドライブで疲れない車はどんな車ですか?
+  category: purchase
+  driver: adas
+  brand: false
+  source: paa
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: null
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 0
+  growth: 1.0
+  keyword: null
+  demand_history: []
+- id: p4588
+  text: 「日本車買うならこれだ」米誌が選ぶベスト14
+  category: purchase
+  driver: null
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: 19.8
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 2
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-11-15'
+    - 19.8
+- id: p4589
+  text: 『通勤と週末のドライブをメインに、長く乗れる車の購入を検 ...
+  category: purchase
+  driver: null
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-11-15'
+    - 9.9
 - id: p459
   text: 「運転支援 高速道路 疲れにくい」はメーカーによってどれくらい差がありますか。
   category: safety
@@ -97084,6 +99338,132 @@ prompts:
   - - '2026-11-15'
     - 66.3
   tier_prev: longtail
+- id: p4590
+  text: Long Drive Cars app
+  category: purchase
+  driver: null
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-11-15'
+    - 9.9
+- id: p4591
+  text: 数多くの国産車から厳選した[スポーツモデル]乗りたい人に ...
+  category: purchase
+  driver: null
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-11-15'
+    - 9.9
+- id: p4592
+  text: 新型ノアの寒冷地仕様は必要？後悔しないための徹底比較と対策
+  category: model
+  driver: null
+  brand: true
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-11-15'
+    - 9.9
+- id: p4593
+  text: 寒冷地仕様とは？意味・仕組み・役割
+  category: purchase
+  driver: null
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-11-15'
+    - 9.9
+- id: p4594
+  text: 【豪雪地帯】寒冷地仕様でないとマズイでしょうか？
+  category: purchase
+  driver: null
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-11-15'
+    - 9.9
+- id: p4595
+  text: 寒冷地仕様車両装備完全ガイド！選ぶべき装備と地域別 ...
+  category: purchase
+  driver: null
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-11-15'
+    - 9.9
+- id: p4596
+  text: 車で寒冷地仕様ってありますが普通車と寒冷地仕様では何が ...
+  category: purchase
+  driver: null
+  brand: false
+  source: chiebukuro
+  tier: longtail
+  added_on: '2026-11-15'
+  tier_since: '2026-11-15'
+  demand: 9.9
+  volume: 0
+  fanout_hits: 0
+  ugc_hits: 1
+  growth: 1.0
+  keyword: null
+  demand_history:
+  - - '2026-11-15'
+    - 9.9
 - id: p460
   text: 「予算400万 ミニバン おすすめ」で損をしない方法を教えてください。国産車で具体的にお願いします。
   category: cost
@@ -98179,7 +100559,7 @@ prompts:
   demand: 59.5
   volume: 0
   fanout_hits: 0
-  ugc_hits: 8
+  ugc_hits: 9
   growth: 1.0
   keyword: null
   demand_history:
@@ -100284,7 +102664,7 @@ prompts:
   demand: 59.5
   volume: 0
   fanout_hits: 0
-  ugc_hits: 23
+  ugc_hits: 25
   growth: 1.0
   keyword: null
   demand_history:
@@ -101550,7 +103930,7 @@ prompts:
   demand: 59.5
   volume: 0
   fanout_hits: 0
-  ugc_hits: 8
+  ugc_hits: 9
   growth: 1.0
   keyword: null
   demand_history:
@@ -102219,10 +104599,10 @@ prompts:
   tier: longtail
   added_on: '2026-08-10'
   tier_since: '2026-08-10'
-  demand: 19.8
+  demand: 29.8
   volume: 0
   fanout_hits: 0
-  ugc_hits: 2
+  ugc_hits: 3
   growth: 1.0
   keyword: null
   demand_history:
@@ -102249,7 +104629,7 @@ prompts:
   - - '2026-11-08'
     - 19.8
   - - '2026-11-15'
-    - 19.8
+    - 29.8
 - id: p658
   text: アルファードもエルグランドもデリカもミニバンなのでしょう ...
   category: purchase
@@ -104436,10 +106816,10 @@ prompts:
   tier: longtail
   added_on: '2026-08-17'
   tier_since: '2026-08-17'
-  demand: 49.6
+  demand: 59.5
   volume: 0
   fanout_hits: 0
-  ugc_hits: 5
+  ugc_hits: 6
   growth: 1.0
   keyword: null
   demand_history:
@@ -104466,7 +106846,7 @@ prompts:
   - - '2026-11-08'
     - 49.6
   - - '2026-11-15'
-    - 49.6
+    - 59.5
 - id: p738
   text: 新型ハリアーがでてからずっと欲しくてやっと購入すると決め ...
   category: purchase
@@ -105159,7 +107539,7 @@ prompts:
   demand: 59.5
   volume: 0
   fanout_hits: 0
-  ugc_hits: 10
+  ugc_hits: 11
   growth: 1.0
   keyword: null
   demand_history:
@@ -105199,7 +107579,7 @@ prompts:
   demand: 59.5
   volume: 0
   fanout_hits: 0
-  ugc_hits: 10
+  ugc_hits: 11
   growth: 1.0
   keyword: null
   demand_history:
@@ -105279,7 +107659,7 @@ prompts:
   demand: 59.5
   volume: 0
   fanout_hits: 0
-  ugc_hits: 10
+  ugc_hits: 11
   growth: 1.0
   keyword: null
   demand_history:
@@ -105319,7 +107699,7 @@ prompts:
   demand: 59.5
   volume: 0
   fanout_hits: 0
-  ugc_hits: 10
+  ugc_hits: 11
   growth: 1.0
   keyword: null
   demand_history:
@@ -105543,7 +107923,7 @@ prompts:
   demand: 59.5
   volume: 0
   fanout_hits: 0
-  ugc_hits: 11
+  ugc_hits: 12
   growth: 1.0
   keyword: null
   demand_history:
@@ -106583,7 +108963,7 @@ prompts:
   demand: 59.5
   volume: 0
   fanout_hits: 0
-  ugc_hits: 12
+  ugc_hits: 13
   growth: 1.0
   keyword: null
   demand_history:
@@ -106623,7 +109003,7 @@ prompts:
   demand: 59.5
   volume: 0
   fanout_hits: 0
-  ugc_hits: 8
+  ugc_hits: 9
   growth: 1.0
   keyword: null
   demand_history:
@@ -106743,7 +109123,7 @@ prompts:
   demand: 59.5
   volume: 0
   fanout_hits: 0
-  ugc_hits: 6
+  ugc_hits: 7
   growth: 1.0
   keyword: null
   demand_history:
@@ -108364,10 +110744,10 @@ prompts:
   tier: longtail
   added_on: '2026-08-24'
   tier_since: '2026-08-24'
-  demand: 39.7
+  demand: 49.6
   volume: 0
   fanout_hits: 0
-  ugc_hits: 4
+  ugc_hits: 5
   growth: 1.0
   keyword: null
   demand_history:
@@ -108394,7 +110774,7 @@ prompts:
   - - '2026-11-08'
     - 39.7
   - - '2026-11-15'
-    - 39.7
+    - 49.6
 - id: p865
   text: 高速道路を運転するのに疲れない方法はありますか？
   category: purchase
@@ -108704,7 +111084,7 @@ prompts:
   demand: 59.5
   volume: 0
   fanout_hits: 0
-  ugc_hits: 12
+  ugc_hits: 13
   growth: 1.0
   keyword: null
   demand_history:
@@ -109512,7 +111892,7 @@ prompts:
   demand: 59.5
   volume: 0
   fanout_hits: 0
-  ugc_hits: 6
+  ugc_hits: 7
   growth: 1.0
   keyword: null
   demand_history:
@@ -109696,7 +112076,7 @@ prompts:
   demand: 59.5
   volume: 0
   fanout_hits: 0
-  ugc_hits: 12
+  ugc_hits: 13
   growth: 1.0
   keyword: null
   demand_history:
@@ -109952,7 +112332,7 @@ prompts:
   demand: 59.5
   volume: 0
   fanout_hits: 0
-  ugc_hits: 7
+  ugc_hits: 8
   growth: 1.0
   keyword: null
   demand_history:
@@ -110248,7 +112628,7 @@ prompts:
   demand: 59.5
   volume: 0
   fanout_hits: 0
-  ugc_hits: 9
+  ugc_hits: 10
   growth: 1.0
   keyword: null
   demand_history:
