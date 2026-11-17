@@ -1,10 +1,10 @@
 {
  "_meta": {
   "source": "GA4 property 324699885 (toyota.jp) via Windsor.ai（ga4-daily が毎朝更新）",
-  "fetched": "2026-11-16",
+  "fetched": "2026-11-17",
   "coverage": [
    "2024-10-01",
-   "2026-11-15"
+   "2026-11-16"
   ],
   "refresh": "直近10日は毎朝取り直し（前日分は速報値のため）",
   "rules": "ai_sources v3（2026-10-09: gemini 単独表記・豆包・その他のAIを追加、OpenAIのメール配信を除外）",
@@ -8515,18 +8515,18 @@
   "other_ai": 3
  },
  "2026-11-13": {
-  "chatgpt": 47,
-  "gemini": 0,
-  "copilot": 0,
+  "chatgpt": 1252,
+  "gemini": 23,
+  "copilot": 3,
   "grok": 0,
   "deepseek": 0,
-  "claude": 0,
-  "perplexity": 0,
+  "claude": 1,
+  "perplexity": 6,
   "doubao": 0,
-  "other_ai": 1
+  "other_ai": 3
  },
  "2026-11-14": {
-  "chatgpt": 1286,
+  "chatgpt": 1290,
   "gemini": 3,
   "copilot": 7,
   "grok": 0,
@@ -8537,7 +8537,7 @@
   "other_ai": 3
  },
  "2026-11-15": {
-  "chatgpt": 1523,
+  "chatgpt": 1598,
   "gemini": 21,
   "copilot": 6,
   "grok": 0,
@@ -8546,5 +8546,16 @@
   "perplexity": 3,
   "doubao": 3,
   "other_ai": 0
+ },
+ "2026-11-16": {
+  "chatgpt": 1268,
+  "gemini": 25,
+  "copilot": 1,
+  "grok": 0,
+  "deepseek": 0,
+  "claude": 1,
+  "perplexity": 2,
+  "doubao": 7,
+  "other_ai": 1
  }
 }
