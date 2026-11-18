@@ -32,7 +32,7 @@ jobs:
         run: |
           MODE=$(python -c "import json;print(json.load(open('triggers/signal-youhin.json')).get('mode','measure'))")
           echo "mode=$MODE"
-          if [ "$MODE" = "extra" ]; then python src/signal_extra.py; else python src/signal_youhin.py; fi
+          if [ "$MODE" = "extra" ]; then python src/signal_extra.py; elif [ "$MODE" = "rank" ]; then python src/signal_rank.py; else python src/signal_youhin.py; fi
       - name: Commit
         if: ${{ always() }}
         run: |
