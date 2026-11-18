@@ -1,0 +1,40 @@
+name: signal-youhin
+
+# 世の中モニタリングレポート用の一回計測（用品・アップグレードの検索とAIの現状、他社比較）。
+# この枝（signal-youhin）への push だけで動く。main と既存のダッシュボードには触れない。
+on:
+  push:
+    branches: [signal-youhin]
+    paths: ["triggers/signal-youhin.json"]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: signal-youhin
+  cancel-in-progress: false
+
+jobs:
+  measure:
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -q pyyaml requests
+      - name: Measure (API)
+        env:
+          DATAFORSEO_LOGIN:    ${{ secrets.DATAFORSEO_LOGIN || vars.DATAFORSEO_LOGIN || secrets.DATAFORCED_LOGIN }}
+          DATAFORSEO_PASSWORD: ${{ secrets.DATAFORSEO_PASSWORD }}
+          SIGNAL_CAP_USD: "10"
+        run: python src/signal_youhin.py
+      - name: Commit
+        if: ${{ always() }}
+        run: |
+          git config user.name  "geo-board-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add -f data/signal || true
+          git diff --staged --quiet || git commit -m "chore: signal youhin $(date -u +%Y-%m-%dT%H:%M)"
+          git push origin HEAD:signal-youhin || true
