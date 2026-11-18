@@ -29,7 +29,10 @@ jobs:
           DATAFORSEO_LOGIN:    ${{ secrets.DATAFORSEO_LOGIN || vars.DATAFORSEO_LOGIN || secrets.DATAFORCED_LOGIN }}
           DATAFORSEO_PASSWORD: ${{ secrets.DATAFORSEO_PASSWORD }}
           SIGNAL_CAP_USD: "10"
-        run: python src/signal_youhin.py
+        run: |
+          MODE=$(python -c "import json;print(json.load(open('triggers/signal-youhin.json')).get('mode','measure'))")
+          echo "mode=$MODE"
+          if [ "$MODE" = "extra" ]; then python src/signal_extra.py; else python src/signal_youhin.py; fi
       - name: Commit
         if: ${{ always() }}
         run: |
