@@ -366,21 +366,44 @@ def _over_budget(cap: float) -> bool:
         return cap > 0 and _COST["total"] >= cap
 
 
+# 面ごとの同時実行数。Gemini は DataForSEO 側の上限（50301 rate_limit_exceeded）に
+# 当たりやすく、10並列で投げると全問落ちる（2026-11-02/05/19）。ucar-round と同じく絞る。
+_SEM = {"gemini": threading.Semaphore(int(env("GEO_GEMINI_WORKERS", "2") or 2))}
+
+
+def _rate_limited(e: Exception) -> bool:
+    t = str(e).lower()
+    return "rate_limit" in t or "50301" in t or "too many requests" in t or "429" in t
+
+
 def _one(job: dict) -> dict | None:
     """1回分の実測。失敗しても None を返すだけで、全体は止めない。"""
     p, s = job["p"], job["s"]
     if _over_budget(job.get("cap", 0)):
         return None
     fn = fetch_serp_ai if s["provider"] == "serp" else fetch_llm_response
-    for attempt in range(3):
+    attempt, waits = 0, 0
+    while True:
         try:
-            res = fn(p["text"], s)
+            sem = _SEM.get(s["id"])
+            if sem:
+                sem.acquire()
+            try:
+                res = fn(p["text"], s)
+            finally:
+                if sem:
+                    sem.release()
             return {"date": job["day"], "prompt_id": p["id"], "surface": s["id"],
                     "run": job["run"], **res}
         except Exception as e:
-            # 一時的な混雑（429/5xx）は時間をおけば通ることが多い。
-            # 恒久的な失敗（認証ミス等）でも3回で諦めるので待ち時間は上限つき。
-            if attempt == 2:
+            # 上限エラーは時間をおけば通る。待ちながら最大6回取り直す（10秒→2分）
+            if _rate_limited(e) and waits < 6:
+                waits += 1
+                time.sleep(min(120, 5 * 2 ** waits) + random.uniform(0, 5))
+                continue
+            # その他の一時的な混雑（5xx）は3回まで。恒久的な失敗でも待ち時間は上限つき。
+            attempt += 1
+            if attempt >= 3:
                 msg = f"{p['id']}/{s['id']} run{job['run']}: {type(e).__name__}: {e}"
                 print(f"  ! {msg}", file=sys.stderr)
                 with _COST_LOCK:
@@ -388,7 +411,6 @@ def _one(job: dict) -> dict | None:
                         _ERRORS.append(msg)
                 return None
             time.sleep(2 ** attempt * 1.5)
-    return None
 
 
 def collect(day: str, tier: str = "core") -> list[dict]:

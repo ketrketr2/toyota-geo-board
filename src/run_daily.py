@@ -59,6 +59,24 @@ def run_one(day: str, quiet: bool = False) -> dict:
         npr = min(len(load_prompts("core")), cfg["sampling"]["tier_schedule"]["core"]["max_prompts"])
         want = {s["id"]: npr * s.get("runs", base) for s in surfaces_for(day)}
         dead = [s for s, n in got.items() if n < want[s] * 0.5]
+        # 週2回だけ測る会話型の面（ChatGPT/Gemini）が外部APIの上限で落ちた日は、
+        # 日次の面が揃っていればその面を「欠測」として外して保存する（推定で埋めない）。
+        # 時系列比較は毎日測る面だけのコホートと surface_key で行うため、履歴は汚れない。
+        # 毎日測る面が落ちたときは従来どおり止める。
+        optional = {s["id"] for s in surfaces_for(day) if s.get("weekdays")}
+        missing = [s for s in dead if s in optional]
+        if missing and not (set(dead) - optional):
+            responses = [r for r in responses if r["surface"] not in missing]
+            exp -= sum(want[s] for s in missing)
+            dead = []
+            from common import ROOT
+            (ROOT / "data").mkdir(exist_ok=True)
+            (ROOT / "data" / "last_error.txt").write_text(
+                f"{day} 一部の面を欠測として保存しました: {', '.join(missing)}\n"
+                f"面別 {got} / 実費 {llm.spent()}\n\n" + "\n".join(llm.errors()[:20]),
+                encoding="utf-8")
+            print(f"  ! 欠測として外した面: {', '.join(missing)}（他の面で保存を続行）",
+                  file=sys.stderr)
         if len(responses) < exp * 0.7 or dead:
             # 無人で走るので、失敗理由をリポジトリに残す（ログは後から読めない）
             from common import ROOT
@@ -73,6 +91,8 @@ def run_one(day: str, quiet: bool = False) -> dict:
                      + (f"\n取得できていない面: {', '.join(dead)}" if dead else "")
                      + "\n認証情報・モデル名・残高を確認してください。"
                      "\nスナップショットは書いていないので、履歴は汚れていません。")
+    else:
+        missing = []
     import harvest
     nf = harvest.save_fanout(day, responses)      # AIが内部で投げた派生クエリを回収
     if nf and not quiet:
@@ -81,6 +101,8 @@ def run_one(day: str, quiet: bool = False) -> dict:
     snap = analyze.aggregate(day, responses, sig)
     # その日いくら使ったかを必ず残す。予算切れは静かに起きて、静かに全部止まるため。
     snap["api_cost"] = llm.spent()
+    if missing:
+        snap["missing_surfaces"] = missing
 
     # ---- 中身の健全性チェック（件数ではなく分布を見る）----
     # 回答が正常に返っていても、引用の分類が壊れることがある（2026-08-28 の
@@ -245,6 +267,15 @@ def main() -> None:
         print(f"backfilled {a.backfill + 1} days")
 
     if not a.backfill:
+        # 同じ日の2便目（cron遅延対策）で、1便目が全面そろって保存済みなら
+        # AIを叩き直さない（約$4の二重払いと、Gemini上限への再衝突を避ける）。
+        from common import read_json
+        done = read_json(snapshot_path(a.date)) if snapshot_path(a.date).exists() else None
+        if done and not demo_mode() and not done.get("missing_surfaces") \
+                and not done.get("quarantined"):
+            print(f"[{a.date}] 本日分は保存済みのため収集を省略し、画面だけ作り直します")
+            finalize(a.date)
+            return
         try:
             run_one(a.date)
         except SnapshotRejected:
