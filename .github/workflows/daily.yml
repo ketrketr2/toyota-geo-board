@@ -133,7 +133,7 @@ jobs:
           git config user.email "actions@users.noreply.github.com"
           git add -f data/last_error.txt data/last_probe.txt || true
           git diff --staged --quiet || git commit -m "chore: 実行ログ $(date -u +%Y-%m-%dT%H:%M)"
-          git pull --rebase -q || true
+          git pull --rebase --autostash -q || true
           git push || true
 
       - name: Commit snapshot
@@ -144,7 +144,7 @@ jobs:
           git add data/snapshots data/fanout data/harvest_log.json prompts/registry.yaml
           git add data/search_volumes.json 2>/dev/null || true
           git diff --staged --quiet || git commit -m "chore: snapshot $(date -u +%Y-%m-%d)"
-          git pull --rebase -q || true    # ga4-daily のコミットと重なっても押し戻されないように
+          git pull --rebase --autostash -q || true    # ga4-daily のコミットと重なっても押し戻されないように
           git push
 
       # push（＝こちらがソースを直したとき）は AI を叩かない。
