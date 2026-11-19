@@ -23,6 +23,11 @@ NAMES = ["トヨタ アップグレードファクトリー", "アップグレ�
 
 def main():
     out = {"at_utc": datetime.datetime.utcnow().isoformat()}
+    # 呼び出し側（triggers/signal-youhin.json）が keywords と tag を渡したときは、その語だけを照会して extra_<tag>.json に書く
+    trig = json.loads((ROOT / "triggers" / "signal-youhin.json").read_text(encoding="utf-8"))
+    names = trig.get("keywords") or NAMES
+    tag = trig.get("tag")
+    out["tag"] = tag
     try:
         r = requests.get(f"{llm.DFS_BASE}/appendix/user_data", auth=llm._dfs_auth(), timeout=60)
         res = (r.json().get("tasks") or [{}])[0].get("result") or [{}]
@@ -32,7 +37,7 @@ def main():
         out["money_error"] = str(e)[:200]
     try:
         task = llm._post("keywords_data/google_ads/search_volume/live",
-                         [{"keywords": NAMES, "language_code": "ja", "location_code": 2392}])
+                         [{"keywords": names, "language_code": "ja", "location_code": 2392}])
         out["volumes"] = {it["keyword"]: {"volume": it.get("search_volume"),
                                           "monthly": [{"y": m.get("year"), "m": m.get("month"), "v": m.get("search_volume")}
                                                       for m in (it.get("monthly_searches") or [])]}
@@ -41,7 +46,7 @@ def main():
         out["volumes_error"] = str(e)[:200]
     out["spent"] = llm.spent()
     OUT.mkdir(parents=True, exist_ok=True)
-    (OUT / "extra.json").write_text(json.dumps(out, ensure_ascii=False, indent=1), encoding="utf-8")
+    (OUT / (f"extra_{tag}.json" if tag else "extra.json")).write_text(json.dumps(out, ensure_ascii=False, indent=1), encoding="utf-8")
     print(json.dumps({k: v for k, v in out.items() if k != "volumes"}, ensure_ascii=False))
 
 
