@@ -15339,5 +15339,1045 @@
       "car_bench": 11,
       "local": 87
     }
+  },
+  {
+    "date": "2026-11-22",
+    "candidates": 431,
+    "added": [
+      {
+        "id": "p4597",
+        "text": "コンパクトミニバンを買うと後悔するのはなぜですか?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p4598",
+        "text": "ミニバンで一番カッコいいのは何ですか?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p4599",
+        "text": "子供3人家族で車を選ぶとき、おすすめの車は何ですか?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p4600",
+        "text": "トヨタのファミリー向け車は何がありますか?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p4601",
+        "text": "トヨタ強すぎ!! 市場を席巻する「無双モデル」4選",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p4602",
+        "text": "子育て世代の車選び！人気の車種ラインアップや後悔しない ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p4603",
+        "text": "国産車のおすすめは?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p4604",
+        "text": "新車で人気なSUVは何ですか?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p4605",
+        "text": "今、おすすめの車は?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p4606",
+        "text": "ファミリーカーでコスパ最強の車は?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p4607",
+        "text": "買ってよかった外車は何ですか?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p4608",
+        "text": "ファミリーカーでおすすめの車はなんですか？",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p4609",
+        "text": "プラグインハイブリッドの欠点は何ですか?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p4610",
+        "text": "ハイブリッドカーの燃費はどのくらいですか?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p4611",
+        "text": "プリウスの燃費は良すぎるって本当ですか?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p4612",
+        "text": "ハイブリッド車に乗っていてやってはいけないことは何ですか?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p4613",
+        "text": "ライズハイブリッドの実燃費を教えてください",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p4614",
+        "text": "電気自動車は今後どうなると予想されていますか?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p4615",
+        "text": "ガソリン車とEV、どちらが良いですか?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p4616",
+        "text": "電気自動車が環境に良い理由は何ですか?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p4617",
+        "text": "なぜEVは日本では嫌われているのですか?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p4618",
+        "text": "50代におすすめの軽自動車は？",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p4619",
+        "text": "スズキとダイハツ どっちがいい？",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p4620",
+        "text": "買って後悔した車ランキングは？",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p4621",
+        "text": "シニアが運転しやすい軽自動車は？",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p4622",
+        "text": "軽自動車の候補車両どれが良いですか？妻の愛車タントが9年 ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p4623",
+        "text": "ルーミーより少し大きいサイズの車はありますか?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p4624",
+        "text": "一番売れているコンパクトカーは何ですか?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p4625",
+        "text": "高齢者軽自動車予防安全性能比較70才をすぎて最後の車を ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p4626",
+        "text": "長距離運転で疲れにくい車は何ですか?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p4627",
+        "text": "ロングドライブ症候群を治す方法は?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p4628",
+        "text": "運転疲れやすい人の特徴は何ですか?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p4629",
+        "text": "リセールの良いハイブランドは?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p4630",
+        "text": "リセールが悪い外車は何ですか?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p4631",
+        "text": "車の査定で一番高い車種は?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p4632",
+        "text": "リセールバリューの高い車が人気があるのはわかりますが ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p4633",
+        "text": "台数的な人気は高いのに中古は破格な車も",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p4634",
+        "text": "リセールバリューの高い車を新車で購入し、1年で乗り換えを ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p4635",
+        "text": "一番安い車は何万円ですか?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p4636",
+        "text": "軽自動車の車検で10万円は高いですか?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p4637",
+        "text": "新車を買うのに一番良い月は?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p4638",
+        "text": "納期が遅れている車をキャンセルできますか?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p4639",
+        "text": "最近の車って、なんであんなに納期が長いんですか？これまで",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p4640",
+        "text": "納期の長い車をオーダーしたことがある方",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p4641",
+        "text": "トヨタの残価設定型ローンは5年後にどうなる?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p4642",
+        "text": "住宅ローンのボーナス払いは、どちらが良いですか?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p4643",
+        "text": "おまとめローンをした方がいい人の特徴は?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p4644",
+        "text": "残価設定ローンは繰上げ返済できますか?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p4645",
+        "text": "あるディーラーで残価設定型で契約した車に乗っており",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p4646",
+        "text": "会社で残クレで車を所有しています。5年で組んでますが今年3 ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p4647",
+        "text": "車を買うのとサブスク、どちらが良いですか?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p4648",
+        "text": "リースとレンタル、どちらが安いですか?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p4649",
+        "text": "カーリースの月額料金はどのくらいですか?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p4650",
+        "text": "トヨタサブスクのKINTOを使用されてる方、メリットデメリッ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p4651",
+        "text": "車中泊におすすめの軽バンは何ですか?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p4652",
+        "text": "車中泊のメリットは何ですか?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p4653",
+        "text": "車中泊は何度まで耐えられますか?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p4654",
+        "text": "荷物を載せたり、荷室に車中泊できるコンパクトカー（車高 ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p4655",
+        "text": "雪に強い軽自動車は何がありますか?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p4656",
+        "text": "FFと4WD、どちらが良いですか?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p4657",
+        "text": "ステップワゴンの4WDは雪道でも走れますか?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p4658",
+        "text": "トヨタ ヤリス クロスは雪道で走行できますか?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p4659",
+        "text": "85歳の人が新車を購入するのは良いですか?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p4660",
+        "text": "初めて運転する車におすすめの車種は?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p4661",
+        "text": "カーセンサーとグーネット、どちらが良いですか?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p4662",
+        "text": "車を一括で買わない方がいい理由は?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p4663",
+        "text": "車を一番安く買う方法についてです。ディーラーにて新車購入 ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p4664",
+        "text": "中古車の選び方を教えて頂きたいのですが",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p4665",
+        "text": "なぜガソリンスタンドで車検を受けると安いのですか?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p4666",
+        "text": "2026年の車検費用はどのくらいですか?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p4667",
+        "text": "ステップワゴンのリッター燃費はどのくらいですか?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p4668",
+        "text": "セレナとアルファードの違いは何ですか?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p4669",
+        "text": "アルファードが嫌われている理由は?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p4670",
+        "text": "セレナをやめた方がいいのはなぜですか?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p4671",
+        "text": "NV200とセレナの違いは何ですか?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p4672",
+        "text": "セレナとノア、どちらの方が運転しやすいですか?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p4673",
+        "text": "ヴォクシー ノア どっち？",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p4674",
+        "text": "ノアとヴォクシー、セレナ全くおなじ大きさですか？",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p4675",
+        "text": "2026年最新の新ミニバンは何ですか?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p4676",
+        "text": "セダンは時代遅れと言われているのはなぜですか?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p4677",
+        "text": "【2026年夏発売】日産が新型エルグランドは売れると思い ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p4678",
+        "text": "ハイブリッド車を買えない理由は?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p4679",
+        "text": "トヨタの燃費が良い理由は?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p4680",
+        "text": "ハリアーのPHEVは廃止されますか?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p4681",
+        "text": "ハイブリッドが好きになれない人っていますか??新型の ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p4682",
+        "text": "ハリアーの購入考えておりますが、ガソリン車かハイブリッド ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p4683",
+        "text": "トヨタ ハリアーは車中泊できますか?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p4684",
+        "text": "ハリアーはガソリン車で十分ですか?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p4685",
+        "text": "レクサスRXやNX、ハリアーなども今後ガソリン車がなくなっ ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p4686",
+        "text": "新型ハリアーの人気色は?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p4687",
+        "text": "ハリアーを買うなら、何年式が良いですか?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p4688",
+        "text": "80系ハリアーと85系ハリアーの違いは何ですか?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p4689",
+        "text": "フリードの弱点は?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p4690",
+        "text": "シエンタとフリード、車中泊にどちらが良いですか?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p4691",
+        "text": "フリード ステップワゴン どっち？",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p4692",
+        "text": "新型フリードは何が変わったのですか?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p4693",
+        "text": "トヨタノアは2026年にマイナーチェンジされますか?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p4694",
+        "text": "シエンタはやめた方がいいですか?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p4695",
+        "text": "トヨタの車にモデルチェンジする情報はありますか?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p4696",
+        "text": "2028年にフルモデルチェンジする新型車は何ですか?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p4697",
+        "text": "クラウンセダン新型 いつ？",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p4698",
+        "text": "210クラウンハイブリッドの前期と後期の違いは何ですか?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p4699",
+        "text": "トヨタクラウンクロスオーバーと日産アリアそれぞれフル ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p4700",
+        "text": "セダンとクーペの違いは何ですか?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p4701",
+        "text": "クラウンクロスオーバーが安い理由は?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p4702",
+        "text": "カローラセダンは人気がないって本当ですか?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p4703",
+        "text": "ランドクルーザー300のガソリン車の燃費はどのくらいですか?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p4704",
+        "text": "ランドクルーザー300 何年待ち？",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p4705",
+        "text": "ランドクルーザー300と250、どちらの方が広いですか?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p4706",
+        "text": "ランクル300 ハイブリッドは納車できますか?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p4707",
+        "text": "ランクル300の受注に関してランクル300GXのディーゼルがシ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p4708",
+        "text": "ヤリスはいい車ですか?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p4709",
+        "text": "ヤリスクロス 4WDの価格はいくらですか?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p4710",
+        "text": "ヤリスクロスはガソリン車でも十分ですか?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p4711",
+        "text": "カローラスポーツはなぜ人気がないのですか?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p4712",
+        "text": "トヨタのハイブリッド車で一番人気なのは?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p4713",
+        "text": "ハイエースの新車価格はいくらですか?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p4714",
+        "text": "トヨタ ハイランダーの日本でのモデル名は?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p4715",
+        "text": "ハイランダーとRAV4の違いは何ですか?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p4716",
+        "text": "GR86のターボは何馬力ですか?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p4717",
+        "text": "トヨタ86の欠点は何ですか?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p4718",
+        "text": "GR86で車中泊をするにはどうすればいいですか?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p4719",
+        "text": "GR86/BRZが現在D型まで改良が進んでいますが、今後E型は ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p4720",
+        "text": "雪道に強い4WDのおすすめは?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p4721",
+        "text": "4WDで最強の車は何ですか?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p4722",
+        "text": "雪道では4WDが良いですか?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p4723",
+        "text": "ミニバンの四駆とSUVのFFはどちらの方が雪道強いのでしょ ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p4724",
+        "text": "中型サイズのSUV(4WD)で、悪路走破性能が高い(特に雪道...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p4725",
+        "text": "クロカン4wdより、軽4wdのほうな雪道に強いの？",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p4726",
+        "text": "5年経ったスタッドレスタイヤは、まだ使えますか?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p4727",
+        "text": "冬用タイヤの規制を確認するにはどうすればいいですか?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p4728",
+        "text": "長距離走行が楽な車は何ですか?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p4729",
+        "text": "長距離運転は車にどのような影響がありますか?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p4730",
+        "text": "お金持ちがよく乗っている車は何ですか?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p4731",
+        "text": "乗り心地が最も良い車は何ですか?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p4732",
+        "text": "ノート オーラ e-POWERに寒冷地仕様は必要ですか?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p4733",
+        "text": "ターボ車は暖気運転は必要ですか?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p4734",
+        "text": "ヤリスクロスの寒冷地仕様のデメリットは何ですか?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p4735",
+        "text": "エアコンの寒冷地仕様は必要ですか?",
+        "source": "paa",
+        "demand": null,
+        "volume": 0
+      },
+      {
+        "id": "p4736",
+        "text": "北海道で寒冷地仕様ではない車に乗るのは厳しいでしょうか ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p4737",
+        "text": "寒冷地仕様は必要ですか？先日、新型ノアを契約しました ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p4738",
+        "text": "寒冷地仕様車のメリット・デメリット",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p4739",
+        "text": "車寒冷地仕様についての質問です。当方富山県在住です。少し ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p4740",
+        "text": "北海道は寒冷地仕様車じゃないと車の寿命縮まりますか？寒さ ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      },
+      {
+        "id": "p4741",
+        "text": "中古車で寒冷地仕様を購入しようと思います。住んでいる ...",
+        "source": "chiebukuro",
+        "demand": 9.9,
+        "volume": 0
+      }
+    ],
+    "promoted": [],
+    "surged": [],
+    "demoted": [],
+    "tiers": {
+      "strategic": 31,
+      "core": 63,
+      "longtail": 4197,
+      "car": 320,
+      "car_bench": 11,
+      "local": 87
+    },
+    "tiers_before": {
+      "strategic": 31,
+      "core": 63,
+      "longtail": 4052,
+      "car": 320,
+      "car_bench": 11,
+      "local": 87
+    }
   }
 ]
