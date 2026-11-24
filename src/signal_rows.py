@@ -94,15 +94,16 @@ def main():
             except Exception as e:  # noqa: BLE001
                 if a == 2:
                     ERRORS.append({"stage": "answer", "job": f"{row}/{sid}", "error": str(e)[:300]})
-                time.sleep(3 * (a + 1))
+                time.sleep((20 if "rate_limit" in str(e) else 3) * (a + 1))   # 混雑のときは長めに待つ
         return None
 
     for sid in surfaces:                               # 面ごとに順に（安い面から）。面の中は並列
         if sid not in surf_def:
             continue
         before = llm.spent()["usd"]
-        jobs = [(q["row"], q["text"], sid) for q in questions]
-        workers = 6 if sid in ("aimode", "aio") else 3  # 高い面は並列を絞り、上限の行き過ぎを小さくする
+        only = (trig.get("rows_for") or {}).get(sid)   # 面ごとに行を絞るとき（取り直し用）
+        jobs = [(q["row"], q["text"], sid) for q in questions if not only or q["row"] in only]
+        workers = int((trig.get("workers") or {}).get(sid) or (6 if sid in ("aimode", "aio") else 3))  # 高い面は並列を絞り、上限の行き過ぎを小さくする
         got = 0
         with ThreadPoolExecutor(max_workers=workers) as ex:
             futs = [ex.submit(one, j) for j in jobs]
