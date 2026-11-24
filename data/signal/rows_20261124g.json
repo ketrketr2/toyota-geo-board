@@ -1,0 +1,123 @@
+{
+ "at_utc": "2026-11-24T01:46:35.678262",
+ "tag": "20261124g",
+ "cap_usd": 1.2,
+ "n_keywords": 0,
+ "n_questions": 16,
+ "stages": [
+  {
+   "stage": "volumes",
+   "usd": 0.0,
+   "got": 0
+  },
+  {
+   "stage": "aio",
+   "usd": 0.002,
+   "got": 1,
+   "asked": 1
+  },
+  {
+   "stage": "gemini",
+   "usd": 0.0,
+   "got": 0,
+   "asked": 16
+  }
+ ],
+ "volumes": {},
+ "spent": {
+  "usd": 0.002,
+  "calls": 1
+ },
+ "errors": [
+  {
+   "stage": "answer",
+   "job": "r1/gemini",
+   "error": "50301 3rd Party API Service Unavailable (rate_limit_exceeded)."
+  },
+  {
+   "stage": "answer",
+   "job": "r2/gemini",
+   "error": "50301 3rd Party API Service Unavailable (rate_limit_exceeded)."
+  },
+  {
+   "stage": "answer",
+   "job": "r3/gemini",
+   "error": "50301 3rd Party API Service Unavailable (rate_limit_exceeded)."
+  },
+  {
+   "stage": "answer",
+   "job": "r4/gemini",
+   "error": "50301 3rd Party API Service Unavailable (rate_limit_exceeded)."
+  },
+  {
+   "stage": "answer",
+   "job": "r5/gemini",
+   "error": "50301 3rd Party API Service Unavailable (rate_limit_exceeded)."
+  },
+  {
+   "stage": "answer",
+   "job": "r6/gemini",
+   "error": "50301 3rd Party API Service Unavailable (rate_limit_exceeded)."
+  },
+  {
+   "stage": "answer",
+   "job": "r7/gemini",
+   "error": "50301 3rd Party API Service Unavailable (rate_limit_exceeded)."
+  },
+  {
+   "stage": "answer",
+   "job": "r8/gemini",
+   "error": "50301 3rd Party API Service Unavailable (rate_limit_exceeded)."
+  },
+  {
+   "stage": "answer",
+   "job": "r9/gemini",
+   "error": "50301 3rd Party API Service Unavailable (rate_limit_exceeded)."
+  },
+  {
+   "stage": "answer",
+   "job": "r10/gemini",
+   "error": "50301 3rd Party API Service Unavailable (rate_limit_exceeded)."
+  },
+  {
+   "stage": "answer",
+   "job": "r11/gemini",
+   "error": "50301 3rd Party API Service Unavailable (rate_limit_exceeded)."
+  },
+  {
+   "stage": "answer",
+   "job": "r12/gemini",
+   "error": "50301 3rd Party API Service Unavailable (rate_limit_exceeded)."
+  },
+  {
+   "stage": "answer",
+   "job": "r13/gemini",
+   "error": "50301 3rd Party API Service Unavailable (rate_limit_exceeded)."
+  },
+  {
+   "stage": "answer",
+   "job": "r14/gemini",
+   "error": "50301 3rd Party API Service Unavailable (rate_limit_exceeded)."
+  },
+  {
+   "stage": "answer",
+   "job": "r15/gemini",
+   "error": "50301 3rd Party API Service Unavailable (rate_limit_exceeded)."
+  },
+  {
+   "stage": "answer",
+   "job": "r16/gemini",
+   "error": "50301 3rd Party API Service Unavailable (rate_limit_exceeded)."
+  }
+ ],
+ "answers": [
+  {
+   "row": "r4",
+   "question": "水素で走る車は、いま日本で買えますか。車種と、水素ステーションの状況を教えてください。",
+   "surface": "aio",
+   "text": "",
+   "citations": [],
+   "fanout": []
+  }
+ ]
+}
